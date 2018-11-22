@@ -7,7 +7,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dateText: {}
+        dateText: {},
+        backgroundColor: '#3E3E3E'
     },
 
     /**
@@ -18,6 +19,10 @@ Page({
         let dateText = date.date + '\n' + date.time;
         this.setData({
             dateText: dateText,
+        });
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: this.data.backgroundColor,
         })
     },
 

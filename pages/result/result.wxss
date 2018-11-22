@@ -1,5 +1,14 @@
 /* pages/result/result.wxss */
 
+.background-view {
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
 .bottom-card{
     position: fixed;
     bottom:30rpx;
@@ -22,7 +31,6 @@
     height: 210rpx;
     background: rgba(233,233,233,1);
     border-radius: 28rpx;
-    margin: 0 8.5rpx;
     align-items: center;
     position: relative;
     display: flex;
@@ -36,8 +44,4 @@
     right: 0;
     width: 750rpx;
     height: 629rpx;
-}
-
-page{
-    background-color: black;
 }
