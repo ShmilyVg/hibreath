@@ -1,0 +1,7 @@
+{
+  "name": "hibreath",
+  "version": "1.0.0",
+  "dependencies": {
+    "wechat-mini-programs-apis": "^1.6.2"
+  }
+}
