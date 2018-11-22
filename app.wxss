@@ -23,3 +23,13 @@
 .press-style{
   opacity: 0.5;
 }
+
+.bottom-btn{
+  margin-top: 20rpx;
+  width: 610rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: rgba(233,233,233,1);
+  border-radius: 50rpx;
+}

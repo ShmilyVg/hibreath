@@ -1,5 +1,14 @@
 /* pages/result/result.wxss */
 
+.background-view {
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
 .bottom-card{
     position: fixed;
     bottom:30rpx;
@@ -14,17 +23,14 @@
     color:rgba(151,151,151,1);
     line-height:45rpx;
     margin-top: 48rpx;
-    width: 100%;
-    text-align: center;
     margin-bottom: 45rpx;
 }
 
 .small-card{
-    width: 150rpx;
+    width: 140rpx;
     height: 210rpx;
     background: rgba(233,233,233,1);
     border-radius: 28rpx;
-    margin: 0 7.5rpx;
     align-items: center;
     position: relative;
     display: flex;
@@ -32,16 +38,10 @@
     justify-content: space-between;
 }
 
-.bottom-btn{
-    width: 610rpx;
-    height: 100rpx;
-    line-height: 100rpx;
-    text-align: center;
-    background:rgba(233,233,233,1);
-    border-radius: 50rpx;
-    margin-left: 40rpx;
-}
-
-page{
-    background-color: black;
+.background-image{
+    position: fixed;
+    top: 370rpx;
+    right: 0;
+    width: 750rpx;
+    height: 629rpx;
 }
