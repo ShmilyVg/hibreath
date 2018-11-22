@@ -1,16 +1,18 @@
 <!--pages/result/result.wxml-->
+
+<image class="background-image" src="../../images/result/background.png"></image>
+
 <view style="display: flex;flex-direction: column;align-items: center">
     <image src="../../images/result/top-image.png" style="width:750rpx;height: 162rpx;margin-top: 30rpx"></image>
     <view style="font-size: 170rpx;color: white;line-height: 170rpx;margin-top: 55rpx">03</view>
     <view style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 20rpx">ppm</view>
     <view style="line-height: 43rpx;text-align: center;margin-top: 23rpx">
-        <text style="font-size: 30rpx;color: white;">2018年11月11日\n09:49</text>
+        <text style="font-size: 30rpx;color: white;">{{dateText}}</text>
     </view>
-    <view class="bottom-card">
+    <view class="bottom-card flex-column">
         <view class="bottom-card-title">请问本次是在什么状态下检测的？</view>
-        <swiper indicator-dots="true" indicator-active-color="#FF5F00">
+        <swiper style="width: 628rpx;height: 275rpx" indicator-dots="true" indicator-active-color="#FF5F00">
             <swiper-item style="display: flex;flex-direction: row" wx:for="{{3}}">
-                <view style="width: 32.5rpx"></view>
                 <view class="small-card" wx:for="{{4}}">
                     <view style="margin-top: 40rpx;text-align: center;line-height: 24rpx">
                         <text style="color: #979797;font-size: 24rpx;width: 150rpx">晚餐前</text>
@@ -21,7 +23,6 @@
                 </view>
             </swiper-item>
         </swiper>
-        <view style="background: linear-gradient(to right, rgba(255,255,255,0) 0% , rgba(255,255,255,1) 100%);position: absolute;right: 0;top: 126rpx;width: 100rpx;height: 246rpx;"></view>
-        <view class="bottom-btn">查看解读</view>
+        <view class="bottom-btn" hover-class="press-style" hover-stay-time="50">查看解读</view>
     </view>
 </view>
