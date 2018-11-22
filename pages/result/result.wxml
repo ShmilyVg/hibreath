@@ -1,6 +1,6 @@
 <!--pages/result/result.wxml-->
 <view style="display: flex;flex-direction: column;align-items: center">
-    <image src="image.png" style="width:750rpx;height: 162rpx;margin-top: 30rpx"></image>
+    <image src="../../images/result/top-image.png" style="width:750rpx;height: 162rpx;margin-top: 30rpx"></image>
     <view style="font-size: 170rpx;color: white;line-height: 170rpx;margin-top: 55rpx">03</view>
     <view style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 20rpx">ppm</view>
     <view style="line-height: 43rpx;text-align: center;margin-top: 23rpx">
