@@ -17,4 +17,8 @@ export default class Protocol {
     static getHistoryList({userId=123}) {
         return Network.request({url: 'user/history', data: {userId}});
     }
+
+    static  getAnalysisSituation(){
+        return Network.request({url:'analysis/situation'})
+    }
 }

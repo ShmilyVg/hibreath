@@ -31,7 +31,7 @@
                 </swiper-item>
             </swiper>
             <view class="bottom-btn"
-                  style="background-color: {{isChose?backgroundColor:'#E9E9E9'}};color: {{isChose?'#ffffff':'#979797'}};"
+                  style="background-color: {{isChose?backgroundColor:'#E9E9E9'}};color: {{isChose?'#ffffff':'#979797'}};margin-top: 20rpx;"
                   hover-class="press-style" hover-stay-time="50" bindtap="clickBtn">查看解读</view>
         </block>
 

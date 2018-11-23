@@ -1,8 +1,9 @@
 {
   "pages":[
-    "pages/history/history",
-    "pages/index/index",
+    "pages/strategy/strategy",
     "pages/result/result",
+    "pages/index/index",
+    "pages/history/history",
     "pages/device-bind/device-bind"
   ],
   "window":{
