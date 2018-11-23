@@ -25,7 +25,6 @@
 }
 
 .bottom-btn{
-  margin-top: 20rpx;
   width: 610rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -33,4 +32,9 @@
   background: rgba(233,233,233,1);
   border-radius: 50rpx;
   color: #979797;
+}
+
+.bottom-btn-origin-color{
+  background: rgba(255,95,0,1);
+  color: #ffffff;
 }
