@@ -6,13 +6,13 @@ import Login from "./modules/network/login";
 
 App({
     onLaunch() {
-        Login.doLogin().then(() => {
-            UserInfo.get().then(userInfo => {
-                this.globalData.userInfo.nickName = userInfo.nickName;
-                this.globalData.userInfo.headUrl = userInfo.headUrl;
-                this.globalData.userInfo.userId = userInfo.userId;
-            }).catch();
-        })
+        // Login.doLogin().then(() => {
+        //     UserInfo.get().then(userInfo => {
+        //         this.globalData.userInfo.nickName = userInfo.nickName;
+        //         this.globalData.userInfo.headUrl = userInfo.headUrl;
+        //         this.globalData.userInfo.userId = userInfo.userId;
+        //     }).catch();
+        // })
     },
 
     globalData: {
