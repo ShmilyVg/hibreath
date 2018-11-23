@@ -1,4 +1,4 @@
-export default class IMNavigator {
+export default class HiNavigator {
     static navigateTo({url, success, fail, complete}) {
         wx.navigateTo({url, success, fail, complete});
     }
@@ -18,7 +18,4 @@ export default class IMNavigator {
     static redirectTo({url, success, fail, complete}) {
         wx.redirectTo({url, success, fail, complete})
     }
-
-
-
 }

@@ -11,4 +11,4 @@
     </view>
 </view>
 
-<button class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">开始燃脂检测</button>
+<button class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toHomePage">开始燃脂检测</button>

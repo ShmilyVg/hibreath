@@ -1,4 +1,6 @@
 // pages/strategy/strategy.js
+import HiNavigator from "../../navigator/hi-navigator";
+
 Page({
 
     /**
@@ -20,7 +22,7 @@ Page({
 
     },
 
-    onGetUserInfo:function (e) {
-        
+    toHomePage:function (e) {
+        HiNavigator.redirectTo({url:'/pages/index/index'});
     }
 })

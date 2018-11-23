@@ -37,7 +37,7 @@
 
         <view wx:else class="flex-column">
             <view wx:for="{{3}}" class="flex-column" style="height: 137rpx;justify-content: space-between">
-                <view class="flex-row" style="margin-top: 30rpx">
+                <view class="flex-row" style="margin-top: 30rpx;align-items: flex-start">
                     <view class="bottom-card-num">{{index+1}}</view>
                     <view style="font-size:28rpx;color: #979797;margin-right: 45rpx">本次运动几乎没有燃烧脂肪，目前的运动方式减脂效果不佳。</view>
                 </view>

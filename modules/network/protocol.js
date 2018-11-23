@@ -18,7 +18,7 @@ export default class Protocol {
         return Network.request({url: 'user/history', data: {userId}});
     }
 
-    static  getAnalysisSituation(){
+    static getAnalysisSituation(){
         return Network.request({url:'analysis/situation'})
     }
 }
