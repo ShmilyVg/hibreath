@@ -31,7 +31,7 @@ export default class Login {
         return new Promise((resolve, reject) =>
             this._wxLogin().then(res => {
                 const {code} = res;
-                Network.request({url: 'account/register', data: {jsCode: code, encryptedData, iv}})
+                Network.request({url: 'account/register', data: {code, encrypted_data: encryptedData, iv}})
                     .then(data => {
                         console.log('获取注册信息', data);
                         this._setToken({data});
