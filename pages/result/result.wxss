@@ -45,3 +45,17 @@
     width: 750rpx;
     height: 629rpx;
 }
+
+.bottom-card-num{
+    width:46rpx;
+    height:27rpx;
+    background:rgba(233,233,233,1);
+    border-radius:18rpx;
+    color: #979797;
+    font-size: 20rpx;
+    line-height: 27rpx;
+    text-align: center;
+    align-items: center;
+    margin-right: 19rpx;
+    margin-left: 45rpx;
+}
