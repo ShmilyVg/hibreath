@@ -9,6 +9,7 @@ Page({
         viewUnscramble: false,
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
+        score: 99,
     },
 
     onLoad: function (options) {
@@ -16,7 +17,7 @@ Page({
         let date = tools.createDateAndTime(new Date());
         let dateText = date.date + '\n' + date.time;
         let backgroundColor = '#000000';
-        let score = 99;
+        let score = this.data.score;
         if (score < 6) {
             backgroundColor = '#3E3E3E'
         } else if (score > 5 && score < 31) {
@@ -29,7 +30,8 @@ Page({
         this.setData({
             list: list,
             dateText: dateText,
-            backgroundColor: backgroundColor
+            backgroundColor: backgroundColor,
+            score:score
         });
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
@@ -47,10 +49,12 @@ Page({
         this.setData({
             list: list,
             isChose: true,
+            index: index
         })
     },
 
     clickBtn: function () {
+        let content = protocol.getAnalysisFetch({dataValue: this.data.score, situation: this.data.index});
         this.setData({
             viewUnscramble: true,
             cardTitle: this.data.cardTitle
