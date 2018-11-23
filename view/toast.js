@@ -12,13 +12,13 @@ export default class Toast {
         wx.showToast({
             title: title,
             duration: !!duration ? duration : 2000,
-            image: '../../image/loading_fail.png'
+            image: '/images/loading_fail.png'
         })
     }
 
     static showLoading(text) {
         wx.showLoading({
-            title: !!text ? text : '加载中...',
+            title: text || '请稍后...',
             mask: true
         })
     }
