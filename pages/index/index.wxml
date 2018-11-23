@@ -1,0 +1,15 @@
+
+
+<view class="home-pic"></view>
+<view class="home-heart">
+  <view class="home-heart-box1"></view>
+  <view class="home-heart-box2"></view>
+  <view class="home-heart-box3"></view>
+  <view class="home-heart-box4">未绑定设备</view>
+</view>
+<view class="home-state"><text>点击绑定设备</text></view>
+<view class="home-point"><text>燃脂小贴士：</text>跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高</view>
+<view class="home-btn">
+  <view class="home-btn-box home-btn-use">使用教程</view>
+  <view class="home-btn-box home-btn-history">历史记录</view>
+</view>
