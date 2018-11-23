@@ -1,0 +1,97 @@
+
+
+page{
+  background: #3E3E3E;
+}
+.home-pic{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #535353;
+  margin-top: 34rpx;
+  margin-left: 40rpx;
+}
+.home-heart{
+  width: 507rpx;
+  height: 507rpx;
+  margin: 29rpx auto 48rpx;
+  position: relative;
+}
+.home-heart-box1{
+  width: 507rpx;
+  height: 507rpx;
+  background: rgba(88, 88, 88,0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.home-heart-box2{
+  width: 425rpx;
+  height: 425rpx;
+  background: rgba(88, 88, 88,0.4);
+  border-radius: 50%;
+  position: absolute;
+  top: 41rpx;
+  left: 41rpx;
+}
+.home-heart-box3{
+  width: 333rpx;
+  height: 333rpx;
+  background: #696969;
+  border-radius: 50%;
+  position: absolute;
+  top: 87rpx;
+  left: 87rpx;
+}
+.home-heart-box4{
+  width: 318rpx;
+  height: 318rpx;
+  background: #535353;
+  border-radius: 50%;
+  position: absolute;
+  top: 95rpx;
+  left: 95rpx;
+  text-align: center;
+  line-height: 318rpx;
+  color: #979797;
+  font-size: 34rpx;
+}
+.home-state{
+  text-align: center;
+  color: #FF5E00;
+  font-size: 32rpx;
+}
+.home-point{
+  width: 566rpx;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  color: #979797;
+  margin: 52rpx auto 66rpx;
+  padding: 31rpx 0;
+  border-top: 1rpx solid #979797;
+  border-bottom: 1rpx solid #979797;
+}
+.home-point text{
+  color: #FF5D00;
+}
+.home-btn{
+  text-align: center;
+}
+.home-btn-box{
+  width: 270rpx;
+  height: 100rpx;
+  background: #505050;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 100rpx;
+  display: inline-block;
+}
+.home-btn-use{
+  border-radius: 74rpx 6rpx 6rpx 74rpx;
+  margin-right: 7rpx;
+}
+.home-btn-history{
+  border-radius: 6px 74px 74px 6px;
+}
