@@ -19,6 +19,7 @@
 }
 
 .bottom-card-title{
+    font-weight:600;
     font-size:32rpx;
     color:rgba(151,151,151,1);
     line-height:45rpx;
@@ -29,7 +30,6 @@
 .small-card{
     width: 140rpx;
     height: 210rpx;
-    background: rgba(233,233,233,1);
     border-radius: 28rpx;
     align-items: center;
     position: relative;

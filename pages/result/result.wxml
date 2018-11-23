@@ -11,23 +11,28 @@
     </view>
     <view class="bottom-card flex-column">
         <view class="bottom-card-title">{{cardTitle}}</view>
-        <block wx:if="{{!isFinishChose}}">
+        <block wx:if="{{!viewUnscramble}}">
             <swiper style="width: 100%;height: 275rpx" indicator-dots="true" indicator-active-color="#FF5F00">
-                <swiper-item style="display: flex;flex-direction: row;justify-content: space-between;" wx:for="{{3}}">
+                <swiper-item style="display: flex;flex-direction: row;justify-content: space-between;" wx:for="{{list.length/4}}" wx:for-index="bigIndex">
                     <view style="width: 40rpx"/>
-                    <view class="small-card" hover-class="press-style" hover-stay-time="50" wx:for="{{4}}"
-                          data-index="{{index}}" bindtap="clickChoose">
+                    <view class="small-card"
+                          style="background-color: {{list[bigIndex*4+index]['isChose']?backgroundColor:'#E9E9E9'}}"
+                          hover-class="press-style" hover-stay-time="50"
+                          wx:for="{{4}}" bindtap="clickChoose" data-index="{{list[bigIndex*4+index]['key']}}">
+
                         <view style="margin-top: 40rpx;text-align: center;line-height: 24rpx">
-                            <text style="color: #979797;font-size: 24rpx;width: 150rpx">晚餐前</text>
+                            <text style="color: {{list[bigIndex*4+index]['isChose']?'#ffffff':'#979797'}};font-size: 24rpx;width: 150rpx">{{list[bigIndex*4+index]['text_zh']}}</text>
                         </view>
                         <view style="text-align: center;line-height: 24rpx;margin-bottom: 18rpx">
-                            <text style="color: #BEBEBE;font-size: 24rpx">BEFORE\nDINNER</text>
+                            <text style="color: {{list[bigIndex*4+index]['isChose']?'#ffffff':'#BEBEBE'}};font-size: 24rpx">{{list[bigIndex*4+index]['text_en']}}</text>
                         </view>
                     </view>
                     <view style="width: 40rpx"/>
                 </swiper-item>
             </swiper>
-            <view class="bottom-btn" hover-class="press-style" hover-stay-time="50">查看解读</view>
+            <view class="bottom-btn"
+                  style="background-color: {{isChose?backgroundColor:'#E9E9E9'}};color: {{isChose?'#ffffff':'#979797'}};"
+                  hover-class="press-style" hover-stay-time="50" bindtap="clickBtn">查看解读</view>
         </block>
 
         <view wx:else class="flex-column">
