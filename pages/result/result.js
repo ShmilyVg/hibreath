@@ -1,5 +1,6 @@
 // pages/result/result.js
 import * as tools from "../../utils/tools";
+import protocol from "../../modules/network/protocol";
 
 Page({
     data: {
@@ -8,38 +9,10 @@ Page({
         viewUnscramble: false,
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
-        list: [{
-            key: "0",
-            text_zh: "其他",
-            text_en: "1",
-        }, {
-            key: "1",
-            text_zh: "晚餐前",
-            text_en: "1",
-        }, {
-            key: "2",
-            text_zh: "运动前",
-            text_en: "1",
-        }, {
-            key: "3",
-            text_zh: "运动结束时",
-            text_en: "1",
-        }, {
-            key: "4",
-            text_zh: "运动结束1小时",
-            text_en: "1",
-        }, {
-            key: "5",
-            text_zh: "运动结束2小时",
-            text_en: "1",
-        }, {
-            key: "6",
-            text_zh: "运动结束3小时",
-            text_en: "1",
-        }]
     },
 
     onLoad: function (options) {
+        let list = protocol.getAnalysisSituation();
         let date = tools.createDateAndTime(new Date());
         let dateText = date.date + '\n' + date.time;
         let backgroundColor = '#000000';
@@ -54,6 +27,7 @@ Page({
             backgroundColor = '#E64D3D'
         }
         this.setData({
+            list: list,
             dateText: dateText,
             backgroundColor: backgroundColor
         });
