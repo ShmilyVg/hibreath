@@ -14,11 +14,15 @@ export default class Protocol {
         return Network.request({url: 'user/info'});
     }
 
-    static getHistoryList({userId=123}) {
+    static getHistoryList({userId = 123}) {
         return Network.request({url: 'user/history', data: {userId}});
     }
 
-    static getAnalysisSituation(){
-        return Network.request({url:'analysis/situation'})
+    static getAnalysisSituation() {
+        return Network.request({url: 'analysis/situation'})
+    }
+
+    static getAnalysisFetch({dataValue, situation}) {
+        return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
 }

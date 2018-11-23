@@ -1,9 +1,8 @@
 /* pages/strategy/strategy.wxss */
 
-.top-image{
+.top-video{
     width: 690rpx;
-    height: 399rpx;
-    background-color: white;
+    height: 400rpx;
 }
 
 .title{

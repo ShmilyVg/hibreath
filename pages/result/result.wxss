@@ -58,5 +58,5 @@
     align-items: center;
     margin-right: 19rpx;
     margin-left: 45rpx;
-    margin-top: 7rpx
+    margin-top: 8rpx
 }
