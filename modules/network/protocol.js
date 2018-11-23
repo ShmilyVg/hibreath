@@ -10,8 +10,8 @@ export default class Protocol {
     //     return Network.request({url: 'user/friend/example', data: {friendId}});
     // }
 
-    static getMemberInfo() {
-        return Network.request({url: 'user/info'});
+    static getAccountInfo() {
+        return Network.request({url: 'account/info'});
     }
 
     static getHistoryList({userId=123}) {
