@@ -25,11 +25,15 @@
 }
 
 .bottom-btn{
-  margin-top: 20rpx;
   width: 610rpx;
   height: 100rpx;
   line-height: 100rpx;
   text-align: center;
   background: rgba(233,233,233,1);
   border-radius: 50rpx;
+}
+
+.bottom-btn-origin-color{
+  background: rgba(255,95,0,1);
+  color: #ffffff;
 }

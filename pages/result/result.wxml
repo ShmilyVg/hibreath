@@ -27,7 +27,7 @@
                     <view style="width: 40rpx"/>
                 </swiper-item>
             </swiper>
-            <view class="bottom-btn" hover-class="press-style" hover-stay-time="50">查看解读</view>
+            <view class="bottom-btn" style="margin-top: 20rpx;" hover-class="press-style" hover-stay-time="50">查看解读</view>
         </block>
 
         <view wx:else class="flex-column">
