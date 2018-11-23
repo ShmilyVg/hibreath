@@ -44,6 +44,39 @@ page{
   top: 87rpx;
   left: 87rpx;
 }
+@keyframes myfirst
+{
+  0%   {box-shadow:0rpx 0rpx 0rpx 0rpx #FF5E00;}
+  25%  {box-shadow:0rpx 0rpx 25rpx 10rpx #FF5E00;}
+  50%  {box-shadow:0rpx 0rpx 50rpx 20rpx #FF5E00;}
+  75%  {box-shadow:0rpx 0rpx 25rpx 10rpx #FF5E00;}
+  100% {box-shadow:0rpx 0rpx 0rpx 0rpx #FF5E00;}
+}
+.ready{
+  background: #FF5E00;
+  animation:myfirst 5s linear infinite alternate;
+}
+@keyframes mysecond
+{
+  0%   {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
+  10%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
+  20%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
+  30%   {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
+  40%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
+  50%  {background: linear-gradient(to top, rgba(255,94,0,1), rgba(255,94,0,0))}
+  60%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
+  70%  {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
+  80%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
+  90%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
+  100% {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
+}
+.join{
+  animation:mysecond 2s linear infinite alternate;
+  /*background: linear-gradient(to top, rgba(255,94,0,1), rgba(255,94,0,0));*/
+}
+.join-done{
+  background: #FF5E00;
+}
 .home-heart-box4{
   width: 318rpx;
   height: 318rpx;
