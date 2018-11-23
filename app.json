@@ -1,11 +1,12 @@
 {
   "pages":[
-    "pages/result/result"
+    "pages/result/result",
+    "pages/device-bind/device-bind"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#3E3E3E",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   }
 }

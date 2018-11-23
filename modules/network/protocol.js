@@ -13,4 +13,8 @@ export default class Protocol {
     static getMemberInfo() {
         return Network.request({url: 'user/info'});
     }
+
+    static getHistoryList({userId=123}) {
+        return Network.request({url: 'user/history', data: {userId}});
+    }
 }

@@ -5,7 +5,7 @@ import UserInfo from "./modules/network/userInfo";
 import Login from "./modules/network/login";
 
 App({
-    onLaunch: function () {
+    onLaunch() {
         Login.doLogin().then(() => {
             UserInfo.get().then(userInfo => {
                 this.globalData.userInfo.nickName = userInfo.nickName;
