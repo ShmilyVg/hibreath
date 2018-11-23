@@ -12,7 +12,7 @@ export default class Network {
             wx.request({
                 url: PostUrl + url,
                 data,
-                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": _token},
+                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`},
                 method: 'POST',
                 success: res => {
                     const {data} = res;
