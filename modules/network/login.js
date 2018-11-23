@@ -1,14 +1,16 @@
 import Network from "./network";
 import WXDialog from "../../view/dialog";
 
+
 export default class Login {
     static doLogin() {
         return new Promise((resolve, reject) =>
             this._wxLogin().then(res => {
                     const token = wx.getStorageSync('token');
-                    Network.request({url: 'account/login', data: {js_code: res.code, token}})
+                    Network.request({url: 'account/login', data: {js_code: res.code, token}, requestWithoutLogin: true})
                         .then(data => {
                             this._setToken({data});
+                            Network.resendAll();
                             resolve();
                         })
                         .catch(res => {
@@ -31,9 +33,14 @@ export default class Login {
         return new Promise((resolve, reject) =>
             this._wxLogin().then(res => {
                 const {code} = res;
-                Network.request({url: 'account/register', data: {code, encrypted_data: encryptedData, iv}})
+                Network.request({
+                    url: 'account/register',
+                    data: {code, encrypted_data: encryptedData, iv},
+                    requestWithoutLogin: true
+                })
                     .then(data => {
                         this._setToken({data});
+                        Network.resendAll();
                         resolve();
                     })
                     .catch(res => {

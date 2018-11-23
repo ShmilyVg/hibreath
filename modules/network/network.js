@@ -1,4 +1,5 @@
 import {PostUrl} from "../../utils/config";
+import Login from "./login";
 
 let _token, _queue = {};
 export default class Network {
@@ -7,9 +8,9 @@ export default class Network {
         _token = token;
     }
 
-    static request({url, data}) {
+    static request({url, data, requestWithoutLogin = false}) {
         return new Promise(function (resolve, reject) {
-            wx.request({
+            const requestObj = {
                 url: PostUrl + url,
                 data,
                 header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`},
@@ -18,43 +19,29 @@ export default class Network {
                     const {data} = res;
                     if (!!data && 1 === data.code) {
                         resolve(data);
-                    } else {
-                        reject(res);
+                    } else if (data.code === 9) {
+                        setTimeout(() => Login.doLogin(), 2000);
+                        return;
                     }
+                    reject(res);
                 },
                 fail: reject,
-                // complete: res => {
-                //     console.log(res);
-                // },
-            });
+            };
+            if (!!_token || requestWithoutLogin) {
+                wx.request(requestObj);
+            } else {
+                _queue[url] = requestObj;
+            }
         });
     }
 
-    // static requestForLogin({url, data}) {
-    //     return new Promise(function (resolve, reject) {
-    //         wx.request({
-    //             url: PostUrl + url,
-    //             data,
-    //             header: {Authorization: '+sblel%wdtkhjlu', "Cookie": _token},
-    //             method: 'POST',
-    //             success: res => {
-    //                 const {data} = res;
-    //                 if (!!data && 1 === data.code) {
-    //                     resolve(data);
-    //                 } else {
-    //                     reject(res);
-    //                 }
-    //             },
-    //             fail: reject,
-    //             // complete: res => {
-    //             //     console.log(res);
-    //             // },
-    //         });
-    //     });
-    // }
-    // static resendAll() {
-    //     for(let i in _queue){
-    //         let temp = _queue[i];
-    //     }
-    // }
+    static resendAll() {
+        let requestObj;
+        for (let key in _queue) {
+            requestObj = _queue[key];
+            requestObj.header.Cookie = `JSESSIONID=${_token}`;
+            wx.request(requestObj);
+        }
+        _queue = {};
+    }
 }
