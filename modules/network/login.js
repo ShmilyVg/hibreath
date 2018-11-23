@@ -33,7 +33,6 @@ export default class Login {
                 const {code} = res;
                 Network.request({url: 'account/register', data: {code, encrypted_data: encryptedData, iv}})
                     .then(data => {
-                        console.log('获取注册信息', data);
                         this._setToken({data});
                         resolve();
                     })
