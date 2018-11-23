@@ -1,1 +1,65 @@
 /* pages/history/history.wxss */
+page{
+    background: #3E3E3E;
+}
+.history-box{
+    width: 690rpx;
+    height: 150rpx;
+    background: #ff5f00;
+    margin: 0 auto 40rpx;
+    border-radius: 28rpx;
+    position: relative;
+}
+.history-box:first-child{
+    margin-top: 60rpx;
+}
+.history-bg{
+    width: 649rpx;
+    height: 128rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.history-bg image{
+    width: 100%;
+    height: 100%;
+}
+.history-num{
+    font-size: 130rpx;
+    color: #fff;
+    position: absolute;
+    left: 36rpx;
+    top: 0rpx;
+    line-height:150rpx;
+}
+.history-unit{
+    font-size: 30rpx;
+    color: #fff;
+    position: absolute;
+    left: 205rpx;
+    top: 60rpx;
+}
+.history-hint{
+    font-size: 24rpx;
+    color: #fff;
+    position: absolute;
+    left: 205rpx;
+    top: 100rpx;
+    opacity: 0.8;
+}
+.history-time{
+    font-size: 26rpx;
+    color: #fff;
+    position: absolute;
+    right: 41rpx;
+    top: 51rpx;
+    opacity: 0.8;
+}
+.history-date{
+    font-size: 26rpx;
+    color: #fff;
+    position: absolute;
+    right: 41rpx;
+    top: 87rpx;
+    opacity: 0.8;
+}

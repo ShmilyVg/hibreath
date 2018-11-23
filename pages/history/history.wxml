@@ -1,1 +1,66 @@
-<view></view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
+<view class="history-box">
+    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
+    <view class="history-num">68</view>
+    <view class="history-unit">ppm</view>
+    <view class="history-hint">燃脂最佳</view>
+    <view class="history-time">09:49</view>
+    <view class="history-date">2018年09月18日</view>
+</view>
