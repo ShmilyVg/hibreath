@@ -6,7 +6,7 @@ export default class Login {
         return new Promise((resolve, reject) =>
             this._wxLogin().then(res => {
                     const token = wx.getStorageSync('token');
-                    Network.request({url: 'account/login', data: {jsCode: res.code, token}})
+                    Network.request({url: 'account/login', data: {js_code: res.code, token}})
                         .then(data => {
                             this._setToken({data});
                             resolve();
