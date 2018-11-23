@@ -31,6 +31,7 @@
   text-align: center;
   background: rgba(233,233,233,1);
   border-radius: 50rpx;
+  color: #979797;
 }
 
 .bottom-btn-origin-color{
