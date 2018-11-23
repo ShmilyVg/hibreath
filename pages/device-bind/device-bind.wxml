@@ -10,5 +10,5 @@
         <view class="device-bind-list-divide-line"></view>
     </block>
 
-    <button class="bottom-btn bottom-btn-origin-color" style="margin-top: 40rpx;">重试</button>
+    <button class="bottom-btn bottom-btn-origin-color" style="margin-top: 40rpx;" hover-class="press-style" hover-stay-time="50" bindtap="reConnectEvent">重试</button>
 </view>
