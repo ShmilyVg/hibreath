@@ -9,6 +9,11 @@ function createDateAndTime(timeStamp) {
     return {date: dateT, time: time, day: day, month: month};
 }
 
+function deleteLineBreak(str){
+    return str.replace(/[\r\n]/g,"");
+}
+
 module.exports = {
-    createDateAndTime
+    createDateAndTime,
+    deleteLineBreak
 }

@@ -7,7 +7,7 @@ Page({
     data: {
         dateText: {},
         mainColor: '#000000',
-        viewUnscramble: false,
+        viewUnscramble: false,//是否显示解读
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
         score: 62,
@@ -51,7 +51,9 @@ Page({
             let list = this.data.list;
             for (let i in list) {
                 list[i]['isChose'] = index == list[i]['key'];
-                this.data.cardTitle = list[i]['text_zh'];
+                if (list[i]['isChose']) {
+                    this.data.cardTitle = tools.deleteLineBreak(list[i]['text_zh']);
+                }
             }
             this.setData({
                 list: list,
@@ -68,13 +70,13 @@ Page({
         let that = this;
         toast.showLoading();
         Protocol.getAnalysisFetch(
-            {dataValue: this.data.score, situation: parseInt(this.data.index)}
+            {dataValue: that.data.score, situation: parseInt(that.data.index)}
         ).then(data => {
             let description = data.result.description;
             that.setData({
                 description: description,
                 viewUnscramble: true,
-                cardTitle: that.data.list[that.data.index]['text_zh']
+                cardTitle: that.data.cardTitle
             });
             toast.hiddenLoading();
         });
