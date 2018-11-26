@@ -10,7 +10,7 @@ Page({
         viewUnscramble: false,
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
-        score: 2,
+        score: 62,
     },
 
     onLoad: function (options) {
@@ -74,7 +74,7 @@ Page({
             that.setData({
                 description: description,
                 viewUnscramble: true,
-                cardTitle: this.data.cardTitle
+                cardTitle: that.data.list[that.data.index]['text_zh']
             });
             toast.hiddenLoading();
         });
