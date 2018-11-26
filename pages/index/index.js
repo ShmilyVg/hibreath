@@ -6,7 +6,7 @@ import Toast from "../../view/toast";
 
 Page({
     data: {
-        userInfo: {}
+        userInfo: {},
     },
 
     onLoad() {
@@ -24,6 +24,7 @@ Page({
         })
             .then(() => UserInfo.get())
             .then(({userInfo}) => this.setData({userInfo}))
-            .catch(() => setTimeout(() => Toast.warn('获取信息失败'))).finally(() => Toast.hiddenLoading());
+            .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
+
     }
 });
