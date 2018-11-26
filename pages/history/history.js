@@ -1,4 +1,6 @@
 // pages/history/history.js
+import Protocol from "../../modules/network/protocol";
+
 Page({
 
   /**
@@ -12,7 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      Protocol.getBreathDataList({}).then(data=>{
+          console.log(data);
+      })
   },
 
   /**

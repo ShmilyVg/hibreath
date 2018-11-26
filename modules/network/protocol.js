@@ -27,4 +27,7 @@ export default class Protocol {
         return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
 
+    static getBreathDataList({page=99, pageSize=99}){
+        return Network.request({url: 'breathData/list', data: {page, pageSize}})
+    }
 }
