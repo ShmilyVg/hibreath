@@ -23,6 +23,8 @@ export default class Protocol {
     }
 
     static getAnalysisFetch({dataValue, situation}) {
+        // Network.request({url: 'breathData/add', data: {dataValue, situation}});
         return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
+
 }
