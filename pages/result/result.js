@@ -7,7 +7,7 @@ Page({
     data: {
         dateText: {},
         mainColor: '#000000',
-        viewUnscramble: false,//是否显示解读
+        showUnscramble: false,//是否显示解读
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
         score: 62,
@@ -15,16 +15,26 @@ Page({
 
     onLoad: function (options) {
         let that = this;
+
         Protocol.getAnalysisSituation().then(data => {
             let list = data.result.list;
             that.setData({
                 list: list
-            })
+            });
+            // 是否直接显示解读
+            if (options.showUnscramble === 'true') {
+                that.setData({
+                    cardTitle: list[options.situation]['text_zh'],
+                    showUnscramble: true,
+                    index: options.situation
+                });
+                that.postAnalysisFetch(that);
+            }
         });
         let date = tools.createDateAndTime(new Date());
         let dateText = date.date + '\n' + date.time;
         let mainColor = '';
-        let score = this.data.score;
+        let score = options.score;
         if (score <= 5) {
             mainColor = '#3E3E3E'
         } else if (score > 5 && score <= 30) {
@@ -68,6 +78,10 @@ Page({
             return;
         }
         let that = this;
+        that.postAnalysisFetch(that);
+    },
+
+    postAnalysisFetch(that) {
         toast.showLoading();
         Protocol.getAnalysisFetch(
             {dataValue: that.data.score, situation: parseInt(that.data.index)}
@@ -75,7 +89,7 @@ Page({
             let description = data.result.description;
             that.setData({
                 description: description,
-                viewUnscramble: true,
+                showUnscramble: true,
                 cardTitle: that.data.cardTitle
             });
             toast.hiddenLoading();

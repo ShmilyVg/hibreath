@@ -11,7 +11,7 @@
     </view>
     <view class="bottom-card flex-column">
         <view class="bottom-card-title">{{cardTitle}}</view>
-        <block wx:if="{{!viewUnscramble}}">
+        <block wx:if="{{!showUnscramble}}">
             <swiper style="width: 100%;height: 275rpx" indicator-dots="true" indicator-active-color="{{mainColor}}">
                 <swiper-item style="display: flex;justify-content: space-between;" wx:for="{{list.length/4}}" wx:for-index="bigIndex">
                     <view style="width: 40rpx"></view>
