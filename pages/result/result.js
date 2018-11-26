@@ -6,11 +6,11 @@ import toast from "../../view/toast";
 Page({
     data: {
         dateText: {},
-        backgroundColor: '#000000',
+        mainColor: '#000000',
         viewUnscramble: false,
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
-        score: 60,
+        score: 2,
     },
 
     onLoad: function (options) {
@@ -23,25 +23,25 @@ Page({
         });
         let date = tools.createDateAndTime(new Date());
         let dateText = date.date + '\n' + date.time;
-        let backgroundColor = '';
+        let mainColor = '';
         let score = this.data.score;
         if (score <= 5) {
-            backgroundColor = '#3E3E3E'
+            mainColor = '#3E3E3E'
         } else if (score > 5 && score <= 30) {
-            backgroundColor = '#FF7C00'
+            mainColor = '#FF7C00'
         } else if (score > 30 && score <= 80) {
-            backgroundColor = '#FF5E00'
+            mainColor = '#FF5E00'
         } else if (score > 80) {
-            backgroundColor = '#E64D3D'
+            mainColor = '#E64D3D'
         }
         that.setData({
             dateText: dateText,
-            backgroundColor: backgroundColor,
+            mainColor: mainColor,
             score: score
         });
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: backgroundColor
+            backgroundColor: mainColor
         });
     },
 
