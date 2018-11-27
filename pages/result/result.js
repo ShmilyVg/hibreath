@@ -10,7 +10,7 @@ Page({
         showUnscramble: false,//是否显示解读
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
-        score: 62,
+        score: 0,
     },
 
     onLoad: function (options) {
