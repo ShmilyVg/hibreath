@@ -112,7 +112,7 @@ Page({
 
     onLoad() {
         setTimeout(() => {
-            this.stateObj.unblow.call(this);
+            this.stateObj.binding.call(this);
         }, 3000);
 
     },
