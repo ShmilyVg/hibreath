@@ -33,4 +33,12 @@ export default class Protocol {
     static getBreathDataList({page=1, pageSize=99}){
         return Network.request({url: 'breathData/list', data: {page, pageSize}})
     }
+
+    static getAnalysisNotes(){
+        return Network.request({url: '/analysis/notes'})
+    }
+
+    static getDeviceBindList(){
+        return Network.request({url: '/device/bindList'})
+    }
 }

@@ -14,7 +14,7 @@
 </view>
 
 <view class="home-state {{stateSel?'home-state-sel':''}}"><text>{{state}}</text></view>
-<view class="home-point" wx:if="{{pointShow}}"><text>{{hint}}</text>跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高</view>
+<view class="home-point" wx:if="{{pointShow}}"><text>{{hint}}</text>{{note}}</view>
 <view class="home-btn" wx:if="{{btnShow}}">
   <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>
   <view class="home-btn-box home-btn-history" bindtap="historyUrl">历史记录</view>
