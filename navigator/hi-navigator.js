@@ -3,9 +3,9 @@ export default class HiNavigator {
         wx.navigateTo({url, success, fail, complete});
     }
 
-    // 跳转至结果页面 score得分 showUnscramble是否直接显示解读 situation场景值（可不传入）
-    static navigateToResult({score, situation = 0, showUnscramble, success, fail, complete}) {
-        let url = `/pages/result/result?score=${score}&situation=${situation}&showUnscramble=${showUnscramble}`;
+    // 跳转至结果页面 score得分 showUnscramble是否直接显示解读 situation场景值（可选） 检测时间戳 (可选)
+    static navigateToResult({score, situation = 0, showUnscramble, timestamp=0, success, fail, complete}) {
+        let url = `/pages/result/result?score=${score}&situation=${situation}&showUnscramble=${showUnscramble}&timestamp=${timestamp}`;
         wx.navigateTo({url, success, fail, complete});
     }
 

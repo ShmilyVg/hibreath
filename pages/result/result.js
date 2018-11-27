@@ -23,16 +23,26 @@ Page({
             });
             // 是否直接显示解读
             if (options.showUnscramble === 'true') {
+                let date = tools.createDateAndTime(new Date(parseInt(options.timestamp)));
+                let dateText = `${date.date}\n${date.time}`;
                 that.setData({
                     cardTitle: list[options.situation]['text_zh'],
                     showUnscramble: true,
-                    index: options.situation
+                    index: options.situation,
+                    dateText: dateText,
+                    postAdd: false
                 });
                 that.postAnalysisFetch(that);
+            } else {
+                let date = tools.createDateAndTime(new Date());
+                let dateText = `${date.date}\n${date.time}`;
+                that.setData({
+                    dateText: dateText,
+                    showUnscramble: false,
+                    postAdd: true
+                })
             }
         });
-        let date = tools.createDateAndTime(new Date());
-        let dateText = date.date + '\n' + date.time;
         let mainColor = '';
         let score = options.score;
         if (score <= 5) {
@@ -45,7 +55,6 @@ Page({
             mainColor = '#E64D3D'
         }
         that.setData({
-            dateText: dateText,
             mainColor: mainColor,
             score: score
         });
@@ -93,6 +102,13 @@ Page({
                 cardTitle: that.data.cardTitle
             });
             toast.hiddenLoading();
+            if (that.data.postAdd) {
+                Protocol.getBreathDataAdd(
+                    {dataValue: that.data.score, situation: parseInt(that.data.index)}
+                ).then(data => {
+                    console.log('增加成功~');
+                })
+            }
         });
     }
 })
