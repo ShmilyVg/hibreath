@@ -1,66 +1,12 @@
-<view class="history-box">
+<block wx:if="{{list.length}}" >
+<view class="history-box" wx:for="{{list}}" style="background: #{{item.hintBg}}" bindtap="toResult" data-index="{{index}}">
     <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
+    <view class="history-num">{{item['dataValue']}}</view>
     <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
+    <view class="history-hint">{{item.hintText}}</view>
+    <view class="history-time">{{item.date.time}}</view>
+    <view class="history-date">{{item.date.date}}</view>
 </view>
+</block>
 
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
-<view class="history-box">
-    <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
-    <view class="history-num">68</view>
-    <view class="history-unit">ppm</view>
-    <view class="history-hint">燃脂最佳</view>
-    <view class="history-time">09:49</view>
-    <view class="history-date">2018年09月18日</view>
-</view>
+<view wx:else class="history-none">暂无历史记录</view>

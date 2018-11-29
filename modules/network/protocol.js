@@ -25,4 +25,20 @@ export default class Protocol {
     static getAnalysisFetch({dataValue, situation}) {
         return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
+
+    static getBreathDataAdd({dataValue, situation}) {
+        return Network.request({url: 'breathData/add', data: {dataValue, situation}});
+    }
+
+    static getBreathDataList({page=1, pageSize=99}){
+        return Network.request({url: 'breathData/list', data: {page, pageSize}})
+    }
+
+    static getAnalysisNotes(){
+        return Network.request({url: '/analysis/notes'})
+    }
+
+    static getDeviceBindList(){
+        return Network.request({url: '/device/bindList'})
+    }
 }

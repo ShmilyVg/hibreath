@@ -1,63 +1,114 @@
 // pages/result/result.js
 import * as tools from "../../utils/tools";
-import protocol from "../../modules/network/protocol";
+import Protocol from "../../modules/network/protocol";
+import toast from "../../view/toast";
 
 Page({
     data: {
         dateText: {},
-        backgroundColor: '#000000',
-        viewUnscramble: false,
+        mainColor: '#000000',
+        showUnscramble: false,//是否显示解读
         isChose: false,
         cardTitle: '请问本次是在什么状态下检测的？',
-        score: 99,
+        score: 0,
     },
 
     onLoad: function (options) {
-        let list = protocol.getAnalysisSituation();
-        let date = tools.createDateAndTime(new Date());
-        let dateText = date.date + '\n' + date.time;
-        let backgroundColor = '#000000';
-        let score = this.data.score;
-        if (score < 6) {
-            backgroundColor = '#3E3E3E'
-        } else if (score > 5 && score < 31) {
-            backgroundColor = '#FF7C00'
-        } else if (score > 30 && score < 81) {
-            backgroundColor = '#FF5E00'
+        let that = this;
+
+        Protocol.getAnalysisSituation().then(data => {
+            let list = data.result.list;
+            that.setData({
+                list: list
+            });
+            // 是否直接显示解读
+            if (options.showUnscramble === 'true') {
+                let date = tools.createDateAndTime(new Date(parseInt(options.timestamp)));
+                let dateText = `${date.date}\n${date.time}`;
+                that.setData({
+                    cardTitle: list[options.situation]['text_zh'],
+                    showUnscramble: true,
+                    index: options.situation,
+                    dateText: dateText,
+                    postAdd: false
+                });
+                that.postAnalysisFetch(that);
+            } else {
+                let date = tools.createDateAndTime(new Date());
+                let dateText = `${date.date}\n${date.time}`;
+                that.setData({
+                    dateText: dateText,
+                    showUnscramble: false,
+                    postAdd: true
+                })
+            }
+        });
+        let mainColor = '';
+        let score = options.score;
+        if (score <= 5) {
+            mainColor = '#3E3E3E'
+        } else if (score > 5 && score <= 30) {
+            mainColor = '#FF7C00'
+        } else if (score > 30 && score <= 80) {
+            mainColor = '#FF5E00'
         } else if (score > 80) {
-            backgroundColor = '#E64D3D'
+            mainColor = '#E64D3D'
         }
-        this.setData({
-            list: list,
-            dateText: dateText,
-            backgroundColor: backgroundColor,
-            score:score
+        that.setData({
+            mainColor: mainColor,
+            score: score
         });
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: backgroundColor
-        })
+            backgroundColor: mainColor
+        });
     },
 
     clickChoose: function (e) {
-        let index = e.currentTarget.dataset.index;
-        let list = this.data.list;
-        for (let i in list) {
-            list[i]['isChose'] = index == list[i]['key'];
-            this.data.cardTitle = list[i]['text_zh'];
+        if (e.currentTarget.dataset.index) {
+            let index = e.currentTarget.dataset.index;
+            let list = this.data.list;
+            for (let i in list) {
+                list[i]['isChose'] = index == list[i]['key'];
+                if (list[i]['isChose']) {
+                    this.data.cardTitle = tools.deleteLineBreak(list[i]['text_zh']);
+                }
+            }
+            this.setData({
+                list: list,
+                isChose: true,
+                index: index
+            })
         }
-        this.setData({
-            list: list,
-            isChose: true,
-            index: index
-        })
     },
 
     clickBtn: function () {
-        let content = protocol.getAnalysisFetch({dataValue: this.data.score, situation: this.data.index});
-        this.setData({
-            viewUnscramble: true,
-            cardTitle: this.data.cardTitle
-        })
+        if (!this.data.index) {
+            return;
+        }
+        let that = this;
+        that.postAnalysisFetch(that);
+    },
+
+    postAnalysisFetch(that) {
+        toast.showLoading();
+        Protocol.getAnalysisFetch(
+            {dataValue: that.data.score, situation: parseInt(that.data.index)}
+        ).then(data => {
+            let description = data.result.description;
+            that.setData({
+                description: description,
+                showUnscramble: true,
+                cardTitle: that.data.cardTitle
+            });
+            toast.hiddenLoading();
+            if (that.data.postAdd) {
+                Protocol.getBreathDataAdd(
+                    {dataValue: that.data.score, situation: parseInt(that.data.index)}
+                ).then(data => {
+                    console.log('增加成功~');
+                })
+            }
+        });
     }
 })
