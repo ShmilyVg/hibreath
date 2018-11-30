@@ -84,7 +84,7 @@ export default class MyBlueToothManager extends SimpleBlueToothImp {
         }
         MyBlueToothManager.logReceiveData({result});
         //这里的result已经是拥有了总和及数据长度的一个ArrayBuffer了，这里应该是返回与UI层的渲染相关的数据，所以我这里是一个错误的演示
-        return result;
+        return {finalResult: result};
     }
 
     /**
