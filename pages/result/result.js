@@ -86,14 +86,12 @@ Page({
         if (!this.data.index) {
             return;
         }
-        let that = this;
-        that.postAnalysisFetch(that);
+        this.postAnalysisFetch(this);
     },
 
     postAnalysisFetch(that) {
         toast.showLoading();
-        Protocol.getAnalysisFetch(
-            {dataValue: that.data.score, situation: parseInt(that.data.index)}
+        Protocol.getAnalysisFetch({dataValue: that.data.score, situation: parseInt(that.data.index)}
         ).then(data => {
             let description = data.result.description;
             that.setData({

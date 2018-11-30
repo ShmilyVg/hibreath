@@ -6,6 +6,7 @@ import Toast from "../../view/toast";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 
+
 import * as tools from "../../utils/tools";
 
 Page({
@@ -14,7 +15,7 @@ Page({
         box3State :["unjoin","join","join-done","ready"],
         box4State :["home-heart-box4-start","home-heart-box4-done","home-heart-box4-num"],
         firstInto:true,
-        noteListMore:''
+        noteListMore:'跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
     stateObj:{
       unbind () {
@@ -127,10 +128,16 @@ Page({
 
     onLoad() {
         /*setTimeout(() => {
-            this.stateObj.unbind.call(this);
+            this.stateObj.donebind.call(this);
         }, 3000);*/
         getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
-
+        let info = getApp().globalData.userInfo;
+        if (info) {
+            this.setData({
+                userInfo: info
+            })
+        }
+        this.stateObj.unbind.call(this);
         if (this.data.firstInto) {
             Protocol.getAnalysisNotes({}).then(data => {
                 let noteList = data.result.list;
@@ -149,6 +156,8 @@ Page({
             }
             console.log(bindList)
         })
+
+
     },
 
     onShow(){
@@ -163,7 +172,6 @@ Page({
         this.setData({
             noteListMore:noteListMore
         })
-        this.stateObj.unbind.call(this);
         console.log(noteListMore)
     },
 
