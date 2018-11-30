@@ -41,9 +41,11 @@ export default class Network {
     static resendAll() {
         let requestObj;
         for (let key in _queue) {
-            requestObj = _queue[key];
-            requestObj.header.Cookie = `JSESSIONID=${_token}`;
-            wx.request(requestObj);
+            if (_queue.hasOwnProperty(key)) {
+                requestObj = _queue[key];
+                requestObj.header.Cookie = `JSESSIONID=${_token}`;
+                wx.request(requestObj);
+            }
         }
         _queue = {};
     }
