@@ -21,7 +21,7 @@ export default class Network {
                         resolve(data);
                     } else if (data.code === 9) {
                         setTimeout(() => {
-                            _queue[url] = requestObj;
+                            // _queue[url] = requestObj;
                             Login.doLogin();
                         }, 2000);
                         return;
