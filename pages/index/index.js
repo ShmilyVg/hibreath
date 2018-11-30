@@ -123,6 +123,9 @@ Page({
         /*setTimeout(() => {
             this.stateObj.unbind.call(this);
         }, 3000);*/
+        this.stateObj.unbind.call(this);
+        getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
+
         if (this.data.firstInto) {
             Protocol.getAnalysisNotes({}).then(data => {
                 let noteList = data.result.list;
@@ -133,7 +136,7 @@ Page({
                 })
                 this.handleTipText();
             });
-        };
+        }
         Protocol.getDeviceBindList({}).then(data => {
             let bindList = data.result;
             if(bindList.length == 0){
