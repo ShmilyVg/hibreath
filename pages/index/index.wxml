@@ -13,7 +13,8 @@
   <view wx:if="{{unitShow}}" class="home-heart-unit">ppm</view>
 </view>
 
-<view class="home-state {{stateSel?'home-state-sel':''}}"><text>{{state}}</text></view>
+<view class="home-state-btn" wx:if="{{stateBtnShow}}" bindtap="stateBtnClick"><text>{{stateBtn}}</text></view>
+<view class="home-state" wx:else>{{state}}</view>
 <view class="home-point" wx:if="{{pointShow}}"><text>{{hint}}</text>{{note}}</view>
 <view class="home-btn" wx:if="{{btnShow}}">
   <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>

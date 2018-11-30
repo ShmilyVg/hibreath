@@ -8,10 +8,11 @@ App({
     onLaunch() {
         this.doLogin();
     },
-
+    onGetUserInfo: null,
     doLogin() {
-        Login.doLogin().then(() => UserInfo.get()).then(({userInfo}) => {
-        });
+        setTimeout(() => Login.doLogin().then(() => UserInfo.get()).then(({userInfo}) => {
+            this.onGetUserInfo && this.onGetUserInfo({userInfo});
+        }));
     },
     globalData: {
         userInfo: {nickname: '', headUrl: '', id: 0}

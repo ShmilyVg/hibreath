@@ -5,6 +5,7 @@ import UserInfo from "../../modules/network/userInfo";
 import Toast from "../../view/toast";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+
 import * as tools from "../../utils/tools";
 
 Page({
@@ -12,16 +13,17 @@ Page({
         userInfo: {},
         box3State :["unjoin","join","join-done","ready"],
         box4State :["home-heart-box4-start","home-heart-box4-done","home-heart-box4-num"],
-        firstInto:true
+        firstInto:true,
+        noteListMore:''
     },
     stateObj:{
       unbind () {
           this.setData({
               message: '未绑定设备',
-              state:'点击绑定设备',
+              stateBtn:'点击绑定设备',
               hint: '燃脂小贴士：',
               note: this.data.noteListMore,
-              stateSel: false,
+              stateBtnShow: true,
               setShow: false,
               unitShow: false,
               pointShow: true,
@@ -33,10 +35,10 @@ Page({
       againbind () {
           this.setData({
               message: '未连接到设备',
-              state:'点击重试',
+              stateBtn:'点击重试',
               hint: '燃脂小贴士：',
               note: this.data.noteListMore,
-              stateSel: false,
+              stateBtnShow: true,
               setShow: true,
               unitShow: false,
               pointShow: true,
@@ -51,7 +53,7 @@ Page({
                state:' ',
                hint: '燃脂小贴士：',
                note: this.data.noteListMore,
-               stateSel: false,
+               stateBtnShow: false,
                setShow: true,
                unitShow: false,
                pointShow: true,
@@ -66,7 +68,7 @@ Page({
                 state:'短按设备按键开始检测',
                 hint: '燃脂小贴士：',
                 note: this.data.noteListMore,
-                stateSel: true,
+                stateBtnShow: false,
                 setShow: true,
                 unitShow: false,
                 pointShow: true,
@@ -81,7 +83,7 @@ Page({
                 state:'预热中',
                 hint: '',
                 note: '',
-                stateSel: true,
+                stateBtnShow: false,
                 setShow: false,
                 unitShow: true,
                 pointShow: false,
@@ -96,7 +98,7 @@ Page({
                 state:'请现在对准吹气口吹气',
                 hint: '吹气要领：',
                 note: '吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。',
-                stateSel: true,
+                stateBtnShow: false,
                 setShow: false,
                 unitShow: true,
                 pointShow: true,
@@ -119,10 +121,16 @@ Page({
         HiNavigator.navigateTo({url:'/pages/history/history'});
     },
 
+    stateBtnClick(){
+
+    },
+
     onLoad() {
         /*setTimeout(() => {
             this.stateObj.unbind.call(this);
         }, 3000);*/
+        getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
+
         if (this.data.firstInto) {
             Protocol.getAnalysisNotes({}).then(data => {
                 let noteList = data.result.list;
@@ -133,7 +141,7 @@ Page({
                 })
                 this.handleTipText();
             });
-        };
+        }
         Protocol.getDeviceBindList({}).then(data => {
             let bindList = data.result;
             if(bindList.length == 0){
@@ -155,6 +163,7 @@ Page({
         this.setData({
             noteListMore:noteListMore
         })
+        this.stateObj.unbind.call(this);
         console.log(noteListMore)
     },
 
