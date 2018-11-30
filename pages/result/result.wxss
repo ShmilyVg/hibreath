@@ -11,6 +11,7 @@
 
 .bottom-card{
     position: fixed;
+    left:30rpx;
     bottom:30rpx;
     background-color: white;
     width: 690rpx;

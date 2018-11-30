@@ -23,6 +23,6 @@ Page({
     },
 
     toHomePage:function (e) {
-        HiNavigator.redirectTo({url:'/pages/index/index'});
+        HiNavigator.reLaunch({url:'/pages/index/index'});
     }
 })

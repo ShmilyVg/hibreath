@@ -131,6 +131,12 @@ Page({
             this.stateObj.donebind.call(this);
         }, 3000);*/
         getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
+        let info = getApp().globalData.userInfo;
+        if (info) {
+            this.setData({
+                userInfo: info
+            })
+        }
         this.stateObj.unbind.call(this);
         if (this.data.firstInto) {
             Protocol.getAnalysisNotes({}).then(data => {
