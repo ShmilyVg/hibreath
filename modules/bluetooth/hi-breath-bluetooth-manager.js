@@ -1,7 +1,7 @@
 import SimpleBlueToothImp from "../../libs/bluetooth/simple-bluetooth-imp";
 import BaseBlueToothImp from "../../libs/bluetooth/base/base-bluetooth-imp";
 
-export default class MyBlueToothManager extends SimpleBlueToothImp {
+export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
     static UNAVAILABLE = BaseBlueToothImp.UNAVAILABLE;
     static DISCONNECT = BaseBlueToothImp.DISCONNECT;
     static CONNECTING = BaseBlueToothImp.CONNECTING;
@@ -82,7 +82,7 @@ export default class MyBlueToothManager extends SimpleBlueToothImp {
             sendDataView.setUint8(byteLength + 1, byteLength);
             this.sendData({buffer: sendBuffer});
         }
-        MyBlueToothManager.logReceiveData({result});
+        HiBreathBlueToothManager.logReceiveData({result});
         //这里的result已经是拥有了总和及数据长度的一个ArrayBuffer了，这里应该是返回与UI层的渲染相关的数据，所以我这里是一个错误的演示
         return {finalResult: result};
     }
