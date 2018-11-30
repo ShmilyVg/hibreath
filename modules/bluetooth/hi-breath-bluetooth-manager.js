@@ -52,6 +52,10 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         return super.closeAll().then(() => this._isFirstReceive = true);
     }
 
+    sendDeviceIdRequire() {
+        this.bluetoothProtocol.requireDeviceId();
+    }
+
     /**
      * 处理从蓝牙设备接收到的数据的具体实现
      * 这里会将处理后的数据，作为参数传递给setBLEListener的receiveDataListener监听函数。
