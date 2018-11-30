@@ -20,7 +20,10 @@ export default class Network {
                     if (!!data && 1 === data.code) {
                         resolve(data);
                     } else if (data.code === 9) {
-                        setTimeout(() => Login.doLogin(), 2000);
+                        setTimeout(() => {
+                            _queue[url] = requestObj;
+                            Login.doLogin();
+                        }, 2000);
                         return;
                     }
                     reject(res);
