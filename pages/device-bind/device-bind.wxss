@@ -2,7 +2,6 @@
 .device-bind-image-style{
     width: 260rpx;
     height: 260rpx;
-    background-color: #fd5f02;
     margin-top: 110rpx;
     margin-bottom: 47rpx;
 }
@@ -20,12 +19,13 @@
     height: 31rpx;
     background: rgba(233,233,233,1);
     border-radius: 18rpx;
-    text-align: center;
     font-size: 26rpx;
     color: #979797;
     font-weight: 400;
-    line-height: 30rpx;
+    line-height: 26rpx;
     margin-right: 16rpx;
+    align-content: center;
+    justify-content: center;
 }
 
 .device-bind-fail-remind-text-style{
