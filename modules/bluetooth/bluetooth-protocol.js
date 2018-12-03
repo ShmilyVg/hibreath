@@ -59,16 +59,21 @@ export default class BlueToothProtocol {
             const endIndex = dataStartIndex + dataLength;
             dataArray = receiveArray.slice(dataStartIndex, endIndex + 1);
         }
-        return this.action[commandHex]({dataArray});
+        const action = this.action[commandHex];
+        if (action) {
+            return action({dataArray});
+        } else {
+            return {state: BlueToothState.UNKNOWN};
+        }
     }
 
 
-    createBuffer({command, data = 0}) {
+    createBuffer({command, data}) {
         const dataBody = this.createDataBody({command, data});
         return new Uint8Array(dataBody).buffer;
     }
 
-    createDataBody({command = '', data = 0}) {
+    createDataBody({command = '', data}) {
         const dataPart = BlueToothProtocol.numToHexArray(data);
         const lowLength = BlueToothProtocol.hexToNum((dataPart.length + 2).toString(16));
         const array = [170, 0, lowLength, deviceIndexNum, BlueToothProtocol.hexToNum(command), ...dataPart];
@@ -90,7 +95,10 @@ export default class BlueToothProtocol {
         return ('00' + num.toString(16)).slice(-2);
     }
 
-    static numToHexArray(num = 0) {
+    static numToHexArray(num) {
+        if (num === void 0) {
+            return [];
+        }
         if (num === 0) {
             return [0];
         }

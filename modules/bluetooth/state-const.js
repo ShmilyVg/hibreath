@@ -12,4 +12,5 @@ export default class BlueToothState {
     static BREATH_RESTART = 'breath_restart';//重新吹气
     static DEVICE_ID_REQUIRE = 'device_id_require';//app请求设备串号
     static DEVICE_ID_GET_SUCCESS = 'device_id_get_success';//设备成功返回串号
+    static UNKNOWN = 'unknown';//未知状态
 }
