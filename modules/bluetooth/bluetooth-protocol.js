@@ -1,49 +1,46 @@
+import BlueToothState from "./state-const";
+
 const commandIndex = 4, dataStartIndex = 5;
 
 const deviceIndexNum = 6;
 export default class BlueToothProtocol {
-    static PRE_HOT_START = 'pre_hot_start';//开始预热状态
-    static PRE_HOT_FINISH_AND_START_BREATH = 'pre_hot_finish_and_start_breath';//预热完成开始吹气
-    static BREATH_FINISH_AND_SUCCESS = 'breath_finish_and_success';//吹气完成返回结果
-    static BREATH_RESTART = 'breath_restart';//重新吹气
-    static DEVICE_ID_REQUIRE = 'device_id_require';//app请求设备串号
-    static DEVICE_ID_GET_SUCCESS = 'device_id_get_success';//设备成功返回串号
+
     constructor(blueToothManager) {
         this.action = {
             //由设备发出的时间戳请求
             '0x70': () => {
                 const now = Date.now() / 1000;
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x71', data: now})});
-                return {state: BlueToothProtocol.PRE_HOT_START};
+                return {state: BlueToothState.TIMESTAMP};
             },
             //由设备发出的预热请求
             '0x72': () => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x73'})});
-                return {state: BlueToothProtocol.PRE_HOT_START};
+                return {state: BlueToothState.PRE_HOT_START};
             },
             //由设备发出的吹气请求
             '0x74': () => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x75'})});
-                return {state: BlueToothProtocol.PRE_HOT_FINISH_AND_START_BREATH};
+                return {state: BlueToothState.PRE_HOT_FINISH_AND_START_BREATH};
             },
             //由设备发出的重新吹气请求
             '0x76': () => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x77'})});
-                return {state: BlueToothProtocol.BREATH_RESTART};
+                return {state: BlueToothState.BREATH_RESTART};
             },
             //由设备发出的显示结果请求
             '0x78': ({dataArray}) => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x79'})});
-                return {state: BlueToothProtocol.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: dataArray};
+                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: dataArray};
             },
             //由App发出的串号请求
             '0x7A': () => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7A'})});
-                return {state: BlueToothProtocol.DEVICE_ID_REQUIRE};
+                return {state: BlueToothState.DEVICE_ID_REQUIRE};
             },
             //由设备发出的串号反馈
             '0x7B': ({dataArray}) => {
-                return {state: BlueToothProtocol.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: dataArray};
+                return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: dataArray};
             },
         }
     }
@@ -73,7 +70,7 @@ export default class BlueToothProtocol {
 
     createDataBody({command = '', data = 0}) {
         const dataPart = BlueToothProtocol.numToHexArray(data);
-        const lowLength = BlueToothProtocol.hexToNum(dataPart.length.toString(16)) + 2;
+        const lowLength = BlueToothProtocol.hexToNum((dataPart.length + 2).toString(16));
         const array = [170, 0, lowLength, deviceIndexNum, BlueToothProtocol.hexToNum(command), ...dataPart];
         let count = 0;
         array.forEach(item => count += item);
@@ -83,6 +80,9 @@ export default class BlueToothProtocol {
     }
 
     static hexToNum(str = '') {
+        if (str.indexOf('0x') === 0) {
+            str = str.slice(2);
+        }
         return parseInt(`0x${str}`);
     }
 
@@ -104,22 +104,3 @@ export default class BlueToothProtocol {
         return array;
     }
 }
-
-// function timeStr(num = 0) {
-//     let str = num.toString(16);
-//     console.log(str);
-//     str.length % 2 && (str = '0' + str);
-//     const array = [];
-//     for (let i = 0, len = str.length; i < len; i += 2) {
-//         array.push(parseInt(`0x${str.substr(i, 2)}`));
-//     }
-//     return array;
-//     // console.log(parseInt(str,16));
-// }
-//
-// // const now = Date.now();
-// console.log(1543569847918);
-// console.log(timeStr(1543569847918));
-//
-// console.log(parseInt('0x016763eeb66e'));
-
