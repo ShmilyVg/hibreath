@@ -13,7 +13,7 @@ Page({
             let list = data.result.list;
             for (let i in list) {
                 list[i]['date'] = tools.createDateAndTime(list[i]['createdTimestamp']);
-                let listShow = {a: ['燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'], b: ['3e3e3e', 'ff7c00', 'ff5e00', 'e64d3d']};
+                let listShow = {a: ['燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'], b: ['555555', 'ff7c00', 'ff5e00', 'e64d3d']};
                 list[i]['hintText'] = listShow.a[list[i]['level'] - 1];
                 list[i]['hintBg'] = listShow.b[list[i]['level'] - 1];
             }
