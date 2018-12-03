@@ -16,7 +16,7 @@ export default class ConnectionManager {
             this.connecting();
         };
 
-        this.action[BlueToothState.CONNECTED] = ()=>{
+        this.action[BlueToothState.CONNECTED] =this.action[BlueToothState.TIMESTAMP]= ()=>{
             this.connected();
         };
     }
