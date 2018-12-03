@@ -1,8 +1,16 @@
+import BlueToothState from "../../modules/bluetooth/state-const";
 
 export default class ConnectionManager {
     constructor(page) {
         this._page = page;
+        this.action = {};
+        this.action[BlueToothState.DISCONNECT] = () => {
+            this.disconnect(page);
+        };
 
+        this.action[BlueToothState.CONNECTED] = ()=>{
+            this.connected();
+        };
     }
 
     unBind() {

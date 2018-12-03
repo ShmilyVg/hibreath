@@ -20,110 +20,13 @@ Page({
         firstInto:true,
         noteListMore:'跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
-    /*stateObj:{
-      unbind () {
-          this.setData({
-              state: "unbind",
-              message: '未绑定设备',
-              stateBtn:'点击绑定设备',
-              hint: '燃脂小贴士：',
-              note: this.data.noteListMore,
-              stateBtnShow: true,
-              setShow: false,
-              unitShow: false,
-              pointShow: true,
-              btnShow:true,
-              box3StateIndex:0,
-              box4StateIndex:0
-          })
-      },
-      againbind () {
-          this.setData({
-              message: '未连接到设备',
-              stateBtn:'点击重试',
-              hint: '燃脂小贴士：',
-              note: this.data.noteListMore,
-              stateBtnShow: true,
-              setShow: true,
-              unitShow: false,
-              pointShow: true,
-              btnShow:true,
-              box3StateIndex:0,
-              box4StateIndex:0
-          })
-      },
-       binding (){
-           this.setData({
-               message: '正在连接设备',
-               state:' ',
-               hint: '燃脂小贴士：',
-               note: this.data.noteListMore,
-               stateBtnShow: false,
-               setShow: true,
-               unitShow: false,
-               pointShow: true,
-               btnShow:true,
-               box3StateIndex:1,
-               box4StateIndex:0
-           })
-       } ,
-        donebind (){
-            this.setData({
-                message: '已连接',
-                state:'短按设备按键开始检测',
-                hint: '燃脂小贴士：',
-                note: this.data.noteListMore,
-                stateBtnShow: false,
-                setShow: true,
-                unitShow: false,
-                pointShow: true,
-                btnShow:true,
-                box3StateIndex:2,
-                box4StateIndex:1
-            })
-        },
-        unblow(){
-            this.setData({
-                message: '0',
-                state:'预热中',
-                hint: '',
-                note: '',
-                stateBtnShow: false,
-                setShow: false,
-                unitShow: true,
-                pointShow: false,
-                btnShow:false,
-                box3StateIndex:3,
-                box4StateIndex:2
-            })
-        },
-        blowing(){
-            this.setData({
-                message: '0',
-                state:'请现在对准吹气口吹气',
-                hint: '吹气要领：',
-                note: '吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。',
-                stateBtnShow: false,
-                setShow: false,
-                unitShow: true,
-                pointShow: true,
-                btnShow:false,
-                box3StateIndex:3,
-                box4StateIndex:2,
-
-            })
-        },
-        blowdone(){
-            HiNavigator.navigateTo({url:'/pages/result/result'});
-        }
-    },*/
 
     useUrl() {
         HiNavigator.navigatorToStrategy();
     },
 
     historyUrl(){
-        HiNavigator.navigateTo({url:'/pages/history/history'});
+        HiNavigator.navigatorToHistory();
     },
 
     stateBtnClick(){
@@ -139,9 +42,10 @@ Page({
         this.blowPage = new BlowManager(this);
         this.blowPage.ready();
         this.bleManager = new HiBreathBlueToothManager();
+        const action = this.connectionPage.action;
         this.bleManager.setBLEListener({
             bleStateListener: ({state}) => {
-                this.connectionPage[state]();
+                !!action[state] && action[state]();
 
             }})
         getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});

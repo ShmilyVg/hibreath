@@ -28,4 +28,8 @@ export default class HiNavigator {
     static navigatorToStrategy() {
         this.navigateTo({url:'/pages/strategy/strategy'});
     }
+
+    static navigatorToHistory() {
+        this.navigateTo({url:'/pages/history/history'});
+    }
 }
