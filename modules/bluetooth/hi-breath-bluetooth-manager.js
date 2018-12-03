@@ -3,10 +3,6 @@ import BaseBlueToothImp from "../../libs/bluetooth/base/base-bluetooth-imp";
 import BlueToothProtocol from "./bluetooth-protocol";
 
 export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
-    static UNAVAILABLE = BaseBlueToothImp.UNAVAILABLE;
-    static DISCONNECT = BaseBlueToothImp.DISCONNECT;
-    static CONNECTING = BaseBlueToothImp.CONNECTING;
-    static CONNECTED = BaseBlueToothImp.CONNECTED;
 
     constructor() {
         super();
@@ -77,9 +73,9 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
      * @param receiveBuffer
      */
     static logReceiveData({receiveBuffer}) {
-        const byteLength = receiveBuffer.value.byteLength;
+        const byteLength = receiveBuffer.byteLength;
         // const buffer = new ArrayBuffer(byteLength);
-        const dataView = new DataView(receiveBuffer.value, 0);
+        const dataView = new DataView(receiveBuffer, 0);
         for (let k = 0; k < byteLength; k++) {
             console.log(`接收到的数据索引：${k} 值：${dataView.getUint8(k)}`);
         }
