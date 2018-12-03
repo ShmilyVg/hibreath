@@ -36,4 +36,6 @@ export default class HiNavigator {
     static navigateToDeviceBind() {
         this.navigateTo({url: '/pages/device-bind/device-bind'});
     }
+
+
 }

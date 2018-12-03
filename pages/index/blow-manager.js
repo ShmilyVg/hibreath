@@ -1,8 +1,25 @@
 import HiNavigator from "../../navigator/hi-navigator";
+import BlueToothState from "../../modules/bluetooth/state-const";
 
 export default class BlowManager {
     constructor(page) {
         this._page = page;
+        this.actionBlow = {};
+        this.actionBlow[BlueToothState.PRE_HOT_START] = () => {
+            this.ready();
+        };
+
+        this.actionBlow[BlueToothState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
+            this.blow();
+        };
+
+        this.actionBlow[BlueToothState.BREATH_RESTART] = ()=>{
+            this.disblow();
+        };
+
+        this.actionBlow[BlueToothState.BREATH_FINISH_AND_SUCCESS] = ()=>{
+            this.blowdone();
+        };
     }
 
     ready() {

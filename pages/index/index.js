@@ -29,8 +29,8 @@ Page({
         HiNavigator.navigateToHistory();
     },
 
-    stateBtnClick(){
-
+    bindBtnClick(){
+        HiNavigator.navigateToDeviceBind();
     },
 
     onLoad() {
@@ -43,10 +43,11 @@ Page({
         this.blowPage.ready();
         this.bleManager = new HiBreathBlueToothManager();
         const action = this.connectionPage.action;
+        const antionBlow = this.blowPage.actionBlow;
         this.bleManager.setBLEListener({
             bleStateListener: ({state}) => {
                 !!action[state] && action[state]();
-
+                !!antionBlow[state] && antionBlow[state]();
             }})
         getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
         let info = getApp().globalData.userInfo;

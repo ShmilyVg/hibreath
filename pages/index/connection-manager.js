@@ -4,8 +4,16 @@ export default class ConnectionManager {
     constructor(page) {
         this._page = page;
         this.action = {};
+        this.action[BlueToothState.UNAVAILABLE] = () => {
+            this.unBind();
+        };
+
         this.action[BlueToothState.DISCONNECT] = () => {
-            this.disconnect(page);
+            this.disconnect();
+        };
+
+        this.action[BlueToothState.CONNECTING] = ()=>{
+            this.connecting();
         };
 
         this.action[BlueToothState.CONNECTED] = ()=>{
