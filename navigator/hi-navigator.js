@@ -25,11 +25,15 @@ export default class HiNavigator {
         wx.redirectTo({url, success, fail, complete})
     }
 
-    static navigatorToStrategy() {
+    static navigateToStrategy() {
         this.navigateTo({url:'/pages/strategy/strategy'});
     }
 
-    static navigatorToHistory() {
+    static navigateToHistory() {
         this.navigateTo({url:'/pages/history/history'});
+    }
+
+    static navigateToDeviceBind() {
+        this.navigateTo({url: '/pages/device-bind/device-bind'});
     }
 }

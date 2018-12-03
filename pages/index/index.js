@@ -22,11 +22,11 @@ Page({
     },
 
     useUrl() {
-        HiNavigator.navigatorToStrategy();
+        HiNavigator.navigateToStrategy();
     },
 
     historyUrl(){
-        HiNavigator.navigatorToHistory();
+        HiNavigator.navigateToHistory();
     },
 
     stateBtnClick(){
