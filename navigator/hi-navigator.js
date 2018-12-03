@@ -24,4 +24,8 @@ export default class HiNavigator {
     static redirectTo({url, success, fail, complete}) {
         wx.redirectTo({url, success, fail, complete})
     }
+
+    static navigatorToStrategy() {
+        this.navigateTo({url:'/pages/strategy/strategy'});
+    }
 }

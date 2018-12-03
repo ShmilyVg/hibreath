@@ -8,6 +8,9 @@ import Protocol from "../../modules/network/protocol";
 
 
 import * as tools from "../../utils/tools";
+import ConnectionManager from "./connection-manager";
+import BlowManager from "./blow-manager";
+import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager";
 
 Page({
     data: {
@@ -17,9 +20,10 @@ Page({
         firstInto:true,
         noteListMore:'跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
-    stateObj:{
+    /*stateObj:{
       unbind () {
           this.setData({
+              state: "unbind",
               message: '未绑定设备',
               stateBtn:'点击绑定设备',
               hint: '燃脂小贴士：',
@@ -112,10 +116,10 @@ Page({
         blowdone(){
             HiNavigator.navigateTo({url:'/pages/result/result'});
         }
-    },
+    },*/
 
-    useUrl(){
-        HiNavigator.navigateTo({url:'/pages/strategy/strategy'});
+    useUrl() {
+        HiNavigator.navigatorToStrategy();
     },
 
     historyUrl(){
@@ -130,6 +134,16 @@ Page({
         /*setTimeout(() => {
             this.stateObj.donebind.call(this);
         }, 3000);*/
+        this.connectionPage = new ConnectionManager(this);
+        this.connectionPage['connecting']();
+        this.blowPage = new BlowManager(this);
+        this.blowPage.ready();
+        this.bleManager = new HiBreathBlueToothManager();
+        this.bleManager.setBLEListener({
+            bleStateListener: ({state}) => {
+                this.connectionPage[state]();
+
+            }})
         getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
         let info = getApp().globalData.userInfo;
         if (info) {
@@ -137,7 +151,6 @@ Page({
                 userInfo: info
             })
         }
-        this.stateObj.unbind.call(this);
         if (this.data.firstInto) {
             Protocol.getAnalysisNotes({}).then(data => {
                 let noteList = data.result.list;
@@ -152,7 +165,7 @@ Page({
         Protocol.getDeviceBindList({}).then(data => {
             let bindList = data.result;
             if(bindList.length == 0){
-                this.stateObj.unbind.call(this);
+                this.connectionPage.unBind();
             }
             console.log(bindList)
         })
