@@ -29,6 +29,7 @@ App({
                 this.appReceiveDataListener && this.appReceiveDataListener({finalResult});
             }, bleStateListener: ({state}) => {
                 this.globalData.latestBLEState = state;
+                console.log('状态更新', state);
                 this.appBLEStateListener && this.appBLEStateListener({state});
             }
         })

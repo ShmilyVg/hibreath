@@ -26,7 +26,7 @@ Page({
     showResult({state}) {
         this.setData({
             result: this.getResultState({state}),
-            showReConnected: state !== BlueToothState.CONNECTED && state !== BlueToothState.CONNECTING
+            showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE || state === BlueToothState.UNKNOWN
         })
     },
 

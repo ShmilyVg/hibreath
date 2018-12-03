@@ -33,6 +33,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         };
         let timeoutIndex = 0;
         wx.onBluetoothDeviceFound(() => {
+            console.log('开始扫描');
             if (!!this._scanBLDListener) {
                 super.getBlueToothDevices().then(res => this._scanBLDListener({devices: res.devices})).catch();
             } else {
