@@ -1,5 +1,4 @@
 import SimpleBlueToothImp from "../../libs/bluetooth/simple-bluetooth-imp";
-import BaseBlueToothImp from "../../libs/bluetooth/base/base-bluetooth-imp";
 import BlueToothProtocol from "./bluetooth-protocol";
 
 export default class HiBreathBlueToothManager extends SimpleBlueToothImp {

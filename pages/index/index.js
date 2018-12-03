@@ -76,6 +76,9 @@ Page({
     onShow(){
         const action = this.connectionPage.action;
         const antionBlow = this.blowPage.actionBlow;
+        const latestState = app.getLatestBLEState();
+        !!action[latestState] && action[latestState]();
+        !!antionBlow[latestState] && antionBlow[latestState]();
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 !!action[state] && action[state]();

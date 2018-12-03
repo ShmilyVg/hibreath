@@ -11,13 +11,27 @@ App({
     getBLEManager() {
         return this.bLEManager;
     },
+
     setBLEListener({receiveDataListener, bleStateListener}) {
-        this.bLEManager.setBLEListener({receiveDataListener, bleStateListener});
+        this.appReceiveDataListener = receiveDataListener;
+        this.appBLEStateListener = bleStateListener;
+    },
+
+    getLatestBLEState() {
+        return this.globalData.latestBLEState;
     },
 
     onLaunch() {
         this.doLogin();
         this.bLEManager = new HiBreathBlueToothManager();
+        this.bLEManager.setBLEListener({
+            receiveDataListener: ({finalResult}) => {
+                this.appReceiveDataListener && this.appReceiveDataListener({finalResult});
+            }, bleStateListener: ({state}) => {
+                this.globalData.latestBLEState = state;
+                this.appBLEStateListener && this.appBLEStateListener({state});
+            }
+        })
     },
     doLogin() {
         setTimeout(() => Login.doLogin().then(() => UserInfo.get()).then(({userInfo}) => {
@@ -25,6 +39,7 @@ App({
         }));
     },
     globalData: {
-        userInfo: {nickname: '', headUrl: '', id: 0}
+        userInfo: {nickname: '', headUrl: '', id: 0},
+        latestBLEState: ''
     }
 });
