@@ -12,6 +12,8 @@ import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
 import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager";
 
+const app = getApp();
+
 Page({
     data: {
         userInfo: {},
@@ -41,16 +43,9 @@ Page({
         this.connectionPage['connecting']();
         this.blowPage = new BlowManager(this);
         this.blowPage.ready();
-        this.bleManager = new HiBreathBlueToothManager();
-        const action = this.connectionPage.action;
-        const antionBlow = this.blowPage.actionBlow;
-        this.bleManager.setBLEListener({
-            bleStateListener: ({state}) => {
-                !!action[state] && action[state]();
-                !!antionBlow[state] && antionBlow[state]();
-            }})
-        getApp().onGetUserInfo = ({userInfo})=>this.setData({userInfo});
-        let info = getApp().globalData.userInfo;
+
+        app.onGetUserInfo = ({userInfo})=>this.setData({userInfo});
+        let info = app.globalData.userInfo;
         if (info) {
             this.setData({
                 userInfo: info
@@ -79,6 +74,17 @@ Page({
     },
 
     onShow(){
+        const action = this.connectionPage.action;
+        const antionBlow = this.blowPage.actionBlow;
+        app.setBLEListener({
+            bleStateListener: ({state}) => {
+                !!action[state] && action[state]();
+                !!antionBlow[state] && antionBlow[state]();
+            },
+            receiveDataListener: ({finalResult}) => {
+
+            }
+        });
         if (!this.data.firstInto) {
             this.handleTipText();
         }
