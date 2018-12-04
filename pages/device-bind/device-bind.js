@@ -76,42 +76,22 @@ Page({
         app.getBLEManager().connect();
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-    init() {
-        this.state = {};
-        this.state[BlueToothState.CONNECTING] = {
-            color: '#979797',
-            text: '正在寻找您的设备\n请将设备开机并靠近手机',
-            picPath: '../../images/device-bind/connecting.png'
-        };
-        this.state[BlueToothState.CONNECTED] = {
-            color: '#FE5E01',
-            text: '已找到您的设备\n短按设备上的按键确认绑定',
-            picPath: '../../images/device-bind/connected.png'
-        };
-        this.state[BlueToothState.DISCONNECT] = this.state[BlueToothState.UNAVAILABLE] = this.state[BlueToothState.UNKNOWN] = {
-            color: '#979797',
-            text: '绑定失败，请检查后重试',
-            picPath: '../../images/device-bind/fail.png'
-        };
-    },
+    // init() {
+    //     this.state = {};
+    //     this.state[BlueToothState.CONNECTING] = {
+    //         color: '#979797',
+    //         text: '正在寻找您的设备\n请将设备开机并靠近手机',
+    //         picPath: '../../images/device-bind/connecting.png'
+    //     };
+    //     this.state[BlueToothState.CONNECTED] = {
+    //         color: '#FE5E01',
+    //         text: '已找到您的设备\n短按设备上的按键确认绑定',
+    //         picPath: '../../images/device-bind/connected.png'
+    //     };
+    //     this.state[BlueToothState.DISCONNECT] = this.state[BlueToothState.UNAVAILABLE] = this.state[BlueToothState.UNKNOWN] = {
+    //         color: '#979797',
+    //         text: '绑定失败，请检查后重试',
+    //         picPath: '../../images/device-bind/fail.png'
+    //     };
+    // },
 });

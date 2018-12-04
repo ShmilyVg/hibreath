@@ -32,6 +32,9 @@ App({
                     Protocol.postDeviceBind({deviceId: finalResult}).then(() => {
                         // wx.setStorageSync('get_device_id', finalResult);
                         this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
+                    }).catch((res) => {
+                        console.log('绑定协议报错', res);
+                        this.appBLEStateListener && this.appBLEStateListener({state: BlueToothState.UNBIND});
                     });
                 } else {
                     this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});

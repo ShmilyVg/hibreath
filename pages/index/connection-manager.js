@@ -4,11 +4,11 @@ export default class ConnectionManager {
     constructor(page) {
         this._page = page;
         this.action = {};
-        this.action[BlueToothState.UNAVAILABLE] = () => {
-            this.unBind();
+        this.action[BlueToothState.UNBIND] = () => {
+            this.unbind();
         };
 
-        this.action[BlueToothState.DISCONNECT] = () => {
+        this.action[BlueToothState.UNAVAILABLE] = this.action[BlueToothState.DISCONNECT] = () => {
             this.disconnect();
         };
 
@@ -21,7 +21,7 @@ export default class ConnectionManager {
         };
     }
 
-    unBind() {
+    unbind() {
         this._page.setData({
             state: "unbind",
             message: '未绑定设备',
