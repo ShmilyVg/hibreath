@@ -46,17 +46,19 @@ export default class AbstractBlueTooth {
         console.log('设备id', this._deviceId);
         return new Promise((resolve, reject) => {
             if (!this._isOpenAdapter) {
-                wx.openBluetoothAdapter({
-                    success: (res) => {
-                        console.log('打开蓝牙Adapter成功', res);
-                        this.stopBlueToothDevicesDiscovery();
-                        this._isOpenAdapter = true;
-                        resolve({isOpenAdapter: this._isOpenAdapter});
-                    }, fail: (res) => {
-                        console.log('打开蓝牙Adapter失败', res);
-                        reject(res);
-                    }
-                });
+                this.closeAdapter().finally(()=>{
+                    wx.openBluetoothAdapter({
+                        success: (res) => {
+                            console.log('打开蓝牙Adapter成功', res);
+                            this.stopBlueToothDevicesDiscovery();
+                            this._isOpenAdapter = true;
+                            resolve({isOpenAdapter: this._isOpenAdapter});
+                        }, fail: (res) => {
+                            console.log('打开蓝牙Adapter失败', res);
+                            reject(res);
+                        }
+                    });
+                })
             } else {
                 resolve({isOpenAdapter: this._isOpenAdapter});
             }
