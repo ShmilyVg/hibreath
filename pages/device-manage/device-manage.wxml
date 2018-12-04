@@ -1,0 +1,5 @@
+<!--pages/device-manage/device-manage.wxml-->
+<view class="flex-column">
+    <view class="image"></view>
+    <view class="bottom-btn btn-bg" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
+</view>

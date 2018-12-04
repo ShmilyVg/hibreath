@@ -35,15 +35,19 @@ export default class Protocol {
     }
 
     static getAnalysisNotes(){
-        return Network.request({url: '/analysis/notes'})
+        return Network.request({url: 'analysis/notes'})
     }
 
     static getDeviceBindList(){
-        return Network.request({url: '/device/bindList'})
+        return Network.request({url: 'device/bindList'})
     }
 
     static postDeviceBind({deviceId}){
-        return Network.request({url: '/device/bind', data: {deviceId}});
+        return Network.request({url: 'device/bind', data: {deviceId}});
+    }
+
+    static postDeviceUnbind({deviceId}){
+        return Network.request({url: 'device/unbind', data: {deviceId}});
     }
 
 }

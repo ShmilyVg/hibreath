@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/device-manage/device-manage",
     "pages/index/index",
     "pages/strategy/strategy",
     "pages/result/result",

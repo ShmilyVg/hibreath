@@ -1,0 +1,14 @@
+/* pages/device-manage/device-manage.wxss */
+
+.image{
+    width: 606rpx;
+    height: 606rpx;
+    margin-top: 50rpx;
+    margin-bottom: 66rpx;
+    background-color: lightblue;
+}
+
+.btn-bg{
+    background-color: #FF5F00;
+    color: white;
+}
