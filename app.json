@@ -1,11 +1,11 @@
 {
   "pages":[
-    "pages/device-manage/device-manage",
     "pages/index/index",
     "pages/strategy/strategy",
     "pages/result/result",
     "pages/history/history",
-    "pages/device-bind/device-bind"
+    "pages/device-bind/device-bind",
+    "pages/device-manage/device-manage"
   ],
   "window":{
     "backgroundTextStyle":"light",
