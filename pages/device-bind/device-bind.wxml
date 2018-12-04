@@ -1,14 +1,17 @@
 <!--pages/device-bind/device-bind.wxml-->
 <view class="flex-column">
-    <image src="" class="device-bind-image-style"></image>
+    <image src="{{result.picPath}}" class="device-bind-image-style"></image>
     <text style="color: {{result.color}}" class="device-bind-text-common">{{result.text}}</text>
-    <block wx:for="{{failRemindList}}" wx:key="*this" >
-        <view class="flex-row" style="width: 100%;box-sizing: border-box;padding: 37rpx 30rpx;">
-            <view class="device-bind-error-index-style">{{index+1}}</view>
-            <view class="device-bind-fail-remind-text-style">{{item.text}}</view>
-        </view>
-        <view class="device-bind-list-divide-line"></view>
+    <block wx:if="{{showReConnected}}">
+        <block wx:for="{{failRemindList}}" wx:key="index" >
+            <view class="flex-row" style="width: 100%;box-sizing: border-box;padding: 37rpx 30rpx;">
+                <view class="flex-row device-bind-error-index-style">{{index+1}}</view>
+                <view class="device-bind-fail-remind-text-style">{{item.text}}</view>
+            </view>
+            <view class="device-bind-list-divide-line"></view>
+        </block>
+        <button class="bottom-btn bottom-btn-origin-color" style="margin-top: 40rpx;" hover-class="press-style" hover-stay-time="50" bindtap="reConnectEvent">重试</button>
     </block>
 
-    <button class="bottom-btn bottom-btn-origin-color" style="margin-top: 40rpx;" hover-class="press-style" hover-stay-time="50" bindtap="reConnectEvent">重试</button>
+
 </view>

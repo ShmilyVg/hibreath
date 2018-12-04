@@ -17,21 +17,21 @@ const app = getApp();
 Page({
     data: {
         userInfo: {},
-        box3State :["unjoin","join","join-done","ready"],
-        box4State :["home-heart-box4-start","home-heart-box4-done","home-heart-box4-num"],
-        firstInto:true,
-        noteListMore:'跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
+        box3State: ["unjoin", "join", "join-done", "ready"],
+        box4State: ["home-heart-box4-start", "home-heart-box4-done", "home-heart-box4-num"],
+        firstInto: true,
+        noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
 
     useUrl() {
         HiNavigator.navigateToStrategy();
     },
 
-    historyUrl(){
+    historyUrl() {
         HiNavigator.navigateToHistory();
     },
 
-    bindBtnClick(){
+    bindBtnClick() {
         HiNavigator.navigateToDeviceBind();
     },
     disconnectBtnClick(){
@@ -47,7 +47,7 @@ Page({
         this.connectionPage.unBind();
         this.blowPage = new BlowManager(this);
 
-        app.onGetUserInfo = ({userInfo})=>this.setData({userInfo});
+        app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
         if (info) {
             this.setData({
@@ -60,14 +60,14 @@ Page({
 
                 this.setData({
                     noteList: noteList,
-                    firstInto:false
+                    firstInto: false
                 })
                 this.handleTipText();
             });
         }
         Protocol.getDeviceBindList({}).then(data => {
             let bindList = data.result;
-            if(bindList.length == 0){
+            if (bindList.length == 0) {
                 this.connectionPage.unBind();
             }
             console.log(bindList)
@@ -76,7 +76,7 @@ Page({
 
     },
 
-    onShow(){
+    onShow() {
         const action = this.connectionPage.action;
         const antionBlow = this.blowPage.actionBlow;
         const latestState = app.getLatestBLEState();
@@ -96,11 +96,11 @@ Page({
         }
     },
 
-    handleTipText(){
+    handleTipText() {
         let noteListNum = Math.round(Math.random() * (this.data.noteList.length - 1));
         let noteListMore = this.data.noteList[noteListNum]['text_zh'];
         this.setData({
-            noteListMore:noteListMore
+            noteListMore: noteListMore
         })
         console.log(noteListMore)
     },
@@ -117,6 +117,8 @@ Page({
             .then(({userInfo}) => this.setData({userInfo}))
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
 
+    },
+    onUnload() {
+        app.getBLEManager().closeAll();
     }
-
 });

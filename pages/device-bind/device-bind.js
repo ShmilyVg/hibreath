@@ -1,4 +1,6 @@
 // pages/device-bind/device-bind.js
+import BlueToothState from "../../modules/bluetooth/state-const";
+
 const app = getApp();
 
 Page({
@@ -7,8 +9,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        result: {color: '#979797', text: '正在寻找您的设备\n请将设备开机并靠近手机'},
-
+        showReConnected: false,
+        result: {},
         failRemindList: [
             {text: '您的手机未开启蓝牙'},
             {text: '您的手机未授权微信获取定位权限'},
@@ -17,83 +19,73 @@ Page({
         ]
     },
 
-    state: {
-        looking: {color: '#979797', text: '正在寻找您的设备\n请将设备开机并靠近手机'},
-        found: {color: '#FE5E01', text: '已找到您的设备\n短按设备上的按键确认绑定'},
-        failed: {color: '#979797', text: '绑定失败，请检查后重试'},
-    },
     getResultState({state}) {
         return this.state[state];
     },
+
     showResult({state}) {
         this.setData({
-            result: this.getResultState({state})
+            result: this.getResultState({state}),
+            showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE || state === BlueToothState.UNKNOWN
         })
     },
 
     reConnectEvent() {
-
+        app.getBLEManager().connect();
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad(options) {
+        this.init();
         app.setBLEListener({
             bleStateListener: ({state}) => {
-
+                this.showResult({state});
             },
             receiveDataListener: ({finalResult}) => {
 
             }
         });
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+        app.getBLEManager().connect();
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload() {
 
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
+    init() {
+        this.state = {};
+        this.state[BlueToothState.CONNECTING] = {
+            color: '#979797',
+            text: '正在寻找您的设备\n请将设备开机并靠近手机',
+            picPath: '../../images/device-bind/connecting.png'
+        };
+        this.state[BlueToothState.CONNECTED] = {
+            color: '#FE5E01',
+            text: '已找到您的设备\n短按设备上的按键确认绑定',
+            picPath: '../../images/device-bind/connected.png'
+        };
+        this.state[BlueToothState.DISCONNECT] = this.state[BlueToothState.UNAVAILABLE] = this.state[BlueToothState.UNKNOWN] = {
+            color: '#979797',
+            text: '绑定失败，请检查后重试',
+            picPath: '../../images/device-bind/fail.png'
+        };
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
-})
+});

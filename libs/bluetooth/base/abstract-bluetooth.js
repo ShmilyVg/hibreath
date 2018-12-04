@@ -14,6 +14,7 @@ export default class AbstractBlueTooth {
         this._characteristicId = '';
         this._receiveDataListener = null;
         this.UUIDs = [];
+        this._startDiscoveryTimeoutIndex = 0;
         this._receiveDataInsideListener = ({receiveBuffer}) => {
             if (!!this._receiveDataListener) {
                 const {finalResult} = this.dealReceiveData({receiveBuffer});
@@ -48,7 +49,7 @@ export default class AbstractBlueTooth {
                 wx.openBluetoothAdapter({
                     success: (res) => {
                         console.log('打开蓝牙Adapter成功', res);
-                        wx.stopBluetoothDevicesDiscovery();
+                        this.stopBlueToothDevicesDiscovery();
                         this._isOpenAdapter = true;
                         resolve({isOpenAdapter: this._isOpenAdapter});
                     }, fail: (res) => {
@@ -69,7 +70,7 @@ export default class AbstractBlueTooth {
     closeAdapter() {
         return new Promise((resolve, reject) => {
             if (this._isOpenAdapter) {
-                wx.stopBluetoothDevicesDiscovery();
+                this.stopBlueToothDevicesDiscovery();
                 this.closeBLEConnection().finally(() => {
                     wx.closeBluetoothAdapter({
                         success: (res) => {
@@ -127,7 +128,7 @@ export default class AbstractBlueTooth {
      */
     closeBLEConnection() {
         return new Promise((resolve, reject) => {
-                wx.stopBluetoothDevicesDiscovery();
+                this.stopBlueToothDevicesDiscovery();
                 this._isActiveCloseBLE = true;
                 wx.closeBLEConnection({
                     deviceId: this._deviceId,
@@ -173,6 +174,7 @@ export default class AbstractBlueTooth {
      * @returns {Promise<any>}
      */
     stopBlueToothDevicesDiscovery() {
+        clearTimeout(this._startDiscoveryTimeoutIndex);
         return new Promise((resolve, reject) => {
             if (this._isStartDiscovery) {
                 wx.stopBluetoothDevicesDiscovery({
@@ -194,11 +196,14 @@ export default class AbstractBlueTooth {
      */
     startBlueToothDevicesDiscovery() {
         return new Promise((resolve, reject) => {
+            console.log('开始扫描蓝牙设备', this._isStartDiscovery);
             if (!this._isStartDiscovery) {
                 wx.startBluetoothDevicesDiscovery({
                     services: this.UUIDs,
                     success: () => {
                         this._isStartDiscovery = true;
+                        console.log('开始扫描蓝牙设备2');
+                        setTimeout(reject, 10000);
                         resolve({isStartDiscovery: this._isStartDiscovery});
                     }, fail: reject
                 });
