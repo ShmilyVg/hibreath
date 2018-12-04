@@ -34,15 +34,18 @@ Page({
     bindBtnClick(){
         HiNavigator.navigateToDeviceBind();
     },
+    disconnectBtnClick(){
+        this.connectionPage = new ConnectionManager(this);
+        this.connectionPage['disconnect']();
+    },
 
     onLoad() {
         /*setTimeout(() => {
             this.stateObj.donebind.call(this);
         }, 3000);*/
         this.connectionPage = new ConnectionManager(this);
-        this.connectionPage['connecting']();
+        this.connectionPage.unBind();
         this.blowPage = new BlowManager(this);
-        this.blowPage.ready();
 
         app.onGetUserInfo = ({userInfo})=>this.setData({userInfo});
         let info = app.globalData.userInfo;

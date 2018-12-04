@@ -26,9 +26,11 @@ export default class BlowManager {
         this._page.setData({
             message: '0',
             state:'预热中',
-            stateBtnShow: false,
+            bindBtnShow: false,
+            disconnectBtnShow: false,
             setShow: false,
             unitShow: true,
+            homeBottom:false,
             homeBottomHide:true,
             box3StateIndex:3,
             box4StateIndex:2
@@ -39,10 +41,12 @@ export default class BlowManager {
         this._page.setData({
             message: '0',
             state:'请现在对准吹气口吹气',
-            stateBtnShow: false,
+            bindBtnShow: false,
+            disconnectBtnShow: false,
             setShow: false,
             unitShow: true,
-            homeBottom:false,
+            homeBottom: false,
+            homeBottomHide: false,
             box3StateIndex:3,
             box4StateIndex:2,
         });
@@ -52,10 +56,12 @@ export default class BlowManager {
         this._page.setData({
             message: '0',
             state:'请现在对准吹气口吹气',
-            stateBtnShow: false,
+            bindBtnShow: false,
+            disconnectBtnShow: false,
             setShow: false,
             unitShow: true,
-            homeBottom:false,
+            homeBottom: false,
+            homeBottomHide: false,
             box3StateIndex:3,
             box4StateIndex:2,
         })
