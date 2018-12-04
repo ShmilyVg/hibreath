@@ -2,7 +2,7 @@
 <view class="home-head">
   <image class="home-pic" src="{{userInfo.headUrl}}"></image>
   <view class="home-name">{{userInfo.nickname}}</view>
-  <image wx:if="{{setShow}}" class="home-set" src="../../images/index/set.png"></image>
+  <image wx:if="{{setShow}}" class="home-set" src="../../images/index/set.png" bindtap="setBtnClick"></image>
 </view>
 
 <view class="home-heart">

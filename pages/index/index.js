@@ -40,13 +40,15 @@ Page({
         // this.connectionPage['disconnect']();
     },
 
+    setBtnClick(){
+        HiNavigator.navigateToDeviceUnbind(this.data.bindList[0]);
+    },
+
     onLoad() {
-        /*setTimeout(() => {
-            this.stateObj.donebind.call(this);
-        }, 3000);*/
         this.connectionPage = new ConnectionManager(this);
         this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);
+        /*this.blowPage.blowdone();*/
 
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
@@ -70,6 +72,10 @@ Page({
             let bindList = data.result;
             if (bindList.length == 0) {
                 this.connectionPage.unbind();
+            } else {
+                this.setData({
+                    bindList:bindList
+                })
             }
             console.log(bindList)
         })
