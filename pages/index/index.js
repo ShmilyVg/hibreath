@@ -45,7 +45,7 @@ Page({
             this.stateObj.donebind.call(this);
         }, 3000);*/
         this.connectionPage = new ConnectionManager(this);
-        this.connectionPage.unBind();
+        this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);
 
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
@@ -69,7 +69,7 @@ Page({
         Protocol.getDeviceBindList({}).then(data => {
             let bindList = data.result;
             if (bindList.length == 0) {
-                this.connectionPage.unBind();
+                this.connectionPage.unbind();
             }
             console.log(bindList)
         })

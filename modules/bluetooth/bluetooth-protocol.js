@@ -99,6 +99,7 @@ export default class BlueToothProtocol {
         if (num === void 0) {
             return [];
         }
+        num = parseInt(num);
         if (num === 0) {
             return [0];
         }
