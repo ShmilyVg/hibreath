@@ -4,7 +4,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
     data: {
-        deviceId: '123'
+        deviceId: ''
     },
 
     onLoad: function (options) {
