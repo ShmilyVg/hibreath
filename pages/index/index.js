@@ -109,7 +109,6 @@ Page({
         this.setData({
             noteListMore: noteListMore
         })
-        console.log(noteListMore)
     },
 
     onGetUserInfoEvent(e) {
