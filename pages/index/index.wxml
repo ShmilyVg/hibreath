@@ -2,7 +2,7 @@
 <view class="home-head">
   <image class="home-pic" src="{{userInfo.headUrl}}"></image>
   <view class="home-name">{{userInfo.nickname}}</view>
-  <image wx:if="{{setShow}}" class="home-set" src="../../images/index/set.png"></image>
+  <image wx:if="{{setShow}}" class="home-set" src="../../images/index/set.png" bindtap="setBtnClick"></image>
 </view>
 
 <view class="home-heart">
@@ -18,7 +18,7 @@
 <view class="home-state" wx:else>{{state}}</view>
 
 <block wx:if="{{homeBottom}}">
-  <view class="home-point"><text>燃脂小贴士：</text>{{note}}</view>
+  <view class="home-point"><text>燃脂小贴士：</text>{{noteListMore}}</view>
   <view class="home-btn">
     <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>
     <view class="home-btn-box home-btn-history" bindtap="historyUrl">历史记录</view>
