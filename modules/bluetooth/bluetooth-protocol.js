@@ -34,25 +34,26 @@ export default class BlueToothProtocol {
                 return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: dataArray};
             },
             //由App发出的串号请求
-            '0x7A': () => {
-                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7A'})});
+            '0x7a': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.DEVICE_ID_REQUIRE};
             },
             //由设备发出的串号反馈
-            '0x7B': ({dataArray}) => {
+            '0x7b': ({dataArray}) => {
                 return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: dataArray};
             },
         }
     }
 
     requireDeviceId() {
-        this.action['0x7A']();
+        this.action['0x7a']();
     }
 
     receive({receiveBuffer}) {
         const receiveArray = [...new Uint8Array(receiveBuffer)];
         let command = receiveArray[commandIndex];
         let commandHex = `0x${BlueToothProtocol.numToHex(command)}`;
+        console.log('命令字',commandHex);
         let dataLength = receiveArray[2] - 2;
         let dataArray;
         if (dataLength > 0) {
