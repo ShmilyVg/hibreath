@@ -20,14 +20,38 @@ Page({
     },
 
     getResultState({state}) {
-        return this.state[state];
+        switch (state) {
+            case BlueToothState.CONNECTING:
+                return {
+                    color: '#979797',
+                    text: '正在寻找您的设备\n请将设备开机并靠近手机',
+                    picPath: '../../images/device-bind/connecting.png'
+                };
+            case BlueToothState.UNKNOWN:
+            case BlueToothState.UNAVAILABLE:
+            case BlueToothState.DISCONNECT:
+                return {
+                    color: '#979797',
+                    text: '绑定失败，请检查后重试',
+                    picPath: '../../images/device-bind/fail.png'
+                };
+            case BlueToothState.TIMESTAMP:
+                app.getBLEManager().sendDeviceIdRequire();
+
+            default:
+                return {
+                    color: '#FE5E01',
+                    text: '已找到您的设备\n短按设备上的按键确认绑定',
+                    picPath: '../../images/device-bind/connected.png'
+                };
+        }
     },
 
     showResult({state}) {
         this.setData({
             result: this.getResultState({state}),
             showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE || state === BlueToothState.UNKNOWN
-        })
+        });
     },
 
     reConnectEvent() {
@@ -38,13 +62,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.init();
+        // this.init();
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 this.showResult({state});
             },
-            receiveDataListener: ({finalResult}) => {
-
+            receiveDataListener: ({finalResult, state}) => {
+                if (BlueToothState.DEVICE_ID_GET_SUCCESS === state) {
+                    console.log('接收到的设备串号', finalResult);
+                }
             }
         });
         app.getBLEManager().connect();

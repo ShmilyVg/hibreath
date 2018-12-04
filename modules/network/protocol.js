@@ -41,4 +41,9 @@ export default class Protocol {
     static getDeviceBindList(){
         return Network.request({url: '/device/bindList'})
     }
+
+    static postDeviceBind({deviceId}){
+        return Network.request({url: '/device/bind', data: {deviceId}});
+    }
+
 }

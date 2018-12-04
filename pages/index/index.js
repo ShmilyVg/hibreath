@@ -35,8 +35,9 @@ Page({
         HiNavigator.navigateToDeviceBind();
     },
     disconnectBtnClick(){
-        this.connectionPage = new ConnectionManager(this);
-        this.connectionPage['disconnect']();
+        app.getBLEManager().connect();
+        // this.connectionPage = new ConnectionManager(this);
+        // this.connectionPage['disconnect']();
     },
 
     onLoad() {
