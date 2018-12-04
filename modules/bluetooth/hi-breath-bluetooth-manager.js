@@ -60,10 +60,20 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
     dealReceiveData({receiveBuffer}) {
         const {dataAfterProtocol, state} = this.bluetoothProtocol.receive({receiveBuffer});
         super.updateBLEStateImmediately({state});
-        // HiBreathBlueToothManager.logReceiveData({receiveBuffer});
-        let finalResult = dataAfterProtocol;
-        //这里的result已经是拥有了总和及数据长度的一个ArrayBuffer了，这里应该是返回与UI层的渲染相关的数据，所以我这里是一个错误的演示
-        return {finalResult, state};
+        HiBreathBlueToothManager.logReceiveData({receiveBuffer});
+        return {finalResult: dataAfterProtocol, state};
+    }
+
+    store() {
+
+    }
+
+    onShow() {
+
+    }
+
+    onHide() {
+
     }
 
     /**

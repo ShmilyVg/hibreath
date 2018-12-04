@@ -31,7 +31,8 @@ export default class BlueToothProtocol {
             //由设备发出的显示结果请求
             '0x78': ({dataArray}) => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x79'})});
-                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: dataArray};
+                const result = BlueToothProtocol.hexArrayToNum(dataArray);
+                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result}};
             },
             //由App发出的串号请求
             '0x7a': () => {
@@ -40,7 +41,8 @@ export default class BlueToothProtocol {
             },
             //由设备发出的串号反馈
             '0x7b': ({dataArray}) => {
-                return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: dataArray};
+                const deviceId = BlueToothProtocol.hexArrayToNum(dataArray);
+                return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: {deviceId}};
             },
         }
     }
@@ -53,7 +55,7 @@ export default class BlueToothProtocol {
         const receiveArray = [...new Uint8Array(receiveBuffer)];
         let command = receiveArray[commandIndex];
         let commandHex = `0x${BlueToothProtocol.numToHex(command)}`;
-        console.log('命令字',commandHex);
+        console.log('命令字', commandHex);
         let dataLength = receiveArray[2] - 2;
         let dataArray;
         if (dataLength > 0) {
@@ -96,6 +98,11 @@ export default class BlueToothProtocol {
         return ('00' + num.toString(16)).slice(-2);
     }
 
+    /**
+     *
+     * @param num
+     * @returns {*} 一个字节代表16位
+     */
     static numToHexArray(num) {
         if (num === void 0) {
             return [];
@@ -113,4 +120,16 @@ export default class BlueToothProtocol {
         }
         return array;
     }
+
+    /**
+     * hex数组转为num
+     * @param array 按高低八位来排列的数组
+     */
+    static hexArrayToNum(array) {
+        let count = 0, divideNum = array.length - 1;
+        array.forEach((item, index) => count += item << (divideNum - index) * 4);
+        return count;
+    }
 }
+
+
