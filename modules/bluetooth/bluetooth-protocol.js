@@ -46,14 +46,16 @@ export default class BlueToothProtocol {
             //     return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: {deviceId}};
             // },
             //由手机发出的连接请求
-            '0x7c': () => {
-                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
+            '0x7a': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
             //由设备发出的连接反馈 1接受 0不接受 后面的是
-            '0x7d': ({dataArray}) => {
+            '0x7b': ({dataArray}) => {
                 const isConnected = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 1)) === 1;
                 const deviceId = BlueToothProtocol.hexArrayToNum(dataArray.slice(1));
+                //由手机回复的连接成功
+                isConnected && blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
                 return {state: BlueToothState.GET_CONNECTED_RESULT_SUCCESS, dataAfterProtocol: {isConnected, deviceId}};
             },
         }
@@ -64,7 +66,11 @@ export default class BlueToothProtocol {
     // }
 
     requireDeviceConnected() {
-        !wx.getStorageSync('isConnectedDevice') && this.action['0x7c']();
+        !this.getDeviceIsConnected() && this.action['0x7a']();
+    }
+
+    getDeviceIsConnected() {
+        return wx.getStorageSync('isConnectedDevice');
     }
 
     setConnectedMarkStorage() {

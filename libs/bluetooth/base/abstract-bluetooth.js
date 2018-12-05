@@ -199,13 +199,12 @@ export default class AbstractBlueTooth {
      */
     startBlueToothDevicesDiscovery() {
         return new Promise((resolve, reject) => {
-            console.log('开始扫描蓝牙设备', this._isStartDiscovery);
             if (!this._isStartDiscovery) {
                 wx.startBluetoothDevicesDiscovery({
                     services: this.UUIDs,
                     success: () => {
                         this._isStartDiscovery = true;
-                        console.log('开始扫描蓝牙设备2');
+                        console.log('开始扫描蓝牙设备');
                         setTimeout(reject, 10000);
                         resolve({isStartDiscovery: this._isStartDiscovery});
                     }, fail: reject

@@ -24,6 +24,11 @@ App({
     },
 
     onLaunch() {
+        // const res = wx.getStorageInfoSync();
+        // console.log(res.keys)
+        // for (let key of res.keys) {
+        //     wx.removeStorageSync(key);
+        // }
         this.doLogin();
         this.bLEManager = new HiBreathBlueToothManager();
         this.bLEManager.setBLEListener({
@@ -32,6 +37,7 @@ App({
                     const {isConnected, deviceId} = finalResult;
                     if (isConnected) {
                         Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
+                            console.log('绑定协议发送成功');
                             this.bLEManager.setConnectedMarkStorage();
                             this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
                         }).catch((res) => {
@@ -49,7 +55,7 @@ App({
             }, bleStateListener: ({state}) => {
                 this.globalData.latestBLEState = state;
                 console.log('状态更新', state);
-                BlueToothState.CONNECTED === state && this.bLEManager.requireDeviceConnected();
+                BlueToothState.CONNECTED === state && this.bLEManager.sendDeviceConnectedRequire();
                 this._updateBLEState({state});
             }
         })

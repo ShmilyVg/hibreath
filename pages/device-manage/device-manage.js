@@ -8,14 +8,17 @@ Page({
     },
 
     onLoad: function (options) {
+        console.log(options);
         this.setData({
             deviceId: options.deviceId
         })
     },
     unbindDevice() {
-        Protocol.postDeviceUnbind(this.data.deviceId).then(data => {
+        Protocol.postDeviceUnbind({deviceId: this.data.deviceId}).then(data => {
             getApp().getBLEManager().closeAll();
             HiNavigator.reLaunch({url: '/pages/index/index'});
+        }).catch(res => {
+            console.log(res);
         })
     }
 })

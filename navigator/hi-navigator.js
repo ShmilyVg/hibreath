@@ -38,6 +38,6 @@ export default class HiNavigator {
     }
 
     static navigateToDeviceUnbind({deviceId}) {
-        this.navigateTo({url: '/pages/device-bind/device-bind?deviceId=' + deviceId});
+        this.navigateTo({url: '/pages/device-manage/device-manage?deviceId=' + deviceId});
     }
 }
