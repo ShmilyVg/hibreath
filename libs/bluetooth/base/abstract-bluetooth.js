@@ -9,6 +9,7 @@ export default class AbstractBlueTooth {
         this._isOpenAdapter = false;
         this._isStartDiscovery = false;
         this._isActiveCloseBLE = false;
+        this._isConnected = false;
         this._deviceId = '';
         this._serviceId = '';
         this._characteristicId = '';
@@ -115,12 +116,16 @@ export default class AbstractBlueTooth {
         this._deviceId = deviceId;
         this.stopBlueToothDevicesDiscovery();
         return new Promise((resolve, reject) => {
-                wx.createBLEConnection({
-                    // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
-                    deviceId,
-                    success: () => this._findThatCharacteristics({deviceId}).then(() => resolve({isConnected: true}), reject),
-                    fail: reject
-                })
+                if (!this._isConnected) {
+                    wx.createBLEConnection({
+                        // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
+                        deviceId,
+                        success: () => this._findThatCharacteristics({deviceId}).then(() => resolve({isConnected: this._isConnected = true}), reject),
+                        fail: reject
+                    });
+                } else {
+                    resolve();
+                }
             }
         );
     }
@@ -133,6 +138,7 @@ export default class AbstractBlueTooth {
         return new Promise((resolve, reject) => {
                 this.stopBlueToothDevicesDiscovery();
                 this._isActiveCloseBLE = true;
+                this._isConnected = false;
                 wx.closeBLEConnection({
                     deviceId: this._deviceId,
                     success: resolve, fail: reject
