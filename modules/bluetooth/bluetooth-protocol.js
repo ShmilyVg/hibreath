@@ -6,6 +6,7 @@ const deviceIndexNum = 6;
 export default class BlueToothProtocol {
 
     constructor(blueToothManager) {
+        this._filtra = true;//过滤
         this.action = {
             //由设备发出的时间戳请求
             '0x70': () => {
@@ -47,6 +48,7 @@ export default class BlueToothProtocol {
             // },
             //由手机发出的连接请求
             '0x7a': () => {
+                this._filtra = false;
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
@@ -55,9 +57,13 @@ export default class BlueToothProtocol {
                 const isConnected = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 1)) === 1;
                 const deviceId = BlueToothProtocol.hexArrayToNum(dataArray.slice(1));
                 //由手机回复的连接成功
-                isConnected && blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
+                isConnected && this.startCommunication();
                 return {state: BlueToothState.GET_CONNECTED_RESULT_SUCCESS, dataAfterProtocol: {isConnected, deviceId}};
             },
+            '0x7c': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
+                return {state: BlueToothState.CONNECTED};
+            }
         }
     }
 
@@ -65,12 +71,16 @@ export default class BlueToothProtocol {
     //     this.action['0x7a']();
     // }
 
-    requireDeviceConnected() {
+    requireDeviceBind() {
         !this.getDeviceIsBind() && this.action['0x7a']();
     }
 
+    startCommunication() {
+        this.action['0x7c']();
+    }
+
     getDeviceIsBind() {
-        console.log('获取设备是否被绑定');
+        console.log('获取设备是否被绑定', wx.getStorageSync('isBindDevice'));
         return !!wx.getStorageSync('isBindDevice');
     }
 
@@ -94,7 +104,7 @@ export default class BlueToothProtocol {
             dataArray = receiveArray.slice(dataStartIndex, endIndex + 1);
         }
         const action = this.action[commandHex];
-        if (action) {
+        if (!this._filtra && action) {
             return action({dataArray});
         } else {
             return {state: BlueToothState.UNKNOWN};

@@ -78,8 +78,8 @@ Page({
                 app.getBLEManager().closeAll();
                 this.connectionPage.unbind();
             } else {
+                // app.getBLEManager().setBindMarkStorage();
                 app.getBLEManager().connect();
-                app.getBLEManager().setBindMarkStorage();
                 this.setData({bindList});
             }
             console.log(bindList)

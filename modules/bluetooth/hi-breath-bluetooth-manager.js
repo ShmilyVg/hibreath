@@ -70,9 +70,19 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
     //     this.bluetoothProtocol.requireDeviceId();
     // }
 
-    sendDeviceConnectedRequire() {
-        this.bluetoothProtocol.requireDeviceConnected();
+    startProtocol() {
+        setTimeout(() => {
+            this.getBindMarkStorage() ? this.bluetoothProtocol.startCommunication() : this.bluetoothProtocol.requireDeviceBind();
+        }, 2000);
     }
+
+    // sendDeviceBindRequire() {
+    //         this.bluetoothProtocol.requireDeviceBind();
+    // }
+    //
+    // startCommunication() {
+    //         this.bluetoothProtocol.startCommunication()
+    // }
 
     /**
      * 处理从蓝牙设备接收到的数据的具体实现

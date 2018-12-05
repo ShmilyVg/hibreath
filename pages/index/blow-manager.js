@@ -17,9 +17,6 @@ export default class BlowManager {
             this.disblow();
         };
 
-        this.actionBlow[BlueToothState.BREATH_FINISH_AND_SUCCESS] = ()=>{
-            this.blowdone();
-        };
     }
 
     ready() {
@@ -67,7 +64,4 @@ export default class BlowManager {
         })
     }
 
-    blowdone(){
-        HiNavigator.navigateTo({url:'/pages/result/result'});
-    }
 }
