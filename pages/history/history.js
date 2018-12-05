@@ -11,7 +11,7 @@ Page({
     },
 
     onLoad() {
-        this.getBreathDataList(1, true);
+        this.getBreathDataList({});
     },
 
     toResult(e) {
@@ -25,13 +25,13 @@ Page({
         });
     },
 
-    getBreathDataList(page, isPullDownRefresh) {
+    getBreathDataList({page = 1}) {
         Protocol.getBreathDataList({page: page}).then(data => {
             let list = this.handleList(data.result.list);
             if (list.length) {
-                if (isPullDownRefresh) {
+                if (page === 1) {
+                    this.data.page = 1;
                     this.setData({
-                        page: 1,
                         allList: list
                     });
                     setTimeout(function () {
@@ -40,7 +40,6 @@ Page({
                 } else {
                     this.setData({
                         allList: this.data.allList.concat(list),
-                        page: ++this.data.page
                     })
                 }
             }
@@ -48,22 +47,22 @@ Page({
     },
 
     handleList(list) {
-        for (let i in list) {
-            let showText = ['', '燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'];
-            let showColor = ['', '555555', 'ff7c00', 'ff5e00', 'e64d3d'];
-            let level = list[i]['level'];
-            list[i]['hintText'] = showText[level];
-            list[i]['hintBg'] = showColor[level];
-            list[i]['date'] = tools.createDateAndTime(list[i]['createdTimestamp']);
-        }
+        let showText = ['', '燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'];
+        let showColor = ['', '555555', 'ff7c00', 'ff5e00', 'e64d3d'];
+        list.map(function (value) {
+            let level = value['level'];
+            value['hintText'] = showText[level];
+            value['hintBg'] = showColor[level];
+            value['date'] = tools.createDateAndTime(value['createdTimestamp']);
+        });
         return list;
     },
 
     onPullDownRefresh() {
-        this.getBreathDataList(1, true);
+        this.getBreathDataList({});
     },
 
     onReachBottom() {
-        this.getBreathDataList(this.data.page, false);
+        this.getBreathDataList({page: ++this.data.page});
     }
 })
