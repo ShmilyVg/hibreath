@@ -6,12 +6,12 @@ import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
     data: {
-        allList:[],
-        page:1
+        allList: [],
+        page: 1
     },
 
-    postGetList(page,isFirstPage) {
-        Protocol.getBreathDataList({page:page}).then(data => {
+    postGetList(page, isPullDownRefresh) {
+        Protocol.getBreathDataList({page: page}).then(data => {
             let list = data.result.list;
             for (let i in list) {
                 list[i]['date'] = tools.createDateAndTime(list[i]['createdTimestamp']);
@@ -21,24 +21,24 @@ Page({
             }
 
             if (list.length) {
-                if (!isFirstPage) {
-                    list = this.data.allList.concat(list);
-                    this.data.page++;
-                }else{
-                    wx.stopPullDownRefresh();
+                if (isPullDownRefresh) {
                     this.setData({
-                        page: 1
+                        page: 1,
+                        allList: list
+                    });
+                    wx.stopPullDownRefresh();
+                } else {
+                    this.setData({
+                        allList: this.data.allList.concat(list),
+                        page: ++this.data.page
                     })
                 }
-                this.setData({
-                    allList: list
-                })
             }
         })
     },
 
     onLoad: function (options) {
-        this.postGetList(1,true);
+        this.postGetList(1, true);
     },
 
     toResult(e) {
@@ -51,14 +51,12 @@ Page({
             timestamp: list[index]['createdTimestamp']
         });
     },
-    onPullDownRefresh(){
-        console.log("下拉刷新")
-        this.postGetList(1,true);
+
+    onPullDownRefresh() {
+        this.postGetList(1, true);
     },
 
-    onReachBottom(){
-        console.log('上拉加载');
-
-        this.postGetList(this.data.page,false);
+    onReachBottom() {
+        this.postGetList(this.data.page, false);
     }
 })
