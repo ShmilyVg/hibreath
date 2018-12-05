@@ -11,7 +11,7 @@ Page({
     },
 
     onLoad() {
-        this.getBreathDataList(1, true);
+        this.getBreathDataList({});
     },
 
     toResult(e) {
@@ -25,13 +25,13 @@ Page({
         });
     },
 
-    getBreathDataList(page, isPullDownRefresh) {
+    getBreathDataList({page = 1}) {
         Protocol.getBreathDataList({page: page}).then(data => {
             let list = this.handleList(data.result.list);
             if (list.length) {
-                if (isPullDownRefresh) {
+                if (page === 1) {
+                    this.data.page = 1;
                     this.setData({
-                        page: 1,
                         allList: list
                     });
                     setTimeout(function () {
@@ -40,7 +40,6 @@ Page({
                 } else {
                     this.setData({
                         allList: this.data.allList.concat(list),
-                        page: ++this.data.page
                     })
                 }
             }
@@ -60,10 +59,10 @@ Page({
     },
 
     onPullDownRefresh() {
-        this.getBreathDataList(1, true);
+        this.getBreathDataList({});
     },
 
     onReachBottom() {
-        this.getBreathDataList(this.data.page, false);
+        this.getBreathDataList({page: ++this.data.page});
     }
 })
