@@ -27,7 +27,6 @@ Page({
                     text: '正在寻找您的设备\n请将设备开机并靠近手机',
                     picPath: '../../images/device-bind/connecting.png'
                 };
-            case BlueToothState.UNKNOWN:
             case BlueToothState.UNAVAILABLE:
             case BlueToothState.DISCONNECT:
                 return {
@@ -35,9 +34,6 @@ Page({
                     text: '绑定失败，请检查后重试',
                     picPath: '../../images/device-bind/fail.png'
                 };
-            case BlueToothState.TIMESTAMP:
-                // app.getBLEManager().sendDeviceIdRequire();
-
             default:
                 return {
                     color: '#FE5E01',
@@ -50,7 +46,7 @@ Page({
     showResult({state}) {
         this.setData({
             result: this.getResultState({state}),
-            showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE || state === BlueToothState.UNKNOWN
+            showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE
         });
     },
 

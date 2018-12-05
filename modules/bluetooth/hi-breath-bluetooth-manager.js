@@ -1,5 +1,6 @@
 import SimpleBlueToothImp from "../../libs/bluetooth/simple-bluetooth-imp";
 import BlueToothProtocol from "./bluetooth-protocol";
+import BlueToothState from "./state-const";
 
 export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
 
@@ -8,6 +9,7 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         this._isFirstReceive = true;
         this.setUUIDs({services: ['6E400001-B5A3-F393-E0A9-E50E24DCCA9E']});//设置主Services方式如 this.setUUIDs({services: ['xxxx']})  xxxx为UUID全称，可设置多个
         this.bluetoothProtocol = new BlueToothProtocol(this);
+        this.latestState = BlueToothState.UNBIND;
     }
 
     /**
@@ -30,14 +32,23 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         }
     }
 
+    getLatestState() {
+        return this.latestState;
+    }
+
     clearConnectedBLE() {
-        this.bluetoothProtocol.clearConnectedMarkStorage();
+        this.bluetoothProtocol.clearBindMarkStorage();
         return super.clearConnectedBLE();
     }
 
-    setConnectedMarkStorage() {
-        this.bluetoothProtocol.setConnectedMarkStorage();
+    getBindMarkStorage() {
+        this.bluetoothProtocol.getDeviceIsBind();
     }
+
+    setBindMarkStorage() {
+        this.bluetoothProtocol.setBindMarkStorage();
+    }
+
     /**
      * 断开蓝牙连接
      * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}

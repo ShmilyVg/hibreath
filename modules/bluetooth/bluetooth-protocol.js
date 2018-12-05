@@ -66,19 +66,20 @@ export default class BlueToothProtocol {
     // }
 
     requireDeviceConnected() {
-        !this.getDeviceIsConnected() && this.action['0x7a']();
+        !this.getDeviceIsBind() && this.action['0x7a']();
     }
 
-    getDeviceIsConnected() {
-        return wx.getStorageSync('isConnectedDevice');
+    getDeviceIsBind() {
+        console.log('获取设备是否被绑定');
+        return !!wx.getStorageSync('isBindDevice');
     }
 
-    setConnectedMarkStorage() {
-        wx.setStorageSync('isConnectedDevice', 1);
+    setBindMarkStorage() {
+        wx.setStorageSync('isBindDevice', 1);
     }
 
-    clearConnectedMarkStorage() {
-        wx.removeStorageSync('isConnectedDevice');
+    clearBindMarkStorage() {
+        wx.removeStorageSync('isBindDevice');
     }
 
     receive({receiveBuffer}) {

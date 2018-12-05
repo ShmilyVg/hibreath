@@ -60,7 +60,7 @@ Page({
             })
         }
         if (this.data.firstInto) {
-            Protocol.getAnalysisNotes({}).then(data => {
+            Protocol.getAnalysisNotes().then(data => {
                 let noteList = data.result.list;
 
                 this.setData({
@@ -70,6 +70,20 @@ Page({
                 this.handleTipText();
             });
         }
+
+        Protocol.getDeviceBindList().then(data => {
+            let bindList = data.result;
+            console.log('获取到的设备列表', data);
+            if (bindList.length === 0) {
+                app.getBLEManager().closeAll();
+                this.connectionPage.unbind();
+            } else {
+                app.getBLEManager().connect();
+                app.getBLEManager().setBindMarkStorage();
+                this.setData({bindList});
+            }
+            console.log(bindList)
+        })
     },
 
     onShow() {
@@ -92,21 +106,7 @@ Page({
         if (!this.data.firstInto) {
             this.handleTipText();
         }
-
-        Protocol.getDeviceBindList().then(data => {
-            let bindList = data.result;
-            console.log(data);
-            if (bindList.length == 0) {
-                app.getBLEManager().closeAll();
-                this.connectionPage.unbind();
-            } else {
-                app.getBLEManager().connect();
-                this.setData({
-                    bindList: bindList
-                })
-            }
-            console.log(bindList)
-        })
+        app.getBLEManager().getBindMarkStorage() && app.getBLEManager().connect();
     },
 
     handleTipText() {

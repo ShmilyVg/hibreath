@@ -20,7 +20,7 @@ App({
     },
 
     getLatestBLEState() {
-        return this.globalData.latestBLEState;
+        return this.bLEManager.getLatestState();
     },
 
     onLaunch() {
@@ -38,7 +38,7 @@ App({
                     if (isConnected) {
                         Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
                             console.log('绑定协议发送成功');
-                            this.bLEManager.setConnectedMarkStorage();
+                            this.bLEManager.setBindMarkStorage();
                             this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
                         }).catch((res) => {
                             console.log('绑定协议报错', res);
@@ -53,7 +53,7 @@ App({
                     this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
                 }
             }, bleStateListener: ({state}) => {
-                this.globalData.latestBLEState = state;
+                this.bLEManager.latestState = state;
                 console.log('状态更新', state);
                 BlueToothState.CONNECTED === state && this.bLEManager.sendDeviceConnectedRequire();
                 this._updateBLEState({state});
@@ -74,6 +74,5 @@ App({
     },
     globalData: {
         userInfo: {nickname: '', headUrl: '', id: 0},
-        latestBLEState: ''
     }
 });
