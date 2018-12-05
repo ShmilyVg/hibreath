@@ -1,5 +1,5 @@
-<block wx:if="{{list.length}}" >
-<view class="history-box" wx:for="{{list}}" style="background: #{{item.hintBg}}" bindtap="toResult" data-index="{{index}}">
+<block wx:if="{{allList.length}}" >
+<view class="history-box" wx:for="{{allList}}" style="background: #{{item.hintBg}}" bindtap="toResult" data-index="{{index}}">
     <view class="history-bg"><image src="../../images/history/bg.png"></image></view>
     <view class="history-num">{{item['dataValue']}}</view>
     <view class="history-unit">ppm</view>

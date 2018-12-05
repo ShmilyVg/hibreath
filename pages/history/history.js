@@ -5,11 +5,13 @@ import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
-    data: {},
+    data: {
+        allList:[],
+        page:1
+    },
 
-    onLoad: function (options) {
-        Protocol.getBreathDataList({}).then(data => {
-            console.log(data);
+    postGetList(page,isFirstPage) {
+        Protocol.getBreathDataList({page:page}).then(data => {
             let list = data.result.list;
             for (let i in list) {
                 list[i]['date'] = tools.createDateAndTime(list[i]['createdTimestamp']);
@@ -17,10 +19,26 @@ Page({
                 list[i]['hintText'] = listShow.a[list[i]['level'] - 1];
                 list[i]['hintBg'] = listShow.b[list[i]['level'] - 1];
             }
-            this.setData({
-                list: list
-            })
-        });
+
+            if (list.length) {
+                if (!isFirstPage) {
+                    list = this.data.allList.concat(list);
+                    this.data.page++;
+                }else{
+                    wx.stopPullDownRefresh();
+                    this.setData({
+                        page: 1
+                    })
+                }
+                this.setData({
+                    allList: list
+                })
+            }
+        })
+    },
+
+    onLoad: function (options) {
+        this.postGetList(1,true);
     },
 
     toResult(e) {
@@ -32,5 +50,15 @@ Page({
             showUnscramble: true,
             timestamp: list[index]['createdTimestamp']
         });
+    },
+    onPullDownRefresh(){
+        console.log("下拉刷新")
+        this.postGetList(1,true);
+    },
+
+    onReachBottom(){
+        console.log('上拉加载');
+
+        this.postGetList(this.data.page,false);
     }
 })
