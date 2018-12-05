@@ -47,14 +47,14 @@ Page({
     },
 
     handleList(list) {
-        for (let i in list) {
-            let showText = ['', '燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'];
-            let showColor = ['', '555555', 'ff7c00', 'ff5e00', 'e64d3d'];
-            let level = list[i]['level'];
-            list[i]['hintText'] = showText[level];
-            list[i]['hintBg'] = showColor[level];
-            list[i]['date'] = tools.createDateAndTime(list[i]['createdTimestamp']);
-        }
+        let showText = ['', '燃脂不佳', '燃脂一般', '燃脂最佳', '强度过大'];
+        let showColor = ['', '555555', 'ff7c00', 'ff5e00', 'e64d3d'];
+        list.map(function (value) {
+            let level = value['level'];
+            value['hintText'] = showText[level];
+            value['hintBg'] = showColor[level];
+            value['date'] = tools.createDateAndTime(value['createdTimestamp']);
+        });
         return list;
     },
 
