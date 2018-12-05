@@ -31,24 +31,48 @@ export default class BlueToothProtocol {
             //由设备发出的显示结果请求
             '0x78': ({dataArray}) => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x79'})});
-                const result = BlueToothProtocol.hexArrayToNum(dataArray);
-                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result}};
+                const timestamp = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 4));
+                const result = BlueToothProtocol.hexArrayToNum(dataArray.slice(-2));
+                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result, timestamp}};
             },
-            //由App发出的串号请求
-            '0x7a': () => {
-                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
-                return {state: BlueToothState.DEVICE_ID_REQUIRE};
+            // //由App发出的串号请求
+            // '0x7a': () => {
+            //     blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
+            //     return {state: BlueToothState.DEVICE_ID_REQUIRE};
+            // },
+            // //由设备发出的串号反馈
+            // '0x7b': ({dataArray}) => {
+            //     const deviceId = BlueToothProtocol.hexArrayToNum(dataArray);
+            //     return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: {deviceId}};
+            // },
+            //由手机发出的连接请求
+            '0x7c': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
+                return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
-            //由设备发出的串号反馈
-            '0x7b': ({dataArray}) => {
-                const deviceId = BlueToothProtocol.hexArrayToNum(dataArray);
-                return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: {deviceId}};
+            //由设备发出的连接反馈 1接受 0不接受 后面的是
+            '0x7d': ({dataArray}) => {
+                const isConnected = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 1)) === 1;
+                const deviceId = BlueToothProtocol.hexArrayToNum(dataArray.slice(1));
+                return {state: BlueToothState.GET_CONNECTED_RESULT_SUCCESS, dataAfterProtocol: {isConnected, deviceId}};
             },
         }
     }
 
-    requireDeviceId() {
-        this.action['0x7a']();
+    // requireDeviceId() {
+    //     this.action['0x7a']();
+    // }
+
+    requireDeviceConnected() {
+        !wx.getStorageSync('isConnectedDevice') && this.action['0x7c']();
+    }
+
+    setConnectedMarkStorage() {
+        wx.setStorageSync('isConnectedDevice', 1);
+    }
+
+    clearConnectedMarkStorage() {
+        wx.removeStorageSync('isConnectedDevice');
     }
 
     receive({receiveBuffer}) {

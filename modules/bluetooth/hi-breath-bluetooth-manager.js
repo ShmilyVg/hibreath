@@ -30,6 +30,14 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         }
     }
 
+    clearConnectedBLE() {
+        this.bluetoothProtocol.clearConnectedMarkStorage();
+        return super.clearConnectedBLE();
+    }
+
+    setConnectedMarkStorage() {
+        this.bluetoothProtocol.setConnectedMarkStorage();
+    }
     /**
      * 断开蓝牙连接
      * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}
@@ -47,8 +55,12 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         return super.closeAll().then(() => this._isFirstReceive = true);
     }
 
-    sendDeviceIdRequire() {
-        this.bluetoothProtocol.requireDeviceId();
+    // sendDeviceIdRequire() {
+    //     this.bluetoothProtocol.requireDeviceId();
+    // }
+
+    sendDeviceConnectedRequire() {
+        this.bluetoothProtocol.requireDeviceConnected();
     }
 
     /**

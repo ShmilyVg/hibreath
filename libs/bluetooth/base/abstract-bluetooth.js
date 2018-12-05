@@ -46,7 +46,7 @@ export default class AbstractBlueTooth {
         console.log('设备id', this._deviceId);
         return new Promise((resolve, reject) => {
             if (!this._isOpenAdapter) {
-                this.closeAdapter().finally(()=>{
+                this.closeAdapter().finally(() => {
                     wx.openBluetoothAdapter({
                         success: (res) => {
                             console.log('打开蓝牙Adapter成功', res);
@@ -97,9 +97,10 @@ export default class AbstractBlueTooth {
     /**
      * 清除上一次连接的蓝牙设备
      * 这会导致断开目前连接的蓝牙设备
+     * @returns {*|Promise<any>}
      */
     clearConnectedBLE() {
-        this.closeAdapter().finally(() => {
+        return this.closeAdapter().finally(() => {
             wx.removeStorageSync('deviceId');
             this._deviceId = '';
         });

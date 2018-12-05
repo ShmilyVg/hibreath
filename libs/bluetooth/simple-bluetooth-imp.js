@@ -62,7 +62,7 @@ export default class SimpleBlueToothImp {
     }
 
     clearConnectedBLE() {
-        this.bluetoothManager.clearConnectedBLE();
+        return this.bluetoothManager.clearConnectedBLE();
     }
 
     /**

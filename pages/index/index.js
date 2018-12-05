@@ -104,6 +104,7 @@ Page({
         if (!this.data.firstInto) {
             this.handleTipText();
         }
+        app.getBLEManager().connect();
     },
 
     handleTipText() {
