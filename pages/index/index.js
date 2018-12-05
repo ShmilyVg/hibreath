@@ -11,6 +11,7 @@ import * as tools from "../../utils/tools";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
 import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager";
+import BlueToothState from "../../modules/bluetooth/state-const";
 
 const app = getApp();
 
@@ -34,13 +35,13 @@ Page({
     bindBtnClick() {
         HiNavigator.navigateToDeviceBind();
     },
-    disconnectBtnClick(){
+    disconnectBtnClick() {
         app.getBLEManager().connect();
         // this.connectionPage = new ConnectionManager(this);
         // this.connectionPage['disconnect']();
     },
 
-    setBtnClick(){
+    setBtnClick() {
         HiNavigator.navigateToDeviceUnbind(this.data.bindList[0]);
     },
 
@@ -74,7 +75,7 @@ Page({
                 this.connectionPage.unbind();
             } else {
                 this.setData({
-                    bindList:bindList
+                    bindList: bindList
                 })
             }
             console.log(bindList)
@@ -94,13 +95,16 @@ Page({
                 !!action[state] && action[state]();
                 !!antionBlow[state] && antionBlow[state]();
             },
-            receiveDataListener: ({finalResult}) => {
-
+            receiveDataListener: ({finalResult, state}) => {
+                if (BlueToothState.BREATH_FINISH_AND_SUCCESS === state) {
+                    HiNavigator.navigateToResult({score: finalResult.result});
+                }
             }
         });
         if (!this.data.firstInto) {
             this.handleTipText();
         }
+        app.getBLEManager().connect();
     },
 
     handleTipText() {

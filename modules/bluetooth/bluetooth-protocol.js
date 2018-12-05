@@ -31,28 +31,55 @@ export default class BlueToothProtocol {
             //由设备发出的显示结果请求
             '0x78': ({dataArray}) => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x79'})});
-                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: dataArray};
+                const timestamp = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 4));
+                const result = BlueToothProtocol.hexArrayToNum(dataArray.slice(-2));
+                return {state: BlueToothState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result, timestamp}};
             },
-            //由App发出的串号请求
-            '0x7A': () => {
-                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7A'})});
-                return {state: BlueToothState.DEVICE_ID_REQUIRE};
+            // //由App发出的串号请求
+            // '0x7a': () => {
+            //     blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
+            //     return {state: BlueToothState.DEVICE_ID_REQUIRE};
+            // },
+            // //由设备发出的串号反馈
+            // '0x7b': ({dataArray}) => {
+            //     const deviceId = BlueToothProtocol.hexArrayToNum(dataArray);
+            //     return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: {deviceId}};
+            // },
+            //由手机发出的连接请求
+            '0x7c': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
+                return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
-            //由设备发出的串号反馈
-            '0x7B': ({dataArray}) => {
-                return {state: BlueToothState.DEVICE_ID_GET_SUCCESS, dataAfterProtocol: dataArray};
+            //由设备发出的连接反馈 1接受 0不接受 后面的是
+            '0x7d': ({dataArray}) => {
+                const isConnected = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 1)) === 1;
+                const deviceId = BlueToothProtocol.hexArrayToNum(dataArray.slice(1));
+                return {state: BlueToothState.GET_CONNECTED_RESULT_SUCCESS, dataAfterProtocol: {isConnected, deviceId}};
             },
         }
     }
 
-    requireDeviceId() {
-        this.action['0x7A']();
+    // requireDeviceId() {
+    //     this.action['0x7a']();
+    // }
+
+    requireDeviceConnected() {
+        !wx.getStorageSync('isConnectedDevice') && this.action['0x7c']();
+    }
+
+    setConnectedMarkStorage() {
+        wx.setStorageSync('isConnectedDevice', 1);
+    }
+
+    clearConnectedMarkStorage() {
+        wx.removeStorageSync('isConnectedDevice');
     }
 
     receive({receiveBuffer}) {
         const receiveArray = [...new Uint8Array(receiveBuffer)];
         let command = receiveArray[commandIndex];
         let commandHex = `0x${BlueToothProtocol.numToHex(command)}`;
+        console.log('命令字', commandHex);
         let dataLength = receiveArray[2] - 2;
         let dataArray;
         if (dataLength > 0) {
@@ -95,6 +122,11 @@ export default class BlueToothProtocol {
         return ('00' + num.toString(16)).slice(-2);
     }
 
+    /**
+     *
+     * @param num
+     * @returns {*} 一个字节代表16位
+     */
     static numToHexArray(num) {
         if (num === void 0) {
             return [];
@@ -112,4 +144,16 @@ export default class BlueToothProtocol {
         }
         return array;
     }
+
+    /**
+     * hex数组转为num
+     * @param array 按高低八位来排列的数组
+     */
+    static hexArrayToNum(array) {
+        let count = 0, divideNum = array.length - 1;
+        array.forEach((item, index) => count += item << (divideNum - index) * 4);
+        return count;
+    }
 }
+
+

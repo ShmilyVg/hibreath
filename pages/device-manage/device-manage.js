@@ -14,6 +14,7 @@ Page({
     },
     unbindDevice() {
         Protocol.postDeviceUnbind(this.data.deviceId).then(data => {
+            getApp().getBLEManager().closeAll();
             HiNavigator.reLaunch({url: '/pages/index/index'});
         })
     }

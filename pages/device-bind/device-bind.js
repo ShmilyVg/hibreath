@@ -36,7 +36,7 @@ Page({
                     picPath: '../../images/device-bind/fail.png'
                 };
             case BlueToothState.TIMESTAMP:
-                app.getBLEManager().sendDeviceIdRequire();
+                // app.getBLEManager().sendDeviceIdRequire();
 
             default:
                 return {
@@ -66,16 +66,13 @@ Page({
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 this.showResult({state});
-            },
-            receiveDataListener: ({finalResult, state}) => {
-                if (BlueToothState.DEVICE_ID_GET_SUCCESS === state) {
-                    console.log('接收到的设备串号', finalResult);
-                }
             }
         });
-        app.getBLEManager().connect();
     },
 
+    onShow() {
+        app.getBLEManager().connect();
+    }
     // init() {
     //     this.state = {};
     //     this.state[BlueToothState.CONNECTING] = {
