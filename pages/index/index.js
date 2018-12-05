@@ -5,12 +5,8 @@ import UserInfo from "../../modules/network/userInfo";
 import Toast from "../../view/toast";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
-
-
-import * as tools from "../../utils/tools";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
-import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager";
 import BlueToothState from "../../modules/bluetooth/state-const";
 
 const app = getApp();
@@ -78,7 +74,7 @@ Page({
                 app.getBLEManager().closeAll();
                 this.connectionPage.unbind();
             } else {
-                // app.getBLEManager().setBindMarkStorage();
+                app.getBLEManager().setBindMarkStorage();
                 app.getBLEManager().connect();
                 this.setData({bindList});
             }
@@ -89,7 +85,10 @@ Page({
     onShow() {
         const action = this.connectionPage.action;
         const antionBlow = this.blowPage.actionBlow;
-        const latestState = app.getLatestBLEState();
+        let latestState = app.getLatestBLEState();
+        if (BlueToothState.BREATH_FINISH_AND_SUCCESS === latestState) {
+            latestState = BlueToothState.CONNECTED;
+        }
         !!action[latestState] && action[latestState]();
         !!antionBlow[latestState] && antionBlow[latestState]();
         app.setBLEListener({

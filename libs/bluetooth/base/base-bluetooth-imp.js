@@ -107,6 +107,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
      * @returns {boolean|*}
      */
     reconnectBLE() {
+        this._isConnected = false;
         return !this._bleStateListener({state: BaseBlueToothImp.CONNECTING})
             && this._updateFinalState({promise: this.createBLEConnection({deviceId: this._deviceId})});
     }
@@ -159,7 +160,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                 });
                 this._isInitWXBLEListener = true;
             }
-            this._bleStateListener({state: BaseBlueToothImp.CONNECTED})
+            // this._bleStateListener({state: BaseBlueToothImp.CONNECTED})
         })
             .catch((res) => {
                 console.log(res);

@@ -36,7 +36,7 @@ App({
                 if (BlueToothState.GET_CONNECTED_RESULT_SUCCESS === state) {
                     const {isConnected, deviceId} = finalResult;
                     if (isConnected) {
-                        Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
+                        this.bLEManager.getBindMarkStorage() && Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
                             console.log('绑定协议发送成功');
                             this.bLEManager.setBindMarkStorage();
                             this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
