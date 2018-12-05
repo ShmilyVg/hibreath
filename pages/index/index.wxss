@@ -1,5 +1,3 @@
-
-
 page{
   background: #3E3E3E;
 }
@@ -156,6 +154,9 @@ page{
 }
 .home-btn{
   text-align: center;
+  position: fixed;
+  bottom: 80rpx;
+  left: 100rpx;
 }
 .home-btn-box{
   width: 270rpx;
