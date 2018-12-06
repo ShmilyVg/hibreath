@@ -16,7 +16,7 @@ export default class WXDialog {
             fail:res=>{
                 console.log(res);
             },
-            confirmColor: '#64C4FB',
+            confirmColor: '#D16730',
         })
     }
 }

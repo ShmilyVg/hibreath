@@ -1,4 +1,5 @@
 import BlueToothState from "../../modules/bluetooth/state-const";
+import WXDialog from "../../view/dialog";
 
 export default class ConnectionManager {
     constructor(page) {
@@ -8,7 +9,11 @@ export default class ConnectionManager {
             this.unbind();
         };
 
-        this.action[BlueToothState.UNAVAILABLE] = this.action[BlueToothState.DISCONNECT] = () => {
+        this.action[BlueToothState.UNAVAILABLE] = () => {
+            WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+            this.disconnect();
+        };
+            this.action[BlueToothState.DISCONNECT] = () => {
             this.disconnect();
         };
 
