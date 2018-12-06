@@ -52,6 +52,11 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         this.bluetoothProtocol.setBindMarkStorage();
     }
 
+    connect() {
+        this.bluetoothProtocol.setFilter(true);
+        return super.connect();
+    }
+
     /**
      * 断开蓝牙连接
      * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}

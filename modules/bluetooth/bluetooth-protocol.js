@@ -6,7 +6,7 @@ const deviceIndexNum = 6;
 export default class BlueToothProtocol {
 
     constructor(blueToothManager) {
-        this._filtra = true;//过滤
+        this.setFilter(true);//过滤
         this.action = {
             //由设备发出的时间戳请求
             '0x70': () => {
@@ -48,7 +48,7 @@ export default class BlueToothProtocol {
             // },
             //由手机发出的连接请求
             '0x7a': () => {
-                this._filtra = false;
+                this.setFilter(false);
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
@@ -79,6 +79,10 @@ export default class BlueToothProtocol {
         this.action['0x7c']();
     }
 
+    setFilter(filter) {
+        this._filtra = filter;
+    }
+
     getDeviceIsBind() {
         console.log('获取设备是否被绑定', !!wx.getStorageSync('isBindDevice'));
         return !!wx.getStorageSync('isBindDevice');
@@ -89,6 +93,7 @@ export default class BlueToothProtocol {
     }
 
     clearBindMarkStorage() {
+        this.setFilter(true);
         wx.removeStorageSync('isBindDevice');
     }
 
@@ -107,7 +112,7 @@ export default class BlueToothProtocol {
         if (!this._filtra && action) {
             return action({dataArray});
         } else {
-            console.log('协议中包含了unknown状态');;
+            console.log('协议中包含了unknown状态或过滤信息');
             return {state: BlueToothState.UNKNOWN};
         }
     }
