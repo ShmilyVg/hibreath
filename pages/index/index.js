@@ -78,27 +78,27 @@ Page({
                 app.getBLEManager().connect();
                 this.setData({bindList});
             }
-            console.log(bindList)
         })
     },
 
     onShow() {
         const action = this.connectionPage.action;
-        const antionBlow = this.blowPage.actionBlow;
+        const actionBlow = this.blowPage.actionBlow;
         let latestState = app.getLatestBLEState();
         if (BlueToothState.BREATH_FINISH_AND_SUCCESS === latestState) {
             latestState = BlueToothState.CONNECTED_AND_BIND;
         }
         !!action[latestState] && action[latestState]();
-        !!antionBlow[latestState] && antionBlow[latestState]();
+        !!actionBlow[latestState] && actionBlow[latestState]();
         app.setBLEListener({
             bleStateListener: () => {
                 const state = app.getLatestBLEState();
                 !!action[state] && action[state]();
-                !!antionBlow[state] && antionBlow[state]();
+                !!actionBlow[state] && actionBlow[state]();
             },
             receiveDataListener: ({finalResult, state}) => {
                 if (BlueToothState.BREATH_FINISH_AND_SUCCESS === state) {
+
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }
             }
