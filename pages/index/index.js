@@ -56,32 +56,29 @@ Page({
             })
         }
         if (this.data.firstInto) {
-            setTimeout(() => {
-                Protocol.getDeviceBindList().then(data => {
-                    let bindList = data.result;
-                    console.log('获取到的设备列表', data);
-                    if (bindList.length === 0) {
-                        app.getBLEManager().clearConnectedBLE();
-                        this.connectionPage.unbind();
-                    } else {
-                        app.getBLEManager().setBindMarkStorage();
-                        app.getBLEManager().connect();
-                        this.setData({bindList});
-                    }
+            Protocol.getAnalysisNotes().then(data => {
+                let noteList = data.result.list;
+
+                this.setData({
+                    noteList: noteList,
+                    firstInto: false
                 })
-            }, 4000);
-
+                this.handleTipText();
+            });
         }
-        Protocol.getAnalysisNotes().then(data => {
-            let noteList = data.result.list;
 
-            this.setData({
-                noteList: noteList,
-                firstInto: false
-            })
-            this.handleTipText();
-        });
-
+        Protocol.getDeviceBindList().then(data => {
+            let bindList = data.result;
+            console.log('获取到的设备列表', data);
+            if (bindList.length === 0) {
+                app.getBLEManager().clearConnectedBLE();
+                this.connectionPage.unbind();
+            } else {
+                app.getBLEManager().setBindMarkStorage();
+                app.getBLEManager().connect();
+                this.setData({bindList});
+            }
+        })
     },
 
     onShow() {
