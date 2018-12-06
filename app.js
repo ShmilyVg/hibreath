@@ -35,8 +35,8 @@ App({
             receiveDataListener: ({finalResult, state}) => {
                 if (BlueToothState.GET_CONNECTED_RESULT_SUCCESS === state) {
                     const {isConnected, deviceId} = finalResult;
-                    if (isConnected && this.bLEManager.getBindMarkStorage()) {
-                        Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
+                    if (isConnected) {
+                        !this.bLEManager.getBindMarkStorage() && Protocol.postDeviceBind({deviceId: deviceId}).then(() => {
                             console.log('绑定协议发送成功');
                             this.bLEManager.setBindMarkStorage();
                             this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
@@ -45,9 +45,7 @@ App({
                             this._updateBLEState({state: BlueToothState.UNBIND});
                         });
                     } else {
-                        this.bLEManager.clearConnectedBLE().finally(() => {
-                            this._updateBLEState({state: BlueToothState.UNBIND});
-                        });
+                        this.bLEManager.clearConnectedBLE();
                     }
                 } else {
                     this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});

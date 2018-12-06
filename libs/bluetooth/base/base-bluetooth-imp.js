@@ -94,6 +94,9 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
      * @returns {*}
      */
     openAdapterAndConnectLatestBLE() {
+        if (this._isConnected) {
+            return new Promise((resolve) => resolve);
+        }
         return !this._bleStateListener({state: BaseBlueToothImp.CONNECTING})
             && this._updateFinalState({
                 promise: this.openAdapter().then(() => !!this._deviceId ?
