@@ -80,7 +80,7 @@ export default class BlueToothProtocol {
     }
 
     getDeviceIsBind() {
-        console.log('获取设备是否被绑定', wx.getStorageSync('isBindDevice'));
+        console.log('获取设备是否被绑定', !!wx.getStorageSync('isBindDevice'));
         return !!wx.getStorageSync('isBindDevice');
     }
 

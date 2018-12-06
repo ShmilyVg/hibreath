@@ -1,5 +1,6 @@
 // pages/device-bind/device-bind.js
 import BlueToothState from "../../modules/bluetooth/state-const";
+import HiNavigator from "../../navigator/hi-navigator";
 
 const app = getApp();
 
@@ -29,6 +30,7 @@ Page({
                 };
             case BlueToothState.UNAVAILABLE:
             case BlueToothState.DISCONNECT:
+            case BlueToothState.UNBIND:
                 return {
                     color: '#979797',
                     text: '绑定失败，请检查后重试',
@@ -62,6 +64,13 @@ Page({
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 this.showResult({state});
+            },
+            receiveDataListener: ({finalResult, state}) => {
+                if (BlueToothState.GET_CONNECTED_RESULT_SUCCESS === state) {
+                    const {isConnected} = finalResult;
+                    app.getBLEManager().updateBLEStateImmediately({state: BlueToothState.CONNECTED});
+                    isConnected && HiNavigator.navigateBack({delta: 1});
+                }
             }
         });
     },

@@ -46,7 +46,7 @@ App({
                         });
                     } else {
                         this.bLEManager.clearConnectedBLE().finally(() => {
-                            this._updateBLEState({state});
+                            this._updateBLEState({state: BlueToothState.UNBIND});
                         });
                     }
                 } else {

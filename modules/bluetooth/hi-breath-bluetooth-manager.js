@@ -33,7 +33,10 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
     }
 
     getLatestState() {
-        return this.latestState;
+        if (this.getBindMarkStorage()) {
+            return this.latestState;
+        }
+        return this.latestState = BlueToothState.UNBIND;
     }
 
     clearConnectedBLE() {
@@ -42,7 +45,7 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
     }
 
     getBindMarkStorage() {
-        this.bluetoothProtocol.getDeviceIsBind();
+        return this.bluetoothProtocol.getDeviceIsBind();
     }
 
     setBindMarkStorage() {
