@@ -80,6 +80,7 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
 
     startProtocol() {
         setTimeout(() => {
+            this.bluetoothProtocol.setFilter(false);
             this.getBindMarkStorage() ? this.bluetoothProtocol.startCommunication() : this.bluetoothProtocol.requireDeviceBind();
         }, 2000);
     }

@@ -48,7 +48,6 @@ export default class BlueToothProtocol {
             // },
             //由手机发出的连接请求
             '0x7a': () => {
-                this.setFilter(false);
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
@@ -93,7 +92,6 @@ export default class BlueToothProtocol {
     }
 
     clearBindMarkStorage() {
-        this.setFilter(true);
         wx.removeStorageSync('isBindDevice');
     }
 
