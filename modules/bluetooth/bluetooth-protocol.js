@@ -62,7 +62,7 @@ export default class BlueToothProtocol {
             },
             '0x7c': () => {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7c'})});
-                return {state: BlueToothState.CONNECTED};
+                return {state: BlueToothState.CONNECTED_AND_BIND};
             }
         }
     }
@@ -107,6 +107,7 @@ export default class BlueToothProtocol {
         if (!this._filtra && action) {
             return action({dataArray});
         } else {
+            console.log('协议中包含了unknown状态');;
             return {state: BlueToothState.UNKNOWN};
         }
     }

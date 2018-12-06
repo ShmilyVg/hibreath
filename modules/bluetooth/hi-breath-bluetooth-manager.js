@@ -56,9 +56,9 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
      * 断开蓝牙连接
      * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}
      */
-    disconnect() {
-        return super.disconnect().then(() => this._isFirstReceive = true);
-    }
+    // disconnect() {
+    //     return super.disconnect().then(() => this._isFirstReceive = true);
+    // }
 
     /**
      * 关闭蓝牙适配器
@@ -95,6 +95,9 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
      */
     dealReceiveData({receiveBuffer}) {
         const {dataAfterProtocol, state} = this.bluetoothProtocol.receive({receiveBuffer});
+        if (BlueToothState.UNKNOWN === state) {
+            return {filter: true};
+        }
         super.updateBLEStateImmediately({state});
         HiBreathBlueToothManager.logReceiveData({receiveBuffer});
         return {finalResult: dataAfterProtocol, state};

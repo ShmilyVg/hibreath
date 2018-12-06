@@ -18,8 +18,8 @@ export default class AbstractBlueTooth {
         this._startDiscoveryTimeoutIndex = 0;
         this._receiveDataInsideListener = ({receiveBuffer}) => {
             if (!!this._receiveDataListener) {
-                const {finalResult, state} = this.dealReceiveData({receiveBuffer});
-                this._receiveDataListener({finalResult, state});
+                const {finalResult, state, filter} = this.dealReceiveData({receiveBuffer});
+                !filter && this._receiveDataListener({finalResult, state});
             }
         };
     }

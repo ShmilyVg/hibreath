@@ -17,8 +17,9 @@ Page({
             {text: '您的手机未授权微信获取定位权限'},
             {text: '您的设备正在被其他人使用'},
             {text: '您未在设备上短按按键确认绑定'},
-        ]
+        ],
     },
+    isBind: false,
 
     getResultState({state}) {
         switch (state) {
@@ -31,6 +32,8 @@ Page({
             case BlueToothState.UNAVAILABLE:
             case BlueToothState.DISCONNECT:
             case BlueToothState.UNBIND:
+                this.isBind = false;
+                app.getBLEManager().clearConnectedBLE();
                 return {
                     color: '#979797',
                     text: '绑定失败，请检查后重试',
@@ -67,8 +70,9 @@ Page({
             },
             receiveDataListener: ({finalResult, state}) => {
                 if (BlueToothState.GET_CONNECTED_RESULT_SUCCESS === state) {
+                    this.isBind = true;
                     const {isConnected} = finalResult;
-                    app.getBLEManager().updateBLEStateImmediately({state: BlueToothState.CONNECTED});
+                    app.getBLEManager().updateBLEStateImmediately({state: BlueToothState.CONNECTED_AND_BIND});
                     isConnected && HiNavigator.navigateBack({delta: 1});
                 }
             }
@@ -76,9 +80,11 @@ Page({
     },
 
     onShow() {
-        app.getBLEManager().connect().catch(() => {
-            app.getBLEManager().clearConnectedBLE();
-        });
+        app.getBLEManager().connect();
+    },
+
+    onUnload() {
+        !this.isBind && app.getBLEManager().clearConnectedBLE();
     }
     // init() {
     //     this.state = {};

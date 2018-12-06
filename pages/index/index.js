@@ -87,12 +87,13 @@ Page({
         const antionBlow = this.blowPage.actionBlow;
         let latestState = app.getLatestBLEState();
         if (BlueToothState.BREATH_FINISH_AND_SUCCESS === latestState) {
-            latestState = BlueToothState.CONNECTED;
+            latestState = BlueToothState.CONNECTED_AND_BIND;
         }
         !!action[latestState] && action[latestState]();
         !!antionBlow[latestState] && antionBlow[latestState]();
         app.setBLEListener({
-            bleStateListener: ({state}) => {
+            bleStateListener: () => {
+                const state = app.getLatestBLEState();
                 !!action[state] && action[state]();
                 !!antionBlow[state] && antionBlow[state]();
             },

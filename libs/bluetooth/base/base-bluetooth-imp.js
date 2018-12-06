@@ -160,7 +160,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                 });
                 this._isInitWXBLEListener = true;
             }
-            // this._bleStateListener({state: BaseBlueToothImp.CONNECTED})
+            this._bleStateListener({state: BaseBlueToothImp.CONNECTED})
         })
             .catch((res) => {
                 console.log(res);

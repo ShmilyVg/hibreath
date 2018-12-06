@@ -6,6 +6,7 @@ export default class BlueToothState {
     static DISCONNECT = BaseBlueToothImp.DISCONNECT;
     static CONNECTING = BaseBlueToothImp.CONNECTING;
     static CONNECTED = BaseBlueToothImp.CONNECTED;
+    static CONNECTED_AND_BIND = 'connected_and_bind';
     static TIMESTAMP = 'timestamp';//开始预热状态
     static PRE_HOT_START = 'pre_hot_start';//开始预热状态
     static PRE_HOT_FINISH_AND_START_BREATH = 'pre_hot_finish_and_start_breath';//预热完成开始吹气
