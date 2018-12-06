@@ -71,7 +71,7 @@ Page({
             let bindList = data.result;
             console.log('获取到的设备列表', data);
             if (bindList.length === 0) {
-                app.getBLEManager().closeAll();
+                app.getBLEManager().clearConnectedBLE();
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
