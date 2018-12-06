@@ -128,7 +128,7 @@ Page({
             .then(() => UserInfo.get())
             .then(({userInfo}) => this.setData({userInfo}))
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
-
+        this.bindBtnClick();
     },
     onUnload() {
         app.getBLEManager().closeAll();
