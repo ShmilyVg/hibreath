@@ -76,7 +76,9 @@ Page({
     },
 
     onShow() {
-        app.getBLEManager().connect();
+        app.getBLEManager().connect().catch(() => {
+            app.getBLEManager().clearConnectedBLE();
+        });
     }
     // init() {
     //     this.state = {};
