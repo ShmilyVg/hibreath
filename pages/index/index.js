@@ -56,29 +56,32 @@ Page({
             })
         }
         if (this.data.firstInto) {
-            Protocol.getAnalysisNotes().then(data => {
-                let noteList = data.result.list;
-
-                this.setData({
-                    noteList: noteList,
-                    firstInto: false
+            setTimeout(() => {
+                Protocol.getDeviceBindList().then(data => {
+                    let bindList = data.result;
+                    console.log('获取到的设备列表', data);
+                    if (bindList.length === 0) {
+                        app.getBLEManager().clearConnectedBLE();
+                        this.connectionPage.unbind();
+                    } else {
+                        app.getBLEManager().setBindMarkStorage();
+                        app.getBLEManager().connect();
+                        this.setData({bindList});
+                    }
                 })
-                this.handleTipText();
-            });
-        }
+            }, 4000);
 
-        Protocol.getDeviceBindList().then(data => {
-            let bindList = data.result;
-            console.log('获取到的设备列表', data);
-            if (bindList.length === 0) {
-                app.getBLEManager().clearConnectedBLE();
-                this.connectionPage.unbind();
-            } else {
-                app.getBLEManager().setBindMarkStorage();
-                app.getBLEManager().connect();
-                this.setData({bindList});
-            }
-        })
+        }
+        Protocol.getAnalysisNotes().then(data => {
+            let noteList = data.result.list;
+
+            this.setData({
+                noteList: noteList,
+                firstInto: false
+            })
+            this.handleTipText();
+        });
+
     },
 
     onShow() {
@@ -98,7 +101,6 @@ Page({
             },
             receiveDataListener: ({finalResult, state}) => {
                 if (BlueToothState.BREATH_FINISH_AND_SUCCESS === state) {
-
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }
             }

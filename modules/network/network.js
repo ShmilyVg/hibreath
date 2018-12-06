@@ -1,7 +1,8 @@
 import {PostUrl} from "../../utils/config";
 import Login from "./login";
+import WXDialog from "../../view/dialog";
 
-let _token, _queue = {};
+let _token, _queue = {}, divideTimestamp = 0;
 export default class Network {
 
     static setToken({token}) {
@@ -28,7 +29,13 @@ export default class Network {
                     }
                     reject(res);
                 },
-                fail: reject,
+                fail: (res) => {
+                    console.log('协议错误', res);
+                    if (res.errMsg.indexOf("No address associated") !== -1 || res.errMsg.indexOf('已断开与互联网') !== -1 || res.errMsg.indexOf('request:fail timeout') !== -1) {
+                        Network._dealTimeout(requestObj);
+                    }
+                    reject(res);
+                },
             };
             if (!!_token || requestWithoutLogin) {
                 wx.request(requestObj);
@@ -48,5 +55,22 @@ export default class Network {
             }
         }
         _queue = {};
+    }
+
+    static _dealTimeout(requestObj) {
+        _queue[url] = requestObj;
+        const now = Date.now();
+        if (now - divideTimestamp > 2000) {
+            WXDialog.showDialog({
+                content: '网络异常，请重试', showCancel: true, confirmEvent: () => {
+                    divideTimestamp = 0;
+                    Network.resendAll();
+                }, cancelEvent: () => {
+                    divideTimestamp = 0;
+                    delete _queue.url;
+                }
+            });
+        }
+        divideTimestamp = now;
     }
 }
