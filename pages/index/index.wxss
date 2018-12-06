@@ -133,6 +133,11 @@ page{
   font-size: 32rpx;
   height:42rpx;
 }
+.home-state-btn button{
+  color: #FF5E00;
+  font-size: 32rpx;
+  border:0;
+}
 .home-state{
   text-align: center;
   color: #979797;

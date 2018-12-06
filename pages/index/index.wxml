@@ -9,11 +9,11 @@
   <view class="home-heart-box1"></view>
   <view class="home-heart-box2"></view>
   <view class="home-heart-box3 {{box3State[box3StateIndex]}}"></view>
-  <button class="home-heart-box4 {{box4State[box4StateIndex]}}" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">{{message}}</button>
+  <button class="home-heart-box4 {{box4State[box4StateIndex]}}" >{{message}}</button>
   <view wx:if="{{unitShow}}" class="home-heart-unit">ppm</view>
 </view>
 
-<view class="home-state-btn" wx:if="{{bindBtnShow}}" bindtap="bindBtnClick"><text>{{bindBtn}}</text></view>
+<view class="home-state-btn" wx:if="{{bindBtnShow}}"><button plain="true" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">{{bindBtn}}</button></view>
 <view class="home-state-btn" wx:elif="{{disconnectBtnShow}}" bindtap="disconnectBtnClick">{{disconnect}}</view>
 <view class="home-state" wx:else>{{state}}</view>
 
