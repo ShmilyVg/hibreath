@@ -53,7 +53,17 @@ App({
             }, bleStateListener: ({state}) => {
                 this.bLEManager.latestState = state;
                 console.log('状态更新', state);
-                BlueToothState.CONNECTED === state && this.bLEManager.startProtocol();
+                switch (state) {
+                    case BlueToothState.CONNECTED:
+                        this.bLEManager.startProtocol();
+                        break;
+                    case BlueToothState.UNBIND:
+                    case BlueToothState.DISCONNECT:
+                    case BlueToothState.UNAVAILABLE:
+                        this.bLEManager.setFilter(true);
+                        break;
+
+                }
                 this._updateBLEState({state});
             }
         })

@@ -6,7 +6,6 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
 
     constructor() {
         super();
-        this._isFirstReceive = true;
         this.setUUIDs({services: ['6E400001-B5A3-F393-E0A9-E50E24DCCA9E']});//设置主Services方式如 this.setUUIDs({services: ['xxxx']})  xxxx为UUID全称，可设置多个
         this.bluetoothProtocol = new BlueToothProtocol(this);
         this.latestState = BlueToothState.UNBIND;
@@ -52,46 +51,25 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         this.bluetoothProtocol.setBindMarkStorage();
     }
 
-    connect() {
-        this.bluetoothProtocol.setFilter(true);
-        return super.connect();
-    }
-
-    /**
-     * 断开蓝牙连接
-     * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}
-     */
-    // disconnect() {
-    //     return super.disconnect().then(() => this._isFirstReceive = true);
-    // }
-
     /**
      * 关闭蓝牙适配器
      * 调用此接口会先断开蓝牙连接，停止蓝牙设备的扫描，并关闭蓝牙适配器
      * @returns {PromiseLike<boolean | never> | Promise<boolean | never>}
      */
     closeAll() {
-        return super.closeAll().then(() => this._isFirstReceive = true);
+        return super.closeAll();
     }
 
-    // sendDeviceIdRequire() {
-    //     this.bluetoothProtocol.requireDeviceId();
-    // }
+    setFilter(filter) {
+        this.bluetoothProtocol.setFilter(filter);
+    }
 
     startProtocol() {
         setTimeout(() => {
-            this.bluetoothProtocol.setFilter(false);
+            this.setFilter(false);
             this.getBindMarkStorage() ? this.bluetoothProtocol.startCommunication() : this.bluetoothProtocol.requireDeviceBind();
         }, 2000);
     }
-
-    // sendDeviceBindRequire() {
-    //         this.bluetoothProtocol.requireDeviceBind();
-    // }
-    //
-    // startCommunication() {
-    //         this.bluetoothProtocol.startCommunication()
-    // }
 
     /**
      * 处理从蓝牙设备接收到的数据的具体实现
@@ -107,18 +85,6 @@ export default class HiBreathBlueToothManager extends SimpleBlueToothImp {
         super.updateBLEStateImmediately({state});
         HiBreathBlueToothManager.logReceiveData({receiveBuffer});
         return {finalResult: dataAfterProtocol, state};
-    }
-
-    store() {
-
-    }
-
-    onShow() {
-
-    }
-
-    onHide() {
-
     }
 
     /**
