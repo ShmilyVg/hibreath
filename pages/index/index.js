@@ -118,17 +118,18 @@ Page({
     },
 
     onGetUserInfoEvent(e) {
-        Toast.showLoading();
         const {detail: {userInfo, encryptedData, iv}} = e;
-        Login.doRegister({
-            userInfo,
-            encryptedData,
-            iv
-        })
-            .then(() => UserInfo.get())
-            .then(({userInfo}) => this.setData({userInfo}))
-            .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
-        this.bindBtnClick();
+        if (!!userInfo) {
+            Toast.showLoading();
+            Login.doRegister({
+                userInfo,
+                encryptedData,
+                iv
+            })
+                .then(() => UserInfo.get())
+                .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
+                .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
+        }
     },
     onUnload() {
         app.getBLEManager().closeAll();
