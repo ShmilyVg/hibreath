@@ -1,5 +1,6 @@
 <!--pages/device-manage/device-manage.wxml-->
 <view class="flex-column">
-    <view class="image"></view>
+    <image class="image" src="../../images/device-manage/broken.png"></image>
+    <text class="device-name">燃脂检测仪</text>
     <view class="bottom-btn btn-bg" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
 </view>
