@@ -38,7 +38,8 @@ export default class ConnectionManager {
             unitShow: false,
             homeBottom:true,
             box3StateIndex:0,
-            box4StateIndex:0
+            box4StateIndex:0,
+            bindList:[]
         })
     }
 

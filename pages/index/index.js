@@ -39,7 +39,7 @@ Page({
     },
 
     setBtnClick() {
-        HiNavigator.navigateToDeviceUnbind({deviceId: this.data.bindList[0]});
+        HiNavigator.navigateToDeviceUnbind();
     },
 
     onLoad() {
