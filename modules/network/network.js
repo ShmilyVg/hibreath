@@ -18,6 +18,7 @@ export default class Network {
                 method: 'POST',
                 success: res => {
                     const {data} = res;
+                    console.log('协议正常', res);
                     if (!!data && 1 === data.code) {
                         resolve(data);
                     } else if (data.code === 9) {
