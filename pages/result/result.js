@@ -16,6 +16,12 @@ Page({
     onLoad: function (options) {
         let that = this;
 
+        let date = tools.createDateAndTime(new Date());
+        let dateText = `${date.date}\n${date.time}`;
+        that.setData({
+            dateText: dateText,
+        });
+
         Protocol.getAnalysisSituation().then(data => {
             let list = data.result.list;
             that.setData({
@@ -34,10 +40,7 @@ Page({
                 });
                 that.postAnalysisFetch(that);
             } else {
-                let date = tools.createDateAndTime(new Date());
-                let dateText = `${date.date}\n${date.time}`;
                 that.setData({
-                    dateText: dateText,
                     showUnscramble: false,
                     postAdd: true
                 })
