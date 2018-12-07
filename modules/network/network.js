@@ -18,7 +18,7 @@ export default class Network {
                 method: 'POST',
                 success: res => {
                     const {data} = res;
-                    console.log('协议正常', res);
+                    console.log('协议正常', url, data);
                     if (!!data && 1 === data.code) {
                         resolve(data);
                     } else if (data.code === 9) {
@@ -31,7 +31,7 @@ export default class Network {
                     reject(res);
                 },
                 fail: (res) => {
-                    console.log('协议错误', res);
+                    console.log('协议错误', url, res);
                     if (res.errMsg.indexOf("No address associated") !== -1 || res.errMsg.indexOf('已断开与互联网') !== -1 || res.errMsg.indexOf('request:fail timeout') !== -1) {
                         Network._dealTimeout({url, requestObj});
                         return;
