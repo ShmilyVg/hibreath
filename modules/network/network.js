@@ -33,6 +33,7 @@ export default class Network {
                     console.log('协议错误', res);
                     if (res.errMsg.indexOf("No address associated") !== -1 || res.errMsg.indexOf('已断开与互联网') !== -1 || res.errMsg.indexOf('request:fail timeout') !== -1) {
                         Network._dealTimeout({url, requestObj});
+                        return;
                     }
                     reject(res);
                 },
