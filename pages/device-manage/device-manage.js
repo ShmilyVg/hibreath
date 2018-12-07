@@ -7,11 +7,14 @@ Page({
         deviceId: ''
     },
 
-    onLoad: function (options) {
-        console.log(options);
-        this.setData({
-            deviceId: options.deviceId
+    onLoad() {
+        Protocol.getDeviceBindList().then(data => {
+            const list = data.result;
+            this.setData({
+                deviceId: list[0]
+            })
         })
+
     },
     unbindDevice() {
         Protocol.postDeviceUnbind({deviceId: this.data.deviceId}).then(data => {
