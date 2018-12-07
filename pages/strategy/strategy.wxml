@@ -4,7 +4,7 @@
            <!--src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"></video>-->
     <image class="top-video" src="test.png"></image>
     <view class="title">注意事项</view>
-    <view class="flex-column" style="justify-content: space-between;align-items: left" wx:for="{{3}}">
+    <view class="flex-column" style="justify-content: space-between;align-items: left" wx:for="{{content.length}}">
         <view class="flex-row" style="margin: 38rpx 0;align-items: start">
             <view class="num">{{index+1}}</view>
             <view style="font-size:28rpx;color: #979797;width: 620rpx">{{content[index]}}</view>
