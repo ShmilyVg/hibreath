@@ -2,6 +2,7 @@
 import Protocol from "../../modules/network/protocol";
 import * as tools from "../../utils/tools";
 import HiNavigator from "../../navigator/hi-navigator";
+import UserInfo from "../../modules/network/userInfo";
 
 Page({
 
@@ -26,24 +27,16 @@ Page({
     },
 
     getBreathDataList({page = 1}) {
-        Protocol.getBreathDataList({page: page}).then(data => {
+        Protocol.getBreathDataList({page}).then(data => {
             let list = this.handleList(data.result.list);
             if (list.length) {
-                if (page === 1) {
-                    this.data.page = 1;
-                    this.setData({
-                        allList: list
-                    });
-                    setTimeout(function () {
-                        wx.stopPullDownRefresh();
-                    }, 666);
-                } else {
-                    this.setData({
-                        allList: this.data.allList.concat(list),
-                    })
-                }
+                this.setData({
+                    allList: this.data.allList.concat(list),
+                })
+            } else {
+                this.data.page--;
             }
-        })
+        }).finally(() => wx.stopPullDownRefresh());
     },
 
     handleList(list) {
@@ -59,7 +52,8 @@ Page({
     },
 
     onPullDownRefresh() {
-        this.getBreathDataList({});
+        this.data.allList.splice(0, this.data.allList.length);
+        this.getBreathDataList({page: this.data.page = 1});
     },
 
     onReachBottom() {

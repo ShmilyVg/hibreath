@@ -24,27 +24,27 @@ page{
     height: 100%;
 }
 .history-num{
+    display: inline-block;
     font-size: 130rpx;
     color: #fff;
-    position: absolute;
-    left: 36rpx;
-    top: 0rpx;
     line-height:150rpx;
+    margin-left: 36rpx;
+}
+.history-middle{
+    display: inline-block;
+    height: 150rpx;
+    vertical-align:top;
+    margin-left: 11rpx;
 }
 .history-unit{
     font-size: 30rpx;
     color: #fff;
-    position: absolute;
-    left: 205rpx;
-    top: 60rpx;
+    margin-top: 60rpx;
 }
 .history-hint{
     font-size: 24rpx;
     color: #fff;
-    position: absolute;
-    left: 205rpx;
-    top: 100rpx;
-    opacity: 0.8;
+    margin-top: 5rpx;
 }
 .history-time{
     font-size: 26rpx;
