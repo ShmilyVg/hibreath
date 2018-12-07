@@ -32,7 +32,7 @@ export default class Network {
                 fail: (res) => {
                     console.log('协议错误', res);
                     if (res.errMsg.indexOf("No address associated") !== -1 || res.errMsg.indexOf('已断开与互联网') !== -1 || res.errMsg.indexOf('request:fail timeout') !== -1) {
-                        Network._dealTimeout(requestObj);
+                        Network._dealTimeout({url, requestObj});
                     }
                     reject(res);
                 },
@@ -57,7 +57,7 @@ export default class Network {
         _queue = {};
     }
 
-    static _dealTimeout(requestObj) {
+    static _dealTimeout({url, requestObj}) {
         _queue[url] = requestObj;
         const now = Date.now();
         if (now - divideTimestamp > 2000) {
