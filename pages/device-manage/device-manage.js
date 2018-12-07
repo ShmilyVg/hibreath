@@ -18,7 +18,7 @@ Page({
     },
     unbindDevice() {
         Protocol.postDeviceUnbind({deviceId: this.data.deviceId}).then(data => {
-            getApp().getBLEManager().closeAll();
+            getApp().getBLEManager().clearConnectedBLE();
             HiNavigator.reLaunch({url: '/pages/index/index'});
         }).catch(res => {
             console.log(res);
