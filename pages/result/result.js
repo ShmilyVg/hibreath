@@ -14,33 +14,27 @@ Page({
     },
 
     onLoad: function (options) {
-        let that = this;
-
-        let date = tools.createDateAndTime(new Date());
-        let dateText = `${date.date}\n${date.time}`;
-        that.setData({
-            dateText: dateText,
-        });
-
         Protocol.getAnalysisSituation().then(data => {
             let list = data.result.list;
-            that.setData({
-                list: list
-            });
             // 是否直接显示解读
             if (options.showUnscramble === 'true') {
                 let date = tools.createDateAndTime(new Date(parseInt(options.timestamp)));
                 let dateText = `${date.date}\n${date.time}`;
-                that.setData({
+                this.setData({
+                    list: list,
                     cardTitle: list[options.situation]['text_zh'],
                     showUnscramble: true,
                     index: options.situation,
                     dateText: dateText,
                     postAdd: false
                 });
-                that.postAnalysisFetch(that);
+                this.postAnalysisFetch();
             } else {
-                that.setData({
+                let date = tools.createDateAndTime(new Date());
+                let dateText = `${date.date}\n${date.time}`;
+                this.setData({
+                    dateText: dateText,
+                    list: list,
                     showUnscramble: false,
                     postAdd: true
                 })
@@ -57,7 +51,7 @@ Page({
         } else if (score > 80) {
             mainColor = '#E64D3D'
         }
-        that.setData({
+        this.setData({
             mainColor: mainColor,
             score: score
         });
@@ -68,15 +62,16 @@ Page({
     },
 
     clickChoose: function (e) {
+        let that = this;
         if (e.currentTarget.dataset.index) {
             let index = e.currentTarget.dataset.index;
             let list = this.data.list;
-            for (let i in list) {
-                list[i]['isChose'] = index == list[i]['key'];
-                if (list[i]['isChose']) {
-                    this.data.cardTitle = tools.deleteLineBreak(list[i]['text_zh']);
+            list.map(function (value) {
+                value.isChose = index == value.key;
+                if (value.isChose) {
+                    that.data.cardTitle = tools.deleteLineBreak(value.text_zh);
                 }
-            }
+            });
             this.setData({
                 list: list,
                 isChose: true,
@@ -89,23 +84,25 @@ Page({
         if (!this.data.index) {
             return;
         }
-        this.postAnalysisFetch(this);
+        this.postAnalysisFetch();
     },
 
-    postAnalysisFetch(that) {
+    postAnalysisFetch() {
         toast.showLoading();
-        Protocol.getAnalysisFetch({dataValue: that.data.score, situation: parseInt(that.data.index)}
-        ).then(data => {
+        Protocol.getAnalysisFetch({
+            dataValue: this.data.score,
+            situation: parseInt(this.data.index)
+        }).then(data => {
             let description = data.result.description;
-            that.setData({
+            this.setData({
                 description: description,
                 showUnscramble: true,
-                cardTitle: that.data.cardTitle
+                cardTitle: this.data.cardTitle
             });
             toast.hiddenLoading();
-            if (that.data.postAdd) {
+            if (this.data.postAdd) {
                 Protocol.getBreathDataAdd(
-                    {dataValue: that.data.score, situation: parseInt(that.data.index)}
+                    {dataValue: this.data.score, situation: parseInt(this.data.index)}
                 ).then(data => {
                     console.log('增加成功~');
                 })

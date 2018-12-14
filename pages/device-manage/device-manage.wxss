@@ -1,11 +1,16 @@
 /* pages/device-manage/device-manage.wxss */
 
 .image{
-    width: 606rpx;
-    height: 606rpx;
-    margin-top: 50rpx;
-    margin-bottom: 66rpx;
-    background-color: lightblue;
+    width: 260rpx;
+    height: 260rpx;
+    margin-top: 110rpx;
+}
+
+.device-name{
+    font-size:32rpx;
+    font-weight:600;
+    color:rgba(151,151,151,1);
+    margin: 47rpx 0;
 }
 
 .btn-bg{
