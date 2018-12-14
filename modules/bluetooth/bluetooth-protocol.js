@@ -51,7 +51,7 @@ export default class BlueToothProtocol {
                 blueToothManager.sendData({buffer: this.createBuffer({command: '0x7a'})});
                 return {state: BlueToothState.SEND_CONNECTED_REQUIRED};
             },
-            //由设备发出的连接反馈 1接受 0不接受 后面的是
+            //由设备发出的连接反馈 1接受 2不接受 后面的是
             '0x7b': ({dataArray}) => {
                 const isConnected = BlueToothProtocol.hexArrayToNum(dataArray.slice(0, 1)) === 1;
                 const deviceId = BlueToothProtocol.hexArrayToNum(dataArray.slice(1));

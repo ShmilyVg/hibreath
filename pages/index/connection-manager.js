@@ -4,14 +4,18 @@ import WXDialog from "../../view/dialog";
 export default class ConnectionManager {
     constructor(page) {
         this._page = page;
+        this._timeoutIndex = 0;
         this.action = {};
         this.action[BlueToothState.UNBIND] = () => {
             this.unbind();
         };
 
         this.action[BlueToothState.UNAVAILABLE] = () => {
-            WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-            this.disconnect();
+            clearTimeout(this._timeoutIndex);
+            this._timeoutIndex = setTimeout(() => {
+                WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                this.disconnect();
+            },200);
         };
             this.action[BlueToothState.DISCONNECT] = () => {
             this.disconnect();
