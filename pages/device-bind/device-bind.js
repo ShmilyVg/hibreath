@@ -65,13 +65,19 @@ Page({
     onLoad(options) {
         app.setBLEListener({
             bleStateListener: ({state}) => {
-                this.showResult({state});
+                this.showResult({state: state.connectState});
             },
             receiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state) {
                     this.isBind = true;
                     const {isConnected} = finalResult;
-                    app.getBLEManager().updateBLEStateImmediately({state: ProtocolState.CONNECTED_AND_BIND});
+                    const bleManager = app.getBLEManager();
+                    bleManager.updateBLEStateImmediately(
+                        bleManager.getState({
+                            connectState: ConnectState.CONNECTED,
+                            protocolState: ProtocolState.CONNECTED_AND_BIND
+                        })
+                    );
                     isConnected && HiNavigator.navigateBack({delta: 1});
                 }
             }
