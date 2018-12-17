@@ -1,5 +1,5 @@
 // pages/device-bind/device-bind.js
-import BlueToothState from "../../modules/bluetooth/state-const";
+import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 
 const app = getApp();
@@ -23,15 +23,15 @@ Page({
 
     getResultState({state}) {
         switch (state) {
-            case BlueToothState.CONNECTING:
+            case ConnectState.CONNECTING:
                 return {
                     color: '#979797',
                     text: '正在寻找您的设备\n请将设备开机并靠近手机',
                     picPath: '../../images/device-bind/connecting.png'
                 };
-            case BlueToothState.UNAVAILABLE:
-            case BlueToothState.DISCONNECT:
-            case BlueToothState.UNBIND:
+            case ConnectState.UNAVAILABLE:
+            case ConnectState.DISCONNECT:
+            case ConnectState.UNBIND:
                 this.isBind = false;
                 app.getBLEManager().clearConnectedBLE();
                 return {
@@ -51,7 +51,7 @@ Page({
     showResult({state}) {
         this.setData({
             result: this.getResultState({state}),
-            showReConnected: state === BlueToothState.DISCONNECT || state === BlueToothState.UNAVAILABLE
+            showReConnected: state === ConnectState.DISCONNECT || state === ConnectState.UNAVAILABLE
         });
     },
 
@@ -63,16 +63,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // this.init();
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 this.showResult({state});
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (BlueToothState.GET_CONNECTED_RESULT_SUCCESS === state) {
+                if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state) {
                     this.isBind = true;
                     const {isConnected} = finalResult;
-                    app.getBLEManager().updateBLEStateImmediately({state: BlueToothState.CONNECTED_AND_BIND});
+                    app.getBLEManager().updateBLEStateImmediately({state: ProtocolState.CONNECTED_AND_BIND});
                     isConnected && HiNavigator.navigateBack({delta: 1});
                 }
             }
@@ -86,22 +85,4 @@ Page({
     onUnload() {
         !this.isBind && app.getBLEManager().clearConnectedBLE();
     }
-    // init() {
-    //     this.state = {};
-    //     this.state[BlueToothState.CONNECTING] = {
-    //         color: '#979797',
-    //         text: '正在寻找您的设备\n请将设备开机并靠近手机',
-    //         picPath: '../../images/device-bind/connecting.png'
-    //     };
-    //     this.state[BlueToothState.CONNECTED] = {
-    //         color: '#FE5E01',
-    //         text: '已找到您的设备\n短按设备上的按键确认绑定',
-    //         picPath: '../../images/device-bind/connected.png'
-    //     };
-    //     this.state[BlueToothState.DISCONNECT] = this.state[BlueToothState.UNAVAILABLE] = this.state[BlueToothState.UNKNOWN] = {
-    //         color: '#979797',
-    //         text: '绑定失败，请检查后重试',
-    //         picPath: '../../images/device-bind/fail.png'
-    //     };
-    // },
 });

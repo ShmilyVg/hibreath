@@ -104,13 +104,6 @@ export default class AbstractBlueTooth {
         return this.closeAdapter().finally(() => {
             wx.removeStorageSync('deviceId');
             this._deviceId = '';
-            this._isOpenAdapter = false;
-            this._isStartDiscovery = false;
-            this._isActiveCloseBLE = false;
-            this._isConnected = false;
-            this._deviceId = '';
-            this._serviceId = '';
-            this._characteristicId = '';
         });
     }
 

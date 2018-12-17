@@ -7,7 +7,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
-import BlueToothState from "../../modules/bluetooth/state-const";
+import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
 const app = getApp();
 
@@ -85,8 +85,8 @@ Page({
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
         let latestState = app.getLatestBLEState();
-        if (BlueToothState.BREATH_FINISH_AND_SUCCESS === latestState) {
-            latestState = BlueToothState.CONNECTED_AND_BIND;
+        if (ProtocolState.BREATH_FINISH_AND_SUCCESS === latestState) {
+            latestState = ProtocolState.CONNECTED_AND_BIND;
         }
         !!action[latestState] && action[latestState]();
         !!actionBlow[latestState] && actionBlow[latestState]();
@@ -97,7 +97,7 @@ Page({
                 !!actionBlow[state] && actionBlow[state]();
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (BlueToothState.BREATH_FINISH_AND_SUCCESS === state) {
+                if (ProtocolState.BREATH_FINISH_AND_SUCCESS === state) {
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }
             }
