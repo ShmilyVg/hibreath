@@ -8,12 +8,16 @@ const obj = {
     commonOnLaunch({options, bLEManager}) {
         this.doLogin();
         this.bLEManager = bLEManager;
+        let isConnected = false;
         this.bLEManager.setBLEListener({
             receiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state.protocolState) {
                     const {isConnected, deviceId} = finalResult;
                     if (isConnected) {
-                        !this.bLEManager.getBindMarkStorage() && Protocol.postDeviceBind({deviceId}).then(() => {
+                        !this.bLEManager.getBindMarkStorage() && Protocol.postDeviceBind({
+                            deviceId,
+                            mac: this.bLEManager.getDeviceMacAddress()
+                        }).then(() => {
                             console.log('绑定协议发送成功');
                             this.bLEManager.setBindMarkStorage();
                             this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({
@@ -35,12 +39,17 @@ const obj = {
                 console.log('状态更新', state);
                 switch (state.connectState) {
                     case ConnectState.CONNECTED:
-                        this.bLEManager.startProtocol();
+                        if (!isConnected) {
+                            this.bLEManager.startProtocol();
+                            this.bLEManager.setFilter(false);
+                            isConnected = true;
+                        }
                         break;
                     case ConnectState.UNBIND:
                     case ConnectState.DISCONNECT:
                     case ConnectState.UNAVAILABLE:
                         this.bLEManager.setFilter(true);
+                        isConnected = false;
                         break;
 
                 }
