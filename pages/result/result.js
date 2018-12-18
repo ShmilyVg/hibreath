@@ -9,7 +9,7 @@ Page({
         mainColor: '#000000',
         showUnscramble: false,//是否显示解读
         isChose: false,
-        cardTitle: '请问本次是在什么状态下检测的？',
+        cardTitle: '选择并保存检测时状态，以便综合分析',
         score: 0,
     },
 
