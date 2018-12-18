@@ -1,27 +1,31 @@
-import BlueToothState from "../../modules/bluetooth/state-const";
 import WXDialog from "../../view/dialog";
+import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
 export default class ConnectionManager {
     constructor(page) {
         this._page = page;
+        this._timeoutIndex = 0;
         this.action = {};
-        this.action[BlueToothState.UNBIND] = () => {
+        this.action[ConnectState.UNBIND] = () => {
             this.unbind();
         };
 
-        this.action[BlueToothState.UNAVAILABLE] = () => {
-            WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-            this.disconnect();
+        this.action[ConnectState.UNAVAILABLE] = () => {
+            clearTimeout(this._timeoutIndex);
+            this._timeoutIndex = setTimeout(() => {
+                WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                this.disconnect();
+            },200);
         };
-            this.action[BlueToothState.DISCONNECT] = () => {
+            this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
         };
 
-        this.action[BlueToothState.CONNECTING] = ()=>{
+        this.action[ConnectState.CONNECTING] = ()=>{
             this.connecting();
         };
 
-        this.action[BlueToothState.CONNECTED_AND_BIND] =this.action[BlueToothState.TIMESTAMP]= ()=>{
+        this.action[ProtocolState.CONNECTED_AND_BIND] =this.action[ProtocolState.TIMESTAMP]= ()=>{
             this.connected();
         };
     }

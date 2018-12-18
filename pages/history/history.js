@@ -2,7 +2,6 @@
 import Protocol from "../../modules/network/protocol";
 import * as tools from "../../utils/tools";
 import HiNavigator from "../../navigator/hi-navigator";
-import UserInfo from "../../modules/network/userInfo";
 
 Page({
 

@@ -1,4 +1,4 @@
-import BaseBlueToothImp from "./base/base-bluetooth-imp";
+import BaseBlueToothImp from "./base-bluetooth-imp";
 
 export default class SimpleBlueToothImp {
     constructor() {
@@ -50,6 +50,10 @@ export default class SimpleBlueToothImp {
      */
     closeAll() {
         return this.bluetoothManager.closeAdapter();
+    }
+
+    getState({connectState, protocolState}) {
+        return this.bluetoothManager.getState(arguments[0]);
     }
 
     /**
