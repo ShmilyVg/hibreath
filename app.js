@@ -3,6 +3,9 @@ import 'libs/adapter';
 import 'modules/network/update';
 import {common} from "./libs/bluetooth/app/common";
 import HiBreathBlueToothManager from "./modules/bluetooth/hi-breath-bluetooth-manager";
+import {ProtocolState} from "./modules/bluetooth/bluetooth-state";
+import Protocol from "./modules/network/protocol";
+
 
 App({
     onLaunch(options) {

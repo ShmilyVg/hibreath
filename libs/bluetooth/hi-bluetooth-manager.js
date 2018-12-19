@@ -5,7 +5,13 @@ export default class HiBlueToothManager extends SimpleBlueToothImp {
 
     constructor() {
         super();
-        this.latestState = CommonConnectState.UNBIND;
+        this.startProtocolTimeoutIndex = 0;
+        this.latestState = {
+            state: {
+                connectState: CommonConnectState.UNBIND,
+                protocolState: CommonProtocolState.UNKNOWN
+            }
+        };
     }
 
     /**
@@ -32,7 +38,12 @@ export default class HiBlueToothManager extends SimpleBlueToothImp {
         if (this.getBindMarkStorage()) {
             return this.latestState;
         }
-        return this.latestState = CommonConnectState.UNBIND;
+        return this.latestState = {
+            state: {
+                connectState: CommonConnectState.UNBIND,
+                protocolState: CommonProtocolState.UNKNOWN
+            }
+        };
     }
 
     clearConnectedBLE() {
@@ -62,8 +73,8 @@ export default class HiBlueToothManager extends SimpleBlueToothImp {
     }
 
     startProtocol() {
-        setTimeout(() => {
-            this.setFilter(false);
+        clearTimeout(this.startProtocolTimeoutIndex);
+        this.startProtocolTimeoutIndex = setTimeout(() => {
             this.getBindMarkStorage() ? this.bluetoothProtocol.startCommunication() : this.bluetoothProtocol.requireDeviceBind();
         }, 2000);
     }
