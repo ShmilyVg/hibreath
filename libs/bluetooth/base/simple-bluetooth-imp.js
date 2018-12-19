@@ -24,20 +24,16 @@ export default class SimpleBlueToothImp {
         return this.bluetoothManager.sendData({buffer});
     }
 
+    getDeviceMacAddress() {
+        return this.bluetoothManager.getDeviceMacAddress();
+    }
+
     /**
      * 连接蓝牙
      * @returns {*}
      */
     connect() {
         return this.bluetoothManager.openAdapterAndConnectLatestBLE();
-    }
-
-    /**
-     * 断开蓝牙
-     * @returns {*}
-     */
-    disconnect() {
-        return this.bluetoothManager.closeBLEConnection();
     }
 
     getConnectDevices() {
@@ -52,6 +48,10 @@ export default class SimpleBlueToothImp {
         return this.bluetoothManager.closeAdapter();
     }
 
+    clearConnectedBLE() {
+        return this.bluetoothManager.clearConnectedBLE();
+    }
+
     getState({connectState, protocolState}) {
         return this.bluetoothManager.getState(arguments[0]);
     }
@@ -63,10 +63,6 @@ export default class SimpleBlueToothImp {
      */
     updateBLEStateImmediately({state}) {
         this.bluetoothManager.updateBLEState({state});
-    }
-
-    clearConnectedBLE() {
-        return this.bluetoothManager.clearConnectedBLE();
     }
 
     /**

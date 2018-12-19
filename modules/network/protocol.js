@@ -30,24 +30,28 @@ export default class Protocol {
         return Network.request({url: 'breathData/add', data: {dataValue, situation}});
     }
 
-    static getBreathDataList({page, pageSize = 15}){
+    static getBreathDataList({page, pageSize = 15}) {
         return Network.request({url: 'breathData/list', data: {page, pageSize}})
     }
 
-    static getAnalysisNotes(){
+    static getAnalysisNotes() {
         return Network.request({url: 'analysis/notes'})
     }
 
-    static getDeviceBindList(){
+    static getDeviceBindList() {
         return Network.request({url: 'device/bindList'})
     }
 
-    static postDeviceBind({deviceId}){
+    static postDeviceBind({deviceId}) {
         return Network.request({url: 'device/bind', data: {deviceId}});
     }
 
-    static postDeviceUnbind({deviceId}){
+    static postDeviceUnbind({deviceId}) {
         return Network.request({url: 'device/unbind', data: {deviceId}});
+    }
+
+    static postBreathDataSetSituation({id, situation}) {
+        return Network.request({url: 'breathData/setSituation', data: {id, situation}});
     }
 
 }
