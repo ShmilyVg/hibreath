@@ -40,4 +40,8 @@ export default class HiNavigator {
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
     }
+
+    static navigateToSetInfo(){
+        this.navigateTo({url:'/pages/set-info/set-info'})
+    }
 }
