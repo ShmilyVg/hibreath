@@ -1,6 +1,7 @@
 // pages/set-info/set-info.js
 import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
+import Protocol from "../../modules/network/protocol";
 
 Page({
 
@@ -15,6 +16,7 @@ Page({
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
         itemBackgroundColor: '#656565',
     },
+
     onLoad: function (options) {
         let timeS = tools.createDateAndTime(Date.parse(new Date()));
         let currentDate = `${timeS.year}-${timeS.month}-${timeS.day}`;
@@ -49,6 +51,20 @@ Page({
                 }
                 break;
             case 4:
+                if (typeof (this.data.choseIndex) == "undefined") {
+                    toast.warn('请选择图片');
+                } else {
+                    let list = this.data.page4MenItem;
+                    if (this.data.info.sex === 0) {
+                        list = this.data.page4WomenItem;
+                    }
+                    this.setData({
+                        'info.bodyFatRate': list[this.data.choseIndex]
+                    });
+                    Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
+
+                    })
+                }
                 break;
         }
     },
@@ -90,11 +106,11 @@ Page({
         })
     },
 
-    page4ItemClick(e){
+    page4ItemClick(e) {
         let index = e.currentTarget.dataset.index;
-        this.setData( {
-           choseIndex: index
-        } );
+        this.setData({
+            choseIndex: index
+        });
     }
 
 })

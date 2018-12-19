@@ -54,8 +54,8 @@ export default class Protocol {
         return Network.request({url: 'breathData/setSituation', data: {id, situation}});
     }
 
-    static postHealthPlanAnalysis({data}) {
-        return Network.request({url: 'healthPlan/analysis', data: data})
+    static postBreathPlanAnalysis(data) {
+        return Network.request({url: 'breathPlan/analysis', data: data})
     }
 
 }
