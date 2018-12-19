@@ -1,0 +1,45 @@
+/* pages/set-info/set-info.wxss */
+
+.title{
+    font-size:50rpx;
+    font-weight:bold;
+    color:rgba(255,255,255,0.8);
+}
+
+.num{
+    width:82rpx;
+    height:48rpx;
+    background:rgba(128,128,128,1);
+    border-radius:24rpx;
+    font-size:30rpx;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:47rpx;
+    text-align: center;
+
+}
+
+.text {
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(128,128,128,1);
+    line-height:36rpx;
+    margin-top: 50rpx;
+}
+
+.card{
+    width:335rpx;
+    height:452rpx;
+    background:rgba(247,247,247,0.1);
+    border-radius:30rpx;
+}
+
+.space-between {
+    justify-content: space-between;
+    width: 690rpx;
+}
+
+page {
+    background-color: #3E3E3E;
+    padding: 100rpx 30rpx;
+}
