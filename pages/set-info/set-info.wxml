@@ -31,10 +31,11 @@
 </block>
 
 <view wx:elif="{{page==4}}" class="page4">
-    <view class="page4-item" wx:for="{{page4Item}}">
+    <view class="page4-item" wx:for="{{info.sexStr?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick" data-index="{{index}}">
         <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
-        <view class="page4-itembottom">{{item}}</view>
+        <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
     </view>
+    <view  class="page4-hint">*图片来源于网络</view>
 </view>
 
 

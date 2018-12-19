@@ -114,8 +114,17 @@ page {
     font-size: 28rpx;
     text-align: center;
     line-height: 41rpx;
-    background: #656565;
+    /*background: #656565;*/
     border-radius: 0 0 28rpx 28rpx;
     position: absolute;
     bottom: 0;
+}
+.page4-hint{
+    width:100%;
+    text-align:center;
+    font-size: 22rpx;
+    color: #5A5A5A;
+    position: fixed;
+    left: 0;
+    bottom: 20rpx;
 }
