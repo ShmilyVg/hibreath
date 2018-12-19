@@ -3,7 +3,7 @@
     <view class="title">{{title[page-1]}}</view>
     <view class="num">{{page}}/4</view>
 </view>
-<view class="text">
+<view class="text" wx:if="{{page!=3}}">
     <text>{{text[page-1]}}</text>
 </view>
 <view wx:if="{{page==1}}" class="flex-row space-between">
@@ -14,12 +14,20 @@
 </view>
 
 <block wx:elif="{{page==2}}">
-    <picker mode="date" value="{{date}}" start="1890-01-01" end="2017-09-01" bindchange="bindBirthChange">
-        <view class="flex-column space-between" style="justify-items: flex-start;height: 66rpx">
-            <view class="birth">1980-01-01</view>
+    <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}" bindchange="bindBirthChange">
+        <view class="flex-column space-between" style="align-items: flex-start;height: 66rpx;">
+            <view class="birth">{{info.birthday}}</view>
             <view class="line"></view>
         </view>
     </picker>
+</block>
+
+<block wx:elif="{{page==3}}">
+    <input class="input" bindinput="bindHeightInput" maxlength="3" />
+    <view class="line"></view>
+    <view class="title" style="margin-top: 165rpx">目前的体重？</view>
+    <input class="input" bindinput="bindWeightInput" maxlength="3" />
+    <view class="line"></view>
 </block>
 
 
