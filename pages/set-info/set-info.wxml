@@ -3,7 +3,7 @@
     <view class="title">{{title[page-1]}}</view>
     <view class="num">{{page}}/4</view>
 </view>
-<view class="text" wx:if="{{page!=3}}">
+<view class="text" style="margin-bottom: {{page==4?'38rpx':'122rpx'}}">
     <text>{{text[page-1]}}</text>
 </view>
 <view wx:if="{{page==1}}" class="flex-row space-between">
@@ -29,6 +29,13 @@
     <input class="input" bindinput="bindWeightInput" maxlength="3" />
     <view class="line"></view>
 </block>
+
+<view wx:elif="{{page==4}}" class="page4">
+    <view class="page4-item" wx:for="{{page4Item}}">
+        <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/man-{{index+1}}.png"></image>
+        <view class="page4-itembottom">{{item}}</view>
+    </view>
+</view>
 
 
 <view class="bottom-btn btn-position" hover-class="press-style" hover-stay-time="50" bindtap="continue">继续</view>
