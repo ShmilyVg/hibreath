@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/set-info/set-info",
     "pages/index/index",
     "pages/strategy/strategy",
     "pages/result/result",

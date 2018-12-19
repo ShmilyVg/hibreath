@@ -1,0 +1,26 @@
+<!--pages/set-info/set-info.wxml-->
+<view class="flex-row space-between">
+    <view class="title">{{title[page-1]}}</view>
+    <view class="num">{{page}}/4</view>
+</view>
+<view class="text">
+    <text>{{text[page-1]}}</text>
+</view>
+<view wx:if="{{page==1}}" class="flex-row space-between">
+    <view class="card flex-column" wx:for="{{sexBox}}" bindtap="chooseSex" data-index="{{index}}">
+        <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
+        <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+    </view>
+</view>
+
+<block wx:elif="{{page==2}}">
+    <picker mode="date" value="{{date}}" start="1890-01-01" end="2017-09-01" bindchange="bindBirthChange">
+        <view class="flex-column space-between" style="justify-items: flex-start;height: 66rpx">
+            <view class="birth">1980-01-01</view>
+            <view class="line"></view>
+        </view>
+    </picker>
+</block>
+
+
+<view class="bottom-btn btn-position" hover-class="press-style" hover-stay-time="50" bindtap="continue">继续</view>
