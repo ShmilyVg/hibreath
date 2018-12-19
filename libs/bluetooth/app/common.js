@@ -27,11 +27,23 @@ const obj = {
                         }).catch((res) => {
                             console.log('绑定协议报错', res);
                             this._updateBLEState({state: {connectState: ConnectState.UNBIND}});
-                            this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({finalResult, state});
+                            this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({
+                                finalResult,
+                                state: this.bLEManager.getState({
+                                    connectState: ConnectState.UNBIND,
+                                    protocolState: state.protocolState
+                                })
+                            });
                         });
                     } else {
                         this.bLEManager.clearConnectedBLE();
-                        this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({finalResult, state});
+                        this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({
+                            finalResult,
+                            state: this.bLEManager.getState({
+                                connectState: ConnectState.UNBIND,
+                                protocolState: state.protocolState
+                            })
+                        });
                     }
                 } else {
                     this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({finalResult, state});
