@@ -75,8 +75,6 @@ Page({
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
-                const action = this.connectionPage.action;
-                action[ProtocolState.CONNECTED_AND_BIND]();
                 app.getBLEManager().connect({macId: deviceInfo.mac});
             }
         })
