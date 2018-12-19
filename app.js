@@ -36,6 +36,10 @@ App({
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },
 
+    onShow(options) {
+        this.commonOnShow({options});
+    },
+
     onHide() {
         this.commonOnHide();
     },

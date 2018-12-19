@@ -105,7 +105,6 @@ Page({
         if (!this.data.firstInto) {
             this.handleTipText();
         }
-        app.getBLEManager().getBindMarkStorage() && app.getBLEManager().connect();
     },
 
     handleTipText() {
