@@ -39,19 +39,20 @@ page{
 .history-unit{
     font-size: 30rpx;
     color: #fff;
-    margin-top: 60rpx;
+    margin-top: 56rpx;
 }
 .history-hint{
-    font-size: 24rpx;
+    font-size: 26rpx;
     color: #fff;
     margin-top: 5rpx;
+    opacity: 0.8;
 }
 .history-time{
     font-size: 26rpx;
     color: #fff;
     position: absolute;
     right: 41rpx;
-    top: 51rpx;
+    top: 64rpx;
     opacity: 0.8;
 }
 .history-date{
@@ -59,7 +60,7 @@ page{
     color: #fff;
     position: absolute;
     right: 41rpx;
-    top: 87rpx;
+    top: 100rpx;
     opacity: 0.8;
 }
 

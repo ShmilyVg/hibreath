@@ -2,6 +2,7 @@
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import toast from "../../view/toast";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
     data: {
@@ -111,7 +112,6 @@ Page({
     },
 
     toSetInfo() {
-
+        HiNavigator.navigateToSetInfo();
     }
-
 })

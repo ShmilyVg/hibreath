@@ -88,3 +88,43 @@ page {
     background-color: #3E3E3E;
     padding: 100rpx 30rpx;
 }
+
+.page4{
+    width: 590rpx;
+    margin-left: 53rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.page4-item{
+    width: 180rpx;
+    height: 192rpx;
+    margin-top: 29rpx;
+    position: relative;
+}
+.page4-item image{
+    width: 100%;
+    height: 100%;
+    border-radius: 30rpx;
+}
+.page4-itembottom{
+    width: 180rpx;
+    height: 41rpx;
+    color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 41rpx;
+    /*background: #656565;*/
+    border-radius: 0 0 28rpx 28rpx;
+    position: absolute;
+    bottom: 0;
+}
+.page4-hint{
+    width:100%;
+    text-align:center;
+    font-size: 22rpx;
+    color: #5A5A5A;
+    position: fixed;
+    left: 0;
+    bottom: 20rpx;
+}

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/set-info/set-info",
     "pages/index/index",
+    "pages/set-info/set-info",
     "pages/strategy/strategy",
     "pages/result/result",
     "pages/history/history",
