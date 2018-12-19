@@ -21,7 +21,7 @@ Page({
             score: list[index]['dataValue'],
             situation: list[index]['situation'],
             showUnscramble: true,
-            timestamp: list[index]['createdTimestamp']
+            timestamp: list[index]['time']
         });
     },
 
@@ -45,7 +45,7 @@ Page({
             let level = value['level'];
             value['hintText'] = showText[level];
             value['hintBg'] = showColor[level];
-            value['date'] = tools.createDateAndTime(value['createdTimestamp']);
+            value['date'] = tools.createDateAndTime(value['time']);
         });
         return list;
     },
