@@ -42,8 +42,8 @@ export default class Protocol {
         return Network.request({url: 'device/bind/info'})
     }
 
-    static postDeviceBind({deviceId}) {
-        return Network.request({url: 'device/bind', data: {deviceId}});
+    static postDeviceBind({deviceId, mac}) {
+        return Network.request({url: 'device/bind', data: {deviceId, mac}});
     }
 
     static postDeviceUnbind({deviceId}) {
