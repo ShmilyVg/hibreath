@@ -32,7 +32,7 @@
 
 <view wx:elif="{{page==4}}" class="page4">
     <view class="page4-item" wx:for="{{page4Item}}">
-        <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/man-{{index+1}}.png"></image>
+        <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
         <view class="page4-itembottom">{{item}}</view>
     </view>
 </view>

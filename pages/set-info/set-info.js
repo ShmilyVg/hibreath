@@ -8,10 +8,10 @@ Page({
         sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
         info: {birthday: '1980-01-01'},
         currentDate: '2018-12-19',
-        page: 4,
+        page: 1,
         title: ['你的性别是？', '你的出生日期？', '你的身高？', '你的体脂情况？'],
         text: ['告诉我们关于你的事，\n让我帮你获得更适合的健康方案', '我们会针对不同的年龄为你定制相应的健康方案', '', '根据图片估算一下你的体脂含量吧'],
-        page4Item:['3-4%','6-7%','10-12%','15%','20%','25%','30%','35%','40%']
+        page4Item: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%']
     },
     onLoad: function (options) {
         let timeS = tools.createDateAndTime(Date.parse(new Date()));
@@ -57,12 +57,15 @@ Page({
             value.isChose = choseIndex == index;
         });
         let postSex = 0;
+        let sexStr = 'woman';
         if (choseIndex == 0) {
-            postSex = 1
+            postSex = 1;
+            sexStr = 'man'
         }
         this.setData({
             sexBox: this.data.sexBox,
-            info: {sex: postSex}
+            'info.sex': postSex,
+            'info.sexStr': sexStr
         })
     },
 
@@ -73,13 +76,13 @@ Page({
         })
     },
 
-    bindHeightInput(e){
+    bindHeightInput(e) {
         this.setData({
             'info.height': e.detail.value
         })
     },
 
-    bindWeightInput(e){
+    bindWeightInput(e) {
         this.setData({
             'info.weight': e.detail.value
         })
