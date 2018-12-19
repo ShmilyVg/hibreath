@@ -6,7 +6,7 @@
 <view class="text">
     <text>告诉我们关于你的事，\n让我帮你获得更适合的健康方案</text>
 </view>
-<view class="flex-row space-between" style="margin-top: ">
+<view class="flex-row space-between" style="margin-top: 122rpx">
     <view class="card" wx:for="{{2}}">
     </view>
 </view>
