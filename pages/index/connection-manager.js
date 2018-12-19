@@ -25,9 +25,6 @@ export default class ConnectionManager {
             this.connecting();
         };
 
-        this.action[ProtocolState.CONNECTED_AND_BIND] =this.action[ProtocolState.TIMESTAMP]= ()=>{
-            this.connected();
-        };
     }
 
     unbind() {
@@ -77,18 +74,4 @@ export default class ConnectionManager {
         })
     }
 
-    connected(){
-        this._page.setData({
-            message: '已连接',
-            state:'短按设备按键开始检测',
-            note: this._page.data.noteListMore,
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: true,
-            unitShow: false,
-            homeBottom:true,
-            box3StateIndex:2,
-            box4StateIndex:1
-        })
-    }
 }

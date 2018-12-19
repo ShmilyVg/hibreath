@@ -75,6 +75,8 @@ Page({
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
+                const action = this.connectionPage.action;
+                action[ProtocolState.CONNECTED_AND_BIND]();
                 app.getBLEManager().connect({macId: deviceInfo.mac});
             }
         })
@@ -83,17 +85,17 @@ Page({
     onShow() {
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
-        let latestState = app.getLatestBLEState();
-        if (ProtocolState.BREATH_FINISH_AND_SUCCESS === latestState) {
-            latestState = ProtocolState.CONNECTED_AND_BIND;
+        let {connectState, protocolState} = app.getLatestBLEState();
+        if (ProtocolState.BREATH_FINISH_AND_SUCCESS === protocolState) {
+            protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
-        !!action[latestState] && action[latestState]();
-        !!actionBlow[latestState] && actionBlow[latestState]();
+        !!action[connectState] && action[connectState]();
+        !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({
             bleStateListener: () => {
-                const state = app.getLatestBLEState();
-                !!action[state] && action[state]();
-                !!actionBlow[state] && actionBlow[state]();
+                const {connectState, protocolState} = app.getLatestBLEState();
+                !!action[connectState] && action[connectState]();
+                !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
             receiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.BREATH_FINISH_AND_SUCCESS === state.protocolState) {
