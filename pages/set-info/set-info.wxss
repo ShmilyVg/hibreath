@@ -57,13 +57,21 @@
     font-size:50rpx;
     font-weight:bold;
     color:rgba(255,94,0,1);
+    line-height: 38rpx;
 }
 
 .line{
     width:666rpx;
     height:2rpx;
-    background: #808080;
+    background: #626262;
     margin-top: 27rpx;
+}
+
+.input{
+    font-size:50rpx;
+    font-weight:bold;
+    color:rgba(255,94,0,1);
+    margin-top: 105rpx;
 }
 
 .btn-position{
