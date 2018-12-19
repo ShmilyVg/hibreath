@@ -17,7 +17,6 @@ Page({
         box3State: ["unjoin", "join", "join-done", "ready"],
         box4State: ["home-heart-box4-start", "home-heart-box4-done", "home-heart-box4-num"],
         firstInto: true,
-        bindList: [],
         noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
 
@@ -67,16 +66,16 @@ Page({
             });
         }
 
-        Protocol.getDeviceBindList().then(data => {
-            let bindList = data.result;
-            console.log('获取到的设备列表', data);
-            if (bindList.length === 0) {
+        Protocol.getDeviceBindInfo().then(data => {
+            let deviceInfo = data.result;
+            console.log('获取到的设备', data);
+
+            if (!deviceInfo) {
                 app.getBLEManager().clearConnectedBLE();
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
-                app.getBLEManager().connect();
-                this.setData({bindList});
+                app.getBLEManager().connect({macId: deviceInfo.mac});
             }
         })
     },
@@ -105,7 +104,6 @@ Page({
         if (!this.data.firstInto) {
             this.handleTipText();
         }
-        app.getBLEManager().getBindMarkStorage() && app.getBLEManager().connect();
     },
 
     handleTipText() {

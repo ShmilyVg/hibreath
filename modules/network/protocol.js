@@ -38,8 +38,8 @@ export default class Protocol {
         return Network.request({url: 'analysis/notes'})
     }
 
-    static getDeviceBindList() {
-        return Network.request({url: 'device/bindList'})
+    static getDeviceBindInfo() {
+        return Network.request({url: 'device/bind/info'})
     }
 
     static postDeviceBind({deviceId}) {

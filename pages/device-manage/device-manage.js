@@ -8,10 +8,10 @@ Page({
     },
 
     onLoad() {
-        Protocol.getDeviceBindList().then(data => {
-            const list = data.result;
+        Protocol.getDeviceBindInfo().then(data => {
+            const deviceInfo = data.result;
             this.setData({
-                deviceId: list[0]
+                deviceId: deviceInfo.deviceId
             })
         })
 
