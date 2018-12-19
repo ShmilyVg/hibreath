@@ -96,7 +96,7 @@ Page({
                 !!actionBlow[state] && actionBlow[state]();
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (ProtocolState.BREATH_FINISH_AND_SUCCESS === state) {
+                if (ProtocolState.BREATH_FINISH_AND_SUCCESS === state.protocolState) {
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }
             }

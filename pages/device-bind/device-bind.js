@@ -68,7 +68,7 @@ Page({
                 this.showResult({state: state.connectState});
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state) {
+                if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state.protocolState) {
                     this.isBind = true;
                     const {isConnected} = finalResult;
                     const bleManager = app.getBLEManager();
