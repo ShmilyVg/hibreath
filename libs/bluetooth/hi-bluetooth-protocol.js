@@ -40,6 +40,7 @@ export default class HiBlueToothProtocol {
                 this.sendData({command: '0x05', data: [now]});
                 return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId}};
             },
+            //设备发出待机状态通知
             '0x06': () => {
                 this.sendData({command: '0x07'});
                 return {state: CommonProtocolState.DORMANT};
