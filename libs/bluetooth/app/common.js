@@ -4,6 +4,8 @@ import Protocol from "../../../modules/network/protocol";
 import {ConnectState, ProtocolState} from "../../../modules/bluetooth/bluetooth-state";
 import {listener} from "./listener";
 
+const NOT_REGISTER = 'not_register';
+
 const obj = {
     commonOnLaunch({options, bLEManager}) {
         this.doLogin();
@@ -27,23 +29,9 @@ const obj = {
                         }).catch((res) => {
                             console.log('绑定协议报错', res);
                             this._updateBLEState({state: {connectState: ConnectState.UNBIND}});
-                            this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({
-                                finalResult,
-                                state: this.bLEManager.getState({
-                                    connectState: ConnectState.UNBIND,
-                                    protocolState: state.protocolState
-                                })
-                            });
                         });
                     } else {
                         this.bLEManager.clearConnectedBLE();
-                        this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({
-                            finalResult,
-                            state: this.bLEManager.getState({
-                                connectState: ConnectState.UNBIND,
-                                protocolState: state.protocolState
-                            })
-                        });
                     }
                 } else {
                     this.commonAppReceiveDataListener && this.commonAppReceiveDataListener({finalResult, state});
@@ -99,12 +87,20 @@ const obj = {
     },
 
     doLogin() {
-        setTimeout(() => Login.doLogin().then(() => UserInfo.get()).then(({userInfo}) => {
-            this.onGetUserInfo && this.onGetUserInfo({userInfo});
-        }));
+        setTimeout(() =>
+            Login.doLogin()
+                .catch((res) => {
+                    if (res.code === 2) {
+                        this.appLoginListener && this.appLoginListener({loginState: NOT_REGISTER});
+                    }
+                })
+                .then(() => UserInfo.get())
+                .then(({userInfo}) => {
+                    this.onGetUserInfo && this.onGetUserInfo({userInfo});
+                }));
     },
 };
 
 const common = {...obj, ...listener};
 
-export {common};
+export {common, NOT_REGISTER};
