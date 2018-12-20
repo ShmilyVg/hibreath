@@ -30,6 +30,10 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 const result = HexTools.hexArrayToNum(dataArray.slice(-2));
                 return {state: ProtocolState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result, timestamp}};
             },
+            '0x7d': () => {
+                blueToothManager.sendData({buffer: this.createBuffer({command: '0x7e'})});
+                return {state: ProtocolState.DORMANT};
+            }
         }
     }
 

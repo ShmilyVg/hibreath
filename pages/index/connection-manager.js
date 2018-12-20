@@ -1,5 +1,5 @@
 import WXDialog from "../../view/dialog";
-import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 
 export default class ConnectionManager {
     constructor(page) {
