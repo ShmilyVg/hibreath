@@ -1,28 +1,11 @@
-export default class HiNavigator {
-    static navigateTo({url, success, fail, complete}) {
-        wx.navigateTo({url, success, fail, complete});
-    }
+import CommonNavigator from "heheda-navigator";
+
+export default class HiNavigator extends CommonNavigator {
 
     // 跳转至结果页面 score得分 showUnscramble是否直接显示解读 situation场景值（可选） 检测时间戳 (可选)
     static navigateToResult({score, situation = 0, showUnscramble = false, timestamp = 0, success, fail, complete}) {
         let url = `/pages/result/result?score=${score}&situation=${situation}&showUnscramble=${showUnscramble}&timestamp=${timestamp}`;
         wx.navigateTo({url, success, fail, complete});
-    }
-
-    static reLaunch({url, success, fail, complete}) {
-        wx.reLaunch({url, success, fail, complete});
-    }
-
-    static navigateBack({delta, success, fail, complete}) {
-        wx.navigateBack({delta, success, fail, complete});
-    }
-
-    static switchTab({url, success, fail, complete}) {
-        wx.switchTab({url, success, fail, complete});
-    }
-
-    static redirectTo({url, success, fail, complete}) {
-        wx.redirectTo({url, success, fail, complete})
     }
 
     static navigateToStrategy() {
@@ -41,7 +24,7 @@ export default class HiNavigator {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
     }
 
-    static navigateToSetInfo(){
-        this.navigateTo({url:'/pages/set-info/set-info'})
+    static navigateToSetInfo() {
+        this.navigateTo({url: '/pages/set-info/set-info'})
     }
 }
