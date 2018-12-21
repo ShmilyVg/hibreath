@@ -1,10 +1,15 @@
 {
   "name": "hibreath",
   "version": "1.0.0",
+  "miniprogram": "miniprogram_dist",
   "devDependencies": {
     "wechat-mini-programs-apis": "^1.6.2"
-
   },
   "dependencies": {
+    "heheda-bluetooth": "^1.0.2",
+    "heheda-navigator": "^1.0.0",
+    "heheda-network": "^1.0.5",
+    "heheda-update": "^1.0.0",
+    "heheda-adapter": "^1.0.0"
   }
 }
