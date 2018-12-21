@@ -1,4 +1,4 @@
-import HiBlueToothManager from "../../libs/bluetooth/hi-bluetooth-manager";
+import {HiBlueToothManager} from "heheda-bluetooth";
 import HiBreathBlueToothProtocol from "./hi-breath-bluetooth-protocol";
 
 export default class HiBreathBlueToothManager extends HiBlueToothManager {
