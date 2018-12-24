@@ -17,6 +17,14 @@ export default class BlowManager {
             this.disblow();
         };
 
+        this.actionBlow[ProtocolState.BREATH_START] = () => {
+            this.blowing();
+        };
+
+        this.actionBlow[ProtocolState.BREATH_FINISH] = () => {
+            this.blowed();
+        };
+
         this.actionBlow[ProtocolState.CONNECTED_AND_BIND] =
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {
@@ -73,6 +81,36 @@ export default class BlowManager {
         this._page.setData({
             message: '0',
             state: '请现在对准吹气口吹气',
+            bindBtnShow: false,
+            disconnectBtnShow: false,
+            setShow: false,
+            unitShow: true,
+            homeBottom: false,
+            homeBottomHide: false,
+            box3StateIndex: 3,
+            box4StateIndex: 2,
+        })
+    }
+
+    blowing() {
+        this._page.setData({
+            message: '0',
+            state: '吹气中...',
+            bindBtnShow: false,
+            disconnectBtnShow: false,
+            setShow: false,
+            unitShow: true,
+            homeBottom: false,
+            homeBottomHide: false,
+            box3StateIndex: 3,
+            box4StateIndex: 2,
+        })
+    }
+
+    blowed() {
+        this._page.setData({
+            message: '0',
+            state: '吹气完成，正在生成结果...',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,

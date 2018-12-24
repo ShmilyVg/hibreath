@@ -1,7 +1,6 @@
 // pages/set-info/set-info.js
 import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
-import Protocol from "../../modules/network/protocol";
 
 Page({
 
@@ -16,7 +15,6 @@ Page({
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
         itemBackgroundColor: '#656565',
     },
-
     onLoad: function (options) {
         let timeS = tools.createDateAndTime(Date.parse(new Date()));
         let currentDate = `${timeS.year}-${timeS.month}-${timeS.day}`;
@@ -106,10 +104,10 @@ Page({
         })
     },
 
-    page4ItemClick(e) {
+    page4ItemClick(e){
         let index = e.currentTarget.dataset.index;
         this.setData({
-            choseIndex: index
+           choseIndex: index
         });
     }
 
