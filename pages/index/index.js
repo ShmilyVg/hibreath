@@ -84,7 +84,7 @@ Page({
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
         let {connectState, protocolState} = app.getLatestBLEState();
-        if (ProtocolState.BREATH_FINISH_AND_SUCCESS === protocolState) {
+        if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
         !!action[connectState] && action[connectState]();
@@ -96,7 +96,7 @@ Page({
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (ProtocolState.BREATH_FINISH_AND_SUCCESS === state.protocolState) {
+                if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }
             }

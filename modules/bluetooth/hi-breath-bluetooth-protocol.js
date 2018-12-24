@@ -1,4 +1,4 @@
-import {HiBlueToothProtocol,HexTools} from "heheda-bluetooth";
+import {HexTools, HiBlueToothProtocol} from "heheda-bluetooth";
 import {ProtocolState} from "./bluetooth-state";
 
 export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
@@ -27,8 +27,16 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 const result = HexTools.hexArrayToNum(dataArray.slice(-2));
-                return {state: ProtocolState.BREATH_FINISH_AND_SUCCESS, dataAfterProtocol: {result, timestamp}};
+                return {state: ProtocolState.BREATH_RESULT, dataAfterProtocol: {result, timestamp}};
             },
+            '0x38': () => {
+                super.sendData({command: '0x39'});
+                return {state: ProtocolState.BREATH_START};
+            },
+            '0x3a': () => {
+                super.sendData({command: '0x3b'});
+                return {state: ProtocolState.BREATH_FINISH};
+            }
         }
     }
 
