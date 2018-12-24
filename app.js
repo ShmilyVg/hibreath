@@ -1,4 +1,5 @@
 //app.js
+import "./utils/config";
 import {common} from "heheda-bluetooth";
 import HiBreathBlueToothManager from "./modules/bluetooth/hi-breath-bluetooth-manager";
 import {ProtocolState} from "./modules/bluetooth/bluetooth-state";
