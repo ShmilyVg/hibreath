@@ -22,6 +22,13 @@ Page({
     },
 
     toHomePage:function (e) {
-        HiNavigator.reLaunch({url:'/pages/index/index'});
+        let page = getCurrentPages();
+        if (page[0].route === 'pages/index/index'){
+            console.log('开始燃脂back');
+            wx.navigateBack({delta: 1})
+        } else {
+            console.log('开始燃脂relaunch');
+            HiNavigator.reLaunch({url:'/pages/index/index'});
+        }
     }
 })
