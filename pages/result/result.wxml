@@ -47,7 +47,7 @@
                 </view>
                 <view wx:if="{{index<description.length-1}}" style="width:597rpx;height:2rpx;opacity:0.2;background-color: #979797"></view>
             </view>
-            <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">点击查看如何燃脂</view>
+            <!--<view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">点击查看如何燃脂</view>-->
         </view>
     </view>
 </view>
