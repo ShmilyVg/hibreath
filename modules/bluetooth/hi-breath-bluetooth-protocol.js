@@ -27,7 +27,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 const dou = HexTools.hexArrayToNum(dataArray.slice(5, 6));
-                const result = HexTools.hexArrayToNum(dataArray.slice(4, 5)) + '.' + parseInt(dou >= 100 ? dou / 10 : dou);
+                const result = HexTools.hexArrayToNum(dataArray.slice(4, 5)) + '.' + Math.floor(dou >= 100 ? dou / 10 : dou);
                 return {state: ProtocolState.BREATH_RESULT, dataAfterProtocol: {result, timestamp}};
             },
             '0x38': () => {
