@@ -55,7 +55,7 @@ export default class BlowManager {
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            homePoint: false,
+            homePoint: true,
             homeBtn: false,
             homeHint: false,
             stateColorIndex: 1,
