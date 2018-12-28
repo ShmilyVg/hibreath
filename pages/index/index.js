@@ -45,7 +45,7 @@ Page({
 
     onLoad() {
         this.connectionPage = new ConnectionManager(this);
-        this.connectionPage.disconnect();
+        this.connectionPage.connecting();
         this.blowPage = new BlowManager(this);
 
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});

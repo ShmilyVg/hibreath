@@ -68,8 +68,8 @@ export default class ConnectionManager {
             homePoint: true,
             homeBtn: true,
             homeHint: false,
-            stateColor: 0,
-            stateLineheight: 0,
+            stateColorIndex: 0,
+            stateLineheightIndex: 0,
             box3StateIndex:1,
             box4StateIndex:0
         })

@@ -42,8 +42,8 @@ export default class BlowManager {
             homePoint: true,
             homeBtn: true,
             homeHint: true,
-            stateColor: 1,
-            stateLineheight: 0,
+            stateColorIndex: 1,
+            stateLineheightIndex: 0,
             box3StateIndex: 2,
             box4StateIndex: 1
         })
@@ -58,8 +58,8 @@ export default class BlowManager {
             homePoint: false,
             homeBtn: false,
             homeHint: false,
-            stateColor: 1,
-            stateLineheight: 0,
+            stateColorIndex: 1,
+            stateLineheightIndex: 0,
             box3StateIndex: 3,
             box4StateIndex: 2
         })
@@ -74,8 +74,8 @@ export default class BlowManager {
             homePoint: false,
             homeBtn: false,
             homeHint: false,
-            stateColor: 0,
-            stateLineheight: 1,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         });
@@ -90,8 +90,8 @@ export default class BlowManager {
             homePoint: false,
             homeBtn: false,
             homeHint: false,
-            stateColor: 0,
-            stateLineheight: 1,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })
@@ -106,8 +106,8 @@ export default class BlowManager {
             homePoint: false,
             homeBtn: false,
             homeHint: false,
-            stateColor: 0,
-            stateLineheight: 0,
+            stateColorIndex: 0,
+            stateLineheightIndex: 0,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })
@@ -122,8 +122,8 @@ export default class BlowManager {
             homePoint: false,
             homeBtn: false,
             homeHint: false,
-            stateColor: 0,
-            stateLineheight: 1,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })

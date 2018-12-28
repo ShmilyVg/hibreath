@@ -13,7 +13,7 @@
 
   <view class="home-state-btn home-state-btn1" wx:if="{{bindBtnShow}}"><button plain="true" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>{{bindBtn}}</text></button></view>
   <view class="home-state-btn home-state-btn2" wx:elif="{{disconnectBtnShow}}" bindtap="disconnectBtnClick"><text>{{disconnect}}</text></view>
-  <view class="home-state-btn" wx:else   style="color:{{stateColor}};line-height: {{stateLineheight}}"><text>{{state}}</text></view>
+  <view class="home-state-btn" wx:else ><text style="color:{{stateColor[stateColorIndex]}};line-height: {{stateLineheight[stateLineheightIndex]}}">{{state}}</text></view>
 </view>
 
 <view class="home-hint" wx:if="{{homeHint}}">短按设备按键开始检测</view>
