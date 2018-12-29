@@ -7,7 +7,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 Page({
     data: {
         dateText: {},
-        mainColor: '#000000',
+        mainColor: '#E5E5E5',
         showUnscramble: false,//是否显示解读
         isChose: false,
         cardTitle: '选择并保存检测时状态，以便综合分析',
@@ -15,6 +15,25 @@ Page({
     },
 
     onLoad: function (options) {
+        let mainColor = '';
+        let score = options.score;
+        if (score <= 5) {
+            mainColor = '#3E3E3E'
+        } else if (score > 5 && score <= 30) {
+            mainColor = '#FF7C00'
+        } else if (score > 30 && score <= 80) {
+            mainColor = '#FF5E00'
+        } else if (score > 80) {
+            mainColor = '#E64D3D'
+        }
+        this.setData({
+            mainColor: mainColor,
+            score: score
+        });
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: mainColor
+        });
         Protocol.getAnalysisSituation().then(data => {
             let list = data.result.list;
             // 是否直接显示解读
@@ -40,25 +59,6 @@ Page({
                     postAdd: true
                 })
             }
-        });
-        let mainColor = '';
-        let score = options.score;
-        if (score <= 5) {
-            mainColor = '#3E3E3E'
-        } else if (score > 5 && score <= 30) {
-            mainColor = '#FF7C00'
-        } else if (score > 30 && score <= 80) {
-            mainColor = '#FF5E00'
-        } else if (score > 80) {
-            mainColor = '#E64D3D'
-        }
-        this.setData({
-            mainColor: mainColor,
-            score: score
-        });
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: mainColor
         });
     },
 
