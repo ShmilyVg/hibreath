@@ -9,25 +9,31 @@
   <view class="home-heart-box1"></view>
   <view class="home-heart-box2"></view>
   <view class="home-heart-box3 {{box3State[box3StateIndex]}}"></view>
-  <button class="home-heart-box4 {{box4State[box4StateIndex]}}" >{{message}}</button>
-  <view wx:if="{{unitShow}}" class="home-heart-unit">ppm</view>
+  <button class="home-heart-box4 {{box4State[box4StateIndex]}}" ></button>
+
+  <view class="home-state-btn home-state-btn1" wx:if="{{bindBtnShow}}"><button plain="true" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>{{bindBtn}}</text></button></view>
+  <view class="home-state-btn home-state-btn2" wx:elif="{{disconnectBtnShow}}" bindtap="disconnectBtnClick"><text>{{disconnect}}</text></view>
+  <view class="home-state-btn" wx:else ><text style="color:{{stateColor[stateColorIndex]}};line-height: {{stateLineheight[stateLineheightIndex]}}">{{state}}</text></view>
 </view>
 
-<view class="home-state-btn" wx:if="{{bindBtnShow}}"><button plain="true" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">{{bindBtn}}</button></view>
-<view class="home-state-btn" wx:elif="{{disconnectBtnShow}}" bindtap="disconnectBtnClick">{{disconnect}}</view>
-<view class="home-state" wx:else>{{state}}</view>
+<view class="home-hint" wx:if="{{homeHint}}">短按设备按键开始检测</view>
 
-<block wx:if="{{homeBottom}}">
+<block wx:if="{{homePoint}}">
   <view class="home-point"><text>燃脂小贴士：</text>{{noteListMore}}</view>
+</block>
+
+<block wx:else>
+  <view class="home-point"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>
+</block>
+
+<block  wx:if="{{homeBtn}}">
   <view class="home-btn">
     <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>
     <view class="home-btn-box home-btn-history" bindtap="historyUrl">历史记录</view>
   </view>
 </block>
-<block wx:elif="{{homeBottomHide}}"></block>
-<block wx:else>
-  <view class="home-point"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>
-</block>
+
+
 
 
 

@@ -90,7 +90,6 @@ page{
 }
 .join{
   animation:mysecond 2s linear infinite alternate;
-  /*background: linear-gradient(to top, rgba(255,94,0,1), rgba(255,94,0,0));*/
 }
 .join-done{
   background: #FF5E00;
@@ -117,39 +116,42 @@ page{
   font-size:170rpx;
   color:#fff;
 }
-.home-heart-unit{
-  font-size: 36rpx;
-  color: #979797;
-  width: 100%;
-  height: 38rpx;
-  position: absolute;
-  left: 0;
-  top: 329rpx;
-  text-align: center;
-}
+
 .home-state-btn{
+  position: absolute;
+  left: 143.5rpx;
+  top: 208.5rpx;
+  width: 220rpx;
+  height: 90rpx;
   text-align: center;
-  color: #FF5E00;
   font-size: 32rpx;
-  height:42rpx;
 }
 .home-state-btn button{
+  font-size: 32rpx;
   color: #FF5E00;
-  font-size: 32rpx;
-  border:0;
+  border: 0;
+  padding: 0;
 }
-.home-state{
-  text-align: center;
-  color: #979797;
+.home-state-btn1{
+  line-height: 90rpx;
+}
+.home-state-btn2{
+  line-height: 45rpx;
+  color: #FF5E00;
+}
+.home-hint{
   font-size: 32rpx;
-  height:42rpx;
+  color: #fff;
+  text-align: center;
 }
 .home-point{
+  position: absolute;
+  top: 793rpx;
+  left: 102rpx;
   width: 566rpx;
   font-size: 26rpx;
   line-height: 37rpx;
   color: #979797;
-  margin: 52rpx auto 66rpx;
   padding: 31rpx 0;
   border-top: 1rpx solid #979797;
   border-bottom: 1rpx solid #979797;

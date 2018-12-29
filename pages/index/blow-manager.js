@@ -34,14 +34,16 @@ export default class BlowManager {
 
     connected() {
         this._page.setData({
-            message: '已连接',
-            state: '短按设备按键开始检测',
+            state: '已连接',
             note: this._page.data.noteListMore,
             bindBtnShow: false,
             disconnectBtnShow: false,
-            setShow: true,
-            unitShow: false,
-            homeBottom: true,
+            setShow: false,
+            homePoint: true,
+            homeBtn: true,
+            homeHint: true,
+            stateColorIndex: 1,
+            stateLineheightIndex: 0,
             box3StateIndex: 2,
             box4StateIndex: 1
         })
@@ -49,14 +51,15 @@ export default class BlowManager {
 
     ready() {
         this._page.setData({
-            message: '0',
             state: '预热中',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: true,
-            homeBottom: false,
-            homeBottomHide: true,
+            homePoint: true,
+            homeBtn: false,
+            homeHint: false,
+            stateColorIndex: 1,
+            stateLineheightIndex: 0,
             box3StateIndex: 3,
             box4StateIndex: 2
         })
@@ -64,14 +67,15 @@ export default class BlowManager {
 
     blow() {
         this._page.setData({
-            message: '0',
-            state: '请现在对准吹气口吹气',
+            state: '请现在\n对准吹气口吹气',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: true,
-            homeBottom: false,
-            homeBottomHide: false,
+            homePoint: false,
+            homeBtn: false,
+            homeHint: false,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         });
@@ -79,14 +83,15 @@ export default class BlowManager {
 
     disblow() {
         this._page.setData({
-            message: '0',
-            state: '请现在对准吹气口吹气',
+            state: '请现在\n对准吹气口吹气',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: true,
-            homeBottom: false,
-            homeBottomHide: false,
+            homePoint: false,
+            homeBtn: false,
+            homeHint: false,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })
@@ -94,14 +99,15 @@ export default class BlowManager {
 
     blowing() {
         this._page.setData({
-            message: '0',
-            state: '吹气中...',
+            state: '吹气中',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: true,
-            homeBottom: false,
-            homeBottomHide: false,
+            homePoint: false,
+            homeBtn: false,
+            homeHint: false,
+            stateColorIndex: 0,
+            stateLineheightIndex: 0,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })
@@ -109,14 +115,15 @@ export default class BlowManager {
 
     blowed() {
         this._page.setData({
-            message: '0',
-            state: '吹气完成，正在生成结果...',
+            state: '吹气完成\n正在生成结果',
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: true,
-            homeBottom: false,
-            homeBottomHide: false,
+            homePoint: false,
+            homeBtn: false,
+            homeHint: false,
+            stateColorIndex: 0,
+            stateLineheightIndex: 1,
             box3StateIndex: 3,
             box4StateIndex: 2,
         })

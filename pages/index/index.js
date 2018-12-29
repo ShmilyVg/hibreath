@@ -16,6 +16,8 @@ Page({
         userInfo: {},
         box3State: ["unjoin", "join", "join-done", "ready"],
         box4State: ["home-heart-box4-start", "home-heart-box4-done", "home-heart-box4-num"],
+        stateColor: ['#B5B5B5','#FF5E00'],
+        stateLineheight: ['90rpx','45rpx'],
         firstInto: true,
         noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
@@ -43,9 +45,8 @@ Page({
 
     onLoad() {
         this.connectionPage = new ConnectionManager(this);
-        this.connectionPage.unbind();
+        this.connectionPage.connecting();
         this.blowPage = new BlowManager(this);
-        /*this.blowPage.blowdone();*/
 
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;

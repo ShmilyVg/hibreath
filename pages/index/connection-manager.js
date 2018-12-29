@@ -29,15 +29,14 @@ export default class ConnectionManager {
 
     unbind() {
         this._page.setData({
-            state: "unbind",
-            message: '未绑定设备',
             bindBtn:'点击绑定设备',
             note: this._page.data.noteListMore,
             bindBtnShow: true,
             disconnectBtnShow: false,
             setShow: false,
-            unitShow: false,
-            homeBottom:true,
+            homePoint: true,
+            homeBtn: true,
+            homeHint: false,
             box3StateIndex:0,
             box4StateIndex:0,
             bindList:[]
@@ -46,14 +45,14 @@ export default class ConnectionManager {
 
     disconnect() {
         this._page.setData({
-            message: '未连接到设备',
-            disconnect:'点击重试',
+            disconnect:'未连接设备\n点击重试',
             note: this._page.data.noteListMore,
             bindBtnShow: false,
             disconnectBtnShow: true,
             setShow: true,
-            unitShow: false,
-            homeBottom:true,
+            homePoint: true,
+            homeBtn: true,
+            homeHint: false,
             box3StateIndex:0,
             box4StateIndex:0
         });
@@ -61,14 +60,16 @@ export default class ConnectionManager {
 
     connecting() {
         this._page.setData({
-            message: '正在连接设备',
-            state:' ',
+            state:'正在连接设备',
             note: this._page.data.noteListMore,
             bindBtnShow: false,
             disconnectBtnShow: false,
             setShow: true,
-            unitShow: false,
-            homeBottom:true,
+            homePoint: true,
+            homeBtn: true,
+            homeHint: false,
+            stateColorIndex: 0,
+            stateLineheightIndex: 0,
             box3StateIndex:1,
             box4StateIndex:0
         })
