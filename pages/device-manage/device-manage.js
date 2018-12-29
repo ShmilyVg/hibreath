@@ -21,10 +21,11 @@ Page({
     unbindDevice() {
         Toast.showLoading();
         Protocol.postDeviceUnbind({deviceId: this.data.deviceId}).then(data => {
-            getApp().getBLEManager().clearConnectedBLE();
-            HiNavigator.reLaunch({url: '/pages/index/index'});
+            getApp().getBLEManager().clearConnectedBLE().finally(() => {
+                HiNavigator.reLaunch({url: '/pages/index/index'});
+            });
         }).catch(res => {
-            console.log(res);
+            console.log('解绑失败', res);
         }).finally(() => Toast.hiddenLoading());
     }
 })
