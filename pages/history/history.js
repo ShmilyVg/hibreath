@@ -9,11 +9,11 @@ Page({
         allList: [],
         page: 1
     },
-
+ 
     onLoad() {
         this.getBreathDataList({});
     },
-
+    
     toResult(e) {
         let index = e.currentTarget.dataset.index;
         let list = this.data.allList;
