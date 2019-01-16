@@ -8,6 +8,7 @@ import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import {BlueToothUpdate} from "heheda-network";
 
 const app = getApp();
 
@@ -48,6 +49,8 @@ Page({
         this.connectionPage.connecting();
         this.blowPage = new BlowManager(this);
 
+        this.blueToothUpdate = new BlueToothUpdate();
+        this.blueToothUpdate.execute({deviceId: 'xxx', version: 1}).then();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
         if (info) {
