@@ -1,28 +1,33 @@
 /* pages/history/history.wxss */
-page{
+page {
     background: #3E3E3E;
 }
-.history-box{
+
+.history-box {
     width: 690rpx;
     height: 150rpx;
     margin: 0 auto 40rpx;
     border-radius: 28rpx;
     position: relative;
 }
-.history-box:first-child{
+
+.history-box:first-child {
     margin-top: 60rpx;
 }
-.history-bg{
+
+.history-bg {
     width: 649rpx;
     height: 128rpx;
     position: absolute;
     bottom: 0;
     left: 0;
 }
-.history-bg image{
+
+.history-bg image {
     width: 100%;
     height: 100%;
 }
+
 /*.history-num{
     display: inline-block;
     font-size: 70rpx;
@@ -47,25 +52,28 @@ page{
     margin-top: 5rpx;
     opacity: 0.8;
 }*/
-.history-num{
+.history-num {
     color: #fff;
     position: absolute;
     left: 36rpx;
     top: 35rpx;
 }
-.history-num-text{
+
+.history-num-text {
     display: inline-block;
     vertical-align: bottom;
     font-size: 70rpx;
     line-height: 52rpx;
 }
-.history-num-unit{
+
+.history-num-unit {
     display: inline-block;
     vertical-align: bottom;
     font-size: 30rpx;
     margin-left: 10rpx;
 }
-.history-hint{
+
+.history-hint {
     font-size: 26rpx;
     color: #fff;
     opacity: 0.8;
@@ -73,7 +81,8 @@ page{
     left: 36rpx;
     top: 95rpx;
 }
-.history-time{
+
+.history-time {
     font-size: 26rpx;
     color: #fff;
     position: absolute;
@@ -81,7 +90,8 @@ page{
     top: 60rpx;
     opacity: 0.8;
 }
-.history-date{
+
+.history-date {
     font-size: 26rpx;
     color: #fff;
     position: absolute;
@@ -90,7 +100,7 @@ page{
     opacity: 0.8;
 }
 
-.history-none{
+.history-none {
     font-size: 32rpx;
     color: #979797;
     width: 100%;
@@ -99,4 +109,26 @@ page{
     position: absolute;
     top: 40%;
     left: 0;
+}
+
+.top-tip {
+    width: 470rpx;
+    height: 80rpx;
+    background: rgba(77, 77, 77, 1);
+    border-radius: 40rpx;
+    font-size: 30rpx;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    line-height: 80rpx;
+    text-align: center;
+    margin: 43rpx 0 40rpx;
+}
+
+.top-point {
+    width: 18rpx;
+    height: 18rpx;
+    background: rgba(49, 255, 0, 1);
+    border-radius: 50%;
+    margin-right: 15rpx;
+    margin-left: 95rpx;
 }

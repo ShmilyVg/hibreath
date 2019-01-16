@@ -9,26 +9,26 @@
     position: fixed;
 }
 
-.bottom-card{
+.bottom-card {
     position: fixed;
-    left:30rpx;
-    bottom:30rpx;
+    left: 30rpx;
+    bottom: 30rpx;
     background-color: white;
     width: 690rpx;
     height: 573rpx;
     border-radius: 50rpx;
 }
 
-.bottom-card-title{
-    font-weight:600;
-    font-size:32rpx;
-    color:rgba(151,151,151,1);
-    line-height:45rpx;
+.bottom-card-title {
+    font-weight: 600;
+    font-size: 32rpx;
+    color: rgba(151, 151, 151, 1);
+    line-height: 45rpx;
     margin-top: 48rpx;
     margin-bottom: 45rpx;
 }
 
-.small-card{
+.small-card {
     width: 140rpx;
     height: 210rpx;
     border-radius: 28rpx;
@@ -39,7 +39,7 @@
     justify-content: space-between;
 }
 
-.background-image{
+.background-image {
     position: fixed;
     top: 370rpx;
     right: 0;
@@ -47,11 +47,11 @@
     height: 629rpx;
 }
 
-.bottom-card-num{
-    width:46rpx;
-    height:27rpx;
-    background:rgba(233,233,233,1);
-    border-radius:18rpx;
+.bottom-card-num {
+    width: 46rpx;
+    height: 27rpx;
+    background: rgba(233, 233, 233, 1);
+    border-radius: 18rpx;
     color: #979797;
     font-size: 20rpx;
     line-height: 27rpx;
@@ -62,7 +62,7 @@
     margin-top: 8rpx
 }
 
-.btn{
+.btn {
     position: absolute;
     bottom: 34rpx;
     background-color: #FF5E00;
