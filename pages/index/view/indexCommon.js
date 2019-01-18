@@ -40,11 +40,11 @@ export default class IndexCommonManager {
 
             picState: true,
             btnState: false,
-            picStateUrl: '../../images/index/done.png',
+            picStateUrl: '../../images/index/warn.png',
             homeHeartBoxIndex: 1,
 
             homeTitle: true,
-            homeTitleText: "绑定失败，",
+            homeTitleText: "绑定失败，请检查后重试",
             homePShow: false,
             homeOrangeBtn: false,
         })

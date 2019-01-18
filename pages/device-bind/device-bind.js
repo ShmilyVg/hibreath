@@ -30,37 +30,11 @@ Page({
             case ConnectState.UNBIND:
                 this.isBind = false;
                 app.getBLEManager().clearConnectedBLE();
-                return {
-                    burnupShow: true,
-
-                    picState: true,
-                    btnState: false,
-                    picStateUrl: '../../images/index/search.png',
-                    homeHeartBoxIndex: 1,
-
-                    homeTitle: true,
-                    homeTitleText: "绑定失败，请检查后重试",
-                    homePShow: false,
-                    homeOrangeBtn: false,
-
-
-                };
+                this.indexCommonManager.setSearchedState();
+                break;
             default:
-                return {
-
-                    burnupShow: true,
-
-                    picState: true,
-                    btnState: false,
-                    picStateUrl: '../../images/index/search.png',
-                    homeHeartBoxIndex: 1,
-
-                    homeTitle: true,
-                    homeTitleText: "已找到您的设备\n短按设备上的按键确认绑定",
-                    homePShow: false,
-                    homeOrangeBtn: false,
-
-                };
+                this.indexCommonManager.setDissearchState();
+                break;
         }
     },
 
