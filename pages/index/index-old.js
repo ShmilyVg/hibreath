@@ -7,7 +7,6 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
-import UpdataManager from "./updata-manager";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import {BlueToothUpdate} from "heheda-network";
 
@@ -16,39 +15,12 @@ const app = getApp();
 Page({
     data: {
         userInfo: {},
+        box3State: ["unjoin", "join", "join-done", "ready"],
+        box4State: ["home-heart-box4-start", "home-heart-box4-done", "home-heart-box4-num"],
+        stateColor: ['#B5B5B5','#FF5E00'],
+        stateLineheight: ['90rpx','45rpx'],
         firstInto: true,
-
-        stateColor: ['#FF5F00','#31FF00'],
-        homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
-
-        noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。',
-        homeP:[
-            "1. 请勿将设备远离手机",
-            "2. 请勿关闭小程序",
-            "3. 请勿关闭手机蓝牙",
-            "4. 请勿熄灭屏幕"
-        ],
-
-
-        burnupShow: true,
-        userInfoShow: true,
-        headerRight: false,
-
-        picState: false,
-        textStateColor: true,
-
-        connectpicShow: false,
-        blowpicShow: false,
-
-        homePointFirst: true,
-        homePointSecond: false,
-
-        homeBtn: true,
-
-        homeTitle: false,
-        homePShow: false,
-        homeOrangeBtn: false,
-
+        noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。'
     },
 
     useUrl() {
@@ -63,9 +35,9 @@ Page({
         HiNavigator.navigateToDeviceBind();
     },
     disconnectBtnClick() {
-        if (this.data.stateBtnShow){
-            app.getBLEManager().connect();
-        }
+        app.getBLEManager().connect();
+        // this.connectionPage = new ConnectionManager(this);
+        // this.connectionPage['disconnect']();
     },
 
     setBtnClick() {
@@ -74,13 +46,8 @@ Page({
 
     onLoad() {
         this.connectionPage = new ConnectionManager(this);
-        //this.connectionPage.connecting();
+        this.connectionPage.connecting();
         this.blowPage = new BlowManager(this);
-        //this.blowPage.blowed();
-        this.updataPage = new UpdataManager(this);
-        //this.updataPage.updating();
-
-
 
         this.blueToothUpdate = new BlueToothUpdate();
         this.blueToothUpdate.execute({deviceId: 'xxx', version: 1}).then();

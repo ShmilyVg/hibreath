@@ -4,8 +4,8 @@
     "pages/set-info/set-info",
     "pages/strategy/strategy",
     "pages/result/result",
-    "pages/history/history",
     "pages/device-bind/device-bind",
+    "pages/history/history",
     "pages/device-manage/device-manage"
   ],
   "window": {

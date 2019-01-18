@@ -1,4 +1,9 @@
 /* pages/device-bind/device-bind.wxss */
+
+page{
+    background: #3E3E3E;
+}
+
 .device-bind-image-style{
     width: 260rpx;
     height: 260rpx;

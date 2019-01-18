@@ -1,154 +1,68 @@
 page{
   background: #3E3E3E;
 }
+
+
 .home-head{
   width: 100%;
   height: 80rpx;
   display: flex;
-  align-items: center;
-  margin-top: 34rpx;
-  position: relative;
+  justify-content: space-between;
+  position: absolute;
+  top: 43rpx;
+  left: 0;
 }
 .home-pic{
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
   background: #535353;
-  margin-left: 40rpx;
+  margin-left: 30rpx;
 }
-.home-name{
-  font-size: 26rpx;
-  color: #979797;
-  margin-left: 21rpx;
+.home-state{
+  width: 470rpx;
+  height: 80rpx;
+  background: #4D4D4D;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #B5B5B5;
+  font-size: 30rpx;
+}
+.state-hint{
+  width: 18rpx;
+  height: 18rpx;
+/*  background: #FF5F00;*/
+  border-radius: 50%;
+  margin-right: 20rpx;
 }
 .home-set{
-  width: 50rpx;
-  height: 47rpx;
-  position: absolute;
-  right: 40rpx;
-}
-.home-heart{
-  width: 507rpx;
-  height: 507rpx;
-  margin: 29rpx auto 48rpx;
-  position: relative;
-}
-.home-heart-box1{
-  width: 507rpx;
-  height: 507rpx;
-  background: rgba(88, 88, 88,0.3);
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.home-heart-box2{
-  width: 425rpx;
-  height: 425rpx;
-  background: rgba(88, 88, 88,0.4);
-  border-radius: 50%;
-  position: absolute;
-  top: 41rpx;
-  left: 41rpx;
-}
-.home-heart-box3{
-  width: 333rpx;
-  height: 333rpx;
-  border-radius: 50%;
-  position: absolute;
-  top: 87rpx;
-  left: 87rpx;
-}
-.unjoin{
-  background: #696969;
-}
-@keyframes myfirst
-{
-  0%   {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 94, 0, 0.5);}
-  25%  {box-shadow:0rpx 0rpx 25rpx 10rpx rgba(255, 94, 0, 0.5);}
-  50%  {box-shadow:0rpx 0rpx 50rpx 20rpx rgba(255, 94, 0, 0.5);}
-  75%  {box-shadow:0rpx 0rpx 25rpx 10rpx rgba(255, 94, 0, 0.5);}
-  100% {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 94, 0, 0.5);}
-}
-.ready{
-  background: #FF5E00;
-  animation:myfirst 5s linear infinite alternate;
-}
-@keyframes mysecond
-{
-  0%   {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
-  10%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
-  20%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
-  30%   {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
-  40%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
-  50%  {background: linear-gradient(to top, rgba(255,94,0,1), rgba(255,94,0,0))}
-  60%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
-  70%  {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
-  80%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
-  90%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
-  100% {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
-}
-.join{
-  animation:mysecond 2s linear infinite alternate;
-}
-.join-done{
-  background: #FF5E00;
-}
-.home-heart-box4{
-  width: 318rpx;
-  height: 318rpx;
-  background: #535353;
-  border-radius: 50%;
-  position: absolute;
-  top: 95rpx;
-  left: 95rpx;
-  text-align: center;
-  line-height: 318rpx;
-  font-size: 34rpx;
-}
-.home-heart-box4-start{
-  color: #979797;
-}
-.home-heart-box4-done{
-  color: #FD5F02;
-}
-.home-heart-box4-num{
-  font-size:170rpx;
-  color:#fff;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
 }
 
-.home-state-btn{
+
+.connectpic{
+  width: 199rpx;
+  height: 211rpx;
   position: absolute;
-  left: 143.5rpx;
-  top: 208.5rpx;
-  width: 220rpx;
-  height: 90rpx;
-  text-align: center;
-  font-size: 32rpx;
+  top: 254rpx;
+  left: 95rpx;
 }
-.home-state-btn button{
-  font-size: 32rpx;
-  color: #FF5E00;
-  border: 0;
-  padding: 0;
+.blowpic {
+  width: 312rpx;
+  height: 133rpx;
+  position: absolute;
+  top: 206rpx;
+  left: 59rpx;
 }
-.home-state-btn1{
-  line-height: 90rpx;
-}
-.home-state-btn2{
-  line-height: 45rpx;
-  color: #FF5E00;
-}
-.home-hint{
-  font-size: 32rpx;
-  color: #fff;
-  text-align: center;
-}
+
+
 .home-point{
-  position: absolute;
-  top: 793rpx;
-  left: 102rpx;
   width: 566rpx;
+  margin:0 auto;
   font-size: 26rpx;
   line-height: 37rpx;
   color: #979797;
@@ -159,10 +73,12 @@ page{
 .home-point text{
   color: #FF5D00;
 }
+
+
 .home-btn{
   text-align: center;
   position: fixed;
-  bottom: 80rpx;
+  bottom: 70rpx;
   left: 100rpx;
 }
 .home-btn-box{
@@ -182,3 +98,5 @@ page{
 .home-btn-history{
   border-radius: 6px 74px 74px 6px;
 }
+
+

@@ -1,5 +1,10 @@
 <!--pages/device-bind/device-bind.wxml-->
-<view class="flex-column">
+
+<import src="../index/view/indexCommon.wxml"></import>
+
+<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,homePShow,homeOrangeBtn,picStateUrl,homeTitleText}}"></template>
+
+<!--<view class="flex-column">
     <image src="{{result.picPath}}" class="device-bind-image-style"></image>
     <text style="color: {{result.color}}" class="device-bind-text-common">{{result.text}}</text>
     <block wx:if="{{showReConnected}}">
@@ -14,4 +19,4 @@
     </block>
 
 
-</view>
+</view>-->

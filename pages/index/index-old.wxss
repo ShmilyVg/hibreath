@@ -1,0 +1,185 @@
+page{
+  background: #3E3E3E;
+}
+.home-head{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 34rpx;
+  position: relative;
+}
+.home-pic{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #535353;
+  margin-left: 40rpx;
+}
+.home-name{
+  font-size: 26rpx;
+  color: #979797;
+  margin-left: 21rpx;
+}
+.home-set{
+  width: 50rpx;
+  height: 47rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.home-heart{
+  width: 507rpx;
+  height: 507rpx;
+  margin: 29rpx auto 48rpx;
+  position: relative;
+}
+.home-heart-box1{
+  width: 507rpx;
+  height: 507rpx;
+  background: rgba(88, 88, 88,0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.home-heart-box2{
+  width: 425rpx;
+  height: 425rpx;
+  background: rgba(88, 88, 88,0.4);
+  border-radius: 50%;
+  position: absolute;
+  top: 41rpx;
+  left: 41rpx;
+}
+.home-heart-box3{
+  width: 333rpx;
+  height: 333rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 87rpx;
+  left: 87rpx;
+}
+.unjoin{
+  background: #696969;
+}
+@keyframes myfirst
+{
+  0%   {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 94, 0, 0.5);}
+  25%  {box-shadow:0rpx 0rpx 25rpx 10rpx rgba(255, 94, 0, 0.5);}
+  50%  {box-shadow:0rpx 0rpx 50rpx 20rpx rgba(255, 94, 0, 0.5);}
+  75%  {box-shadow:0rpx 0rpx 25rpx 10rpx rgba(255, 94, 0, 0.5);}
+  100% {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 94, 0, 0.5);}
+}
+.ready{
+  background: #FF5E00;
+  animation:myfirst 5s linear infinite alternate;
+}
+@keyframes mysecond
+{
+  0%   {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
+  10%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
+  20%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
+  30%   {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
+  40%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
+  50%  {background: linear-gradient(to top, rgba(255,94,0,1), rgba(255,94,0,0))}
+  60%   {background: linear-gradient(to top, rgba(255,94,0,0.9), rgba(255,94,0,0))}
+  70%  {background: linear-gradient(to top, rgba(255,94,0,0.8), rgba(255,94,0,0))}
+  80%   {background: linear-gradient(to top, rgba(255,94,0,0.7), rgba(255,94,0,0))}
+  90%   {background: linear-gradient(to top, rgba(255,94,0,0.6), rgba(255,94,0,0))}
+  100% {background: linear-gradient(to top, rgba(255,94,0,0.5), rgba(255,94,0,0))}
+}
+.join{
+  animation:mysecond 2s linear infinite alternate;
+}
+.join-done{
+  background: #FF5E00;
+}
+.home-heart-box4{
+  width: 318rpx;
+  height: 318rpx;
+  background: #535353;
+  border-radius: 50%;
+  position: absolute;
+  top: 95rpx;
+  left: 95rpx;
+  text-align: center;
+  line-height: 318rpx;
+  font-size: 34rpx;
+}
+.home-heart-box4-start{
+  color: #979797;
+}
+.home-heart-box4-done{
+  color: #FD5F02;
+}
+.home-heart-box4-num{
+  font-size:170rpx;
+  color:#fff;
+}
+
+.home-state-btn{
+  position: absolute;
+  left: 143.5rpx;
+  top: 208.5rpx;
+  width: 220rpx;
+  height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.home-state-btn button{
+  font-size: 32rpx;
+  color: #FF5E00;
+  border: 0;
+  padding: 0;
+}
+.home-state-btn1{
+  line-height: 90rpx;
+}
+.home-state-btn2{
+  line-height: 45rpx;
+  color: #FF5E00;
+}
+.home-hint{
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+}
+.home-point{
+  position: absolute;
+  top: 793rpx;
+  left: 102rpx;
+  width: 566rpx;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  color: #979797;
+  padding: 31rpx 0;
+  border-top: 1rpx solid #979797;
+  border-bottom: 1rpx solid #979797;
+}
+.home-point text{
+  color: #FF5D00;
+}
+.home-btn{
+  text-align: center;
+  position: fixed;
+  bottom: 80rpx;
+  left: 100rpx;
+}
+.home-btn-box{
+  width: 270rpx;
+  height: 100rpx;
+  background: #505050;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 100rpx;
+  display: inline-block;
+}
+.home-btn-use{
+  border-radius: 74rpx 6rpx 6rpx 74rpx;
+  margin-right: 7rpx;
+}
+.home-btn-history{
+  border-radius: 6px 74px 74px 6px;
+}
+
