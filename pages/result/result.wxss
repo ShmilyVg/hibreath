@@ -72,8 +72,8 @@
 .score {
     font-size: 170rpx;
     color: white;
-    line-height: 170rpx;
-    margin-top: 55rpx;
+    line-height: 100rpx;
+    margin-top: 100rpx;
     font-weight:bold;
     font-family: DIN Condensed;
 }
