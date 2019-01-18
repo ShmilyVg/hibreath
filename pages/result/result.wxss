@@ -68,3 +68,12 @@
     background-color: #FF5E00;
     color: white;
 }
+
+.score {
+    font-size: 170rpx;
+    color: white;
+    line-height: 170rpx;
+    margin-top: 55rpx;
+    font-weight:bold;
+    font-family: DIN Condensed;
+}
