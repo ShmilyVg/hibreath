@@ -94,9 +94,9 @@
 @keyframes myfirst
 {
   0%   {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 71, 0, 0.5);}
-  25%  {box-shadow:0rpx 0rpx 35rpx 10rpx rgba(255, 71, 0, 0.65);}
-  50%  {box-shadow:0rpx 0rpx 70rpx 20rpx rgba(255, 71, 0, 0.8);}
-  75%  {box-shadow:0rpx 0rpx 35rpx 10rpx rgba(255, 71, 0, 0.65);}
+  25%  {box-shadow:0rpx 0rpx 45rpx 10rpx rgba(255, 71, 0, 0.8);}
+  50%  {box-shadow:0rpx 0rpx 90rpx 20rpx rgba(255, 71, 0, 1);}
+  75%  {box-shadow:0rpx 0rpx 45rpx 10rpx rgba(255, 71, 0, 0.8);}
   100% {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 71, 0, 0.5);}
 }
 

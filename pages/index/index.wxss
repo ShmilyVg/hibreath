@@ -69,8 +69,8 @@ page{
   line-height: 37rpx;
   color: #979797;
   padding: 31rpx 0;
-  border-top: 1rpx solid #979797;
-  border-bottom: 1rpx solid #979797;
+  border-top: 1rpx solid #5B5B5B;
+  border-bottom: 1rpx solid #5B5B5B;
 }
 .home-point text{
   color: #FF5D00;
