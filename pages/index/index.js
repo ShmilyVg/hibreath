@@ -49,6 +49,7 @@ Page({
         homePShow: false,
         homeOrangeBtn: false,
 
+        animationData: {}
     },
 
     useUrl() {
@@ -76,13 +77,11 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         //this.connectionPage.disconnect();
         this.blowPage = new BlowManager(this);
-        //this.blowPage.blowing();
+        //this.blowPage.connected();
         this.updataPage = new UpdataManager(this);
         //this.updataPage.updating();
 
-
-
-        /*this.blueToothUpdate = new BlueToothUpdate();
+        this.blueToothUpdate = new BlueToothUpdate();
         this.blueToothUpdate.execute({deviceId: 'xxx', version: 1}).then();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
@@ -114,7 +113,8 @@ Page({
                 app.getBLEManager().setBindMarkStorage();
                 app.getBLEManager().connect({macId: deviceInfo.mac});
             }
-        })*/
+        });
+
     },
 
     onShow() {
@@ -167,5 +167,32 @@ Page({
     },
     onUnload() {
         app.getBLEManager().closeAll();
-    }
+    },
+
+
+    picAnimation(){
+        const showanimation = wx.createAnimation({
+            duration: 2000,
+            timingFunction: 'linear',
+        });
+        const hideanimation = wx.createAnimation({
+            duration: 2000,
+            timingFunction: 'linear',
+        });
+
+        setTimeout(function () {
+            showanimation.opacity(1).step();
+            this.setData({
+                animationData: showanimation
+            })
+        }.bind(this), 1000);
+
+        setTimeout(function () {
+            hideanimation.opacity(0).step();
+            this.setData({
+                animationData: hideanimation
+            })
+        }.bind(this), 6000);
+    },
+
 });

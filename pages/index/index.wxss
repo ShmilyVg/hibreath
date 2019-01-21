@@ -50,6 +50,7 @@ page{
   position: absolute;
   top: 254rpx;
   left: 95rpx;
+  opacity: 0;
 }
 .blowpic {
   width: 312rpx;
@@ -57,6 +58,7 @@ page{
   position: absolute;
   top: 206rpx;
   left: 59rpx;
+  opacity: 0;
 }
 
 

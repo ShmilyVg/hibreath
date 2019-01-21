@@ -1,6 +1,7 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
+
 export default class BlowManager {
     constructor(page) {
         this._page = page;
@@ -11,6 +12,7 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
             this.blow();
+            page.picAnimation();
         };
 
         this.actionBlow[ProtocolState.BREATH_RESTART] = () => {
@@ -29,6 +31,7 @@ export default class BlowManager {
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {
                     this.connected();
+                    page.picAnimation();
                 };
     }
 
