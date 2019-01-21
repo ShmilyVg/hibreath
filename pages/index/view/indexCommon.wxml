@@ -16,13 +16,6 @@
 
   <view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>
 
-
-  <view class="home-p" wx:if="{{homePShow}}" wx:for="{{homeP.length}}" style="margin-left: {{marginLeft}}">{{homeP[index]}}</view>
-
-
-  <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" >{{homeOrangeBtnText}}</view>
-
-
 </template>
 
 

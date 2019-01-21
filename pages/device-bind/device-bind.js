@@ -17,6 +17,14 @@ Page({
             {text: '您的设备正在被其他人使用'},
             {text: '您未在设备上短按按键确认绑定'},
         ],
+        homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
+        homeP:[
+            "1. 您的手机未开启蓝牙",
+            "2. 您的手机未授权微信获取定位权限",
+            "3. 您的设备正在被其他人使用",
+            "4. 您未在设备上短按按键确认绑定"
+        ],
+        bindHintShow: false,
     },
     isBind: false,
 
@@ -24,16 +32,28 @@ Page({
         switch (state) {
             case ConnectState.CONNECTING:
                 this.indexCommonManager.setSearchingState();
+                this.setData({
+                    bindHintShow: true,
+                    bindHint:"请将设备开机并靠近手机",
+                });
                 break;
             case ConnectState.UNAVAILABLE:
             case ConnectState.DISCONNECT:
             case ConnectState.UNBIND:
                 this.isBind = false;
                 app.getBLEManager().clearConnectedBLE();
-                this.indexCommonManager.setSearchedState();
+                this.indexCommonManager.setDissearchState();
+                this.setData({
+                    bindHintShow: false,
+                    bindHint:"",
+                });
                 break;
             default:
-                this.indexCommonManager.setDissearchState();
+                this.indexCommonManager.setSearchedState();
+                this.setData({
+                    bindHintShow: true,
+                    bindHint:"短按设备上的按键确认绑定",
+                });
                 break;
         }
     },

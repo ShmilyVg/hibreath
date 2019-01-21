@@ -45,8 +45,9 @@ export default class IndexCommonManager {
 
             homeTitle: true,
             homeTitleText: "绑定失败，请检查后重试",
-            homePShow: false,
-            homeOrangeBtn: false,
+            homePShow: true,
+            marginLeft: "102rpx",
+            homeOrangeBtn: true,
         })
     }
 };

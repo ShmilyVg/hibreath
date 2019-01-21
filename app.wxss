@@ -136,13 +136,15 @@
   font-size: 50rpx;
   color: #AAAAAA;
   text-align: center;
-  margin-bottom: 48rpx;
 }
 
 .home-p{
   color: #979797;
   font-size: 28rpx;
   margin-bottom: 11rpx;
+}
+.home-p:first-child{
+  margin-top: 40rpx;
 }
 
 .home-orangebtn{
@@ -154,9 +156,6 @@
   line-height: 100rpx;
   background: #FF5F00;
   border-radius: 50rpx;
-  position: absolute;
-  left: 70rpx;
-  bottom: 50rpx;
 }
 
 /*外部字体*/
