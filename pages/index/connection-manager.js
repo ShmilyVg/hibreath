@@ -96,6 +96,7 @@ export default class ConnectionManager {
             stateColorIndex: 0,
 
             picState: false,
+            btnState: false,
             textState:'',
             homeHeartBoxIndex: 2,
 

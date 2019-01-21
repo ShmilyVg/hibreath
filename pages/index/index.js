@@ -82,7 +82,7 @@ Page({
 
 
 
-        this.blueToothUpdate = new BlueToothUpdate();
+        /*this.blueToothUpdate = new BlueToothUpdate();
         this.blueToothUpdate.execute({deviceId: 'xxx', version: 1}).then();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
@@ -114,7 +114,7 @@ Page({
                 app.getBLEManager().setBindMarkStorage();
                 app.getBLEManager().connect({macId: deviceInfo.mac});
             }
-        })
+        })*/
     },
 
     onShow() {

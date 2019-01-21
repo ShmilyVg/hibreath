@@ -1,6 +1,6 @@
 <import src="./view/indexCommon.wxml"></import>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,picStateUrl,homeTitleText,textState}}"></template>
+<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,homeTitle,homeTitleText}}"></template>
 
 
 <!--<image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>-->
@@ -18,7 +18,7 @@
 </view>
 
 <!--<view class="home-heart">
-  <image class="home-heratbg" src="../../images/index/heart.png" bindtap="setBtnClick"></image>
+  <image class="home-heratbg" src="../../images/index/heart.png"></image>
 
   <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
     <view class="heart-hint">

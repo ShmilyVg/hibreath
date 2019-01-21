@@ -44,6 +44,7 @@ export default class BlowManager {
             stateColorIndex: 1,
 
             picState: false,
+            btnState: false,
             textState:'',
             homeHeartBoxIndex: 1,
 
@@ -73,6 +74,7 @@ export default class BlowManager {
             stateColorIndex: 1,
 
             picState: false,
+            btnState: false,
             textState:'预热中',
             homeHeartBoxIndex: 1,
 
@@ -102,6 +104,7 @@ export default class BlowManager {
             stateColorIndex: 1,
 
             picState: false,
+            btnState: false,
             textState:'',
             homeHeartBoxIndex: 1,
 
@@ -131,6 +134,7 @@ export default class BlowManager {
             stateColorIndex: 1,
 
             picState: false,
+            btnState: false,
             textState:'',
             homeHeartBoxIndex: 1,
 
@@ -160,6 +164,7 @@ export default class BlowManager {
             stateColorIndex: 1,
 
             picState: false,
+            btnState: false,
             textState:'吹气中',
             homeHeartBoxIndex: 2,
 
@@ -190,6 +195,8 @@ export default class BlowManager {
 
             picState: true,
             picStateUrl:'../../images/index/note.png',
+            btnState: false,
+            textState:'',
             homeHeartBoxIndex: 1,
 
             connectpicShow: false,
