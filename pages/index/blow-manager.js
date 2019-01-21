@@ -201,7 +201,7 @@ export default class BlowManager {
             homeBtn: false,
 
             homeTitle: true,
-            homeTitleText: "吹起完成，正在生成结果",
+            homeTitleText: "吹气完成，正在生成结果",
             homePShow: false,
             homeOrangeBtn: false,
         })

@@ -76,7 +76,7 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         //this.connectionPage.disconnect();
         this.blowPage = new BlowManager(this);
-        //this.blowPage.blowed();
+        //this.blowPage.blowing();
         this.updataPage = new UpdataManager(this);
         //this.updataPage.updating();
 
