@@ -3,7 +3,7 @@
   <image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>
 
   <view class="home-heart">
-    <image class="home-heratbg" src="../../images/index/heart.png" bindtap="setBtnClick"></image>
+    <image class="home-heratbg" src="../../images/index/heart.png"></image>
 
     <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
       <view class="heart-hint">
