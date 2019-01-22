@@ -29,49 +29,88 @@ export default class ConnectionManager {
 
     unbind() {
         this._page.setData({
-            bindBtn:'点击绑定设备',
-            note: this._page.data.noteListMore,
-            bindBtnShow: true,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: true,
+
+            burnupShow: true,
+            userInfoShow: true,
+            headerRight: false,
+            stateBtnShow: false,
+
+            picState: false,
+            btnState: true,
+            textStateColor: true,
+            homeHeartBoxIndex: 0,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
             homeBtn: true,
-            homeHint: false,
-            box3StateIndex:0,
-            box4StateIndex:0,
-            bindList:[]
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 
     disconnect() {
         this._page.setData({
-            disconnect:'未连接设备\n点击重试',
-            note: this._page.data.noteListMore,
-            bindBtnShow: false,
-            disconnectBtnShow: true,
-            setShow: true,
-            homePoint: true,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: true,
+
+            state: "未连接到设备",
+            stateColorIndex: 0,
+
+            picState: true,
+            btnState: false,
+            picStateUrl:'../../images/index/warn.png',
+            homeHeartBoxIndex: 0,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
             homeBtn: true,
-            homeHint: false,
-            box3StateIndex:0,
-            box4StateIndex:0
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         });
     }
 
     connecting() {
         this._page.setData({
-            state:'正在连接设备',
-            note: this._page.data.noteListMore,
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: true,
-            homePoint: true,
-            homeBtn: true,
-            homeHint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "正在连接设备",
             stateColorIndex: 0,
-            stateLineheightIndex: 0,
-            box3StateIndex:1,
-            box4StateIndex:0
+
+            picState: false,
+            btnState: false,
+            textState:'',
+            homeHeartBoxIndex: 2,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
+            homeBtn: true,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 

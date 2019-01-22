@@ -1,6 +1,7 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
+
 export default class BlowManager {
     constructor(page) {
         this._page = page;
@@ -11,6 +12,7 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
             this.blow();
+            page.picAnimation();
         };
 
         this.actionBlow[ProtocolState.BREATH_RESTART] = () => {
@@ -29,103 +31,189 @@ export default class BlowManager {
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {
                     this.connected();
+                    page.picAnimation();
                 };
     }
 
     connected() {
         this._page.setData({
-            state: '已连接',
-            note: this._page.data.noteListMore,
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: true,
-            homeBtn: true,
-            homeHint: true,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
             stateColorIndex: 1,
-            stateLineheightIndex: 0,
-            box3StateIndex: 2,
-            box4StateIndex: 1
+
+            picState: false,
+            btnState: false,
+            textState:'',
+            homeHeartBoxIndex: 1,
+
+            connectpicShow: true,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
+            homeBtn: true,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 
     ready() {
         this._page.setData({
-            state: '预热中',
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: true,
-            homeBtn: false,
-            homeHint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
             stateColorIndex: 1,
-            stateLineheightIndex: 0,
-            box3StateIndex: 3,
-            box4StateIndex: 2
+
+            picState: false,
+            btnState: false,
+            textState:'预热中',
+            homeHeartBoxIndex: 1,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
+            homeBtn: false,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 
     blow() {
         this._page.setData({
-            state: '请现在\n对准吹气口吹气',
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
+            stateColorIndex: 1,
+
+            picState: false,
+            btnState: false,
+            textState:'',
+            homeHeartBoxIndex: 1,
+
+            connectpicShow: false,
+            blowpicShow: true,
+
+            homePointFirst: false,
+            homePointSecond: true,
+
             homeBtn: false,
-            homeHint: false,
-            stateColorIndex: 0,
-            stateLineheightIndex: 1,
-            box3StateIndex: 3,
-            box4StateIndex: 2,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         });
     }
 
     disblow() {
         this._page.setData({
-            state: '请现在\n对准吹气口吹气',
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
+            stateColorIndex: 1,
+
+            picState: false,
+            btnState: false,
+            textState:'',
+            homeHeartBoxIndex: 1,
+
+            connectpicShow: false,
+            blowpicShow: true,
+
+            homePointFirst: false,
+            homePointSecond: true,
+
             homeBtn: false,
-            homeHint: false,
-            stateColorIndex: 0,
-            stateLineheightIndex: 1,
-            box3StateIndex: 3,
-            box4StateIndex: 2,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 
     blowing() {
         this._page.setData({
-            state: '吹气中',
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
+            stateColorIndex: 1,
+
+            picState: false,
+            btnState: false,
+            textState:'吹气中',
+            homeHeartBoxIndex: 2,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: false,
+            homePointSecond: true,
+
             homeBtn: false,
-            homeHint: false,
-            stateColorIndex: 0,
-            stateLineheightIndex: 0,
-            box3StateIndex: 3,
-            box4StateIndex: 2,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 
     blowed() {
         this._page.setData({
-            state: '吹气完成\n正在生成结果',
-            bindBtnShow: false,
-            disconnectBtnShow: false,
-            setShow: false,
-            homePoint: false,
+
+            burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: false,
+
+            state: "设备已连接",
+            stateColorIndex: 1,
+
+            picState: true,
+            picStateUrl:'../../images/index/note.png',
+            btnState: false,
+            textState:'',
+            homeHeartBoxIndex: 1,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: false,
+            homePointSecond: false,
+
             homeBtn: false,
-            homeHint: false,
-            stateColorIndex: 0,
-            stateLineheightIndex: 1,
-            box3StateIndex: 3,
-            box4StateIndex: 2,
+
+            homeTitle: true,
+            homeTitleText: "吹气完成，正在生成结果",
+            homePShow: false,
+            homeOrangeBtn: false,
         })
     }
 

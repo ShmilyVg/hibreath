@@ -8,7 +8,7 @@ Page({
     data: {
         dateText: {},
         mainColor: '#E5E5E5',
-        showUnscramble: false,//是否显示解读
+        showUnscramble: false, //是否显示解读
         isChose: false,
         cardTitle: '选择并保存检测时状态，以便综合分析',
         score: 0,
@@ -82,10 +82,9 @@ Page({
     },
 
     clickBtn: function () {
-        if (!this.data.index) {
-            return;
+        if (this.data.index) {
+            this.postAnalysisFetch();
         }
-        this.postAnalysisFetch();
     },
 
     postAnalysisFetch() {
@@ -102,11 +101,10 @@ Page({
             });
             toast.hiddenLoading();
             if (this.data.postAdd) {
-                Protocol.getBreathDataAdd(
-                    {dataValue: this.data.score, situation: parseInt(this.data.index)}
-                ).then(data => {
-                    console.log('增加成功~');
-                })
+                Protocol.getBreathDataAdd({
+                    dataValue: this.data.score,
+                    situation: parseInt(this.data.index)
+                }).then(data => {})
             }
         });
     },

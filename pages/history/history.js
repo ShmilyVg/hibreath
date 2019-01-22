@@ -2,18 +2,42 @@
 import Protocol from "../../modules/network/protocol";
 import * as tools from "../../utils/tools";
 import HiNavigator from "../../navigator/hi-navigator";
+import {
+    ProtocolState
+} from "../../modules/bluetooth/bluetooth-state";
+import Toast from "../../view/toast";
 
 Page({
 
     data: {
         allList: [],
-        page: 1
+        page: 1,
+        isSyncStart: false
     },
- 
+
     onLoad() {
         this.getBreathDataList({});
     },
-    
+
+    onShow() {
+        getApp().setBLEListener({
+            bleStateListener: ({
+                state
+            }) => {
+                if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
+                    this.setData({
+                        isSyncStart: true
+                    })
+                } else if (ProtocolState.QUERY_DATA_FINISH === state.protocolState) {
+                    this.setData({
+                        isSyncStart: false
+                    })
+                    Toast.success('同步完成');
+                }
+            },
+        });
+    },
+
     toResult(e) {
         let index = e.currentTarget.dataset.index;
         let list = this.data.allList;
@@ -25,8 +49,12 @@ Page({
         });
     },
 
-    getBreathDataList({page = 1}) {
-        Protocol.getBreathDataList({page}).then(data => {
+    getBreathDataList({
+        page = 1
+    }) {
+        Protocol.getBreathDataList({
+            page
+        }).then(data => {
             let list = this.handleList(data.result.list);
             if (list.length) {
                 this.setData({
@@ -52,10 +80,14 @@ Page({
 
     onPullDownRefresh() {
         this.data.allList.splice(0, this.data.allList.length);
-        this.getBreathDataList({page: this.data.page = 1});
+        this.getBreathDataList({
+            page: this.data.page = 1
+        });
     },
 
     onReachBottom() {
-        this.getBreathDataList({page: ++this.data.page});
+        this.getBreathDataList({
+            page: ++this.data.page
+        });
     }
 })

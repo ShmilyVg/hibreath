@@ -4,8 +4,8 @@
     <image class="background-image" src="../../images/result/background.png"></image>
 
     <image src="../../images/result/top-image.png" style="width:750rpx;height: 162rpx;margin-top: 30rpx"></image>
-    <view style="font-size: 170rpx;color: white;line-height: 170rpx;margin-top: 55rpx;font-weight:bold">{{score}}</view>
-    <view style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 16rpx">ppm</view>
+    <view class="score">{{score}}</view>
+    <view style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 10rpx;font-family: DIN Condensed;">ppm</view>
     <view wx:if="{{dateText.length}}" style="line-height: 43rpx;text-align: center;margin-top: 23rpx">
         <text style="font-size: 30rpx;color: white;">{{dateText}}</text>
     </view>
