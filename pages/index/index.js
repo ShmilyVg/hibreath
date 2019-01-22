@@ -78,11 +78,6 @@ Page({
         this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);
         //this.blowPage.blowing();
-        this.updataPage = new UpdataManager(this);
-        //this.updataPage.updating();
-
-        this.blueToothUpdate = new BlueToothUpdate();
-        this.blueToothUpdate.execute({deviceId: 'xxx', version: 1}).then();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
         if (info) {
