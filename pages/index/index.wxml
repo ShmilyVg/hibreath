@@ -30,6 +30,7 @@
 
 </view>-->
 
+<image class="electricitypic" src="../../images/index/electricity.png" wx:if="{{electricitypicShow}}" animation="{{animationData}}"></image>
 
 <image class="connectpic" src="../../images/index/connectpic.png" wx:if="{{connectpicShow}}" animation="{{animationData}}"></image>
 <image class="blowpic" src="../../images/index/blowpic.png" wx:if="{{blowpicShow}}" animation="{{animationData}}"></image>

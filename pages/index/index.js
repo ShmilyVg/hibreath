@@ -49,7 +49,9 @@ Page({
         homePShow: false,
         homeOrangeBtn: false,
 
-        animationData: {}
+        animationData: {},
+
+        electricitypicShow: false,
     },
 
     useUrl() {
@@ -130,6 +132,17 @@ Page({
             receiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     HiNavigator.navigateToResult({score: finalResult.result});
+                }else if (ProtocolState.TIMESTAMP === state.protocolState) {
+                    const {battery} = finalResult;
+                    if(battery < '20%'){
+                        this.setData({
+                            electricitypicShow: true,
+                        })
+                    }else{
+                        this.setData({
+                            electricitypicShow: false,
+                        })
+                    }
                 }
             }
         });
