@@ -134,7 +134,7 @@ Page({
                     HiNavigator.navigateToResult({score: finalResult.result});
                 }else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     const {battery} = finalResult;
-                    if(battery < '20%'){
+                    if(battery < 20){
                         this.setData({
                             electricitypicShow: true,
                         })
