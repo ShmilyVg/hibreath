@@ -9,7 +9,6 @@ import Protocol from "./modules/network/protocol";
 App({
     onLaunch(options) {
         this.records = [];
-        let tempCount = 0;
         this.setCommonBLEListener({
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
@@ -25,7 +24,9 @@ App({
                             }).catch(res => {
                                 console.log(res, '同步数据失败');
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: false});
-                            }).finally(() => this.records = []);
+                            }).finally(() => {
+                                this.records = [];
+                            });
                         } else {
                             this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: false});
                             this.records = [];
