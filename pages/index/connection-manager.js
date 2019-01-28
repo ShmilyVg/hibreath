@@ -37,6 +37,7 @@ export default class ConnectionManager {
 
             picState: false,
             btnState: true,
+            hintPic: true,
             textStateColor: true,
             homeHeartBoxIndex: 0,
 
@@ -67,6 +68,7 @@ export default class ConnectionManager {
 
             picState: true,
             btnState: false,
+            hintPic: true,
             picStateUrl:'../../images/index/warn.png',
             homeHeartBoxIndex: 0,
 
@@ -97,6 +99,7 @@ export default class ConnectionManager {
 
             picState: false,
             btnState: false,
+            hintPic: true,
             textState:'',
             homeHeartBoxIndex: 2,
 

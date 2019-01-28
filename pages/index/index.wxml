@@ -1,6 +1,6 @@
 <import src="./view/indexCommon.wxml"></import>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,homeTitle,homeTitleText}}"></template>
+<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,homeTitle,homeTitleText,hintPic}}"></template>
 
 
 <!--<image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>-->

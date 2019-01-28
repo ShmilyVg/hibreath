@@ -8,6 +8,7 @@ export default class IndexCommonManager {
 
             picState: true,
             btnState: false,
+            hintPic: false,
             picStateUrl: '../../images/index/search.png',
             homeHeartBoxIndex: 1,
 
@@ -24,6 +25,7 @@ export default class IndexCommonManager {
 
             picState: true,
             btnState: false,
+            hintPic: true,
             picStateUrl: '../../images/index/done.png',
             homeHeartBoxIndex: 1,
 
@@ -40,6 +42,7 @@ export default class IndexCommonManager {
 
             picState: true,
             btnState: false,
+            hintPic: true,
             picStateUrl: '../../images/index/warn.png',
             homeHeartBoxIndex: 1,
 

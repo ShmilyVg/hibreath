@@ -25,6 +25,8 @@ export default class UpdataManager {
             stateColorIndex: 1,
 
             picState: true,
+            btnState: false,
+            hintPic: false,
             picStateUrl:'../../images/index/up.png',
             homeHeartBoxIndex: 1,
 
@@ -57,6 +59,8 @@ export default class UpdataManager {
             stateColorIndex: 1,
 
             picState: true,
+            btnState: false,
+            hintPic: true,
             picStateUrl:'../../images/index/done.png',
             homeHeartBoxIndex: 1,
 

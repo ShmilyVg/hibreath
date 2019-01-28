@@ -130,10 +130,27 @@
   width: 100rpx;
   height: 100rpx;
 }
+.hint-pic-animation{
+  width: 100rpx;
+  height: 100rpx;
+  animation:mysecond 3s linear infinite alternate;
+}
+
+@keyframes mysecond
+{
+  0%   {opacity: 1;}
+  25%  {opacity: 0.6;}
+  50%  {opacity: 0.2;}
+  75%  {opacity: 0.6;}
+  100% {opacity: 1;}
+}
+
+
 
 
 .home-title{
   font-size: 50rpx;
+  font-weight: 700;
   color: #AAAAAA;
   text-align: center;
 }
@@ -143,9 +160,7 @@
   font-size: 28rpx;
   margin-bottom: 11rpx;
 }
-.home-p:first-child{
-  margin-top: 40rpx;
-}
+
 
 .home-orangebtn{
   width: 610rpx;

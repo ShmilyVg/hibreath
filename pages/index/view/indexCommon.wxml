@@ -3,11 +3,11 @@
   <image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>
 
   <view class="home-heart">
-    <image class="home-heratbg" src="../../images/index/heart.png" bindtap="setBtnClick"></image>
+    <image class="home-heratbg" src="../../images/index/heart.png"></image>
 
     <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
       <view class="heart-hint">
-        <image class="hint-pic" src="{{picStateUrl}}" wx:if="{{picState}}"></image>
+        <image class="{{hintPic?'hint-pic':'hint-pic-animation'}}" src="{{picStateUrl}}" wx:if="{{picState}}" ></image>
         <button class="hint-btn" wx:elif="{{btnState}}" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>点击绑定</text></button>
         <view class="hint-text">{{textState}}</view>
       </view>
