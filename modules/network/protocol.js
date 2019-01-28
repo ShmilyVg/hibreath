@@ -58,4 +58,7 @@ export default class Protocol {
         return Network.request({url: 'breathPlan/analysis', data: data})
     }
 
+    static postBreathDataSync({items}) {
+        return Network.request({url: 'breathData/sync', data: {items}});
+    }
 }

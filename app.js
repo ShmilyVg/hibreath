@@ -8,22 +8,30 @@ import Protocol from "./modules/network/protocol";
 
 App({
     onLaunch(options) {
-        let records = [];
+        this.records = [];
+        let tempCount = 0;
         this.setCommonBLEListener({
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
-                    const {length, isEat, timestamp} = finalResult;
-                    if (records.length < length) {
-                        records.push({state: isEat ? 1 : 0, timestamp});
-                    } else {
-                        Protocol.postMedicalRecordSave({records}).then(data => {
-                            //TODO 向设备回复成功
-                            this.bLEManager.sendQueryDataSuccessProtocol();
-                        }).catch(res => {
-                            console.log(res, '同步数据失败');
-                        }).finally(() => records = []);
+                    const {timestamp, result, currentLength} = finalResult;
+                    let {currentIndex} = finalResult;
+                    this.records.push({dataValue: result, timestamp, currentIndex: ++currentIndex});
+                    if (currentLength === this.records.length) {//与currentLength相等时校验本次接收到的所有数据
+                        const sum = this.records.reduce((prev, cur) => prev.currentIndex + cur.currentIndex);
+                        const sum2 = currentLength * (currentLength + 1) / 2;
+                        if (sum === sum2) {
+                            Protocol.postBreathDataSync({items: this.records}).then(data => {
+                                this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
+                            }).catch(res => {
+                                console.log(res, '同步数据失败');
+                                this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: false});
+                            }).finally(() => this.records = []);
+                        } else {
+                            this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: false});
+                            this.records = [];
+                        }
                     }
-                    console.log('同步数据的数组', records);
+                    console.log('同步数据的数组', this.records);
                 } else {
                     this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
                 }
@@ -40,6 +48,7 @@ App({
     },
 
     onHide() {
+        this.records = [];
         this.commonOnHide();
     },
 
