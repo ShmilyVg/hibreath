@@ -7,8 +7,10 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
         this.bluetoothProtocol = new HiBreathBlueToothProtocol(this);
         // this.setUUIDs({services: ['6E400001-B5A3-F393-E0A9-E50E24DCCA9E']});//设置主Services方式如 this.setUUIDs({services: ['xxxx']})  xxxx为UUID全称，可设置多个
         this.setUUIDs({
-            services: ['0000180A-0000-1000-8000-00805F9B34FB'],
-            hiServiceUUID: '6E400001-B5A3-F393-E0A9-E50E24DCCA9E'
+            // services: ['0000180A-0000-1000-8000-00805F9B34FB'],
+            services: ['6E400001-B5A3-F393-E0A9-E50E24DCCA9E'],
+            hiServiceUUID: '6E400001-B5A3-F393-E0A9-E50E24DCCA9E',
+            hiDeviceName: 'ABCDE'
         });
     }
 

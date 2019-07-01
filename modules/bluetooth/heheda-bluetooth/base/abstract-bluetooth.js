@@ -6,8 +6,8 @@
  */
 
 import {ErrorState} from "../utils/error-state";
-import Protocol from "../../../network/protocol";
 import * as mta from "../../../analysis/mta";
+import CommonProtocol from "../../../network/network/libs/protocol";
 
 const INIT_TIMEOUT = 10;
 export default class AbstractBlueTooth {
@@ -507,7 +507,7 @@ export default class AbstractBlueTooth {
                 //将本次统计数据清空，保证上传统计时，不会对下一次的统计数据造成干扰
                 this.eventStatistics = {};
                 //开始扫描时间戳为空的情况下，将开始连接时间戳赋值给开始扫描时间戳end-----
-                Protocol.postBluetoothCreate({
+                CommonProtocol.postBluetoothCreate({
                     data: statistics
                 }).then(data => {
                     const timeOne = (statistics['startLinkTime'] - statistics['startScanTime']) / 1000;

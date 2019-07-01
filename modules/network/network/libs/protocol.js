@@ -23,7 +23,13 @@ export default class CommonProtocol {
     }
 
     static postSystemInfo({systemInfo, hiSoftwareVersion}) {
-        // return Promise.resolve();
-        return Network.request({url: 'account/systeminfo', data: {systemInfo: {...systemInfo, hiSoftwareVersion}}});
+        return Promise.resolve();
+        // return Network.request({url: 'account/systeminfo', data: {systemInfo: {...systemInfo, hiSoftwareVersion}}});
+    }
+
+    static postBluetoothCreate({data}) {
+        console.log('*********************************统计上传参数：', data);
+        return Promise.resolve();
+        // return Network.request({url: 'bluetooth/create', data, showResendDialog: false});
     }
 }

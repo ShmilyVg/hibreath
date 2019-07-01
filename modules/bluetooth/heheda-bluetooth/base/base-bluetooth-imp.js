@@ -24,6 +24,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         this._bleStateListener = null;
         this._bleSignPowerListener = null;
         this._errorTimeoutIndex = 0;
+        this._hiDeviceName = '';
         let that = this;
         const action = function () {
             console.log('执行统一重连action', this.type, '是否处于升级状态', getApp().isOTAUpdate);
@@ -145,6 +146,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
 
     baseDeviceFindAction(res) {
         console.log('开始扫描', res);
+        const hiDeviceName = this._hiDeviceName || '';
         if (!!this._scanBLDListener) {//首页重连需要清devices，按deviceId连接时，需过滤其他设备
             this._scanBLDListener(res);
         } else {
@@ -168,11 +170,11 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                 // let isFoundNewDevice = false;
                 for (let i = 0, len = devices.length; i < len; i++) {
                     const device = devices[i];
-                    if (device.localName && device.localName.toUpperCase().indexOf('PB1-') !== -1) {
+                    if (device.localName && device.localName.toUpperCase().indexOf(hiDeviceName) !== -1) {
                         console.log('扫描到药盒，并开始连接', device);
                         this._bleSignPowerListener && this._bleSignPowerListener(devices);
                         this._updateFinalState({
-                            promise: this.createBLEConnection({deviceId: device.deviceId,signPower: device.RSSI})
+                            promise: this.createBLEConnection({deviceId: device.deviceId, signPower: device.RSSI})
                         });
                         break;
                     }
@@ -247,6 +249,11 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         this._connectionStateListener = connectionStateListener;
         this._adapterStateListener = adapterStateListener;
         this._receiveDataOutsideistener = receiveDataListener;
+    }
+
+    setUUIDs({services, hiServiceUUID, hiDeviceName}) {
+        this._hiDeviceName = hiDeviceName;
+        super.setUUIDs({services, hiServiceUUID});
     }
 
     /**

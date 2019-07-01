@@ -61,4 +61,5 @@ export default class Protocol {
     static postBreathDataSync({items}) {
         return Network.request({url: 'breathData/sync', data: {items}});
     }
+
 }

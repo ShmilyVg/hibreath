@@ -19,8 +19,8 @@ export default class SimpleBlueToothImp {
         this.bluetoothManager.setBLEListener(arguments[0]);
     }
 
-    setUUIDs({services, hiServiceUUID}) {
-        this.bluetoothManager.setUUIDs({services, hiServiceUUID});
+    setUUIDs({services, hiServiceUUID,hiDeviceName}) {
+        this.bluetoothManager.setUUIDs({services, hiServiceUUID, hiDeviceName});
     }
 
     sendData({buffer}) {
