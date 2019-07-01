@@ -7,9 +7,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
-import UpdataManager from "./updata-manager";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
-import {BlueToothUpdate} from "heheda-network";
 
 const app = getApp();
 

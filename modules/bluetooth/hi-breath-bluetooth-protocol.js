@@ -1,4 +1,4 @@
-import {HexTools, HiBlueToothProtocol} from "heheda-bluetooth";
+import {HexTools, HiBlueToothProtocol} from "./heheda-bluetooth/index";
 import {ProtocolState} from "./bluetooth-state";
 
 export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
