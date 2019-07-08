@@ -73,21 +73,26 @@ Page({
        this.indexCommonManager = new IndexCommonManager(this);
         app.setBLEListener({
             bleStateListener: ({state}) => {
-                this.showResult({state: state.connectState});
+                if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
+                    this.isBind = true;
+                    setTimeout(() => HiNavigator.navigateBack({delta: 1}));
+                }else{
+                    this.showResult({state: state.connectState});
+                }
             },
             receiveDataListener: ({finalResult, state}) => {
-                if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state.protocolState) {
-                    this.isBind = true;
-                    const {isConnected} = finalResult;
-                    const bleManager = app.getBLEManager();
-                    bleManager.updateBLEStateImmediately(
-                        bleManager.getState({
-                            connectState: ConnectState.CONNECTED,
-                            protocolState: ProtocolState.CONNECTED_AND_BIND
-                        })
-                    );
-                    isConnected && HiNavigator.navigateBack({delta: 1});
-                }
+                // if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state.protocolState) {
+                //     this.isBind = true;
+                //     const {isConnected} = finalResult;
+                //     const bleManager = app.getBLEManager();
+                //     bleManager.updateBLEStateImmediately(
+                //         bleManager.getState({
+                //             connectState: ConnectState.CONNECTED,
+                //             protocolState: ProtocolState.CONNECTED_AND_BIND
+                //         })
+                //     );
+                //     isConnected && HiNavigator.navigateBack({delta: 1});
+                // }
             }
         });
     },

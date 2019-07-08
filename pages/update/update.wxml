@@ -1,0 +1,25 @@
+<!--pages/update/update.wxml-->
+<view class="flex-column">
+    <image style="width:277rpx;height:597rpx;margin:110rpx 0 55rpx" src="../../images/update/item.png"></image>
+    <view class="flex-row update-image-center">
+        <image wx:if="{{isUpdate}}" class="small-pic ani" src="../../images/update/update.png"></image>
+        <image wx:else class="small-pic" src="../../images/update/finish.png"></image>
+    </view>
+
+    <text style="font-size: 50rpx;color: #AAAAAA;width: 60%;text-align: center;">{{isUpdate?'设备正在升级':'升级成功'}}</text>
+    <text style="font-size: 28rpx;color: #979797;text-align: center;margin-bottom: 62rpx;margin-top: 12rpx;">{{isUpdate?'预计需要1分钟左右，升级过程中\n药盒会持续亮绿灯':'药盒正在重启，请看到药盒亮下绿灯\n并发出一次滴声后点击立即使用'}}</text>
+    <view wx:if="{{isUpdate}}" class="flex-column">
+        <view class="flex-row" style="margin-bottom: 7rpx;">
+            <text class="update-bottom-text" style="margin-right: 5rpx;">1. 请勿将设备远离手机\n</text>
+            <text class="update-bottom-text">2. 请勿关闭小程序</text>
+        </view>
+        <view class="flex-row">
+            <text class="update-bottom-text" style="margin-right: 5rpx;">3. 请勿关闭手机蓝牙</text>
+            <text class="update-bottom-text">4. 请勿熄灭屏幕</text>
+        </view>
+    </view>
+    <view wx:if="{{!isUpdate}}" class="update-bottom-btn flex-row">
+        <view class="to-use" hover-class="press-style" bindtap="toUse">立即使用</view>
+    </view>
+</view>
+

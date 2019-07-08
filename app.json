@@ -6,6 +6,7 @@
     "pages/result/result",
     "pages/device-bind/device-bind",
     "pages/history/history",
+    "pages/update/update",
     "pages/device-manage/device-manage"
   ],
   "window": {

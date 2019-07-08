@@ -1,0 +1,54 @@
+/* pages/update/update.wxss */
+.update-bottom-text{
+    width: 300rpx;
+    padding: 16rpx 0 16rpx 25rpx;
+    font-size: 28rpx;
+    color: #979797;
+    background:rgba(55,55,55,1);
+}
+.update-bottom-btn{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 50rpx;
+    justify-content: center;
+}
+.to-use {
+    width:610rpx;
+    height:100rpx;
+    background:rgba(103,213,184,1);
+    border-radius:50rpx;
+    font-size:32rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:100rpx;
+    text-align: center;
+}
+
+.small-pic {
+    width: 100rpx;
+    height: 100rpx;
+}
+.update-image-center{
+    width: 100%;
+    position: fixed;
+    top: 415rpx;
+    left: 0;
+    justify-content: center;
+}
+.ani{
+    animation-name: breath;
+    animation-duration: 5s;                         /* 动画时长3秒 */
+    animation-timing-function: ease-in-out;         /* 动画速度曲线：以低速开始和结束 */
+    animation-iteration-count: infinite;            /* 播放次数：无限 */
+}
+
+@keyframes breath {
+    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+    50%  { opacity: 1.0; }                          /* 动画50% 时的不透明度 */
+    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */
+}
+
+page {
+    background-color: #3E3E3E;
+}

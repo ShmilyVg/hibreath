@@ -27,4 +27,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }
+
+    static relaunchToUpdatePage({binUrl, datUrl}) {
+        getApp().otaUrl = arguments[0];
+        this.reLaunch({url: '/pages/update/update'});
+    }
+
 }
