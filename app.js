@@ -27,6 +27,7 @@ App({
             // },
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
+                    console.log('接收到的',finalResult);
                     const {timestamp, result, currentLength: length} = finalResult;
                     let {currentIndex} = finalResult;
                     if (records.length < length) {
@@ -171,6 +172,7 @@ App({
     },
 
     globalData: {
+        refreshIndexPage: false,
         userInfo: {nickname: '', headUrl: '', id: 0},
 
     },

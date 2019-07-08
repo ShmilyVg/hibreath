@@ -41,12 +41,17 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x3c': ({dataArray}) => {
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
+                console.log('数据2 timestamp',timestamp);
                 const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));
+                console.log('数据2 result',result);
                 const currentLength = HexTools.hexArrayToNum(dataArray.slice(6, 7));
+                console.log('数据2 currentLength',currentLength);
                 const currentIndex = HexTools.hexArrayToNum(dataArray.slice(7, 9));
+                console.log('数据2 currentIndex',currentIndex);
+
                 return {
                     state: ProtocolState.QUERY_DATA_ING,
-                    finalResult: {timestamp, result, currentIndex, currentLength}
+                    dataAfterProtocol: {timestamp, result, currentLength, currentIndex}
                 };
             }
         }

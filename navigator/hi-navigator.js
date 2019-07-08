@@ -8,6 +8,10 @@ export default class HiNavigator extends CommonNavigator {
         wx.navigateTo({url, success, fail, complete});
     }
 
+    static relaunchToIndex({refresh = false} = {}) {
+        getApp().globalData.refreshIndexPage = refresh;
+        wx.reLaunch({url: '/pages/index/index'});
+    }
     static navigateToStrategy() {
         this.navigateTo({url: '/pages/strategy/strategy'});
     }

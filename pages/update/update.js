@@ -389,12 +389,13 @@ Page({
     binDataArrayBufferObj: {arrayBuffer: null, index: 0, array: [], count: 0},
     datDataArrayBufferObj: {arrayBuffer: null, index: 0},
     onLoad() {
+        wx.setKeepScreenOn({
+            keepScreenOn: true
+        });
         !app.isOTAUpdate && app.getBLEManager().closeAll().finally(() => {
             app.isOTAUpdate = true;
             app.appIsConnected = false;
-            wx.setKeepScreenOn({
-                keepScreenOn: true
-            });
+
             this.fileSystemManager = wx.getFileSystemManager();
             const {binUrl, datUrl} = getApp().otaUrl;
             wx.getSystemInfo({
@@ -503,7 +504,7 @@ Page({
             bleManager.connect();
             setTimeout(() => {
                 Toast.hiddenLoading();
-                HiNavigator.switchToIndexPage({refresh: true});
+                HiNavigator.relaunchToIndex({refresh: true});
             }, 3000);
         });
 
