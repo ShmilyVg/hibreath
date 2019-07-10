@@ -252,7 +252,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
     }
 
     setUUIDs({services, hiServiceUUID, hiDeviceName}) {
-        this._hiDeviceName = hiDeviceName;
+        this._hiDeviceName = hiDeviceName.toUpperCase();
         super.setUUIDs({services, hiServiceUUID});
     }
 
