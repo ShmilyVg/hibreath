@@ -12,6 +12,12 @@ Page({
         isChose: false,
         cardTitle: '选择并保存检测时状态，以便综合分析',
         score: 0,
+        confirmText: '好哒,继续努力',
+        cancelText: '取消',
+        tintColor: 'color:#00a48f',
+        title:"真棒！",
+        content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获",
+        hidden:false,
     },
 
     onLoad: function (options) {
@@ -75,6 +81,7 @@ Page({
                 })
             }
         });*/
+
     },
 
     clickChoose: function (e) {
@@ -139,5 +146,13 @@ Page({
                 }
             }
         })
+    },
+    cancel: function () {
+
+    },
+    confirm: function () {
+        this.setData({
+                hidden: true
+            })
     }
 })

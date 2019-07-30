@@ -172,7 +172,9 @@
   background: #FF5F00;
   border-radius: 50rpx;
 }
-
+.clear{
+    clear:both;
+}
 /*外部字体*/
 @font-face {
   font-family: 'DIN Condensed';

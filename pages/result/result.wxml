@@ -18,6 +18,7 @@
         <view>{{item.gradeNumber}}</view>
          {{item.grade}}:{{item.gradeType}}
     </view>
+    <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
 <!--    <view class="bottom-card flex-column">
         <view class="bottom-card-title">{{cardTitle}}</view>
         <block wx:if="{{!showUnscramble}}">
@@ -59,4 +60,17 @@
             <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
         </view>
     </view>-->
+</view>
+<!-- component/zy-modal/zy-modal.wxml -->
+<view class="modal" hidden="{{hidden}}">
+    <view class="result-container" hidden="{{hidden}}">
+        <view class="title">{{title}}</view>
+        <view class="content">
+            {{content}}
+        </view>
+        <view class='modal-btn-wrapper'>
+        <!--    <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view>-->
+            <view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>
+        </view>
+    </view>
 </view>
