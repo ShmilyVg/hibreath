@@ -1,0 +1,10 @@
+<block wx:if="{{isLength}}">
+    <view class="title" style="margin-top: 165rpx">体重(kg)</view>
+    <input class="input" type="number" bindinput="bindWeightInput" maxlength="3" />
+    <view class="line"></view>
+    <view class="title" style="margin-top: 165rpx">体脂率(%)</view>
+    <input class="input" type="number" bindinput="bindBMIInput" maxlength="3" />
+    <view class="line"></view>
+    <button  bindtap="continue">确定</button>
+</block>
+<view wx:else class="history-none">暂无体重体脂记录</view>

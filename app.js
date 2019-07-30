@@ -51,6 +51,7 @@ App({
                         this.queryDataFinish();
                         setTimeout(() => {
                             console.log('硬件传来的固件版本号', this.otaVersion);
+                            console.log('是否显示版本升级标志位', this.needCheckOTAUpdate);
                             if (this.otaVersion !== -1) {
                                 if (this.needCheckOTAUpdate) {
                                     this.needCheckOTAUpdate = false;
@@ -59,6 +60,7 @@ App({
                                         version: this.otaVersion
                                     }).then(data => {
                                         const {update: isUpdate, zip} = data.result;
+                                        console.log('data.result', data.result);
                                         if (zip) {
                                             const {bin: binArray, dat: datArray} = zip;
                                             if (isUpdate && binArray && binArray.length && datArray && datArray.length) {

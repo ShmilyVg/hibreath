@@ -1,0 +1,26 @@
+<view class="personal-head">
+    <image class="personal-pic" src="{{userInfo.headUrl}}" wx:if="{{userInfoShow}}"></image>
+    <text class="personal-nickname" wx:if="{{userInfoShow}}">{{userInfo.nickname}}</text>
+</view>
+<!--<block wx:for="{{urlList}}">
+    <view  class="personal-body">
+        <image  src="{{item.icon}}"/>
+        {{item.title}}
+    </view>
+</block>-->
+<view class="personal-body" bindtap="clickBody">
+    <image class="personal-pic" src="../../images/device-bind/connected.png" ></image>
+    <text class="personal-nickname" >身体评估</text>
+</view>
+<view class="personal-body" bindtap="clickCheck">
+    <image class="personal-pic" src="../../images/device-bind/connected.png" ></image>
+    <text class="personal-nickname" >检测记录</text>
+</view>
+<view class="personal-body" bindtap="clickWeight">
+    <image class="personal-pic" src="../../images/device-bind/connected.png" ></image>
+    <text class="personal-nickname" >体重体脂记录</text>
+</view>
+<view class="personal-body" bindtap="clickMine">
+    <image class="personal-pic" src="../../images/device-bind/connected.png" ></image>
+    <text class="personal-nickname" >我的燃脂精灵</text>
+</view>

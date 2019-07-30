@@ -11,10 +11,12 @@
             <image src="../../images/history/bg.png"></image>
         </view>
         <view class="history-num">
-            <view class="history-num-text">{{item['dataValue']}}</view>
-            <view class="history-num-unit">ppm</view>
+            <view class="history-num-text">
+                <text>{{item['dataValue']}}kg</text>
+                <text>/25%</text>
+            </view>
         </view>
-        <view class="history-hint">{{item.hintText}}</view>
+     <!--   <view class="history-hint">{{item.hintText}}</view>-->
 
         <view class="history-time">{{item.date.time}}</view>
         <view class="history-date">{{item.date.date}}</view>

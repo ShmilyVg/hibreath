@@ -1,42 +1,49 @@
 <!--pages/set-info/set-info.wxml-->
-<view class="flex-row space-between">
-    <view class="title">{{title[page-1]}}</view>
-    <view class="num">{{page}}/4</view>
+<view wx:if="{{isFirst == true}}">
+    身体评估<br/>
+    接下来，会通过几个简单的问题为您推荐最合适的训练计划
+    <button bindtap="setisFirst">开始评估</button>
 </view>
-<view class="text" style="margin-bottom: {{page==4?'38rpx':'122rpx'}}">
-    <text>{{text[page-1]}}</text>
-</view>
-<view wx:if="{{page==1}}" class="flex-row space-between">
-    <view class="card flex-column" wx:for="{{sexBox}}" bindtap="chooseSex" data-index="{{index}}">
-        <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
-        <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+<view wx:else="{{isFirst == false}}">
+    <view class="flex-row space-between">
+        <view class="title">{{title[page-1]}}</view>
+        <view class="num">{{page}}/4</view>
     </view>
-</view>
-
-<block wx:elif="{{page==2}}">
-    <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}" bindchange="bindBirthChange">
-        <view class="flex-column space-between" style="align-items: flex-start;height: 66rpx;">
-            <view class="birth">{{info.birthday}}</view>
-            <view class="line"></view>
+    <view class="text" style="margin-bottom: {{page==4?'38rpx':'122rpx'}}">
+        <text>{{text[page-1]}}</text>
+    </view>
+    <view wx:if="{{page==1}}" class="flex-row space-between">
+        <view class="card flex-column" wx:for="{{sexBox}}" bindtap="chooseSex" data-index="{{index}}">
+            <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
+            <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
         </view>
-    </picker>
-</block>
-
-<block wx:elif="{{page==3}}">
-    <input class="input" bindinput="bindHeightInput" maxlength="3" />
-    <view class="line"></view>
-    <view class="title" style="margin-top: 165rpx">目前的体重？</view>
-    <input class="input" bindinput="bindWeightInput" maxlength="3" />
-    <view class="line"></view>
-</block>
-
-<view wx:elif="{{page==4}}" class="page4">
-    <view class="page4-item" wx:for="{{info.sexStr?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick" data-index="{{index}}">
-        <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
-        <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
     </view>
-    <view  class="page4-hint">*图片来源于网络</view>
+
+    <block wx:elif="{{page==2}}">
+        <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}" bindchange="bindBirthChange">
+            <view class="flex-column space-between" style="align-items: flex-start;height: 66rpx;">
+                <view class="birth">{{info.birthday}}</view>
+                <view class="line"></view>
+            </view>
+        </picker>
+    </block>
+
+    <block wx:elif="{{page==3}}">
+        <input class="input" type="number" bindinput="bindHeightInput" maxlength="3" />
+        <view class="line"></view>
+        <view class="title" style="margin-top: 165rpx">体重(kg)</view>
+        <input class="input" type="number" bindinput="bindWeightInput" maxlength="3" />
+        <view class="line"></view>
+    </block>
+
+    <view wx:elif="{{page==4}}" class="page4">
+        <view class="page4-item" wx:for="{{info.sexStr?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick" data-index="{{index}}">
+            <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
+            <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
+        </view>
+        <view  class="page4-hint">*图片来源于网络</view>
+    </view>
+
+
+    <view class="bottom-btn btn-position" hover-class="press-style" hover-stay-time="50" bindtap="continue">继续</view>
 </view>
-
-
-<view class="bottom-btn btn-position" hover-class="press-style" hover-stay-time="50" bindtap="continue">继续</view>

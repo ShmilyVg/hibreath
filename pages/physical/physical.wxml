@@ -1,0 +1,13 @@
+<view class="physical-title">
+    <text>我的体型</text>
+    <button bindtap="toSetInfo">重新评估</button>
+</view>
+<view class="physical-head">
+
+</view>
+<view class="physical-body">
+
+</view>
+<view class="physical-bottom">
+
+</view>

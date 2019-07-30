@@ -123,15 +123,30 @@ Page({
         !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({
             bleStateListener: () => {
+                console.log("查看电量2222")
                 const {connectState, protocolState} = app.getLatestBLEState();
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
             receiveDataListener: ({finalResult, state}) => {
+                console.log("查看电量333333")
+               /*
+                PRE_HOT_START: 'pre_hot_start',//开始预热状态
+                PRE_HOT_FINISH_AND_START_BREATH: 'pre_hot_finish_and_start_breath',//预热完成开始吹气
+                BREATH_RESULT: 'breath_result',//吹气完成返回结果
+                BREATH_RESTART: 'breath_restart',//重新吹气
+                BREATH_START: 'breath_start',//设备发出的开始吹气通知
+                BREATH_FINISH: 'breath_finish',//设备发出的吹气完成通知
+                */
+                console.log("查看数据1",state.protocolState)
+                console.log("查看数据2",ProtocolState.BREATH_RESULT)
+                console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     HiNavigator.navigateToResult({score: finalResult.result});
+                    //TIMESTAMP 设备获取时间戳
                 }else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     const {battery} = finalResult;
+                    console.log("查看电量4444",finalResult)
                     if(battery < 20){
                         this.setData({
                             electricitypicShow: true,

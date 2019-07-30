@@ -12,17 +12,19 @@ Page({
      */
     data: {
         failRemindList: [
-            {text: '您的手机未开启蓝牙'},
-            {text: '您的手机未授权微信获取定位权限'},
-            {text: '您的设备正在被其他人使用'},
-            {text: '您未在设备上短按按键确认绑定'},
+            {text: '手机未开启蓝牙'},
+            {text: '手机未授权微信获取定位权限'},
+            {text: '燃脂精灵离手机太远'},
+            {text: '未在燃脂精灵上短按按键确认'},
+            {text: '燃脂精灵正处于检测状态'},
         ],
         homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
         homeP:[
-            "1. 您的手机未开启蓝牙",
-            "2. 您的手机未授权微信获取定位权限",
-            "3. 您的设备正在被其他人使用",
-            "4. 您未在设备上短按按键确认绑定"
+            "1. 手机未开启蓝牙",
+            "2. 手机未授权微信获取定位权限",
+            "3. 燃脂精灵离手机太远",
+            "4. 未在燃脂精灵上短按按键确认",
+            "5. 燃脂精灵正处于检测状态"
         ],
         bindHintShow: false,
     },
@@ -95,6 +97,8 @@ Page({
                 // }
             }
         });
+        //是否需要升级 标志位
+        getApp().needCheckOTAUpdate = true;
     },
 
     onShow() {

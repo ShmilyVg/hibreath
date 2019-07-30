@@ -1,0 +1,31 @@
+/* pages/personal/personal.wxss */
+page{
+    background: #3E3E3E;
+    color: #fff;
+    padding:0 60rpx 0 60rpx;
+    box-sizing:border-box;
+}
+.personal-head{
+    height: 200rpx;
+    line-height: 200rpx;
+}
+.personal-pic{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+}
+.personal-body{
+    height: 150rpx;
+    align-items: center;/** 垂直居中*/
+    display: flex;
+    border-bottom: 1px #fff solid;
+}
+.personal-body text{
+
+}
+.personal-body image{
+    width:40rpx;
+    height:40rpx;
+    border-radius:50%;
+    margin-right: 20rpx;
+}

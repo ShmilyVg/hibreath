@@ -34,12 +34,27 @@ Page({
             frontColor: '#ffffff',
             backgroundColor: mainColor
         });
-        Protocol.getAnalysisSituation().then(data => {
+        let list = [
+            {gradeNumber:"0-10",grade:"LV1",gradeType:"步行"},
+            {gradeNumber:"10-20",grade:"LV2",gradeType:"骑行"},
+            {gradeNumber:"20-30",grade:"LV3",gradeType:"汽车"},
+            {gradeNumber:"30-40",grade:"LV4",gradeType:"火车"},
+            {gradeNumber:"40-50",grade:"LV5",gradeType:"飞机"},
+            {gradeNumber:">50",grade:"LV6",gradeType:"火箭"},
+        ]
+        this.setData({
+            list: list,
+        })
+        Protocol.postSetGradeInfo().then(data=>{
+         /*  let list = data.result.list;*/
+
+        });
+       /* Protocol.getAnalysisSituation().then(data => {
             let list = data.result.list;
             // 是否直接显示解读
             if (options.showUnscramble === 'true') {
                 let date = tools.createDateAndTime(new Date(parseInt(options.timestamp)));
-                let dateText = `${date.date}\n${date.time}`;
+                let dateText = `${date.date}${date.time}`;
                 this.setData({
                     list: list,
                     cardTitle: list[options.situation]['text_zh'],
@@ -59,7 +74,7 @@ Page({
                     postAdd: true
                 })
             }
-        });
+        });*/
     },
 
     clickChoose: function (e) {
@@ -108,8 +123,21 @@ Page({
             }
         });
     },
-
+    //检测是否生成过身体评估报告 是的话显示弹窗 没有直接进入评估
     toSetInfo() {
-        HiNavigator.navigateToSetInfo();
+        wx.showModal({
+            title: '小贴士',
+            content: '检测到您已生成过身体评估报告，是否要更新身体数据？',
+            cancelText:'不需要',
+            confirmText:'需要更新',
+            success (res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                    HiNavigator.navigateToSetInfo();
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        })
     }
 })

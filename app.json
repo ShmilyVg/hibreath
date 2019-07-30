@@ -1,11 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/personal/personal",
     "pages/set-info/set-info",
     "pages/strategy/strategy",
     "pages/result/result",
     "pages/device-bind/device-bind",
     "pages/history/history",
+    "pages/BMIhistory/BMIhistory",
+    "pages/BMIhistoryInfo/BMIhistoryInfo",
     "pages/update/update",
     "pages/device-manage/device-manage"
   ],
@@ -16,5 +19,23 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+      "selectedIconPath": "images/device-bind/connected.png",
+      "iconPath": "images/device-bind/connected.png",
+      "pagePath": "pages/index/index",
+      "text": "燃脂检测"
+    }, {
+      "selectedIconPath": "images/device-bind/connected.png",
+      "iconPath": "images/device-bind/connected.png",
+      "pagePath": "pages/index/index",
+      "text": "燃脂历程"
+    }, {
+      "selectedIconPath": "images/device-bind/connected.png",
+      "iconPath": "images/device-bind/connected.png",
+      "pagePath": "pages/personal/personal",
+      "text": "个人中心"
+    }]
+  }
 }

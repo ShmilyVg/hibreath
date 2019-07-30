@@ -62,4 +62,16 @@ export default class Protocol {
         return Network.request({url: 'breathData/sync', data: {items}});
     }
 
+
+    //7.30新加请求接口
+
+
+    //个人中心--体重体脂记录-修改
+    static postSetBMIInfo(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
+    //获取PPM 脂肪燃烧速度对应等级 步行-骑行-汽车等
+    static postSetGradeInfo(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
 }

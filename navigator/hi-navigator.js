@@ -16,9 +16,9 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/strategy/strategy'});
     }
 
-    static navigateToHistory() {
+/*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
-    }
+    }*/
 
     static navigateToDeviceBind() {
         this.navigateTo({url: '/pages/device-bind/device-bind'});
@@ -37,4 +37,24 @@ export default class HiNavigator extends CommonNavigator {
         this.reLaunch({url: '/pages/update/update'});
     }
 
+    /*7.29 新加跳转*/
+
+    static navigateToclickBody() {
+        this.navigateTo({url: '/pages/set-info/set-info'})
+    }
+    static navigateToclickCheck() {
+        this.navigateTo({url: '/pages/history/history'})
+    }
+    static navigateToclickWeight() {
+        this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
+    }
+    static navigateToclickMine() {
+        this.navigateTo({url: '/pages/device-manage/device-manage'})
+    }
+    static navigateToBMIhistoryInfo() {
+        this.navigateTo({url: '/pages/BMIhistoryInfo/BMIhistoryInfo'})
+    }
+    static navigateToBMIhistory() {
+        this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
+    }
 }
