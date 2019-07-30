@@ -40,13 +40,14 @@ Page({
             frontColor: '#ffffff',
             backgroundColor: mainColor
         });
+        //section 区间备用
         let list = [
-            {gradeNumber:"0-10",grade:"LV1",gradeType:"步行"},
-            {gradeNumber:"10-20",grade:"LV2",gradeType:"骑行"},
-            {gradeNumber:"20-30",grade:"LV3",gradeType:"汽车"},
-            {gradeNumber:"30-40",grade:"LV4",gradeType:"火车"},
-            {gradeNumber:"40-50",grade:"LV5",gradeType:"飞机"},
-            {gradeNumber:">50",grade:"LV6",gradeType:"火箭"},
+            {gradeNumber:"0-10",grade:"LV1",gradeType:"步行",section:false},
+            {gradeNumber:"10-20",grade:"LV2",gradeType:"骑行",section:false},
+            {gradeNumber:"20-30",grade:"LV3",gradeType:"汽车",section:false},
+            {gradeNumber:"30-40",grade:"LV4",gradeType:"火车",section:false},
+            {gradeNumber:"40-50",grade:"LV5",gradeType:"飞机",section:false},
+            {gradeNumber:">50",grade:"LV6",gradeType:"火箭",section:true},
         ]
         this.setData({
             list: list,

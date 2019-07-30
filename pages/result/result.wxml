@@ -15,8 +15,15 @@
     <view>脂肪燃烧速度等级：LV1</view>
     <view>相当于步行的速度,超越全平台2%的用户</view>
     <view class="result-list" wx:for="{{list}}">
-        <view>{{item.gradeNumber}}</view>
-         {{item.grade}}:{{item.gradeType}}
+        <view  wx:if="{{item.section == true}}" style="color: #fff">
+            <view>{{item.gradeNumber}}</view>
+            {{item.grade}}:{{item.gradeType}}
+        </view>
+        <view wx:else="{{item.section == false}}" >
+            <view>{{item.gradeNumber}}</view>
+            {{item.grade}}:{{item.gradeType}}
+        </view>
+
     </view>
     <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
 <!--    <view class="bottom-card flex-column">
