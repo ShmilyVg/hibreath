@@ -6,32 +6,33 @@ Page({
 
     },
     onLoad: function () {
+        //section 区间标志位备用
         let list=[
                 {
                     title:"BMI",
                     number:"28.3",
                     array:[
-                        {BMInumber:"<18.5",BMI:"低"},
-                        {BMInumber:"18.5-24",BMI:"健康"},
-                        {BMInumber:">24",BMI:"高"},
+                        {BMInumber:"<18.5",BMI:"低",section:false},
+                        {BMInumber:"18.5-24",BMI:"健康",section:false},
+                        {BMInumber:">24",BMI:"高",section:true},
                         ]
                 },
                 {
                     title:"体重",
                     number:"80kg",
                     array:[
-                        {BMInumber:"<70",BMI:"低"},
-                        {BMInumber:"70-75",BMI:"健康"},
-                        {BMInumber:">75",BMI:"高"},
+                        {BMInumber:"<70",BMI:"低",section:false},
+                        {BMInumber:"70-75",BMI:"健康",section:false},
+                        {BMInumber:">75",BMI:"高",section:true},
                     ]
                 },
                 {
                     title:"体脂率",
                     number:"25%",
                     array:[
-                        {BMInumber:"<15",BMI:"低"},
-                        {BMInumber:"15-18",BMI:"健康"},
-                        {BMInumber:">18",BMI:"高"},
+                        {BMInumber:"<15",BMI:"低",section:false},
+                        {BMInumber:"15-18",BMI:"健康",section:false},
+                        {BMInumber:">18",BMI:"高",section:true},
                     ]
                 },
             ]

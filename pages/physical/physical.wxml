@@ -14,11 +14,21 @@
 <view class="personal-line"></view>
 <view class="physical-body">
     <view wx:for="{{list}}">
-        <view>{{item.title}} {{item.number}}</view>
-        <view wx:for="{{item.array}}" style="width: 33%;float: left">
-            <view> {{item.BMInumber}}</view>
-            <view> {{item.BMI}}</view>
+        <view>
+            {{item.title}}
+            {{item.number}}
         </view>
+        <view wx:for="{{item.array}}"  style="width: 33%;float: left;">
+            <view wx:if="{{item.section == true}}" style="color: #FF5E00">
+                <view> {{item.BMInumber}}</view>
+                <view> {{item.BMI}}</view>
+            </view>
+            <view wx:else="{{item.section == false}}" >
+                <view> {{item.BMInumber}}</view>
+                <view> {{item.BMI}}</view>
+            </view>
+        </view>
+
         <view class="clear"></view>
     </view>
 </view>
