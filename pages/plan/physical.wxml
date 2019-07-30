@@ -1,0 +1,38 @@
+<view class="physical-title">
+    <text>我的体型</text>
+    <button bindtap="toSetInfo">重新评估</button>
+    <view class="clear"></view>
+    <view class="physical-title-div" style="border-right: 1px #8C8C8C solid">轻度肥胖型</view>
+    <view class="physical-title-div">BMI:28.3</view>
+    <view class="clear"></view>
+</view>
+<view class="personal-line"></view>
+<view class="physical-head">
+    <text>燃脂精灵推荐您</text>
+    <button>定制专属加速燃脂计划</button>
+</view>
+<view class="personal-line"></view>
+<view class="physical-body">
+    <view wx:for="{{list}}">
+        <view>
+            {{item.title}}
+            {{item.number}}
+        </view>
+        <view wx:for="{{item.array}}"  style="width: 33%;float: left;">
+            <view wx:if="{{item.section == true}}" style="color: #FF5E00">
+                <view> {{item.BMInumber}}</view>
+                <view> {{item.BMI}}</view>
+            </view>
+            <view wx:else="{{item.section == false}}" >
+                <view> {{item.BMInumber}}</view>
+                <view> {{item.BMI}}</view>
+            </view>
+        </view>
+
+        <view class="clear"></view>
+    </view>
+</view>
+<view class="personal-line"></view>
+<view class="physical-bottom" wx:for="{{suggestList}}">
+    <view>{{item.text_zh}}</view>
+</view>
