@@ -120,6 +120,10 @@ Page({
         this.setData({
            choseIndex: index
         });
-    }
+    },
+
+  /*  IntoExact(){
+        wx.navigateTo({url: 'view/exact'})
+    }*/
 
 })

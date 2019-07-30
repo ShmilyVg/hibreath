@@ -40,7 +40,7 @@ Page({
             frontColor: '#ffffff',
             backgroundColor: mainColor
         });
-        //section 区间备用
+        //section 区间标志位备用
         let list = [
             {gradeNumber:"0-10",grade:"LV1",gradeType:"步行",section:false},
             {gradeNumber:"10-20",grade:"LV2",gradeType:"骑行",section:false},

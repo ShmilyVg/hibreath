@@ -1,0 +1,7 @@
+    <block >
+        <view class="title" style="margin-top: 165rpx">体脂率(%)</view>
+           <input class="input" type="number" bindinput="bindHeightInput" maxlength="3" />
+        <view class="line"></view>
+
+          <view>我没测过体脂率</view>
+    </block>

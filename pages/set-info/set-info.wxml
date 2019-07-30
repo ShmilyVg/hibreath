@@ -41,6 +41,7 @@
             <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
             <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
         </view>
+        <view bindtap='IntoExact'>我测过准确的体脂率</view>
         <view  class="page4-hint">*图片来源于网络</view>
     </view>
 
