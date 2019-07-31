@@ -7,12 +7,13 @@ Page({
 
     data: {
         isFirst:true,//身体评估引导页标志位
+        isexact:true,//是否准确测过体脂率
         sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
-        info: {birthday: '1980-01-01'},
+        info: {birthday: '1980-01-01',},
         currentDate: '2018-12-19',
         page: 1,
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
-        text: ['告诉我们关于你的事，\n让我帮你获得更适合的健康方案', '我们会针对不同的年龄为你定制相应的健康方案', '', '根据图片估算一下你的体脂含量吧'],
+        text: ['告诉我们关于你的事，\n让我帮你获得更适合的健康方案', '我们会针对不同的年龄为你定制相应的健康方案', '', ''],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
         itemBackgroundColor: '#656565',
@@ -26,6 +27,7 @@ Page({
     },
 
     continue() {
+        console.log(this.data.info.bodyFatRate,"8989")
         switch (this.data.page) {
             case 1:
                 if (typeof (this.data.info.sex) == "undefined") {
@@ -55,9 +57,9 @@ Page({
                 }
                 break;
             case 4:
-                if (typeof (this.data.choseIndex) == "undefined") {
+                if (typeof (this.data.choseIndex) == "undefined" && this.data.isexact == true) {
                     toast.warn('请选择图片');
-                } else {
+                } else if(typeof (this.data.choseIndex) !== "undefined" && this.data.isexact == true) {
                     let list = this.data.page4MenItem;
                     if (this.data.info.sex === 0) {
                         list = this.data.page4WomenItem;
@@ -65,6 +67,12 @@ Page({
                     this.setData({
                         'info.bodyFatRate': list[this.data.choseIndex]
                     });
+                    Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
+                        this.setisFirst();
+                    })
+                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false){
+                    toast.warn('请填写体脂率');
+                }else{
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
                     })
@@ -114,6 +122,12 @@ Page({
             'info.weight': e.detail.value
         })
     },
+    //填写体脂率
+    bindExactInput(e){
+        this.setData({
+            'info.bodyFatRate': e.detail.value+"%"
+        })
+    },
 
     page4ItemClick(e){
         let index = e.currentTarget.dataset.index;
@@ -122,8 +136,16 @@ Page({
         });
     },
 
-  /*  IntoExact(){
-        wx.navigateTo({url: 'view/exact'})
-    }*/
+    IntoExact(){
+        this.setData({
+            isexact: false
+        });
+    },
+
+    IntoNoExact(){
+        this.setData({
+            isexact: true
+        });
+    }
 
 })
