@@ -78,4 +78,9 @@ export default class Protocol {
     static postSetTarget(data) {
         return Network.request({url: 'breathData/sync', data: data});
     }
+    //获取减脂方案目标
+    static getTargetNmuber(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
+
 }

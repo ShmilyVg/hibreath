@@ -1,6 +1,7 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import toast from "../../view/toast";
 import Protocol from "../../modules/network/protocol";
+import WXDialog from "../../view/dialog";
 
 Page({
 
@@ -11,7 +12,7 @@ Page({
     },
 
     onLoad: function () {
-
+        WXDialog.showDialog({title: '小贴士', content: '若您目前及近期没有体脂称，来进行每日的体脂率的监测，本次燃脂计划可以暂时取消体脂率目标', confirmText: '我知道啦'});
     },
 
     startTime(){
@@ -33,7 +34,6 @@ Page({
     },
     //设置减脂方案目标
     continue(){
-        console.log(this.data.info.weight,"7878")
         if(typeof (this.data.info.weight) == "undefined"){
             toast.warn('请填写体重');
         }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isbe == true){
@@ -45,5 +45,18 @@ Page({
                 });
             })
         }
+    },
+
+    cancelTarget(){
+        this.setData({
+            isbe: false
+        })
+    },
+
+    //获取减脂方案目标数值
+    getTargetNmuber(){
+        Protocol.postSetTarget(this.data.info).then(data => {
+
+        })
     }
 })

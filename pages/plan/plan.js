@@ -13,6 +13,38 @@ Page({
 
     onLoad: function () {
         this.startTime();
+        let list=[
+            {
+                title:"早餐",
+                content:[
+                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
+                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                    ],
+                kcal:"大约554Kcal"
+            },
+            {
+                title:"午餐",
+                content:[
+                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
+                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                ],
+                kcal:"大约554Kcal"
+            },
+            {
+                title:"晚餐",
+                content:[
+                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
+                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                ],
+                kcal:"大约554Kcal"
+            },
+        ];
+        this.setData({
+            list:list
+        })
     },
 
     startTime(){
@@ -48,4 +80,7 @@ Page({
             HiNavigator.navigateTarget();
     },
 
+    cookInfo(e){
+        console.log(e,"eee")
+    }
 })

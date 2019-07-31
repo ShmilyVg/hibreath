@@ -22,5 +22,22 @@
         82KG/25%
     </view>
     <button bindtap="pageTarget">调整目标</button>
-</view>
 
+<view>
+    方案安排
+    <view>
+        <view wx:for="{{list}}">
+            <view>
+                {{item.title}}
+            </view>
+            <view wx:for="{{item.content}}" data-index="{{item}}"  style="width: 33%;float: left;">
+                <view  bindtap="cookInfo" >
+                    <view> {{item.image}}</view>
+                    <view> {{item.contentTitle}}</view>
+                </view>
+            </view>
+            <view class="clear"></view>
+        </view>
+    </view>
+</view>
+</view>
