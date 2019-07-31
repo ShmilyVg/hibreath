@@ -11,7 +11,8 @@
     "pages/device-manage/device-manage",
     "pages/BMIhistory/BMIhistory",
     "pages/BMIhistoryInfo/BMIhistoryInfo",
-    "pages/physical/physical"
+    "pages/physical/physical",
+    "pages/plan/plan"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

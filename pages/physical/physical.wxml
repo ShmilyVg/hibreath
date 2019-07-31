@@ -9,7 +9,7 @@
 <view class="personal-line"></view>
 <view class="physical-head">
     <text>燃脂精灵推荐您</text>
-    <button>定制专属加速燃脂计划</button>
+    <button bindtap="toPlan">定制专属加速燃脂计划</button>
 </view>
 <view class="personal-line"></view>
 <view class="physical-body">

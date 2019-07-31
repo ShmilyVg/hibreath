@@ -56,7 +56,7 @@ Page({
         HiNavigator.navigateToclickCheck();
     },
     clickWeight() {
-        HiNavigator.navigateToclickWeight();
+        HiNavigator.navigateToBMIhistory();
     },
     clickMine() {
         HiNavigator.navigateToclickMine();

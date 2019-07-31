@@ -45,9 +45,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToclickCheck() {
         this.navigateTo({url: '/pages/history/history'})
     }
-    static navigateToclickWeight() {
-        this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
-    }
     static navigateToclickMine() {
         this.navigateTo({url: '/pages/device-manage/device-manage'})
     }
@@ -56,5 +53,8 @@ export default class HiNavigator extends CommonNavigator {
     }
     static navigateToBMIhistory() {
         this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
+    }
+    static navigateToPlan() {
+        this.navigateTo({url: '/pages/plan/plan'})
     }
 }

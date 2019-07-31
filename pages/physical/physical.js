@@ -51,5 +51,9 @@ Page({
 
     toSetInfo(){
         HiNavigator.navigateToSetInfo();
+    },
+
+    toPlan(){
+        HiNavigator.navigateToPlan();
     }
 })
