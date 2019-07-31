@@ -12,7 +12,8 @@
     "pages/BMIhistory/BMIhistory",
     "pages/BMIhistoryInfo/BMIhistoryInfo",
     "pages/physical/physical",
-    "pages/plan/plan"
+    "pages/plan/plan",
+    "pages/setTarget/setTarget"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

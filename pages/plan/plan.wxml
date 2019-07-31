@@ -1,15 +1,26 @@
-<view class="plan-title">
-
+<view class="plan-pageIng"  wx:if="{{isPageIng}}">
+    <progress stroke-width='30' percent='{{value}}'></progress>
+    正在生成专属燃脂方案。。。
 </view>
 
-<view class="plan-head">
-
+<view class="plan-pageError"   wx:if="{{isPageError}}">
+    方案生成失败
+    <button bindtap="pageAgain">重试</button>
 </view>
 
-<view class="plan-body">
-
+<view class="plan-pageSuccess"  wx:if="{{isPageSuccess}}">
+    <view>已为您生成14Day加速燃脂计划</view>
+    <view>
+        当前体重体脂
+        82KG/25%
+    </view>
+    <view>
+        ==>
+    </view>
+    <view>
+        推荐目标
+        82KG/25%
+    </view>
+    <button bindtap="pageTarget">调整目标</button>
 </view>
-<view class="plan-line"></view>
-<view class="plan-bottom" >
 
-</view>

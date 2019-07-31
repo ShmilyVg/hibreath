@@ -74,4 +74,8 @@ export default class Protocol {
     static postSetGradeInfo(data) {
         return Network.request({url: 'breathData/sync', data: data});
     }
+    //设置减脂方案目标
+    static postSetTarget(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
 }

@@ -57,4 +57,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToPlan() {
         this.navigateTo({url: '/pages/plan/plan'})
     }
+    static navigateTarget() {
+        this.navigateTo({url: '/pages/setTarget/setTarget'})
+    }
 }

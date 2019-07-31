@@ -1,0 +1,10 @@
+
+<view >
+    <view class="title" style="margin-top: 165rpx">体重(kg)</view>
+    <input class="input" type="number" bindinput="bindWeightInput" maxlength="4" />
+    <view class="line"></view>
+    <view class="title" style="margin-top: 165rpx">体脂率(%)</view>
+    <input class="input" type="number" bindinput="bindBMIInput" maxlength="4" />
+    <view class="line"></view>
+    <button class="bottom-btn btn-position"  bindtap="continue">确定</button>
+</view>
