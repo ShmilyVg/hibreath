@@ -87,7 +87,7 @@
 
 
 
-/* component/zy-modal/zy-modal.wxss */
+/* 带图片弹窗模板B */
 
 .modal {
     background-color: rgba(0, 0, 0, 0.4);
@@ -151,3 +151,4 @@
 .cancel-btn {
     border-right: 1rpx solid rgba(7,17,27,0.1);
 }
+/* 带图片弹窗模板E */

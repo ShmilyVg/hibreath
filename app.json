@@ -14,7 +14,8 @@
     "pages/physical/physical",
     "pages/plan/plan",
     "pages/setTarget/setTarget",
-    "pages/cookInfo/cookInfo"
+    "pages/cookInfo/cookInfo",
+    "pages/HIITInfo/HIITInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",
@@ -28,7 +29,7 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/physical/physical",
+      "pagePath": "pages/HIITInfo/HIITInfo",
       "text": "燃脂检测"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",

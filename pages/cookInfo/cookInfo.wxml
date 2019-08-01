@@ -17,5 +17,11 @@
     <view> 4.加入蛋黄，即可完成。</view>
 </view>
 
-
+<view class="cookInfo-step">
+    <view></view>
+    <view>1.小白菜洗净切小段；</view>
+    <view> 2.锅中放半杯水，加小半匙香油；</view>
+    <view> 3.煮沸后加入小白菜和切碎的咸鸭蛋蛋白，煮2分钟；</view>
+    <view> 4.加入蛋黄，即可完成。</view>
+</view>
 

@@ -31,10 +31,18 @@
                 {{item.title}}
             </view>
             <view wx:for="{{item.content}}" data-index="{{item.id}}"  style="width: 33%;float: left;">
-                <navigator url="../cookInfo/cookInfo?index={{item.id}}">
+                <!--<navigator url="../cookInfo/cookInfo?index={{item.id}}">
                     <view>
                         <image style="width: 30rpx;height: 30rpx" src="{{item.image}}"></image>
                         <view> {{item.contentTitle}}</view>
+                        <view>{{item.time}}</view>
+                    </view>
+                </navigator>-->
+                <navigator url="../HIITInfo/HIITInfo?index={{item.id}}">
+                    <view>
+                        <image style="width: 30rpx;height: 30rpx" src="{{item.image}}"></image>
+                        <view> {{item.contentTitle}}</view>
+                        <view>{{item.time}}</view>
                     </view>
                 </navigator>
             </view>

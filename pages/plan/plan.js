@@ -41,6 +41,13 @@ Page({
                 ],
                 kcal:"大约554Kcal"
             },
+            {
+                title:"运动",
+                content:[
+                    {image:"../../images/set-info/man-select.png",contentTitle:"HIIT唤醒",id:"1",time:"约7分钟"},
+                ],
+                kcal:"预计消耗大约554Kcal"
+            },
         ];
         this.setData({
             list:list
