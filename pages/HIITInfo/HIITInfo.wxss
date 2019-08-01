@@ -5,8 +5,7 @@ page{
     color: #fff;
 }
 .HIITVideo{
-    width: 500rpx;
-    height: 500rpx;
+    width: 100%;
 }
 
 /* 带图片弹窗模板B */

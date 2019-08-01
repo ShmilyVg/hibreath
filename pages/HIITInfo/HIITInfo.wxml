@@ -1,5 +1,5 @@
 <view class="HIIT-headvideo">
-    <video class="HIITVideo" bindended="bindended" src="../../images/video/1.全身舒展.mp4"></video>
+    <video class="HIITVideo" bindended="bindended" autoplay="true" src="{{videoUrl}}"></video>
 </view>
 
 <view class="HIIT-title">
