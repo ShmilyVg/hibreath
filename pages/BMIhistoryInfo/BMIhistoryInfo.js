@@ -12,6 +12,7 @@ Page({
   data: {
     allList: [],
     page: 1,
+    info:{},
     isLength: true//是否有数据
   },
 
@@ -50,10 +51,17 @@ Page({
   },
     //保存修改体重体脂记录
     continue(){
-        Protocol.postSetBMIInfo(this.data.info).then(data => {
-            console.log("111111",this.data.info)
-            HiNavigator.navigateToBMIhistory(); //请求成功跳转到体重体脂记录页面
-        })
+        if(typeof (this.data.info.weight) == "undefined"){
+            toast.warn('请填写体重');
+        }else if(typeof (this.data.info.bodyFatRate) == "undefined"){
+            toast.warn('请填写体脂率');
+        }else{
+            Protocol.postSetBMIInfo(this.data.info).then(data => {
+                console.log("111111",this.data.info)
+                HiNavigator.navigateToBMIhistory(); //请求成功跳转到体重体脂记录页面
+            })
+        }
+
 
     },
 
@@ -65,7 +73,7 @@ Page({
 
     bindBMIInput(e){
         this.setData({
-            'info.BMI': e.detail.value
+            'info.bodyFatRate': e.detail.value
         })
     }
 

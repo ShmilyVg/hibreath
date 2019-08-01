@@ -143,7 +143,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         });
     }
 
-    //蓝牙扫描
+
     baseDeviceFindAction(res) {
         console.log('开始扫描', res);
         const hiDeviceName = this._hiDeviceName || '';
