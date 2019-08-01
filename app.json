@@ -13,7 +13,8 @@
     "pages/BMIhistoryInfo/BMIhistoryInfo",
     "pages/physical/physical",
     "pages/plan/plan",
-    "pages/setTarget/setTarget"
+    "pages/setTarget/setTarget",
+    "pages/cookInfo/cookInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

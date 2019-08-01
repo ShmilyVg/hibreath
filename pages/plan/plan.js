@@ -17,27 +17,27 @@ Page({
             {
                 title:"早餐",
                 content:[
-                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
-                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
-                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"1"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"3"},
                     ],
                 kcal:"大约554Kcal"
             },
             {
                 title:"午餐",
                 content:[
-                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
-                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
-                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"1"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"3"},
                 ],
                 kcal:"大约554Kcal"
             },
             {
                 title:"晚餐",
                 content:[
-                    {image:"图片1",contentTitle:"水煮青菜",id:"1"},
-                    {image:"图片2",contentTitle:"水煮鸡蛋",id:"2"},
-                    {image:"图片3",contentTitle:"水煮墙皮",id:"3"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"1"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"2"},
+                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"3"},
                 ],
                 kcal:"大约554Kcal"
             },

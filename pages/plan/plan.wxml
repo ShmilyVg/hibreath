@@ -30,11 +30,13 @@
             <view>
                 {{item.title}}
             </view>
-            <view wx:for="{{item.content}}" data-index="{{item}}"  style="width: 33%;float: left;">
-                <view  bindtap="cookInfo" >
-                    <view> {{item.image}}</view>
-                    <view> {{item.contentTitle}}</view>
-                </view>
+            <view wx:for="{{item.content}}" data-index="{{item.id}}"  style="width: 33%;float: left;">
+                <navigator url="../cookInfo/cookInfo?index={{item.id}}">
+                    <view>
+                        <image style="width: 30rpx;height: 30rpx" src="{{item.image}}"></image>
+                        <view> {{item.contentTitle}}</view>
+                    </view>
+                </navigator>
             </view>
             <view class="clear"></view>
         </view>

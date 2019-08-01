@@ -82,5 +82,9 @@ export default class Protocol {
     static getTargetNmuber(data) {
         return Network.request({url: 'breathData/sync', data: data});
     }
+    //获取菜谱对应详细信息
+    static postCookInfo({Id}) {
+        return Network.request({url: 'breathData/sync', data: {Id}});
+    }
 
 }
