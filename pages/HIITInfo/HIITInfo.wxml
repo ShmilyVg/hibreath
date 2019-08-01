@@ -1,5 +1,5 @@
 <view class="HIIT-headvideo">
-    <video class="HIITVideo" bindended="bindended" autoplay="true" src="{{videoUrl}}"></video>
+    <video class="HIITVideo" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"></video>
 </view>
 
 <view class="HIIT-title">
@@ -8,10 +8,14 @@
 <view class="HIIT-step">
 
 </view>
+<swiper class="HIIT-swiper" display-multiple-items="3" >
+    <block wx:for="{{list}}">
+        <swiper-item bindtap="clickSwiper" data-pid="{{item.videoUrl}}" data-number="{{index}}">
+            <image src="{{item.pic}}"  width="355rpx" height="150rpx"/>
+        </swiper-item>
+    </block>
+</swiper>
 
-<view class="HIIT-class">
-
-</view>
 
 <view class="modal" hidden="{{hidden}}">
     <view class="result-container" hidden="{{hidden}}">

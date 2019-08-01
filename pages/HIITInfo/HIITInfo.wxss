@@ -7,7 +7,10 @@ page{
 .HIITVideo{
     width: 100%;
 }
-
+.HIIT-swiper image{
+    width: 320rpx;
+    height: 210rpx;
+}
 /* 带图片弹窗模板B */
 
 .modal {
