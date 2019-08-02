@@ -1,17 +1,23 @@
-<view class="planInfo-pageIng"  wx:if="{{isPageIng}}">
-    <progress stroke-width='30' percent='{{value}}'></progress>
-    正在生成专属燃脂方案。。。
-</view>
-
-<view class="planInfo-pageError"   wx:if="{{isPageError}}">
-    方案生成失败
-    <button bindtap="pageAgain">重试</button>
-</view>
-
-<block class="planInfo-pageSuccess"  wx:if="{{isPageSuccess}}">
-    <view class="planInfo-pageSuccess-view1">已为您生成14Day</view>
-    <view class="planInfo-pageSuccess-view2">加速燃脂计划</view>
+<block class="planInfo-pageSuccess">
+    <view class="planInfo-pageSuccess-view1">减肥历程</view>
+    <view class="">今日鸡汤：</view>
+    <view>你是最棒的总会听成，你是最胖的</view>
     <block>
+        <view class="planInfo-headl">
+            <view style="font-size: 60rpx">3.2</view>
+            <view>ppm</view>
+        </view>
+        <view class="planInfo-headr">
+            <view>脂肪燃烧速度等级：Lv1</view>
+            <view>相当于玩具车的速度，超越全平台2%的用户</view>
+        </view>
+        <view class="clear"></view>
+    </block>
+    <block>
+        <view>今日暂未记录身体情况</view>
+        <button>记录</button>
+    </block>
+<!--    <block>
         <blocl class="page-block1">
             <view>当前体重体脂</view>
             <view>82KG/25%</view>
@@ -23,12 +29,12 @@
         </blocl>
         <view class="clear"></view>
         <button bindtap="pageTarget">调整目标</button>
-    </block>
+    </block>-->
 
     <view>
         方案安排
         <view>
-            <view wx:for="{{list}}">
+            <view  class="planInfo-planList" wx:for="{{list}}">
                 <view>
                     {{item.title}}
                 </view>
@@ -50,14 +56,6 @@
             </view>
         </view>
     </view>
-    他们都在燃脂
-    <swiper class="HIIT-swiper" display-multiple-items="3" >
-        <block wx:for="{{swiperList}}">
-            <swiper-item >
-                <image src="{{item.pic}}"  width="355rpx" height="150rpx"/>
-            </swiper-item>
-        </block>
-    </swiper>
-    <button>立即加入</button>
+
 </block>
 

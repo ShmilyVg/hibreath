@@ -45,3 +45,16 @@ page{
     float: left;
     width: 33.3%;
 }
+.planInfo-planList{
+    margin-bottom: 30rpx;
+}
+.planInfo-headl{
+    text-align: center;
+    width: 39%;
+    float: left;
+    border-right: 1px #8C8C8C solid;
+}
+.planInfo-headr{
+    width: 60%;
+    float: left;
+}

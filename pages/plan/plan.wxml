@@ -28,7 +28,7 @@
     <view>
         方案安排
         <view>
-            <view wx:for="{{list}}">
+            <view  class="plan-planList" wx:for="{{list}}">
                 <view>
                     {{item.title}}
                 </view>
@@ -58,6 +58,6 @@
             </swiper-item>
         </block>
     </swiper>
-    <button>立即加入</button>
+    <button bindtap="toInfo">立即加入</button>
 </block>
 

@@ -5,14 +5,11 @@ import Protocol from "../../modules/network/protocol";
 Page({
 
     data: {
-        isPageIng:false, //进度条
-        isPageError:false,//生成失败
-        isPageSuccess:true,//生成成功
         value:0,
+        isToday:false,
     },
 
     onLoad: function () {
-        this.startTime();
         let list=[
             {
                 title:"采购清单",
@@ -67,49 +64,20 @@ Page({
             list:list
         });
 
-        let swiperList=[
-                {pic:"../../images/set-info/woman-select.png"},
-                {pic:"../../images/set-info/woman-select.png"},
-                {pic:"../../images/set-info/woman-select.png"},
-                {pic:"../../images/set-info/woman-select.png"},
-                {pic:"../../images/set-info/woman-select.png"},
-            ];
-        this.setData({
-            swiperList:swiperList
-        });
     },
 
-    startTime(){
-        var that =this;
-        if(that.data.value ==100){
-            that.setData({
-                isPageIng:false,
-                isPageError:false,
-                isPageSuccess:true,
-            })
-            return;
-        }
-        setTimeout(function () {
-            const val=that.data.value;
-            that.setData({value:val<100?val+1:0});
-            that.startTime();
+    onShow:function(){
 
-        },30);
-    },
-
-    pageAgain(){
-        this.setData({
-            isPageIng:true,
-            isPageError:false,
-            isPageSuccess:false,
-            isTarget:false,
-            value:0,
-        });
-        this.startTime();
     },
 
     pageTarget(){
-            HiNavigator.navigateTarget();
+        HiNavigator.navigateTarget();
+    },
+    //获取今日 体重体脂记录
+    getTodayInfo(){
+        Protocol.postTodayBMI().then(data => {
+
+        })
     },
 
     cookInfo(e){

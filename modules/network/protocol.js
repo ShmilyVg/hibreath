@@ -86,5 +86,8 @@ export default class Protocol {
     static postCookInfo({Id}) {
         return Network.request({url: 'breathData/sync', data: {Id}});
     }
-
+    //今日身体情况记录--体重&体脂
+    static postTodayBMI(data) {
+        return Network.request({url: 'breathData/list', data: data})
+    }
 }

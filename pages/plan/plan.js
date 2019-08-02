@@ -114,5 +114,9 @@ Page({
 
     cookInfo(e){
         console.log(e,"eee")
+    },
+
+    toInfo(){
+        HiNavigator.navigatePlanInfo();
     }
 })
