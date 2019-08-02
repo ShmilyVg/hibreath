@@ -6,7 +6,7 @@
     <view wx:if="{{isbe}}">
         <view class="title" style="margin-top: 165rpx">体脂率(%)</view>
         <view bindtap="cancelTarget">取消该目标</view>
-        <input class="input" type="number" bindinput="bindBMIInput" maxlength="4" />
+        <input class="input" type="number" bindinput="bindBMIInput" maxlength="4" value="" />
         <view class="line"></view>
     </view>
 

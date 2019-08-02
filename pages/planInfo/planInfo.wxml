@@ -1,16 +1,16 @@
-<view class="plan-pageIng"  wx:if="{{isPageIng}}">
+<view class="planInfo-pageIng"  wx:if="{{isPageIng}}">
     <progress stroke-width='30' percent='{{value}}'></progress>
     正在生成专属燃脂方案。。。
 </view>
 
-<view class="plan-pageError"   wx:if="{{isPageError}}">
+<view class="planInfo-pageError"   wx:if="{{isPageError}}">
     方案生成失败
     <button bindtap="pageAgain">重试</button>
 </view>
 
-<block class="plan-pageSuccess"  wx:if="{{isPageSuccess}}">
-    <view class="plan-pageSuccess-view1">已为您生成14Day</view>
-    <view class="plan-pageSuccess-view2">加速燃脂计划</view>
+<block class="planInfo-pageSuccess"  wx:if="{{isPageSuccess}}">
+    <view class="planInfo-pageSuccess-view1">已为您生成14Day</view>
+    <view class="planInfo-pageSuccess-view2">加速燃脂计划</view>
     <block>
         <blocl class="page-block1">
             <view>当前体重体脂</view>

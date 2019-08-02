@@ -34,14 +34,14 @@ page{
     font-size:32rpx;
 }
 
-.plan-pageSuccess-view1{
+.planInfo-pageSuccess-view1{
     font-size: 60rpx;
 }
 
-.plan-pageSuccess-view2{
+.planInfo-pageSuccess-view2{
     font-size: 60rpx;
 }
-.page-block1{
+.planInfo-block1{
     float: left;
     width: 33.3%;
 }
