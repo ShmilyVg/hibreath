@@ -2,14 +2,16 @@
 import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
+import WXDialog from "../../view/dialog";
+
 
 Page({
 
     data: {
         isFirst:true,//身体评估引导页标志位
         isexact:true,//是否准确测过体脂率
-        sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
-        info: {birthday: '1980-01-01',},
+        sexBox: [{image: 'man', text: '男士', isChose: true}, {image: 'woman', text: '女士', isChose: false}],
+        info: {birthday: '1980-01-01',sex:'man'},
         currentDate: '2018-12-19',
         page: 1,
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
@@ -24,10 +26,13 @@ Page({
         this.setData({
             currentDate: currentDate
         })
+        Protocol.postPhysical().then(data => {
+           //获取上次填写性别 出生日期等记录
+        })
     },
 
     continue() {
-        console.log(this.data.info.bodyFatRate,"8989")
+        console.log(this.data.info,"8989")
         switch (this.data.page) {
             case 1:
                 if (typeof (this.data.info.sex) == "undefined") {
@@ -72,6 +77,17 @@ Page({
                     })
                 }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false){
                     toast.warn('请填写体脂率');
+                }else if(this.data.isexact == false && this.data.info.bodyFatRate>=100){
+                    WXDialog.showDialog({
+                        title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
+                        }
+                    });
+
+                }else if(this.data.isexact == false && this.data.info.bodyFatRate.toString().split(".")[1].length>1){
+                    WXDialog.showDialog({
+                        title: '小贴士', content:"请精确到小数点后一位", confirmText: '我知道了', confirmEvent: () => {
+                        }
+                    });
                 }else{
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
@@ -82,6 +98,7 @@ Page({
     },
 
     chooseSex(e) {
+        console.log(e,'eee')
         let choseIndex = e.currentTarget.dataset.index;
         this.data.sexBox.map((value, index) => {
             value.isChose = choseIndex == index;
@@ -124,9 +141,24 @@ Page({
     },
     //填写体脂率
     bindExactInput(e){
+        var BMINumber;
+        BMINumber = e.detail.value;
+        console.log(BMINumber);
         this.setData({
-            'info.bodyFatRate': e.detail.value+"%"
+            'info.bodyFatRate': BMINumber
         })
+       /* if (BMINumber.toString().split(".")[1].length<=1 && Number(BMINumber)<100) { //正则验证，小数点后不能大于1位数字
+            this.setData({
+                'info.bodyFatRate': BMINumber+"%"
+            })
+        } else {
+            WXDialog.showDialog({
+                title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
+
+                }
+            });
+        };
+*/
     },
 
     page4ItemClick(e){

@@ -26,6 +26,10 @@
 
     </view>
     <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
+   <!-- <block>  专属营养师
+        <view>燃脂效果一直不佳？为您推荐专属营养师</view>
+        <image src=""></image>
+    </block>-->
 <!--    <view class="bottom-card flex-column">
         <view class="bottom-card-title">{{cardTitle}}</view>
         <block wx:if="{{!showUnscramble}}">
@@ -68,7 +72,7 @@
         </view>
     </view>-->
 </view>
-<!-- component/zy-modal/zy-modal.wxml -->
+<!-- 弹窗组件 -->
 <view class="modal" hidden="{{hidden}}">
     <view class="result-container" hidden="{{hidden}}">
         <view class="title">{{title}}</view>

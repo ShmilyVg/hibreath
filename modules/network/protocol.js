@@ -65,7 +65,10 @@ export default class Protocol {
 
     //7.30新加请求接口
 
-
+    //身体评估-获取上次身体评估记录用于默认
+    static postPhysical(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
     //个人中心--体重体脂记录-修改
     static postSetBMIInfo(data) {
         return Network.request({url: 'breathData/sync', data: data});

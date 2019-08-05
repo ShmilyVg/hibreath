@@ -46,7 +46,7 @@
     </view>
     <view wx:elif="{{page==4 && isexact == false}}" class="page4">
 
-        <input class="input" type="number" bindinput="bindExactInput" maxlength="3" />
+        <input class="input" type="number" bindinput="bindExactInput" maxlength="4" />
         <view class="line"></view>
         <view bindtap='IntoNoExact'>没测过体脂率</view>
     </view>
