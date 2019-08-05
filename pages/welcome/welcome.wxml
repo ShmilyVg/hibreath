@@ -1,3 +1,4 @@
+<!--引导页-->
 <swiper indicator-dots="true">
   <block wx:for="{{imgs}}" wx:for-index="index">
     <swiper-item class="swiper-items">

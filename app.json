@@ -16,7 +16,8 @@
     "pages/setTarget/setTarget",
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
-    "pages/planInfo/planInfo"
+    "pages/planInfo/planInfo",
+    "pages/successInfo/successInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

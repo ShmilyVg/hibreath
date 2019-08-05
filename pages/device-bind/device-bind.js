@@ -77,7 +77,9 @@ Page({
             bleStateListener: ({state}) => {
                 if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
                     this.isBind = true;
-                    setTimeout(() => HiNavigator.navigateBack({delta: 1}));
+                    //绑定后 跳转绑定成功页面  点击按钮再进入index页面
+                    setTimeout(() => HiNavigator.navigateSuccessInfo());
+                   /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
                     this.showResult({state: state.connectState});
                 }
@@ -98,7 +100,8 @@ Page({
             }
         });
         //是否需要升级 标志位
-        getApp().needCheckOTAUpdate = true;
+        //getApp().needCheckOTAUpdate = true;
+       /* HiNavigator.navigateSuccessInfo();*/
     },
 
     onShow() {
