@@ -155,5 +155,8 @@ Page({
         this.setData({
                 hidden: true
             })
-    }
+    },
+    onShareAppMessage() {
+        return {title: '测试一下分享', imageUrl: '', path: '/pages/result/result?dataId=' + this.shareBtn};
+    },
 })
