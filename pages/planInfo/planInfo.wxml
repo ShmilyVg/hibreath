@@ -13,8 +13,14 @@
         </view>
         <view class="clear"></view>
     </block>
-    <block>
+    <block wx:if="{{isToday}}">
         <view>今日暂未记录身体情况</view>
+        <button>记录</button>
+    </block>
+    <block wx:else="{{isToday}}">
+        <view>今日： 82kg/25%</view>
+        <view>目标： 70kg/18%</view>
+        <view>距离目标还差： 12kg/7%</view>
         <button>记录</button>
     </block>
 <!--    <block>
@@ -31,8 +37,6 @@
         <button bindtap="pageTarget">调整目标</button>
     </block>-->
 
-    <view>
-        方案安排
         <view>
             <view  class="planInfo-planList" wx:for="{{list}}">
                 <view>
@@ -55,7 +59,5 @@
                 </view>
             </view>
         </view>
-    </view>
-
 </block>
 

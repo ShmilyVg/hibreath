@@ -6,7 +6,7 @@ Page({
 
     data: {
         value:0,
-        isToday:false,
+        isToday:false,//今天是否设置过体重体脂
     },
 
     onLoad: function () {
