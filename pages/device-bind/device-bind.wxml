@@ -1,6 +1,6 @@
 <!--pages/device-bind/device-bind.wxml-->
 
-<import src="../index/view/indexCommon.wxml"></import>
+<!--<import src="../index/view/indexCommon.wxml"></import>-->
 
 <template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,picStateUrl,homeTitleText,hintPic}}"></template>
 

@@ -25,11 +25,12 @@
         </view>
 
     </view>
-    <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
-   <!-- <block>  专属营养师
+    <view class="bottom-btn btn" wx:if="{{noAddPlan}}" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
+    <block wx:if="{{halfMonth}}">
+        专属营养师
         <view>燃脂效果一直不佳？为您推荐专属营养师</view>
         <image src=""></image>
-    </block>-->
+    </block>
 <!--    <view class="bottom-card flex-column">
         <view class="bottom-card-title">{{cardTitle}}</view>
         <block wx:if="{{!showUnscramble}}">
@@ -73,15 +74,28 @@
     </view>-->
 </view>
 <!-- 弹窗组件 -->
-<view class="modal" hidden="{{hidden}}">
-    <view class="result-container" hidden="{{hidden}}">
-        <view class="title">{{title}}</view>
+<!--<view class="modal" hidden="{{beyondLastTime == '0' ?true:''}}">
+    <view class="result-container">
+        <view class="title">{{title[beyondLastTime-1]}}</view>
         <view class="content">
-            {{content}}
+            {{content[beyondLastTime-1]}}
         </view>
         <view class='modal-btn-wrapper'>
-        <!--    <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view>-->
+        &lt;!&ndash;    <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view>&ndash;&gt;
             <view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>
+        </view>
+    </view>
+</view>-->
+<view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
+    <view class="result-container">
+        <view class="title">{{beyondLastTime.title}}</view>
+        <view class="content">
+            {{beyondLastTime.content}}
+        </view>
+        <view class='modal-btn-wrapper'>
+
+            <!--<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>-->
+            <button data-id="shareBtn"  bindtap='confirm' open-type="share">分享</button>
         </view>
     </view>
 </view>

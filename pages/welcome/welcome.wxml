@@ -3,7 +3,7 @@
   <block wx:for="{{imgs}}" wx:for-index="index">
     <swiper-item class="swiper-items">
       <image class="swiper-image" src="{{item}}"></image>
-      <button class="button-img" bindtap="start" >立即体验</button>
+      <button class="button-img" bindtap="start" >立即开始减脂之旅</button>
     </swiper-item>
   </block>
 </swiper>

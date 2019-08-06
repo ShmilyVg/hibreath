@@ -15,9 +15,15 @@ Page({
         confirmText: '好哒,继续努力',
         cancelText: '取消',
         tintColor: 'color:#00a48f',
-        title:"真棒！",
-        content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获",
-        hidden:false,
+
+        noAddPlan:true,//未加入减脂方案
+        halfMonth:false,//是否超过半个月
+        // 0 第一次使用 1 比上次大但没超过当前区间  2 比上次大并且超过当前区间  3 本次检测结果小于等于上次检测结果
+        beyondLastTime:{
+            type:1,
+            title:"",
+            content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获"
+        }
     },
 
     onLoad: function (options) {
@@ -40,6 +46,12 @@ Page({
             frontColor: '#ffffff',
             backgroundColor: mainColor
         });
+    /*    let beyondLastTime =[
+            {type:0,title:"",content:""},
+            {type:1,title:"",content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获"},
+            {type:2,title:"不错！",content:"与上次检测相比，燃脂效果已有所提升，继续坚持！"},
+            {type:3,title:"真棒！",content:"与上次检测相比，燃脂效果已大幅提升，脂肪分解的也比原先快了，继续坚持！"},
+        ]*/
         //section 区间标志位备用
         let list = [
             {gradeNumber:"0-10",grade:"LV1",gradeType:"步行",section:false},
@@ -152,8 +164,9 @@ Page({
 
     },
     confirm: function () {
+
         this.setData({
-                hidden: true
+            "beyondLastTime.type": 0
             })
     },
     onShareAppMessage() {
