@@ -38,8 +38,9 @@ Page({
         });
     },
     toResult() {
-        HiNavigator.navigateResult(
-        );
+        HiNavigator.navigateResult({
+                score:96,
+        });
     },
 
   /*  toResult(e) {

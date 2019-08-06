@@ -6,7 +6,7 @@
 </view>
 
 <block wx:if="{{allList.length}}">
-    <view class="history-box" wx:for="{{allList}}" style="background: #{{item.hintBg}}" bindtap="toResult" data-index="{{index}}">
+    <view class="history-box" wx:for="{{allList}}" style="background: #{{item.hintBg}}" bindtap="toResult">
         <view class="history-bg">
             <image src="../../images/history/bg.png"></image>
         </view>
