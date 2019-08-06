@@ -7,46 +7,41 @@ import HiNavigator from "../../navigator/hi-navigator";
 Page({
     data: {
         dateText: {},
-        mainColor: '#E5E5E5',
-        showUnscramble: false, //是否显示解读
+        mainColor: '',
         isChose: false,
-        cardTitle: '选择并保存检测时状态，以便综合分析',
-        score: 0,
-        confirmText: '好哒,继续努力',
-        cancelText: '取消',
+        score: 96,
         tintColor: 'color:#00a48f',
-
         noAddPlan:true,//未加入减脂方案
         halfMonth:false,//是否超过半个月
         // 0 第一次使用 1 比上次大但没超过当前区间  2 比上次大并且超过当前区间  3 本次检测结果小于等于上次检测结果
         beyondLastTime:{
             type:1,
-            title:"",
+            title:"真棒！！",
             content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获"
         }
     },
 
     onLoad: function (options) {
-        let mainColor = '';
-        let score = options.score;
-        if (score <= 5) {
-            mainColor = '#3E3E3E'
-        } else if (score > 5 && score <= 30) {
-            mainColor = '#FF7C00'
-        } else if (score > 30 && score <= 80) {
-            mainColor = '#FF5E00'
-        } else if (score > 80) {
-            mainColor = '#E64D3D'
+        if(options.dataId){
+            this.setData({
+                "beyondLastTime.type": 0,
+                "isShare":false,
+            })
         }
+        let mainColor = '#E64D3D';
+        let score = options.score;
+        console.log(tools.createDateAndTime(1564381889121),'8989')
         this.setData({
             mainColor: mainColor,
-            score: score
+            score: score,
+            resultDate:tools.createDateAndTime(1564381889121).date,
+            resultTime:tools.createDateAndTime(1564381889121).time,
         });
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: mainColor
         });
-    /*    let beyondLastTime =[
+/*        let beyondLastTime =[
             {type:0,title:"",content:""},
             {type:1,title:"",content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获"},
             {type:2,title:"不错！",content:"与上次检测相比，燃脂效果已有所提升，继续坚持！"},
@@ -97,6 +92,10 @@ Page({
 
     },
 
+    onShow: function (options) {
+
+    },
+
     clickChoose: function (e) {
         let that = this;
         if (e.currentTarget.dataset.index) {
@@ -105,7 +104,6 @@ Page({
             list.map(function (value) {
                 value.isChose = index == value.key;
                 if (value.isChose) {
-                    that.data.cardTitle = tools.deleteLineBreak(value.text_zh);
                 }
             });
             this.setData({
@@ -131,8 +129,6 @@ Page({
             let description = data.result.description;
             this.setData({
                 description: description,
-                showUnscramble: true,
-                cardTitle: this.data.cardTitle
             });
             toast.hiddenLoading();
             if (this.data.postAdd) {
@@ -164,10 +160,9 @@ Page({
 
     },
     confirm: function () {
-
         this.setData({
             "beyondLastTime.type": 0
-            })
+        })
     },
     onShareAppMessage() {
         return {title: '测试一下分享', imageUrl: '', path: '/pages/result/result?dataId=' + this.shareBtn};

@@ -8,7 +8,8 @@
         <text>{{score}}</text>
         <text style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 10rpx;font-family: DIN Condensed;">ppm</text>
     </view>
-    <button data-id="shareBtn" open-type="share">分享</button>
+    <view class="result-date">{{resultDate}} {{resultTime}}</view>
+    <button wx:="isShare" data-id="shareBtn" open-type="share">分享</button>
     <view wx:if="{{dateText.length}}" style="line-height: 43rpx;margin-top: 23rpx">
         <text style="font-size: 30rpx;color: white;">{{dateText}}</text>
     </view>
@@ -88,12 +89,11 @@
 </view>-->
 <view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
     <view class="result-container">
-        <view class="title">{{beyondLastTime.title}}</view>
-        <view class="content">
+        <view class="title" bindtap='confirm'>{{beyondLastTime.title}}</view>
+        <view class="content" bindtap='confirm'>
             {{beyondLastTime.content}}
         </view>
         <view class='modal-btn-wrapper'>
-
             <!--<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>-->
             <button data-id="shareBtn"  bindtap='confirm' open-type="share">分享</button>
         </view>

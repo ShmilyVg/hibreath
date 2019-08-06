@@ -37,8 +37,12 @@ Page({
             },
         });
     },
+    toResult() {
+        HiNavigator.navigateResult(
+        );
+    },
 
-    toResult(e) {
+  /*  toResult(e) {
         let index = e.currentTarget.dataset.index;
         let list = this.data.allList;
         HiNavigator.navigateToResult({
@@ -47,7 +51,7 @@ Page({
             showUnscramble: true,
             timestamp: list[index]['time']
         });
-    },
+    },*/
 
     getBreathDataList({
         page = 1

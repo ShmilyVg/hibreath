@@ -66,6 +66,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateSuccessInfo() {
         this.navigateTo({url: '/pages/successInfo/successInfo'})
     }
+    static navigateResult() {
+        this.navigateTo({url: '/pages/result/result'})
+    }
     static navigateIndex() {
         wx.reLaunch({url: '/pages/index/index'});
     }

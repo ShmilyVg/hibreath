@@ -65,7 +65,7 @@ App({
                                             const {bin: binArray, dat: datArray} = zip;
                                             if (isUpdate && binArray && binArray.length && datArray && datArray.length) {
                                                 WXDialog.showDialog({
-                                                    content: '为了给您带来更好的体验\n' + '即将为药盒进行升级',
+                                                    content: '为了给您带来更好的体验\n' + '即将为设备进行升级',
                                                     showCancel: true,
                                                     confirmText: "立即升级",
                                                     cancelText: "暂时不用",
@@ -166,6 +166,7 @@ App({
             //     }
             // })
         }
+
     },
 
     onHide() {

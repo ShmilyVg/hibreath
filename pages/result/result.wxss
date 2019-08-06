@@ -121,6 +121,7 @@ page{
 .title {
     font-size: 34rpx;
     color: black;
+    height: 30%;
     text-align: center;
     margin-top: 30rpx;
 }
@@ -131,10 +132,12 @@ page{
     padding-right: 50rpx;
     font-size: 30rpx;
     color: #888888;
+    height: 50%;
 }
 
 .modal-btn-wrapper {
     position: absolute;
+    height: 20%;
     bottom: 0;
     left: 0;
     display: flex;
