@@ -42,10 +42,10 @@
 
 
 
-<view class="home-btn"  wx:if="{{homeBtn}}">
+<!--<view class="home-btn"  wx:if="{{homeBtn}}">
   <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>
   <view class="home-btn-box home-btn-history" bindtap="historyUrl">历史记录</view>
-</view>
+</view>-->
 
 
 

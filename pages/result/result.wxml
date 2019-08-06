@@ -15,7 +15,7 @@
     <view>脂肪燃烧速度等级：LV1</view>
     <view>相当于步行的速度,超越全平台2%的用户</view>
     <view class="result-list" wx:for="{{list}}">
-        <view  wx:if="{{item.section == true}}" style="color: #FF5E00">
+        <view  wx:if="{{item.section == true}}"  wx:key="section" style="color: #FF5E00">
             <view>{{item.gradeNumber}}</view>
             {{item.grade}}:{{item.gradeType}}
         </view>

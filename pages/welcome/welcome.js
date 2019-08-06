@@ -1,3 +1,4 @@
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
   data: {
     imgs: [
@@ -10,9 +11,7 @@ Page({
   },
 
   start() {
-    wx.navigateTo({
-      url: '../index/index'
-    })
+      HiNavigator.navigateIndex();
   },
 
 

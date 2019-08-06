@@ -3,6 +3,7 @@ export default class IndexCommonManager {
         this._page = page;
     }
     setSearchingState() {
+        getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
             burnupShow: true,
 
@@ -20,6 +21,7 @@ export default class IndexCommonManager {
     }
 
     setSearchedState() {
+        getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
             burnupShow: true,
 
@@ -37,6 +39,7 @@ export default class IndexCommonManager {
     }
 
     setDissearchState() {
+        getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
             burnupShow: true,
 
