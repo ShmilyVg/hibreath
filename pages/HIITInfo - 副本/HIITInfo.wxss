@@ -77,6 +77,3 @@ page{
     border-right: 1rpx solid rgba(7,17,27,0.1);
 }
 /* 带图片弹窗模板E */
-.sliderM{
-    height: 300rpx;
-}

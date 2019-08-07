@@ -11,7 +11,7 @@ Page({
         isFirst:true,//身体评估引导页标志位
         isexact:true,//是否准确测过体脂率
         sexBox: [{image: 'man', text: '男士', isChose: true}, {image: 'woman', text: '女士', isChose: false}],
-        info: {birthday: '1980-01-01',sex:'man'},
+        info: {birthday: '1980-01-01',sex:'man',height:'11',weight:'22',bodyFatRate:'25%'},
         currentDate: '2018-12-19',
         page: 1,
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],

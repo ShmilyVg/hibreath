@@ -29,10 +29,10 @@
     </block>
 
     <block wx:elif="{{page==3}}">
-        <input class="input" type="number" bindinput="bindHeightInput" maxlength="3" />
+        <input class="input" type="number" value="{{info.height}}" bindinput="bindHeightInput" maxlength="3" />
         <view class="line"></view>
         <view class="title" style="margin-top: 165rpx">体重(kg)</view>
-        <input class="input" type="number" bindinput="bindWeightInput" maxlength="3" />
+        <input class="input"   value="{{info.weight}}" type="number" bindinput="bindWeightInput" maxlength="3" />
         <view class="line"></view>
     </block>
 

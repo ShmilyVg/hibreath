@@ -1,5 +1,5 @@
 <view class="HIIT-headvideo">
-    <video id="videoplayer" class="HIITVideo" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}" autoplay="true" bindtimeupdate="videoUpdate"></video>
+    <video class="HIITVideo" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"></video>
 </view>
 
 <view class="HIIT-title">
@@ -7,17 +7,6 @@
 </view>
 <view class="HIIT-step">
 
-</view>
-<view bindtap="lastVideo">  上一个  </view>
-<view bindtap="nextVideo">下一个</view>
-<view bindtap="startVideo">开始</view>
-<view bindtap="stopVideo">暂停</view>
-<view class='process-container'>
-   <!-- <view class='slider-container'>
-        <slider class="sliderM" bindchange="sliderChange" bindchanging="sliderChanging" step="1"  value="{{sliderValue}}"
-                backgroundColor="#A8A8A8" activeColor="#FFEE83" block-color="#FFEE83"  />
-    </view>-->
-    <progress percent="{{progressM}}" stroke-width="20" />
 </view>
 <swiper class="HIIT-swiper" display-multiple-items="3" >
     <block wx:for="{{list}}">
