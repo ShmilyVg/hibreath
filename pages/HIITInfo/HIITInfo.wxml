@@ -19,13 +19,13 @@
     </view>-->
     <progress percent="{{progressM}}" stroke-width="20" />
 </view>
-<swiper class="HIIT-swiper" display-multiple-items="3" >
+<!--<swiper class="HIIT-swiper" display-multiple-items="3" >
     <block wx:for="{{list}}">
         <swiper-item bindtap="clickSwiper" data-pid="{{item.videoUrl}}" data-number="{{index}}">
             <image src="{{item.pic}}"  width="355rpx" height="150rpx"/>
         </swiper-item>
     </block>
-</swiper>
+</swiper>-->
 
 
 <view class="modal" hidden="{{hidden}}">

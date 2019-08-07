@@ -58,6 +58,7 @@ Page({
     videoUpdate(e) {
         if (this.data.updateState) { //判断拖拽完成后才触发更新，避免拖拽失效
             let sliderValue = e.detail.currentTime / e.detail.duration * 100;
+
             this.setData({
                 sliderValue: sliderValue,
                 progressM: sliderValue,

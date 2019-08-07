@@ -38,7 +38,7 @@
 
     <view wx:elif="{{page==4 && isexact== true}}" class="page4">
         <view class="page4-item" wx:for="{{info.sexStr?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick" data-index="{{index}}">
-            <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
+            <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}{{index+1}}.png"></image>
             <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
         </view>
         <view bindtap='IntoExact'>我测过准确的体脂率</view>

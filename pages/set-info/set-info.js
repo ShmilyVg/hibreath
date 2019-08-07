@@ -11,7 +11,7 @@ Page({
         isFirst:true,//身体评估引导页标志位
         isexact:true,//是否准确测过体脂率
         sexBox: [{image: 'man', text: '男士', isChose: true}, {image: 'woman', text: '女士', isChose: false}],
-        info: {birthday: '1980-01-01',sex:'man',height:'11',weight:'22',bodyFatRate:'25%'},
+
         currentDate: '2018-12-19',
         page: 1,
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
@@ -29,13 +29,24 @@ Page({
         Protocol.postPhysical().then(data => {
            //获取上次填写性别 出生日期等记录
         })
+        let info={
+            birthday: '1980-01-01',
+            sex:'man',
+            height:'11',
+            weight:'',
+            bodyFatRate:'25%',
+            choseIndex:3,
+        };
+        this.setData({
+            info: info
+        })
     },
 
     continue() {
         console.log(this.data.info,"8989")
         switch (this.data.page) {
             case 1:
-                if (typeof (this.data.info.sex) == "undefined") {
+                if (typeof (this.data.info.sex) == "undefined" || this.data.info.sex == "") {
                     toast.warn('请填写信息');
                 } else {
                     this.setData({
@@ -49,10 +60,10 @@ Page({
                 });
                 break;
             case 3:
-                if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined") {
-                   if(typeof (this.data.info.height) == "undefined"){
+                if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined"  || this.data.info.height == ""  || this.data.info.weight == "") {
+                   if(typeof (this.data.info.height) == "undefined"   || this.data.info.height == "" ){
                        toast.warn('请填写身高');
-                   }else if(typeof (this.data.info.weight) == "undefined"){
+                   }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight == ""){
                        toast.warn('请填写体重');
                    }
                 } else {
@@ -75,7 +86,7 @@ Page({
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
                     })
-                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false){
+                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false  || this.data.info.bodyFatRate == ""){
                     toast.warn('请填写体脂率');
                 }else if(this.data.isexact == false && this.data.info.bodyFatRate>=100){
                     WXDialog.showDialog({
@@ -83,12 +94,13 @@ Page({
                         }
                     });
 
-                }else if(this.data.isexact == false && this.data.info.bodyFatRate.toString().split(".")[1].length>1){
-                    WXDialog.showDialog({
-                        title: '小贴士', content:"请精确到小数点后一位", confirmText: '我知道了', confirmEvent: () => {
-                        }
-                    });
-                }else{
+                }else if(this.data.isexact == false){
+                    if(this.data.info.bodyFatRate.toString().split(".")[1].length>1){
+                        WXDialog.showDialog({
+                            title: '小贴士', content:"请精确到小数点后一位", confirmText: '我知道了', confirmEvent: () => {
+                            }
+                        });
+                }}else{
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
                     })
@@ -132,6 +144,7 @@ Page({
         this.setData({
             'info.height': e.detail.value
         })
+        console.log(typeof(e.detail.value),"89888")
     },
 
     bindWeightInput(e) {
