@@ -8,7 +8,7 @@
 <view class="HIIT-step">
 
 </view>
-<view bindtap="lastVideo" wx:if="{{videoLast}}">  上一个  </view>
+<view bindtap="lastVideo" wx:if="{{videoLast}}">上一个</view>
 <view bindtap="nextVideo">下一个</view>
 <view bindtap="startVideo">开始</view>
 <view bindtap="stopVideo">暂停</view>

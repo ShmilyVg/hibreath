@@ -13,6 +13,7 @@ Page({
         sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
         currentDate: '2018-12-19',
         page: 1,
+        choseIndex:"3",
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
         text: ['告诉我们关于你的事，\n让我帮你获得更适合的健康方案', '我们会针对不同的年龄为你定制相应的健康方案', '', ''],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
@@ -20,13 +21,13 @@ Page({
         itemBackgroundColor: '#656565',
     },
     onLoad: function (options) {
+        //截止日期范围
         let timeS = tools.createDateAndTime(Date.parse(new Date()));
         let currentDate = `${timeS.year}-${timeS.month}-${timeS.day}`;
         this.setData({
             currentDate: currentDate
         })
         Protocol.postPhysical().then(data => {
-            console.log("99",data)
             let dataInfo = data.result
             if(dataInfo.info.birthday !== ""){
                 this.setData({
@@ -61,7 +62,7 @@ Page({
                 })
             }else{
                 this.setData({
-                    bodyFatRate: '20%',
+                    bodyFatRate: '25%',
                 })
             }
            //获取上次填写性别 出生日期等记录
@@ -72,7 +73,6 @@ Page({
             height:'11',
             weight:'',
             bodyFatRate:'25%',
-            choseIndex:3,
         };
        /* for(var i=0;i<this.data.sexBox.length;i++){
             if(this.data.info.sex ==this.data.sexBox[i]. image){

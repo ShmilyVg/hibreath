@@ -13,6 +13,7 @@ Page({
         tintColor: 'color:#00a48f',
         noAddPlan:true,//未加入减脂方案
         halfMonth:false,//是否超过半个月
+        isHave:false,//是否生成过身体评估报告
         // 0 第一次使用 1 比上次大但没超过当前区间  2 比上次大并且超过当前区间  3 本次检测结果小于等于上次检测结果
         beyondLastTime:{
             type:1,
