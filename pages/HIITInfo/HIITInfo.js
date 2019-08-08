@@ -18,6 +18,7 @@ Page({
         sliderValue: 0, //控制进度条slider的值，
         updateState: false, //防止视频播放过程中导致的拖拽失效
         progressM:"",
+        videoLast:false
     },
     onReady: function (res) {
         this.videoContext = wx.createVideoContext('videoplayer');
@@ -33,7 +34,7 @@ Page({
             "des": "第一个描述",
             "pic": "../../images/hiit1.png"
         }, {
-            "videoUrl": "../../images/video/22.mp4",
+            "videoUrl": "https://apd-0c583ae3dc3943d674add80d35f80a63.v.smtcdns.com/vhot2.qqvideo.tc.qq.com/A3JNIJlawJ1S21j7a35VF_jiYLJG-VaEgaoXeM3bobAs/uwMROfz2r5zIIaQXGdGnC2dfDmb_xYKxrIGz_bGUg2Lja6ru/m0910jndeqr.mp4?sdtfrom=v1104&guid=0ba6e86bbdb1436dc6a42f69deeb19ea&vkey=DCFFE47C563EDBE85595BB2286CCB69741EF9144A2EE3430D0E0C1448C8EC01DF64E1B81982498E7738CD59D11E79171738A9B7DB40E85DE5A58AEFA7E89E5E055FDA0002AB30E949321E0B08306C201FF0560394062E17E069D5CD634D41D170594B0FFC1E0081830A1F4EE562A782C4A6AD5B4AE0D5FF95854CA43469BC877",
             "title": "第二个",
             "des": "第二个描述",
             "pic": "../../images/hiIi2.png"
@@ -85,20 +86,7 @@ Page({
 
     //视频播放完成后处理   视频自动连续播放&&ALL后弹窗 显示运动完成弹窗
     bindended(){
-        var videoLength = this.data.list.length;
-        console.log("videoLength",videoLength)
-        console.log("this.data.isLive",this.data.isLive)
-        if(this.data.isLive<this.data.list.length-1){
-            this.data.isLive++;
-            this.setData({
-                videoUrl:this.data.list[this.data.isLive].videoUrl
-            })
-        }else{
-            this.setData({
-                hidden: false
-            })
-        }
-
+       this.nextVideo()
     },
 
     cancel: function () {
@@ -111,21 +99,19 @@ Page({
         })
     },
 
-    clickSwiper(e){
-        var videoUrl=e.currentTarget.dataset.pid; //点击的视频
-        var isLive=e.currentTarget.dataset.number; //点击的视频所在数组的下标
-        this.setData({
-            videoUrl: videoUrl,
-            isLive: isLive
-        })
-    },
     lastVideo(){
         for(var i=0;i<this.data.list.length;i++){
             if(this.data.videoUrl == this.data.list[i].videoUrl){
                 let Ving= i-1;
+                console.log(Ving,'Ving')
                 if(Ving<0){
                     this.setData({
-                        hidden: false
+                        videoLast: false
+                    })
+                }else if(Ving ==0){
+                    this.setData({
+                        videoLast: false,
+                        videoUrl: this.data.list[Ving].videoUrl
                     })
                 }else{
                     this.setData({
@@ -142,11 +128,13 @@ Page({
                 let Ving= i+1;
                 if(Ving>=this.data.list.length){
                     this.setData({
-                        hidden: false
+                        hidden: false,
+                        videoLast: true
                     })
                 }else{
                     this.setData({
-                        videoUrl: this.data.list[Ving].videoUrl
+                        videoUrl: this.data.list[Ving].videoUrl,
+                        videoLast: true
                     })
                 }
                 return;

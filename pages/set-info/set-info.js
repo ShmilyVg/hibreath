@@ -10,8 +10,7 @@ Page({
     data: {
         isFirst:true,//身体评估引导页标志位
         isexact:true,//是否准确测过体脂率
-        sexBox: [{image: 'man', text: '男士', isChose: true}, {image: 'woman', text: '女士', isChose: false}],
-
+        sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
         currentDate: '2018-12-19',
         page: 1,
         title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
@@ -27,27 +26,71 @@ Page({
             currentDate: currentDate
         })
         Protocol.postPhysical().then(data => {
+            console.log("99",data)
+            let dataInfo = data.result
+            if(dataInfo.info.birthday !== ""){
+                this.setData({
+                    birthday: dataInfo.info.birthday
+                })
+            }else{
+                this.setData({
+                    birthday: '1980-01-01',
+                })
+            }
+            if(dataInfo.info.height !== ""){
+                this.setData({
+                    height: dataInfo.info.height
+                })
+            }else{
+                this.setData({
+                    height: '175',
+                })
+            }
+            if(dataInfo.info.weight !== ""){
+                this.setData({
+                    weight: dataInfo.info.weight
+                })
+            }else{
+                this.setData({
+                    weight: '70',
+                })
+            }
+            if(dataInfo.info.bodyFatRate !== ""){
+                this.setData({
+                    bodyFatRate: dataInfo.info.bodyFatRate
+                })
+            }else{
+                this.setData({
+                    bodyFatRate: '20%',
+                })
+            }
            //获取上次填写性别 出生日期等记录
         })
         let info={
             birthday: '1980-01-01',
-            sex:'man',
+            sex:'',
             height:'11',
             weight:'',
             bodyFatRate:'25%',
             choseIndex:3,
         };
+       /* for(var i=0;i<this.data.sexBox.length;i++){
+            if(this.data.info.sex ==this.data.sexBox[i]. image){
+
+            }
+        }*/
+
         this.setData({
             info: info
         })
     },
 
     continue() {
-        console.log(this.data.info,"8989")
         switch (this.data.page) {
             case 1:
-                if (typeof (this.data.info.sex) == "undefined" || this.data.info.sex == "") {
-                    toast.warn('请填写信息');
+                console.log(this.data.info.sex == "","性别")
+                if (typeof (this.data.info.sex) == "undefined" || this.data.info.sex === "") {
+                    toast.warn('请选择性别');
                 } else {
                     this.setData({
                         page: ++this.data.page,
@@ -60,10 +103,10 @@ Page({
                 });
                 break;
             case 3:
-                if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined"  || this.data.info.height == ""  || this.data.info.weight == "") {
-                   if(typeof (this.data.info.height) == "undefined"   || this.data.info.height == "" ){
+                if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined"  || this.data.info.height === ""  || this.data.info.weight === "") {
+                   if(typeof (this.data.info.height) == "undefined"   || this.data.info.height === "" ){
                        toast.warn('请填写身高');
-                   }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight == ""){
+                   }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight === ""){
                        toast.warn('请填写体重');
                    }
                 } else {
@@ -86,7 +129,7 @@ Page({
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
                     })
-                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false  || this.data.info.bodyFatRate == ""){
+                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false  || this.data.info.bodyFatRate === ""){
                     toast.warn('请填写体脂率');
                 }else if(this.data.isexact == false && this.data.info.bodyFatRate>=100){
                     WXDialog.showDialog({

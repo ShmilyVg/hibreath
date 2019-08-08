@@ -1,5 +1,5 @@
 <view class="HIIT-headvideo">
-    <video id="videoplayer" class="HIITVideo" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}" autoplay="true" bindtimeupdate="videoUpdate"></video>
+    <video id="videoplayer" class="HIITVideo" controls="{{false}}" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}" autoplay="true" bindtimeupdate="videoUpdate"></video>
 </view>
 
 <view class="HIIT-title">
@@ -8,7 +8,7 @@
 <view class="HIIT-step">
 
 </view>
-<view bindtap="lastVideo">  上一个  </view>
+<view bindtap="lastVideo" wx:if="{{videoLast}}">  上一个  </view>
 <view bindtap="nextVideo">下一个</view>
 <view bindtap="startVideo">开始</view>
 <view bindtap="stopVideo">暂停</view>
