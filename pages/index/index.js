@@ -142,6 +142,7 @@ Page({
                 console.log("查看数据2",ProtocolState.BREATH_RESULT)
                 console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
+                    //上传得分并跳转结果页
                     HiNavigator.navigateToResult({score: finalResult.result});
                     //TIMESTAMP 设备获取时间戳
                 }else if (ProtocolState.TIMESTAMP === state.protocolState) {

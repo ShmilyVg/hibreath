@@ -5,9 +5,9 @@ import Protocol from "../../modules/network/protocol";
 Page({
 
     data: {
-        isPageIng:false, //进度条
+        isPageIng:true, //进度条
         isPageError:false,//生成失败
-        isPageSuccess:true,//生成成功
+        isPageSuccess:false,//生成成功
         value:0,
     },
 
@@ -93,7 +93,6 @@ Page({
             const val=that.data.value;
             that.setData({value:val<100?val+1:0});
             that.startTime();
-
         },30);
     },
 

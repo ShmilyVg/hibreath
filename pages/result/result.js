@@ -23,6 +23,7 @@ Page({
     },
 
     onLoad: function (options) {
+        console.log("22222",options)
         if(options.dataId){
             this.setData({
                 "beyondLastTime.type": 0,
@@ -31,7 +32,6 @@ Page({
         }
         let mainColor = '#E64D3D';
         let score = options.score;
-        console.log(tools.createDateAndTime(1564381889121),'8989')
         this.setData({
             mainColor: mainColor,
             score: score,
@@ -120,7 +120,7 @@ Page({
             this.postAnalysisFetch();
         }
     },
-
+    //发送数据给服务器
     postAnalysisFetch() {
         toast.showLoading();
         Protocol.getAnalysisFetch({
@@ -166,6 +166,6 @@ Page({
         })
     },
     onShareAppMessage() {
-        return {title: '测试一下分享', imageUrl: '', path: '/pages/result/result?dataId=' + this.shareBtn};
+        return {title: '测试分享', imageUrl: '', path: '/pages/result/result?dataId=' + this.shareBtn};
     },
 })

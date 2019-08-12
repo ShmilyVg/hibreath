@@ -26,10 +26,12 @@ export default class Protocol {
         return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
 
-    static getBreathDataAdd({dataValue, situation}) {
+   /* static getBreathDataAdd({dataValue, situation}) {
         return Network.request({url: 'breathData/add', data: {dataValue, situation}});
+    }*/
+    static getBreathDataAdd({dataValue}) {
+        return Network.request({url: 'breathData/add', data: {dataValue}});
     }
-
     static getBreathDataList({page, pageSize = 15}) {
         return Network.request({url: 'breathData/list', data: {page, pageSize}})
     }
@@ -63,7 +65,7 @@ export default class Protocol {
     }
 
 
-    //7.30新加请求接口
+    //新加请求接口
 
     //身体评估-获取上次身体评估记录用于默认
     static postPhysical(data) {
@@ -77,20 +79,25 @@ export default class Protocol {
     static postSetGradeInfo(data) {
         return Network.request({url: 'breathData/sync', data: data});
     }
-    //设置减脂方案目标
+    //添加减脂方案目标
     static postSetTarget(data) {
         return Network.request({url: 'breathData/sync', data: data});
     }
-    //获取减脂方案目标
-    static getTargetNmuber(data) {
-        return Network.request({url: 'breathData/sync', data: data});
-    }
+
     //获取菜谱对应详细信息
     static postCookInfo({Id}) {
         return Network.request({url: 'breathData/sync', data: {Id}});
     }
     //今日身体情况记录--体重&体脂
     static postTodayBMI(data) {
+        return Network.request({url: 'breathData/list', data: data})
+    }
+    //获取减脂方案目标
+    static getTargetNmuber(data) {
+        return Network.request({url: 'breathData/sync', data: data});
+    }
+    //HIIT视频
+    static postHIIT(data) {
         return Network.request({url: 'breathData/list', data: data})
     }
 }

@@ -24,6 +24,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             //由设备发出的显示结果请求
             '0x36': ({dataArray}) => {
+                console.log(dataArray,"77777")
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 const dou = HexTools.hexArrayToNum(dataArray.slice(5, 6));
@@ -40,6 +41,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 return {state: ProtocolState.BREATH_FINISH};
             },
             '0x3c': ({dataArray}) => {
+                console.log("查看数据结果",dataArray)
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 console.log('数据2 timestamp',timestamp);
                 const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));
