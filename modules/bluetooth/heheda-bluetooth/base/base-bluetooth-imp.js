@@ -171,7 +171,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                 for (let i = 0, len = devices.length; i < len; i++) {
                     const device = devices[i];
                     if (device.localName && device.localName.toUpperCase().indexOf(hiDeviceName) !== -1) {
-                        console.log('扫描到药盒，并开始连接', device);
+                        console.log('扫描到设备，并开始连接', device);
                         this._bleSignPowerListener && this._bleSignPowerListener(devices);
                         this._updateFinalState({
                             promise: this.createBLEConnection({deviceId: device.deviceId, signPower: device.RSSI})

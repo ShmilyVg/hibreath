@@ -159,7 +159,7 @@ Page({
     // 数据处理
     dadtaTap: function () {
         let that = this;
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 14; i++) {
             console.log(-(i + 1))
             let times = this.timehandTap(".", (i));
             let time = "timearr[" + i + "].time"; //此处的数组的属性可当做是新添加的键

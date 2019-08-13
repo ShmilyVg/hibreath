@@ -28,13 +28,13 @@
     <view>
         方案安排
 
-        <view class="intro">
+        <scroll-view class="intro" scroll-x>
             <view class="timeWeek" wx:for="{{timearr}}" wx:key="index">
                 <view>{{item.time}}</view>
                 <view>{{item.week}}</view>
             </view>
             <view class="clear"></view>
-        </view>
+        </scroll-view>
 
 
         <view>

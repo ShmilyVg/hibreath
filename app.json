@@ -31,7 +31,7 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/plan/plan",
+      "pagePath": "pages/result/result",
       "text": "燃脂检测"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",
