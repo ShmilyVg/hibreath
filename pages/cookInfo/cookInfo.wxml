@@ -3,25 +3,16 @@
 </view>
 
 <view class="cookInfo-title">
-    水煮青菜
+   {{cookInfoList.title}}
 </view>
 <view class="cookInfo-need">
     <view>需要食材</view>
-    <view>小白菜100g、香油3g、咸鸭蛋半个</view>
+    <view>{{cookInfoList.ingredients}}</view>
 </view>
 <view class="cookInfo-step">
-    <view>需要食材</view>
-    <view>1.小白菜洗净切小段；</view>
-    <view> 2.锅中放半杯水，加小半匙香油；</view>
-    <view> 3.煮沸后加入小白菜和切碎的咸鸭蛋蛋白，煮2分钟；</view>
-    <view> 4.加入蛋黄，即可完成。</view>
-</view>
+    <view>如何制作</view>
+    <view wx:for="{{cookInfoList.cook}}">
+        <view>{{index+1}}.{{item.step}};</view>
+    </view>
 
-<view class="cookInfo-step">
-    <view></view>
-    <view>1.小白菜洗净切小段；</view>
-    <view> 2.锅中放半杯水，加小半匙香油；</view>
-    <view> 3.煮沸后加入小白菜和切碎的咸鸭蛋蛋白，煮2分钟；</view>
-    <view> 4.加入蛋黄，即可完成。</view>
 </view>
-

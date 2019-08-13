@@ -1,7 +1,14 @@
 page{
-    padding: 0 30rpx;
     box-sizing:border-box;
     background: #3E3E3E;
     color: #fff;
 }
 
+.cookInfo-headImage {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+}
+.cookInfo-headImage image{
+    width: 100%;
+}

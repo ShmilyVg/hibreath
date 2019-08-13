@@ -4,3 +4,4 @@
     <text class="device-name">燃脂检测仪</text>
     <view class="bottom-btn btn-bg" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
 </view>
+<view wx:if="{{false}}">暂未绑定设备</view>

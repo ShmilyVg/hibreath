@@ -116,6 +116,8 @@ Page({
                 }
                 break;
             case 4:
+                console.log(typeof (this.data.choseIndex) == "undefined")
+                console.log(this.data.isexact)
                 if (typeof (this.data.choseIndex) == "undefined" && this.data.isexact == true) {
                     toast.warn('请选择图片');
                 } else if(typeof (this.data.choseIndex) !== "undefined" && this.data.isexact == true) {

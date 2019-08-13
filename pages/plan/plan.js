@@ -1,14 +1,13 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import toast from "../../view/toast";
 import Protocol from "../../modules/network/protocol";
-
 Page({
-
     data: {
-        isPageIng:true, //进度条
+        isPageIng:false, //进度条
         isPageError:false,//生成失败
-        isPageSuccess:false,//生成成功
+        isPageSuccess:true,//生成成功
         value:0,
+        timearr:[],
     },
 
     onLoad: function () {
@@ -78,6 +77,9 @@ Page({
             swiperList:swiperList
         });
     },
+    onShow:function(){
+        this.dadtaTap()
+    },
 
     startTime(){
         var that =this;
@@ -117,5 +119,59 @@ Page({
 
     toInfo(){
         HiNavigator.navigatePlanInfo();
-    }
+    },
+
+    /*日历相关*/
+    // 时间处理
+    timehandTap: function (symbol, n) {
+        symbol = symbol || '.';
+        let date = new Date();
+        date = date.setDate(date.getDate() + n);
+        date = new Date(date)
+       /* let year = date.getFullYear();
+        let month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);*/
+        let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        return  day;
+    },
+    //周处理
+    timeWeek: function (n) {
+        let date = new Date();
+        date = date.setDate(date.getDate() + n);
+        let week = new Date(date).getDay();
+          switch (week){
+               case 0: week = "日"
+                   break
+               case 1: week = "一"
+                   break
+               case 2: week = "二"
+                   break
+               case 3: week = "三"
+                   break
+               case 4: week = "四"
+                   break
+               case 5: week = "五"
+                   break
+               case 6: week = "六"
+                   break
+           }
+        return  week;
+    },
+    // 数据处理
+    dadtaTap: function () {
+        let that = this;
+        for (let i = 0; i < 7; i++) {
+            console.log(-(i + 1))
+            let times = this.timehandTap(".", (i));
+            let time = "timearr[" + i + "].time"; //此处的数组的属性可当做是新添加的键
+
+            let weeks =this.timeWeek((i))
+            let week = "timearr[" + i + "].week";
+            that.setData({
+                [time]: times,
+                [week]: weeks
+            })
+        }
+    },
+
+
 })

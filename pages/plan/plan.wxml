@@ -27,6 +27,16 @@
 
     <view>
         方案安排
+
+        <view class="intro">
+            <view class="timeWeek" wx:for="{{timearr}}" wx:key="index">
+                <view>{{item.time}}</view>
+                <view>{{item.week}}</view>
+            </view>
+            <view class="clear"></view>
+        </view>
+
+
         <view>
             <view  class="plan-planList" wx:for="{{list}}">
                 <view>

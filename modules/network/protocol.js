@@ -39,7 +39,7 @@ export default class Protocol {
     static getAnalysisNotes() {
         return Network.request({url: 'analysis/notes'})
     }
-
+    //设备绑定相关
     static getDeviceBindInfo() {
         return Network.request({url: 'device/bind/info'})
     }
@@ -47,7 +47,7 @@ export default class Protocol {
     static postDeviceBind({deviceId, mac}) {
         return Network.request({url: 'device/bind', data: {deviceId, mac}});
     }
-
+    //设备绑定相关
     static postDeviceUnbind({deviceId}) {
         return Network.request({url: 'device/unbind', data: {deviceId}});
     }
@@ -55,7 +55,7 @@ export default class Protocol {
     static postBreathDataSetSituation({id, situation}) {
         return Network.request({url: 'breathData/setSituation', data: {id, situation}});
     }
-
+    //上传身体评估信息
     static postBreathPlanAnalysis(data) {
         return Network.request({url: 'breathPlan/analysis', data: data})
     }
