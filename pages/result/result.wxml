@@ -1,32 +1,55 @@
 <!--pages/result/result.wxml-->
 
 <!--<view class="background-view flex-column" style="background-color: {{mainColor}}">-->
-<view class="background-view" style="background-color: {{mainColor}}">
-    <image class="background-image" src="../../images/result/background.png"></image>
-  <!--  <image src="../../images/result/top-image.png" style="width:750rpx;height: 162rpx;margin-top: 30rpx"></image>-->
+<view class="resultHead">
+
+</view>
+<view class="background-view">
+    <view style="display:flex;justify-content: center;">
+        <image class="resultHeadImg" src="../../images/result/lv6B.png"></image>
+    </view>
+
     <view class="score">
-        <text>{{score}}</text>
-        <text style="font-size: 40rpx;color: white;line-height: 40rpx;margin-top: 10rpx;font-family: DIN Condensed;">ppm</text>
+        <view class="scoreText1">{{score}}</view>
+        <view class="scoreText2">PPM</view>
+        <view class="clear"></view>
     </view>
-    <view class="result-date">{{resultDate}} {{resultTime}}</view>
-    <button wx:="isShare" data-id="shareBtn" open-type="share">分享</button>
-    <view wx:if="{{dateText.length}}" style="line-height: 43rpx;margin-top: 23rpx">
-        <text style="font-size: 30rpx;color: white;">{{dateText}}</text>
-    </view>
-    <view>脂肪燃烧速度等级：LV1</view>
-    <view>相当于步行的速度,超越全平台2%的用户</view>
+    <view class="resultDate">{{resultDate}} {{resultTime}}</view>
+    <!--<button wx:="isShare" data-id="shareBtn" open-type="share">分享</button>-->
+
+    <view class="resultText">"相当于步行的速度,超越全平台2%的用户"</view>
     <view class="result-list" wx:for="{{list}}">
-        <view  wx:if="{{item.section == true}}"  wx:key="section" style="color: #FF5E00">
-            <view>{{item.gradeNumber}}</view>
-            {{item.grade}}:{{item.gradeType}}
+        <view  wx:if="{{item.section == true}}"  wx:key="section" style="color: {{LVcolor[index]}};display:flex;justify-content: center;">
+            <view>
+                <view class="resultNumber">{{item.gradeNumber}}</view>
+                <view class="resultGrade">LV.{{item.grade}}</view>
+            </view>
+            <view  style="display: flex;align-items: center">
+                <image class="resultImg" src="../../images/result/lv{{item.grade}}c.png"></image>
+                <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
+            </view>
         </view>
-        <view wx:else="{{item.section == false}}" >
-            <view>{{item.gradeNumber}}</view>
-            {{item.grade}}:{{item.gradeType}}
+        <view wx:else="{{item.section == false}}" style="color: #929292;display:flex;justify-content: center;">
+            <view>
+                <view class="resultNumber">{{item.gradeNumber}}</view>
+                <view class="resultGrade">LV.{{item.grade}}</view>
+            </view>
+            <view  style="display: flex;align-items: center">
+                <image class="resultImg" src="../../images/result/lv{{item.grade}}.png"></image>
+                <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
+            </view>
         </view>
 
     </view>
-    <view class="bottom-btn btn" wx:if="{{noAddPlan}}" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
+    <view class="clear"></view>
+    <view style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;margin-top: 90rpx">
+        <view wx:if="{{noAddPlan}}"  class="resultBtn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo"></view>
+    </view>
+    <view style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;">
+        <view class="resultSJ"></view>
+    </view>
+
+    <view class="resultBottomText">开启加速燃脂计划</view>
     <block wx:if="{{halfMonth}}">
         专属营养师
         <view>燃脂效果一直不佳？为您推荐专属营养师</view>

@@ -143,10 +143,11 @@ Page({
                 console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传得分并跳转结果页
-                    Protocol.getAnalysisFetch({
+                    Protocol.getBreathDataAdd({
                         dataValue: finalResult.result,
                     }).then(data => {
-                        HiNavigator.navigateToResult({score: finalResult.result});
+                        console.log(data.result.id)
+                        HiNavigator.navigateToResult({id: data.result.id});
                     });
 
                     //TIMESTAMP 设备获取时间戳

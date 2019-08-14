@@ -42,12 +42,16 @@ Page({
   toResult(e) {
     let index = e.currentTarget.dataset.index;
     let list = this.data.allList;
-    HiNavigator.navigateToResult({
+  /*  HiNavigator.navigateToResult({
       score: list[index]['dataValue'],
       situation: list[index]['situation'],
       showUnscramble: true,
       timestamp: list[index]['time']
-    });
+    });*/
+      HiNavigator.navigateToResult({
+          "id": 333,
+
+      })
   },
     //保存修改体重体脂记录
     continue(){

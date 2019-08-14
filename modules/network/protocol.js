@@ -26,12 +26,12 @@ export default class Protocol {
         return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
     }
 
-   /* static getBreathDataAdd({dataValue, situation}) {
+    static getBreathDataAdd({dataValue, situation}) {
         return Network.request({url: 'breathData/add', data: {dataValue, situation}});
-    }*/
-    static getBreathDataAdd({dataValue}) {
-        return Network.request({url: 'breathData/add', data: {dataValue}});
     }
+   /* static getBreathDataAdd({dataValue}) {
+        return Network.request({url: 'breathData/add', data: {dataValue}});
+    }*/
     static getBreathDataList({page, pageSize = 15}) {
         return Network.request({url: 'breathData/list', data: {page, pageSize}})
     }
@@ -77,7 +77,7 @@ export default class Protocol {
     }
     //获取PPM 脂肪燃烧速度对应等级 步行-骑行-汽车等
     static postSetGradeInfo(data) {
-        return Network.request({url: 'breathData/sync', data: data});
+        return Network.request({url: '/breathData/info', data: data});
     }
     //添加减脂方案目标
     static postSetTarget(data) {

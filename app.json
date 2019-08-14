@@ -31,12 +31,12 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/result/result",
+      "pagePath": "pages/index/index",
       "text": "燃脂检测"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/result/result",
       "text": "燃脂历程"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",

@@ -3,10 +3,14 @@ import CommonNavigator from "heheda-navigator";
 export default class HiNavigator extends CommonNavigator {
 
     // 跳转至结果页面 score得分 showUnscramble是否直接显示解读 situation场景值（可选） 检测时间戳 (可选)
-    static navigateToResult({score, situation = 0, showUnscramble = false, timestamp = 0, success, fail, complete}) {
+    /*static navigateToResult({score, situation = 0, showUnscramble = false, timestamp = 0, success, fail, complete}) {
         let url = `/pages/result/result?score=${score}&situation=${situation}&showUnscramble=${showUnscramble}&timestamp=${timestamp}`;
         wx.navigateTo({url, success, fail, complete});
+    }*/
+    static navigateToResult({id}) {
+        this.navigateTo({url: '/pages/result/result?id=' + id});
     }
+
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
@@ -66,10 +70,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateSuccessInfo() {
         this.navigateTo({url: '/pages/successInfo/successInfo'})
     }
-    static navigateResult({score}) {
+   /* static navigatoResult({score}) {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
-    }
+    }*/
     static navigateIndex() {
         wx.reLaunch({url: '/pages/index/index'});
     }
