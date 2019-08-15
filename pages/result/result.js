@@ -28,7 +28,7 @@ Page({
     },
 
     onShow: function (options) {
-        Protocol.postSetGradeInfo({id:"333"}).then(data=>{
+        Protocol.postSetGradeInfo({id:options.id}).then(data=>{
             let _data = data.result;
             this.setData({
                 list: _data.list,
@@ -36,8 +36,9 @@ Page({
                 Percentage:_data.Percentage,
                 beyondLastTime:_data.beyondLastTime,
                 halfMonth:_data.halfMonth,
-                testTimestamp:_data.testTimestamp,
-              /*  noAddPlan:_data.noAddPlan,*/
+                resultDate:tools.createDateAndTime(_data.testTimestamp).date,
+                resultTime:tools.createDateAndTime(_data.testTimestamp).time,
+                /*  noAddPlan:_data.noAddPlan,*/
                 noAddPlan:true,
                 isHave:_data.isHave,
                 shareId:_data.shareId,

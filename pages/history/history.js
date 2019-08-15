@@ -20,6 +20,8 @@ Page({
     },
 
     onShow() {
+
+
         getApp().setBLEListener({
             bleStateListener: ({
                 state
@@ -38,8 +40,10 @@ Page({
         });
     },
     toResult() {
-        HiNavigator.navigateResult({
-                score:96,
+        HiNavigator.navigateToResult({
+
+
+            id:96,
         });
     },
 

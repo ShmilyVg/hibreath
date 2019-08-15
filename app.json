@@ -37,7 +37,7 @@
     }, {
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/result/result",
+      "pagePath": "pages/plan/plan",
       "text": "燃脂历程"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",

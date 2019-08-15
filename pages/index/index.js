@@ -151,8 +151,10 @@ Page({
         !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({
             bleStateListener: () => {
-                console.log("查看电量2222")
+                console.log("查看电量2222",app.getLatestBLEState())
                 const {connectState, protocolState} = app.getLatestBLEState();
+                console.log("connectState",connectState)
+                console.log("protocolState",protocolState)
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },

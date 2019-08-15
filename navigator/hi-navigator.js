@@ -7,10 +7,14 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?score=${score}&situation=${situation}&showUnscramble=${showUnscramble}&timestamp=${timestamp}`;
         wx.navigateTo({url, success, fail, complete});
     }*/
+    //吹气完成跳转结果页
     static navigateToResult({id}) {
         this.navigateTo({url: '/pages/result/result?id=' + id});
     }
-
+    //历史记录进入结果页
+    static navigateToResult({id}) {
+        this.navigateTo({url: '/pages/result/result?id=' + id});
+    }
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
