@@ -5,16 +5,25 @@ import {Toast} from "heheda-common-view";
 
 Page({
     data: {
-        deviceId: ''
+        deviceId: '',
+        isBind:""
     },
 
     onLoad() {
         Toast.showLoading();
         Protocol.getDeviceBindInfo().then(data => {
             const deviceInfo = data.result;
-            this.setData({
-                deviceId: deviceInfo.deviceId
-            })
+            if(data.result == null){
+                this.setData({
+                    isBind:false
+                })
+            }else{
+                this.setData({
+                    deviceId: deviceInfo.deviceId,
+                    isBind:true
+                })
+            }
+
         }).finally(() => Toast.hiddenLoading());
 
     },
