@@ -8,6 +8,7 @@
     "pages/device-bind/device-bind",
     "pages/history/history",
     "pages/update/update",
+    "pages/welcome/welcome",
     "pages/device-manage/device-manage",
     "pages/BMIhistory/BMIhistory",
     "pages/BMIhistoryInfo/BMIhistoryInfo",
