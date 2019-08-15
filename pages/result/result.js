@@ -36,10 +36,12 @@ Page({
                 Percentage:_data.Percentage,
                 beyondLastTime:_data.beyondLastTime,
                 halfMonth:_data.halfMonth,
+                testTimestamp:_data.testTimestamp,
               /*  noAddPlan:_data.noAddPlan,*/
                 noAddPlan:true,
                 isHave:_data.isHave,
-                shareId:_data.shareId
+                shareId:_data.shareId,
+                des:_data.des
             })
         });
     },
@@ -113,6 +115,6 @@ Page({
         })
     },
     onShareAppMessage() {
-        return {title: '测试分享', imageUrl: '', path: '/pages/result/result?shareId=' + this.data.shareId};
+        return {title: this.data.des, imageUrl: '', path: '/pages/result/result?shareId=' + this.data.shareId};
     },
 })

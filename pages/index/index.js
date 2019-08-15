@@ -80,6 +80,7 @@ Page({
         //this.blowPage.blowing();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
+        console.log(app.globalData,"globalData")
         if (info) {
             this.setData({
                 userInfo: info
@@ -96,6 +97,33 @@ Page({
                 this.handleTipText();
             });
         }
+
+        /*电量测试*/
+        let globalBattery = app.globalData.globalBattery;
+        console.log('全局电量：', globalBattery);
+        if (globalBattery === 1) {
+            app.onBatteryInfoListener = ({battery}) => {
+                if (battery) {
+                    this.setData({
+                        electricitypicShow: true
+                    })
+                }
+            }
+        } else {
+            if (globalBattery === 2) {
+                this.setData({
+                    electricitypicShow: true
+                })
+            } else if (globalBattery === 3) {
+                this.setData({
+                    electricitypicShow: false
+                })
+            }
+            setTimeout(function () {
+                app.globalData.globalBattery = 0;
+            }, 5000);
+        }
+        /*电量测试*/
 
         Protocol.getDeviceBindInfo().then(data => {
             let deviceInfo = data.result;
@@ -129,7 +157,7 @@ Page({
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
             receiveDataListener: ({finalResult, state}) => {
-                console.log("查看电量333333")
+                console.log("查看电量333333",finalResult)
                /*
                 PRE_HOT_START: 'pre_hot_start',//开始预热状态
                 PRE_HOT_FINISH_AND_START_BREATH: 'pre_hot_finish_and_start_breath',//预热完成开始吹气

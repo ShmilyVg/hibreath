@@ -100,6 +100,7 @@ App({
 
                 } else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     this.otaVersion = finalResult.version;
+                    console.log("暂时查看电量",finalResult.battery)
                     //TODO 暂时注释掉
                     // Protocol.postDeviceElectricity({electricity: finalResult.battery / 100});
                     if (finalResult.battery < 21) {
@@ -177,7 +178,7 @@ App({
     globalData: {
         refreshIndexPage: false,
         userInfo: {nickname: '', headUrl: '', id: 0},
-
+        globalBattery: 1, //1为默认，2为低电量，3为高电量
     },
     ...common
 });
