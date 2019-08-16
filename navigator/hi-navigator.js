@@ -45,7 +45,7 @@ export default class HiNavigator extends CommonNavigator {
         this.reLaunch({url: '/pages/update/update'});
     }
 
-    /*7.29 新加跳转*/
+    /*新加跳转*/
 
     static navigateToclickBody() {
         this.navigateTo({url: '/pages/set-info/set-info'})
@@ -81,6 +81,10 @@ export default class HiNavigator extends CommonNavigator {
 
     static navigateTocookInfo({id}) {
         this.navigateTo({url: '/pages/cookInfo/cookInfo?id=' + id})
+    }
+
+    static navigateToshoppingList({id}) {
+        this.navigateTo({url: '/pages/shoppingList/shoppingList?id=' + id})
     }
    /* static navigatoResult({score}) {
         let url = `/pages/result/result?id=${score}`;

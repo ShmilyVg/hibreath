@@ -1,0 +1,73 @@
+<view class="planInfo-pageSuccess-view1">减肥历程</view>
+    <view class="">今日鸡汤：</view>
+    <view>你是最棒的总会听成，你是最胖的</view>
+    <block>
+        <view class="planInfo-headl">
+            <view style="font-size: 60rpx">3.2</view>
+            <view>ppm</view>
+        </view>
+        <view class="planInfo-headr">
+            <view>脂肪燃烧速度等级：Lv1</view>
+            <view>相当于玩具车的速度，超越全平台2%的用户</view>
+        </view>
+        <view class="clear"></view>
+    </block>
+    <block wx:if="{{isToday}}">
+        <view>今日暂未记录身体情况</view>
+        <button>记录</button>
+    </block>
+    <block wx:else="{{isToday}}">
+        <view>今日： 82kg/25%</view>
+        <view>目标： 70kg/18%</view>
+        <view>距离目标还差： 12kg/7%</view>
+        <button>记录</button>
+    </block>
+<!--    <block>
+        <blocl class="page-block1">
+            <view>当前体重体脂</view>
+            <view>82KG/25%</view>
+        </blocl>
+        <view class="page-block1">==></view>
+        <blocl class="page-block1">
+            <view>推荐目标</view>
+            <view>82KG/25%</view>
+        </blocl>
+        <view class="clear"></view>
+        <button bindtap="pageTarget">调整目标</button>
+    </block>-->
+<view wx:for="{{shoppingList}}" >
+    <view>{{item.title}}</view>
+    <view wx:for="{{item.content}}"   data-id="{{item.id}}" bindtap="toShoppingList">
+        <view>
+            <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
+            <view>{{item.contentTitle}}</view>
+            <view>{{item.time}}</view>
+        </view>
+        <view class="clear"></view>
+    </view>
+</view>
+<view  class="planInfo-planList" wx:for="{{list}}">
+    <view>{{item.title}}</view>
+    <view wx:for="{{item.content}}" data-id="{{item.id}}" bindtap="toCookInfo">
+        <view>
+            <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
+            <view>{{item.contentTitle}}</view>
+            <view>{{item.time}}</view>
+        </view>
+        <view class="clear"></view>
+    </view>
+</view>
+<view wx:for="{{sportList}}"   data-id="{{item.id}}" bindtap="toHIIT">
+    <view>{{item.title}}</view>
+    <view wx:for="{{item.content}}" >
+        <view>
+            <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
+            <view>{{item.contentTitle}}</view>
+            <view>{{item.time}}</view>
+        </view>
+        <view class="clear"></view>
+    </view>
+</view>
+
+
+

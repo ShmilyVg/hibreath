@@ -88,7 +88,7 @@ Page({
     toShoppingList:function(e){
         var id = e.currentTarget.dataset.id;
         console.log("id",id)
-        HiNavigator.navigateToshoppingList({id});
+        HiNavigator.navigateToHIIT({id});
     },
 
     toHIIT:function(e){
