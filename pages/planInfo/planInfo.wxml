@@ -1,9 +1,4 @@
-
-
-
-
-
-    <view class="planInfo-pageSuccess-view1">减肥历程</view>
+<view class="planInfo-pageSuccess-view1">减肥历程</view>
     <view class="">今日鸡汤：</view>
     <view>你是最棒的总会听成，你是最胖的</view>
     <block>
@@ -40,16 +35,31 @@
         <view class="clear"></view>
         <button bindtap="pageTarget">调整目标</button>
     </block>-->
-<view  class="planInfo-planList" wx:for="{{list}}">
+<view wx:for="{{shoppingList}}" >
     <view>{{item.title}}</view>
-    <view wx:for="{{item.content}}" data-index="{{item.id}}">
-        <!--<navigator url="../cookInfo/cookInfo?index={{item.id}}">
+    <view wx:for="{{item.content}}"   data-id="{{item.id}}" bindtap="toShoppingList">
         <view>
-            <image style="width: 30rpx;height: 30rpx" src="{{item.image}}"></image>
-            <view> {{item.contentTitle}}</view>
+            <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
+            <view>{{item.contentTitle}}</view>
             <view>{{item.time}}</view>
         </view>
-        </navigator>-->
+        <view class="clear"></view>
+    </view>
+</view>
+<view  class="planInfo-planList" wx:for="{{list}}">
+    <view>{{item.title}}</view>
+    <view wx:for="{{item.content}}" data-id="{{item.id}}" bindtap="toCookInfo">
+        <view>
+            <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
+            <view>{{item.contentTitle}}</view>
+            <view>{{item.time}}</view>
+        </view>
+        <view class="clear"></view>
+    </view>
+</view>
+<view wx:for="{{sportList}}"   data-id="{{item.id}}" bindtap="toHIIT">
+    <view>{{item.title}}</view>
+    <view wx:for="{{item.content}}" >
         <view>
             <image style="width: 30rpx;height: 30rpx;float: left" src="{{item.image}}"></image>
             <view>{{item.contentTitle}}</view>

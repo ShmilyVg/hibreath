@@ -27,8 +27,8 @@ Page({
         })
     },
 
-    onLoad: function () {
-
+    onLoad: function (data) {
+    console.log("123123",data)
 
     },
     onShow:function () {
