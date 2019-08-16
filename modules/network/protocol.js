@@ -79,6 +79,12 @@ export default class Protocol {
     static postSetGradeInfo(data) {
         return Network.request({url: '/breathData/info', data: data});
     }
+
+    //分享进入结果页面
+    static postshareInfo(data) {
+        return Network.request({url: '/breathData/shareInfo', data: data});
+    }
+
     //添加减脂方案目标
     static postSetTarget(data) {
         return Network.request({url: 'breathData/sync', data: data});

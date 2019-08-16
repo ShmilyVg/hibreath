@@ -9,6 +9,7 @@ Page({
         dateText: {},
         mainColor: '',
         isChose: false,
+        shareIn:true,
         score: "",
         LVcolor:["#0088B8","#00B898","#10A000","#F8A000","#E87001","#F83801"],
         tintColor: 'color:#00a48f',
@@ -23,28 +24,52 @@ Page({
         }
     },
 
-    onLoad: function (options) {
+    onShow: function () {
 
     },
 
-    onShow: function (options) {
-        Protocol.postSetGradeInfo({id:options.id}).then(data=>{
-            let _data = data.result;
+    onLoad: function (options) {
+        console.log(options,"options")
+        if(options.shareId){
             this.setData({
-                list: _data.list,
-                score:_data.score,
-                Percentage:_data.Percentage,
-                beyondLastTime:_data.beyondLastTime,
-                halfMonth:_data.halfMonth,
-                resultDate:tools.createDateAndTime(_data.testTimestamp).date,
-                resultTime:tools.createDateAndTime(_data.testTimestamp).time,
-                /*  noAddPlan:_data.noAddPlan,*/
-                noAddPlan:true,
-                isHave:_data.isHave,
-                shareId:_data.shareId,
-                des:_data.des
+                shareIn:false,//隐藏文字按钮
             })
-        });
+            Protocol.postshareInfo({shareId:options.shareId}).then(data=>{
+                let _data = data.result;
+                this.setData({
+                    list: _data.list,
+                    score:_data.score,
+                    Percentage:_data.Percentage,
+                    beyondLastTime:{ type:0,},//隐藏弹窗
+                    halfMonth:false,
+                    resultDate:tools.createDateAndTime(_data.testTimestamp).date,
+                    resultTime:tools.createDateAndTime(_data.testTimestamp).time,
+                    noAddPlan:false,
+                    isHave:true,
+                    des:_data.des,
+                    shareId:_data.shareId,
+                })
+            });
+        }else{
+            Protocol.postSetGradeInfo({id:options.id}).then(data=>{
+                let _data = data.result;
+                this.setData({
+                    list: _data.list,
+                    score:_data.score,
+                    Percentage:_data.Percentage,
+                    beyondLastTime:_data.beyondLastTime,
+                    halfMonth:_data.halfMonth,
+                    resultDate:tools.createDateAndTime(_data.testTimestamp).date,
+                    resultTime:tools.createDateAndTime(_data.testTimestamp).time,
+                    /*  noAddPlan:_data.noAddPlan,*/
+                    noAddPlan:true,
+                    isHave:_data.isHave,
+                    shareId:_data.shareId,
+                    des:_data.des
+                })
+            });
+        }
+
     },
 
     /*clickChoose: function (e) {
@@ -116,6 +141,8 @@ Page({
         })
     },
     onShareAppMessage() {
-        return {title: this.data.des, imageUrl: '', path: '/pages/result/result?shareId=' + this.data.shareId};
+        console.log("shareId",this.data.shareId)
+        this.confirm();
+        return {title: this.data.res, path: '/pages/result/result?shareId=' + this.data.shareId};
     },
 })

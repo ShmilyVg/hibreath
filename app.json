@@ -18,7 +18,8 @@
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
     "pages/planInfo/planInfo",
-    "pages/successInfo/successInfo"
+    "pages/successInfo/successInfo",
+    "pages/shoppingList/shoppingList"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

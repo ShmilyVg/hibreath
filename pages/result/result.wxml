@@ -42,14 +42,14 @@
 
     </view>
     <view class="clear"></view>
-    <view style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;margin-top: 90rpx">
+    <view wx:if="{{shareIn}}" style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;margin-top: 90rpx">
         <view wx:if="{{noAddPlan}}"  class="resultBtn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo"></view>
     </view>
-    <view style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;">
+    <view wx:if="{{shareIn}}" style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;">
         <view class="resultSJ"></view>
     </view>
 
-    <view class="resultBottomText">开启加速燃脂计划</view>
+    <view wx:if="{{shareIn}}" class="resultBottomText">开启加速燃脂计划</view>
     <block wx:if="{{halfMonth}}">
         专属营养师
         <view>燃脂效果一直不佳？为您推荐专属营养师</view>
@@ -118,7 +118,7 @@
         </view>
         <view class='modal-btn-wrapper'>
             <!--<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>-->
-            <button data-id="shareBtn"  bindtap='confirm' open-type="share">分享</button>
+            <button data-id="shareBtn"  open-type="share">分享</button>
         </view>
     </view>
 </view>

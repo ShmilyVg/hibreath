@@ -8,7 +8,7 @@ export default class HiNavigator extends CommonNavigator {
         wx.navigateTo({url, success, fail, complete});
     }*/
     //吹气完成跳转结果页
-    static navigateToResult({id}) {
+    static navigateBlowToResult({id}) {
         this.navigateTo({url: '/pages/result/result?id=' + id});
     }
     //历史记录进入结果页
