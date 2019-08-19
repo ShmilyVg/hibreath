@@ -60,7 +60,7 @@
             </view>
         </view>
     </view>
-    他们都在燃脂
+    已加入本期训练营的小伙伴
     <swiper class="HIIT-swiper" display-multiple-items="3" >
         <block wx:for="{{swiperList}}">
             <swiper-item >

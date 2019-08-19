@@ -10,64 +10,45 @@ Page({
     },
 
     onLoad: function () {
-        let list=[
+        let array=[
             {
-                title:"早起",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"记体重&体脂",id:"1"},
-                ],
-                kcal:""
-            },
-            {
-                title:"早餐",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"1"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"2"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"3"},
+                title:"推荐蔬菜",
+                list:[
+                        {name: '1', value: '黄瓜', checked: true},
+                        {name: '2', value: '芹菜', checked: true},
+                        {name: '3', value: '白菜', checked: true},
                     ],
-                kcal:"大约554Kcal"
+                tips:"蔬菜可以根据个人喜好进行调整，原则上以绿色、深绿色叶菜为主即可。"
             },
             {
-                title:"午餐",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"6"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"7"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"9"},
-                ],
-                kcal:"大约554Kcal"
+                title:"推荐肉类",
+                list:[
+                    {name: '1', value: '牛肉', checked: true},
+                    {name: '2', value: '猪肉', checked: false},
+                    {name: '3', value: '鸡肉', checked: false},
+                ]
             },
             {
-                title:"晚餐",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮青菜",id:"1"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮鸡蛋",id:"2"},
-                    {image:"../../images/set-info/man-select.png",contentTitle:"水煮墙皮",id:"3"},
+                title:"推荐水果",
+                list:[
+                    {name: '1', value: '苹果', checked: true},
+                    {name: '2', value: '柚子', checked: false},
+                    {name: '3', value: '火龙果', checked: true},
                 ],
-                kcal:"大约554Kcal"
+                tips:"水果可以根据个人喜好进行调整，原则上以绿色、深绿色叶菜为主即可。"
+            },
+            {
+                title:"其他",
+                list:[
+                    {name: '1', value: '小米', checked: true},
+                    {name: '2', value: '牛奶', checked: false},
+                ]
             },
 
-        ];
-        let shoppingList=[
-            {
-                title:"采购清单",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"Day1-3需要采购的食材",id:"11"},
-                ],
-                kcal:""
-            },
-        ];
-        let sportList=[{
-                title:"运动",
-                id:"1",
-                content:[
-                    {image:"../../images/set-info/man-select.png",contentTitle:"HIIT唤醒",time:"约7分钟",},
-                ],
-                kcal:"预计消耗大约554Kcal"
-            },]
+        ]
         this.setData({
-            shoppingList:shoppingList,
-            sportList:sportList,
-            list:list
+            array:array,
+            title:"Day1 ~ Day7"
         });
     },
 
@@ -85,24 +66,4 @@ Page({
         })
     },
 
-    toShoppingList:function(e){
-        var id = e.currentTarget.dataset.id;
-        console.log("id",id)
-        HiNavigator.navigateToHIIT({id});
-    },
-
-    toHIIT:function(e){
-        var id = e.currentTarget.dataset.id;
-        console.log("id",id)
-        HiNavigator.navigateToHIIT({id});
-    },
-
-    toCookInfo:function(e){
-        var id = e.currentTarget.dataset.id;
-        console.log("id",id)
-        HiNavigator.navigateTocookInfo({id});
-    },
-    cookInfo(e){
-        console.log(e,"eee")
-    }
 })
