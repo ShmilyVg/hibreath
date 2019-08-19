@@ -52,13 +52,6 @@ Page({
         electricitypicShow: false,
     },
 
-    useUrl() {
-        HiNavigator.navigateToStrategy();
-    },
-
-    historyUrl() {
-        HiNavigator.navigateToHistory();
-    },
 
     bindBtnClick() {
         HiNavigator.navigateToDeviceBind();

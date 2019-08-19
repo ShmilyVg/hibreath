@@ -8,6 +8,7 @@ export default class BlowManager {
         this.actionBlow = {};
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
+            //长时间使用提示
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
@@ -88,7 +89,7 @@ export default class BlowManager {
 
             homePointFirst: true,
             homePointSecond: false,
-
+            homePointHot: false,//长时间未使用提示
             homeBtn: false,
 
             homeTitle: false,

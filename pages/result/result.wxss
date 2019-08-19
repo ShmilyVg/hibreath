@@ -132,18 +132,17 @@ page{
     flex-wrap: wrap;
 }
 .scoreText1 {
-    font-size: 110rpx;
     color: white;
     font-weight:bold;
     margin-top: 25rpx;
-    font-family: DIN Condensed;
+    font-family:DINCondensed-Bold;
 }
 .scoreText2 {
     font-size: 20rpx;
     color: white;
     margin-top: 45rpx;
     margin-left: 20rpx;
-    font-family: DIN Condensed;
+    font-family:DINCondensed-Bold;
 }
 
 .resultHead{
@@ -163,12 +162,12 @@ page{
 }
 .resultNumber{
     font-size: 40rpx;
-    font-family: DIN Condensed;
+    font-family:DINCondensed-Bold;
 }
 
 .resultGrade{
     font-size: 38rpx;
-    font-family: DIN Condensed;
+    font-family: DINCondensed-Bold;
 }
 .result-list{
     float: left;

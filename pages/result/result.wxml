@@ -5,12 +5,8 @@
 
 </view>
 <view class="background-view">
-    <view style="display:flex;justify-content: center;">
-        <image class="resultHeadImg" src="../../images/result/lv6B.png"></image>
-    </view>
-
     <view class="score">
-        <view class="scoreText1">{{score}}</view>
+        <view class="scoreText1">本次检测结果:{{score}}</view>
         <view class="scoreText2">PPM</view>
         <view class="clear"></view>
     </view>
@@ -22,22 +18,22 @@
         <view  wx:if="{{item.section == true}}"  wx:key="section" style="color: {{LVcolor[index]}};display:flex;justify-content: center;">
             <view>
                 <view class="resultNumber">{{item.gradeNumber}}</view>
-                <view class="resultGrade">LV.{{item.grade}}</view>
+                <view class="resultGrade">{{item.gradeType}}</view>
             </view>
-            <view  style="display: flex;align-items: center">
+    <!--        <view  style="display: flex;align-items: center">
                 <image class="resultImg" src="../../images/result/lv{{item.grade}}c.png"></image>
                 <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
-            </view>
+            </view>-->
         </view>
         <view wx:else="{{item.section == false}}" style="color: #929292;display:flex;justify-content: center;">
             <view>
                 <view class="resultNumber">{{item.gradeNumber}}</view>
-                <view class="resultGrade">LV.{{item.grade}}</view>
+                <view class="resultGrade">{{item.gradeType}}</view>
             </view>
-            <view  style="display: flex;align-items: center">
+          <!--  <view  style="display: flex;align-items: center">
                 <image class="resultImg" src="../../images/result/lv{{item.grade}}.png"></image>
                 <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
-            </view>
+            </view>-->
         </view>
 
     </view>
@@ -49,67 +45,15 @@
         <view class="resultSJ"></view>
     </view>
 
-    <view wx:if="{{shareIn}}" class="resultBottomText">开启加速燃脂计划</view>
+    <view wx:if="{{shareIn}}" class="resultBottomText">定制加速燃脂计划</view>
     <block wx:if="{{halfMonth}}">
         专属营养师
         <view>燃脂效果一直不佳？为您推荐专属营养师</view>
         <image src=""></image>
     </block>
-<!--    <view class="bottom-card flex-column">
-        <view class="bottom-card-title">{{cardTitle}}</view>
-        <block wx:if="{{!showUnscramble}}">
-            <swiper style="width: 100%;height: 275rpx" indicator-dots="true" indicator-active-color="{{mainColor}}">
-                <swiper-item style="display: flex;justify-content: space-between;" wx:for="{{list.length/4}}" wx:for-index="bigIndex">
-                    <view style="width: 40rpx"></view>
-                    <view class="small-card"
-                          style="background-color: {{list[bigIndex*4+index]['isChose']?mainColor:'#E9E9E9'}}"
-                          hover-class="press-style" hover-stay-time="50"
-                          wx:for="{{4}}" bindtap="clickChoose" data-index="{{list[bigIndex*4+index]['key']}}">
-                        <block wx:if="{{list[bigIndex*4+index]['text_en']}}">
-                            <view style="margin-top: 40rpx;text-align: center;line-height: 24rpx">
-                                <text style="color: {{list[bigIndex*4+index]['isChose']?'#ffffff':'#979797'}};font-size: 24rpx;width: 150rpx">{{list[bigIndex*4+index]['text_zh']}}</text>
-                            </view>
-                            <view style="text-align: center;line-height: 20rpx;margin-bottom: 25rpx">
-                                <text style="color: {{list[bigIndex*4+index]['isChose']?'#ffffff':'#BEBEBE'}};font-size: 20rpx">
-                                    {{list[bigIndex*4+index]['text_en']}}
-                                </text>
-                            </view>
-                        </block>
-                        <view wx:else style="height: 100%;width: 100%;background-color: white"></view>
-                    </view>
-                    <view style="width: 40rpx"></view>
-                </swiper-item>
-            </swiper>
-            <view class="bottom-btn"
-                  style="background-color: {{isChose?mainColor:'#E9E9E9'}};color: {{isChose?'#ffffff':'#979797'}};margin-top: 20rpx;"
-                  hover-class="press-style" hover-stay-time="50" bindtap="clickBtn">查看解读</view>
-        </block>
 
-        <view wx:else class="flex-column">
-            <view wx:for="{{description}}" class="flex-column" style="height: 138rpx;justify-content: space-between">
-                <view class="flex-row" style="margin-top: 30rpx;align-items: flex-start">
-                    <view class="bottom-card-num">{{index+1}}</view>
-                    <view style="font-size:28rpx;color: #979797;margin-right: 45rpx;width: 534rpx">{{item}}</view>
-                </view>
-                <view wx:if="{{index<description.length-1}}" style="width:597rpx;height:2rpx;opacity:0.2;background-color: #979797"></view>
-            </view>
-            <view class="bottom-btn btn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo">定制专属加速燃脂计划</view>
-        </view>
-    </view>-->
 </view>
 <!-- 弹窗组件 -->
-<!--<view class="modal" hidden="{{beyondLastTime == '0' ?true:''}}">
-    <view class="result-container">
-        <view class="title">{{title[beyondLastTime-1]}}</view>
-        <view class="content">
-            {{content[beyondLastTime-1]}}
-        </view>
-        <view class='modal-btn-wrapper'>
-        &lt;!&ndash;    <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view>&ndash;&gt;
-            <view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>
-        </view>
-    </view>
-</view>-->
 <view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
     <view class="result-container">
         <view class="title" bindtap='confirm'>{{beyondLastTime.title}}</view>

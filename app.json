@@ -19,6 +19,7 @@
     "pages/HIITInfo/HIITInfo",
     "pages/planInfo/planInfo",
     "pages/successInfo/successInfo",
+    "pages/PPMInfo/PPMInfo",
     "pages/shoppingList/shoppingList"
   ],
   "window": {
@@ -33,7 +34,7 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/planInfo/planInfo",
+      "pagePath": "pages/result/result",
       "text": "燃脂检测"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",

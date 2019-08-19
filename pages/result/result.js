@@ -30,7 +30,7 @@ Page({
 
     onLoad: function (options) {
         console.log(options,"options")
-        if(options.shareId){
+ /*       if(options.shareId){
             this.setData({
                 shareIn:false,//隐藏文字按钮
             })
@@ -61,60 +61,46 @@ Page({
                     halfMonth:_data.halfMonth,
                     resultDate:tools.createDateAndTime(_data.testTimestamp).date,
                     resultTime:tools.createDateAndTime(_data.testTimestamp).time,
-                    /*  noAddPlan:_data.noAddPlan,*/
+                    /!*  noAddPlan:_data.noAddPlan,*!/
                     noAddPlan:true,
                     isHave:_data.isHave,
                     shareId:_data.shareId,
                     des:_data.des
                 })
             });
-        }
+        }*/
+        let list=[
+            {
+                "gradeNumber": "ppm<10",
+                "grade": "1",
+                "gradeType": "没有燃脂",
+                "section": false
+            },
+            {
+                "gradeNumber": "10≤ppm＜50",
+                "grade": "2",
+                "gradeType": "开始燃脂",
+                "section": true
+            },
+            {
+                "gradeNumber": "50≤ppm＜70",
+                "grade": "3",
+                "gradeType": "充分燃脂",
+                "section": false
+            },
+            {
+                "gradeNumber": "ppm≥70",
+                "grade": "4",
+                "gradeType": "燃脂过量",
+                "section": false
+            },
 
+        ]
+        this.setData({
+            list:list,
+        })
     },
 
-    /*clickChoose: function (e) {
-        let that = this;
-        if (e.currentTarget.dataset.index) {
-            let index = e.currentTarget.dataset.index;
-            let list = this.data.list;
-            list.map(function (value) {
-                value.isChose = index == value.key;
-                if (value.isChose) {
-                }
-            });
-            this.setData({
-                list: list,
-                isChose: true,
-                index: index
-            })
-        }
-    },
-
-    clickBtn: function () {
-        if (this.data.index) {
-            this.postAnalysisFetch();
-        }
-    },
-    //发送数据给服务器
-    postAnalysisFetch() {
-        toast.showLoading();
-        Protocol.getAnalysisFetch({
-            dataValue: this.data.score,
-            situation: parseInt(this.data.index)
-        }).then(data => {
-            let description = data.result.description;
-            this.setData({
-                description: description,
-            });
-            toast.hiddenLoading();
-            if (this.data.postAdd) {
-                Protocol.getBreathDataAdd({
-                    dataValue: this.data.score,
-                    situation: parseInt(this.data.index)
-                }).then(data => {})
-            }
-        });
-    },*/
     //检测是否生成过身体评估报告 是的话显示弹窗 没有直接进入评估
     toSetInfo() {
         wx.showModal({
