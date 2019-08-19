@@ -20,6 +20,7 @@
     "pages/planInfo/planInfo",
     "pages/successInfo/successInfo",
     "pages/PPMInfo/PPMInfo",
+    "pages/clockIn/clockIn",
     "pages/shoppingList/shoppingList"
   ],
   "window": {
@@ -34,7 +35,7 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/result/result",
+      "pagePath": "pages/clockIn/clockIn",
       "text": "燃脂检测"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",

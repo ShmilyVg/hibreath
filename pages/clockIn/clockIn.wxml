@@ -1,8 +1,26 @@
-<view class="successInfo-title">绑定成功！！！！</view>
-<view class="successInfo-title">检测前来看看注意事项吧</view>
-<view class="successInfo-content">1.若有饮酒请间隔24小时以上再进行检测</view>
-<view class="successInfo-content">2.建议饭前进行检测且使用前用清水清洁口腔</view>
-<view class="successInfo-content">3.吸烟、涂抹口红等行为会对检测结果的准确性产生影响</view>
-<view class="successInfo-content">4.建议测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物</view>
-<button bindtap="toIndex">我知道啦！！！！！！</button>
-
+<view class="section">
+    <textarea bindblur="bindTextAreaBlur" auto-height placeholder-class="" placeholder="说说今日的感受吧...(140字以内)" />
+</view>
+<view class='photo'>
+    <view class='title'>
+        图片
+    </view>
+    <view class='up-pic'>
+        <view class='flex pic-box'>
+            <block wx:key="imgbox" wx:for="{{imgbox}}">
+                <view class='ap-box'>
+                    <view class='add-pic'>
+                        <image class='add-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
+                        <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
+                            <image class='img' src='../../../assets/images/remove.png'></image>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+                <!--<image class='img' src='../../../assets/images/addPhoto.png'></image>-->
+                上传
+            </view>
+        </view>
+    </view>
+</view>
