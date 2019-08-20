@@ -17,9 +17,9 @@
         <button>记录</button>
     </block>
     <block wx:else="{{isToday}}">
-        <view>今日： 82kg/25%</view>
-        <view>目标： 70kg/18%</view>
-        <view>距离目标还差： 12kg/7%</view>
+        <view>今日： 82kg</view>
+        <view>目标： 70kg</view>
+        <view>距离目标还差： 12kg</view>
         <button>记录</button>
     </block>
 <!--    <block>

@@ -1,8 +1,6 @@
-<view class="successInfo-title">绑定成功！！！！</view>
-<view class="successInfo-title">检测前来看看注意事项吧</view>
-<view class="successInfo-content">1.若有饮酒请间隔24小时以上再进行检测</view>
-<view class="successInfo-content">2.建议饭前进行检测且使用前用清水清洁口腔</view>
-<view class="successInfo-content">3.吸烟、涂抹口红等行为会对检测结果的准确性产生影响</view>
-<view class="successInfo-content">4.建议测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物</view>
-<button bindtap="toIndex">我知道啦！！！！！！</button>
-
+<view class="PPMInfo-title">1.</view>
+<view class="PPMInfo-content">若有饮酒请间隔24小时以上再进行检测</view>
+<view class="PPMInfo-title">2.</view>
+<view class="PPMInfo-content">若有饮酒请间隔24小时以上再进行检测</view>
+<view class="PPMInfo-title">3.</view>
+<view class="PPMInfo-content">若有饮酒请间隔24小时以上再进行检测</view>

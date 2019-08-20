@@ -10,7 +10,7 @@
         </label>
         <view wx:if="{{item.tips}}">
             {{item.tips}}
-        </view>
+        </view>·
   </view>
 
 </checkbox-group>

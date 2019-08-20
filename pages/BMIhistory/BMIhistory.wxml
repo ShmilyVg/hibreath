@@ -13,7 +13,6 @@
         <view class="history-num">
             <view class="history-num-text">
                 <text>{{item['dataValue']}}kg</text>
-                <text>/25%</text>
             </view>
         </view>
      <!--   <view class="history-hint">{{item.hintText}}</view>-->
