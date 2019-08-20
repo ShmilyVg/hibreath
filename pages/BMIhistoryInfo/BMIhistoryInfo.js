@@ -1,4 +1,8 @@
-// pages/history/history.js
+ /**
+  * @Author: 张浩玉
+  * @LastEditTime: 2019-08-20 10:51:38
+  * @LastEditors: 张浩玉
+  */
 import Protocol from "../../modules/network/protocol";
 import * as tools from "../../utils/tools";
 import HiNavigator from "../../navigator/hi-navigator";
@@ -10,7 +14,7 @@ import Toast from "../../view/toast";
 Page({
 
   data: {
-    allList: [],
+    allList: [],//
     page: 1,
     info:{},
     isLength: true//是否有数据
