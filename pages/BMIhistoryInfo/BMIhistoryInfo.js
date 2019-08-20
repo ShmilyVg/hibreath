@@ -1,6 +1,6 @@
  /**
   * @Author: 张浩玉
-  * @LastEditTime: 2019-08-20 10:51:38
+  * @Date: 2019-08-20 10:57:37
   * @LastEditors: 张浩玉
   */
 import Protocol from "../../modules/network/protocol";
@@ -54,7 +54,6 @@ Page({
     });*/
       HiNavigator.navigateToResult({
           "id": 333,
-
       })
   },
     //保存修改体重体脂记录
