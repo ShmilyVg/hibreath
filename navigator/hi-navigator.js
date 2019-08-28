@@ -1,3 +1,8 @@
+ /**
+  * @Author: 张浩玉
+  * @Date: 2019-08-20 11:50:17
+  * @LastEditors: 张浩玉
+  */
 import CommonNavigator from "heheda-navigator";
 
 export default class HiNavigator extends CommonNavigator {
@@ -92,5 +97,8 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     static navigateIndex() {
         wx.reLaunch({url: '/pages/index/index'});
+    }
+    static navigateToPPM() {
+        this.navigateTo({url: '/pages/PPMInfo/PPMInfo'})
     }
 }

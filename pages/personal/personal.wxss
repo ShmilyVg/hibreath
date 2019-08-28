@@ -29,3 +29,17 @@ page{
     border-radius:50%;
     margin-right: 20rpx;
 }
+
+.donghua{
+    animation-name: breath;
+    animation-duration: 1s;                         /* 动画时长3秒 */
+    animation-timing-function: linear;         /* 动画速度曲线：以低速开始和结束 */
+    /*animation-iteration-count: infinite;            播放次数：无限 */
+
+}
+
+@keyframes breath {
+    from {  transform: translate(0px, 0px);}                          /* 动画开始时的不透明度 */
+    50%  { transform: translate(25px, 50px); }                          /* 动画50% 时的不透明度 */
+    to   { transform: translate(50px, 100px);}                          /* 动画结束时的不透明度 */
+}

@@ -7,8 +7,11 @@
 <view class="background-view">
     <view class="score">
         <view class="scoreText1">本次检测结果:{{score}}</view>
-        <view class="scoreText2">PPM</view>
-        <view class="clear"></view>
+        <view class="scoreText2">
+            PPM
+            <icon bindtap="toPPM" type="info" size="40"/>
+        </view>
+        <view clgradeass="clear"></view>
     </view>
     <view class="resultDate">{{resultDate}} {{resultTime}}</view>
     <!--<button wx:="isShare" data-id="shareBtn" open-type="share">分享</button>-->

@@ -72,25 +72,21 @@ Page({
         let list=[
             {
                 "gradeNumber": "ppm<10",
-                "grade": "1",
                 "gradeType": "没有燃脂",
                 "section": false
             },
             {
                 "gradeNumber": "10≤ppm＜50",
-                "grade": "2",
                 "gradeType": "开始燃脂",
                 "section": true
             },
             {
                 "gradeNumber": "50≤ppm＜70",
-                "grade": "3",
                 "gradeType": "充分燃脂",
                 "section": false
             },
             {
                 "gradeNumber": "ppm≥70",
-                "grade": "4",
                 "gradeType": "燃脂过量",
                 "section": false
             },
@@ -130,5 +126,8 @@ Page({
         console.log("shareId",this.data.shareId)
         this.confirm();
         return {title: this.data.res, path: '/pages/result/result?shareId=' + this.data.shareId};
+    },
+    toPPM(){
+        HiNavigator.navigateToPPM();
     },
 })

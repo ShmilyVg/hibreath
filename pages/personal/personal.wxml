@@ -24,3 +24,6 @@
     <image class="personal-pic" src="../../images/device-bind/connected.png" ></image>
     <text class="personal-nickname" >我的燃脂精灵</text>
 </view>
+
+
+<image class="personal-pic donghua" src="../../images/device-bind/connected.png" ></image>

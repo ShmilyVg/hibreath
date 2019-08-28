@@ -31,10 +31,11 @@ App({
                     const {timestamp, result, currentLength: length} = finalResult;
                     let {currentIndex} = finalResult;
                     if (records.length < length) {
-                        records.push({dataValue: result, timestamp, currentIndex: ++currentIndex});
+                        records.push({dataValue: result, timestamp:timestamp});
                         count++;
+                        console.log(records,"records")
                         if (records.length === length) {
-                            Protocol.postBreathDataSync({item: records}).then(data => {
+                            Protocol.postBreathDataSync({items:records}).then(data => {
                                 console.log('同步数据成功2');
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
                             }).catch(res => {

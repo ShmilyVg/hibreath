@@ -192,11 +192,27 @@ Page({
         console.log(typeof(e.detail.value),"89888")
     },
 
-    bindWeightInput(e) {
+      bindWeightInput(e) {
         this.setData({
             'info.weight': e.detail.value
         })
+        console.log("test,",this.info.weight)
     },
+
+   /* bindWeightInput(e) {
+        let that =this;
+        let dataset =e.currentTarget.dataset;
+        console.log(dataset,"dataset")
+        let value = e.detail.value;
+        let nameTest =dataset.nameT;
+        that.data[nameTest]=value;
+        this.setData({
+            'info.weight':  that.data[nameTest]
+        })
+        console.log("test,",that.data[nameTest])
+    },*/
+
+
     //填写体脂率
     bindExactInput(e){
         var BMINumber;

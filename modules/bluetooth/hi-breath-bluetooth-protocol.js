@@ -27,6 +27,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 console.log(dataArray,"77777")
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
+                console.log(timestamp,"时间")
                 const dou = HexTools.hexArrayToNum(dataArray.slice(5, 6));
                 const finalDou = '0' + Math.floor(dou >= 100 ? dou / 10 : dou);
                 const result = HexTools.hexArrayToNum(dataArray.slice(4, 5)) + '.' + finalDou.slice(-2);
@@ -42,10 +43,11 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x3c': ({dataArray}) => {
                 console.log("查看数据结果",dataArray)
+           /*     const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));*/
+                const result = dataArray[4]+dataArray[5]/100;
+                console.log('数据2 result',result);
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 console.log('数据2 timestamp',timestamp);
-                const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));
-                console.log('数据2 result',result);
                 const currentLength = HexTools.hexArrayToNum(dataArray.slice(6, 7));
                 console.log('数据2 currentLength',currentLength);
                 const currentIndex = HexTools.hexArrayToNum(dataArray.slice(7, 9));

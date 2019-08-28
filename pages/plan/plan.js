@@ -163,7 +163,6 @@ Page({
             console.log(-(i + 1))
             let times = this.timehandTap(".", (i));
             let time = "timearr[" + i + "].time"; //此处的数组的属性可当做是新添加的键
-
             let weeks =this.timeWeek((i))
             let week = "timearr[" + i + "].week";
             that.setData({
