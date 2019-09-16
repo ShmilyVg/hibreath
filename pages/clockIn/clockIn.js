@@ -1,3 +1,8 @@
+ /**
+  * @Author: 张浩玉
+  * @Date: 2019-08-30 11:26:32
+  * @LastEditors: 张浩玉
+  */
 import HiNavigator from "../../navigator/hi-navigator";
 import toast from "../../view/toast";
 import Protocol from "../../modules/network/protocol";

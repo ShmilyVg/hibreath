@@ -82,7 +82,7 @@ Page({
             let level = value['level'];
             value['hintText'] = showText[level];
             value['hintBg'] = showColor[level];
-            value['date'] = tools.createDateAndTime(value['time']);
+            value['date'] = tools.createDateAndTime(value['createdTimestamp']);
         });
         return list;
     },

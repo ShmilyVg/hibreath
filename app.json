@@ -19,7 +19,6 @@
     "pages/HIITInfo/HIITInfo",
     "pages/planInfo/planInfo",
     "pages/successInfo/successInfo",
-    "pages/PPMInfo/PPMInfo",
     "pages/clockIn/clockIn",
     "pages/shoppingList/shoppingList"
   ],
@@ -36,18 +35,23 @@
     "list": [{
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/result/result",
-      "text": "燃脂检测"
+      "pagePath": "pages/set-info/set-info",
+      "text": "健康树"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
       "pagePath": "pages/index/index",
-      "text": "燃脂历程"
+      "text": "打卡"
     }, {
       "selectedIconPath": "images/device-bind/connected.png",
       "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/personal/personal",
-      "text": "个人中心"
+      "pagePath": "pages/plan/plan",
+      "text": "发现"
+    },{
+      "selectedIconPath": "images/device-bind/connected.png",
+      "iconPath": "images/device-bind/connected.png",
+      "pagePath": "pages/history/history",
+      "text": "商城"
     }]
   }
 }

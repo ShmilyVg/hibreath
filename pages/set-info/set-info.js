@@ -65,7 +65,7 @@ Page({
                     bodyFatRate: '25%',
                 })
             }
-           //获取上次填写性别 出生日期等记录
+            //获取上次填写性别 出生日期等记录
         })
         let info={
             birthday: '1980-01-01',
@@ -74,11 +74,11 @@ Page({
             weight:'',
             bodyFatRate:'25%',
         };
-       /* for(var i=0;i<this.data.sexBox.length;i++){
-            if(this.data.info.sex ==this.data.sexBox[i]. image){
+        /* for(var i=0;i<this.data.sexBox.length;i++){
+             if(this.data.info.sex ==this.data.sexBox[i]. image){
 
-            }
-        }*/
+             }
+         }*/
 
         this.setData({
             info: info
@@ -104,11 +104,11 @@ Page({
                 break;
             case 3:
                 if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined"  || this.data.info.height === ""  || this.data.info.weight === "") {
-                   if(typeof (this.data.info.height) == "undefined"   || this.data.info.height === "" ){
-                       toast.warn('请填写身高');
-                   }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight === ""){
-                       toast.warn('请填写体重');
-                   }
+                    if(typeof (this.data.info.height) == "undefined"   || this.data.info.height === "" ){
+                        toast.warn('请填写身高');
+                    }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight === ""){
+                        toast.warn('请填写体重');
+                    }
                 } else {
                     this.setData({
                         page: ++this.data.page,
@@ -145,7 +145,7 @@ Page({
                             title: '小贴士', content:"请精确到小数点后一位", confirmText: '我知道了', confirmEvent: () => {
                             }
                         });
-                }}else{
+                    }}else{
                     Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
                         this.setisFirst();
                     })
@@ -192,25 +192,25 @@ Page({
         console.log(typeof(e.detail.value),"89888")
     },
 
-      bindWeightInput(e) {
+    bindWeightInput(e) {
         this.setData({
             'info.weight': e.detail.value
         })
         console.log("test,",this.info.weight)
     },
 
-   /* bindWeightInput(e) {
-        let that =this;
-        let dataset =e.currentTarget.dataset;
-        console.log(dataset,"dataset")
-        let value = e.detail.value;
-        let nameTest =dataset.nameT;
-        that.data[nameTest]=value;
-        this.setData({
-            'info.weight':  that.data[nameTest]
-        })
-        console.log("test,",that.data[nameTest])
-    },*/
+    /* bindWeightInput(e) {
+         let that =this;
+         let dataset =e.currentTarget.dataset;
+         console.log(dataset,"dataset")
+         let value = e.detail.value;
+         let nameTest =dataset.nameT;
+         that.data[nameTest]=value;
+         this.setData({
+             'info.weight':  that.data[nameTest]
+         })
+         console.log("test,",that.data[nameTest])
+     },*/
 
 
     //填写体脂率
@@ -221,24 +221,24 @@ Page({
         this.setData({
             'info.bodyFatRate': BMINumber
         })
-       /* if (BMINumber.toString().split(".")[1].length<=1 && Number(BMINumber)<100) { //正则验证，小数点后不能大于1位数字
-            this.setData({
-                'info.bodyFatRate': BMINumber+"%"
-            })
-        } else {
-            WXDialog.showDialog({
-                title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
+        /* if (BMINumber.toString().split(".")[1].length<=1 && Number(BMINumber)<100) { //正则验证，小数点后不能大于1位数字
+             this.setData({
+                 'info.bodyFatRate': BMINumber+"%"
+             })
+         } else {
+             WXDialog.showDialog({
+                 title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
 
-                }
-            });
-        };
-*/
+                 }
+             });
+         };
+ */
     },
 
     page4ItemClick(e){
         let index = e.currentTarget.dataset.index;
         this.setData({
-           choseIndex: index
+            choseIndex: index
         });
     },
 
