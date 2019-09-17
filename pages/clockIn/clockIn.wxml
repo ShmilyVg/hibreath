@@ -3,7 +3,7 @@
 </view>
 <view class='photo'>
     <view class='title'>
-        图片
+        九宫格打卡页面
     </view>
     <view class='up-pic'>
         <view class='flex pic-box'>

@@ -67,6 +67,9 @@ Page({
     },
 
     onLoad() {
+        wx.setKeepScreenOn({
+            keepScreenOn: true
+        });
         this.connectionPage = new ConnectionManager(this);
         this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);

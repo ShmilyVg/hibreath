@@ -33,7 +33,8 @@ App({
                     if (records.length < length) {
                         records.push({dataValue: result, timestamp:timestamp});
                         count++;
-                        console.log(records,"records");
+                        console.log(records,"records")
+                        console.log(length,"length")
                         if (records.length === length) {
                             Protocol.postBreathDataSync({items:records}).then(data => {
                                 console.log('同步数据成功2');
