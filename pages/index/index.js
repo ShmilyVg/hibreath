@@ -8,7 +8,8 @@ import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
-
+import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
+import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager"; //页面标志位使用
 const app = getApp();
 
 Page({
@@ -70,8 +71,11 @@ Page({
     setBtnClick() {
         HiNavigator.navigateToDeviceUnbind();
     },
-
+    onLaunch(options){
+        this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
+    },
     onLoad() {
+        //检测页面保持常量
         wx.setKeepScreenOn({
             keepScreenOn: true
         });
@@ -142,6 +146,9 @@ Page({
     },
 
     onShow() {
+        //离开时 告知蓝牙标志位 0x3D   0X01
+        console.log("444")
+        app.bLEManager.sendISpage({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
         let {connectState, protocolState} = app.getLatestBLEState();
@@ -227,7 +234,10 @@ Page({
     onUnload() {
         app.getBLEManager().closeAll();
     },
-
+    //离开时 告知蓝牙标志位 0x3D   0X02
+    onHide(){
+        app.bLEManager.sendISpage({isSuccess: false});
+    },
 
     picAnimation(){
         const showanimation = wx.createAnimation({
@@ -253,5 +263,5 @@ Page({
             })
         }.bind(this), 6000);
     },
-
+    ...common
 });

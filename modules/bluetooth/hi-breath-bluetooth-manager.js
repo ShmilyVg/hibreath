@@ -17,7 +17,9 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
     sendQueryDataSuccessProtocol({isSuccess}) {
         this.bluetoothProtocol.sendQueryDataSuccessProtocol(arguments[0]);
     }
-
+    sendISpage({isSuccess}) {
+        this.bluetoothProtocol.sendISpage(arguments[0]);
+    }
     /*
     * locationAuthorized  允许微信使用定位的开关  boolean
     * locationEnabled      地理位置的系统开关      boolean

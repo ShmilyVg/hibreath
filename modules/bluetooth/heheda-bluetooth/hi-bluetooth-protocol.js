@@ -104,6 +104,13 @@ export default class HiBlueToothProtocol {
                 //     }
                 // });
             },
+            //小程序传给设备 是否存储数据标志位
+            '0x3d': ({isSuccess}) => {
+                this.sendData({
+                    command: '0x3d',
+                    data: [isSuccess ? 1 : 2]
+                });
+            },
             '0xab': ({dataArray}) => {
                 if (!!this._updateTool) {
                     const index = HexTools.hexArrayToNum(dataArray.slice(0, 2));
@@ -151,6 +158,12 @@ export default class HiBlueToothProtocol {
     sendQueryDataSuccessProtocol({isSuccess}) {
         if (this.getDeviceIsBind()) {
             this.action['0x0b']({isSuccess});
+        }
+    }
+
+    sendISpage({isSuccess}) {
+        if (this.getDeviceIsBind()) {
+            this.action['0x3d']({isSuccess});
         }
     }
 
