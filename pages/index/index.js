@@ -7,6 +7,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
+import * as tools from "../../utils/tools";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager"; //页面标志位使用
@@ -182,7 +183,7 @@ Page({
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传得分并跳转结果页
                     Protocol.getBreathDataAdd({
-                        dataValue: finalResult.result,
+                        dataValue: tools.subStringNum(finalResult.result),
                     }).then(data => {
                         console.log(data.result.id)
                         HiNavigator.navigateBlowToResult({id: data.result.id});

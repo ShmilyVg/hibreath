@@ -1,6 +1,6 @@
 import {HexTools, HiBlueToothProtocol} from "./heheda-bluetooth/index";
 import {ProtocolState} from "./bluetooth-state";
-
+import * as tools from "../../utils/tools";
 export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
 
     constructor(blueToothManager) {
@@ -21,7 +21,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             '0x34': () => {
                 super.sendData({command: '0x35'});
                 return {state: ProtocolState.PRE_HOT_START};
-              /*  return {state: ProtocolState.BREATH_RESTART};*/
+                /*  return {state: ProtocolState.BREATH_RESTART};*/
             },
             //由设备发出的显示结果请求
             '0x36': ({dataArray}) => {
@@ -44,10 +44,10 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x3c': ({dataArray}) => {
                 console.log("查看数据结果",dataArray)
-           /*     const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));*/
+                /*     const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));*/
                 //结果保留一位小数并不四舍五入
                 const b = dataArray[4]+dataArray[5]/100;
-                const result = ( parseInt( b * 100 ) / 100 ).toFixed(1);
+                const result = tools.subStringNum(b);
                 console.log('数据2 result',result);
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 console.log('数据2 timestamp',timestamp);
