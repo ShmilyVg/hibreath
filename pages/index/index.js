@@ -1,186 +1,257 @@
-//app.js
-import "./utils/config";
-import {common} from "./modules/bluetooth/heheda-bluetooth/app/common";
-import HiBreathBlueToothManager from "./modules/bluetooth/hi-breath-bluetooth-manager";
-import {ProtocolState,ConnectState} from "./modules/bluetooth/bluetooth-state";
-import Protocol from "./modules/network/protocol";
-import {WXDialog} from "heheda-common-view";
-import CommonProtocol from "./modules/network/network/libs/protocol";
-import {initAnalysisOnApp} from "./modules/analysis/mta";
-import HiNavigator from "./navigator/hi-navigator";
+//index.js
+//获取应用实例
+import Login from "../../modules/network/login";
+import UserInfo from "../../modules/network/userInfo";
+import Toast from "../../view/toast";
+import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
+import ConnectionManager from "./connection-manager";
+import BlowManager from "./blow-manager";
+import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+
+const app = getApp();
+
+Page({
+    data: {
+        userInfo: {},
+        firstInto: true,
+
+        stateColor: ['#FF5F00','#31FF00'],
+        homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
+
+        noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。',
+        homeP:[
+            "1. 请勿将设备远离手机",
+            "2. 请勿关闭小程序",
+            "3. 请勿关闭手机蓝牙",
+            "4. 请勿熄灭屏幕"
+        ],
 
 
-App({
+        burnupShow: true,
+        userInfoShow: true,
+        headerRight: false,
 
-    onDeviceBindInfoListener: null,
-    onBatteryInfoListener: null,
-    isOTAUpdate: false,
-    otaUrl: {},
-    onLaunch(options) {
-        let records = [], count = 0;
-        this.otaVersion = -1;
-        this.needCheckOTAUpdate = true;
-        initAnalysisOnApp();
-        this.setCommonBLEListener({
-            // commonAppSignPowerListener: (hiDevices) => {
-            //     this.appBLESignPowerListener && this.appBLESignPowerListener(hiDevices);
-            // },
-            commonAppReceiveDataListener: ({finalResult, state}) => {
-                if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
-                    console.log('接收到的',finalResult);
-                    const {timestamp, result, currentLength: length} = finalResult;
-                    let {currentIndex} = finalResult;
-                    if (records.length < length) {
-                        records.push({dataValue: result, timestamp});
-                        count++;
-                        console.log(records,"records")
-                        console.log(length,"length")
-                        if (records.length === length) {
-                            Protocol.postBreathDataSync({items:records}).then(data => {
-                                console.log('同步数据成功2');
-                                this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
-                            }).catch(res => {
-                                this.queryDataFinish();
-                                console.log(res, '同步数据失败');
-                            }).finally(() => records = []);
-                        }
-                        console.log('同步数据的数组', records);
-                    } else if (!length) {
-                        if (count === 0) {
-                            this.isQueryEmptySuccess = true;
-                        }
-                        count = 0;
-                        this.queryDataFinish();
-                        setTimeout(() => {
-                            console.log('硬件传来的固件版本号', this.otaVersion);
-                            console.log('是否显示版本升级标志位', this.needCheckOTAUpdate);
-                            if (this.otaVersion !== -1) {
-                                if (this.needCheckOTAUpdate) {
-                                    this.needCheckOTAUpdate = false;
-                                    CommonProtocol.postBlueToothUpdate({
-                                        deviceId: this.bLEManager.getDeviceMacAddress(),
-                                        version: this.otaVersion
-                                    }).then(data => {
-                                        const {update: isUpdate, zip} = data.result;
-                                        console.log('data.result', data.result);
-                                        if (zip) {
-                                            const {bin: binArray, dat: datArray} = zip;
-                                            if (isUpdate && binArray && binArray.length && datArray && datArray.length) {
-                                                WXDialog.showDialog({
-                                                    content: '为了给您带来更好的体验\n' + '即将为设备进行升级',
-                                                    showCancel: true,
-                                                    confirmText: "立即升级",
-                                                    cancelText: "暂时不用",
-                                                    confirmEvent: () => {
-                                                        const {url: binUrl, md5: binMd5} = binArray[0];
-                                                        const {url: datUrl, md5: datMd5} = datArray[0];
-                                                        HiNavigator.relaunchToUpdatePage({binUrl, datUrl});
-                                                    },
-                                                    cancelEvent: () => {
-                                                        WXDialog.showDialog({
-                                                            content: '好的！本次您可以继续正常使用\n' + '下次打开小程序时将再次提醒',
-                                                            confirmText: '我知道啦',
+        picState: false,
+        textStateColor: true,
 
-                                                        })
-                                                    }
-                                                });
+        connectpicShow: false,
+        blowpicShow: false,
 
-                                            } else {
-                                                console.log('无需升级');
-                                            }
-                                        }
-                                    });
-                                }
+        homePointFirst: true,
+        homePointSecond: false,
 
-                            }
-                        })
-                        // this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
-                    } else {
-                        console.log('同步数据溢出', records);
-                        count = 0;
-                    }
+        homeBtn: true,
 
-                } else if (ProtocolState.TIMESTAMP === state.protocolState) {
-                    this.otaVersion = finalResult.version;
-                    console.log("暂时查看电量",finalResult.battery)
-                    //TODO 暂时注释掉
-                    // Protocol.postDeviceElectricity({electricity: finalResult.battery / 100});
-                    if (finalResult.battery < 21) {
-                        this.onBatteryInfoListener && this.onBatteryInfoListener({battery: true});
-                        this.globalData.globalBattery = 2
-                    } else {
-                        this.onBatteryInfoListener && this.onBatteryInfoListener({battery: false});
-                        this.globalData.globalBattery = 3
-                    }
-                    setTimeout(() => {
-                        this.getBLEManager().resendBLEData();
-                    }, 10);
-                } else {
-                    this.appReceiveDataListener && this.appReceiveDataListener({finalResult, state});
-                }
-            },
-            commonAppBLEStateListener: ({state}) => {
-                switch (state.connectState) {
-                    case ConnectState.UNBIND:
-                    case ConnectState.UNAVAILABLE:
-                    case ConnectState.DISCONNECT:
-                    case ConnectState.NOT_SUPPORT:
-                        records = [];
-                        this.isQuery = false;
-                        this.isQueryDataFinish = false;
-                        break;
-                }
-                if (state.protocolState === ProtocolState.QUERY_DATA_FINISH) {
-                    this.isQueryDataFinish = true;
-                    this.isQuery = false;
-                }
-                this.appBLEStateListener && this.appBLEStateListener({state});
-            }
-        });
-        this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
+        homeTitle: false,
+        homePShow: false,
+        homeOrangeBtn: false,
 
-        this.appLoginListener = ({loginState}) => {
-            if (loginState === this.NOT_REGISTER) {
-                this.bLEManager.clearConnectedBLE();
-                // HiNavigator.reLaunchToBindDevicePage();
-            }
-        };
+        animationData: {},
+
+        electricitypicShow: false,
     },
-    queryDataFinish() {
-        this._updateBLEState({
-            state: {
-                connectState: ConnectState.CONNECTED,
-                protocolState: ProtocolState.QUERY_DATA_FINISH
-            }
-        });
+    useUrl() {
+        HiNavigator.navigateToStrategy();
     },
-    onShow(options) {
-        if (!this.isOTAUpdate) {
-            this.commonOnShow({options});
-            // Protocol.getDeviceBindInfo().then(data => {
-            //     if (data.result) {
-            //         const {mac} = data.result;
-            //         console.log('getDeviceBindInfo?mac=', mac);
-            //         this.bLEManager.setBindMarkStorage();
-            //         this.connectAppBLE({macId: mac});
-            //         this.onDeviceBindInfoListener && this.onDeviceBindInfoListener({deviceId: mac});
-            //     } else {
-            //         this.bLEManager.clearConnectedBLE();
-            //     }
-            // })
+    historyUrl() {
+        HiNavigator.navigateToclickCheck();
+    },
+
+    bindBtnClick() {
+        HiNavigator.navigateToDeviceBind();
+    },
+    disconnectBtnClick() {
+        if (this.data.stateBtnShow){
+            app.getBLEManager().connect();
+        }
+    },
+
+    setBtnClick() {
+        HiNavigator.navigateToDeviceUnbind();
+    },
+
+    onLoad() {
+        wx.setKeepScreenOn({
+            keepScreenOn: true
+        });
+        this.connectionPage = new ConnectionManager(this);
+        this.connectionPage.unbind();
+        this.blowPage = new BlowManager(this);
+        //this.blowPage.blowing();
+        app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
+        let info = app.globalData.userInfo;
+        console.log(app.globalData,"globalData")
+        if (info) {
+            this.setData({
+                userInfo: info
+            })
+        }
+        if (this.data.firstInto) {
+            Protocol.getAnalysisNotes().then(data => {
+                let noteList = data.result.list;
+
+                this.setData({
+                    noteList: noteList,
+                    firstInto: false
+                })
+                this.handleTipText();
+            });
         }
 
+        /*电量测试*/
+        let globalBattery = app.globalData.globalBattery;
+        console.log('全局电量：', globalBattery);
+        if (globalBattery === 1) {
+            app.onBatteryInfoListener = ({battery}) => {
+                if (battery) {
+                    this.setData({
+                        electricitypicShow: true
+                    })
+                }
+            }
+        } else {
+            if (globalBattery === 2) {
+                this.setData({
+                    electricitypicShow: true
+                })
+            } else if (globalBattery === 3) {
+                this.setData({
+                    electricitypicShow: false
+                })
+            }
+            setTimeout(function () {
+                app.globalData.globalBattery = 0;
+            }, 5000);
+        }
+        /*电量测试*/
+
+        Protocol.getDeviceBindInfo().then(data => {
+            let deviceInfo = data.result;
+            console.log('获取到的设备', data);
+
+            if (!deviceInfo) {
+                app.getBLEManager().clearConnectedBLE();
+                this.connectionPage.unbind();
+            } else {
+                app.getBLEManager().setBindMarkStorage();
+                app.getBLEManager().connect({macId: deviceInfo.mac});
+            }
+        });
+
     },
 
-    onHide() {
-        this.records = [];
-        this.commonOnHide();
+    onShow() {
+        const action = this.connectionPage.action;
+        const actionBlow = this.blowPage.actionBlow;
+        let {connectState, protocolState} = app.getLatestBLEState();
+        if (ProtocolState.BREATH_RESULT === protocolState) {
+            protocolState = ProtocolState.CONNECTED_AND_BIND;
+        }
+        !!action[connectState] && action[connectState]();
+        !!actionBlow[protocolState] && actionBlow[protocolState]();
+        app.setBLEListener({
+            bleStateListener: () => {
+                console.log("查看电量2222",app.getLatestBLEState())
+                const {connectState, protocolState} = app.getLatestBLEState();
+                console.log("connectState",connectState)
+                console.log("protocolState",protocolState)
+                !!action[connectState] && action[connectState]();
+                !!actionBlow[protocolState] && actionBlow[protocolState]();
+            },
+            receiveDataListener: ({finalResult, state}) => {
+                console.log("查看电量333333",finalResult)
+                /*
+                 PRE_HOT_START: 'pre_hot_start',//开始预热状态
+                 PRE_HOT_FINISH_AND_START_BREATH: 'pre_hot_finish_and_start_breath',//预热完成开始吹气
+                 BREATH_RESULT: 'breath_result',//吹气完成返回结果
+                 BREATH_RESTART: 'breath_restart',//重新吹气
+                 BREATH_START: 'breath_start',//设备发出的开始吹气通知
+                 BREATH_FINISH: 'breath_finish',//设备发出的吹气完成通知
+                 */
+                console.log("查看数据1",state.protocolState)
+                console.log("查看数据2",ProtocolState.BREATH_RESULT)
+                console.log("查看数据3",ProtocolState.TIMESTAMP)
+                if (ProtocolState.BREATH_RESULT === state.protocolState) {
+                    //上传得分并跳转结果页
+                    Protocol.getBreathDataAdd({
+                        dataValue: finalResult.result,
+                    }).then(data => {
+                        console.log(data.result.id)
+                        HiNavigator.navigateBlowToResult({id: data.result.id});
+                    });
+
+                    //TIMESTAMP 设备获取时间戳
+                }else if (ProtocolState.TIMESTAMP === state.protocolState) {
+                    const {battery} = finalResult;
+                    console.log("查看电量4444",finalResult)
+                    if(battery < 20){
+                        this.setData({
+                            electricitypicShow: true,
+                        })
+                    }else{
+                        this.setData({
+                            electricitypicShow: false,
+                        })
+                    }
+                }
+            }
+        });
+        if (!this.data.firstInto) {
+            this.handleTipText();
+        }
     },
 
-    globalData: {
-        refreshIndexPage: false,
-        userInfo: {nickname: '', headUrl: '', id: 0},
-        globalBattery: 1, //1为默认，2为低电量，3为高电量
+    handleTipText() {
+        let noteListNum = Math.round(Math.random() * (this.data.noteList.length - 1));
+        let noteListMore = this.data.noteList[noteListNum]['text_zh'];
+        this.setData({
+            noteListMore: noteListMore
+        })
     },
-    ...common
+
+    onGetUserInfoEvent(e) {
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            Login.doRegister({
+                userInfo,
+                encryptedData,
+                iv
+            })
+                .then(() => UserInfo.get())
+                .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
+                .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
+        }
+    },
+    onUnload() {
+        app.getBLEManager().closeAll();
+    },
+
+
+    picAnimation(){
+        const showanimation = wx.createAnimation({
+            duration: 2000,
+            timingFunction: 'linear',
+        });
+        const hideanimation = wx.createAnimation({
+            duration: 2000,
+            timingFunction: 'linear',
+        });
+
+        setTimeout(function () {
+            showanimation.opacity(1).step();
+            this.setData({
+                animationData: showanimation
+            })
+        }.bind(this), 1000);
+
+        setTimeout(function () {
+            hideanimation.opacity(0).step();
+            this.setData({
+                animationData: hideanimation
+            })
+        }.bind(this), 6000);
+    },
+
 });
