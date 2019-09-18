@@ -2,20 +2,25 @@
 
 .title{
     font-size:50rpx;
-    font-weight:bold;
-    color:rgba(255,255,255,0.8);
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#454545;
+    line-height:70rpx;
+    margin-top: 60rpx;
 }
 
 .num{
-    width:82rpx;
-    height:48rpx;
-    background:rgba(128,128,128,1);
-    border-radius:24rpx;
-    font-size:30rpx;
-    font-weight:bold;
-    color:rgba(255,255,255,1);
-    line-height:47rpx;
+    width:98rpx;
+    height:50rpx;
+    background:rgba(255,231,228,1);
+    border-radius:25rpx;
+    border:1rpx solid #ED6F69;
+    margin-top: 18rpx;
+    color: #ED6F69;
+    line-height: 50rpx;
     text-align: center;
+    margin-bottom: 90rpx;
+    font-size: 28rpx;
 }
 
 .text {
@@ -28,10 +33,11 @@
 }
 
 .card{
-    width:335rpx;
-    height:452rpx;
+    width:280rpx;
+    height:400rpx;
+    border-radius:20rpx;
+    border:1rpx solid rgba(205,205,205,1);
     background:rgba(247,247,247,0.1);
-    border-radius:30rpx;
 }
 
 .space-between {
@@ -46,18 +52,18 @@
 }
 
 .sex-text{
-    font-size: 28rpx;
+    font-size: 40rpx;
     font-weight: 500;
     color: #808080;
     margin-top: 27rpx;
 }
 
 .birth{
-    height:38rpx;
-    font-size:50rpx;
+    font-size:90rpx;
+    font-family:DIN Condensed;
     font-weight:bold;
-    color:rgba(255,94,0,1);
-    line-height: 38rpx;
+    color:rgba(69,69,69,1);
+    line-height:108rpx;
 }
 
 .line{
@@ -71,22 +77,49 @@
     font-size:50rpx;
     font-weight:bold;
     color:rgba(255,94,0,1);
-    margin-top: 105rpx;
 }
 
 .btn-position{
-    background:rgba(255,94,0,1);
     position: fixed;
     text-align: center;
     color: white;
-    bottom: 80rpx;
+    bottom: 140rpx;
     left: 67rpx;
     font-size:32rpx;
 }
 
-page {
-    background-color: #3E3E3E;
-    padding: 100rpx 30rpx;
+.page2-title{
+    font-size:30rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+    line-height:42rpx;
+}
+
+.page2-num{
+    width:154px;
+    height: 120rpx;
+    font-size:120rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-top: 60rpx;
+    text-align: center;
+}
+
+.page2-line {
+    width:154rpx;
+    height:2rpx;
+    background-color: #ED6F69;
+}
+
+.page2-kg{
+    margin-top: 35rpx;
+    font-size:80rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    line-height:96rpx;
 }
 
 .page4{
@@ -127,4 +160,50 @@ page {
     position: fixed;
     left: 0;
     bottom: 20rpx;
+}
+
+.page6-smaill-text {
+    font-size:32rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+    line-height:45rpx;
+    margin-top: 122rpx;
+}
+
+.page7-box{
+    width:650rpx;
+    height:160rpx;
+    border-radius:20rpx;
+    border:1rpx solid rgba(205,205,205,1);
+    font-size:34rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    line-height:160rpx;
+    text-align:center;
+    margin-bottom: 20rpx;
+}
+
+.page7-box-nor {
+    border:1rpx solid rgba(205,205,205,1);
+    color:rgba(69,69,69,1);
+}
+
+.page7-box-chose {
+    background:rgba(255,230,228,1);
+    border:1rpx solid rgba(237,111,105,1);
+    color:#ED6F69;
+}
+
+.bottom-btn-back{
+    font-size:32rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+    line-height:45rpx;
+    margin-top: 35rpx;
+}
+
+.choseBox{
+    text-align: center;
 }

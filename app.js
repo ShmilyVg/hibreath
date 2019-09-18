@@ -20,7 +20,7 @@ App({
         let records = [], count = 0;
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
-        initAnalysisOnApp();
+        // initAnalysisOnApp();
         this.setCommonBLEListener({
             // commonAppSignPowerListener: (hiDevices) => {
             //     this.appBLESignPowerListener && this.appBLESignPowerListener(hiDevices);
