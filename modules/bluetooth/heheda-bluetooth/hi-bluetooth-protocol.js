@@ -62,6 +62,7 @@ export default class HiBlueToothProtocol {
                 const version = HexTools.hexArrayToNum(dataArray.slice(1, 3));
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 11));
                 this._syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
+                console.log("总数", this._syncCount)
                 const now = Date.now() / 1000;
                 this.sendData({command: '0x05', data: [now]}).then(() => {
                     this.sendQueryDataRequiredProtocol();

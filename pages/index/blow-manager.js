@@ -8,7 +8,8 @@ export default class BlowManager {
         this.actionBlow = {};
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
-            //长时间使用提示
+            this.timer()
+
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
@@ -35,7 +36,20 @@ export default class BlowManager {
                     page.picAnimation();
                 };
     }
+    timer(){
+        var that = this;
+         let countDownNum =5
+         setInterval(function () {
+             countDownNum--;
+             if ( countDownNum == 0) {
+                 clearInterval();
+                 that._page.setData({
+                     homePointHot: true
+                 })
+             }
+         }, 1000)
 
+     }
     connected() {
         this._page.setData({
 
@@ -87,9 +101,9 @@ export default class BlowManager {
             connectpicShow: false,
             blowpicShow: false,
 
-            homePointFirst: true,
+            homePointFirst: false,
             homePointSecond: false,
-            homePointHot: false,//长时间未使用提示
+
             homeBtn: false,
 
             homeTitle: false,
@@ -114,7 +128,7 @@ export default class BlowManager {
             hintPic: true,
             textState:'',
             homeHeartBoxIndex: 1,
-
+            homePointHot:false, //吹气时 隐藏预热过长文案
             connectpicShow: false,
             blowpicShow: true,
 
