@@ -46,8 +46,8 @@
 }
 
 .sex-image{
-    width: 112rpx;
-    height: 268rpx;
+    width: 78rpx;
+    height: 187rpx;
     margin-top: 84rpx;
 }
 
@@ -74,18 +74,101 @@
 }
 
 .input{
-    font-size:50rpx;
+    font-size:32rpx;
     font-weight:bold;
-    color:rgba(255,94,0,1);
 }
 
 .btn-position{
     position: fixed;
     text-align: center;
     color: white;
-    bottom: 140rpx;
+    bottom: 60rpx;
     left: 67rpx;
     font-size:32rpx;
+}
+
+.placeholder{
+    font-size:46rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#B0B0B0;
+}
+
+.page1-goals-view1{
+    width:320rpx;
+    height:70rpx;
+    border-radius:10rpx;
+    border:1rpx solid rgba(233,229,238,1);
+    background-color: white;
+    z-index: 80;
+    opacity: 0.3;
+    font-size: 22rpx;
+}
+
+.page1-goals-view2{
+    width:440rpx;
+    height:96rpx;
+    border-radius:10rpx;
+    border:1rpx solid rgba(233,229,238,1);
+    background-color: white;
+    z-index: 90;
+    opacity: 0.6;
+    font-size: 26rpx;
+}
+
+.page1-goals-view3{
+    width:550rpx;
+    height:120rpx;
+    border-radius:10rpx;
+    border:1rpx solid rgba(233,229,238,1);
+    background-color: white;
+    z-index: 100;
+    font-size: 28rpx;
+}
+
+.page1-goals-image1{
+    width:50rpx;
+    height:50rpx;
+    border-radius: 50%;
+    margin-left: 36rpx;
+    margin-right: 29rpx;
+    background-color: lightblue;
+}
+
+.page1-goals-image2{
+    width:60rpx;
+    height:60rpx;
+    border-radius: 50%;
+    margin-left: 66rpx;
+    margin-right: 27rpx;
+    background-color: lightblue;
+}
+
+.page1-goals-image3{
+    width:73rpx;
+    height:73rpx;
+    border-radius: 50%;
+    margin-left: 44rpx;
+    margin-right: 30rpx;
+    background-color: lightblue;
+}
+
+.page1-input{
+    font-size:40rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:56rpx;
+}
+
+.page1-input-view{
+    width:540rpx;
+    height:120rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0 0 10rpx 0 rgba(0,0,0,0.12);
+    border-radius:10rpx;
+    align-items: center;
+    margin-top: 80rpx;
 }
 
 .page2-title{
@@ -162,7 +245,7 @@
     bottom: 20rpx;
 }
 
-.page6-smaill-text {
+.page6-small-text {
     font-size:32rpx;
     font-family:PingFang-SC;
     font-weight:400;

@@ -1,68 +1,76 @@
 <!--pages/set-info/set-info.wxml-->
+
+<import src="./view/goal.wxml"></import>
+
+
 <view class="flex-column">
     <view class="title">{{title[page-1]}}</view>
     <view class="num">{{page}}/8</view>
 
     <view wx:if="{{page==1}}">
-        <input class="input" bindinput="bindTarget"/>
-    </view>
-    <view wx:if="{{page==2}}" class="flex-row">
-        <view class="flex-column" style="margin: 0 35rpx">
-            <view class="page2-title">当前体重</view>
-            <input class="page2-num" style="text-align: center" bindinput="bindWight"/>
-            <view class="page2-line"></view>
-            <view class="page2-kg">KG</view>
-        </view>
-        <view class="flex-column" style="margin: 0 35rpx">
-            <view class="page2-title">目标体重</view>
-            <input class="page2-num" bindinput="bindWightTarget"/>
-            <view class="page2-line"></view>
-            <view class="page2-kg">KG</view>
+        <template is="goal" data="{{goals}}"></template>
+        <view class="page1-input-view flex-row">
+            <input class="page1-input" placeholder="写下你的减值目标（14字）" placeholder-class="placeholder" placeholder-style="font-size:32rpx" bindinput="bindInputGoal"/>
         </view>
     </view>
-    <view wx:elif="{{page==3}}" class="flex-row space-between">
-        <view class="card flex-column" wx:for="{{sexBox}}" bindtap="chooseSex" data-index="{{index}}">
+    <view wx:elif="{{page==2}}" class="flex-row space-between">
+        <view class="card flex-column" wx:for="{{sexBox}}" bindtap="bindTapSex" data-index="{{index}}">
             <image class="sex-image"
                    src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
             <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
         </view>
     </view>
-    <block wx:elif="{{page==4}}">
+    <block wx:elif="{{page==3}}">
         <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
-                bindchange="bindBirthChange">
-            <view class="flex-column space-between" style="align-items: flex-start;height: 66rpx;">
-                <view class="birth">{{info.birthday}}</view>
-                <view class="line"></view>
+                bindchange="bindChangeBirth">
+            <view class="flex-row">
+                <view wx:for="{{birth}}" class="flex-column" style="width: 154rpx;margin: 0 33rpx">
+                    <view class="page2-line" style="margin-top: 90rpx"></view>
+                    <view class="page2-num" style="margin-top: 48rpx;font-size: 90rpx">{{item}}</view>
+                    <view class="page2-line" style="margin-top: 15rpx"></view>
+                </view>
             </view>
         </picker>
     </block>
+    <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
+        <view class="flex-column" style="width: 45%">
+            <input class="page2-num" bindinput="bindInputHeight" placeholder="身高" placeholder-class="placeholder"/>
+            <view class="page2-line"></view>
+            <view class="page2-kg">CM</view>
+        </view>
+        <view class="flex-column" style="width: 45%">
+            <input class="page2-num" bindinput="bindInputWeight" placeholder="体重" placeholder-class="placeholder"/>
+            <view class="page2-line"></view>
+            <view class="page2-kg">KG</view>
+        </view>
+    </view>
     <block wx:elif="{{page==5}}">
-        <input class="page2-num" bindinput=""/>
-        <view class="page2-line"></view>
-        <view class="page2-kg">CM</view>
-    </block>
-    <block wx:elif="{{page==6}}">
-        <view wx:if="{{isexact}}" class="page4">
-            <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick"
+        <view wx:if="{{noMeasure}}" class="page4">
+            <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}" bindtap="bindTapExactClick"
                   data-index="{{index}}">
                 <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
                 <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}
                 </view>
             </view>
-            <view bindtap='IntoExact'>我测过准确的体脂率</view>
+            <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
             <view class="page4-hint">*图片来源于网络</view>
         </view>
         <view wx:else class="flex-column">
-            <input class="page2-num" bindinput=""/>
+            <input class="page2-num" placeholder="体脂率" placeholder-class="placeholder" bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
             <view class="page2-line"></view>
             <view class="page2-kg">%</view>
-            <view class="page6-smaill-text" bindtap='IntoNoExact'>没测过体脂率</view>
+            <view class="page6-small-text" bindtap='bindTapSwitchExact'>没测过体脂率</view>
         </view>
     </block>
-    <view wx:elif="{{page==7}}">
-        <view wx:for="{{meals}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}" bindtap="clickMeals" data-index="{{index}}">{{item.text}}</view>
+    <view wx:elif="{{page==6}}">
+        <view wx:for="{{meals}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}" bindtap="bindTapMeals" data-index="{{index}}">{{item.text}}</view>
     </view>
-
+    <view wx:if="{{page==7}}" class="flex-column">
+        <view class="page2-title">也可以自定义您的目标体重</view>
+        <input class="page2-num" bindinput="bindInputWightGoal" value="{{info.weightGoal}}" />
+        <view class="page2-line"></view>
+        <view class="page2-kg">KG</view>
+    </view>
     <view class="btn-position">
         <block wx:if="{{page!=8}}">
             <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continue">下一步

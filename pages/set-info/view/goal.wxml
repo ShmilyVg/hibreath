@@ -1,0 +1,9 @@
+<template name="goal">
+    <view class="flex-column">
+        <view class="flex-row page1-goals-view1"><image class="page1-goals-image1" src="{{goals[0].headUrl}}"></image>{{goals[0].goalDesc}}</view>
+        <view class="flex-row page1-goals-view2" style="margin-top: -20rpx"><image class="page1-goals-image2" src="{{goals[0].headUrl}}"></image>{{goals[1].goalDesc}}</view>
+        <view class="flex-row page1-goals-view3" style="margin-top: -36rpx"><image class="page1-goals-image3" src="{{goals[0].headUrl}}"></image>{{goals[2].goalDesc}}</view>
+        <view class="flex-row page1-goals-view2" style="margin-top: -36rpx"><image class="page1-goals-image2" src="{{goals[0].headUrl}}"></image>{{goals[3].goalDesc}}</view>
+        <view class="flex-row page1-goals-view1" style="margin-top: -20rpx"><image class="page1-goals-image1" src="{{goals[0].headUrl}}"></image>{{goals[4].goalDesc}}</view>
+    </view>
+</template>
