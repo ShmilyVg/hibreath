@@ -17,7 +17,7 @@ Page({
     data: {
         userInfo: {},
         firstInto: true,
-
+        isBind:false,
         stateColor: ['#FF5F00','#31FF00'],
         homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
 
@@ -74,6 +74,11 @@ Page({
     },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
+    },
+    toIndex(){
+        this.setData({
+            isBind: false
+        })
     },
     onLoad() {
         //检测页面保持常量
@@ -146,7 +151,14 @@ Page({
 
     },
 
-    onShow() {
+    onShow(options) {
+        const pages = getCurrentPages()
+        const currPage = pages[pages.length - 1]  // 当前页
+        console.log(currPage.data.isBind,'dtdtdtdtdtdtd')
+        // 是否绑定成功
+        this.setData({
+            isBind: currPage.data.isBind
+        })
         //离开时 告知蓝牙标志位 0x3D   0X01
         console.log("444")
         app.bLEManager.sendISpage({isSuccess: true});

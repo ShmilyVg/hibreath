@@ -39,7 +39,15 @@
 <view class="home-point" wx:if="{{homePointHot}}"><text>燃脂小贴士：</text>设备长时间未使用，为了保证结果准确，设备还需要些时间预热，请耐心等待</view>
 <view class="home-point" wx:if="{{homePointSecond}}"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>
 
-
+<view wx:if="{{isBind}}">
+    <view class="">绑定成功！！！！</view>
+    <view class="">教你如何测出准确的结果</view>
+    <view class="">建议清晨起床喝一杯温水后进行检测，运动日可在运动结束后1-3小时内检测</view>
+    <view class="">1.若有饮酒请间隔24小时以上再进行检测</view>
+    <view class="">2.吸烟、涂抹口红、喷香水等行为会对检测结果的准确性产生影响</view>
+    <view class="">3.测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物</view>
+    <button bindtap="toIndex">我知道啦！！！！！！</button>
+</view>
 
 <!--<view class="home-btn"  wx:if="{{homeBtn}}">
   <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>

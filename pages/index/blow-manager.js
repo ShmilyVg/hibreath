@@ -37,8 +37,8 @@ export default class BlowManager {
                 };
     }
     timer(){
-        var that = this;
-         let countDownNum =5
+         var that = this;
+         let countDownNum =120
          setInterval(function () {
              countDownNum--;
              if ( countDownNum == 0) {
@@ -48,7 +48,6 @@ export default class BlowManager {
                  })
              }
          }, 1000)
-
      }
     connected() {
         this._page.setData({

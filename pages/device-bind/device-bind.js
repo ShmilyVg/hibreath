@@ -78,8 +78,13 @@ Page({
                 if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
                     this.isBind = true;
                     //绑定后 跳转绑定成功页面  点击按钮再进入index页面
-                    setTimeout(() => HiNavigator.navigateSuccessInfo());
-                   /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
+                    //setTimeout(() => HiNavigator.navigateSuccessInfo());
+                    const pages = getCurrentPages()
+                    const prevPage = pages[pages.length-2]
+                    prevPage.setData({
+                        isBind:  this.isBind
+                    })
+                    setTimeout(() => HiNavigator.navigateBack({delta: 1}));
                 }else{
                     this.showResult({state: state.connectState});
                 }
