@@ -1,4 +1,5 @@
 /* pages/set-info/set-info.wxss */
+@import "./view/guide.wxss";
 
 .title{
     font-size:50rpx;

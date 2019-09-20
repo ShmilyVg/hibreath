@@ -1,9 +1,13 @@
 <!--pages/set-info/set-info.wxml-->
 
 <import src="./view/goal.wxml"></import>
+<import src="./view/guide.wxml"></import>
 
+<view class="flex-column" wx:if="{{showGuide}}">
+    <template is="guide" ></template>
+</view>
 
-<view class="flex-column">
+<view class="flex-column" wx:else>
     <view class="title">{{title[page-1]}}</view>
     <view class="num">{{page}}/8</view>
 

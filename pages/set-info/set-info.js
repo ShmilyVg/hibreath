@@ -6,11 +6,15 @@ import WXDialog from "../../view/dialog";
 import IndexCommonManager from "../index/view/indexCommon";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
+import Login from "../../modules/network/login";
+import UserInfo from "../../modules/network/userInfo";
+import {Toast} from "heheda-common-view";
 
 const app = getApp();
 
 Page({
     data: {
+        showGuide: true,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
@@ -22,7 +26,6 @@ Page({
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
-        itemBackgroundColor: '#656565',
         birth: ['1980', '01', '01'],
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
@@ -254,5 +257,20 @@ Page({
 
     bindTapSwitchExact() {
         this.setData({noMeasure: !this.data.noMeasure});
+    },
+
+    async onGetUserInfoEvent(e) {
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            try {
+                await Login.doRegister({userInfo, encryptedData, iv});
+                const userInfo = await UserInfo.get();
+                this.setData({userInfo, showGuide: false});
+                Toast.hiddenLoading();
+            } catch (e) {
+                Toast.warn('获取信息失败');
+            }
+        }
     }
 })

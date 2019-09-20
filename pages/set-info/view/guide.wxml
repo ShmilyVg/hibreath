@@ -1,0 +1,21 @@
+<template name="guide">
+    <view style="height: 70rpx"></view>
+    <view class="guide-text4">我不能拒绝这些食物</view>
+    <view class="guide-text3">我今天很难受，吃东西能让我得到安慰</view>
+    <view class="guide-text2">我的体重怎么也降不下来</view>
+    <view class="guide-text1">太痛苦了，我不想运动</view>
+    <view class="guide-text2">今天我好累啊，我应该吃点这个</view>
+    <view class="guide-text3">反正我已经吃了本不该吃的东西，就让计划见鬼去吧</view>
+    <view class="guide-text4">我只吃这一次没有关系</view>
+    <view style="height: 20rpx"></view>
+    <view class="arr"></view>
+    <view class="middle-view">慢慢减脂路上·你是否也遇这些困扰</view>
+
+    <view class="flex-row" style="margin-top: 75rpx;align-items: self-start">
+        <image class="page1-image" src="../../images/set-info/page1-up.png"></image>
+        <view class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
+        <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
+    </view>
+
+    <button class="guide-start" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即体验</button>
+</template>
