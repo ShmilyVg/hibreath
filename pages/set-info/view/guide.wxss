@@ -81,7 +81,6 @@
 }
 
 .guide-start{
-    margin-top: 66rpx;
     width:500rpx;
     height:100rpx;
     background:rgba(237,111,105,1);
@@ -91,4 +90,6 @@
     font-weight:500;
     color:rgba(255,255,255,1);
     line-height:100rpx;
+    position: fixed;
+    bottom: 140rpx;
 }

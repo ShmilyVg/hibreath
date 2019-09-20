@@ -81,7 +81,7 @@
         <view class="page2-line"></view>
         <view class="page2-kg">KG</view>
     </view>
-    <view class="btn-position">
+    <view class="btn-position flex-column">
         <block wx:if="{{page!=8}}">
             <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continue">下一步
             </view>
