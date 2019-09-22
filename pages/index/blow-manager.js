@@ -36,6 +36,7 @@ export default class BlowManager {
                     page.picAnimation();
                 };
     }
+    //若预热中状态持续＞2分钟，仍然没有进入下一环节，则出现该提示文案
     timer(){
          var that = this;
          let countDownNum =120

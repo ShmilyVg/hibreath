@@ -154,13 +154,11 @@ Page({
     onShow(options) {
         const pages = getCurrentPages()
         const currPage = pages[pages.length - 1]  // 当前页
-        console.log(currPage.data.isBind,'dtdtdtdtdtdtd')
         // 是否绑定成功
         this.setData({
             isBind: currPage.data.isBind
         })
         //离开时 告知蓝牙标志位 0x3D   0X01
-        console.log("444")
         app.bLEManager.sendISpage({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;

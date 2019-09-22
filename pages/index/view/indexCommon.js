@@ -24,18 +24,26 @@ export default class IndexCommonManager {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
             burnupShow: true,
-
             picState: true,
             btnState: false,
             hintPic: true,
             picStateUrl: '../../images/index/done.png',
             homeHeartBoxIndex: 1,
-
             homeTitle: true,
             homeTitleText: "已找到您的设备",
             homePShow: false,
             homeOrangeBtn: false,
         })
+       /* var that = this;
+        let countDownNum =5
+        setInterval(function () {
+            countDownNum--;
+            if ( countDownNum == 0) {
+                clearInterval();
+                that.setDissearchState()
+            }
+        }, 1000)*/
+
     }
 
     setDissearchState() {
