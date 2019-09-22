@@ -8,7 +8,6 @@ export default class ConnectionManager {
         this.action = {};
         this.action[ConnectState.UNBIND] = () => {
             this.unbind();
-
         };
 
         this.action[ConnectState.UNAVAILABLE] = () => {
@@ -16,15 +15,10 @@ export default class ConnectionManager {
             this._timeoutIndex = setTimeout(() => {
                 WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
                 this.disconnect();
-
             },200);
         };
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
-                this._page.setData({
-                    fatBuringImg:this.fatBuringImgarr[0]
-                })
-
         };
 
         this.action[ConnectState.CONNECTING] = ()=>{
@@ -33,25 +27,6 @@ export default class ConnectionManager {
 
     }
 
-/*    cycle(){
-        const that =this
-        if(this.timer<200000){
-            setTimeout(function () {
-                if(that.counter == that.fatBuringImgarr.length){
-                    that.counter = 0;
-                }
-                that._page.setData({
-                    fatBuringImg:that.fatBuringImgarr[that.counter]
-                })
-                that.counter++;
-                that.timer++
-                that.cycle()
-            }, 1000)
-
-        }
-
-
-    }*/
     unbind() {
         this._page.setData({
 
@@ -86,29 +61,29 @@ export default class ConnectionManager {
             burnupShow: false,
             userInfoShow: true,
             headerRight: true,
-            stateBtnShow: false,
+            stateBtnShow: true,
 
-            state: "设备已连接",
-            stateColorIndex: 1,
+            state: "未连接到设备",
+            stateColorIndex: 0,
 
-            picState: false,
+            picState: true,
             btnState: false,
             hintPic: true,
-            textState:'预热中',
-            homeHeartBoxIndex: 1,
+            picStateUrl:'../../images/index/warn.png',
+            homeHeartBoxIndex: 0,
 
             connectpicShow: false,
             blowpicShow: false,
 
-            homePointFirst: false,
+            homePointFirst: true,
             homePointSecond: false,
 
-            homeBtn: false,
+            homeBtn: true,
 
             homeTitle: false,
             homePShow: false,
             homeOrangeBtn: false,
-        })
+        });
     }
 
     connecting() {

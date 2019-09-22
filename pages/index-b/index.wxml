@@ -7,14 +7,14 @@
 
 
 <view class="home-head">
-  <!--<image class="home-pic" src="{{userInfo.headUrl}}" wx:if="{{userInfoShow}}"></image>-->
-<!--  <block wx:if="{{headerRight}}">
+  <image class="home-pic" src="{{userInfo.headUrl}}" wx:if="{{userInfoShow}}"></image>
+  <block wx:if="{{headerRight}}">
     <view class="home-state" bindtap="disconnectBtnClick">
       <view class="state-hint" style="background: {{stateColor[stateColorIndex]}};"></view>{{state}}
       <text style="color: #FF5D00;margin-left: 10rpx" wx:if="{{stateBtnShow}}">点击重试</text>
     </view>
     <image class="home-set" src="../../images/index/set.png" bindtap="setBtnClick"></image>
-  </block>-->
+  </block>
 </view>
 
 <!--<view class="home-heart">

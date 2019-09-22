@@ -18,7 +18,6 @@ Page({
         userInfo: {},
         firstInto: true,
         isBind:false,
-
         stateColor: ['#FF5F00','#31FF00'],
         homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
 
@@ -54,7 +53,6 @@ Page({
 
         electricitypicShow: false,
     },
-
     useUrl() {
         HiNavigator.navigateToStrategy();
     },
