@@ -3,15 +3,22 @@ import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import WXDialog from "../../view/dialog";
+import IndexCommonManager from "../index/view/indexCommon";
+import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import HiNavigator from "../../navigator/hi-navigator";
+import Login from "../../modules/network/login";
+import UserInfo from "../../modules/network/userInfo";
+import {Toast} from "heheda-common-view";
 
+const app = getApp();
 
 Page({
-
     data: {
+        showGuide: true,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
-            {image: 'man', text: '男士', isChose: false},
-            {image: 'woman', text: '女士', isChose: false}
+            {image: 'man', text: '男士', isChose: false, value: 1},
+            {image: 'woman', text: '女士', isChose: true, value: 0}
         ],
         currentDate: '2018-12-19',
         page: 1,
@@ -19,7 +26,6 @@ Page({
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
-        itemBackgroundColor: '#656565',
         birth: ['1980', '01', '01'],
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
@@ -28,26 +34,62 @@ Page({
         ]
     },
 
-    async onLoad() {
-        //截止日期范围
+    onLoad() {
+        this.handleBaseInfo();
+    },
+
+    async handleBaseInfo() {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
-        const {result: {finishedGuide}} = await Protocol.getAccountInfo();
-        // let info = {
-        //     goalDesc: '',
-        //     sex: 1,
-        //     sexStr: 'man',
-        //     birthday: '1980-01-01',
-        //     height: 180,
-        //     weight: 0,
-        //     bodyFatRate: '12.4',
-        //     weightGoal: 0,
-        // };
-        this.setData({currentDate, goals})
+        const {result: accountInfo} = await Protocol.getAccountInfo();
+        const finishedGuide = accountInfo.finishedGuide;
+        let info = {};
+        if (accountInfo.detail) {
+            info = accountInfo.detail;
+            this.data.meals.map(value => {
+                value.isChose = value.en === info.mealType;
+            });
+
+            this.data.sexBox.map(value => {
+                value.isChose = info.sex === value.value;
+            });
+
+            this.data.birth = info.birthday.split("-");
+        } else {
+            info = {
+                goalDesc: '',
+                sex: 0,
+                sexStr: 'woman',
+                birthday: '1980-01-01',
+                height: '',
+                weight: '',
+                bodyFatRate: '',
+                weightGoal: '',
+            };
+        }
+        this.setData({
+            currentDate, goals, finishedGuide, info,
+            birth: this.data.birth,
+            meals: this.data.meals,
+            sexBox: this.data.sexBox
+        })
     },
 
-    continue() {
+    handleBle() {
+        this.indexCommonManager = new IndexCommonManager(this);
+        app.setBLEListener({
+            bleStateListener: ({state}) => {
+                console.log('bleStateListener:', state);
+            },
+            receiveDataListener: ({finalResult, state}) => {
+                console.log('receiveDataListener:', finalResult, state);
+            }
+        });
+        app.getBLEManager().connect();
+    },
+
+    async continue() {
         const info = this.data.info;
         switch (this.data.page) {
             case 1:
@@ -118,7 +160,8 @@ Page({
                 }
                 break;
             case 7:
-                break;
+                await Protocol.postMembersPut(this.data.info);
+                return;
             case 8:
                 // Protocol.postBreathPlanAnalysis(info).then(data => {
                 //     this.setisFirst();
@@ -150,16 +193,14 @@ Page({
     },
 
     bindTapSex(e) {
-        let choseIndex = e.currentTarget.dataset.index;
+        let choseIndex = e.currentTarget.dataset.index, postSex = 0, sexStr = '';
         this.data.sexBox.map((value, index) => {
             value.isChose = choseIndex == index;
+            if (value.isChose) {
+                postSex = value.value;
+                sexStr = value.image;
+            }
         });
-        let postSex = 0;
-        let sexStr = 'woman';
-        if (choseIndex == 0) {
-            postSex = 1;
-            sexStr = 'man'
-        }
         this.setData({
             sexBox: this.data.sexBox,
             'info.sex': postSex,
@@ -216,5 +257,20 @@ Page({
 
     bindTapSwitchExact() {
         this.setData({noMeasure: !this.data.noMeasure});
+    },
+
+    async onGetUserInfoEvent(e) {
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            try {
+                await Login.doRegister({userInfo, encryptedData, iv});
+                const userInfo = await UserInfo.get();
+                this.setData({userInfo, showGuide: false});
+                Toast.hiddenLoading();
+            } catch (e) {
+                Toast.warn('获取信息失败');
+            }
+        }
     }
 })

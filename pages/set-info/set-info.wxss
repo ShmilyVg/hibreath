@@ -1,4 +1,5 @@
 /* pages/set-info/set-info.wxss */
+@import "./view/guide.wxss";
 
 .title{
     font-size:50rpx;
@@ -40,14 +41,21 @@
     background:rgba(247,247,247,0.1);
 }
 
+.card-chose{
+    width:280rpx;
+    height:400rpx;
+    border-radius:20rpx;
+    background:rgba(255,230,228,1);
+}
+
 .space-between {
     justify-content: space-between;
     width: 690rpx;
 }
 
 .sex-image{
-    width: 78rpx;
-    height: 187rpx;
+    width: 70rpx;
+    height: 176rpx;
     margin-top: 84rpx;
 }
 
@@ -83,8 +91,8 @@
     text-align: center;
     color: white;
     bottom: 60rpx;
-    left: 67rpx;
     font-size:32rpx;
+    width: 100%;
 }
 
 .placeholder{
@@ -98,32 +106,33 @@
     width:320rpx;
     height:70rpx;
     border-radius:10rpx;
-    border:1rpx solid rgba(233,229,238,1);
+    border:2rpx solid rgba(233,229,238,1);
     background-color: white;
     z-index: 80;
-    opacity: 0.3;
     font-size: 22rpx;
+    color:rgba(69,69,69,0.3);
 }
 
 .page1-goals-view2{
     width:440rpx;
     height:96rpx;
     border-radius:10rpx;
-    border:1rpx solid rgba(233,229,238,1);
+    border:2rpx solid rgba(233,229,238,1);
     background-color: white;
     z-index: 90;
-    opacity: 0.6;
     font-size: 26rpx;
+    color:rgba(69,69,69,0.6);
 }
 
 .page1-goals-view3{
     width:550rpx;
     height:120rpx;
     border-radius:10rpx;
-    border:1rpx solid rgba(233,229,238,1);
+    border:2rpx solid rgba(233,229,238,1);
     background-color: white;
     z-index: 100;
     font-size: 28rpx;
+    color:rgba(69,69,69,1);
 }
 
 .page1-goals-image1{
@@ -133,6 +142,7 @@
     margin-left: 36rpx;
     margin-right: 29rpx;
     background-color: lightblue;
+    opacity: 0.3;
 }
 
 .page1-goals-image2{
@@ -142,6 +152,7 @@
     margin-left: 66rpx;
     margin-right: 27rpx;
     background-color: lightblue;
+    opacity: 0.6;
 }
 
 .page1-goals-image3{
@@ -159,16 +170,31 @@
     font-weight:400;
     color:rgba(69,69,69,1);
     line-height:56rpx;
+    text-align: center;
+    width: 100%;
 }
 
 .page1-input-view{
-    width:540rpx;
+    width: 540rpx;
     height:120rpx;
     background:rgba(255,255,255,1);
     box-shadow:0 0 10rpx 0 rgba(0,0,0,0.12);
     border-radius:10rpx;
     align-items: center;
     margin-top: 80rpx;
+}
+
+.page1-edit{
+    width: 60rpx;
+    height: 41rpx;
+    margin-left: 110rpx;
+    margin-right: 10rpx;
+}
+
+.page1-image{
+    width: 23rpx;
+    height: 23rpx;
+    margin: 0 26rpx;
 }
 
 .page2-title{

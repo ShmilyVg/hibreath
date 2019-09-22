@@ -1,20 +1,30 @@
 <!--pages/set-info/set-info.wxml-->
 
 <import src="./view/goal.wxml"></import>
+<import src="./view/guide.wxml"></import>
 
+<view class="flex-column" wx:if="{{showGuide}}">
+    <template is="guide" ></template>
+</view>
 
-<view class="flex-column">
+<view class="flex-column" wx:else>
     <view class="title">{{title[page-1]}}</view>
     <view class="num">{{page}}/8</view>
 
-    <view wx:if="{{page==1}}">
-        <template is="goal" data="{{goals}}"></template>
-        <view class="page1-input-view flex-row">
-            <input class="page1-input" placeholder="写下你的减值目标（14字）" placeholder-class="placeholder" placeholder-style="font-size:32rpx" bindinput="bindInputGoal"/>
+    <view class="flex-column" wx:if="{{page==1}}">
+        <view class="flex-row">
+            <image class="page1-image" src="../../images/set-info/page1-up.png"></image>
+            <template is="goal" data="{{goals}}"></template>
+            <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
         </view>
+        <view class="page1-input-view flex-row">
+            <image wx:if="{{!info.goalDesc.length}}" class="page1-edit" src="../../images/set-info/page1-edit.png"></image>
+            <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下你的减脂目标" maxlength="14" placeholder-class="placeholder" placeholder-style="font-size:32rpx;text-align:left" bindinput="bindInputGoal"/>
+        </view>
+
     </view>
-    <view wx:elif="{{page==2}}" class="flex-row space-between">
-        <view class="card flex-column" wx:for="{{sexBox}}" bindtap="bindTapSex" data-index="{{index}}">
+    <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
+        <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" bindtap="bindTapSex" data-index="{{index}}">
             <image class="sex-image"
                    src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
             <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
@@ -34,12 +44,12 @@
     </block>
     <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
         <view class="flex-column" style="width: 45%">
-            <input class="page2-num" bindinput="bindInputHeight" placeholder="身高" placeholder-class="placeholder"/>
+            <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3" placeholder="身高" placeholder-class="placeholder"/>
             <view class="page2-line"></view>
             <view class="page2-kg">CM</view>
         </view>
         <view class="flex-column" style="width: 45%">
-            <input class="page2-num" bindinput="bindInputWeight" placeholder="体重" placeholder-class="placeholder"/>
+            <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5" placeholder="体重" placeholder-class="placeholder"/>
             <view class="page2-line"></view>
             <view class="page2-kg">KG</view>
         </view>
@@ -56,7 +66,7 @@
             <view class="page4-hint">*图片来源于网络</view>
         </view>
         <view wx:else class="flex-column">
-            <input class="page2-num" placeholder="体脂率" placeholder-class="placeholder" bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
+            <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
             <view class="page2-line"></view>
             <view class="page2-kg">%</view>
             <view class="page6-small-text" bindtap='bindTapSwitchExact'>没测过体脂率</view>
@@ -67,11 +77,11 @@
     </view>
     <view wx:if="{{page==7}}" class="flex-column">
         <view class="page2-title">也可以自定义您的目标体重</view>
-        <input class="page2-num" bindinput="bindInputWightGoal" value="{{info.weightGoal}}" />
+        <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}" />
         <view class="page2-line"></view>
         <view class="page2-kg">KG</view>
     </view>
-    <view class="btn-position">
+    <view class="btn-position flex-column">
         <block wx:if="{{page!=8}}">
             <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continue">下一步
             </view>
