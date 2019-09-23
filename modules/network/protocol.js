@@ -81,7 +81,7 @@ export default class Protocol {
         return Network.request({url: 'breathData/sync', data: data});
     }
 
-    //获取PPM 脂肪燃烧速度对应等级 步行-骑行-汽车等
+    //吹气完成进入结果页
     static postSetGradeInfo(data) {
         return Network.request({url: '/breathData/info', data: data});
     }

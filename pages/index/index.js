@@ -1,3 +1,7 @@
+/**
+ * @Date: 2019-09-23 16:15:14
+ * @LastEditors: 张浩玉
+ */
 //index.js
 //获取应用实例
 import Login from "../../modules/network/login";
@@ -193,7 +197,7 @@ Page({
                 console.log("查看数据2",ProtocolState.BREATH_RESULT)
                 console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
-                    //上传得分并跳转结果页
+                    //上传PPM并跳转结果页
                     Protocol.getBreathDataAdd({
                         dataValue: tools.subStringNum(finalResult.result),
                     }).then(data => {
