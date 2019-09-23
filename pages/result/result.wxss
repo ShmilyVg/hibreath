@@ -117,3 +117,10 @@ page{
     float: left;
     width: 120rpx;
 }
+.result-line{
+    width: 39rpx;
+    border:0.5px #dedede solid ;
+    position: relative;
+    top: 178rpx;
+    left: 398rpx;
+}

@@ -50,6 +50,7 @@ Page({
             gradient.addColorStop("1", "#EF2511");
         }
 
+
         const drawCircle = (target, start, end, color) => {
             //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
             target.arc(100, 100, 95, start * Math.PI / 180, end * Math.PI / 180);
@@ -100,7 +101,9 @@ Page({
             ctx.setFillStyle("#292930");
             var offset = 150;
             ctx.fillText(val/10, offset, 85);
-            ctx.setFontSize(17);
+            ctx.setFontSize(15);
+            ctx.setFillStyle("#969696");
+            ctx.fillText(10, offset, 105);
           /*  if (circleScore <= 20) {
                 ctx.fillText("继续努力", 70, 165);
             } else if (20 < circleScore && circleScore <= 40) {
@@ -174,7 +177,7 @@ Page({
     onLoad: function (e) {
         this.run()
         this.showType()
-        Protocol.postSetGradeInfo({id}).then(data => {
+        Protocol.postSetGradeInfo().then(data => {
 
         })
     },

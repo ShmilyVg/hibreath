@@ -6,6 +6,7 @@
 <view class='content'>
     <canvas canvas-id="bg" class='canvasII'></canvas>
     <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
+    <view class="result-line"></view>
     <image class="fatType1" src="{{fatType}}"></image>
     <view class="fatText">{{fatText}}</view>
     <view class="fatTextEn">{{fatTextEn}}</view>
