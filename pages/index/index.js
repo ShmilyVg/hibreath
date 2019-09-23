@@ -59,9 +59,6 @@ Page({
         electricitypicShow: false,
     },
 
-    useUrl() {
-        HiNavigator.navigateToStrategy();
-    },
     historyUrl() {
         HiNavigator.navigateToclickCheck();
     },

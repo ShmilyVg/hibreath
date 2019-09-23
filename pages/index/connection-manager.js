@@ -82,35 +82,56 @@ export default class ConnectionManager {
 
     disconnect() {
         this._page.setData({
+           /* burnupShow: false,
+            userInfoShow: true,
+            headerRight: true,
+            stateBtnShow: true,
 
+            state: "未连接到设备",
+            stateColorIndex: 0,
+
+            picState: true,
+            btnState: false,
+            hintPic: true,
+            picStateUrl:'../../images/index/warn.png',
+            homeHeartBoxIndex: 0,
+
+            connectpicShow: false,
+            blowpicShow: false,
+
+            homePointFirst: true,
+            homePointSecond: false,
+
+            homeBtn: true,
+
+            homeTitle: false,
+            homePShow: false,
+            homeOrangeBtn: false,*/
             burnupShow: false,
             userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
-
             state: "设备已连接",
             stateColorIndex: 1,
-
             picState: false,
             btnState: false,
             hintPic: true,
 
 
-
-            blowpicShow: false,//吹气图片
-            readyimg:false,// 预热图片
-            blowingImg:false,
-            disblowImg:true,//吹气不足状态
-            textState:'吹气不足',
-            textStateEn:'NO ENOUGH',
-
+            blowpicShow: false,
+            readyimg:false,// 预热图片显示
+            blowingImg:true,
+            textState:'预热中',
+            textStateEn:'PREHEATING',
+            disblowImg:false,//吹气不足状态
 
 
             homeHeartBoxIndex: 1,
-
             connectpicShow: false,
+
+
             homePointFirst: false,
-            homePointSecond: true,
+            homePointSecond: false,
 
             homeBtn: false,
 

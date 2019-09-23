@@ -1,20 +1,18 @@
 {
   "pages": [
+"pages/result/result",
     "pages/index/index",
-    "pages/result/result",
+   
     "pages/personal/personal",
     "pages/set-info/set-info",
-    "pages/strategy/strategy",
     "pages/device-bind/device-bind",
     "pages/history/history",
     "pages/update/update",
-    "pages/welcome/welcome",
     "pages/device-manage/device-manage",
     "pages/physical/physical",
     "pages/plan/plan",
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
-    "pages/planInfo/planInfo",
     "pages/clockIn/clockIn",
     "pages/shoppingList/shoppingList",
     "pages/calendar/calendar"

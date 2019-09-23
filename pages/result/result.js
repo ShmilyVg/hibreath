@@ -55,11 +55,11 @@ Page({
 
         const drawCircle = (target, start, end, color) => {
             //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
-            target.arc(100, 100, 95, start * Math.PI / 180, end * Math.PI / 180);
+            target.arc(100, 100, 90, start * Math.PI / 180, end * Math.PI / 180);
             target.setStrokeStyle(color);
             target.setLineWidth("5");
             //计算公式 （2ΠR*3/4-40）/5
-            target.setLineDash([81.535, 10], 0);
+            target.setLineDash([76.823, 10], 0);
             target.setLineCap("round");
             target.stroke();
             // target.draw();
@@ -103,9 +103,9 @@ Page({
             ctx.setFillStyle("#292930");
             var offset = 150;
             ctx.fillText(val/10, offset, 85);
-            ctx.setFontSize(15);
+           /* ctx.setFontSize(15);
             ctx.setFillStyle("#969696");
-            ctx.fillText(10, offset, 105);
+            ctx.fillText(10, offset, 105);*/
           /*  if (circleScore <= 20) {
                 ctx.fillText("继续努力", 70, 165);
             } else if (20 < circleScore && circleScore <= 40) {

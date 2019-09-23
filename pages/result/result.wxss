@@ -3,7 +3,7 @@ page{
     box-sizing:border-box;
 }
 .content{
-    width: 90%;
+    width: 100%;
     height: 400rpx;
     margin: 0 auto;
     position: relative;
@@ -107,7 +107,7 @@ page{
     border-bottom: 2px #ED6F69 solid;
     float: left;
     height: 55rpx;
-    width: 120rpx;
+    width: 130rpx;
 }
 .tab_item{
     font-family: PingFang-SC;
@@ -115,7 +115,7 @@ page{
     color: #969696;
     height: 55rpx;
     float: left;
-    width: 120rpx;
+    width: 130rpx;
 }
 .result-line{
     width: 39rpx;

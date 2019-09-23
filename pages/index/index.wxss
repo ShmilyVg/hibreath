@@ -21,7 +21,7 @@
     margin-top: 10rpx;
 }
 .fatBurning-img{
-    width: 167rpx;
+    width: 177rpx;
     height: 306rpx;
     margin-top: 168rpx;
     animation:myfirst 4s linear infinite ;
@@ -56,8 +56,8 @@
     margin-bottom: 194rpx;
 }
 .blowing-img{
-    width: 400rpx;
-    height: 400rpx;
+    width: 386rpx;
+    height: 331rpx;
     animation:mySecond 5s linear infinite;
     margin-left: 180rpx;
     margin-bottom: 140rpx;

@@ -25,9 +25,7 @@ export default class HiNavigator extends CommonNavigator {
         getApp().globalData.refreshIndexPage = refresh;
         wx.reLaunch({url: '/pages/index/index'});
     }
-    static navigateToStrategy() {
-        this.navigateTo({url: '/pages/strategy/strategy'});
-    }
+
 
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
@@ -69,9 +67,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateTarget() {
         this.navigateTo({url: '/pages/setTarget/setTarget'})
     }
-    static navigatePlanInfo() {
-        this.navigateTo({url: '/pages/planInfo/planInfo'})
-    }
+
 
 
     static navigateToHIIT({id}) {
@@ -82,9 +78,7 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/cookInfo/cookInfo?id=' + id})
     }
 
-    static navigateToshoppingList({id}) {
-        this.navigateTo({url: '/pages/shoppingList/shoppingList?id=' + id})
-    }
+
    /* static navigatoResult({score}) {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});

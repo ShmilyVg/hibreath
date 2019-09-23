@@ -6,7 +6,7 @@
 <view class='content'>
     <canvas canvas-id="bg" class='canvasII'></canvas>
     <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
-    <view class="result-line"></view>
+ <!--   <view class="result-line"></view>-->
     <image class="fatType1" src="{{fatType}}"></image>
     <view class="fatText">{{fatText}}</view>
     <view class="fatTextEn">{{fatTextEn}}</view>
@@ -15,7 +15,7 @@
 <button class="result-btn" bindtap="toIndex">吹一吹</button>
 <view class="result_tab">
     <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 61rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
     <view class="clear"></view>
 </view>
 
