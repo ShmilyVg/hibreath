@@ -1,0 +1,42 @@
+<!--hipee/pages/calendar/calendar.wxml-->
+<wxs src="layout.wxs" module="tools"></wxs>
+<import src="../../modules/loading/loading-refresh.wxml"></import>
+<view class="container">
+    <view class="flex-row calendar-week-layout">
+        <view wx:for="{{week}}" wx:key="index" style="margin: 0 35rpx;">{{item.value}}</view>
+    </view>
+    <view style="height: 46rpx;"></view>
+    <block wx:if="{{monthList.length}}">
+        <block wx:for="{{monthList}}" wx:key="month">
+            <view class="calendar-year-style">{{item.date}}</view>
+            <view class="flex-row calendar-day-layout">
+                <block wx:for="{{item.days}}" wx:key="timestamp" wx:for-item="daysItem" wx:for-index="daysIndex">
+                    <view style="position: relative;margin-top: 21rpx;" bindtap="clickCalendarEvent" data-day-timeStamp="{{daysItem.timestamp}}" data-month-timeStamp="{{item.month}}" wx:if="{{daysItem.timestamp}}">
+                        <view style="width: {{tools.getLayoutWidth(chooseIndexObj,daysItem,daysIndex,item.days.length)}}rpx;" class="calendar-day-common-style calendar-day-selected-common-layout {{tools.getRadiusLayout(chooseIndexObj,daysItem,daysIndex,item.days.length,item.emptyCount)}} {{tools.getDaysBg(daysItem,chooseIndexObj)}}"></view>
+                        <view class="flex-column" style="margin-right: {{daysIndex%7===6?0:28}}rpx;">
+                            <view class="flex-row calendar-day-common-style {{tools.getTextLayoutAndStyle(daysItem,chooseIndexObj)}}" >{{daysItem.is_today?'今':(tools.getDayNum(daysIndex,item.emptyCount))}}</view>
+                            <view class="calendar-have-data-circle-style" wx:if="{{daysItem.has_data}}"></view>
+                            <view wx:else class="calendar-no-data-circle-style"></view>
+                        </view>
+                    </view>
+                    <view wx:else style="position: relative;margin-top: 21rpx;width: 98rpx;height: 70rpx;"></view>
+                </block>
+            </view>
+
+        </block>
+        <view style="position: fixed;bottom: 0;left: 0;width: 100%;background-color: white;z-index: 2;" class="flex-column">
+            {{tools.dealRemindText(chooseIndexObj, monthList)}}
+            <view class="list-divider-normal-line"></view>
+            <text style="color: {{tools.isCanClick(chooseIndexObj)?'#64C4FB':'#AABAC1'}};font-size: 30rpx;margin-bottom: 31rpx;margin-top: 30rpx;">{{tools.getRemindText()}}</text>
+            <button style="color: white;font-size: 36rpx;width: 90%;margin-bottom: 30rpx;background-color: {{tools.isCanClick(chooseIndexObj)?'#64C4FB':'#C1D0D7'}}" disabled="{{!tools.isCanClick(chooseIndexObj)}}" bindtap="confirmChooseTime">确定</button>
+        </view>
+        <view style="height: 226rpx;"></view>
+    </block>
+
+    <view wx:else style="width: 100%;margin-top: 200rpx">
+        <template is="loading-refresh"
+                  data="{{firstLoading:firstLoadingItems,loadingFailed:loadingMonthListFailed,isNetworkConnected:isNetworkConnected,textWhenConn:'加载失败，请点击刷新',typeName:'items'}}"></template>
+    </view>
+
+</view>
+

@@ -16,7 +16,8 @@
     "pages/HIITInfo/HIITInfo",
     "pages/planInfo/planInfo",
     "pages/clockIn/clockIn",
-    "pages/shoppingList/shoppingList"
+    "pages/shoppingList/shoppingList",
+    "pages/calendar/calendar"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",
