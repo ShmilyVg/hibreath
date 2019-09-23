@@ -26,7 +26,24 @@
 
 <!--全部分类 -->
 <view wx:if="{{currenttab==='1'}}" >
-    燃脂趋势
+    <block wx:if="{{!noData}}">
+        <view class="canvas-base-view">
+            <view class="flex-row"
+                  style="justify-content: center;width: 100%;align-items: center;margin-top: 20rpx;"
+                  bindtap="toChooseDate">
+                <view class="canvas-bottom-text">{{trendDate}}</view>
+            </view>
+            <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
+                    bindtouchstart="touchHandler"
+                    bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+
+        </view>
+    </block>
+    <block wx:else>
+        <view class="flex-column index-history-no-data-text">
+            <template is="no-data" data="{{content:'暂无趋势数据'}}"></template>
+        </view>
+    </block>
 </view>
 
 

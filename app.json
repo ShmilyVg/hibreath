@@ -20,7 +20,8 @@
     "pages/planInfo/planInfo",
     "pages/successInfo/successInfo",
     "pages/clockIn/clockIn",
-    "pages/shoppingList/shoppingList"
+    "pages/shoppingList/shoppingList",
+    "pages/calendar/calendar"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3E3E3E",

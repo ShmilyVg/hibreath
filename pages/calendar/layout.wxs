@@ -1,0 +1,94 @@
+var getRadiusLayout = function (chooseIndexObj, daysItem, daysIndex, daysLength, emptyCount) {
+    if ((chooseIndexObj.startTimestamp === daysItem.timestamp
+            && (daysIndex % 7 === 6 || daysIndex === (daysLength - 1)))
+        || (chooseIndexObj.endTimestamp === daysItem.timestamp && (daysIndex % 7 === 0 || getDayNum(daysIndex, emptyCount) === 1))
+        || daysIndex % 7 === 0 && daysIndex === daysLength - 1) {
+        return 'calendar-day-left-circle-layout calendar-day-right-circle-layout'
+    } else if (chooseIndexObj.startTimestamp === daysItem.timestamp || daysIndex % 7 === 0 || getDayNum(daysIndex, emptyCount) === 1) {
+        return 'calendar-day-left-circle-layout';
+    } else if (chooseIndexObj.endTimestamp === daysItem.timestamp || daysIndex % 7 === 6 || daysIndex === (daysLength - 1)) {
+        return 'calendar-day-right-circle-layout';
+    }
+    return '';
+    // return daysIndex % 7 === 0 ? 'calendar-day-left-circle-layout' : (daysIndex % 7 === 6 || daysIndex === (daysLength - 1) ? 'calendar-day-right-circle-layout' : '');
+};
+var getDaysBg = function (daysItem, chooseIndexObj) {
+    return daysItem.timestamp >= chooseIndexObj.startTimestamp && daysItem.timestamp <= chooseIndexObj.endTimestamp ? 'calendar-day-selected-bg-style' : '';
+};
+//TODO 如果是被选中的，则显示宽度为 35
+var getLayoutWidth = function (chooseIndexObj, daysItem, daysIndex, daysLength) {
+    return (daysIndex % 7 === 6 || daysIndex === (daysLength - 1) || chooseIndexObj.endTimestamp === daysItem.timestamp) ? 70 : 98;
+};
+
+var getTextLayoutAndStyle = function (daysItem, chooseIndexObj) {
+
+    if (daysItem.timestamp > chooseIndexObj.startTimestamp && daysItem.timestamp < chooseIndexObj.endTimestamp) {
+        return 'calendar-day-selected-style';
+    } else if (daysItem.timestamp === chooseIndexObj.startTimestamp || daysItem.timestamp === chooseIndexObj.endTimestamp) {
+        return 'calendar-day-click-style';
+    } else if (daysItem.is_today) {
+        return 'calendar-today-style';
+    } else if (daysItem.has_data) {
+        return 'calendar-day-have-data-text-style';
+    }
+    return 'calendar-day-no-data-text-style';
+};
+var hasData = false, remindText = '是的';
+var getChooseResult = function (monthList, chooseIndexObj) {
+    hasData = false;
+    var containList = [], item, i, j, len;
+    if (!monthList) {
+        return;
+    }
+
+    for (j = 0, len = monthList.length; j < len; j++) {
+        item = monthList[j];
+        if (chooseIndexObj.startMonthTimestamp <= item.month && chooseIndexObj.endMonthTimestamp >= item.month) {
+            containList.push(item);
+        }
+    }
+
+    for (j = 0, len = containList.length; j < len; j++) {
+        item = containList[j];
+        if (!!item) {
+            for (i = 0, len = item.days.length; i < len; i++) {
+                if (item.days[i].timestamp >= chooseIndexObj.startTimestamp && item.days[i].timestamp <= chooseIndexObj.endTimestamp && item.days[i].has_data) {
+                    hasData = true;
+                    break;
+                }
+            }
+        }
+    }
+    return hasData ? chooseIndexObj.date : '此时间段没有监测数据';
+};
+
+var dealRemindText = function (chooseIndexObj, monthList) {
+    remindText = chooseIndexObj.endTimestamp === 0 ? '请选择时间段' :
+        isChooseDaysLengthGood(chooseIndexObj) ? getChooseResult(monthList, chooseIndexObj) :
+            '选择天数不能大于30天，请重新选择';
+};
+var getRemindText = function () {
+    return remindText;
+};
+var isChooseDaysLengthGood = function (chooseIndexObj) {
+    return (chooseIndexObj.endTimestamp - chooseIndexObj.startTimestamp) / 86400000 < 30;
+};
+
+var isCanClick = function (chooseIndexObj) {
+    return chooseIndexObj.endTimestamp !== 0 && hasData && isChooseDaysLengthGood(chooseIndexObj);
+};
+
+var getDayNum = function (daysIndex, emptyCount) {
+    return daysIndex + 1 - emptyCount;
+};
+
+module.exports = {
+    getRadiusLayout: getRadiusLayout,
+    getLayoutWidth: getLayoutWidth,
+    getTextLayoutAndStyle: getTextLayoutAndStyle,
+    dealRemindText: dealRemindText,
+    getDaysBg: getDaysBg,
+    isCanClick: isCanClick,
+    getDayNum: getDayNum,
+    getRemindText: getRemindText
+};

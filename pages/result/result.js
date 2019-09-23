@@ -7,6 +7,7 @@ import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import toast from "../../view/toast";
 import HiNavigator from "../../navigator/hi-navigator";
+import * as trend from "./view/trend";
 var ctx = wx.createCanvasContext("dashboard"); //创建一个全局的canvas绘图上下文
 var bg = wx.createCanvasContext("bg");
 var w = "";
@@ -14,7 +15,8 @@ var h = "";
 Page({
     data: {
         score: 6.5, //传入的进度， 0~100，绘制到此参数处停止。
-        currenttab:'0'
+        currenttab:'0',
+        trendDate:'2020202020'
     },
     selectTab:function(e){
         //切换标签页
@@ -175,11 +177,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
+this.handleTrend();
         this.run()
         this.showType()
-        Protocol.postSetGradeInfo().then(data => {
-
-        })
+        // Protocol.postSetGradeInfo().then(data => {
+        //
+        // })
     },
 
     /**
@@ -236,6 +239,28 @@ Page({
                 fatTextEn:"UNDUE"
             })
         }
+    },
+    handleTrend(){
+        trend.init(this);
+        trend.initTouchHandler();
+        let data= {dataList:[352, 356, 259, 207, 437, 349, 360],
+        xTitle: "次数",
+        yAxisSplit: 5,
+        yMax: 1200,
+        yTitle: "QTC (单位 : ms)"}
+        trend.setData(data);
+    },
+    toChooseDate () {
+        let info = {
+            // member_id: this.data.userInfo.member_id,
+            // item_code: this.data.itemCode,
+            // type: this.data.list[this.data.num].type,
+            // end_time: this.data.trendData[0].time_for.date,
+            // start_time: this.data.trendData[this.data.trendData.length - 1].time_for.date,
+        };
+        wx.navigateTo({
+            url: '../calendar/calendar?info=' + JSON.stringify(info)
+        });
     }
 })
 

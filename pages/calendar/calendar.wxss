@@ -1,0 +1,100 @@
+/* hipee/pages/calendar/calendar.wxss */
+
+.calendar-week-layout{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80rpx;
+    justify-content: center;
+    z-index: 2;
+    background-color: white;
+    font-size: 30rpx;
+    color: #718EA0;
+}
+.calendar-year-style{
+    background-color: #f8f8f8;
+    color: #AABAC1;
+    font-size: 30rpx;
+    width: 100%;
+    text-align: center;
+    padding: 10rpx 0;
+    margin: 34rpx 0;
+}
+
+.calendar-day-layout{
+    width: 100%;
+    padding-left: 46rpx;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-self: center;
+}
+
+.calendar-have-data-circle-style{
+    border-radius: 50%;
+    width: 11rpx;
+    height: 11rpx;
+    background-color: #64C4FB;
+}
+
+.calendar-no-data-circle-style{
+    height: 11rpx;
+}
+
+.calendar-day-common-style{
+    width: 70rpx;
+    height: 70rpx;
+    margin-bottom: 5rpx;
+    justify-content: center;
+    align-self: center;
+    font-size: 34rpx;
+    line-height: 34rpx;
+    z-index: 1;
+}
+
+.calendar-day-click-style{
+    border-radius: 50%;
+    background-color: #64C4FB;
+    color: white;
+    box-shadow: 0 0 10rpx #64C4FB;
+}
+
+.calendar-day-selected-style{
+    color: white;
+}
+
+.calendar-day-selected-layout{
+    background-color: #B2E3FF;
+}
+
+.calendar-day-selected-common-layout{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.calendar-day-selected-bg-style{
+    background-color: #B2E3FF;
+}
+
+.calendar-day-left-circle-layout{
+    border-bottom-left-radius: 50rpx;
+    border-top-left-radius: 50rpx;
+}
+.calendar-day-right-circle-layout{
+    border-top-right-radius: 50rpx;
+    border-bottom-right-radius: 50rpx;
+}
+
+.calendar-day-have-data-text-style{
+    color: #718EA0;
+}
+
+.calendar-day-no-data-text-style{
+    color: #C1D0D7;
+}
+
+.calendar-today-style{
+    color: #64C4FB;
+}

@@ -124,3 +124,20 @@ page{
     top: 178rpx;
     left: 398rpx;
 }
+
+.canvas-base-view{
+    width: 720rpx;
+    margin-left: 10rpx;
+}
+
+.canvas {
+    width: 720rpx;
+    height: 440rpx;
+    margin-top: 50rpx;
+    margin-left: -35rpx;
+}
+
+.canvas-bottom-text{
+    font-size: 30rpx;
+    color: #718EA0;
+}

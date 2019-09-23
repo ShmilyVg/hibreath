@@ -35,6 +35,15 @@ Page({
     },
 
     onLoad() {
+        let that = this;
+        wx.getSetting({
+            success: (res) => {
+                console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
+                that.setData({
+                    showGuide: res.authSetting['scope.userInfo'] === undefined
+                })
+            }
+        });
         this.handleBaseInfo();
     },
 
