@@ -20,8 +20,8 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             //由设备发出的重新吹气请求
             '0x34': () => {
                 super.sendData({command: '0x35'});
-                return {state: ProtocolState.PRE_HOT_START};
-                /*  return {state: ProtocolState.BREATH_RESTART};*/
+                /*return {state: ProtocolState.PRE_HOT_START};*/
+                  return {state: ProtocolState.BREATH_RESTART};
             },
             //由设备发出的显示结果请求
             '0x36': ({dataArray}) => {

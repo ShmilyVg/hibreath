@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/result/result",
     "pages/index/index",
+    "pages/result/result",
     "pages/personal/personal",
     "pages/set-info/set-info",
     "pages/strategy/strategy",
@@ -10,15 +10,11 @@
     "pages/update/update",
     "pages/welcome/welcome",
     "pages/device-manage/device-manage",
-    "pages/BMIhistory/BMIhistory",
-    "pages/BMIhistoryInfo/BMIhistoryInfo",
     "pages/physical/physical",
     "pages/plan/plan",
-    "pages/setTarget/setTarget",
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
     "pages/planInfo/planInfo",
-    "pages/successInfo/successInfo",
     "pages/clockIn/clockIn",
     "pages/shoppingList/shoppingList"
   ],

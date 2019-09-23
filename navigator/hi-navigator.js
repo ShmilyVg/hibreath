@@ -61,12 +61,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToclickMine() {
         this.navigateTo({url: '/pages/device-manage/device-manage'})
     }
-    static navigateToBMIhistoryInfo() {
-        this.navigateTo({url: '/pages/BMIhistoryInfo/BMIhistoryInfo'})
-    }
-    static navigateToBMIhistory() {
-        this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
-    }
+
+
     static navigateToPlan() {
         this.navigateTo({url: '/pages/plan/plan'})
     }
@@ -76,9 +72,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigatePlanInfo() {
         this.navigateTo({url: '/pages/planInfo/planInfo'})
     }
-    static navigateSuccessInfo() {
-        this.navigateTo({url: '/pages/successInfo/successInfo'})
-    }
+
 
     static navigateToHIIT({id}) {
         this.navigateTo({url: '/pages/HIITInfo/HIITInfo?id=' + id})

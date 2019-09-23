@@ -109,7 +109,7 @@
     font-size: 15px;
     color: #7C7C7C;
     font-family:PingFang-SC;
-    margin-top: 240rpx;
+    margin-top: 210rpx;
 }
 /*9.22 新加E*/
 .home-head{
