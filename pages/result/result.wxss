@@ -61,11 +61,14 @@ page{
     align-items:center;*/
     height: 59rpx;
     padding-top: 57rpx;
+    position: relative;
 }
 .result-img1{
     height: 34rpx;
     width: 34rpx;
     float: left;
+    position: absolute;
+    top: 0rpx;
 }
 .result-img2{
     height: 50rpx;
@@ -78,6 +81,10 @@ page{
     font-family: PingFang-SC;
     float: left;
     margin-left: 15rpx;
+    position: absolute;
+    top: 55rpx;
+    left: 30rpx;
+
 }
 .fatDes{
     font-size: 15px;

@@ -101,7 +101,7 @@ Page({
             fillGrid(ctx, pt, gradient, val);
             ctx.setFontSize(23);
             ctx.setFillStyle("#292930");
-            var offset = 150;
+            var offset = 140;
             ctx.fillText(val/10, offset, 85);
            /* ctx.setFontSize(15);
             ctx.setFillStyle("#969696");
