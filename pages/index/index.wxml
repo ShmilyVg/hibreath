@@ -1,6 +1,6 @@
 <import src="./view/indexCommon.wxml"></import>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,blowpicShow,blowingImg,blowNumber,homeTitle,homeTitleText,hintPic}}"></template>
+<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}"></template>
 
 
 <!--<image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>-->
@@ -36,7 +36,7 @@
 <!--<image class="blowpic" src="../../images/index/blowpic.png" wx:if="{{blowpicShow}}" animation="{{animationData}}"></image>-->
 
 <view class="home-point" wx:if="{{homePointFirst}}"><text>燃脂小贴士：</text>{{noteListMore}}</view>
-<view class="home-point" wx:if="{{homePointHot}}"><text>燃脂小贴士：</text>设备长时间未使用，为了保证结果准确，设备还需要些时间预热，请耐心等待</view>
+<!--<view class="home-point" wx:if="{{homePointHot}}"><text>燃脂小贴士：</text>设备长时间未使用，为了保证结果准确，设备还需要些时间预热，请耐心等待</view>-->
 <!--<view class="home-point" wx:if="{{homePointSecond}}"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>-->
 
 <view wx:if="{{isBind}}">

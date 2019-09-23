@@ -21,10 +21,7 @@ export default class ConnectionManager {
         };
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
-            this._page.setData({
-                blowNumber: 5
-            });
-            this.timer()
+
 
 
         };
@@ -35,19 +32,6 @@ export default class ConnectionManager {
 
     }
 
-    timer(){
-        var that = this;
-        let countDownNum =4
-        var int=setInterval(function () {
-            that._page.setData({
-                blowNumber: countDownNum
-            })
-            countDownNum--;
-            if ( countDownNum == 0) {
-                clearInterval(int);
-            }
-        }, 1000)
-    }
 
 /*    cycle(){
         const that =this
@@ -111,16 +95,20 @@ export default class ConnectionManager {
             btnState: false,
             hintPic: true,
 
+
+
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
-            blowingImg:true,
-            textState:'吹气中',
-            textStateEn:'BLOWING',
+            blowingImg:false,
+            disblowImg:true,//吹气不足状态
+            textState:'吹气不足',
+            textStateEn:'NO ENOUGH',
 
 
-            homeHeartBoxIndex: 2,
+
+            homeHeartBoxIndex: 1,
+
             connectpicShow: false,
-
             homePointFirst: false,
             homePointSecond: true,
 
