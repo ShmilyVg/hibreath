@@ -174,6 +174,9 @@ Page({
     onLoad: function (e) {
         this.run()
         this.showType()
+        Protocol.postSetGradeInfo({id}).then(data => {
+
+        })
     },
 
     /**
