@@ -102,6 +102,14 @@
     color:#B0B0B0;
 }
 
+.placeholder-page1{
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#B0B0B0;
+    font-size:32rpx;
+    text-align:left;
+}
+
 .page1-goals-view1{
     width:320rpx;
     height:70rpx;
