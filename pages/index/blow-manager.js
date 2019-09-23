@@ -83,23 +83,28 @@ export default class BlowManager {
 
     ready() {
         this._page.setData({
-
             burnupShow: false,
             userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
-
             state: "设备已连接",
             stateColorIndex: 1,
-
             picState: false,
             btnState: false,
             hintPic: true,
-            textState:'预热中',
-            homeHeartBoxIndex: 1,
 
-            connectpicShow: false,
+
             blowpicShow: false,
+            readyimg:true,// 预热图片显示
+            blowingImg:false,
+            textState:'预热中',
+            textStateEn:'PREHEATING',
+
+
+
+            homeHeartBoxIndex: 1,
+            connectpicShow: false,
+
 
             homePointFirst: false,
             homePointSecond: false,
@@ -126,11 +131,19 @@ export default class BlowManager {
             picState: false,
             btnState: false,
             hintPic: true,
-            textState:'',
+
+            blowpicShow: true,//吹气图片显示
+            readyimg:false,// 预热图片显示
+            blowingImg:false,
+            textState:'已就绪·请吹气',
+            textStateEn:'BLOW UP',
+
+
+
             homeHeartBoxIndex: 1,
             homePointHot:false, //吹气时 隐藏预热过长文案
             connectpicShow: false,
-            blowpicShow: true,
+
 
             homePointFirst: false,
             homePointSecond: true,
@@ -181,18 +194,25 @@ export default class BlowManager {
             userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
-
             state: "设备已连接",
             stateColorIndex: 1,
 
             picState: false,
             btnState: false,
             hintPic: true,
-            textState:'吹气中',
+
+
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:false,
+            textState:'已就绪·请吹气',
+            textStateEn:'BLOW UP',
+
+
+
             homeHeartBoxIndex: 2,
 
             connectpicShow: false,
-            blowpicShow: false,
 
             homePointFirst: false,
             homePointSecond: true,

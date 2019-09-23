@@ -14,8 +14,13 @@
     </view>-->
 
      <!-- <image class="fatBurning-img" src="{{fatBuringImg}}"></image>-->
-      <view class="fatBurning-img"></view>
+      <view wx:if="{{readyimg}}" class="fatBurning-img"></view>
+      <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
+      <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view>
+      <view wx:if="{{blowingImg}}" class="blowing-img"></view>
+      <view wx:if="{{blowingImg}}" class="blowing-imgs"></view>
       <view class="fatBurning-text">{{textState}}</view>
+      <view class="fatBurning-textEn">{{textStateEn}}</view>
   </view>
 
   <view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>

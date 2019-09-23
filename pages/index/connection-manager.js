@@ -21,9 +21,11 @@ export default class ConnectionManager {
         };
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
-                this._page.setData({
-                    fatBuringImg:this.fatBuringImgarr[0]
-                })
+            this._page.setData({
+                blowNumber: 5
+            });
+            this.timer()
+
 
         };
 
@@ -31,6 +33,20 @@ export default class ConnectionManager {
             this.connecting();
         };
 
+    }
+
+    timer(){
+        var that = this;
+        let countDownNum =4
+        var int=setInterval(function () {
+            that._page.setData({
+                blowNumber: countDownNum
+            })
+            countDownNum--;
+            if ( countDownNum == 0) {
+                clearInterval(int);
+            }
+        }, 1000)
     }
 
 /*    cycle(){
@@ -94,21 +110,26 @@ export default class ConnectionManager {
             picState: false,
             btnState: false,
             hintPic: true,
-            textState:'预热中',
-            homeHeartBoxIndex: 1,
 
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:true,
+            textState:'吹气中',
+            textStateEn:'BLOWING',
+
+
+            homeHeartBoxIndex: 2,
             connectpicShow: false,
-            blowpicShow: false,
 
             homePointFirst: false,
-            homePointSecond: false,
+            homePointSecond: true,
 
             homeBtn: false,
 
             homeTitle: false,
             homePShow: false,
             homeOrangeBtn: false,
-        })
+        });
     }
 
     connecting() {
