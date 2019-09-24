@@ -15,7 +15,7 @@
                         <view style="width: {{tools.getLayoutWidth(chooseIndexObj,daysItem,daysIndex,item.days.length)}}rpx;" class="calendar-day-common-style calendar-day-selected-common-layout {{tools.getRadiusLayout(chooseIndexObj,daysItem,daysIndex,item.days.length,item.emptyCount)}} {{tools.getDaysBg(daysItem,chooseIndexObj)}}"></view>
                         <view class="flex-column" style="margin-right: {{daysIndex%7===6?0:28}}rpx;">
                             <view class="flex-row calendar-day-common-style {{tools.getTextLayoutAndStyle(daysItem,chooseIndexObj)}}" >{{daysItem.is_today?'今':(tools.getDayNum(daysIndex,item.emptyCount))}}</view>
-                            <view class="calendar-have-data-circle-style" wx:if="{{daysItem.has_data}}"></view>
+                            <view class="calendar-have-data-circle-style" wx:if="{{daysItem.hasData}}"></view>
                             <view wx:else class="calendar-no-data-circle-style"></view>
                         </view>
                     </view>

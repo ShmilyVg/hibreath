@@ -76,11 +76,7 @@ Page({
         }
     },
     getTrendTime(startTime, endTime) {
-        const data = {
-            start_time: startTime,
-            end_time: endTime
-        };
-        Protocol.postItemCalendar(data).then(res => {
+        Protocol.postItemCalendar({startTime,endTime}).then(res => {
             this.commonCalendarCbFun(res);
         });
     },
