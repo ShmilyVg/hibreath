@@ -34,7 +34,7 @@
     border-radius: 50%;
     width: 11rpx;
     height: 11rpx;
-    background-color: #64C4FB;
+    background-color: #ED6F69;
 }
 
 .calendar-no-data-circle-style{
@@ -54,9 +54,9 @@
 
 .calendar-day-click-style{
     border-radius: 50%;
-    background-color: #64C4FB;
+    background-color: #ED6F69;
     color: white;
-    box-shadow: 0 0 10rpx #64C4FB;
+    box-shadow: 0 0 10rpx #ED6F69;
 }
 
 .calendar-day-selected-style{
@@ -75,7 +75,7 @@
 }
 
 .calendar-day-selected-bg-style{
-    background-color: #B2E3FF;
+    background-color: rgba(255, 117, 102, 0.5);
 }
 
 .calendar-day-left-circle-layout{
@@ -96,5 +96,5 @@
 }
 
 .calendar-today-style{
-    color: #64C4FB;
+    color: #ED6F69;
 }

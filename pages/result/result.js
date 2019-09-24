@@ -183,7 +183,7 @@ Page({
         this.run()
         this.showType()
         Protocol.getBreathDataList({page:1,pageSize:20}).then(data=>{
-            const list = data.result.list;
+            const list = data.result.list.reverse();
             const startData = tools.createDateAndTime(list[0].createdTimestamp);
             const endData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
             let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
