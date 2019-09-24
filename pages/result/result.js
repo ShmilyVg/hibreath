@@ -8,6 +8,7 @@ import Protocol from "../../modules/network/protocol";
 import toast from "../../view/toast";
 import HiNavigator from "../../navigator/hi-navigator";
 import * as trend from "./view/trend";
+
 var ctx = wx.createCanvasContext("dashboard"); //创建一个全局的canvas绘图上下文
 var bg = wx.createCanvasContext("bg");
 var w = "";
@@ -15,36 +16,36 @@ var h = "";
 Page({
     data: {
         score: 6.5, //传入的进度， 0~100，绘制到此参数处停止。
-        currenttab:'0',
-        trendDate:''
+        currenttab: '0',
+        trendDate: ''
     },
-    selectTab:function(e){
+    selectTab: function (e) {
         //切换标签页
         console.log(e.currentTarget.dataset.tabid)
-        var newtab=e.currentTarget.dataset.tabid;
-        if(this.data.currenttab===newtab){
+        var newtab = e.currentTarget.dataset.tabid;
+        if (this.data.currenttab === newtab) {
             return
-        }else{
+        } else {
             this.setData({
-                currenttab:newtab
+                currenttab: newtab
             })
-            if (newtab == 1){
+            if (newtab == 1) {
                 this.handleTrend()
             }
         }
     },
     run(e) {
         let that = this;
-        const circleScore = that.data.score*10
+        const circleScore = that.data.score * 10
         var gradient = ctx.createLinearGradient(0, 0, 125, 0);
         console.log('2', 20 < circleScore <= 40)
         if (circleScore <= 20) {
             gradient.addColorStop("0", "#542EE3");
             gradient.addColorStop("0.2", "#250099");
-        } else if (20 < circleScore && circleScore<= 40) {
+        } else if (20 < circleScore && circleScore <= 40) {
             gradient.addColorStop("0", "#0026FE");
             gradient.addColorStop("0.4", "#00CFFF");
-        } else if (40 < circleScore && circleScore<= 60) {
+        } else if (40 < circleScore && circleScore <= 60) {
             gradient.addColorStop("0", "#20D9D1");
             gradient.addColorStop("0.6", "#00B96C");
         } else if (60 < circleScore && circleScore <= 80) {
@@ -105,34 +106,34 @@ Page({
             ctx.setFontSize(23);
             ctx.setFillStyle("#292930");
             var offset = 140;
-            ctx.fillText(val/10, offset, 85);
-           /* ctx.setFontSize(15);
-            ctx.setFillStyle("#969696");
-            ctx.fillText(10, offset, 105);*/
-          /*  if (circleScore <= 20) {
-                ctx.fillText("继续努力", 70, 165);
-            } else if (20 < circleScore && circleScore <= 40) {
-                ctx.fillText("缓慢燃脂", 70, 165);
-            } else if (40 < circleScore && circleScore <= 60) {
-                ctx.fillText("状态极佳", 70, 165);
-            } else if (60 < circleScore && circleScore <= 80) {
-                ctx.fillText("快速燃脂", 70, 165);
-            } else {
-                ctx.fillText("过度燃脂", 70, 165);
-            }
-            ctx.setFontSize(12);
-            ctx.setFillStyle("#969696");
-            if (circleScore <= 20) {
-                ctx.fillText("KEEP ON", 70, 185);
-            } else if (20 < circleScore && circleScore <= 40) {
-                ctx.fillText("SLOW", 70, 185);
-            } else if (40 < circleScore && circleScore <= 60) {
-                ctx.fillText("PROPER", 70, 185);
-            } else if (60 < circleScore && circleScore <= 80) {
-                ctx.fillText("FAST", 70, 185);
-            } else {
-                ctx.fillText("UNDUE", 70, 185);
-            }*/
+            ctx.fillText(val / 10, offset, 85);
+            /* ctx.setFontSize(15);
+             ctx.setFillStyle("#969696");
+             ctx.fillText(10, offset, 105);*/
+            /*  if (circleScore <= 20) {
+                  ctx.fillText("继续努力", 70, 165);
+              } else if (20 < circleScore && circleScore <= 40) {
+                  ctx.fillText("缓慢燃脂", 70, 165);
+              } else if (40 < circleScore && circleScore <= 60) {
+                  ctx.fillText("状态极佳", 70, 165);
+              } else if (60 < circleScore && circleScore <= 80) {
+                  ctx.fillText("快速燃脂", 70, 165);
+              } else {
+                  ctx.fillText("过度燃脂", 70, 165);
+              }
+              ctx.setFontSize(12);
+              ctx.setFillStyle("#969696");
+              if (circleScore <= 20) {
+                  ctx.fillText("KEEP ON", 70, 185);
+              } else if (20 < circleScore && circleScore <= 40) {
+                  ctx.fillText("SLOW", 70, 185);
+              } else if (40 < circleScore && circleScore <= 60) {
+                  ctx.fillText("PROPER", 70, 185);
+              } else if (60 < circleScore && circleScore <= 80) {
+                  ctx.fillText("FAST", 70, 185);
+              } else {
+                  ctx.fillText("UNDUE", 70, 185);
+              }*/
             ctx.draw();
         }
 
@@ -145,7 +146,9 @@ Page({
         var doAnimationFrame = function (callback) {
             var currTime = new Date().getTime();
             var timeToCall = Math.max(0, 16 - (currTime - lastFrameTime));
-            var id = setTimeout(function () { callback(currTime + timeToCall); }, timeToCall);
+            var id = setTimeout(function () {
+                callback(currTime + timeToCall);
+            }, timeToCall);
             lastFrameTime = currTime + timeToCall;
             return id;
         };
@@ -167,7 +170,7 @@ Page({
             }
             transform(v)
         }
-        animation(this.data.score*10);
+        animation(this.data.score * 10);
         /* setInterval(() => {
            //var round = Math.round(100 * Math.random());
             var round =60;
@@ -175,51 +178,42 @@ Page({
          }, 2500);*/
     },
 
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (e) {
-        this.run()
-        this.showType()
-        Protocol.getBreathDataList({page:1,pageSize:20}).then(data=>{
-            let list = data.result.list;
-            list.map(value => {
-                const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
-                value.date = `${year}/${month}/${day} ${time}`;
-
-                let image = '../../images/result/cell';
-                const dValue = value.dataValue;
-                if (dValue > 0 && dValue <= 2) {
-                    image = image+'1';
-                } else if (dValue > 0 && dValue <= 4) {
-                    image = image+'2';
-                } else if (dValue > 4 && dValue <= 6) {
-                    image = image+'3';
-                } else if (dValue > 6 && dValue <= 8) {
-                    image = image+'4';
-                } else if (dValue > 8) {
-                    image = image+'5';
-                }
-                image = image + '.png';
-                value.image = image
-            })
-
-            const endData = tools.createDateAndTime(list[0].createdTimestamp);
-            const startData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
-            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
-            this.setData({trendDate,trendData:list});
-        })
-        // Protocol.postSetGradeInfo().then(data => {
-        //
-        // })
+        this.run();
+        this.showType();
+        this.cellDataHandle();
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
+    async cellDataHandle() {
+        let {result: {list}} = await Protocol.getBreathDataList({page: 1, pageSize: 20})
+        list.map(value => {
+            const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
+            value.date = `${year}/${month}/${day} ${time}`;
+            let image = '../../images/result/cell';
+            const dValue = value.dataValue;
+            if (dValue > 0 && dValue <= 2) {
+                image = image + '1';
+            } else if (dValue > 0 && dValue <= 4) {
+                image = image + '2';
+            } else if (dValue > 4 && dValue <= 6) {
+                image = image + '3';
+            } else if (dValue > 6 && dValue <= 8) {
+                image = image + '4';
+            } else if (dValue > 8) {
+                image = image + '5';
+            }
+            image = image + '.png';
+            value.image = image
+        });
+        const endData = tools.createDateAndTime(list[0].createdTimestamp);
+        const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
+        let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
+        this.setData({trendDate, trendData: list});
+    },
+
     onReady: function () {
-        wx.createSelectorQuery().select('#canvas-one').boundingClientRect(function (rect) {//监听canvas的宽高
+        wx.createSelectorQuery().select('#canvas-one').boundingClientRect(function (rect) {
+            //监听canvas的宽高
             console.log(rect);
             w = parseInt(rect.width / 2);
             // 获取canvas宽的的一半
@@ -231,45 +225,49 @@ Page({
             //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
         }).exec()
     },
-    toBind(){
+
+    toBind() {
         HiNavigator.navigateToDeviceBind();
     },
-    toIndex(){
+
+    toIndex() {
         HiNavigator.navigateIndex();
     },
-    showType(){
-        if(this.data.score<=2){
+
+    showType() {
+        if (this.data.score <= 2) {
             this.setData({
-                fatType:"../../images/result/type1.png",
-                fatText:"继续努力",
-                fatTextEn:"KEEP ON"
+                fatType: "../../images/result/type1.png",
+                fatText: "继续努力",
+                fatTextEn: "KEEP ON"
             })
-        }else if(this.data.score<=4 &&this.data.score>2){
+        } else if (this.data.score <= 4 && this.data.score > 2) {
             this.setData({
-                fatType:"../../images/result/type2.png",
-                fatText:"缓慢燃脂",
-                fatTextEn:"SLOW"
+                fatType: "../../images/result/type2.png",
+                fatText: "缓慢燃脂",
+                fatTextEn: "SLOW"
             })
-        }else if(this.data.score<=6 &&this.data.score>4){
+        } else if (this.data.score <= 6 && this.data.score > 4) {
             this.setData({
-                fatType:"../../images/result/type3.png",
-                fatText:"状态极佳",
-                fatTextEn:"PROPER"
+                fatType: "../../images/result/type3.png",
+                fatText: "状态极佳",
+                fatTextEn: "PROPER"
             })
-        }else if(this.data.score<=8 &&this.data.score>6){
+        } else if (this.data.score <= 8 && this.data.score > 6) {
             this.setData({
-                fatType:"../../images/result/type4.png",
-                fatText:"快速燃脂",
-                fatTextEn:"FAST"
+                fatType: "../../images/result/type4.png",
+                fatText: "快速燃脂",
+                fatTextEn: "FAST"
             })
-        }else if(this.data.score<=10 &&this.data.score>8){
+        } else if (this.data.score <= 10 && this.data.score > 8) {
             this.setData({
-                fatType:"../../images/result/type5.png",
-                fatText:"过度燃脂",
-                fatTextEn:"UNDUE"
+                fatType: "../../images/result/type5.png",
+                fatText: "过度燃脂",
+                fatTextEn: "UNDUE"
             })
         }
     },
+
     handleTrend() {
         let list = this.data.trendData;
         trend.init(this);
@@ -285,7 +283,8 @@ Page({
         };
         trend.setData(data);
     },
-    toChooseDate () {
+
+    toChooseDate() {
         let info = {
             end_time: this.data.trendData[0],
             start_time: this.data.trendData[this.data.trendData.length - 1],

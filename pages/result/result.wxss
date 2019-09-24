@@ -191,10 +191,11 @@ page{
     font-weight:bold;
     color:rgba(41,41,48,1);
     position: absolute;
-    top: 15rpx;
+    top: 25rpx;
     left: 0;
     line-height: 69rpx;
     text-align: center;
+    font-family:DIN Condensed-Bold,DIN Condensed;
 }
 
 .cell-line {
