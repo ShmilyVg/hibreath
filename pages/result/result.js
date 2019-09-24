@@ -183,9 +183,30 @@ Page({
         this.run()
         this.showType()
         Protocol.getBreathDataList({page:1,pageSize:20}).then(data=>{
-            const list = data.result.list.reverse();
-            const startData = tools.createDateAndTime(list[0].createdTimestamp);
-            const endData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
+            let list = data.result.list;
+            list.map(value => {
+                const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
+                value.date = `${year}/${month}/${day} ${time}`;
+
+                let image = '../../images/result/cell';
+                const dValue = value.dataValue;
+                if (dValue > 0 && dValue <= 2) {
+                    image = image+'1';
+                } else if (dValue > 0 && dValue <= 4) {
+                    image = image+'2';
+                } else if (dValue > 4 && dValue <= 6) {
+                    image = image+'3';
+                } else if (dValue > 6 && dValue <= 8) {
+                    image = image+'4';
+                } else if (dValue > 8) {
+                    image = image+'5';
+                }
+                image = image + '.png';
+                value.image = image
+            })
+
+            const endData = tools.createDateAndTime(list[0].createdTimestamp);
+            const startData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
             let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
             this.setData({trendDate,trendData:list});
         })

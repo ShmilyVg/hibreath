@@ -148,3 +148,57 @@ page{
     font-size: 30rpx;
     color: #718EA0;
 }
+
+.cell{
+    width: 650rpx;
+    height: 180rpx;
+}
+
+.cell-title{
+    font-size:30rpx;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    margin-top: 44rpx;
+}
+
+.cell-date{
+    font-size:24rpx;
+    font-weight:400;
+    color:rgba(150,150,150,1);
+    line-height:33rpx;
+    margin-top: 6rpx;
+}
+
+.cell-image {
+    width:100rpx;
+    height:89rpx;
+    position: relative;
+}
+
+.cell-image-image {
+    width:100rpx;
+    height:89rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cell-image-text{
+    width:100rpx;
+    height:69rpx;
+    font-size:38rpx;
+    font-weight:bold;
+    color:rgba(41,41,48,1);
+    position: absolute;
+    top: 15rpx;
+    left: 0;
+    line-height: 69rpx;
+    text-align: center;
+}
+
+.cell-line {
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 2rpx;
+}

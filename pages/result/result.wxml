@@ -21,7 +21,19 @@
 
 <!--热门回答  -->
 <view wx:if="{{currenttab==='0'}}">
-    燃脂记录
+    <view wx:for="{{trendData}}" class="flex-column cell">
+        <view class="flex-row" style="width:100%;justify-content: space-between">
+            <view class="flex-column" style="align-items: start;height: 160rpx">
+                <view class="cell-title">{{item.desZh}}</view>
+                <view class="cell-date">{{item.date}}</view>
+            </view>
+            <view class="cell-image">
+                <image src="{{item.image}}" class="cell-image-image"></image>
+                <view class="cell-image-text">{{item.dataValue}}</view>
+            </view>
+        </view>
+        <view class="cell-line"></view>
+    </view>
 </view>
 
 <!--全部分类 -->
