@@ -1,5 +1,6 @@
 // hipee/pages/calendar/calendar.js
 import * as tools from "../../utils/tools";
+import Protocol from "../../modules/network/protocol";
 
 Page({
     data: {
@@ -75,60 +76,52 @@ Page({
         }
     },
     getTrendTime(startTime, endTime) {
-        let that = this;
-        let obj = {};
-        if (that.data.info.type === 'other-health') {
-            Object.assign(obj, that.commonCalendarCbFun(startTime, endTime));
-        } else {
-            Object.assign(obj, {type: that.data.info.type}, that.commonCalendarCbFun(startTime, endTime));
-        }
-        that.data.info.type === 'other-health' ? getApp().getProtocol().postTrendTime(obj) : getApp().getProtocol().postItemCalendar(obj);
-    },
-    commonCalendarCbFun(startTime, endTime) {
-        let that = this;
-        return {
-            member_id: that.data.info.member_id,
-            item_code: that.data.info.item_code,
+        const data = {
             start_time: startTime,
-            end_time: endTime,
-            success: res => {
-                if (res.result && res.result.length) {
-                    let date = new Date();
-                    let nowDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-                    nowDate.setHours(0);
-                    let now = nowDate.getTime();
-                    let currentMonthTimestamp = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/1').getTime();
-                    res.result.forEach((item) => {
-                        date.setTime(item.month);
-                        item.date = date.getFullYear() + '年' + (date.getMonth() + 1) + '月';
-                        if (item.month === currentMonthTimestamp) {
-                            item.days.forEach((daysItem) => {
-                                if (daysItem.timestamp === now) {
-                                    daysItem.is_today = true;
-                                }
-                            })
-                        }
+            end_time: endTime
+        };
+        Protocol.postItemCalendar(data).then(res => {
+            this.commonCalendarCbFun(res);
+        });
+    },
+    commonCalendarCbFun(res) {
+        if (res.code === 1) {
+            res.result = res.result.list;
+            if (res.result && res.result.length) {
+                let date = new Date();
+                let nowDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+                nowDate.setHours(0);
+                let now = nowDate.getTime();
+                let currentMonthTimestamp = new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/1').getTime();
+                res.result.forEach((item) => {
+                    date.setTime(item.month);
+                    item.date = date.getFullYear() + '年' + (date.getMonth() + 1) + '月';
+                    if (item.month === currentMonthTimestamp) {
+                        item.days.forEach((daysItem) => {
+                            if (daysItem.timestamp === now) {
+                                daysItem.is_today = true;
+                            }
+                        })
+                    }
 
-                        let week = date.getDay();
-                        item.emptyCount = 0;
-                        while (week--) {
-                            item.emptyCount++;
-                            item.days.splice(0, 0, {});
-                        }
-                    });
-                    that.setData({
-                        monthList: res.result.concat(that.data.monthList || []),
-                        firstLoadingItems: false
-                    });
-                }
-                wx.stopPullDownRefresh && wx.stopPullDownRefresh();
-
-            }, fail: () => {
-                this.setData({
-                    loadingMonthListFailed: true
+                    let week = date.getDay();
+                    item.emptyCount = 0;
+                    while (week--) {
+                        item.emptyCount++;
+                        item.days.splice(0, 0, {});
+                    }
                 });
-                wx.stopPullDownRefresh && wx.stopPullDownRefresh();
+                this.setData({
+                    monthList: res.result.concat(this.data.monthList || []),
+                    firstLoadingItems: false
+                });
             }
+            wx.stopPullDownRefresh && wx.stopPullDownRefresh();
+        } else {
+            this.setData({
+                loadingMonthListFailed: true
+            });
+            wx.stopPullDownRefresh && wx.stopPullDownRefresh();
         }
     },
 

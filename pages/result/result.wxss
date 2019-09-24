@@ -134,14 +134,14 @@ page{
 
 .canvas-base-view{
     width: 720rpx;
-    margin-left: 10rpx;
+    margin-left: -25rpx;
+    margin-top: 90rpx;
 }
 
 .canvas {
     width: 720rpx;
     height: 440rpx;
     margin-top: 50rpx;
-    margin-left: -35rpx;
 }
 
 .canvas-bottom-text{

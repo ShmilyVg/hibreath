@@ -16,7 +16,7 @@ Page({
     data: {
         score: 6.5, //传入的进度， 0~100，绘制到此参数处停止。
         currenttab:'0',
-        trendDate:'2020202020'
+        trendDate:''
     },
     selectTab:function(e){
         //切换标签页
@@ -177,9 +177,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (e) {
-this.handleTrend();
         this.run()
         this.showType()
+        Protocol.getBreathDataList({page:1,pageSize:20}).then(data=>{
+            const list = data.result.list;
+            this.handleTrend({list});
+            const startData = tools.createDateAndTime(list[0].createdTimestamp);
+            const endData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
+            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
+            this.setData({trendDate,trendData:list});
+        })
         // Protocol.postSetGradeInfo().then(data => {
         //
         // })
@@ -240,23 +247,24 @@ this.handleTrend();
             })
         }
     },
-    handleTrend(){
+    handleTrend({list}) {
         trend.init(this);
         trend.initTouchHandler();
-        let data= {dataList:[352, 356, 259, 207, 437, 349, 360],
-        xTitle: "次数",
-        yAxisSplit: 5,
-        yMax: 1200,
-        yTitle: "QTC (单位 : ms)"}
+        let dataListX = [], dataListY = [];
+        list.forEach((value) => {
+            const y = tools.createDateAndTime(value.createdTimestamp).day;
+            dataListX.push(y);
+            dataListY.push(value.dataValue);
+        });
+        let data = {
+            dataListX, dataListY, yAxisSplit: 5
+        };
         trend.setData(data);
     },
     toChooseDate () {
         let info = {
-            // member_id: this.data.userInfo.member_id,
-            // item_code: this.data.itemCode,
-            // type: this.data.list[this.data.num].type,
-            // end_time: this.data.trendData[0].time_for.date,
-            // start_time: this.data.trendData[this.data.trendData.length - 1].time_for.date,
+            end_time: this.data.trendData[0],
+            start_time: this.data.trendData[this.data.trendData.length - 1],
         };
         wx.navigateTo({
             url: '../calendar/calendar?info=' + JSON.stringify(info)

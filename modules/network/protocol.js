@@ -33,7 +33,7 @@ export default class Protocol {
     /* static getBreathDataAdd({dataValue}) {
          return Network.request({url: 'breathData/add', data: {dataValue}});
      }*/
-    static getBreathDataList({page, pageSize = 15}) {
+    static getBreathDataList({page, pageSize = 15, timeBegin, timeEnd}) {
         return Network.request({url: 'breathData/list', data: {page, pageSize}})
     }
 
@@ -123,5 +123,9 @@ export default class Protocol {
 
     static postMembersPut(data) {
         return Network.request({url: 'members/put', data})
+    }
+
+    static postItemCalendar(data) {
+        return Network.request({url: 'breathData/item_calendar', data})
     }
 }

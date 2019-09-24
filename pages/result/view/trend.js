@@ -51,19 +51,16 @@ function normalTrend() {
 
     let YPoint = [];
 
-    const {dataList, yAxisSplit, yMax} = trendData;
-    for (let i in dataList) {
-        YPoint.push('');
-    }
+    const {dataListX, dataListY, yAxisSplit} = trendData;
 
     lineChart = new charts({
         canvasId: 'lineCanvas',
         type: 'area',
         lineStyle: 'curve',
-        categories: YPoint,
+        categories: dataListX,
         series: [{
             type: 'calibration',
-            data: dataList,
+            data: dataListY,
             format: function (val) {
                 return val;
             }
@@ -74,7 +71,6 @@ function normalTrend() {
                 return val;
             },
             min: 0,
-            max: parseInt(yMax),
             fontColor: '#AABAC1'
         },
         xAxis: {
@@ -85,7 +81,7 @@ function normalTrend() {
         enableScroll: true,
         dataLabel: false,
         haveNum: true,
-        yAxisSplit: yAxisSplit-1
+        yAxisSplit: yAxisSplit - 1
     });
 }
 
