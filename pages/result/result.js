@@ -28,6 +28,9 @@ Page({
             this.setData({
                 currenttab:newtab
             })
+            if (newtab == 1){
+                this.handleTrend()
+            }
         }
     },
     run(e) {
@@ -181,7 +184,6 @@ Page({
         this.showType()
         Protocol.getBreathDataList({page:1,pageSize:20}).then(data=>{
             const list = data.result.list;
-            this.handleTrend({list});
             const startData = tools.createDateAndTime(list[0].createdTimestamp);
             const endData = tools.createDateAndTime(list[list.length-1].createdTimestamp);
             let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
@@ -247,7 +249,8 @@ Page({
             })
         }
     },
-    handleTrend({list}) {
+    handleTrend() {
+        let list = this.data.trendData;
         trend.init(this);
         trend.initTouchHandler();
         let dataListX = [], dataListY = [];

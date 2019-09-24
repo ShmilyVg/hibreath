@@ -71,10 +71,10 @@ function normalTrend() {
                 return val;
             },
             min: 0,
-            fontColor: '#AABAC1'
+            fontColor: '#9B9B9B'
         },
         xAxis: {
-            fontColor: '#AABAC1'
+            fontColor: '#9B9B9B'
         },
         width: windowWidth,
         height: windowHeight,
