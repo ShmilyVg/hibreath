@@ -19,16 +19,22 @@ Page({
         tabIsShow: true
     },
 
-    onLoad: function () {
-        Circular.run(this);
+    onLoad() {
+        this.init();
+        Circular.run();
         this.showType();
         this.cellDataHandle({});
+    },
+
+    init() {
+        Trend.init(this);
+        Circular.init(this);
     },
 
     async cellDataHandle({page = 1, isRefresh = true}) {
         toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
-        const imageIndexArr = ['1','1','1','2','2','3','3','4','4','5','5'];
+        const imageIndexArr = ['1', '1', '1', '2', '2', '3', '3', '4', '4', '5', '5'];
         if (list.length) {
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
@@ -52,7 +58,7 @@ Page({
         toast.hiddenLoading();
     },
 
-    onReady: function () {
+    onReady() {
         Circular.createSelectorQuery();
     },
 
@@ -99,7 +105,7 @@ Page({
     },
 
     //切换标签页
-    selectTab: function (e) {
+    selectTab(e) {
         let newtab = e.currentTarget.dataset.tabid;
         if (this.data.currenttab !== newtab) {
             this.setData({
@@ -113,7 +119,6 @@ Page({
 
     handleTrend() {
         let list = this.data.trendData;
-        Trend.init(this);
         Trend.initTouchHandler();
         let dataListX = [], dataListY = [];
         list.forEach((value) => {

@@ -3,8 +3,14 @@ var bg = wx.createCanvasContext("bg");
 var w = "";
 var h = "";
 
-function run(that) {
-    const circleScore = that.data.score * 10
+let _page = null;
+
+function init(page) {
+    _page = page;
+}
+
+function run() {
+    const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
     if (circleScore <= 20) {
@@ -137,7 +143,7 @@ function run(that) {
         }
         transform(v)
     }
-    animation(that.data.score * 10);
+    animation(_page.data.score * 10);
     /* setInterval(() => {
        //var round = Math.round(100 * Math.random());
         var round =60;
@@ -145,7 +151,7 @@ function run(that) {
      }, 2500);*/
 }
 
-function createSelectorQuery (){
+function createSelectorQuery() {
     wx.createSelectorQuery().select('#canvas-one').boundingClientRect(function (rect) {
         //监听canvas的宽高
         console.log(rect);
@@ -161,5 +167,5 @@ function createSelectorQuery (){
 }
 
 module.exports = {
-    run,createSelectorQuery
+    init, run, createSelectorQuery
 };
