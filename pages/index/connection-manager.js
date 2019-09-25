@@ -55,39 +55,28 @@ export default class ConnectionManager {
     }*/
     unbind() {
         wx.setNavigationBarColor({
-        frontColor: '#ffffff', // 必写项
-            backgroundColor: '#EE6F69', // 必写项
-           /* animation: { // 可选项
-            duration: 400,
-                timingFunc: 'easeIn'
-        }*/
+        frontColor: '#ffffff',
+            backgroundColor: '#EE6F69',
         })
         this._page.setData({
             noBind:true,//显示绑定按钮等
             bgColor:"#EE6F69",//PAGE背景
 
 
-
-
             headerRight: false,
             stateBtnShow: false,
 
-            picState: false,
-            btnState: true,
-            hintPic: true,
-            textStateColor: true,
-            homeHeartBoxIndex: 0,
 
-            connectpicShow: false,
+            btnState: true,
+            textStateColor: true,
+
+
+
             blowpicShow: false,
 
-            homePointFirst: true,
-            homePointSecond: false,
 
-            homeBtn: true,
 
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         })
     }
@@ -95,62 +84,46 @@ export default class ConnectionManager {
     disconnect() {
         this._page.setData({
 
-            tryAgain:true,//未找到设备标志位
+           /* tryAgain:true,//未找到设备标志位
 
             headerRight: true,
             stateBtnShow: true,
             state: "未连接到设备",
-            stateColorIndex: 0,
             picState: true,
             btnState: false,
-            hintPic: true,
-            picStateUrl:'../../images/index/warn.png',
-            homeHeartBoxIndex: 0,
 
-            connectpicShow: false,
+
             blowpicShow: false,
 
-            homePointFirst: true,
-            homePointSecond: false,
 
-            homeBtn: true,
 
             homeTitle: false,
-            homePShow: false,
-            homeOrangeBtn: false,
-      /*      noBind:false,//显示绑定按钮等
-            blowpicShow: false,
-            readyimg:false,// 预热图片显示
-            blowingImg:false,
-            textState:'',
-            textStateEn:'PREHEATING',
-            disblowImg:false,//吹气不足状态
-            process:false,//分析中
-
-
-
-
+            homeOrangeBtn: false,*/
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: false,
+
+
             btnState: false,
-            hintPic: true,
-            homeHeartBoxIndex: 1,
 
-            connectpicShow: true,
 
-            homePointFirst: true,
-            homePointSecond: false,
+            beginFat:false,
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:true,
+            textState:'吹气中',
+            textStateEn:'BLOWING',
+            disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:false,//分析中
 
-            homeBtn: true,
+
 
             homeTitle: false,
-            homePShow: false,
-            homeOrangeBtn: false,*/
+            homeOrangeBtn: false,
 
         });
     }
@@ -164,24 +137,20 @@ export default class ConnectionManager {
             stateBtnShow: false,
 
             state: "正在连接设备",
-            stateColorIndex: 0,
 
-            picState: false,
+
+            beginFat:false,
+
             btnState: false,
-            hintPic: true,
             textState:'',
-            homeHeartBoxIndex: 2,
 
-            connectpicShow: false,
+
             blowpicShow: false,
 
-            homePointFirst: true,
-            homePointSecond: false,
 
-            homeBtn: true,
 
             homeTitle: false,
-            homePShow: false,
+
             homeOrangeBtn: false,
         })
     }

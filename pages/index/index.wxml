@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
 <template is="common"
-          data="{{homeHeartBox,noBind,tryAgain,beginFat,bgColor,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}">
+          data="{{noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
 </template>
 
 
@@ -52,9 +52,6 @@
 <!--
 
 <view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>
-
-
-<view class="home-p" wx:if="{{homePShow}}" wx:for="{{homeP.length}}" style="margin-left: 226rpx">{{homeP[index]}}</view>
 
 
 <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="  position: absolute;left: 70rpx;bottom: 50rpx;">立即使用</view>-->

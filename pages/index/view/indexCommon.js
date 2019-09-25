@@ -1,3 +1,7 @@
+/**
+ * @Date: 2019-09-25 19:38:46
+ * @LastEditors: 张浩玉
+ */
 export default class IndexCommonManager {
     constructor(page) {
         this._page = page;
@@ -6,11 +10,7 @@ export default class IndexCommonManager {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
 
-            picState: true,
             btnState: false,
-            hintPic: false,
-            picStateUrl: '../../images/index/search.png',
-            homeHeartBoxIndex: 1,
 
             homeTitle: true,
             homeTitleText: "正在寻找您的设备",
@@ -22,11 +22,8 @@ export default class IndexCommonManager {
     setSearchedState() {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
-            picState: true,
+
             btnState: false,
-            hintPic: true,
-            picStateUrl: '../../images/index/done.png',
-            homeHeartBoxIndex: 1,
             homeTitle: true,
             homeTitleText: "已找到您的设备",
             nofind: false,
@@ -47,24 +44,15 @@ export default class IndexCommonManager {
     setDissearchState() {
         getApp().getBLEManager().checkLocationPermission();
         wx.setNavigationBarColor({
-            frontColor: '#ffffff', // 必写项
-            backgroundColor: '#EE6F69', // 必写项
-            /* animation: { // 可选项
-             duration: 400,
-                 timingFunc: 'easeIn'
-         }*/
+            frontColor: '#ffffff',
+            backgroundColor: '#EE6F69',
         })
         this._page.setData({
             nofind: true,
             bgColor:"#EE6F69",
 
 
-
-            picState: true,
             btnState: false,
-            hintPic: true,
-            picStateUrl: '../../images/index/warn.png',
-            homeHeartBoxIndex: 1,
 
             homeTitle: true,
             homeTitleText: "绑定失败，请检查后重试",

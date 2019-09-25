@@ -3,7 +3,7 @@
 <!--
 <import src="../index/view/indexCommon.wxml"></import>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,picStateUrl,homeTitleText,hintPic}}"></template>
+<template is="common" data="{{burnupShow,homeHeartBox,btnState,homeTitle,homeTitleText}"></template>
 
 -->
 

@@ -62,7 +62,7 @@ Page({
     },
 
     toBind() {
-        HiNavigator.navigateToDeviceBind();
+        HiNavigator.navigateToDeviceUnbind();
     },
 
     toIndex() {

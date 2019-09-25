@@ -25,25 +25,13 @@
         "selectedIconPath": "images/result/bindInfo.png",
         "iconPath": "images/result/bindInfo.png",
         "pagePath": "pages/set-info/set-info",
-        "text": "健康树"
+        "text": "发现"
       },
       {
         "selectedIconPath": "images/result/bindInfo.png",
         "iconPath": "images/result/bindInfo.png",
         "pagePath": "pages/index/index",
         "text": "打卡"
-      },
-      {
-        "selectedIconPath": "images/result/bindInfo.png",
-        "iconPath": "images/result/bindInfo.png",
-        "pagePath": "pages/set-info/set-info",
-        "text": "发现"
-      },
-      {
-        "selectedIconPath": "images/result/bindInfo.png",
-        "iconPath": "images/result/bindInfo.png",
-        "pagePath": "pages/set-info/set-info",
-        "text": "商城"
       }
     ]
   }

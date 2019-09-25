@@ -1,3 +1,7 @@
+/**
+ * @Date: 2019-09-25 19:38:38
+ * @LastEditors: 张浩玉
+ */
 import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
@@ -70,7 +74,12 @@ export default class BlowManager {
         }, 1000)
     }
     connected() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
+            noBind:false,
             blowpicShow: false,
             readyimg:false,// 预热图片显示
             blowingImg:false,
@@ -81,44 +90,35 @@ export default class BlowManager {
             beginFat:true,//连接成功
             topState:"开启您的燃脂之旅",
             topStateS:"短按设备按键·开始检测",
-
+            bgColor:"#fff",
+            homePointHot:false,
 
 
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: false,
             btnState: false,
-            hintPic: true,
-            homeHeartBoxIndex: 1,
 
-            connectpicShow: true,
-
-            homePointFirst: true,
-            homePointSecond: false,
-
-            homeBtn: true,
 
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         })
     }
 
     ready() {
         this._page.setData({
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
             state: "设备已连接",
-            stateColorIndex: 1,
-            picState: false,
+
             btnState: false,
-            hintPic: true,
 
 
+            bgColor:"#fff",
+            beginFat:false,
             blowpicShow: false,
             readyimg:true,// 预热图片显示
             blowingImg:false,
@@ -128,35 +128,25 @@ export default class BlowManager {
             process:false,//分析中
 
 
-
-            homeHeartBoxIndex: 1,
-            connectpicShow: false,
-
-
-            homePointFirst: false,
-            homePointSecond: false,
-
-            homeBtn: false,
-
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         })
     }
 
     blow() {
         this._page.setData({
-
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: false,
+
+
             btnState: false,
-            hintPic: true,
 
+            bgColor:"#fff",
+            beginFat:false,
             blowpicShow: true,//吹气图片显示
             readyimg:false,// 预热图片显示
             blowingImg:false,
@@ -168,18 +158,7 @@ export default class BlowManager {
 
 
 
-            homeHeartBoxIndex: 1,
-
-            connectpicShow: false,
-
-
-            homePointFirst: false,
-            homePointSecond: true,
-
-            homeBtn: false,
-
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         });
     }
@@ -187,19 +166,17 @@ export default class BlowManager {
     disblow() {
         this._page.setData({
 
-
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: false,
+
             btnState: false,
-            hintPic: true,
 
-
-
+            bgColor:"#fff",
+            beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
             blowingImg:false,
@@ -209,33 +186,25 @@ export default class BlowManager {
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
 
-            homeHeartBoxIndex: 1,
-
-            connectpicShow: false,
-            homePointFirst: false,
-            homePointSecond: true,
-
-            homeBtn: false,
 
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         })
     }
 
     blowing() {
         this._page.setData({
-
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: false,
+
             btnState: false,
-            hintPic: true,
 
+            bgColor:"#fff",
+            beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
             blowingImg:true,
@@ -245,35 +214,26 @@ export default class BlowManager {
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
 
-            homeHeartBoxIndex: 2,
-            connectpicShow: false,
 
-            homePointFirst: false,
-            homePointSecond: true,
-
-            homeBtn: false,
 
             homeTitle: false,
-            homePShow: false,
             homeOrangeBtn: false,
         })
     }
 
     blowed() {
         this._page.setData({
-
+            noBind:false,
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
-            stateColorIndex: 1,
 
-            picState: true,
             btnState: false,
-            hintPic: true,
-            picStateUrl:'../../images/index/note.png',
 
 
+            bgColor:"#fff",
+            beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
             blowingImg:false,
@@ -282,20 +242,14 @@ export default class BlowManager {
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:true,//分析中
+            homeOrangeBtn: false,//重试
 
 
-            homeHeartBoxIndex: 1,
-            connectpicShow: false,
-
-            homePointFirst: false,
-            homePointSecond: false,
-
-            homeBtn: false,
 
             homeTitle: true,
             homeTitleText: "",
-            homePShow: false,
-            homeOrangeBtn: false,
+
+
         })
     }
 

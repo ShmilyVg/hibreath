@@ -39,6 +39,7 @@ Page({
                     bgColor:"#fff",
                     finding:true,//正在寻找设备标志位
                     finded:false,//找到并绑定
+                    noBind:false,
                     contentStateB:"正在寻找您的设备",
                     contentStateS:"长按设备按键·3秒开机",
                 });

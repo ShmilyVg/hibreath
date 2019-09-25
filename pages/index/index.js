@@ -23,8 +23,7 @@ Page({
         firstInto: true,
         isBind:false,
 
-        stateColor: ['#FF5F00','#31FF00'],
-        homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
+
 
         noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。',
         homeP:[
@@ -38,19 +37,16 @@ Page({
 
         headerRight: false,
 
-        picState: false,
+
         textStateColor: true,
 
-        connectpicShow: false,
+
         blowpicShow: false,
 
-        homePointFirst: true,
-        homePointSecond: false,
 
-        homeBtn: true,
 
         homeTitle: false,
-        homePShow: false,
+
         homeOrangeBtn: false,
 
         animationData: {},
@@ -218,17 +214,11 @@ Page({
             }
         });
         if (!this.data.firstInto) {
-            this.handleTipText();
+
         }
     },
 
-    handleTipText() {
-        let noteListNum = Math.round(Math.random() * (this.data.noteList.length - 1));
-        let noteListMore = this.data.noteList[noteListNum]['text_zh'];
-        this.setData({
-            noteListMore: noteListMore
-        })
-    },
+
 
     onGetUserInfoEvent(e) {
         const {detail: {userInfo, encryptedData, iv}} = e;
