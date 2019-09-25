@@ -9,6 +9,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
 import {Toast} from "heheda-common-view";
+import * as Circular from "../result/view/circular";
 
 const app = getApp();
 
@@ -31,7 +32,9 @@ Page({
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'}
-        ]
+        ],
+        bgColor:'#FEF6F2',
+        score: 6.5,
     },
 
     onLoad() {
@@ -45,6 +48,8 @@ Page({
             }
         });
         this.handleBaseInfo();
+        Circular.init(this);
+        Circular.run();
     },
 
     async handleBaseInfo() {
@@ -281,5 +286,12 @@ Page({
                 Toast.warn('获取信息失败');
             }
         }
-    }
+    },
+
+
+
+    onReady() {
+        Circular.createSelectorQuery();
+    },
+
 })

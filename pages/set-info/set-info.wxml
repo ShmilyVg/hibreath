@@ -3,6 +3,8 @@
 <import src="./view/goal.wxml"></import>
 <import src="./view/guide.wxml"></import>
 
+<view class="page" style="background-color: {{bgColor}}">
+<block wx:if="{{false}}">
 <view class="flex-column" wx:if="{{showGuide}}">
     <template is="guide" ></template>
 </view>
@@ -92,4 +94,41 @@
             <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continue">生成方案</view>
         </block>
     </view>
+</view>
+</block>
+<block wx:else>
+    <view class="set-top-view flex-row">
+        <view class="flex-column" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
+            <view class="set-top-title">我要穿衣更好看</view>
+            <view class="set-top-content">简直第二天</view>
+        </view>
+        <view class="flex-column" style="margin-right: 80rpx">
+            <view class="set-top-step">2/5</view>
+            <view class="set-top-today">简直第二</view>
+        </view>
+    </view>
+    <view class="flex-column" style="margin-top: -65rpx">
+        <view class="set-content-view flex-column">
+            <view class="flex-row" style="justify-content: space-between;width: 100%">
+                <view class="flex-row">
+                    <view class="set-content-icon"></view>
+                    <view class="flex-column" style="align-items: start;margin-left: 20rpx">
+                        <view class="set-content-title">燃脂检测</view>
+                        <view class="set-content-content">你知道怎样燃脂么？</view>
+                    </view>
+                </view>
+                <view wx:if="{{false}}" class="set-content-toFinish">去完成</view>
+                <image src="../../images/set-info/finished.png" wx:else class="set-content-finished">去完成</image>
+            </view>
+            <view class="content" style="height: 500rpx;margin-top: 50rpx">
+                <canvas canvas-id="bg" class='canvasII'></canvas>
+                <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
+                <image class="fatType1" src="{{fatType}}"></image>
+                <view class="fatText">{{fatText}}</view>
+                <view class="fatTextEn">{{fatTextEn}}</view>
+                <view class="fatDes">"{{fatDes}}"</view>
+            </view>
+        </view>
+    </view>
+</block>
 </view>
