@@ -22,7 +22,6 @@ Page({
     onLoad() {
         this.init();
         Circular.run();
-        this.showType();
         this.cellDataHandle({});
     },
 
@@ -68,40 +67,6 @@ Page({
 
     toIndex() {
         HiNavigator.navigateIndex();
-    },
-
-    showType() {
-        if (this.data.score <= 2) {
-            this.setData({
-                fatType: "../../images/result/type1.png",
-                fatText: "继续努力",
-                fatTextEn: "KEEP ON"
-            })
-        } else if (this.data.score <= 4 && this.data.score > 2) {
-            this.setData({
-                fatType: "../../images/result/type2.png",
-                fatText: "缓慢燃脂",
-                fatTextEn: "SLOW"
-            })
-        } else if (this.data.score <= 6 && this.data.score > 4) {
-            this.setData({
-                fatType: "../../images/result/type3.png",
-                fatText: "状态极佳",
-                fatTextEn: "PROPER"
-            })
-        } else if (this.data.score <= 8 && this.data.score > 6) {
-            this.setData({
-                fatType: "../../images/result/type4.png",
-                fatText: "快速燃脂",
-                fatTextEn: "FAST"
-            })
-        } else if (this.data.score <= 10 && this.data.score > 8) {
-            this.setData({
-                fatType: "../../images/result/type5.png",
-                fatText: "过度燃脂",
-                fatTextEn: "UNDUE"
-            })
-        }
     },
 
     //切换标签页

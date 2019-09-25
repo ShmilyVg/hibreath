@@ -10,6 +10,11 @@ function init(page) {
 }
 
 function run() {
+    drewCircular();
+    showType();
+}
+
+function drewCircular() {
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
@@ -79,7 +84,7 @@ function run() {
         ctx.setFontSize(23);
         ctx.setFillStyle("#292930");
         var offset = 140;
-        ctx.fillText(val / 10, offset, 85);
+        ctx.fillText(val / 10, offset, 105);
         /* ctx.setFontSize(15);
          ctx.setFillStyle("#969696");
          ctx.fillText(10, offset, 105);*/
@@ -149,6 +154,40 @@ function run() {
         var round =60;
        animation(round);
      }, 2500);*/
+}
+
+function showType() {
+    if (_page.data.score <= 2) {
+        _page.setData({
+            fatType: "../../images/result/type1.png",
+            fatText: "继续努力",
+            fatTextEn: "KEEP ON"
+        })
+    } else if (_page.data.score <= 4 && _page.data.score > 2) {
+        _page.setData({
+            fatType: "../../images/result/type2.png",
+            fatText: "缓慢燃脂",
+            fatTextEn: "SLOW"
+        })
+    } else if (_page.data.score <= 6 && _page.data.score > 4) {
+        _page.setData({
+            fatType: "../../images/result/type3.png",
+            fatText: "状态极佳",
+            fatTextEn: "PROPER"
+        })
+    } else if (_page.data.score <= 8 && _page.data.score > 6) {
+        _page.setData({
+            fatType: "../../images/result/type4.png",
+            fatText: "快速燃脂",
+            fatTextEn: "FAST"
+        })
+    } else if (_page.data.score <= 10 && _page.data.score > 8) {
+        _page.setData({
+            fatType: "../../images/result/type5.png",
+            fatText: "过度燃脂",
+            fatTextEn: "UNDUE"
+        })
+    }
 }
 
 function createSelectorQuery() {
