@@ -56,19 +56,13 @@ page{
     top: 165rpx;
 }
 .result-top{
-    /*display:flex;
-    justify-content:flex-start;
-    align-items:center;*/
     height: 59rpx;
     padding-top: 57rpx;
-    position: relative;
+    justify-content: space-between;
 }
 .result-img1{
     height: 34rpx;
     width: 34rpx;
-    float: left;
-    position: absolute;
-    top: 0rpx;
 }
 .result-img2{
     height: 50rpx;
@@ -76,14 +70,10 @@ page{
     float: right;
 }
 .result-text1{
-    font-size: 15px;
+    font-size: 30rpx;
     color: #A2A2A2;
     font-family: PingFang-SC;
-    float: left;
     margin-left: 15rpx;
-    position: absolute;
-    top: 55rpx;
-    left: 30rpx;
 
 }
 .fatDes{
@@ -97,32 +87,47 @@ page{
     color: #fff;
     background:#ED6F69 ;
     border-radius: 45rpx;
-    border: 1px #ED6F69 solid;
+    border: 1rpx #ED6F69 solid;
     width: 220rpx;
     height: 90rpx;
     font-family: PingFang-SC;
-    font-size: 15px;
+    font-size: 30rpx;
     margin-top: 139rpx;
+    line-height: 90rpx;
 }
 .result_tab{
     margin-top: 70rpx;
+    height: 60rpx;
 }
+
+.result_tab_top{
+    position: fixed;
+    top: 0rpx;
+    left: 0rpx;
+    padding-left: 50rpx;
+    padding-top: 20rpx;
+    background-color: white;
+    width: 700rpx;
+    height: 60rpx;
+    z-index: 100;
+}
+
 .tab_item_active{
     font-family: PingFang-SC;
-    font-size: 15px;
+    font-size: 30rpx;
     color: #ED6F69;
-    border-bottom: 2px #ED6F69 solid;
+    border-bottom: 2rpx #ED6F69 solid;
     float: left;
     height: 55rpx;
-    width: 130rpx;
+    width: 120rpx;
 }
 .tab_item{
     font-family: PingFang-SC;
-    font-size: 15px;
+    font-size: 30rpx;
     color: #969696;
     height: 55rpx;
     float: left;
-    width: 130rpx;
+    width: 120rpx;
 }
 .result-line{
     width: 39rpx;
@@ -152,6 +157,7 @@ page{
 .cell{
     width: 650rpx;
     height: 180rpx;
+    z-index: 90;
 }
 
 .cell-title{
@@ -174,6 +180,7 @@ page{
     width:100rpx;
     height:89rpx;
     position: relative;
+    z-index: 90;
 }
 
 .cell-image-image {
@@ -182,6 +189,7 @@ page{
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 90;
 }
 
 .cell-image-text{
@@ -196,6 +204,7 @@ page{
     line-height: 69rpx;
     text-align: center;
     font-family:DIN Condensed-Bold,DIN Condensed;
+    z-index: 90;
 }
 
 .cell-line {

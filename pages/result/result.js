@@ -17,7 +17,9 @@ Page({
     data: {
         score: 6.5, //传入的进度， 0~100，绘制到此参数处停止。
         currenttab: '0',
-        trendDate: ''
+        trendDate: '',
+        page: 1,
+        tabIsShow: true
     },
     selectTab: function (e) {
         //切换标签页
@@ -181,34 +183,44 @@ Page({
     onLoad: function (e) {
         this.run();
         this.showType();
-        this.cellDataHandle();
+        this.cellDataHandle({});
     },
 
-    async cellDataHandle() {
-        let {result: {list}} = await Protocol.getBreathDataList({page: 1, pageSize: 20})
-        list.map(value => {
-            const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
-            value.date = `${year}/${month}/${day} ${time}`;
-            let image = '../../images/result/cell';
-            const dValue = value.dataValue;
-            if (dValue > 0 && dValue <= 2) {
-                image = image + '1';
-            } else if (dValue > 0 && dValue <= 4) {
-                image = image + '2';
-            } else if (dValue > 4 && dValue <= 6) {
-                image = image + '3';
-            } else if (dValue > 6 && dValue <= 8) {
-                image = image + '4';
-            } else if (dValue > 8) {
-                image = image + '5';
+    async cellDataHandle({page = 1, isRefresh = true}) {
+        toast.showLoading();
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
+        if (list.length) {
+            list.map(value => {
+                const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
+                value.date = `${year}/${month}/${day} ${time}`;
+                let image = '../../images/result/cell';
+                const dValue = value.dataValue;
+                if (dValue > 0 && dValue <= 2) {
+                    image = image + '1';
+                } else if (dValue > 0 && dValue <= 4) {
+                    image = image + '2';
+                } else if (dValue > 4 && dValue <= 6) {
+                    image = image + '3';
+                } else if (dValue > 6 && dValue <= 8) {
+                    image = image + '4';
+                } else if (dValue > 8) {
+                    image = image + '5';
+                }
+                image = image + '.png';
+                value.image = image
+            });
+            const endData = tools.createDateAndTime(list[0].createdTimestamp);
+            const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
+            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
+
+            if (!isRefresh) {
+                this.data.trendData.concat(list);
             }
-            image = image + '.png';
-            value.image = image
-        });
-        const endData = tools.createDateAndTime(list[0].createdTimestamp);
-        const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
-        let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
-        this.setData({trendDate, trendData: list});
+            this.setData({trendDate, trendData: list});
+        } else {
+            --this.data.page;
+        }
+        toast.hiddenLoading();
     },
 
     onReady: function () {
@@ -292,6 +304,20 @@ Page({
         wx.navigateTo({
             url: '../calendar/calendar?info=' + JSON.stringify(info)
         });
+    },
+
+    onReachBottom() {
+        console.log('onReachBottom');
+        if (this.data.currenttab) {
+            this.cellDataHandle({page: ++this.data.page, isRefresh: false})
+        }
+    },
+
+    onPageScroll: function (e) {
+        this.data.tabIsShow = !(e.scrollTop > 430);
+        this.setData({
+            tabIsShow: this.data.tabIsShow
+        })
     }
 })
 
