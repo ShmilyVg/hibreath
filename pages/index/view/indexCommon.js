@@ -5,7 +5,6 @@ export default class IndexCommonManager {
     setSearchingState() {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
-            burnupShow: true,
 
             picState: true,
             btnState: false,
@@ -23,7 +22,6 @@ export default class IndexCommonManager {
     setSearchedState() {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
-            burnupShow: true,
             picState: true,
             btnState: false,
             hintPic: true,
@@ -49,7 +47,6 @@ export default class IndexCommonManager {
     setDissearchState() {
         getApp().getBLEManager().checkLocationPermission();
         this._page.setData({
-            burnupShow: true,
 
             picState: true,
             btnState: false,
@@ -60,6 +57,7 @@ export default class IndexCommonManager {
             homeTitle: true,
             homeTitleText: "绑定失败，请检查后重试",
             homePShow: true,
+            bgColor:"#EE6F69",
             marginLeft: "102rpx",
             homeOrangeBtn: true,
         })

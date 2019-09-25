@@ -1,20 +1,21 @@
 {
   "pages": [
-"pages/result/result",
     "pages/index/index",
-   
-    "pages/personal/personal",
-    "pages/set-info/set-info",
     "pages/device-bind/device-bind",
+     
+    "pages/plan/plan",
+    "pages/result/result",
+  
+    "pages/set-info/set-info",
+   
     "pages/history/history",
     "pages/update/update",
     "pages/device-manage/device-manage",
     "pages/physical/physical",
-    "pages/plan/plan",
+   
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
     "pages/clockIn/clockIn",
-    "pages/shoppingList/shoppingList",
     "pages/calendar/calendar"
   ],
   "window": {

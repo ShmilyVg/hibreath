@@ -84,7 +84,7 @@ export default class HiNavigator extends CommonNavigator {
         wx.navigateTo({url});
     }*/
     static navigateIndex() {
-        wx.reLaunch({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pages/index/index'});
     }
     static navigateIndexBind({isBind}) {
         wx.reLaunch({url: '/pages/index/index?isBind=' + isBind});

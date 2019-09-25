@@ -72,8 +72,7 @@ export default class BlowManager {
     connected() {
         this._page.setData({
 
-            burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: false,
 
@@ -102,8 +101,6 @@ export default class BlowManager {
 
     ready() {
         this._page.setData({
-            burnupShow: false,
-            userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
             state: "设备已连接",
@@ -119,6 +116,8 @@ export default class BlowManager {
             textState:'预热中',
             textStateEn:'PREHEATING',
             disblowImg:false,//吹气不足状态
+            process:false,//分析中
+
 
 
             homeHeartBoxIndex: 1,
@@ -139,8 +138,6 @@ export default class BlowManager {
     blow() {
         this._page.setData({
 
-            burnupShow: false,
-            userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
 
@@ -158,6 +155,9 @@ export default class BlowManager {
             textStateEn:'BLOW UP',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
+            process:false,//分析中
+
+
 
             homeHeartBoxIndex: 1,
 
@@ -178,8 +178,7 @@ export default class BlowManager {
     disblow() {
         this._page.setData({
 
-            burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: false,
 
@@ -199,7 +198,7 @@ export default class BlowManager {
             textState:'吹气不足',
             textStateEn:'NO ENOUGH',
             homePointHot:false, //吹气时 隐藏预热过长文案
-
+            process:false,//分析中
 
             homeHeartBoxIndex: 1,
 
@@ -217,8 +216,7 @@ export default class BlowManager {
 
     blowing() {
         this._page.setData({
-            burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: false,
 
@@ -236,7 +234,7 @@ export default class BlowManager {
             textStateEn:'BLOWING',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
-
+            process:false,//分析中
 
             homeHeartBoxIndex: 2,
             connectpicShow: false,
@@ -255,8 +253,6 @@ export default class BlowManager {
     blowed() {
         this._page.setData({
 
-            burnupShow: false,
-            userInfoShow: true,
             headerRight: true,
             stateBtnShow: false,
 
@@ -267,11 +263,20 @@ export default class BlowManager {
             btnState: false,
             hintPic: true,
             picStateUrl:'../../images/index/note.png',
-            textState:'',
-            homeHeartBoxIndex: 1,
 
+
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:false,
+            textState:'正在生成结果',
+            textStateEn:'IN PROCESS',
+            disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:true,//分析中
+
+
+            homeHeartBoxIndex: 1,
             connectpicShow: false,
-            blowpicShow: false,
 
             homePointFirst: false,
             homePointSecond: false,
@@ -279,7 +284,7 @@ export default class BlowManager {
             homeBtn: false,
 
             homeTitle: true,
-            homeTitleText: "吹气完成，正在生成结果",
+            homeTitleText: "",
             homePShow: false,
             homeOrangeBtn: false,
         })

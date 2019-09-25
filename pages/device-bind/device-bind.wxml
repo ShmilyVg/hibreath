@@ -1,12 +1,18 @@
 <!--pages/device-bind/device-bind.wxml-->
 
+<!--
 <import src="../index/view/indexCommon.wxml"></import>
 
 <template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,picStateUrl,homeTitleText,hintPic}}"></template>
 
-<view class="bind-hint" wx:if="bindHintShow">{{bindHint}}</view>
-<view style="margin-top: 50rpx" wx:if="{{homePShow}}">
-    <view class="home-p" wx:for="{{homeP.length}}" style="margin-left:102rpx">{{homeP[index]}}</view>
-</view>
+-->
 
-<view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="margin:64rpx auto;" bindtap="reConnectEvent">重试</view>
+
+<view class="page" style="background-color:{{bgColor}}">
+    <!--<view class="bind-hint" wx:if="bindHintShow">{{bindHint}}</view>
+    <view style="margin-top: 50rpx" wx:if="{{homePShow}}">
+        <view class="home-p" wx:for="{{homeP.length}}" style="margin-left:102rpx">{{homeP[index]}}</view>
+    </view>
+
+    <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}"  bindtap="reConnectEvent">重试</view>-->
+</view>

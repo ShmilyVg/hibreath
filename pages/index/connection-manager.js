@@ -6,6 +6,7 @@ export default class ConnectionManager {
         this._page = page;
         this._timeoutIndex = 0;
         this.action = {};
+        console.log('ConnectState',ConnectState)
         this.action[ConnectState.UNBIND] = () => {
             this.unbind();
 
@@ -53,10 +54,21 @@ export default class ConnectionManager {
 
     }*/
     unbind() {
+        wx.setNavigationBarColor({
+        frontColor: '#ffffff', // 必写项
+            backgroundColor: '#EE6F69', // 必写项
+           /* animation: { // 可选项
+            duration: 400,
+                timingFunc: 'easeIn'
+        }*/
+        })
         this._page.setData({
+            noBind:true,//显示绑定按钮等
+            bgColor:"#EE6F69",//PAGE背景
 
-            burnupShow: true,
-            userInfoShow: true,
+
+
+
             headerRight: false,
             stateBtnShow: false,
 
@@ -82,8 +94,7 @@ export default class ConnectionManager {
 
     disconnect() {
         this._page.setData({
-           /* burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: true,
 
@@ -106,46 +117,49 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homePShow: false,
-            homeOrangeBtn: false,*/
-            burnupShow: false,
-            userInfoShow: true,
+            homeOrangeBtn: false,
+      /*      burnupShow: false,
             headerRight: true,
             stateBtnShow: false,
+
             state: "设备已连接",
             stateColorIndex: 1,
-            picState: false,
+
+            picState: true,
             btnState: false,
             hintPic: true,
+            picStateUrl:'../../images/index/note.png',
 
 
-            blowpicShow: false,
-            readyimg:false,// 预热图片显示
-            blowingImg:true,
-            textState:'预热中',
-            textStateEn:'PREHEATING',
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:false,
+            textState:'正在生成结果',
+            textStateEn:'IN PROCESS',
             disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:true,//分析中
 
 
             homeHeartBoxIndex: 1,
             connectpicShow: false,
-
 
             homePointFirst: false,
             homePointSecond: false,
 
             homeBtn: false,
 
-            homeTitle: false,
+            homeTitle: true,
+            homeTitleText: "吹气完成，正在生成结果",
             homePShow: false,
-            homeOrangeBtn: false,
+            homeOrangeBtn: false,*/
         });
     }
 
     connecting() {
         this._page.setData({
 
-            burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: false,
 

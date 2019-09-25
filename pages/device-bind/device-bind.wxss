@@ -1,9 +1,24 @@
 /* pages/device-bind/device-bind.wxss */
 
 page{
-    background: #3E3E3E;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
+.home-orangebtn{
+    width: 610rpx;
+    height: 100rpx;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 100rpx;
+    background: #FF5F00;
+    border-radius: 50rpx;
+}
 .bind-hint{
     color: #8C8C8C;
     fongt-size:28rpx;

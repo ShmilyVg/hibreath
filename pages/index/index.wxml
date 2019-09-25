@@ -1,13 +1,11 @@
 <import src="./view/indexCommon.wxml"></import>
+　<view class="page" style="background-color:{{bgColor}}">
+<template is="common"
+          data="{{homeHeartBox,noBind,bgColor,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}">
+</template>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}"></template>
 
-
-<!--<image class="burnup" src="../../images/index/burnup.png" wx:if="{{burnupShow}}"></image>-->
-
-
-<view class="home-head">
-  <!--<image class="home-pic" src="{{userInfo.headUrl}}" wx:if="{{userInfoShow}}"></image>-->
+    <!--未连接到设备-->
 <!--  <block wx:if="{{headerRight}}">
     <view class="home-state" bindtap="disconnectBtnClick">
       <view class="state-hint" style="background: {{stateColor[stateColorIndex]}};"></view>{{state}}
@@ -15,27 +13,58 @@
     </view>
     <image class="home-set" src="../../images/index/set.png" bindtap="setBtnClick"></image>
   </block>-->
+<view class="home-bind" wx:if="{{noBind}}">
+    <!--wx:elif="{{btnState}}"-->
+    <view class="bindText" style="padding-top: 80rpx;margin-bottom: 20rpx">绑定燃脂精灵</view>
+    <view class="bindText" style="margin-bottom: 75rpx">测测你的燃脂情况</view>
+    <view class="bindImg"></view>
+    <view class="bindSj"></view>
+    <button class="hint-btn"   bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">点击绑定燃脂精灵</button>
+</view>
+<view class="home-again" wx:if="{{}}">
+
+</view>
+<view class="fatBurning-part">
+    <!--  <image class="home-heratbg" src="../../images/index/heart.png"></image>-->
+    <!--
+        <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
+          <view class="heart-hint">
+            <image class="{{hintPic?'hint-pic':'hint-pic-animation'}}" src="{{picStateUrl}}" wx:if="{{picState}}" ></image>
+            <button class="hint-btn" wx:elif="{{btnState}}" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>点击绑定</text></button>
+            <view class="hint-text">{{textState}}</view>
+          </view>
+        </view>-->
+
+    <!-- <image class="fatBurning-img" src="{{fatBuringImg}}"></image>-->
+    <view wx:if="{{readyimg}}" class="fatBurning-img"></view>
+
+    <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
+    <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view>
+    <view wx:if="{{blowingImg}}" class="blowing-img"></view>
+    <view wx:if="{{blowingImg}}" class="blowing-imgs"></view>
+    <view class="fatBurning-tip" wx:if="{{homePointHot}}">
+        <text>
+            设备长时间未使用，为了保证结果准确\n设备还需要些时间预热，请耐心等待
+        </text>
+    </view>
+    <view wx:if="{{disblowImg}}" class="disblow-error"></view>
+    <view wx:if="{{disblowImg}}" class="disblow-img"></view>
+    <view wx:if="{{disblowImg}}" class="blowing-imgs"></view>
+    <view wx:if="{{process}}" class="processC"></view>
+    <view wx:if="{{process}}" class="processM"></view>
+
+    <view class="fatBurning-text">{{textState}}</view>
+    <view class="fatBurning-textEn">{{textStateEn}}</view>
+    <view wx:if="{{disblowImg}}" class="fatBurning-tip"><text>吹气不足，短按设备按键重新吹气，吹\n气中请保持匀速，不要忽快忽慢</text></view>
+
 </view>
 
-<!--<view class="home-heart">
-  <image class="home-heratbg" src="../../images/index/heart.png"></image>
+<!--<image class="electricitypic" src="../../images/index/electricity.png" wx:if="{{electricitypicShow}}"></image>
 
-  <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
-    <view class="heart-hint">
-      <image class="hint-pic" src="{{picStateUrl}}" wx:if="{{picState}}"></image>
-      <button class="hint-btn" wx:elif="{{btnState}}" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>点击绑定</text></button>
-      <view class="hint-text">{{textState}}</view>
-    </view>
-  </view>
-
-</view>-->
-
-<image class="electricitypic" src="../../images/index/electricity.png" wx:if="{{electricitypicShow}}"></image>
-
-<image class="connectpic" src="../../images/index/connectpic.png" wx:if="{{connectpicShow}}" animation="{{animationData}}"></image>
+<image class="connectpic" src="../../images/index/connectpic.png" wx:if="{{connectpicShow}}" animation="{{animationData}}"></image>-->
 <!--<image class="blowpic" src="../../images/index/blowpic.png" wx:if="{{blowpicShow}}" animation="{{animationData}}"></image>-->
 
-<view class="home-point" wx:if="{{homePointFirst}}"><text>燃脂小贴士：</text>{{noteListMore}}</view>
+<!--<view class="home-point" wx:if="{{homePointFirst}}"><text>燃脂小贴士：</text>{{noteListMore}}</view>-->
 <!--<view class="home-point" wx:if="{{homePointHot}}"><text>燃脂小贴士：</text>设备长时间未使用，为了保证结果准确，设备还需要些时间预热，请耐心等待</view>-->
 <!--<view class="home-point" wx:if="{{homePointSecond}}"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>-->
 
@@ -49,17 +78,12 @@
     <button bindtap="toIndex">我知道啦！！！！！！</button>
 </view>
 
-<!--<view class="home-btn"  wx:if="{{homeBtn}}">
-  <view class="home-btn-box home-btn-use" bindtap="useUrl">使用教程</view>
-  <view class="home-btn-box home-btn-history" bindtap="historyUrl">历史记录</view>
-</view>-->
 
-
-
-<!--<view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>-->
+<view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>
 
 
 <view class="home-p" wx:if="{{homePShow}}" wx:for="{{homeP.length}}" style="margin-left: 226rpx">{{homeP[index]}}</view>
 
 
 <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="  position: absolute;left: 70rpx;bottom: 50rpx;">立即使用</view>
+</view>

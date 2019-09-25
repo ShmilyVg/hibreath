@@ -31,7 +31,7 @@ export default class ConnectionManager {
         this._page.setData({
 
             burnupShow: true,
-            userInfoShow: true,
+
             headerRight: false,
             stateBtnShow: false,
 
@@ -59,7 +59,7 @@ export default class ConnectionManager {
         this._page.setData({
 
             burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: true,
 
@@ -90,7 +90,7 @@ export default class ConnectionManager {
         this._page.setData({
 
             burnupShow: false,
-            userInfoShow: true,
+
             headerRight: true,
             stateBtnShow: false,
 

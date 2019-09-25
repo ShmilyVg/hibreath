@@ -17,8 +17,6 @@ export default class UpdataManager {
     updating(){
         this._page.setData({
 
-            burnupShow: true,
-            userInfoShow: false,
             headerRight: false,
 
             state: "设备已连接",
@@ -51,8 +49,7 @@ export default class UpdataManager {
     updataFinish(){
         this._page.setData({
 
-            burnupShow: true,
-            userInfoShow: false,
+
             headerRight: false,
 
             state: "设备已连接",

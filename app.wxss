@@ -51,12 +51,6 @@
 }
 
 
-.home-heart{
-  width: 424rpx;
-  height: 554rpx;
-  margin: 200rpx auto 50rpx;
-  position: relative;
-}
 .home-heratbg{
   width: 100%;
   height: 100%;
@@ -100,7 +94,7 @@
   100% {box-shadow:0rpx 0rpx 0rpx 0rpx rgba(255, 71, 0, 0.5);}
 }
 
-.heart-hint{
+/*.heart-hint{
   width:100%;
   height:100%;
   border-radius:50%;
@@ -109,23 +103,12 @@
   justify-content: center;
   align-items: center;
   transform: rotate(-20deg);
-}
+}*/
 .hint-text{
   color: #fff;
   font-size: 32rpx;
 }
-.hint-btn::after {
-  border: none;
-}
-.hint-btn{
-  font-size: 32rpx;
-  border: none;
-  padding: 0;
-  background-color: #2E2E2E;
-}
-.hint-btn text{
-  color: #FF5E00;
-}
+
 .hint-pic{
   width: 100rpx;
   height: 100rpx;
@@ -162,16 +145,6 @@
 }
 
 
-.home-orangebtn{
-  width: 610rpx;
-  height: 100rpx;
-  color: #fff;
-  font-size: 32rpx;
-  text-align: center;
-  line-height: 100rpx;
-  background: #FF5F00;
-  border-radius: 50rpx;
-}
 .clear{
     clear:both;
 }

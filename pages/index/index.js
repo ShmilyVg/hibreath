@@ -35,8 +35,7 @@ Page({
         ],
 
 
-        burnupShow: true,
-        userInfoShow: true,
+
         headerRight: false,
 
         picState: false,

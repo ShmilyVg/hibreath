@@ -46,7 +46,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 console.log("查看数据结果",dataArray)
                 /*     const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));*/
                 //结果保留一位小数并不四舍五入
-                const b = dataArray[4]+dataArray[5]/100;
+                const b = dataArray[4]/10+dataArray[5]/100;
                 const result = tools.subStringNum(b);
                 console.log('数据2 result',result);
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));

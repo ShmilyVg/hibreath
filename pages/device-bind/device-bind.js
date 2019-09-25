@@ -11,13 +11,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        failRemindList: [
-            {text: '手机未开启蓝牙'},
-            {text: '手机未授权微信获取定位权限'},
-            {text: '燃脂精灵离手机太远'},
-            {text: '未在燃脂精灵上短按按键确认'},
-            {text: '燃脂精灵正处于检测状态'},
-        ],
         homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
         homeP:[
             "1. 手机未开启蓝牙",
@@ -32,13 +25,25 @@ Page({
 
     getResultState({state}) {
         switch (state) {
+            /*连接中*/
             case ConnectState.CONNECTING:
+                wx.setNavigationBarColor({
+                    frontColor: '#000000', // 必写项
+                    backgroundColor: '#fff', // 必写项
+                    /* animation: { // 可选项
+                     duration: 400,
+                         timingFunc: 'easeIn'
+                 }*/
+                })
                 this.indexCommonManager.setSearchingState();
                 this.setData({
                     bindHintShow: true,
                     bindHint:"请将设备开机并靠近手机",
                 });
                 break;
+            /*蓝牙适配器不可用，通常是没有在手机设置中开启蓝牙，或是没有直接或间接调用父类中的openAdapter()*/
+            /*蓝牙断开*/
+            /*蓝牙未绑定*/
             case ConnectState.UNAVAILABLE:
             case ConnectState.DISCONNECT:
             case ConnectState.UNBIND:

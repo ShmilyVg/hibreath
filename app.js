@@ -31,7 +31,7 @@ App({
                     const {timestamp, result, currentLength: length} = finalResult;
                     let {currentIndex} = finalResult;
                     if (records.length < length) {
-                        records.push({dataValue: result, timestamp:timestamp});
+                        records.push({dataValue: result, timestamp:timestamp });
                         count++;
                         console.log(records,"records")
                         console.log(length,"length")
