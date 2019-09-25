@@ -117,10 +117,10 @@
                         <view class="set-content-content">你知道怎样燃脂么？</view>
                     </view>
                 </view>
-                <view wx:if="{{false}}" class="set-content-toFinish">去完成</view>
+                <view wx:if="{{true}}" class="set-content-toFinish" data-type="test" bindtap="bindTapToFinish">去完成</view>
                 <image src="../../images/set-info/finished.png" wx:else class="set-content-finished">去完成</image>
             </view>
-            <view class="content" style="height: 500rpx;margin-top: 50rpx">
+            <view wx:if="{{false}}" class="content" style="height: 500rpx;margin-top: 50rpx">
                 <canvas canvas-id="bg" class='canvasII'></canvas>
                 <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
                 <image class="fatType1" src="{{fatType}}"></image>
@@ -131,4 +131,12 @@
         </view>
     </view>
 </block>
+</view>
+
+<view wx:if="{{showBigTip}}" class="flex-column">
+    <view class="tip-full"></view>
+    <view class="tip-view flex-column">
+        <view class="tip-view-title">正在上传检测记录</view>
+        <view class="tip-view-content">0/20</view>
+    </view>
 </view>

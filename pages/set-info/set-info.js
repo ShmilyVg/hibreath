@@ -33,8 +33,9 @@ Page({
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'}
         ],
-        bgColor:'#FEF6F2',
+        bgColor: '#FEF6F2',
         score: 6.5,
+        showBigTip: false
     },
 
     onLoad() {
@@ -289,9 +290,19 @@ Page({
     },
 
 
-
     onReady() {
         Circular.createSelectorQuery();
     },
 
+    bindTapToFinish(e) {
+        console.log(e);
+        const {currentTarget: {dataset: {type}}} = e;
+        switch (type) {
+            case 'test':
+                this.setData({
+                    showBigTip: true
+                })
+                break
+        }
+    }
 })

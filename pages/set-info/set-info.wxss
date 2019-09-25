@@ -418,6 +418,45 @@
     height: 74rpx;
 }
 
+.tip-full{
+    position: fixed;
+    min-height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background-color: black;
+    opacity:0.85;
+}
+
+.tip-view{
+    width:560rpx;
+    height:300rpx;
+    background:rgba(255,255,255,1);
+    border-radius:8rpx;
+    position: fixed;
+    top: 333rpx;
+    z-index: 1001;
+}
+
+.tip-view-title{
+    font-size:34rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(50,50,50,1);
+    line-height:28rpx;
+    margin-top: 60rpx;
+}
+
+.tip-view-content{
+    font-size:90rpx;
+    font-family:DIN Condensed;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:28rpx;
+    margin-top: 90rpx;
+}
+
 .page {
     display: block;
     min-height: 100%;
