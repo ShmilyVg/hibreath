@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "燃脂检测"
+  "navigationBarTitleText": "燃脂检测",
+  "enablePullDownRefresh": true
 }
