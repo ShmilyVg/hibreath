@@ -3,7 +3,6 @@ let charts = require('./wxcharts');
 let _page = null;
 let _data = null;
 let lineChart = null;
-let index = 0;
 let trendData = {};
 
 
@@ -48,8 +47,6 @@ function normalTrend() {
     } catch (e) {
         // do something when get system info failed
     }
-
-    let YPoint = [];
 
     const {dataListX, dataListY, yAxisSplit} = trendData;
 

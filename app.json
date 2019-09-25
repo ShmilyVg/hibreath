@@ -1,53 +1,58 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/device-bind/device-bind",
-     
-    "pages/plan/plan",
     "pages/result/result",
-  
+    "pages/index/index",
+    "pages/personal/personal",
     "pages/set-info/set-info",
-   
+    "pages/device-bind/device-bind",
     "pages/history/history",
     "pages/update/update",
     "pages/device-manage/device-manage",
     "pages/physical/physical",
-   
+    "pages/plan/plan",
     "pages/cookInfo/cookInfo",
     "pages/HIITInfo/HIITInfo",
     "pages/clockIn/clockIn",
+    "pages/shoppingList/shoppingList",
     "pages/calendar/calendar"
   ],
+
   "window": {
-    "navigationBarBackgroundColor": "#3E3E3E",
-    "backgroundColor": "#3E3E3E",
-    "backgroundTextStyle": "light",
-    "navigationBarTitleText": "HiPee健康燃脂",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "HiPee健康燃脂"
   },
+
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "backgroundColor": "#fff",
-    "list": [{
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/set-info/set-info",
-      "text": "健康树"
-    }, {
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/index/index",
-      "text": "打卡"
-    }, {
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/plan/plan",
-      "text": "发现"
-    },{
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/history/history",
-      "text": "商城"
-    }]
+    "list": [
+      {
+        "selectedIconPath": "images/device-bind/connected.png",
+        "iconPath": "images/device-bind/connected.png",
+        "pagePath": "pages/set-info/set-info",
+        "text": "健康树"
+      },
+      {
+        "selectedIconPath": "images/device-bind/connected.png",
+        "iconPath": "images/device-bind/connected.png",
+        "pagePath": "pages/index/index",
+        "text": "打卡"
+      },
+      {
+        "selectedIconPath": "images/device-bind/connected.png",
+        "iconPath": "images/device-bind/connected.png",
+        "pagePath": "pages/plan/plan",
+        "text": "发现"
+      },
+      {
+        "selectedIconPath": "images/device-bind/connected.png",
+        "iconPath": "images/device-bind/connected.png",
+        "pagePath": "pages/history/history",
+        "text": "商城"
+      }
+    ]
   }
 }

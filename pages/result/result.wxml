@@ -1,6 +1,8 @@
-<view class="result-top">
-    <image class="result-img1" src="../../images/result/circle.png"></image>
-    <text  class="result-text1">最近一次</text>
+<view class="result-top flex-row">
+    <view class="flex-row">
+        <image class="result-img1" src="../../images/result/circle.png"></image>
+        <text class="result-text1">最近一次</text>
+    </view>
     <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
 </view>
 <view class='content'>
@@ -13,13 +15,21 @@
     <view class="fatDes">"{{fatDes}}"</view>
 </view>
 <button class="result-btn" bindtap="toIndex">吹一吹</button>
-<view class="result_tab">
+
+<view wx:if="{{tabIsShow}}" class="result_tab">
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+    <view class="clear"></view>
+</view>
+<view wx:else class="result_tab" style="opacity: 0"></view>
+
+<view wx:if="{{!tabIsShow}}" class="result_tab_top">
     <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
     <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
     <view class="clear"></view>
 </view>
 
-<!--热门回答  -->
+<!--燃脂记录  -->
 <view wx:if="{{currenttab==='0'}}">
     <view wx:for="{{trendData}}" class="flex-column cell">
         <view class="flex-row" style="width:100%;justify-content: space-between">
@@ -36,7 +46,7 @@
     </view>
 </view>
 
-<!--全部分类 -->
+<!--燃脂趋势 -->
 <view wx:if="{{currenttab==='1'}}" >
     <block wx:if="{{!noData}}">
         <view class="canvas-base-view">
