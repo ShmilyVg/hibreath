@@ -195,7 +195,7 @@ Page({
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
                     Protocol.getBreathDataAdd({
-                        dataValue: tools.subStringNum(finalResult.result),
+                        dataValue: tools.subStringNum(finalResult.result)/10,
                     }).then(data => {
                         console.log(data.result.id)
                         HiNavigator.navigateBlowToResult({id: data.result.id});
