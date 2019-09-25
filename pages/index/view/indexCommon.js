@@ -14,7 +14,7 @@ export default class IndexCommonManager {
 
             homeTitle: true,
             homeTitleText: "正在寻找您的设备",
-            homePShow: false,
+            nofind: false,//未找到标志位 true为未找到
             homeOrangeBtn: false,
         })
     }
@@ -29,7 +29,7 @@ export default class IndexCommonManager {
             homeHeartBoxIndex: 1,
             homeTitle: true,
             homeTitleText: "已找到您的设备",
-            homePShow: false,
+            nofind: false,
             homeOrangeBtn: false,
         })
        /* var that = this;
@@ -46,7 +46,19 @@ export default class IndexCommonManager {
 
     setDissearchState() {
         getApp().getBLEManager().checkLocationPermission();
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff', // 必写项
+            backgroundColor: '#EE6F69', // 必写项
+            /* animation: { // 可选项
+             duration: 400,
+                 timingFunc: 'easeIn'
+         }*/
+        })
         this._page.setData({
+            nofind: true,
+            bgColor:"#EE6F69",
+
+
 
             picState: true,
             btnState: false,
@@ -56,8 +68,7 @@ export default class IndexCommonManager {
 
             homeTitle: true,
             homeTitleText: "绑定失败，请检查后重试",
-            homePShow: true,
-            bgColor:"#EE6F69",
+
             marginLeft: "102rpx",
             homeOrangeBtn: true,
         })

@@ -95,12 +95,12 @@ export default class ConnectionManager {
     disconnect() {
         this._page.setData({
 
+            tryAgain:true,//未找到设备标志位
+
             headerRight: true,
             stateBtnShow: true,
-
             state: "未连接到设备",
             stateColorIndex: 0,
-
             picState: true,
             btnState: false,
             hintPic: true,
@@ -118,47 +118,47 @@ export default class ConnectionManager {
             homeTitle: false,
             homePShow: false,
             homeOrangeBtn: false,
-      /*      burnupShow: false,
+      /*      noBind:false,//显示绑定按钮等
+            blowpicShow: false,
+            readyimg:false,// 预热图片显示
+            blowingImg:false,
+            textState:'',
+            textStateEn:'PREHEATING',
+            disblowImg:false,//吹气不足状态
+            process:false,//分析中
+
+
+
+
             headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
             stateColorIndex: 1,
 
-            picState: true,
+            picState: false,
             btnState: false,
             hintPic: true,
-            picStateUrl:'../../images/index/note.png',
-
-
-            blowpicShow: false,//吹气图片
-            readyimg:false,// 预热图片
-            blowingImg:false,
-            textState:'正在生成结果',
-            textStateEn:'IN PROCESS',
-            disblowImg:false,//吹气不足状态
-            homePointHot:false, //吹气时 隐藏预热过长文案
-            process:true,//分析中
-
-
             homeHeartBoxIndex: 1,
-            connectpicShow: false,
 
-            homePointFirst: false,
+            connectpicShow: true,
+
+            homePointFirst: true,
             homePointSecond: false,
 
-            homeBtn: false,
+            homeBtn: true,
 
-            homeTitle: true,
-            homeTitleText: "吹气完成，正在生成结果",
+            homeTitle: false,
             homePShow: false,
             homeOrangeBtn: false,*/
+
         });
     }
 
     connecting() {
         this._page.setData({
-
+            noBind:false,//显示绑定按钮等
+            tryAgain:false,//未找到设备标志位
 
             headerRight: true,
             stateBtnShow: false,

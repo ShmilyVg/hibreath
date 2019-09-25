@@ -71,6 +71,17 @@ export default class BlowManager {
     }
     connected() {
         this._page.setData({
+            blowpicShow: false,
+            readyimg:false,// 预热图片显示
+            blowingImg:false,
+            textState:'',
+            textStateEn:'',
+            disblowImg:false,//吹气不足状态
+            process:false,//分析中
+            beginFat:true,//连接成功
+            topState:"开启您的燃脂之旅",
+            topStateS:"短按设备按键·开始检测",
+
 
 
             headerRight: true,
@@ -82,11 +93,9 @@ export default class BlowManager {
             picState: false,
             btnState: false,
             hintPic: true,
-            textState:'',
             homeHeartBoxIndex: 1,
 
             connectpicShow: true,
-            blowpicShow: false,
 
             homePointFirst: true,
             homePointSecond: false,

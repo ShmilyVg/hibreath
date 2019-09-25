@@ -1,4 +1,8 @@
 // pages/device-bind/device-bind.js
+/**
+ * @Date: 2019-09-25 15:36:52
+ * @LastEditors: 张浩玉
+ */
 import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 import IndexCommonManager from "../index/view/indexCommon";
@@ -11,7 +15,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        homeHeartBox: ["home-heartbox-white",".home-heartbox-orange",".home-heartbox-orange-animation"],
         homeP:[
             "1. 手机未开启蓝牙",
             "2. 手机未授权微信获取定位权限",
@@ -19,7 +22,7 @@ Page({
             "4. 未在燃脂精灵上短按按键确认",
             "5. 燃脂精灵正处于检测状态"
         ],
-        bindHintShow: false,
+
     },
     isBind: false,
 
@@ -28,21 +31,20 @@ Page({
             /*连接中*/
             case ConnectState.CONNECTING:
                 wx.setNavigationBarColor({
-                    frontColor: '#000000', // 必写项
-                    backgroundColor: '#fff', // 必写项
-                    /* animation: { // 可选项
-                     duration: 400,
-                         timingFunc: 'easeIn'
-                 }*/
+                    frontColor: '#000000',
+                    backgroundColor: '#fff',
                 })
                 this.indexCommonManager.setSearchingState();
                 this.setData({
-                    bindHintShow: true,
-                    bindHint:"请将设备开机并靠近手机",
+                    bgColor:"#fff",
+                    finding:true,//正在寻找设备标志位
+                    finded:false,//找到并绑定
+                    contentStateB:"正在寻找您的设备",
+                    contentStateS:"长按设备按键·3秒开机",
                 });
                 break;
-            /*蓝牙适配器不可用，通常是没有在手机设置中开启蓝牙，或是没有直接或间接调用父类中的openAdapter()*/
-            /*蓝牙断开*/
+            /* UNAVAILABLE 蓝牙适配器不可用，通常是没有在手机设置中开启蓝牙，或是没有直接或间接调用父类中的openAdapter()*/
+            /* DISCONNECT 蓝牙断开*/
             /*蓝牙未绑定*/
             case ConnectState.UNAVAILABLE:
             case ConnectState.DISCONNECT:
@@ -51,15 +53,20 @@ Page({
                 app.getBLEManager().clearConnectedBLE();
                 this.indexCommonManager.setDissearchState();
                 this.setData({
-                    bindHintShow: false,
+                    bgColor:"#EE6F69",
+                    finding:false,
+                    finded:false,
                     bindHint:"",
                 });
                 break;
             default:
                 this.indexCommonManager.setSearchedState();
                 this.setData({
-                    bindHintShow: true,
-                    bindHint:"短按设备上的按键确认绑定",
+                    bgColor:"#fff",
+                    finding:false,
+                    finded:true,
+                    contentStateB:"燃脂精灵已经找到",
+                    contentStateS:"短按设备按键·确认绑定",
                 });
                 break;
         }

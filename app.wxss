@@ -130,21 +130,6 @@
 
 
 
-
-.home-title{
-  font-size: 50rpx;
-  font-weight: 700;
-  color: #AAAAAA;
-  text-align: center;
-}
-
-.home-p{
-  color: #979797;
-  font-size: 28rpx;
-  margin-bottom: 11rpx;
-}
-
-
 .clear{
     clear:both;
 }

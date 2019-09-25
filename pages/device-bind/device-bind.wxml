@@ -9,10 +9,33 @@
 
 
 <view class="page" style="background-color:{{bgColor}}">
-    <!--<view class="bind-hint" wx:if="bindHintShow">{{bindHint}}</view>
-    <view style="margin-top: 50rpx" wx:if="{{homePShow}}">
-        <view class="home-p" wx:for="{{homeP.length}}" style="margin-left:102rpx">{{homeP[index]}}</view>
-    </view>
+    <!--未找到设备-->
+    <view  wx:if="{{nofind}}">
+        <view class="noBindText" style="margin-top: 80rpx">出了点小问题</view>
+        <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
+        <view style="margin-top: 50rpx">
+            <view wx:for="{{homeP.length}}">
+                <view class="home-p" >{{homeP[index]}}</view>
+                <view wx:if="{{index == 4}}" style="height: 47rpx;width: 100%;margin-bottom: 41rpx"></view>
+                <view wx:else style="height: 47rpx;width: 100%;border-bottom: 1px #FF948F solid;margin-bottom: 41rpx"></view>
+            </view>
 
-    <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}"  bindtap="reConnectEvent">重试</view>-->
+        </view>
+
+        <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}"  bindtap="reConnectEvent">重试</view>
+    </view>
+    <!--正在寻找设备-->
+    <view wx:if="{{finding}}">
+        <view class="findImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+    <!--找到设备并按键绑定-->
+    <view wx:if="{{finded}}">
+        <view class="findedImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+    <!--绑定成功-->
+
 </view>

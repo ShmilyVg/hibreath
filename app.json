@@ -1,19 +1,11 @@
 {
   "pages": [
-    "pages/result/result",
     "pages/index/index",
-    "pages/personal/personal",
-    "pages/set-info/set-info",
+    "pages/result/result",
     "pages/device-bind/device-bind",
-    "pages/history/history",
+    "pages/set-info/set-info",
     "pages/update/update",
     "pages/device-manage/device-manage",
-    "pages/physical/physical",
-    "pages/plan/plan",
-    "pages/cookInfo/cookInfo",
-    "pages/HIITInfo/HIITInfo",
-    "pages/clockIn/clockIn",
-    "pages/shoppingList/shoppingList",
     "pages/calendar/calendar"
   ],
 
@@ -30,27 +22,27 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "selectedIconPath": "images/device-bind/connected.png",
-        "iconPath": "images/device-bind/connected.png",
+        "selectedIconPath": "images/result/bindInfo.png",
+        "iconPath": "images/result/bindInfo.png",
         "pagePath": "pages/set-info/set-info",
         "text": "健康树"
       },
       {
-        "selectedIconPath": "images/device-bind/connected.png",
-        "iconPath": "images/device-bind/connected.png",
+        "selectedIconPath": "images/result/bindInfo.png",
+        "iconPath": "images/result/bindInfo.png",
         "pagePath": "pages/index/index",
         "text": "打卡"
       },
       {
-        "selectedIconPath": "images/device-bind/connected.png",
-        "iconPath": "images/device-bind/connected.png",
-        "pagePath": "pages/plan/plan",
+        "selectedIconPath": "images/result/bindInfo.png",
+        "iconPath": "images/result/bindInfo.png",
+        "pagePath": "pages/set-info/set-info",
         "text": "发现"
       },
       {
-        "selectedIconPath": "images/device-bind/connected.png",
-        "iconPath": "images/device-bind/connected.png",
-        "pagePath": "pages/history/history",
+        "selectedIconPath": "images/result/bindInfo.png",
+        "iconPath": "images/result/bindInfo.png",
+        "pagePath": "pages/set-info/set-info",
         "text": "商城"
       }
     ]

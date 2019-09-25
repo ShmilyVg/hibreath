@@ -1,43 +1,34 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
 <template is="common"
-          data="{{homeHeartBox,noBind,bgColor,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}">
+          data="{{homeHeartBox,noBind,tryAgain,beginFat,bgColor,homeHeartBoxIndex,picStateUrl,picState,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText,hintPic}}">
 </template>
 
 
-    <!--未连接到设备-->
-<!--  <block wx:if="{{headerRight}}">
-    <view class="home-state" bindtap="disconnectBtnClick">
-      <view class="state-hint" style="background: {{stateColor[stateColorIndex]}};"></view>{{state}}
-      <text style="color: #FF5D00;margin-left: 10rpx" wx:if="{{stateBtnShow}}">点击重试</text>
-    </view>
-    <image class="home-set" src="../../images/index/set.png" bindtap="setBtnClick"></image>
-  </block>-->
+    <!--未绑定情况-->
 <view class="home-bind" wx:if="{{noBind}}">
-    <!--wx:elif="{{btnState}}"-->
     <view class="bindText" style="padding-top: 80rpx;margin-bottom: 20rpx">绑定燃脂精灵</view>
     <view class="bindText" style="margin-bottom: 75rpx">测测你的燃脂情况</view>
     <view class="bindImg"></view>
     <view class="bindSj"></view>
     <button class="hint-btn"   bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">点击绑定燃脂精灵</button>
 </view>
-<view class="home-again" wx:if="{{}}">
-
+    <!--绑定未连接情况-->
+<view class="home-again" wx:if="{{tryAgain}}">
+    <view class="againText">连接不到它</view>
+    <view class="againTextS">燃脂精灵好像开了小差</view>
+    <view class="againImg"></view>
+    <view class="bindSj"></view>
+    <button class="hint-btn"   bindtap="disconnectBtnClick" >再试一下</button>
+</view>
+    <!--连接成功情况-->
+<view class="home-ready" wx:if="{{beginFat}}">
+    <view class="readyText">{{topState}}</view>
+    <view class="readyTextS">{{topStateS}}</view>
+    <view class="readyImg"></view>
 </view>
 <view class="fatBurning-part">
-    <!--  <image class="home-heratbg" src="../../images/index/heart.png"></image>-->
-    <!--
-        <view class="home-heartbox {{homeHeartBox[homeHeartBoxIndex]}}">
-          <view class="heart-hint">
-            <image class="{{hintPic?'hint-pic':'hint-pic-animation'}}" src="{{picStateUrl}}" wx:if="{{picState}}" ></image>
-            <button class="hint-btn" wx:elif="{{btnState}}" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo"><text>点击绑定</text></button>
-            <view class="hint-text">{{textState}}</view>
-          </view>
-        </view>-->
-
-    <!-- <image class="fatBurning-img" src="{{fatBuringImg}}"></image>-->
     <view wx:if="{{readyimg}}" class="fatBurning-img"></view>
-
     <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
     <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view>
     <view wx:if="{{blowingImg}}" class="blowing-img"></view>
@@ -58,26 +49,7 @@
     <view wx:if="{{disblowImg}}" class="fatBurning-tip"><text>吹气不足，短按设备按键重新吹气，吹\n气中请保持匀速，不要忽快忽慢</text></view>
 
 </view>
-
-<!--<image class="electricitypic" src="../../images/index/electricity.png" wx:if="{{electricitypicShow}}"></image>
-
-<image class="connectpic" src="../../images/index/connectpic.png" wx:if="{{connectpicShow}}" animation="{{animationData}}"></image>-->
-<!--<image class="blowpic" src="../../images/index/blowpic.png" wx:if="{{blowpicShow}}" animation="{{animationData}}"></image>-->
-
-<!--<view class="home-point" wx:if="{{homePointFirst}}"><text>燃脂小贴士：</text>{{noteListMore}}</view>-->
-<!--<view class="home-point" wx:if="{{homePointHot}}"><text>燃脂小贴士：</text>设备长时间未使用，为了保证结果准确，设备还需要些时间预热，请耐心等待</view>-->
-<!--<view class="home-point" wx:if="{{homePointSecond}}"><text>吹气要领：</text>吹气时用一口气吹，吹速缓慢，中间不换气，听到滴声后即可停止。</view>-->
-
-<view wx:if="{{isBind}}">
-    <view class="">绑定成功！！！！</view>
-    <view class="">教你如何测出准确的结果</view>
-    <view class="">建议清晨起床喝一杯温水后进行检测，运动日可在运动结束后1-3小时内检测</view>
-    <view class="">1.若有饮酒请间隔24小时以上再进行检测</view>
-    <view class="">2.吸烟、涂抹口红、喷香水等行为会对检测结果的准确性产生影响</view>
-    <view class="">3.测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物</view>
-    <button bindtap="toIndex">我知道啦！！！！！！</button>
-</view>
-
+<!--
 
 <view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>
 
@@ -85,5 +57,5 @@
 <view class="home-p" wx:if="{{homePShow}}" wx:for="{{homeP.length}}" style="margin-left: 226rpx">{{homeP[index]}}</view>
 
 
-<view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="  position: absolute;left: 70rpx;bottom: 50rpx;">立即使用</view>
+<view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="  position: absolute;left: 70rpx;bottom: 50rpx;">立即使用</view>-->
 </view>
