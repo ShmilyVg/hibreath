@@ -160,8 +160,8 @@ function showType() {
     if (_page.data.score <= 2) {
         _page.setData({
             fatType: "../../images/result/type1.png",
-            fatText: "继续努力",
-            fatTextEn: "KEEP ON"
+            fatText: "未燃脂",
+            fatTextEn: "CHIN UP"
         })
     } else if (_page.data.score <= 4 && _page.data.score > 2) {
         _page.setData({
