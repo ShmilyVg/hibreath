@@ -96,7 +96,6 @@ Page({
                     noteList: noteList,
                     firstInto: false
                 })
-                this.handleTipText();
             });
         }
 
