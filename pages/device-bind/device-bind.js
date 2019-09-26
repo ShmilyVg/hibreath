@@ -6,7 +6,7 @@
 import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 import IndexCommonManager from "../index/view/indexCommon";
-
+import WXDialog from "../../view/dialog";
 const app = getApp();
 
 Page({
@@ -80,7 +80,9 @@ Page({
     reConnectEvent() {
         app.getBLEManager().connect();
     },
-
+    showTips(){
+        WXDialog.showDialog({title: '小贴士', content:"请前往手机「设置」 找到「微信」 应用，打开「微信定位/位置权限」", confirmText: '我知道了'});
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -89,6 +91,12 @@ Page({
         app.setBLEListener({
             bleStateListener: ({state}) => {
                 if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
+                    this.setData({
+                        finding:false,
+                        finded:false,
+                        nofind:false,
+                        bindSuccess:true,
+                    })
                     this.isBind = true;
                     //绑定后 跳转绑定成功页面  点击按钮再进入index页面
                     //setTimeout(() => HiNavigator.navigateSuccessInfo());

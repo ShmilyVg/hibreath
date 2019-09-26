@@ -15,7 +15,12 @@
         <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
         <view style="margin-top: 50rpx">
             <view wx:for="{{homeP.length}}">
-                <view class="home-p" >{{homeP[index]}}</view>
+                <view class="home-p" wx:if="{{index == 1}}">
+
+                    {{homeP[index]}}
+                    <image class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                </view>
+                <view class="home-p" wx:else>{{homeP[index]}}</view>
                 <view wx:if="{{index == 4}}" style="height: 47rpx;width: 100%;margin-bottom: 41rpx"></view>
                 <view wx:else style="height: 47rpx;width: 100%;border-bottom: 1px #FF948F solid;margin-bottom: 41rpx"></view>
             </view>
@@ -37,5 +42,12 @@
         <view class="contentTextS">{{contentStateS}}</view>
     </view>
     <!--绑定成功-->
-
+    <view wx:if="{{bindSuccess}}">
+        <view class="bindSuccess-top">
+            <image clas="bindSuccess-img" src="../../successBind.png"></image>
+            <view class="bind-text">绑定成功</view>
+        </view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
 </view>

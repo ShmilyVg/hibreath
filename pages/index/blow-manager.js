@@ -80,7 +80,9 @@ export default class BlowManager {
         })
         this._page.setData({
             noBind:false,
+            finding:false,
             blowpicShow: false,
+            bgcolor:"#fff",
             readyimg:false,// 预热图片显示
             blowingImg:false,
             textState:'',
@@ -94,7 +96,6 @@ export default class BlowManager {
             homePointHot:false,
 
 
-            headerRight: true,
             stateBtnShow: false,
 
             state: "设备已连接",
@@ -110,7 +111,6 @@ export default class BlowManager {
     ready() {
         this._page.setData({
             noBind:false,
-            headerRight: true,
             stateBtnShow: false,
             state: "设备已连接",
 
@@ -136,7 +136,7 @@ export default class BlowManager {
     blow() {
         this._page.setData({
             noBind:false,
-            headerRight: true,
+
             stateBtnShow: false,
 
             state: "设备已连接",
@@ -167,7 +167,7 @@ export default class BlowManager {
         this._page.setData({
 
             noBind:false,
-            headerRight: true,
+
             stateBtnShow: false,
 
             state: "设备已连接",
@@ -195,7 +195,7 @@ export default class BlowManager {
     blowing() {
         this._page.setData({
             noBind:false,
-            headerRight: true,
+
             stateBtnShow: false,
 
             state: "设备已连接",
@@ -224,7 +224,7 @@ export default class BlowManager {
     blowed() {
         this._page.setData({
             noBind:false,
-            headerRight: true,
+
             stateBtnShow: false,
 
             state: "设备已连接",

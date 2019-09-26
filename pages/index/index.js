@@ -35,9 +35,6 @@ Page({
 
 
 
-        headerRight: false,
-
-
         textStateColor: true,
 
 

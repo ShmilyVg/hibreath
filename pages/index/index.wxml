@@ -13,7 +13,7 @@
     <view class="bindSj"></view>
     <button class="hint-btn"   bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">点击绑定燃脂精灵</button>
 </view>
-    <!--绑定未连接情况-->
+    <!--绑定连接不上情况-->
 <view class="home-again" wx:if="{{tryAgain}}">
     <view class="againText">连接不到它</view>
     <view class="againTextS">燃脂精灵好像开了小差</view>
@@ -21,6 +21,12 @@
     <view class="bindSj"></view>
     <button class="hint-btn"   bindtap="disconnectBtnClick" >再试一下</button>
 </view>
+    <!--已绑定 正在寻找情况-->
+    <view wx:if="{{finding}}">
+        <view class="findImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
     <!--连接成功情况-->
 <view class="home-ready" wx:if="{{beginFat}}">
     <view class="readyText">{{topState}}</view>

@@ -46,6 +46,7 @@ page{
     font-family: PingFang-SC;
     color: #FFFFFF;
     font-size: 30rpx;
+    float: left;
 }
 .findImd{
     width: 320rpx;
@@ -81,4 +82,24 @@ page{
     font-size: 32rpx;
     color: #A0A0A0;
     text-align: center;
+}
+.nofind-img{
+    width: 36rpx;
+    height: 36rpx;
+}
+.bindSuccess-top{
+    width: 100%;
+    height: 431rpx;
+    text-align: center;
+}
+.bind-text{
+    font-family: PingFang-SC;
+    color: #fff;
+    font-size: 50rpx;
+}
+.bindSuccess-img{
+    width: 200rpx;
+    height: 200rpx;
+    margin-top: 40rpx;
+    margin-bottom: 25rpx;
 }

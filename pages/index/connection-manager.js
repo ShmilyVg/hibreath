@@ -22,9 +22,6 @@ export default class ConnectionManager {
         };
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
-
-
-
         };
 
         this.action[ConnectState.CONNECTING] = ()=>{
@@ -61,9 +58,10 @@ export default class ConnectionManager {
         this._page.setData({
             noBind:true,//显示绑定按钮等
             bgColor:"#EE6F69",//PAGE背景
+            tryAgain:false,//未找到设备标志位
+            finding:false,//正在寻找设备标志位
 
 
-            headerRight: false,
             stateBtnShow: false,
 
 
@@ -84,9 +82,10 @@ export default class ConnectionManager {
     disconnect() {
         this._page.setData({
 
-           /* tryAgain:true,//未找到设备标志位
+            tryAgain:true,//未找到设备标志位
+            finding:false,//正在寻找设备标志位
+            bgColor:"#EE6F69",
 
-            headerRight: true,
             stateBtnShow: true,
             state: "未连接到设备",
             picState: true,
@@ -98,9 +97,9 @@ export default class ConnectionManager {
 
 
             homeTitle: false,
-            homeOrangeBtn: false,*/
-            noBind:false,
-            headerRight: true,
+            homeOrangeBtn: false,
+      /*      noBind:false,
+
             stateBtnShow: false,
 
             state: "设备已连接",
@@ -123,17 +122,25 @@ export default class ConnectionManager {
 
 
             homeTitle: false,
-            homeOrangeBtn: false,
+            homeOrangeBtn: false,*/
 
         });
     }
 
     connecting() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
             noBind:false,//显示绑定按钮等
             tryAgain:false,//未找到设备标志位
+            finding:true,//正在寻找设备标志位
+            bgColor:"#fff",
+            contentStateB:"正在寻找您的设备",
+            contentStateS:"长按设备按键·3秒开机",
 
-            headerRight: true,
+
             stateBtnShow: false,
 
             state: "正在连接设备",

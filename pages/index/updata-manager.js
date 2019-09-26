@@ -17,8 +17,6 @@ export default class UpdataManager {
     updating(){
         this._page.setData({
 
-            headerRight: false,
-
             state: "设备已连接",
 
             btnState: false,
@@ -40,8 +38,6 @@ export default class UpdataManager {
     updataFinish(){
         this._page.setData({
 
-
-            headerRight: false,
 
             state: "设备已连接",
 
