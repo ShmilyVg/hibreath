@@ -18,7 +18,7 @@ export default class ConnectionManager {
                 WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
                 this.disconnect();
 
-            },200);
+            },1000);
         };
         //蓝牙连接已断开
             this.action[ConnectState.DISCONNECT] = () => {
@@ -87,43 +87,22 @@ export default class ConnectionManager {
             finding:false,//正在寻找设备标志位
             bgColor:"#EE6F69",
 
+
+            readyimg:false,
+            blowpicShow:false,
+            textState:"",
+            textStateEn:"",
+            disblowImg:false,
+            blowingImg:false,
+            process:false,
+
             stateBtnShow: true,
             state: "未连接到设备",
-            picState: true,
             btnState: false,
-
-
-            blowpicShow: false,
-
 
 
             homeTitle: false,
             homeOrangeBtn: false,
-      /*      noBind:false,
-
-            stateBtnShow: false,
-
-            state: "设备已连接",
-
-
-
-            btnState: false,
-
-
-            beginFat:false,
-            blowpicShow: false,//吹气图片
-            readyimg:false,// 预热图片
-            blowingImg:true,
-            textState:'吹气中',
-            textStateEn:'BLOWING',
-            disblowImg:false,//吹气不足状态
-            homePointHot:false, //吹气时 隐藏预热过长文案
-            process:false,//分析中
-
-
-
-            homeTitle: false,
-            homeOrangeBtn: false,*/
 
         });
     }
@@ -142,6 +121,14 @@ export default class ConnectionManager {
             contentStateS:"长按设备按键·3秒开机",
 
 
+            readyimg:false,
+            blowpicShow:false,
+            textState:"",
+            textStateEn:"",
+            disblowImg:false,
+            blowingImg:false,
+            process:false,
+
             stateBtnShow: false,
 
             state: "正在连接设备",
@@ -150,10 +137,7 @@ export default class ConnectionManager {
             beginFat:false,
 
             btnState: false,
-            textState:'',
 
-
-            blowpicShow: false,
 
 
 
