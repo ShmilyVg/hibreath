@@ -89,7 +89,7 @@ Page({
                 birth: this.data.birth,
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
-                showNewInfo: false,
+                showNewInfo: true,
                 bgColor: '#ffffff'
             });
         }
