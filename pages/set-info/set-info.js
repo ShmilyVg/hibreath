@@ -15,7 +15,8 @@ const app = getApp();
 
 Page({
     data: {
-        showGuide: true,
+        showGuide: false,
+        showNewInfo: false,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
@@ -33,7 +34,7 @@ Page({
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'}
         ],
-        bgColor: '#FEF6F2',
+        bgColor: '#ffffff',
         score: 6.5,
         showBigTip: false
     },
@@ -61,16 +62,17 @@ Page({
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
         if (accountInfo.detail) {
-            info = accountInfo.detail;
-            this.data.meals.map(value => {
-                value.isChose = value.en === info.mealType;
-            });
-
-            this.data.sexBox.map(value => {
-                value.isChose = info.sex === value.value;
-            });
-
-            this.data.birth = info.birthday.split("-");
+            // info = accountInfo.detail;
+            // this.data.meals.map(value => {
+            //     value.isChose = value.en === info.mealType;
+            // });
+            //
+            // this.data.sexBox.map(value => {
+            //     value.isChose = info.sex === value.value;
+            // });
+            //
+            // this.data.birth = info.birthday.split("-");
+            this.handleTasks();
         } else {
             info = {
                 goalDesc: '',
@@ -82,13 +84,15 @@ Page({
                 bodyFatRate: '',
                 weightGoal: '',
             };
+            this.setData({
+                currentDate, goals, finishedGuide, info,
+                birth: this.data.birth,
+                meals: this.data.meals,
+                sexBox: this.data.sexBox,
+                showNewInfo: false,
+                bgColor: '#ffffff'
+            });
         }
-        this.setData({
-            currentDate, goals, finishedGuide, info,
-            birth: this.data.birth,
-            meals: this.data.meals,
-            sexBox: this.data.sexBox
-        })
     },
 
     handleBle() {
@@ -102,6 +106,24 @@ Page({
             }
         });
         app.getBLEManager().connect();
+    },
+
+    async handleTasks() {
+        const {result} = await Protocol.postMembersTasks();
+        this.setData({
+            taskRes: result,
+            showNewInfo: false,
+            bgColor: '#FEF6F2'
+        });
+
+        wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#F55E6B',
+            animation: {
+                duration: 400,
+                timingFunc: 'easeIn'
+            }
+        })
     },
 
     async continue() {
@@ -175,12 +197,9 @@ Page({
                 }
                 break;
             case 7:
-                await Protocol.postMembersPut(this.data.info);
+                this.handleTasks();
                 return;
             case 8:
-                // Protocol.postBreathPlanAnalysis(info).then(data => {
-                //     this.setisFirst();
-                // });
                 return;
         }
         this.setData({
@@ -299,9 +318,14 @@ Page({
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'test':
-                this.setData({
-                    showBigTip: true
-                })
+                const isBindDevice = wx.getStorageSync('isBindDevice');
+                if (isBindDevice) {
+                    this.setData({
+                        showBigTip: true
+                    });
+                } else {
+                    HiNavigator.relaunchToIndex();
+                }
                 break
         }
     }

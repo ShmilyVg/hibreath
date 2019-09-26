@@ -330,7 +330,7 @@
 .set-top-view{
     height: 310rpx;
     width: 100%;
-    background:linear-gradient(90deg,rgba(245,94,107,1),rgba(244,121,112,1));
+    background:linear-gradient(rgba(245,94,107,1),rgba(244,121,112,1));
     justify-content: space-between;
 }
 
