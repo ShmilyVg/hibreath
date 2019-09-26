@@ -1,0 +1,28 @@
+<view>
+    <!--   <view>-->
+    <view class="bindSuccess-top">
+        <image class="bindSuccess-img" src="../../images/device-bind/successBind.png"></image>
+        <view class="bind-text">绑定成功</view>
+    </view>
+    <view class="bindSuccess-bto">
+        <view class="bindSuccess-btoText1">教你如何测出准确的结果</view>
+        <view class="bindSuccess-btoText2">建议清晨起床喝一杯温水后进行检测，运动日</view>
+        <view class="bindSuccess-btoText2">课在运动结束后1-3小时内检测</view>
+        <view class="bindSuccess-btoLine"></view>
+        <swiper bindchange="swiperChange"
+                autoplay="true" circular="true" class="bindSuccess-swiper">
+            <block wx:for="{{bindSuccessArr}}">
+                <swiper-item>
+                    <text  class="slide-text">{{item}}</text>
+                </swiper-item>
+            </block>
+        </swiper>
+        <!--重置小圆点的样式 -->
+        <view class="dots">
+            <block wx:for="{{bindSuccessArr}}">
+                <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+            </block>
+        </view>
+        <view class="bindSuccess-btn"   bindtap="toIndex">我知道了</view>
+    </view>
+</view>

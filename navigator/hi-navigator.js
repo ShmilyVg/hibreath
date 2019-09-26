@@ -49,7 +49,9 @@ export default class HiNavigator extends CommonNavigator {
     }
 
     /*新加跳转*/
-
+    static navigateSuccessInfo() {
+        this.reLaunch({url: '/pages/successInfo/successInfo'})
+    }
     static navigateToclickBody() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }

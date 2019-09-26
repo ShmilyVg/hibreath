@@ -9,7 +9,6 @@ page{
     left: 0;
     top: 0;
     z-index: 1;
-    padding: 0 50rpx;
     box-sizing:border-box;
 }
 

@@ -10,7 +10,7 @@
 
 <view class="page" style="background-color:{{bgColor}}" >
     <!--未找到设备-->
-    <view  wx:if="{{nofind}}">
+    <view  wx:if="{{nofind}}"  style="padding: 0 50rpx;box-sizing:border-box;">
         <view class="noBindText" style="margin-top: 80rpx">出了点小问题</view>
         <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
         <view style="margin-top: 50rpx">

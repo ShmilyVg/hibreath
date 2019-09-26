@@ -6,7 +6,8 @@
     "pages/set-info/set-info",
     "pages/update/update",
     "pages/device-manage/device-manage",
-    "pages/calendar/calendar"
+    "pages/calendar/calendar",
+    "pages/successInfo/successInfo"
   ],
 
   "window": {

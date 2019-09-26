@@ -30,7 +30,7 @@ Page({
         currentSwiper: 0,
 
     },
-    isBind: false,
+
 
     getResultState({state}) {
         switch (state) {
@@ -57,7 +57,6 @@ Page({
             case ConnectState.UNAVAILABLE:
             case ConnectState.DISCONNECT:
             case ConnectState.UNBIND:
-                this.isBind = false;
                 app.getBLEManager().clearConnectedBLE();
                 this.indexCommonManager.setDissearchState();
                 this.setData({
@@ -73,8 +72,8 @@ Page({
                 this.setData({
                     bgColor:"#fff",
                     finding:false,
-                    finded:true,
                     bindSuccess:false,
+                    finded:true,
                     contentStateB:"燃脂精灵已经找到",
                     contentStateS:"短按设备按键·确认绑定",
                 });
@@ -96,18 +95,7 @@ Page({
     showTips(){
         WXDialog.showDialog({title: '小贴士', content:"请前往手机「设置」 找到「微信」 应用，打开「微信定位/位置权限」", confirmText: '我知道了'});
     },
-    toIndex(){
-        this.isBind = true;
-        HiNavigator.navigateIndexBind({isBind:true})
-     /*   //绑定后 跳转绑定成功页面  点击按钮再进入index页面
-        //setTimeout(() => HiNavigator.navigateSuccessInfo());
-        const pages = getCurrentPages()
-        const prevPage = pages[pages.length-2]
-        prevPage.setData({
-            isBind:  this.isBind
-        })
-        setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
-    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -115,14 +103,23 @@ Page({
        this.indexCommonManager = new IndexCommonManager(this);
         app.setBLEListener({
             bleStateListener: ({state}) => {
-                if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
+              /*  if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
                     this.setData({
+                        bindSuccess:true,
                         finding:false,
                         finded:false,
                         nofind:false,
-                        bindSuccess:true,
+
                     })
 
+                }else{
+                    this.showResult({state: state.connectState});
+                }*/
+                if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
+
+                    //绑定后 跳转绑定成功页面  点击按钮再进入index页面
+                    setTimeout(() => HiNavigator.navigateSuccessInfo());
+                    /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
                     this.showResult({state: state.connectState});
                 }
