@@ -78,7 +78,7 @@ Page({
     },
 
     onLoad() {
-        //检测页面保持常量
+        //检测页面保持常亮
         wx.setKeepScreenOn({
             keepScreenOn: true
         });

@@ -18,7 +18,6 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
             this.blow();
-            page.picAnimation();
         };
 
         this.actionBlow[ProtocolState.BREATH_RESTART] = () => {
@@ -64,13 +63,14 @@ export default class BlowManager {
         var that = this;
         let countDownNum =4
         var int=setInterval(function () {
+            if ( countDownNum == 0) {
+                clearInterval(int);
+            }
             that._page.setData({
                 blowNumber: countDownNum
             })
             countDownNum--;
-            if ( countDownNum == 0) {
-                clearInterval(int);
-            }
+
         }, 1000)
     }
     connected() {
@@ -144,7 +144,7 @@ export default class BlowManager {
 
 
             btnState: false,
-
+            finding:false,
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: true,//吹气图片显示
