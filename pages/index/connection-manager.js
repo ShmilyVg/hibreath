@@ -20,10 +20,11 @@ export default class ConnectionManager {
 
             },200);
         };
+        //蓝牙连接已断开
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
         };
-
+        //正在连接蓝牙设备
         this.action[ConnectState.CONNECTING] = ()=>{
             this.connecting();
         };

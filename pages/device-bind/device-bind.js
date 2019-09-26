@@ -22,6 +22,12 @@ Page({
             "4. 未在燃脂精灵上短按按键确认",
             "5. 燃脂精灵正处于检测状态"
         ],
+        bindSuccessArr:[
+            "若有饮酒请间隔24小时以上再进行检测",
+            "吸烟、涂抹口红、喷香水等行为会对检测结果的准确性产生影响",
+            "测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物"
+        ],
+        currentSwiper: 0,
 
     },
     isBind: false,
@@ -40,6 +46,7 @@ Page({
                     finding:true,//正在寻找设备标志位
                     finded:false,//找到并绑定
                     noBind:false,
+                    bindSuccess:false,
                     contentStateB:"正在寻找您的设备",
                     contentStateS:"长按设备按键·3秒开机",
                 });
@@ -58,6 +65,7 @@ Page({
                     finding:false,
                     finded:false,
                     bindHint:"",
+                    bindSuccess:false,
                 });
                 break;
             default:
@@ -66,13 +74,18 @@ Page({
                     bgColor:"#fff",
                     finding:false,
                     finded:true,
+                    bindSuccess:false,
                     contentStateB:"燃脂精灵已经找到",
                     contentStateS:"短按设备按键·确认绑定",
                 });
                 break;
         }
     },
-
+    swiperChange: function (e) {
+        this.setData({
+            currentSwiper: e.detail.current
+        })
+    },
     showResult({state}) {
         this.getResultState({state});
     },
@@ -82,6 +95,18 @@ Page({
     },
     showTips(){
         WXDialog.showDialog({title: '小贴士', content:"请前往手机「设置」 找到「微信」 应用，打开「微信定位/位置权限」", confirmText: '我知道了'});
+    },
+    toIndex(){
+        this.isBind = true;
+        HiNavigator.navigateIndexBind({isBind:true})
+     /*   //绑定后 跳转绑定成功页面  点击按钮再进入index页面
+        //setTimeout(() => HiNavigator.navigateSuccessInfo());
+        const pages = getCurrentPages()
+        const prevPage = pages[pages.length-2]
+        prevPage.setData({
+            isBind:  this.isBind
+        })
+        setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
     },
     /**
      * 生命周期函数--监听页面加载
@@ -97,15 +122,7 @@ Page({
                         nofind:false,
                         bindSuccess:true,
                     })
-                    this.isBind = true;
-                    //绑定后 跳转绑定成功页面  点击按钮再进入index页面
-                    //setTimeout(() => HiNavigator.navigateSuccessInfo());
-                    const pages = getCurrentPages()
-                    const prevPage = pages[pages.length-2]
-                    prevPage.setData({
-                        isBind:  this.isBind
-                    })
-                    setTimeout(() => HiNavigator.navigateBack({delta: 1}));
+
                 }else{
                     this.showResult({state: state.connectState});
                 }
