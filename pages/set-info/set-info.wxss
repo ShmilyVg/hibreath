@@ -476,3 +476,15 @@
     top: 0;
     z-index: 1;
 }
+
+.scroll{
+    height: 670rpx;
+    width: 750rpx;
+}
+
+.scroll-image {
+    width: 420rpx;
+    height: 670rpx;
+    background-color: lightblue;
+    margin: 0 37rpx;
+}

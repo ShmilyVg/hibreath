@@ -16,14 +16,14 @@ const app = getApp();
 Page({
     data: {
         showGuide: false,
-        showNewInfo: false,
+        showNewInfo: true,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
             {image: 'woman', text: '女士', isChose: true, value: 0}
         ],
         currentDate: '2018-12-19',
-        page: 1,
+        page: 8,
         choseIndex: "3",
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
@@ -36,7 +36,8 @@ Page({
         ],
         bgColor: '#ffffff',
         score: 6.5,
-        showBigTip: false
+        showBigTip: false,
+        schemaId: 0
     },
 
     onLoad() {
@@ -61,7 +62,7 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
-        if (accountInfo.detail) {
+        if (!accountInfo.detail) {
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
@@ -195,9 +196,11 @@ Page({
                 }
                 break;
             case 7:
-                this.handleTasks();
+                await Protocol.postMembersPut(this.data.info);
                 return;
             case 8:
+                await Protocol.postMembersJoinSchema({schemaId: 100});
+                this.handleTasks();
                 return;
         }
         this.setData({
@@ -311,6 +314,10 @@ Page({
         Circular.createSelectorQuery();
     },
 
+    bindScrollView(e) {
+        console.log(e.detail.scrollLeft);
+    },
+
     bindTapToFinish(e) {
         console.log(e);
         const {currentTarget: {dataset: {type}}} = e;
@@ -326,5 +333,9 @@ Page({
                 }
                 break
         }
+    },
+
+    async bindTapProject(e) {
+        this.data.schemaId = e.currentTarget.dataset.index
     }
 })

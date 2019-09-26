@@ -91,6 +91,13 @@
                 <view class="page2-line"></view>
                 <view class="page2-kg">KG</view>
             </view>
+            <view wx:if="{{page==8}}" style="width: 750rpx;">
+                <scroll-view class="scroll" scroll-x scroll-left="350rpx" bindscroll="bindScrollView">
+                    <view style="width: 1480rpx">
+                        <image wx:for="{{3}}" class="scroll-image" bindtap="bindTapProject" data-index="{{index}}"></image>
+                    </view>
+                </scroll-view>
+            </view>
             <view class="btn-position flex-column">
                 <block wx:if="{{page!=8}}">
                     <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
@@ -102,7 +109,7 @@
                 </block>
                 <block wx:else>
                     <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
-                          hover-stay-time="50" bindtap="continue">生成方案
+                          hover-stay-time="50" bindtap="continue">开启正式的减脂历程
                     </view>
                 </block>
             </view>

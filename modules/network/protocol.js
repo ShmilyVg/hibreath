@@ -132,4 +132,8 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
+
+    static postMembersJoinSchema({schemaId}) {
+        return Network.request({url: 'members/joinSchema', data: {schemaId}})
+    }
 }
