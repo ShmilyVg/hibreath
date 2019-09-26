@@ -23,6 +23,19 @@ Page({
         firstInto: true,
         isBind:false,
 
+        noBind:false,
+        tryAgain:false,
+        finding:false,
+        beginFat:false,
+        readyimg:false,
+        blowpicShow:false,
+        textState:"",
+        textStateEn:"",
+        disblowImg:false,
+        blowingImg:false,
+        process:false,
+
+
 
 
         noteListMore: '跑步消耗热量比骑车高，消耗脂肪比骑车高，脂肪消耗比率也比骑车高。这也就意味着某种程度上，跑步在减肥效果方面全面好于骑车。',
@@ -35,18 +48,11 @@ Page({
 
 
 
-        textStateColor: true,
-
-
-        blowpicShow: false,
-
-
 
         homeTitle: false,
 
         homeOrangeBtn: false,
 
-        animationData: {},
 
         electricitypicShow: false,
     },
@@ -235,29 +241,6 @@ Page({
         app.bLEManager.sendISpage({isSuccess: false});
     },
 
-    picAnimation(){
-        const showanimation = wx.createAnimation({
-            duration: 2000,
-            timingFunction: 'linear',
-        });
-        const hideanimation = wx.createAnimation({
-            duration: 2000,
-            timingFunction: 'linear',
-        });
 
-        setTimeout(function () {
-            showanimation.opacity(1).step();
-            this.setData({
-                animationData: showanimation
-            })
-        }.bind(this), 1000);
-
-        setTimeout(function () {
-            hideanimation.opacity(0).step();
-            this.setData({
-                animationData: hideanimation
-            })
-        }.bind(this), 6000);
-    },
     ...common
 });

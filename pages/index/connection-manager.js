@@ -13,12 +13,14 @@ export default class ConnectionManager {
         };
 
         this.action[ConnectState.UNAVAILABLE] = () => {
+            console.log("this._timeoutIndex",this._timeoutIndex)
             clearTimeout(this._timeoutIndex);
+            this._timeoutIndex = 0;
             this._timeoutIndex = setTimeout(() => {
                 WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
                 this.disconnect();
 
-            },1000);
+            },200);
         };
         //蓝牙连接已断开
             this.action[ConnectState.DISCONNECT] = () => {
@@ -67,8 +69,6 @@ export default class ConnectionManager {
 
 
             btnState: true,
-            textStateColor: true,
-
 
 
             blowpicShow: false,

@@ -149,6 +149,6 @@ Page({
     },
 
     onUnload() {
-        !this.isBind && app.getBLEManager().clearConnectedBLE();
+      /*  !this.isBind && app.getBLEManager().clearConnectedBLE();*/
     }
 });

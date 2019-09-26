@@ -22,11 +22,11 @@
     <button class="hint-btn"   bindtap="disconnectBtnClick" >再试一下</button>
 </view>
     <!--已绑定 正在寻找情况-->
-    <view wx:if="{{finding}}">
-        <view class="findImd"></view>
-        <view class="contentTextB">{{contentStateB}}</view>
-        <view class="contentTextS">{{contentStateS}}</view>
-    </view>
+<view wx:if="{{finding}}">
+    <view class="findImd"></view>
+    <view class="contentTextB">{{contentStateB}}</view>
+    <view class="contentTextS">{{contentStateS}}</view>
+</view>
     <!--连接成功情况-->
 <view class="home-ready" wx:if="{{beginFat}}">
     <view class="readyText">{{topState}}</view>
