@@ -104,8 +104,9 @@ page{
 .bindSuccess-img{
     width: 200rpx;
     height: 200rpx;
-    margin-top: 40rpx;
-    margin-bottom: 25rpx;
+  /*  margin-top: 40rpx;
+    margin-bottom: 25rpx;*/
+    margin: 40rpx auto 25rpx auto;
 }
 .bindSuccess-bto{
     padding: 80rpx 70rpx 0rpx 70rpx;
