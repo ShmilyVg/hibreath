@@ -165,7 +165,6 @@ Page({
                         this.setData({
                             'info.bodyFatRate': list[this.data.choseIndex]
                         });
-                        return;
                     }
                 } else {
                     if (this.objIsEmpty(info.bodyFatRate)) {
@@ -181,7 +180,6 @@ Page({
                             return;
                         }
                     }
-
                 }
                 break;
             case 6:
