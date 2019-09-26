@@ -30,9 +30,9 @@ export default class HiNavigator extends CommonNavigator {
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
     }*/
-
+    //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
-        this.navigateTo({url: '/pages/device-bind/device-bind'});
+        this.reLaunch({url: '/pages/device-bind/device-bind'});
     }
 
     static navigateToDeviceUnbind() {

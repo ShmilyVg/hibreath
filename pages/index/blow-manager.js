@@ -41,7 +41,7 @@ export default class BlowManager {
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {
                     this.connected();
-                    page.picAnimation();
+                    //page.picAnimation();
                 };
     }
     //若预热中状态持续＞2分钟，仍然没有进入下一环节，则出现该提示文案

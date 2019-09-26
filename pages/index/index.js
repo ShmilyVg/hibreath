@@ -70,11 +70,7 @@ Page({
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },
-    toIndex(){
-        this.setData({
-            isBind: false
-        })
-    },
+
     onLoad() {
         //检测页面保持常量
         wx.setKeepScreenOn({
@@ -187,8 +183,9 @@ Page({
                 console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
+                    const toolfinalResult = tools.subStringNum(finalResult.result)/10
                     Protocol.getBreathDataAdd({
-                        dataValue: tools.subStringNum(finalResult.result)/10,
+                        dataValue: toolfinalResult,
                     }).then(data => {
                         console.log(data.result.id)
                         HiNavigator.navigateBlowToResult({id: data.result.id});
