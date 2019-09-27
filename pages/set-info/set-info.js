@@ -16,7 +16,7 @@ const app = getApp();
 Page({
     data: {
         showGuide: false,
-        showNewInfo: false,
+        showNewInfo: true,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
@@ -24,10 +24,9 @@ Page({
         ],
         currentDate: '2018-12-19',
         page: 1,
-        choseIndex: 0,
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
-        page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
-        page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
+        page4MenItem: ['3-4', '6-7', '10-12', '15', '20', '25', '30', '35', '40'],
+        page4WomenItem: ['10-12', '15-17', '20-22', '25', '30', '35', '40', '45', '50'],
         birth: ['1980', '01', '01'],
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
@@ -64,7 +63,7 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
-        if (accountInfo.detail) {
+        if (!accountInfo.detail) {
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
@@ -101,11 +100,11 @@ Page({
     handleBle() {
         this.indexCommonManager = new IndexCommonManager(this);
         app.setBLEListener({
-            bleStateListener: ({state}) => {
-                console.log('setpage-bleStateListener:', state);
+            bleStateListener: () => {
+                console.log("setPage-bleStateListener", app.getLatestBLEState())
             },
             receiveDataListener: ({finalResult, state}) => {
-                console.log('setpage-receiveDataListener:', finalResult, state);
+                console.log("setPage-receiveDataListener", finalResult, state);
             }
         });
         const isBindDevice = wx.getStorageSync('isBindDevice');
@@ -202,10 +201,11 @@ Page({
                 break;
             case 7:
                 await Protocol.postMembersPut(this.data.info);
-                let project = await Protocol.postSettingsLosefatSchema();
-                return;
+                const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
+                this.setData({project});
+                break;
             case 8:
-                await Protocol.postMembersJoinSchema({schemaId: 100});
+                await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
                 return;
         }
@@ -326,25 +326,26 @@ Page({
         this.data.timer = '';
         const scrollLeft = e.detail.scrollLeft;
         let that = this;
+        let project = this.data.project;
         if (scrollLeft < 130) {
             this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 0,
-                    schemaId: 0
+                    schemaId: project[0].id
                 })
             }, 300)
         } else if (scrollLeft >= 130 && scrollLeft < 340) {
             this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 490,
-                    schemaId: 1
+                    schemaId: project[1].id
                 })
             }, 300)
         } else {
             this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 1400,
-                    schemaId: 2
+                    schemaId: project[2].id
                 })
             }, 300)
         }
@@ -376,6 +377,7 @@ Page({
     },
 
     onShow() {
+        this.handleBle()
         //离开时 告知蓝牙标志位 0x3D   0X01
         app.bLEManager.sendISpage({isSuccess: true});
     },

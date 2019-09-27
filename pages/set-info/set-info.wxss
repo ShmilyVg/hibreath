@@ -485,6 +485,5 @@
 .scroll-image {
     width: 420rpx;
     height: 670rpx;
-    background-color: lightblue;
     margin: 0 37rpx;
 }
