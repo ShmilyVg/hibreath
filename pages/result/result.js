@@ -94,10 +94,10 @@ Page({
             dataListX.push(y);
             dataListY.push(value.dataValue);
         });
-        let data = {
+        let dataTrend = {
             dataListX, dataListY, yAxisSplit: 5
         };
-        Trend.setData(data);
+        Trend.setData(dataTrend);
     },
 
     toChooseDate() {
