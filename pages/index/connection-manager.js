@@ -103,6 +103,30 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
+          /*  noBind:false,
+
+            stateBtnShow: false,
+
+            state: "设备已连接",
+
+
+            btnState: false,
+
+            bgColor:"#fff",
+            beginFat:false,
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:true,
+            textState:'吹气中',
+            textStateEn:'BLOWING',
+            disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:false,//分析中
+
+
+
+            homeTitle: false,
+            homeOrangeBtn: false,*/
 
         });
     }

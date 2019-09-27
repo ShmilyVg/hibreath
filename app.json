@@ -22,18 +22,19 @@
   "tabBar": {
     "backgroundColor": "#fff",
     "list": [
+        {
+          "selectedIconPath": "images/result/bindInfo.png",
+          "iconPath": "images/result/bindInfo.png",
+          "pagePath": "pages/index/index",
+          "text": "打卡"
+        },
       {
         "selectedIconPath": "images/result/bindInfo.png",
         "iconPath": "images/result/bindInfo.png",
         "pagePath": "pages/set-info/set-info",
         "text": "发现"
-      },
-      {
-        "selectedIconPath": "images/result/bindInfo.png",
-        "iconPath": "images/result/bindInfo.png",
-        "pagePath": "pages/index/index",
-        "text": "打卡"
       }
+    
     ]
   }
 }
