@@ -37,7 +37,9 @@ Page({
         bgColor: '#ffffff',
         score: 6.5,
         showBigTip: false,
-        schemaId: 0
+        schemaId: 0,
+        scrollLeft: 490,
+        timer: ''
     },
 
     onLoad() {
@@ -197,6 +199,7 @@ Page({
                 break;
             case 7:
                 await Protocol.postMembersPut(this.data.info);
+                let project = await Protocol.postSettingsLosefatSchema();
                 return;
             case 8:
                 await Protocol.postMembersJoinSchema({schemaId: 100});
@@ -316,6 +319,36 @@ Page({
 
     bindScrollView(e) {
         console.log(e.detail.scrollLeft);
+        clearTimeout(this.data.timer);
+        this.data.timer = '';
+        const scrollLeft = e.detail.scrollLeft;
+        let that = this;
+        if (scrollLeft < 130) {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 0,
+                    schemaId: 0
+                })
+            }, 300)
+        } else if (scrollLeft >= 130 && scrollLeft < 340) {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 490,
+                    schemaId: 1
+                })
+            }, 300)
+        } else {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 1400,
+                    schemaId: 2
+                })
+            }, 300)
+        }
+    },
+
+    scrolltoupper(e) {
+        console.log('scrolltoupper:', e);
     },
 
     bindTapToFinish(e) {

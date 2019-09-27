@@ -136,4 +136,8 @@ export default class Protocol {
     static postMembersJoinSchema({schemaId}) {
         return Network.request({url: 'members/joinSchema', data: {schemaId}})
     }
+
+    static postSettingsLosefatSchema() {
+        return Network.request({url: 'settings/losefatSchema'})
+    }
 }
