@@ -12,7 +12,7 @@
     <image class="fatType1" src="{{fatType}}"></image>
     <view class="fatText">{{fatText}}</view>
     <view class="fatTextEn">{{fatTextEn}}</view>
-    <view class="fatDes">"{{fatDes}}"</view>
+    <view class="fatDes">{{fatDes}}</view>
 </view>
 <button class="result-btn" bindtap="toIndex">吹一吹</button>
 

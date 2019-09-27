@@ -33,12 +33,25 @@ Page({
     async cellDataHandle({page = 1, isRefresh = true}) {
         toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
-        const imageIndexArr = ['1', '1', '1', '2', '2', '3', '3', '4', '4', '5', '5'];
         if (list.length) {
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
                 value.date = `${year}/${month}/${day} ${time}`;
-                value.image = `../../images/result/cell${imageIndexArr[value.dataValue]}.png`;
+                let image = '../../images/result/cell';
+                const dValue = value.dataValue;
+                if (dValue > 0 && dValue <= 2) {
+                    image = image + '1';
+                } else if (dValue > 0 && dValue <= 4) {
+                    image = image + '2';
+                } else if (dValue > 4 && dValue <= 6) {
+                    image = image + '3';
+                } else if (dValue > 6 && dValue <= 8) {
+                    image = image + '4';
+                } else if (dValue > 8) {
+                    image = image + '5';
+                }
+                image = image + '.png';
+                value.image = image
             });
             const endData = tools.createDateAndTime(list[0].createdTimestamp);
             const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
@@ -77,7 +90,7 @@ Page({
                 currenttab: newtab
             });
             if (newtab == 1) {
-                this.handleTrend();
+                this.handleTrend({});
             }
         }
     },

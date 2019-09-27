@@ -67,7 +67,7 @@ const loginFailObj = {
         console.log('未注册，请先注册');
         _needRegister = true;
         wx.reLaunch({
-          url: '../../../../page/welcome/welcome',
+          url: '../../../../../pages/set-info/set-info',
         })
     },
     4000: ({resolve, reject}) => {

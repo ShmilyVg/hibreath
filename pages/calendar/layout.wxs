@@ -1,6 +1,6 @@
 var getRadiusLayout = function (chooseIndexObj, daysItem, daysIndex, daysLength, emptyCount) {
     if ((chooseIndexObj.startTimestamp === daysItem.timestamp
-            && (daysIndex % 7 === 6 || daysIndex === (daysLength - 1)))
+        && (daysIndex % 7 === 6 || daysIndex === (daysLength - 1)))
         || (chooseIndexObj.endTimestamp === daysItem.timestamp && (daysIndex % 7 === 0 || getDayNum(daysIndex, emptyCount) === 1))
         || daysIndex % 7 === 0 && daysIndex === daysLength - 1) {
         return 'calendar-day-left-circle-layout calendar-day-right-circle-layout'
@@ -44,6 +44,7 @@ var getChooseResult = function (monthList, chooseIndexObj) {
     for (j = 0, len = monthList.length; j < len; j++) {
         item = monthList[j];
         if (chooseIndexObj.startMonthTimestamp <= item.month && chooseIndexObj.endMonthTimestamp >= item.month) {
+            console.log('xxxxsjs:', item);
             containList.push(item);
         }
     }

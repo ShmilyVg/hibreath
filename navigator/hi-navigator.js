@@ -17,8 +17,8 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/result/result?id=' + id});
     }
     //历史记录进入结果页
-    static navigateToResult({id}) {
-        this.navigateTo({url: '/pages/result/result?id=' + id});
+    static navigateToResult() {
+        this.navigateTo({url: '/pages/result/result'});
     }
 
     static relaunchToIndex({refresh = false} = {}) {

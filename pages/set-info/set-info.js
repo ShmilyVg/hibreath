@@ -16,7 +16,7 @@ const app = getApp();
 Page({
     data: {
         showGuide: false,
-        showNewInfo: true,
+        showNewInfo: false,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
@@ -46,9 +46,17 @@ Page({
         wx.getSetting({
             success: (res) => {
                 console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
-                that.setData({
-                    showGuide: res.authSetting['scope.userInfo'] === undefined
-                })
+                if (res.authSetting['scope.userInfo'] === undefined) {
+                    that.setData({
+                        showGuide: true,
+                        showNewInfo: true
+                    })
+                } else {
+                    that.setData({
+                        showGuide: false,
+                        showNewInfo: false
+                    })
+                }
             }
         });
         this.handleBaseInfo();
@@ -63,7 +71,7 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
-        if (!accountInfo.detail) {
+        if (accountInfo.detail) {
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
@@ -377,7 +385,7 @@ Page({
     },
 
     onShow() {
-        this.handleBle()
+        this.handleBle();
         //离开时 告知蓝牙标志位 0x3D   0X01
         app.bLEManager.sendISpage({isSuccess: true});
     },
@@ -386,4 +394,8 @@ Page({
         //离开时 告知蓝牙标志位 0x3D   0X02
         app.bLEManager.sendISpage({isSuccess: false});
     },
+
+    toResultPage(){
+        HiNavigator.navigateToResult({});
+    }
 })

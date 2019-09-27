@@ -21,7 +21,7 @@ export default class HiBlueToothProtocol {
             },
             //由设备发出的连接反馈 1接受 2不接受 后面的是
             '0x02': ({dataArray}) => {
-                console.log(dataArray,"查看是否允许绑定")
+                console.log(dataArray, "查看是否允许绑定")
                 const isConnected = HexTools.hexArrayToNum(dataArray.slice(0, 1)) === 1;
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(1));
                 console.log('绑定结果', dataArray, deviceId, isConnected);
@@ -42,7 +42,7 @@ export default class HiBlueToothProtocol {
                         console.log('绑定协议报错', res);
                         blueToothManager.updateBLEStateImmediately(blueToothManager.getState({connectState: CommonConnectState.UNBIND}))
                     });
-                }else{
+                } else {
                     blueToothManager.clearConnectedBLE();
                 }
                 // isConnected && this.startCommunication();
@@ -57,7 +57,7 @@ export default class HiBlueToothProtocol {
             },
             //由设备发出的时间戳请求，并隔一段时间发送同步数据
             '0x04': ({dataArray}) => {
-                console.log("请求",dataArray)
+                console.log("请求", dataArray)
                 const battery = HexTools.hexArrayToNum(dataArray.slice(0, 1));
                 const version = HexTools.hexArrayToNum(dataArray.slice(1, 3));
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 11));
@@ -163,6 +163,7 @@ export default class HiBlueToothProtocol {
     }
 
     sendISpage({isSuccess}) {
+        console.log('sendISpage');
         if (this.getDeviceIsBind()) {
             this.action['0x3d']({isSuccess});
         }

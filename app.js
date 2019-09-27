@@ -140,9 +140,12 @@ App({
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
 
         this.appLoginListener = ({loginState}) => {
+            console.log('登录状态：', loginState);
             if (loginState === this.NOT_REGISTER) {
+                this.globalData.notRegister = true;
                 this.bLEManager.clearConnectedBLE();
-                // HiNavigator.reLaunchToBindDevicePage();
+            } else {
+                this.globalData.notRegister = true;
             }
         };
     },
@@ -181,6 +184,7 @@ App({
         refreshIndexPage: false,
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
+        notRegister: false
     },
     ...common
 });
