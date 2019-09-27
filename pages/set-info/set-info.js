@@ -16,15 +16,15 @@ const app = getApp();
 Page({
     data: {
         showGuide: false,
-        showNewInfo: true,
+        showNewInfo: false,
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
             {image: 'woman', text: '女士', isChose: true, value: 0}
         ],
         currentDate: '2018-12-19',
-        page: 8,
-        choseIndex: "3",
+        page: 1,
+        choseIndex: 0,
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
         page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
@@ -64,7 +64,7 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
-        if (!accountInfo.detail) {
+        if (accountInfo.detail) {
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
