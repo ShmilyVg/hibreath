@@ -149,6 +149,10 @@ Page({
     },
 
     onUnload() {
-      /*  !this.isBind && app.getBLEManager().clearConnectedBLE();*/
+        console.log("this.isBind11", this.isBind)
+        !this.isBind && app.getBLEManager().clearConnectedBLE();
+        app.setBLEListener({
+            bleStateListener: null
+        });
     }
 });

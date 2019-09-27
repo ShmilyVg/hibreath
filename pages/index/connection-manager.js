@@ -14,8 +14,10 @@ export default class ConnectionManager {
 
         this.action[ConnectState.UNAVAILABLE] = () => {
             console.log("this._timeoutIndex",this._timeoutIndex)
-            clearTimeout(this._timeoutIndex);
-            this._timeoutIndex = 0;
+            if(this._timeoutIndex !=0){
+                clearTimeout(this._timeoutIndex);
+                return;
+            }
             this._timeoutIndex = setTimeout(() => {
                 WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
                 this.disconnect();
@@ -103,6 +105,30 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
+          /*  noBind:false,
+
+            stateBtnShow: false,
+
+            state: "设备已连接",
+
+
+            btnState: false,
+
+            bgColor:"#fff",
+            beginFat:false,
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:true,
+            textState:'吹气中',
+            textStateEn:'BLOWING',
+            disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:false,//分析中
+
+
+
+            homeTitle: false,
+            homeOrangeBtn: false,*/
 
         });
     }
