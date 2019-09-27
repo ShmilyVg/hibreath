@@ -23,18 +23,18 @@
     "backgroundColor": "#fff",
     "list": [
         {
-          "selectedIconPath": "images/result/bindInfo.png",
-          "iconPath": "images/result/bindInfo.png",
+          "selectedIconPath": "images/result/clockInS.png",
+          "iconPath": "images/result/clockIn.png",
           "pagePath": "pages/index/index",
           "text": "打卡"
         },
       {
-        "selectedIconPath": "images/result/bindInfo.png",
-        "iconPath": "images/result/bindInfo.png",
+        "selectedIconPath": "images/result/finds.png",
+        "iconPath": "images/result/find.png",
         "pagePath": "pages/set-info/set-info",
         "text": "发现"
       }
-    
+
     ]
   }
 }
