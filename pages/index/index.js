@@ -154,8 +154,6 @@ Page({
         this.setData({
             isBind: currPage.data.isBind
         })
-        //离开时 告知蓝牙标志位 0x3D   0X01
-        app.bLEManager.sendISpage({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
         let {connectState, protocolState} = app.getLatestBLEState();
@@ -235,10 +233,6 @@ Page({
     },
     onUnload() {
         app.getBLEManager().closeAll();
-    },
-    //离开时 告知蓝牙标志位 0x3D   0X02
-    onHide(){
-        app.bLEManager.sendISpage({isSuccess: false});
     },
 
 

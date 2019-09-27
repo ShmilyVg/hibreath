@@ -92,8 +92,8 @@
                 <view class="page2-kg">KG</view>
             </view>
             <view wx:if="{{page==8}}" style="width: 750rpx;">
-                <scroll-view class="scroll" scroll-x scroll-left="350rpx" bindscroll="bindScrollView">
-                    <view style="width: 1480rpx">
+                <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView">
+                    <view style="width: 1480rpx;padding: 0 130rpx">
                         <image wx:for="{{3}}" class="scroll-image" bindtap="bindTapProject" data-index="{{index}}"></image>
                     </view>
                 </scroll-view>
@@ -130,9 +130,9 @@
             <view class="set-content-view flex-column">
                 <view class="flex-row" style="justify-content: space-between;width: 100%">
                     <view class="flex-row">
-                        <view class="set-content-icon"></view>
+                        <image src="{{taskRes.taskList[0].iconUrl}}" class="set-content-icon"></image>
                         <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                            <view class="set-content-title">燃脂检测</view>
+                            <view class="set-content-title">{{taskRes.taskList[0].title}}</view>
                             <view class="set-content-content">你知道怎样燃脂么？</view>
                         </view>
                     </view>
