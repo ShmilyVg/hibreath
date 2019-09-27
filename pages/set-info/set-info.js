@@ -386,7 +386,7 @@ Page({
 
     onShow() {
         this.handleBle();
-        //离开时 告知蓝牙标志位 0x3D   0X01
+        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
     },
 
