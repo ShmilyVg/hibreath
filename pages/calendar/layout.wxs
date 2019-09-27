@@ -44,7 +44,6 @@ var getChooseResult = function (monthList, chooseIndexObj) {
     for (j = 0, len = monthList.length; j < len; j++) {
         item = monthList[j];
         if (chooseIndexObj.startMonthTimestamp <= item.month && chooseIndexObj.endMonthTimestamp >= item.month) {
-            console.log('xxxxsjs:', item);
             containList.push(item);
         }
     }
@@ -53,6 +52,7 @@ var getChooseResult = function (monthList, chooseIndexObj) {
         item = containList[j];
         if (!!item) {
             for (i = 0, len = item.days.length; i < len; i++) {
+                console.log('日历：', item.days[i].timestamp,chooseIndexObj.startTimestamp,chooseIndexObj.endTimestamp);
                 if (item.days[i].timestamp >= chooseIndexObj.startTimestamp && item.days[i].timestamp <= chooseIndexObj.endTimestamp && item.days[i].has_data) {
                     hasData = true;
                     break;

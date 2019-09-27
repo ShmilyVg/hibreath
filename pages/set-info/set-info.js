@@ -41,27 +41,34 @@ Page({
         timer: ''
     },
 
-    onLoad() {
+    async onLoad() {
         let that = this;
-        wx.getSetting({
-            success: (res) => {
-                console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
-                if (res.authSetting['scope.userInfo'] === undefined) {
-                    that.setData({
-                        showGuide: true,
-                        showNewInfo: true
-                    })
-                } else {
-                    that.setData({
-                        showGuide: false,
-                        showNewInfo: false
-                    })
-                }
-            }
-        });
+        await that.handleGuide(that);
         this.handleBaseInfo();
         Circular.init(this);
     },
+
+
+    handleGuide(that) {
+        return new Promise(function (resolve, reject) {
+            wx.getSetting({
+                success: (res) => {
+                    console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
+                    if (res.authSetting['scope.userInfo'] === undefined) {
+                        that.setData({
+                            showGuide: true,
+                        })
+                    } else {
+                        that.setData({
+                            showGuide: false,
+                        })
+                    }
+                    resolve();
+                }
+            });
+        });
+    },
+
 
     async handleBaseInfo() {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
