@@ -130,9 +130,9 @@
             <view class="set-content-view flex-column">
                 <view class="flex-row" style="justify-content: space-between;width: 100%">
                     <view class="flex-row">
-                        <view class="set-content-icon"></view>
+                        <image src="{{taskRes.taskList[0].iconUrl}}" class="set-content-icon"></image>
                         <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                            <view class="set-content-title">燃脂检测</view>
+                            <view class="set-content-title">{{taskRes.taskList[0].title}}</view>
                             <view class="set-content-content">你知道怎样燃脂么？</view>
                         </view>
                     </view>

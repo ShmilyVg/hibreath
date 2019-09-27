@@ -2,7 +2,7 @@
 import "./utils/config";
 import {common} from "./modules/bluetooth/heheda-bluetooth/app/common";
 import HiBreathBlueToothManager from "./modules/bluetooth/hi-breath-bluetooth-manager";
-import {ProtocolState,ConnectState} from "./modules/bluetooth/bluetooth-state";
+import {ProtocolState, ConnectState} from "./modules/bluetooth/bluetooth-state";
 import Protocol from "./modules/network/protocol";
 import {WXDialog} from "heheda-common-view";
 import CommonProtocol from "./modules/network/network/libs/protocol";
@@ -27,16 +27,16 @@ App({
             // },
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
-                    console.log('接收到的',finalResult);
+                    console.log('接收到的', finalResult);
                     const {timestamp, result, currentLength: length} = finalResult;
                     let {currentIndex} = finalResult;
                     if (records.length < length) {
-                        records.push({dataValue: result, timestamp:timestamp });
+                        records.push({dataValue: result, timestamp: timestamp});
                         count++;
-                        console.log(records,"records")
-                        console.log(length,"length")
+                        console.log(records, "records")
+                        console.log(length, "length")
                         if (records.length === length) {
-                            Protocol.postBreathDataSync({items:records}).then(data => {
+                            Protocol.postBreathDataSync({items: records}).then(data => {
                                 console.log('同步数据成功2');
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
                             }).catch(res => {
@@ -102,7 +102,7 @@ App({
 
                 } else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     this.otaVersion = finalResult.version;
-                    console.log("暂时查看电量",finalResult.battery)
+                    console.log("暂时查看电量", finalResult.battery)
                     //TODO 暂时注释掉
                     // Protocol.postDeviceElectricity({electricity: finalResult.battery / 100});
                     if (finalResult.battery < 21) {

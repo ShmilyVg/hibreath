@@ -76,7 +76,7 @@ Page({
         }
     },
     getTrendTime(startTime, endTime) {
-        Protocol.postItemCalendar({startTime,endTime}).then(res => {
+        Protocol.postItemCalendar({startTime, endTime}).then(res => {
             this.commonCalendarCbFun(res);
         });
     },
@@ -158,8 +158,8 @@ Page({
     confirmChooseTime() {
         let that = this;
         getApp().globalData.trendTime = {
-            startTimeValue: tools.createDateAndTime(that.data.chooseIndexObj.startTimestamp).date,
-            endTimeValue: tools.createDateAndTime(that.data.chooseIndexObj.endTimestamp).date
+            startTimeValue: that.data.chooseIndexObj.startTimestamp,
+            endTimeValue: that.data.chooseIndexObj.endTimestamp
         };
         console.log(getApp().globalData.trendTime);
         wx.navigateBack({

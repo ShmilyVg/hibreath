@@ -102,13 +102,16 @@ Page({
         this.indexCommonManager = new IndexCommonManager(this);
         app.setBLEListener({
             bleStateListener: ({state}) => {
-                console.log('bleStateListener:', state);
+                console.log('setpage-bleStateListener:', state);
             },
             receiveDataListener: ({finalResult, state}) => {
-                console.log('receiveDataListener:', finalResult, state);
+                console.log('setpage-receiveDataListener:', finalResult, state);
             }
         });
-        app.getBLEManager().connect();
+        const isBindDevice = wx.getStorageSync('isBindDevice');
+        if (isBindDevice) {
+            app.getBLEManager().connect();
+        }
     },
 
     async handleTasks() {
@@ -370,5 +373,15 @@ Page({
 
     async bindTapProject(e) {
         this.data.schemaId = e.currentTarget.dataset.index
-    }
+    },
+
+    onShow() {
+        //离开时 告知蓝牙标志位 0x3D   0X01
+        app.bLEManager.sendISpage({isSuccess: true});
+    },
+
+    onHide() {
+        //离开时 告知蓝牙标志位 0x3D   0X02
+        app.bLEManager.sendISpage({isSuccess: false});
+    },
 })

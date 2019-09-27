@@ -82,8 +82,11 @@ Page({
         }
     },
 
-    handleTrend() {
+    handleTrend({data}) {
         let list = this.data.trendData;
+        if (data) {
+            list = data
+        }
         Trend.initTouchHandler();
         let dataListX = [], dataListY = [];
         list.forEach((value) => {
@@ -124,5 +127,23 @@ Page({
         this.setData({
             tabIsShow: this.data.tabIsShow
         })
+    },
+
+    async onShow() {
+        const trendTime = getApp().globalData.trendTime;
+        if (trendTime) {
+            const {startTimeValue, endTimeValue} = trendTime;
+            let {result: {list}} = await Protocol.getBreathDataList({
+                page,
+                pageSize: 20,
+                timeBegin: startTimeValue,
+                timeEnd: endTimeValue
+            });
+            const endData = tools.createDateAndTime(list[0].createdTimestamp);
+            const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
+            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
+            this.setData({trendDate});
+            this.handleTrend({data: list})
+        }
     }
 })
