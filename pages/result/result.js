@@ -19,7 +19,11 @@ Page({
         tabIsShow: true
     },
 
-    onLoad() {
+    onLoad(e) {
+        const {fatText, fatTextEn, fatDes, score} = e;
+        this.setData({
+            fatText, fatTextEn, fatDes, score
+        });
         this.init();
         Circular.run();
         this.cellDataHandle({});
