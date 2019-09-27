@@ -61,7 +61,6 @@ Page({
         });
         this.handleBaseInfo();
         Circular.init(this);
-        Circular.run();
     },
 
     async handleBaseInfo() {
@@ -123,11 +122,19 @@ Page({
 
     async handleTasks() {
         const {result} = await Protocol.postMembersTasks();
+        const quan = result.taskList[0].ext;
+        console.log('quan:', quan);
         this.setData({
             taskRes: result,
+            fatText: quan.des.zhCh,
+            fatTextEn: quan.des.en,
+            score: quan.dataValue,
+            fatDes: quan.visDes,
             showNewInfo: false,
             bgColor: '#FEF6F2'
         });
+
+        Circular.run();
 
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
@@ -395,7 +402,8 @@ Page({
         app.bLEManager.sendISpage({isSuccess: false});
     },
 
-    toResultPage(){
-        HiNavigator.navigateToResult({});
+    toResultPage() {
+        const {fatText, fatTextEn, fatDes, score} = this.data;
+        HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
     }
 })
