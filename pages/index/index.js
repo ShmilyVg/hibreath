@@ -232,7 +232,7 @@ Page({
         }
     },
     onUnload() {
-        app.getBLEManager().closeAll();
+        //app.getBLEManager().closeAll();
     },
 
 

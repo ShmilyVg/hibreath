@@ -20,7 +20,7 @@ App({
         let records = [], count = 0;
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
-        const synchronizationData = 0;//已经同步的条数
+        let synchronizationData = 0;//已经同步的条数
         this.outlistAll=true;//总条数标志位
         // initAnalysisOnApp();
         this.setCommonBLEListener({
@@ -34,7 +34,7 @@ App({
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/
                     if(this.outlistAll === true){
-                        let {currentIndex} = finalResult;
+                        let {currentIndex} = finalResult;//需要同步的总条数
                         this.outlistAll = false;
                     }
                     /*离线数据相关*/
@@ -46,6 +46,8 @@ App({
                         if (records.length === length) {
                             Protocol.postBreathDataSync({items: records}).then(data => {
                                 console.log('同步数据成功2');
+                                synchronizationData = synchronizationData+records.length;
+                                console.log("已经同步的条数",synchronizationData)
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
                             }).catch(res => {
                                 this.queryDataFinish();

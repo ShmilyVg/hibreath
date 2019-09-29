@@ -121,10 +121,22 @@ Page({
                 console.log("setPage-receiveDataListener", finalResult, state);
             }
         });
-        const isBindDevice = wx.getStorageSync('isBindDevice');
+        Protocol.getDeviceBindInfo().then(data => {
+            let deviceInfo = data.result;
+            console.log('获取到的设备', data);
+
+            if (!deviceInfo) {
+                app.getBLEManager().clearConnectedBLE();
+                this.connectionPage.unbind();
+            } else {
+                app.getBLEManager().setBindMarkStorage();
+                app.getBLEManager().connect({macId: deviceInfo.mac});
+            }
+        });
+      /*  const isBindDevice = wx.getStorageSync('isBindDevice');
         if (isBindDevice) {
             app.getBLEManager().connect();
-        }
+        }*/
     },
 
     async handleTasks() {
