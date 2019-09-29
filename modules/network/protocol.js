@@ -140,4 +140,8 @@ export default class Protocol {
     static postSettingsLosefatSchema() {
         return Network.request({url: 'settings/losefatSchema'})
     }
+
+    static postBreathDatalistAll(data) {
+        return Network.request({url: 'breathData/listAll', data});
+    }
 }

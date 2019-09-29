@@ -27,8 +27,8 @@
         <view style="position: fixed;bottom: 0;left: 0;width: 100%;background-color: white;z-index: 2;" class="flex-column">
             {{tools.dealRemindText(chooseIndexObj, monthList)}}
             <view class="list-divider-normal-line"></view>
-            <text style="color: {{tools.isCanClick(chooseIndexObj)?'#64C4FB':'#AABAC1'}};font-size: 30rpx;margin-bottom: 31rpx;margin-top: 30rpx;">{{tools.getRemindText()}}</text>
-            <button style="color: white;font-size: 36rpx;width: 90%;margin-bottom: 30rpx;background-color: {{tools.isCanClick(chooseIndexObj)?'#64C4FB':'#C1D0D7'}}" disabled="{{!tools.isCanClick(chooseIndexObj)}}" bindtap="confirmChooseTime">确定</button>
+            <text style="color: {{tools.isCanClick(chooseIndexObj)?'#ED6F69':'#AABAC1'}};font-size: 30rpx;margin-bottom: 31rpx;margin-top: 30rpx;">{{tools.getRemindText()}}</text>
+            <button style="color: white;font-size: 36rpx;width: 90%;margin-bottom: 30rpx;background-color: {{tools.isCanClick(chooseIndexObj)?'#ED6F69':'#C1D0D7'}}" disabled="{{!tools.isCanClick(chooseIndexObj)}}" bindtap="confirmChooseTime">确定</button>
         </view>
         <view style="height: 226rpx;"></view>
     </block>
