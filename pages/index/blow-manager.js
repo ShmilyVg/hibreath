@@ -26,10 +26,10 @@ export default class BlowManager {
         };
 
         this.actionBlow[ProtocolState.BREATH_START] = () => {
-            this.blowing();
             this._page.setData({
                 blowNumber: 5
             });
+            this.blowing();
             this.timerblow()
         };
 
@@ -58,7 +58,6 @@ export default class BlowManager {
              }
          }, 1000)
      }
-
 
     timerblow(){
         var that = this;

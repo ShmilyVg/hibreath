@@ -226,9 +226,9 @@ Page({
                 encryptedData,
                 iv
             })
-                .then(() => UserInfo.get())
-                .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
-                .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
+            .then(() => UserInfo.get())
+            .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
+            .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
         }
     },
     onUnload() {
