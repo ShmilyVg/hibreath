@@ -11,6 +11,7 @@ import UserInfo from "../../modules/network/userInfo";
 import {Toast} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
+import ConnectionManager from "../index/connection-manager";
 
 const app = getApp();
 
@@ -49,9 +50,16 @@ Page({
         }
     },
 
-    async onLoad() {
+    async onLoad(e) {
         let that = this;
-
+        console.log('on:', e);
+        this.connectionPage = new ConnectionManager(this);
+        if (e.isNotRegister) {
+            this.setData({
+                showGuide: true,
+                showNewInfo: true
+            })
+        }
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
             if (num > 0 && countNum > 0) {
@@ -451,7 +459,9 @@ Page({
     },
 
     bindTapToResultPage() {
-        const {fatText, fatTextEn, fatDes, score} = this.data;
-        HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+        if (this.data.taskRes.taskList[0].finished) {
+            const {fatText, fatTextEn, fatDes, score} = this.data;
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+        }
     }
 })
