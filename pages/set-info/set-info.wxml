@@ -67,7 +67,8 @@
                           bindtap="bindTapExactClick"
                           data-index="{{index}}">
                         <image src="http://backend.hipee.cn/assets/home/images/hb/{{info.sexStr}}{{index}}.png"></image>
-                        <view wx:if="{{choseIndex!=index}}" class="page4-cover" style="background-color: {{info.sex?'#0AC1A1':'#ED6F69'}}"></view>
+                        <view wx:if="{{choseIndex!=index}}" class="page4-cover"
+                              style="background-color: {{info.sex?'#0AC1A1':'#ED6F69'}}"></view>
                         <view class="page4-text">{{item}}%</view>
                     </view>
                     <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
@@ -94,7 +95,8 @@
             <view wx:if="{{page==8}}" style="width: 750rpx;">
                 <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView">
                     <view style="width: 1480rpx;padding: 0 130rpx">
-                        <image wx:for="{{project}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject" data-index="{{index}}"></image>
+                        <image wx:for="{{project}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
+                               data-index="{{index}}"></image>
                     </view>
                 </scroll-view>
             </view>
@@ -126,9 +128,9 @@
                 <view class="set-top-today">今日任务</view>
             </view>
         </view>
-        <view class="flex-column" style="margin-top: -65rpx">
+        <view class="flex-column" style="margin-top: -65rpx" bindtap="bindTapToResultPage">
             <view class="set-content-view flex-column">
-                <view class="flex-row" style="justify-content: space-between;width: 100%" bindtap="toResultPage">
+                <view class="flex-row" style="justify-content: space-between;width: 100%">
                     <view class="flex-row">
                         <image src="{{taskRes.taskList[0].iconUrl}}" class="set-content-icon"></image>
                         <view class="flex-column" style="align-items: start;margin-left: 20rpx">
@@ -136,17 +138,20 @@
                             <view class="set-content-content">你知道怎样燃脂么？</view>
                         </view>
                     </view>
-                    <view wx:if="{{!taskRes.taskList[0].finished}}" class="set-content-toFinish" data-type="test" bindtap="bindTapToFinish">去完成
+                    <view wx:if="{{!taskRes.taskList[0].finished}}" class="set-content-toFinish" data-type="test"
+                          catchtap="bindTapToFinish">去完成
                     </view>
                     <image src="../../images/set-info/finished.png" wx:else class="set-content-finished">去完成</image>
                 </view>
                 <view wx:if="{{taskRes.taskList[0].finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
+                    <block wx:if="{{!showBigTip}}">
                     <canvas canvas-id="bg" class='canvasII'></canvas>
                     <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
                     <image class="fatType1" src="{{fatType}}"></image>
                     <view class="fatText">{{fatText}}</view>
                     <view class="fatTextEn">{{fatTextEn}}</view>
                     <view class="fatDes">{{fatDes}}</view>
+                    </block>
                 </view>
             </view>
         </view>
@@ -157,6 +162,6 @@
     <view class="tip-full"></view>
     <view class="tip-view flex-column">
         <view class="tip-view-title">正在上传检测记录</view>
-        <view class="tip-view-content">0/20</view>
+        <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
     </view>
 </view>

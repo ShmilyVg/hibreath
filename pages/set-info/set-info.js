@@ -11,6 +11,7 @@ import UserInfo from "../../modules/network/userInfo";
 import {Toast} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
+
 const app = getApp();
 
 Page({
@@ -38,16 +39,42 @@ Page({
         showBigTip: false,
         schemaId: 0,
         scrollLeft: 490,
-        timer: ''
+        timer: '',
+        bigTipNum: 0,
+        bigTipCountNum: 20,
+        sync: {
+            num: 0,
+            countNum: 0,
+            timer: ''
+        }
     },
 
     async onLoad() {
         let that = this;
+
+        app.onDataSyncListener = ({num, countNum}) => {
+            console.log('同步离线数据：', num, countNum);
+            that.data.sync.num = that.data.sync.num + num;
+            that.data.sync.countNum = that.data.sync.countNum + countNum;
+            that.setData({
+                sync: that.data.sync,
+                showBigTip: true
+            });
+
+            clearTimeout(that.data.sync.timer);
+            that.data.sync.timer = '';
+            that.data.sync.timer = setTimeout(function () {
+                that.handleTasks();
+                that.setData({
+                    showBigTip: false
+                });
+            }, 1500)
+        };
+
         await that.handleGuide(that);
         this.handleBaseInfo();
         Circular.init(this);
     },
-
 
     handleGuide(that) {
         return new Promise(function (resolve, reject) {
@@ -69,7 +96,6 @@ Page({
         });
     },
 
-
     async handleBaseInfo() {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
@@ -78,16 +104,6 @@ Page({
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
         if (finishedGuide) {
-            // info = accountInfo.detail;
-            // this.data.meals.map(value => {
-            //     value.isChose = value.en === info.mealType;
-            // });
-            //
-            // this.data.sexBox.map(value => {
-            //     value.isChose = info.sex === value.value;
-            // });
-            //
-            // this.data.birth = info.birthday.split("-");
             this.handleTasks();
         } else {
             info = {
@@ -100,6 +116,16 @@ Page({
                 bodyFatRate: '',
                 weightGoal: '',
             };
+            // info = accountInfo.detail;
+            // this.data.meals.map(value => {
+            //     value.isChose = value.en === info.mealType;
+            // });
+            //
+            // this.data.sexBox.map(value => {
+            //     value.isChose = info.sex === value.value;
+            // });
+            //
+            // this.data.birth = info.birthday.split("-");
             this.setData({
                 currentDate, goals, info,
                 birth: this.data.birth,
@@ -133,10 +159,10 @@ Page({
                 app.getBLEManager().connect({macId: deviceInfo.mac});
             }
         });
-      /*  const isBindDevice = wx.getStorageSync('isBindDevice');
-        if (isBindDevice) {
-            app.getBLEManager().connect();
-        }*/
+        /*  const isBindDevice = wx.getStorageSync('isBindDevice');
+          if (isBindDevice) {
+              app.getBLEManager().connect();
+          }*/
     },
 
     async handleTasks() {
@@ -391,10 +417,6 @@ Page({
         }
     },
 
-    scrolltoupper(e) {
-        console.log('scrolltoupper:', e);
-    },
-
     bindTapToFinish(e) {
         console.log(e);
         const {currentTarget: {dataset: {type}}} = e;
@@ -427,7 +449,7 @@ Page({
         app.bLEManager.sendISpage({isSuccess: false});
     },
 
-    toResultPage() {
+    bindTapToResultPage() {
         const {fatText, fatTextEn, fatDes, score} = this.data;
         HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
     }
