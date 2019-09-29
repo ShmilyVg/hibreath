@@ -1,9 +1,4 @@
 <template name="common">
-
-
-
-
-
     <!--  <view class="home-title" wx:if="{{homeTitle}}">{{homeTitleText}}</view>-->
 
 </template>
