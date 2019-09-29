@@ -63,7 +63,7 @@ export default class BlowManager {
         var that = this;
         let countDownNum =4
         var int=setInterval(function () {
-            if ( countDownNum == 0) {
+            if ( countDownNum == -1) {
                 clearInterval(int);
             }
             that._page.setData({
