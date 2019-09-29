@@ -68,7 +68,7 @@ Page({
                 that.setData({
                     showBigTip: false
                 });
-            }, 1500)
+            }, 2000)
         };
 
         await that.handleGuide(that);

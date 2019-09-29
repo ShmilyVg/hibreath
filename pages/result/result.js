@@ -157,7 +157,7 @@ Page({
             const {startTimeValue, endTimeValue} = trendTime;
             let {result: {list}} = await Protocol.postBreathDatalistAll({
                 timeBegin: startTimeValue,
-                timeEnd: endTimeValue
+                timeEnd: endTimeValue+(24*60*60*1000)
             });
             if (list.length) {
                 const endData = tools.createDateAndTime(list[0].createdTimestamp);
