@@ -19,11 +19,18 @@ Page({
         tabIsShow: true
     },
 
-    onLoad(e) {
-        const {fatText, fatTextEn, fatDes, score} = e;
-        this.setData({
-            fatText, fatTextEn, fatDes, score
-        });
+    async onLoad(e) {
+        if (e.id) {
+            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
+            this.setData({
+                fatDes, score,fatText:des.zhCh, fatTextEn:des.en
+            });
+        } else if (e.score) {
+            const {fatText, fatTextEn, fatDes, score} = e;
+            this.setData({
+                fatText, fatTextEn, fatDes, score
+            });
+        }
         this.init();
         Circular.run();
         this.cellDataHandle({});
@@ -157,7 +164,7 @@ Page({
             const {startTimeValue, endTimeValue} = trendTime;
             let {result: {list}} = await Protocol.postBreathDatalistAll({
                 timeBegin: startTimeValue,
-                timeEnd: endTimeValue+(24*60*60*1000)
+                timeEnd: endTimeValue + (24 * 60 * 60 * 1000)
             });
             if (list.length) {
                 const endData = tools.createDateAndTime(list[0].createdTimestamp);
