@@ -148,19 +148,20 @@ Page({
 
     async onShow() {
         const trendTime = getApp().globalData.trendTime;
+        console.log('trendTime:', trendTime);
         if (trendTime) {
             const {startTimeValue, endTimeValue} = trendTime;
-            let {result: {list}} = await Protocol.getBreathDataList({
-                page,
-                pageSize: 20,
+            let {result: {list}} = await Protocol.postBreathDatalistAll({
                 timeBegin: startTimeValue,
                 timeEnd: endTimeValue
             });
-            const endData = tools.createDateAndTime(list[0].createdTimestamp);
-            const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
-            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
-            this.setData({trendDate});
-            this.handleTrend({data: list})
+            if (list.length) {
+                const endData = tools.createDateAndTime(list[0].createdTimestamp);
+                const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
+                let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
+                this.setData({trendDate});
+                this.handleTrend({data: list})
+            }
         }
     }
 })

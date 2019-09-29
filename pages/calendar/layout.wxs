@@ -28,7 +28,7 @@ var getTextLayoutAndStyle = function (daysItem, chooseIndexObj) {
         return 'calendar-day-click-style';
     } else if (daysItem.is_today) {
         return 'calendar-today-style';
-    } else if (daysItem.has_data) {
+    } else if (daysItem.hasData) {
         return 'calendar-day-have-data-text-style';
     }
     return 'calendar-day-no-data-text-style';
@@ -52,14 +52,14 @@ var getChooseResult = function (monthList, chooseIndexObj) {
         item = containList[j];
         if (!!item) {
             for (i = 0, len = item.days.length; i < len; i++) {
-                console.log('日历：', item.days[i].timestamp,chooseIndexObj.startTimestamp,chooseIndexObj.endTimestamp);
-                if (item.days[i].timestamp >= chooseIndexObj.startTimestamp && item.days[i].timestamp <= chooseIndexObj.endTimestamp && item.days[i].has_data) {
+                if (item.days[i].timestamp >= chooseIndexObj.startTimestamp && item.days[i].timestamp <= chooseIndexObj.endTimestamp && item.days[i].hasData) {
                     hasData = true;
                     break;
                 }
             }
         }
     }
+
     return hasData ? chooseIndexObj.date : '此时间段没有监测数据';
 };
 

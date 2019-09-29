@@ -9,7 +9,6 @@
     "pages/calendar/calendar",
     "pages/successInfo/successInfo"
   ],
-
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
@@ -17,24 +16,23 @@
     "backgroundTextStyle": "dark",
     "navigationBarTitleText": "HiPee健康燃脂"
   },
-
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "backgroundColor": "#fff",
+    "selectedColor": "#ED6F69",
     "list": [
-        {
-          "selectedIconPath": "images/result/clockInS.png",
-          "iconPath": "images/result/clockIn.png",
-          "pagePath": "pages/index/index",
-          "text": "打卡"
-        },
+      {
+        "selectedIconPath": "images/result/clockInS.png",
+        "iconPath": "images/result/clockIn.png",
+        "pagePath": "pages/index/index",
+        "text": "打卡"
+      },
       {
         "selectedIconPath": "images/result/finds.png",
         "iconPath": "images/result/find.png",
         "pagePath": "pages/set-info/set-info",
         "text": "发现"
       }
-
     ]
   }
 }
