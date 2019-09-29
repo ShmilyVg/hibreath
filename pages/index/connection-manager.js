@@ -72,7 +72,7 @@ export default class ConnectionManager {
 
             btnState: true,
 
-
+            homePointHot:false,
             blowpicShow: false,
 
 
@@ -97,7 +97,7 @@ export default class ConnectionManager {
             disblowImg:false,
             blowingImg:false,
             process:false,
-
+            homePointHot:false,
             stateBtnShow: true,
             state: "未连接到设备",
             btnState: false,
@@ -154,7 +154,7 @@ export default class ConnectionManager {
             disblowImg:false,
             blowingImg:false,
             process:false,
-
+            homePointHot:false,
             stateBtnShow: false,
 
             state: "正在连接设备",
