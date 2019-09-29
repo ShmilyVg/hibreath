@@ -254,8 +254,8 @@ Page({
                         return;
                     } else {
                         const num = this.data.info.bodyFatRate.toString().split(".");
-                        if (!num[1] || num[1] >= 10) {
-                            this.showDialog("请精确到小数点后一位");
+                        if (num.length > 1 && num[1] >= 10) {
+                            this.showDialog("至多输入以为小数及两位整数");
                             return;
                         }
                     }
@@ -430,14 +430,7 @@ Page({
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'test':
-                const isBindDevice = wx.getStorageSync('isBindDevice');
-                if (isBindDevice) {
-                    this.setData({
-                        showBigTip: true
-                    });
-                } else {
-                    HiNavigator.relaunchToIndex();
-                }
+                HiNavigator.relaunchToIndex();
                 break
         }
     },
