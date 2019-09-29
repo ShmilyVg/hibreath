@@ -41,8 +41,10 @@
     color: #0AC1A1;
     font-family:DIN Condensed;
     font-weight:bold;
-    position: relative;
-    top:-470rpx;
+    position: absolute;
+    top: 60rpx;
+    left: 335rpx;
+
 }
 @keyframes myfirst
 {
@@ -139,6 +141,8 @@
 }
 .fatBurning-part{
     text-align: center;
+    position: relative;
+
 }
 .fatBurning-tip{
     font-size: 15px;
