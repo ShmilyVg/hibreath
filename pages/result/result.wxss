@@ -13,7 +13,7 @@ page{
     width: 400rpx;
     height: 400rpx;
     position: absolute;
-    left: 30rpx;
+    left: 0rpx;
     top: 0;
     right: 0;
     margin: auto auto;
@@ -23,7 +23,7 @@ page{
     width: 400rpx;
     height: 400rpx;
     position: absolute;
-    left: 30rpx;
+    left: 0rpx;
     top: 0;
     right: 0;
     margin: auto auto;

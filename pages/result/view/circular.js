@@ -4,9 +4,12 @@ var w = "";
 var h = "";
 
 let _page = null;
+let _xWidth = 0;
 
 function init(page) {
     _page = page;
+    const dWidth = wx.getSystemInfoSync().windowWidth;
+    _xWidth = dWidth / 375
 }
 
 function run() {
@@ -37,11 +40,11 @@ function drewCircular() {
 
     const drawCircle = (target, start, end, color) => {
         //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
-        target.arc(100, 100, 90, start * Math.PI / 180, end * Math.PI / 180);
+        target.arc(100*_xWidth, 100*_xWidth, 90*_xWidth, start * Math.PI / 180, end * Math.PI / 180);
         target.setStrokeStyle(color);
         target.setLineWidth("5");
         //计算公式 （2ΠR*3/4-40）/5
-        target.setLineDash([76.823, 10], 0);
+        target.setLineDash([76.823*_xWidth, 10*_xWidth], 0);
         target.setLineCap("round");
         target.stroke();
         // target.draw();
@@ -83,8 +86,8 @@ function drewCircular() {
         fillGrid(ctx, pt, gradient, val);
         ctx.setFontSize(23);
         ctx.setFillStyle("#292930");
-        var offset = 140;
-        ctx.fillText(val / 10, offset, 105);
+        var offset = 140*_xWidth;
+        ctx.fillText(val / 10, offset, 105*_xWidth);
         /* ctx.setFontSize(15);
          ctx.setFillStyle("#969696");
          ctx.fillText(10, offset, 105);*/
