@@ -42,7 +42,7 @@
     font-family:DIN Condensed;
     font-weight:bold;
     position: relative;
-    top:350rpx;
+    top:-470rpx;
 }
 @keyframes myfirst
 {
@@ -61,6 +61,7 @@
 .blowing-img{
     width: 386rpx;
     height: 331rpx;
+    margin-top: 168rpx;
     animation:mySecond 5s  steps(5);
     margin-left: 180rpx;
     margin-bottom: 140rpx;

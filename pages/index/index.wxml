@@ -35,10 +35,11 @@
 </view>
 <view class="fatBurning-part">
     <view wx:if="{{readyimg}}" class="fatBurning-img"></view>
-    <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
-    <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view>
+    <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view><!--吹气 就绪-->
+
     <view wx:if="{{blowingImg}}" class="blowing-img"></view>
     <view wx:if="{{blowingImg}}" class="blowing-imgs"></view>
+    <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
 
     <view wx:if="{{disblowImg}}" class="disblow-error"></view>
     <view wx:if="{{disblowImg}}" class="disblow-img"></view>
