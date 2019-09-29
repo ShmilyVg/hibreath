@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/set-info/set-info",
     "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
-    "pages/set-info/set-info",
     "pages/update/update",
     "pages/device-manage/device-manage",
     "pages/calendar/calendar",

@@ -10,7 +10,7 @@ import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
 import {Toast} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
-
+import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 const app = getApp();
 
 Page({

@@ -61,13 +61,13 @@ export default class HiBlueToothProtocol {
                 const battery = HexTools.hexArrayToNum(dataArray.slice(0, 1));
                 const version = HexTools.hexArrayToNum(dataArray.slice(1, 3));
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 11));
-                this._syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
-                console.log("总数", this._syncCount)
+                const _syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
+                console.log("总数", _syncCount)
                 const now = Date.now() / 1000;
                 this.sendData({command: '0x05', data: [now]}).then(() => {
                     this.sendQueryDataRequiredProtocol();
                 });
-                return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId}};
+                return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId,_syncCount}};
             },
             //设备发出待机状态通知
             '0x06': () => {
