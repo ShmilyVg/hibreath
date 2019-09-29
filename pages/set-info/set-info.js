@@ -54,21 +54,27 @@ Page({
 
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
-            that.data.sync.num = that.data.sync.num + num;
-            that.data.sync.countNum = that.data.sync.countNum + countNum;
-            that.setData({
-                sync: that.data.sync,
-                showBigTip: true
-            });
+            if (num > 0 && countNum > 0) {
+                that.data.sync.num = that.data.sync.num + num;
+                that.data.sync.countNum = that.data.sync.countNum + countNum;
+                that.setData({
+                    sync: that.data.sync,
+                    showBigTip: true
+                });
 
-            clearTimeout(that.data.sync.timer);
-            that.data.sync.timer = '';
-            that.data.sync.timer = setTimeout(function () {
-                that.handleTasks();
+                clearTimeout(that.data.sync.timer);
+                that.data.sync.timer = '';
+                that.data.sync.timer = setTimeout(function () {
+                    that.handleTasks();
+                    that.setData({
+                        showBigTip: false
+                    });
+                }, 2000)
+            } else {
                 that.setData({
                     showBigTip: false
-                });
-            }, 2000)
+                })
+            }
         };
 
         await that.handleGuide(that);
