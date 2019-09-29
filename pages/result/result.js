@@ -129,14 +129,18 @@ Page({
 
     onReachBottom() {
         console.log('onReachBottom');
-        if (this.data.currenttab) {
+        if (this.data.currenttab === '0') {
             this.cellDataHandle({page: ++this.data.page, isRefresh: false})
         }
     },
 
     onPullDownRefresh() {
         console.log('onPullDownRefresh');
-        this.cellDataHandle({});
+        if (this.data.currenttab === '0') {
+            this.cellDataHandle({});
+        } else {
+            wx.stopPullDownRefresh();
+        }
     },
 
     onPageScroll: function (e) {

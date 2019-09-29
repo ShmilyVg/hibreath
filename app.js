@@ -14,6 +14,7 @@ App({
 
     onDeviceBindInfoListener: null,
     onBatteryInfoListener: null,
+    onDataSyncListener: null,
     isOTAUpdate: false,
     otaUrl: {},
     onLaunch(options) {
@@ -21,7 +22,7 @@ App({
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
         let synchronizationData = 0;//已经同步的条数
-        this.outlistAll=true;//总条数标志位
+        this.outlistAll = true;//总条数标志位
         // initAnalysisOnApp();
         this.setCommonBLEListener({
             // commonAppSignPowerListener: (hiDevices) => {
@@ -33,7 +34,7 @@ App({
                     const {timestamp, result, currentLength: length} = finalResult;
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/
-                    if(this.outlistAll === true){
+                    if (this.outlistAll === true) {
                         let {currentIndex} = finalResult;//需要同步的总条数
                         this.outlistAll = false;
                     }
@@ -41,14 +42,16 @@ App({
                     if (records.length < length) {
                         records.push({dataValue: result, timestamp: timestamp});
                         count++;
-                        console.log(records, "records")
-                        console.log(length, "length")
+                        console.log(records, "records");
+                        console.log(length, "length");
                         if (records.length === length) {
                             Protocol.postBreathDataSync({items: records}).then(data => {
-                                console.log('同步数据成功2');
-                                synchronizationData = synchronizationData+records.length;
-                                console.log("已经同步的条数",synchronizationData)
+                                synchronizationData = synchronizationData + records.length;
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
+                                this.onDataSyncListener && this.onDataSyncListener({
+                                    num: synchronizationData,
+                                    countNum: records.length
+                                });
                             }).catch(res => {
                                 this.queryDataFinish();
                                 console.log(res, '同步数据失败');
