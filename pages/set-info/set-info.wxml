@@ -3,7 +3,7 @@
 <import src="./view/goal.wxml"></import>
 <import src="./view/guide.wxml"></import>
 
-<view class="page" style="background-color: {{bgColor}}">
+<view class="page" style="background-color: {{bgColorSetInfoPage}}">
     <block wx:if="{{showNewInfo}}">
         <view class="flex-column" wx:if="{{showGuide}}">
             <template is="guide"></template>

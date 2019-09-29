@@ -35,7 +35,7 @@ Page({
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'}
         ],
-        bgColor: '#ffffff',
+        bgColorSetInfoPage: '#ffffff',
         score: 6.5,
         showBigTip: false,
         schemaId: 0,
@@ -148,7 +148,7 @@ Page({
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
                 showNewInfo: true,
-                bgColor: '#ffffff'
+                bgColorSetInfoPage: '#ffffff'
             });
         }
     },
@@ -193,14 +193,14 @@ Page({
                 fatDes: quan.visDes,
                 taskRes: result,
                 showNewInfo: false,
-                bgColor: '#FEF6F2'
+                bgColorSetInfoPage: '#FEF6F2'
             });
             Circular.run();
         } else {
             this.setData({
                 taskRes: result,
                 showNewInfo: false,
-                bgColor: '#FEF6F2'
+                bgColorSetInfoPage: '#FEF6F2'
             });
         }
         wx.setNavigationBarColor({
