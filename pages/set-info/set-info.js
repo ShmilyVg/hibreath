@@ -77,7 +77,7 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         let info = {};
-        if (accountInfo.detail) {
+        if (finishedGuide) {
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
@@ -101,7 +101,7 @@ Page({
                 weightGoal: '',
             };
             this.setData({
-                currentDate, goals, finishedGuide, info,
+                currentDate, goals, info,
                 birth: this.data.birth,
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
@@ -131,18 +131,24 @@ Page({
         const {result} = await Protocol.postMembersTasks();
         const quan = result.taskList[0].ext;
         console.log('quan:', quan);
-        this.setData({
-            taskRes: result,
-            fatText: quan.des.zhCh,
-            fatTextEn: quan.des.en,
-            score: quan.dataValue,
-            fatDes: quan.visDes,
-            showNewInfo: false,
-            bgColor: '#FEF6F2'
-        });
-
-        Circular.run();
-
+        if (result.taskList[0].finished) {
+            this.setData({
+                fatText: quan.des.zhCh,
+                fatTextEn: quan.des.en,
+                score: quan.dataValue,
+                fatDes: quan.visDes,
+                taskRes: result,
+                showNewInfo: false,
+                bgColor: '#FEF6F2'
+            });
+            Circular.run();
+        } else {
+            this.setData({
+                taskRes: result,
+                showNewInfo: false,
+                bgColor: '#FEF6F2'
+            });
+        }
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#F55E6B',
