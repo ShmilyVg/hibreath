@@ -2,6 +2,7 @@ import WXDialog from "../../view/dialog";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 
 export default class ConnectionManager {
+
     constructor(page) {
         this._page = page;
         this._timeoutIndex = 0;
@@ -32,7 +33,10 @@ export default class ConnectionManager {
         this.action[ConnectState.CONNECTING] = ()=>{
             this.connecting();
         };
-
+        //蓝牙已连接
+        this.action[ConnectState.CONNECTED] = ()=>{
+            this.connected();
+        };
     }
 
 
@@ -184,5 +188,38 @@ export default class ConnectionManager {
             homeOrangeBtn: false,
         })
     }
+    connected() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
+        this._page.setData({
+            noBind:false,
+            finding:false,
+            blowpicShow: false,
+            bgcolor:"#fff",
+            readyimg:false,// 预热图片显示
+            blowingImg:false,
+            textState:'',
+            textStateEn:'',
+            disblowImg:false,//吹气不足状态
+            process:false,//分析中
+            beginFat:true,//连接成功
+            topState:"开启您的燃脂之旅",
+            topStateS:"短按设备按键·开始检测",
+            bgColor:"#fff",
+            homePointHot:false,
 
+
+            stateBtnShow: false,
+
+            state: "设备已连接",
+
+            btnState: false,
+
+
+            homeTitle: false,
+            homeOrangeBtn: false,
+        })
+    }
 }
