@@ -39,11 +39,7 @@
     <view wx:if="{{blowpicShow}}" class="fatBlow-img"></view>
     <view wx:if="{{blowingImg}}" class="blowing-img"></view>
     <view wx:if="{{blowingImg}}" class="blowing-imgs"></view>
-    <view class="fatBurning-tip" wx:if="{{homePointHot}}">
-        <text>
-            设备长时间未使用，为了保证结果准确\n设备还需要些时间预热，请耐心等待
-        </text>
-    </view>
+
     <view wx:if="{{disblowImg}}" class="disblow-error"></view>
     <view wx:if="{{disblowImg}}" class="disblow-img"></view>
     <view wx:if="{{disblowImg}}" class="blowing-imgs"></view>
@@ -52,6 +48,11 @@
 
     <view class="fatBurning-text">{{textState}}</view>
     <view class="fatBurning-textEn">{{textStateEn}}</view>
+    <view class="fatBurning-tip" wx:if="{{homePointHot}}">
+        <text>
+            设备长时间未使用，为了保证结果准确\n设备还需要些时间预热，请耐心等待
+        </text>
+    </view>
     <view wx:if="{{disblowImg}}" class="fatBurning-tip"><text>吹气不足，短按设备按键重新吹气，吹\n气中请保持匀速，不要忽快忽慢</text></view>
 
 </view>

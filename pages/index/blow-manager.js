@@ -10,6 +10,7 @@ export default class BlowManager {
     constructor(page) {
         this._page = page;
         this.actionBlow = {};
+        console.log("ProtocolState",ProtocolState)
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
             this.timer()
@@ -25,10 +26,10 @@ export default class BlowManager {
         };
 
         this.actionBlow[ProtocolState.BREATH_START] = () => {
-            this.blowing();
             this._page.setData({
                 blowNumber: 5
             });
+            this.blowing();
             this.timerblow()
         };
 
@@ -49,7 +50,7 @@ export default class BlowManager {
          let countDownNum =120
          setInterval(function () {
              countDownNum--;
-             if ( countDownNum == 0) {
+             if ( countDownNum == 0 && ProtocolState =="pre_hot_start") {
                  clearInterval();
                  that._page.setData({
                      homePointHot: true
@@ -57,7 +58,6 @@ export default class BlowManager {
              }
          }, 1000)
      }
-
 
     timerblow(){
         var that = this;
@@ -109,6 +109,10 @@ export default class BlowManager {
     }
 
     ready() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
             noBind:false,
             stateBtnShow: false,
@@ -134,6 +138,10 @@ export default class BlowManager {
     }
 
     blow() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
             noBind:false,
 
@@ -164,6 +172,10 @@ export default class BlowManager {
     }
     //重新吹气
     disblow() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
 
             noBind:false,
@@ -193,6 +205,10 @@ export default class BlowManager {
     }
 
     blowing() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
             noBind:false,
 
@@ -222,6 +238,10 @@ export default class BlowManager {
     }
 
     blowed() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
         this._page.setData({
             noBind:false,
 
