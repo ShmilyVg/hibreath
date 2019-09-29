@@ -26,8 +26,8 @@ Page({
         currentDate: '2018-12-19',
         page: 1,
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
-        page4MenItem: ['3-4', '6-7', '10-12', '15', '20', '25', '30', '35', '40'],
-        page4WomenItem: ['10-12', '15-17', '20-22', '25', '30', '35', '40', '45', '50'],
+        page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
+        page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
         birth: ['1980', '01', '01'],
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
@@ -254,8 +254,8 @@ Page({
                         return;
                     } else {
                         const num = this.data.info.bodyFatRate.toString().split(".");
-                        if (!num[1] || num[1] >= 10) {
-                            this.showDialog("请精确到小数点后一位");
+                        if (num.length > 1 && num[1] >= 10) {
+                            this.showDialog("至多输入以为小数及两位整数");
                             return;
                         }
                     }
@@ -430,14 +430,7 @@ Page({
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'test':
-                const isBindDevice = wx.getStorageSync('isBindDevice');
-                if (isBindDevice) {
-                    this.setData({
-                        showBigTip: true
-                    });
-                } else {
-                    HiNavigator.relaunchToIndex();
-                }
+                HiNavigator.relaunchToIndex();
                 break
         }
     },

@@ -141,7 +141,7 @@
                     <view wx:if="{{!taskRes.taskList[0].finished}}" class="set-content-toFinish" data-type="test"
                           catchtap="bindTapToFinish">去完成
                     </view>
-                    <image src="../../images/set-info/finished.png" wx:else class="set-content-finished">去完成</image>
+                    <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
                 </view>
                 <view wx:if="{{taskRes.taskList[0].finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
                     <block wx:if="{{!showBigTip}}">
