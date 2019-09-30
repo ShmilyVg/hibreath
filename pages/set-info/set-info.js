@@ -45,7 +45,7 @@ Page({
         bigTipCountNum: 20,
         sync: {
             num: 0,
-            countNum: 0,
+            countNum: 0,//需要同步的总数
             timer: ''
         },
 
@@ -55,7 +55,7 @@ Page({
         showModalStatus: false,
         animationData: ''
     },
-
+    //同步离线数据
     async onLoad(e) {
         let that = this;
         console.log('on:', e);
@@ -66,32 +66,7 @@ Page({
                 showNewInfo: true
             })
         }
-        app.onDataSyncListener = ({num, countNum}) => {
-            console.log('同步离线数据：', num, countNum);
-            if (num > 0 && countNum > 0) {
-                that.data.sync.num = num;
-                that.data.sync.countNum = that.data.sync.countNum + countNum;
-                if (that.data.countNum >= that.data.sync.num) {
-                    that.setData({
-                        sync: that.data.sync,
-                        showBigTip: true
-                    });
 
-                    clearTimeout(that.data.sync.timer);
-                    that.data.sync.timer = '';
-                    that.data.sync.timer = setTimeout(function () {
-                        that.handleTasks();
-                        that.setData({
-                            showBigTip: false
-                        });
-                    }, 2000)
-                }
-            } else {
-                that.setData({
-                    showBigTip: false
-                })
-            }
-        };
 
         await that.handleGuide(that);
         this.handleBaseInfo();
@@ -454,8 +429,39 @@ Page({
 
     onShow() {
         this.handleBle();
+        let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
+        app.onDataSyncListener = ({num, countNum}) => {
+            console.log('同步离线数据：', num, countNum);
+            if (num > 0 && countNum > 0) {
+                that.data.sync.num = num;
+                that.data.sync.countNum = countNum;
+                console.log("总数",that.data.sync.countNum)
+                console.log("正在同步的", that.data.sync.num)
+                console.log("fff",that.data.sync)
+                console.log("是吗",that.data.countNum >= that.data.sync.num)
+                if (that.data.sync.countNum >= that.data.sync.num) {
+                    that.setData({
+                        sync: that.data.sync,
+                        showBigTip: true
+                    });
+
+                    clearTimeout(that.data.sync.timer);
+                    that.data.sync.timer = '';
+                    that.data.sync.timer = setTimeout(function () {
+                        that.handleTasks();
+                        that.setData({
+                            showBigTip: false
+                        });
+                    }, 2000)
+                }
+            } else {
+                that.setData({
+                    showBigTip: false
+                })
+            }
+        };
     },
 
     onHide() {

@@ -19,6 +19,7 @@ App({
     otaUrl: {},
     onLaunch(options) {
         let records = [], count = 0;
+        let currentIndex = 0;
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
         let synchronizationData = 0;//已经同步的条数
@@ -35,8 +36,10 @@ App({
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/
                     if (this.outlistAll === true) {
-                        let {currentIndex} = finalResult;//需要同步的总条数
+                        const {currentIndex} = finalResult;//需要同步的总条数
+                        this.globalData.currentIndex = currentIndex;
                         this.outlistAll = false;
+                        console.log(currentIndex,"第一个currentIndex")
                     }
                     /*离线数据相关*/
                     if (records.length < length) {
@@ -44,13 +47,15 @@ App({
                         count++;
                         console.log(records, "records");
                         console.log(length, "length");
+                        console.log(this.globalData.currentIndex,"第二个currentIndex")
                         if (records.length === length) {
                             Protocol.postBreathDataSync({items: records}).then(data => {
                                 synchronizationData = synchronizationData + records.length;
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
+                                console.log(this.globalData.currentIndex,"第三个currentIndex")
                                 this.onDataSyncListener && this.onDataSyncListener({
                                     num: synchronizationData,
-                                    countNum: records.length
+                                    countNum: this.globalData.currentIndex
                                 });
                             }).catch(res => {
                                 this.queryDataFinish();
@@ -197,7 +202,8 @@ App({
         refreshIndexPage: false,
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
-        notRegister: false
+        notRegister: false,
+        currentIndex:0,
     },
     ...common
 });
