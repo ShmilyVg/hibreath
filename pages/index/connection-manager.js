@@ -112,27 +112,34 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
-           /* noBind:false,
+       /*     noBind:false,
+
             stateBtnShow: false,
-            finding:false,
+
             state: "设备已连接",
+            finding:false,
             btnState: false,
+
+
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
-            blowingImg:true,
-            textState:'吹气中',
-            textStateEn:'BLOWING',
+            blowingImg:false,
+            textState:'分析中',
+            textStateEn:'IN PROCESS',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
-            process:false,//分析中
+            process:true,//分析中
+            homeOrangeBtn: false,//重试
 
-            homeTitle: false,
-            homeOrangeBtn: false,*/
+
+
+            homeTitle: true,
+            homeTitleText: "",*/
 
         });
-        this._page.setData({
+     /*   this._page.setData({
             blowNumber: 5
         });
         var that = this;
@@ -146,7 +153,7 @@ export default class ConnectionManager {
             })
             countDownNum--;
 
-        }, 1000)
+        }, 1000)*/
     }
 
     connecting() {
