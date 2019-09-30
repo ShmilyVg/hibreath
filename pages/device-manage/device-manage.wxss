@@ -1,5 +1,7 @@
 /* pages/device-manage/device-manage.wxss */
-
+page{
+    background: #EE6F69;
+}
 .image{
     width: 260rpx;
     height: 260rpx;
@@ -7,13 +9,50 @@
 }
 
 .device-name{
-    font-size:32rpx;
+    font-size:50rpx;
     font-weight:600;
-    color:rgba(151,151,151,1);
-    margin: 47rpx 0;
+    color:#ffffff;
+    font-family:PingFangSC-Regular, sans-serif;
+    margin: 80rpx auto 125rpx auto;
 }
 
 .btn-bg{
     background-color: #FF5F00;
     color: white;
+}
+.home-orangebtn{
+    width: 500rpx;
+    height: 100rpx;
+    color: #fff;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 100rpx;
+    background: #EE6F69;
+    border-radius: 50rpx;
+    border: 1px #fff solid;
+    margin: 0rpx auto 0rpx auto;
+}
+.againImg{
+    width: 320rpx;
+    height: 510rpx ;
+    background-image:url("http://backend.hipee.cn/assets/home/images/hb/Redbg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-bottom: 80rpx;
+}
+.bindSj{
+    width: 48rpx;
+    height: 28rpx ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-bottom: 40rpx;
+    position:relative;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAcBAMAAADVQiH5AAAAMFBMVEUAAAD///////////////////////////////////////////////////////////87TQQwAAAAD3RSTlMAGfPk0DCzbUwMkYrBkj+huJC4AAAAkUlEQVQoz43OvQ2CYBjE8WvEWNO6g3ERdQRHcBPcxBGMk9g4gaEgEMLXQ3Lh7g3hX941P+DYJfoAeKeOZu3IU8cZwO7k+/+GocKPCmN7Px6YeuleI8r0uCM6XJd7+cRc7taIYlqjwq2gWKwUi5VisVIsVorFSrFZKabVxLSy77i38DK1UkyriGlVcVi93wUb6gHlIkVBJwOK9QAAAABJRU5ErkJggg==");
+    animation:myFive 0.5s linear infinite alternate;
+}
+@keyframes myFive{
+    from {top:0rpx;}
+    to {top:20rpx;}
 }
