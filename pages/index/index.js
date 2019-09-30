@@ -12,7 +12,7 @@ import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
 import BlowManager from "./blow-manager";
 import * as tools from "../../utils/tools";
-import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager"; //页面标志位使用
 const app = getApp();
@@ -76,8 +76,9 @@ Page({
         wx.setKeepScreenOn({
             keepScreenOn: true
         });
+
         this.connectionPage = new ConnectionManager(this);
-        this.connectionPage.unbind();
+        //this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);
         //this.blowPage.blowing();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
@@ -142,15 +143,17 @@ Page({
     },
 
     onShow(options) {
-        const pages = getCurrentPages()
+       /* const pages = getCurrentPages()
         const currPage = pages[pages.length - 1]  // 当前页
         // 是否绑定成功
         this.setData({
             isBind: currPage.data.isBind
-        })
+        })*/
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
+
         let {connectState, protocolState} = app.getLatestBLEState();
+        console.log("app.getLatestBLEState()",app.getLatestBLEState())
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }

@@ -2,6 +2,7 @@ import WXDialog from "../../view/dialog";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 
 export default class ConnectionManager {
+
     constructor(page) {
         this._page = page;
         this._timeoutIndex = 0;
@@ -32,7 +33,10 @@ export default class ConnectionManager {
         this.action[ConnectState.CONNECTING] = ()=>{
             this.connecting();
         };
-
+        //蓝牙已连接
+        this.action[ConnectState.CONNECTED] = ()=>{
+            this.connected();
+        };
     }
 
 
@@ -108,27 +112,34 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
-           /* noBind:false,
+       /*     noBind:false,
+
             stateBtnShow: false,
-            finding:false,
+
             state: "设备已连接",
+            finding:false,
             btnState: false,
+
+
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
-            blowingImg:true,
-            textState:'吹气中',
-            textStateEn:'BLOWING',
+            blowingImg:false,
+            textState:'分析中',
+            textStateEn:'IN PROCESS',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
-            process:false,//分析中
+            process:true,//分析中
+            homeOrangeBtn: false,//重试
 
-            homeTitle: false,
-            homeOrangeBtn: false,*/
+
+
+            homeTitle: true,
+            homeTitleText: "",*/
 
         });
-        this._page.setData({
+     /*   this._page.setData({
             blowNumber: 5
         });
         var that = this;
@@ -142,7 +153,7 @@ export default class ConnectionManager {
             })
             countDownNum--;
 
-        }, 1000)
+        }, 1000)*/
     }
 
     connecting() {
@@ -184,5 +195,38 @@ export default class ConnectionManager {
             homeOrangeBtn: false,
         })
     }
+    connected() {
+        wx.setNavigationBarColor({
+            frontColor: '#000000',
+            backgroundColor: '#ffffff',
+        })
+        this._page.setData({
+            noBind:false,
+            finding:false,
+            blowpicShow: false,
+            bgcolor:"#fff",
+            readyimg:false,// 预热图片显示
+            blowingImg:false,
+            textState:'',
+            textStateEn:'',
+            disblowImg:false,//吹气不足状态
+            process:false,//分析中
+            beginFat:true,//连接成功
+            topState:"开启您的燃脂之旅",
+            topStateS:"短按设备按键·开始检测",
+            bgColor:"#fff",
+            homePointHot:false,
 
+
+            stateBtnShow: false,
+
+            state: "设备已连接",
+
+            btnState: false,
+
+
+            homeTitle: false,
+            homeOrangeBtn: false,
+        })
+    }
 }

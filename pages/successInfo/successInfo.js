@@ -25,7 +25,8 @@ Page({
         })
     },
     toIndex(){
-        HiNavigator.navigateIndexBind({isBind:true})
+       /* HiNavigator.navigateIndexBind({isBind:true})*/
+        HiNavigator.navigateIndex()
     }
 
 })

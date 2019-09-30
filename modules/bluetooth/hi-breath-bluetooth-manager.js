@@ -38,7 +38,7 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
                         if (platform!=='ios') {
                             if (!locationEnabled) {
                                 WXDialog.showDialog({
-                                    title: '小贴士', content: '请开启手机GPS', confirmText: '我知道了', confirmEvent: () => {
+                                    title: '小贴士', content: '请开启手机GPS', confirmText: '', confirmEvent: () => {
                                         isShowDialog = false;
                                     }
                                 });
