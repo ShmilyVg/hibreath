@@ -144,4 +144,12 @@ export default class Protocol {
     static postBreathDatalistAll(data) {
         return Network.request({url: 'breathData/listAll', data});
     }
+
+    static postWeightDataAdd({dataValue}) {
+        return Network.request({url: 'weightData/add', data: {dataValue}})
+    }
+
+    static postWeightDataList({page, pageSize = 20}) {
+        return Network.request({url: 'weightData/list', data: {page, pageSize}})
+    }
 }

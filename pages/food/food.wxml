@@ -1,0 +1,34 @@
+<!--pages/food/food.wxml-->
+<view class="top-view flex-row">
+    <view wx:for="{{topChose}}" class="top-view-text" bindtap="bindTapTopChose" data-index="{{index}}"
+          style="color:{{item.isChose?'#ED6F69':'#474747'}};">{{item.text}}
+    </view>
+</view>
+<view class="middle-view flex-column">
+    <view class="flex-row">
+        <view class="middle-view-title">{{dataTrendTitle}}</view>
+        <image class="middle-view-arr" src="../../images/arr-right.png"></image>
+    </view>
+    <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
+            bindtouchstart="touchHandler"
+            bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view class="middle-view-add-view">
+        <image class="middle-view-add-image"></image>
+        <view class="middle-view-add-text" bindtap="bindTapAddData">{{addBtnText}}</view>
+    </view>
+</view>
+
+<view class="bottom-view">
+    <view wx:for="{{dataList}}" class="bottom-view-cell">
+        <view class="flex-column" style="width: 100%">
+            <view class="flex-row" style="justify-content: space-between;width: 100%">
+                <view class="flex-column" style="margin-top: 40rpx;align-items:start">
+                    <view class="bottom-view-cell-title">{{item.date.time}}</view>
+                    <view class="bottom-view-cell-content">{{item.date.date}}</view>
+                </view>
+                <view class="flex-row bottom-view-cell-right">{{item.dataValue}}<mark class="bottom-view-cell-right-r">{{item.unit}}</mark></view>
+            </view>
+            <view class="bottom-view-line"></view>
+        </view>
+    </view>
+</view>

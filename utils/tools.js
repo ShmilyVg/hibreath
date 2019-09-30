@@ -6,8 +6,9 @@ function createDateAndTime(timeStamp) {
     let hour = date.getHours();
     let minute = date.getMinutes();
     let dateT = date.getFullYear() + '年' + (month < 10 ? ('0' + month) : month) + '月' + (day < 10 ? ('0' + day) : day) + '日';
+    let dateX = date.getFullYear() + '/' + (month < 10 ? ('0' + month) : month) + '/' + (day < 10 ? ('0' + day) : day);
     let time = (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute);
-    return {date: dateT, time: time, day: day, month: month, year: year};
+    return {date: dateT, dateX, time: time, day: day, month: month, year: year};
 }
 
 function createDateAndTime06(timestamp01, timestamp02) {
