@@ -15,10 +15,11 @@
         <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
         <view style="margin-top: 50rpx">
             <view wx:for="{{homeP.length}}">
-                <view class="home-p" wx:if="{{index == 1}}">
+                <view class="home-p" wx:if="{{index == 1}}" >
 
-                    {{homeP[index]}}
-                    <image class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                    <view style="float: left">{{homeP[index]}}</view>
+                    <image style="float: left;display: block;margin-left: 18rpx" class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                    <view class="clear"></view>
                 </view>
                 <view class="home-p" wx:else>{{homeP[index]}}</view>
                 <view wx:if="{{index == 4}}" style="height: 47rpx;width: 100%;margin-bottom: 41rpx"></view>
@@ -44,8 +45,8 @@
 
 </view>
 <!--绑定成功-->
-    <view wx:if="{{bindSuccess}}">
-     <!--   <view>-->
+<!--    <view wx:if="{{bindSuccess}}">
+     &lt;!&ndash;   <view>&ndash;&gt;
     <view class="bindSuccess-top">
         <image class="bindSuccess-img" src="../../images/device-bind/successBind.png"></image>
         <view class="bind-text">绑定成功</view>
@@ -63,7 +64,7 @@
                 </swiper-item>
             </block>
         </swiper>
-        <!--重置小圆点的样式 -->
+        &lt;!&ndash;重置小圆点的样式 &ndash;&gt;
         <view class="dots">
             <block wx:for="{{bindSuccessArr}}">
                 <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
@@ -71,4 +72,4 @@
         </view>
         <view class="bindSuccess-btn"   bindtap="toIndex">我知道了</view>
     </view>
-</view>
+</view>-->
