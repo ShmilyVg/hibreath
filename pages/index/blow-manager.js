@@ -28,10 +28,11 @@ export default class BlowManager {
         this.actionBlow[ProtocolState.BREATH_START] = () => {
 
             this.blowing();
-            this.timerblow();
             this._page.setData({
                 blowNumber: 5
             });
+            this.timerblow();
+
         };
 
         this.actionBlow[ProtocolState.BREATH_FINISH] = () => {
@@ -50,10 +51,10 @@ export default class BlowManager {
     //若预热中状态持续＞2分钟，仍然没有进入下一环节，则出现该提示文案
     timer(){
          var that = this;
-         let countDownNum =120
+         let countDownNumHot =120
          setInterval(function () {
-             countDownNum--;
-             if ( countDownNum == 0 && ProtocolState =="pre_hot_start") {
+             countDownNumHot--;
+             if ( countDownNumHot == 0 && ProtocolState =="pre_hot_start") {
                  clearInterval();
                  that._page.setData({
                      homePointHot: true

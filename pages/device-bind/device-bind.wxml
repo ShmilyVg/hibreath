@@ -11,14 +11,14 @@
 <view class="page" style="background-color:{{bgColor}}" >
     <!--未找到设备-->
     <view  wx:if="{{nofind}}"  style="padding: 0 50rpx;box-sizing:border-box;">
-        <view class="noBindText" style="margin-top: 80rpx">出了点小问题</view>
+        <view class="noBindText" style="margin-top: 80rpx;margin-bottom: 15rpx">出了点小问题</view>
         <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
         <view style="margin-top: 50rpx">
             <view wx:for="{{homeP.length}}">
                 <view class="home-p" wx:if="{{index == 1}}" >
 
                     <view style="float: left">{{homeP[index]}}</view>
-                    <image style="float: left;display: block;margin-left: 18rpx;margin-top: 5rpx" class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                    <image style="float: left;display: block;margin-left: 18rpx;margin-top: 3.5rpx" class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
                     <view class="clear"></view>
                 </view>
                 <view class="home-p" wx:else>{{homeP[index]}}</view>
