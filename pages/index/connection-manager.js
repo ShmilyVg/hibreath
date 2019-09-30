@@ -1,6 +1,6 @@
 import WXDialog from "../../view/dialog";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
-
+import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 export default class ConnectionManager {
 
     constructor(page) {
@@ -34,9 +34,10 @@ export default class ConnectionManager {
             this.connecting();
         };
         //蓝牙已连接
+       /* this.action[ProtocolState.QUERY_DATA_START]=
         this.action[ConnectState.CONNECTED] = ()=>{
             this.connected();
-        };
+        };*/
     }
 
 
@@ -112,45 +113,40 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
-       /*     noBind:false,
-
+        });
+    /*        noBind:false,
             stateBtnShow: false,
-
-            state: "设备已连接",
             finding:false,
+            state: "设备已连接",
             btnState: false,
-
-
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,//吹气图片
             readyimg:false,// 预热图片
-            blowingImg:false,
-            textState:'分析中',
-            textStateEn:'IN PROCESS',
+            blowingImg:true,
+            textState:'吹气中',
+            textStateEn:'BLOWING',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
-            process:true,//分析中
-            homeOrangeBtn: false,//重试
+            process:false,//分析中
 
-
-
-            homeTitle: true,
-            homeTitleText: "",*/
+            homeTitle: false,
+            homeOrangeBtn: false,
 
         });
-     /*   this._page.setData({
+        this._page.setData({
             blowNumber: 5
         });
         var that = this;
         let countDownNum =4
         var int=setInterval(function () {
-            if ( countDownNum == 0) {
-                clearInterval(int);
-            }
             that._page.setData({
                 blowNumber: countDownNum
             })
+            if ( countDownNum == 0) {
+                clearInterval(int);
+            }
+
             countDownNum--;
 
         }, 1000)*/

@@ -18,7 +18,7 @@
                 <view class="home-p" wx:if="{{index == 1}}" >
 
                     <view style="float: left">{{homeP[index]}}</view>
-                    <image style="float: left;display: block;margin-left: 18rpx" class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                    <image style="float: left;display: block;margin-left: 18rpx;margin-top: 5rpx" class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
                     <view class="clear"></view>
                 </view>
                 <view class="home-p" wx:else>{{homeP[index]}}</view>

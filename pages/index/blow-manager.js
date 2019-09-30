@@ -26,17 +26,20 @@ export default class BlowManager {
         };
 
         this.actionBlow[ProtocolState.BREATH_START] = () => {
+
+            this.blowing();
+            this.timerblow();
             this._page.setData({
                 blowNumber: 5
             });
-            this.blowing();
-            this.timerblow()
         };
 
         this.actionBlow[ProtocolState.BREATH_FINISH] = () => {
             this.blowed();
         };
-
+      /*  this.actionBlow[ProtocolState.QUERY_DATA_START] =() => {
+            this.connected();
+        };*/
         this.actionBlow[ProtocolState.CONNECTED_AND_BIND] =
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {
@@ -63,12 +66,12 @@ export default class BlowManager {
         var that = this;
         let countDownNum =4
         var int=setInterval(function () {
-            if ( countDownNum == -1) {
-                clearInterval(int);
-            }
             that._page.setData({
                 blowNumber: countDownNum
             })
+            if ( countDownNum == -1) {
+                clearInterval(int);
+            }
             countDownNum--;
 
         }, 1000)

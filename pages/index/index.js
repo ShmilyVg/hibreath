@@ -157,6 +157,10 @@ Page({
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
+        if(protocolState === "query_data_start" && connectState === "connected"){
+            this.blowPage.connected();
+        }
+
         !!action[connectState] && action[connectState]();
         !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({

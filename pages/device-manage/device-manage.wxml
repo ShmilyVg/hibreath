@@ -8,6 +8,6 @@
 <view class="flex-column" wx:else>
     <text class="device-name">燃脂检测仪</text>
     <view class="againImg"></view>
-    <view class="bindSj"></view>
-    <view class="home-orangebtn" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">暂未绑定设备</view>
+   <!-- <view class="bindSj"></view>-->
+    <view class="home-orangebtn" hover-class="press-style" hover-stay-time="50" >暂未绑定设备</view>
 </view>
