@@ -2,7 +2,7 @@
 
 <import src="./view/goal.wxml"></import>
 <import src="./view/guide.wxml"></import>
-
+<import src="./view/typeCard.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
     <block wx:if="{{showNewInfo}}">
         <view class="flex-column" wx:if="{{showGuide}}">
@@ -143,6 +143,7 @@
                     </view>
                     <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
                 </view>
+
                 <view wx:if="{{taskRes.taskList[0].finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
                     <block wx:if="{{!showBigTip}}">
                     <canvas canvas-id="bg" class='canvasII'></canvas>
@@ -153,7 +154,9 @@
                     <view class="fatDes">{{fatDes}}</view>
                     </block>
                 </view>
+
             </view>
+            <template is="typeCard" data="{{taskRes}}"></template>
         </view>
     </block>
 </view>
@@ -165,3 +168,35 @@
         <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
     </view>
 </view>
+
+
+<!--底部弹窗-->
+
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view bindtap="hideModal" class="commodity_clear">取消</view>
+    <view class="commodity_sub" bindtap="hideModal">确定</view>
+    <view class="clear"></view>
+    <view style="height: 40rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 75rpx"></view>
+    <view class="commodity_part">
+        <view class="commodity_title">体重(kg)</view>
+        <input class="commodity_input" placeholder-class="commodity_inputpla"  bindinput="commodity_weight" placeholder="请输入您的体重" type="digit"/>
+        <view class="clear"></view>
+    </view>
+    <view class="commodity_part">
+        <view class="commodity_title">高压(mmHg)</view>
+        <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  bindinput="commodity_weight" placeholder="请输入您的高压" type="number"/>
+        <view class="clear"></view>
+    </view>
+    <view class="commodity_part">
+        <view class="commodity_title">低压(mmHg)</view>
+        <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" bindinput="commodity_weight" placeholder="请输入您的低压" type="number"/>
+        <view class="clear"></view>
+    </view>
+    <view>
+        <view class="commodity_title">心率(BMP)</view>
+        <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" bindinput="commodity_weight" placeholder="请输入您的心率" type="number"/>
+        <view class="clear"></view>
+    </view>
+</view>
+<!--底部弹窗-->
