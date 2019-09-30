@@ -157,7 +157,11 @@ Page({
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
-        if(protocolState === "query_data_start" && connectState === "connected"){
+        console.log('000',connectState)
+        console.log('1111',protocolState)
+        console.log("-----1212",protocolState === "query_data_start" && connectState === "connected")
+        if(connectState === "connected"){
+            if(protocolState === "query_data_start" || protocolState === "query_data_ing" || protocolState === "query_data_finish")
             this.blowPage.connected();
         }
 

@@ -14,6 +14,7 @@ export default class ConnectionManager {
         };
 
         this.action[ConnectState.UNAVAILABLE] = () => {
+            this.disconnect();
             console.log("this._timeoutIndex",this._timeoutIndex)
             if(this._timeoutIndex !=0){
                 clearTimeout(this._timeoutIndex);
@@ -21,8 +22,6 @@ export default class ConnectionManager {
             }
             this._timeoutIndex = setTimeout(() => {
                 WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-                this.disconnect();
-
             },200);
         };
         //蓝牙连接已断开
