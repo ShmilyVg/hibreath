@@ -159,7 +159,7 @@ Page({
         }
         console.log('000',connectState)
         console.log('1111',protocolState)
-        console.log("-----1212",protocolState === "query_data_start" && connectState === "connected")
+        console.log("-----1212",)
         if(connectState === "connected"){
             if(protocolState === "query_data_start" || protocolState === "query_data_ing" || protocolState === "query_data_finish")
             this.blowPage.connected();

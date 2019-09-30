@@ -28,9 +28,9 @@ export default class BlowManager {
         this.actionBlow[ProtocolState.BREATH_START] = () => {
 
             this.blowing();
-            this._page.setData({
+         /*   this._page.setData({
                 blowNumber: 5
-            });
+            });*/
             this.timerblow();
 
         };
@@ -65,12 +65,12 @@ export default class BlowManager {
 
     timerblow(){
         var that = this;
-        let countDownNum =4
+        let countDownNum =5
         var int=setInterval(function () {
             that._page.setData({
                 blowNumber: countDownNum
             })
-            if ( countDownNum == -1) {
+            if ( countDownNum == 0) {
                 clearInterval(int);
             }
             countDownNum--;

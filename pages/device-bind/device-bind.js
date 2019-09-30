@@ -118,6 +118,7 @@ Page({
                 if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
 
                     //绑定后 跳转绑定成功页面  点击按钮再进入index页面
+                    this.isBind = true;
                     setTimeout(() => HiNavigator.navigateSuccessInfo());
                     /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
