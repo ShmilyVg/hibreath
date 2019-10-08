@@ -17,8 +17,8 @@ const app = getApp();
 
 Page({
     data: {
-        fatBurn:false,//燃脂卡片
-        bodyIndex:false,//记录身体指标卡片
+        isfatBurn:false,//燃脂卡片
+        isbodyIndex:false,//记录身体指标卡片
 
         showGuide: false,
         showNewInfo: false,
@@ -52,11 +52,22 @@ Page({
             timer: ''
         },
 
-
-
+        bloodLow:"",
+        heart:"",
+        bloodHeight:"",
+        weight:"",
 
         showModalStatus: false,
         animationData: ''
+    },
+    //上传身体指标
+    formSubmit(e){
+        console.log(e.detail.value)
+        Protocol.setBodyIndex(e.detail.value).then(data => {
+            this.setData({
+                showModalStatus: false,
+            })
+        });
     },
     //同步离线数据
     async onLoad(e) {
@@ -166,33 +177,61 @@ Page({
 
     async handleTasks() {
         const {result} = await Protocol.postMembersTasks();
-        const quan = result.taskList[0].ext;
-        console.log('quan:', quan);
-        if (result.taskList[0].finished) {
-            this.setData({
-                fatText: quan.des.zhCh,
-                fatTextEn: quan.des.en,
-                score: quan.dataValue,
-                fatDes: quan.visDes,
-                taskRes: result,
-                showNewInfo: false,
-                bgColorSetInfoPage: '#FEF6F2'
-            });
-            Circular.run();
-        } else {
-            this.setData({
-                taskRes: result,
-                showNewInfo: false,
-                bgColorSetInfoPage: '#FEF6F2'
-            });
+        this.setData({
+            indexDayDesc:result.dayDesc,
+            indexfinishNum:result.finishNum,
+            indexgoalDesc:result.goalDesc,
+            indextaskNum:result.taskNum,
+        })
+        const typesArr = result.taskList.map(d => d.type)
+        console.log("123213",typesArr)
+        for (var i = 0; i < typesArr.length; i++){
+            console.log("0-",typesArr[0])
+            if(typesArr[i] === "fatBurn"){
+                const fatBurnExt = typesArr[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isfatBurn:true,
+                        fatBurnFin:true,//完成标志位
+                        fatBurnTask: result.taskList[i],
+                        fatText: fatBurnExt.des.zhCh,
+                        fatTextEn: fatBurnExt.des.en,
+                        score: fatBurnExt.dataValue,
+                        fatDes: fatBurnExt.visDes,
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                    Circular.run();
+                } else {
+                    this.setData({
+                        isfatBurn:true,
+                        fatBurnTask: result.taskList[i],
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                }
+            }
+            if(typesArr[i] === "bodyIndex"){
+                const bodyIndexExt = typesArr[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isbodyIndex:true,
+                        bodyIndexTask: result.taskList[i],
+                    })
+                }else{
+                    this.setData({
+                        isbodyIndex:true,
+                        bodyIndexTask: result.taskList[i],
+                    })
+                }
+            }
         }
+
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#F55E6B',
-            animation: {
+          /*  animation: {
                 duration: 400,
                 timingFunc: 'easeIn'
-            }
+            }*/
         })
     },
 
@@ -469,7 +508,8 @@ Page({
     },
 
     bindTapToResultPage() {
-        if (this.data.taskRes.taskList[0].finished) {
+        console.log(this.data.fatBurnFin)
+        if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
