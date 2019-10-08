@@ -29,10 +29,10 @@
                         和上次一致
                     </view>
                     <view wx:if="{{bodyIndexExt.weight.thanBefore === 'height'}}">
-                        比上一次 <image  src="../../images/set-info/up.png"></image>{{bodyIndexExt.weight.thanValue}}
+                        比上一次 <image style="width: 14rpx;height: 20rpx"  src="../../images/set-info/up.png"></image>{{bodyIndexExt.weight.thanValue}}kg
                     </view>
                     <view wx:if="{{bodyIndexExt.weight.thanBefore === 'low'}}">
-                        比上一次 <image  src="../../images/set-info/down.png"></image>{{bodyIndexExt.weight.thanValue}}
+                        比上一次 <image style="width: 14rpx;height: 20rpx" src="../../images/set-info/down.png"></image>{{bodyIndexExt.weight.thanValue}}kg
                     </view>
                 </view>
                 <view class="bodayIndex-line"></view>

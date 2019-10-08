@@ -191,7 +191,7 @@ export default class BlowManager {
             blowingImg:false,
             disblowImg:true,//吹气不足状态
             textState:'吹气不足',
-            textStateEn:'NO ENOUGH',
+            textStateEn:'NOT ENOUGH',
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
 
@@ -249,7 +249,7 @@ export default class BlowManager {
             readyimg:false,// 预热图片
             blowingImg:false,
             textState:'分析中',
-            textStateEn:'IN PROCESS',
+            textStateEn:'PROCESSING',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:true,//分析中
