@@ -1,10 +1,12 @@
-<template name="typeCard">
+<template name="bodyIndexCard">
+
+
+<!--身体记录卡片-->
     <view class="set-content-view flex-column">
         <view class="flex-row" style="justify-content: space-between;width: 100%">
             <view class="flex-row">
                 <image src="{{taskRes.taskList[0].iconUrl}}" class="set-content-icon"></image>
                 <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                  <!--  <view class="set-content-title">{{taskRes.taskList[0].title}}</view>-->
                     <view class="set-content-title">记录身体指标</view>
                     <view class="set-content-content">你知道什么是健康指标么？</view>
                 </view>
@@ -25,6 +27,5 @@
                 <view class="fatDes">{{fatDes}}</view>
             </block>
         </view>
-
     </view>
 </template>

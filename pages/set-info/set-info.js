@@ -17,6 +17,9 @@ const app = getApp();
 
 Page({
     data: {
+        fatBurn:false,//燃脂卡片
+        bodyIndex:false,//记录身体指标卡片
+
         showGuide: false,
         showNewInfo: false,
         noMeasure: false,//没有准确测过体脂率
@@ -437,10 +440,6 @@ Page({
             if (num > 0 && countNum > 0) {
                 that.data.sync.num = num;
                 that.data.sync.countNum = countNum;
-                console.log("总数",that.data.sync.countNum)
-                console.log("正在同步的", that.data.sync.num)
-                console.log("fff",that.data.sync)
-                console.log("是吗",that.data.countNum >= that.data.sync.num)
                 if (that.data.sync.countNum >= that.data.sync.num) {
                     that.setData({
                         sync: that.data.sync,

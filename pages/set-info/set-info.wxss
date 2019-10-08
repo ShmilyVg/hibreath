@@ -536,6 +536,8 @@
 }
 .commodity_input{
     float: right;
+    text-align: right;
+
 }
 .commodity_title{
     float: left;
