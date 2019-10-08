@@ -131,7 +131,7 @@
         </view>
         <view class="flex-column" style="margin-top: -65rpx">
             <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,showNewInfo,bgColorSetInfoPage}}"></template>
-            <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask}}"></template>
+            <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
         </view>
     </block>
 </view>

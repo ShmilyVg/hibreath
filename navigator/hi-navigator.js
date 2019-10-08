@@ -42,6 +42,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }
+    static navigateTofood() {
+        this.navigateTo({url: '/pages/food/food'})
+    }
 
     static relaunchToUpdatePage({binUrl, datUrl}) {
         getApp().otaUrl = arguments[0];
@@ -69,7 +72,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateTarget() {
         this.navigateTo({url: '/pages/setTarget/setTarget'})
     }
-
 
 
     static navigateToHIIT({id}) {

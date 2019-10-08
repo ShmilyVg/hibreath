@@ -186,9 +186,8 @@ Page({
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213",typesArr)
         for (var i = 0; i < typesArr.length; i++){
-            console.log("0-",typesArr[0])
             if(typesArr[i] === "fatBurn"){
-                const fatBurnExt = typesArr[i].ext;
+                const fatBurnExt = result.taskList[i].ext;
                 if (result.taskList[i].finished) {
                     this.setData({
                         isfatBurn:true,
@@ -210,12 +209,16 @@ Page({
                 }
             }
             if(typesArr[i] === "bodyIndex"){
-                const bodyIndexExt = typesArr[i].ext;
+                const bodyIndexExt = result.taskList[i].ext;
+                console.log(bodyIndexExt,"typesArr[i]")
                 if (result.taskList[i].finished) {
                     this.setData({
                         isbodyIndex:true,
+                        bodyIndexFin:true,
                         bodyIndexTask: result.taskList[i],
+                        bodyIndexExt:bodyIndexExt,
                     })
+                    console.log(this.data.dataExt)
                 }else{
                     this.setData({
                         isbodyIndex:true,
@@ -454,13 +457,15 @@ Page({
             }, 300)
         }
     },
-    //燃脂去完成按钮
+    //去完成按钮
     bindTapToFinish(e) {
-        console.log(e);
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
-            case 'test':
+            case 'fatBurn':
                 HiNavigator.relaunchToIndex();
+                break
+            case 'bodyIndex':
+                this.showModal();
                 break
         }
     },
@@ -508,13 +513,16 @@ Page({
     },
 
     bindTapToResultPage() {
-        console.log(this.data.fatBurnFin)
         if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
     },
-
+    bindTapToFood(){
+        if (this.data.bodyIndexFin) {
+            HiNavigator.navigateTofood();
+        }
+    },
 
     showModal: function () {
         // 显示遮罩层

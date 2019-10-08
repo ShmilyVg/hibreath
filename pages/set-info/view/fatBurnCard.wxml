@@ -9,7 +9,7 @@
                     <view class="set-content-content">你知道怎样燃脂么？</view>
                 </view>
             </view>
-            <view wx:if="{{!fatBurnTask.finished}}" class="set-content-toFinish" data-type="test"
+            <view wx:if="{{!fatBurnTask.finished}}" class="set-content-toFinish" data-type="fatBurn"
                   catchtap="bindTapToFinish">去完成
             </view>
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>

@@ -488,11 +488,40 @@
     height: 670rpx;
     margin: 0 37rpx;
 }
-
-
-
-
-
+.bodayIndex-view{
+    margin-top: 15rpx;
+}
+.bodayIndex-textB{
+    font-family: PingFang-SC;
+    font-size: 38rpx;
+    color: #333333;
+    font-weight:500;
+    margin-right: 10rpx;
+}
+.bodayIndex-textS{
+    font-family: PingFang-SC;
+    font-size: 26rpx;
+    color: #333;
+    font-weight:400;
+}
+.bodayIndex-viewRT{
+    font-family:DIN Condensed;
+    font-size: 56rpx;
+    color: #454545;
+    font-weight: bold;
+}
+.bodayIndex-viewRB{
+    font-family: PingFang-SC;
+    font-size: 24rpx;
+    color: #A0A0A0;
+    text-align: right
+}
+.bodayIndex-line{
+    border: 0.5rpx #F2F2F2 solid;
+    width: 100%;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx
+}
 /*弹出层相关*/
 .commodity_screen {
     width: 100%;
