@@ -530,7 +530,7 @@
     top: 0;
     left: 0;
     background: #000;
-    opacity: 0.9;
+    opacity: 0.85;
     overflow: hidden;
     z-index: 9;
     color: #fff;
@@ -544,7 +544,7 @@
     left: 0;
     z-index: 10;
     background: #fff;
-    padding-top: 40rpx;
+    padding-top: 30rpx;
     height: 300px;
     text-align: center;
     border-radius: 60rpx 60rpx 0 0;
@@ -555,6 +555,7 @@
     font-family: PingFang-SC;
     color: #292929;
     font-size: 30rpx;
+    background: none;
 }
 .commodity_sub{
     float: right;
@@ -562,11 +563,11 @@
     font-family: PingFang-SC;
     color: #ED6F69;
     font-size: 30rpx;
+    background: none;
 }
+button::after{ border: none; }
 .commodity_input{
     float: right;
-
-
 }
 .commodity_title{
     float: left;

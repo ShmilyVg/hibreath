@@ -63,10 +63,48 @@ Page({
     //上传身体指标
     formSubmit(e){
         console.log(e.detail.value)
-        Protocol.setBodyIndex(e.detail.value).then(data => {
+        const finaValue = e.detail.value
+        if (this.objIsEmpty(finaValue.weight)) {
+            toast.warn('请填写体重');
+            return;
+        }
+
+        const weightnum = finaValue.weight.split(".");
+        if (weightnum.length > 1 && weightnum[1] >= 10) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if (weightnum[0] >= 1000) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if(finaValue.heart){
+            const heartnum = finaValue.heart.split(".");
+            if (heartnum.length > 1 || heartnum[0] >= 1000) {
+                this.showDialog("心率至多支持3位整数");
+                return;
+            }
+        }
+        if(finaValue.bloodHeight){
+            const bloodHeightnum = finaValue.bloodHeight.split(".");
+            if (bloodHeightnum.length > 1 || bloodHeightnum[0] >= 1000) {
+                this.showDialog("高压至多支持3位整数");
+                return;
+            }
+        }
+        if(finaValue.bloodLow){
+            const bloodLownum = finaValue.bloodLow.split(".");
+            if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
+                this.showDialog("低压至多支持3位整数");
+                return;
+            }
+        }
+
+        Protocol.setBodyIndex(finaValue).then(data => {
             this.setData({
                 showModalStatus: false,
             })
+            toast.success('填写成功');
         });
     },
     //同步离线数据
@@ -288,7 +326,7 @@ Page({
                     } else {
                         const num = this.data.info.bodyFatRate.toString().split(".");
                         if (num.length > 1 && num[1] >= 10) {
-                            this.showDialog("至多输入以为小数及两位整数");
+                            this.showDialog("至多输入1位小数及两位整数");
                             return;
                         }
                     }

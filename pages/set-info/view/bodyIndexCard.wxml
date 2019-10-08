@@ -25,15 +25,15 @@
                 <view class="clear"></view>
                <!-- <view class="bodayIndex-viewRB" style="text-align: right">{{bodyIndexExt.weight.thanBefore}}</view>-->
                 <view wx:if="{{bodyIndexExt.weight.thanBefore}}" class="bodayIndex-viewRB">
-                    <text wx:if="{{bodyIndexExt.weight.thanBefore === 'hold'}}">
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'hold'}}">
                         和上次一致
-                    </text>
-                    <text wx:if="{{bodyIndexExt.weight.thanBefore === 'height'}}">
+                    </view>
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'height'}}">
                         比上一次 <image  src="../../images/set-info/up.png"></image>{{bodyIndexExt.weight.thanValue}}
-                    </text>
-                    <text wx:if="{{bodyIndexExt.weight.thanBefore === 'low'}}">
+                    </view>
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'low'}}">
                         比上一次 <image  src="../../images/set-info/down.png"></image>{{bodyIndexExt.weight.thanValue}}
-                    </text>
+                    </view>
                 </view>
                 <view class="bodayIndex-line"></view>
             </view>
