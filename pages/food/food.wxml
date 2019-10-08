@@ -1,9 +1,9 @@
 <!--pages/food/food.wxml-->
-<view class="top-view flex-row">
-    <view wx:for="{{topChose}}" class="top-view-text" bindtap="bindTapTopChose" data-index="{{index}}"
+<cover-view class="top-view flex-row">
+    <cover-view wx:for="{{topChose}}" class="top-view-text" bindtap="bindTapTopChose" data-index="{{index}}"
           style="color:{{index===currentIndex?'#ED6F69':'#474747'}};">{{item.text}}
-    </view>
-</view>
+    </cover-view>
+</cover-view>
 <view class="middle-view flex-column">
     <view class="flex-row">
         <view class="middle-view-title">{{dataTrendTime}}</view>
