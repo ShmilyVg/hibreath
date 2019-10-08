@@ -12,10 +12,10 @@
     <image class="fatType1" src="{{fatType}}"></image>
     <view class="fatText">{{fatText}}</view>
     <view class="fatTextEn">{{fatTextEn}}</view>
-    <view class="fatDes">{{fatDes}}</view>
+    <view class="fatDes" >{{fatDes}}</view>
 </view>
-<button class="result-btn" bindtap="toIndex">吹一吹</button>
-
+<button wx:if="{{fatDes !==''}}" class="result-btn" bindtap="toIndex">吹一吹</button>
+<button wx:else class="result-btn2" bindtap="toIndex">吹一吹</button>
 <view wx:if="{{tabIsShow}}" class="result_tab">
     <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
     <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>

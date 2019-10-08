@@ -1,3 +1,7 @@
+/**
+ * @Date: 2019-10-08 17:42:53
+ * @LastEditors: 张浩玉
+ */
 var ctx = wx.createCanvasContext("dashboard"); //创建一个全局的canvas绘图上下文
 var bg = wx.createCanvasContext("bg");
 var w = "";
@@ -21,16 +25,16 @@ function drewCircular() {
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
-    if (circleScore <= 20) {
+    if (circleScore <= 10) {
         gradient.addColorStop("0", "#542EE3");
         gradient.addColorStop("0.2", "#250099");
-    } else if (20 < circleScore && circleScore <= 40) {
+    } else if (10 < circleScore && circleScore <= 20) {
         gradient.addColorStop("0", "#0026FE");
         gradient.addColorStop("0.4", "#00CFFF");
-    } else if (40 < circleScore && circleScore <= 60) {
+    } else if (20 < circleScore && circleScore <= 40) {
         gradient.addColorStop("0", "#20D9D1");
         gradient.addColorStop("0.6", "#00B96C");
-    } else if (60 < circleScore && circleScore <= 80) {
+    } else if (40 < circleScore && circleScore <= 60) {
         gradient.addColorStop("0", "#FFE300");
         gradient.addColorStop("0.8", "#FF9F00");
     } else {

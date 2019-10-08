@@ -12,7 +12,7 @@ import * as Circular from "./view/circular";
 
 Page({
     data: {
-        score: 6.5, //传入的进度， 0~100，绘制到此参数处停止。
+        score: 3.5, //传入的进度， 0~100，绘制到此参数处停止。
         currenttab: '0',
         trendDate: '',
         page: 1,
