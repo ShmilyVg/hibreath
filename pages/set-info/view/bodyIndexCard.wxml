@@ -15,7 +15,7 @@
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{bodyIndexTask.finished}}" class="content" style="height: 500rpx;margin-top: 70rpx">
+        <view wx:if="{{bodyIndexTask.finished}}" class="content" style="height: 450rpx;margin-top: 70rpx">
             <view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">体重</text>

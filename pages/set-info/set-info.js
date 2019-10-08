@@ -101,6 +101,7 @@ Page({
         }
 
         Protocol.setBodyIndex(finaValue).then(data => {
+            this.handleTasks();
             this.setData({
                 showModalStatus: false,
             })
