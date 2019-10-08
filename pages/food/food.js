@@ -2,8 +2,24 @@
 import * as Trend from "../../view/trend";
 import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
-import {getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
+import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
 
+const timeObj = {
+    _frontTimestamp: 0,
+    _endTimestamp: 0,
+    set frontTimestamp(timestamp) {
+        this._frontTimestamp = getFrontZeroTimestamp({timestamp});
+    },
+    get frontTimestamp() {
+        return this._frontTimestamp;
+    },
+    set endTimestamp(timestamp) {
+        this._endTimestamp = getEndZeroTimestamp({timestamp});
+    },
+    get endTimestamp() {
+        return this._endTimestamp;
+    }
+};
 Page({
 
     data: {
@@ -15,12 +31,13 @@ Page({
         currentIndex: 0,
         dataList: [],
         dataTrend: [],
-        timeObj: {frontTimestamp: 0, endTimestamp: 0},
+
         dataTrendTime: ''
     },
 
     onLoad() {
     },
+
 
     async onReady() {
         Trend.init(this);
@@ -28,16 +45,21 @@ Page({
     },
 
     updateTrendTime({frontTimestamp, endTimestamp}) {
-        const {timeObj} = this.data;
+        // const {timeObj} = this.data;
         timeObj.frontTimestamp = frontTimestamp;
         timeObj.endTimestamp = endTimestamp;
-        this.setData({dataTrendTime: getTimeString({frontTimestamp, endTimestamp})}, async () => {
+        this.setData({
+            dataTrendTime: getTimeString({
+                frontTimestamp: timeObj.frontTimestamp,
+                endTimestamp: timeObj.endTimestamp
+            })
+        }, async () => {
             await this.handleListData({isRefresh: true});
         });
     },
 
     async handleListData({isRefresh = false} = {}) {
-        const {currentIndex, timeObj: {frontTimestamp: timeBegin, endTimestamp: timeEnd}} = this.data;
+        const {currentIndex} = this.data, {frontTimestamp: timeBegin, endTimestamp: timeEnd} = timeObj;
         switch (currentIndex) {
             case 0:
                 let {result: {list}} = await Protocol.postWeightDataListAll({
