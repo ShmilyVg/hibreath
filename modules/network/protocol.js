@@ -154,11 +154,27 @@ export default class Protocol {
         return Network.request({url: 'weightData/add', data: {dataValue}})
     }
 
+    static postHeartDataAdd({dataValue}) {
+        return Network.request({url: 'heartData/add', data: {dataValue}})
+    }
+
+    static postBloodPressureDataAdd({height, low}) {
+        return Network.request({url: 'bloodPressureData/add', data: arguments[0]})
+    }
+
     static postWeightDataList({page, pageSize = 20}) {
         return Network.request({url: 'weightData/list', data: {page, pageSize}})
     }
 
     static postWeightDataListAll({timeBegin, timeEnd}) {
         return Network.request({url: 'weightData/listAll', data: arguments[0]});
+    }
+
+    static postBloodPressureDataListAll({timeBegin, timeEnd}) {
+        return Network.request({url: 'bloodPressureData/listAll', data: arguments[0]});
+    }
+
+    static postHeartDataListAll({timeBegin, timeEnd}) {
+        return Network.request({url: 'heartData/listAll', data: arguments[0]});
     }
 }

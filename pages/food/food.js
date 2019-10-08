@@ -59,40 +59,67 @@ Page({
     },
 
     async handleListData({isRefresh = false} = {}) {
-        const {currentIndex} = this.data, {frontTimestamp: timeBegin, endTimestamp: timeEnd} = timeObj;
+        const {currentIndex} = this.data, {frontTimestamp: timeBegin, endTimestamp: timeEnd} = timeObj, list = [];
         switch (currentIndex) {
-            case 0:
-                let {result: {list}} = await Protocol.postWeightDataListAll({
+            case 0: {
+                let {result: {list: weightDataList}} = await Protocol.postWeightDataListAll({
                     timeBegin,
                     timeEnd
                 });
-                if (isRefresh) {
-                    this.data.dataList = [];
-                }
-                list.forEach((value) => {
-                    const {time, dateX} = Tools.createDateAndTime(value.time * 1000);
-                    value.date = {time, date: dateX};
-                });
-                this.setData({dataList: list}, () => {
-                    this.handleTrendData();
-                });
+                list.push(...weightDataList);
+            }
                 break;
-            case 1:
+            case 1: {
+                let {result: {list: bloodPressureDataList}} = await Protocol.postBloodPressureDataListAll({
+                    timeBegin,
+                    timeEnd
+                });
+                list.push(...bloodPressureDataList);
+            }
                 break;
-            case 2:
+            case 2: {
+                let {result: {list: heartDataList}} = await Protocol.postHeartDataListAll({
+                    timeBegin,
+                    timeEnd
+                });
+                list.push(...heartDataList);
+            }
                 break;
             default:
-                break
+                break;
         }
+
+        if (isRefresh) {
+            this.data.dataList = [];
+        }
+        list.forEach((value) => {
+            const {time, dateX} = Tools.createDateAndTime(value.time * 1000);
+            value.date = {time, date: dateX};
+            if (!value.dataValue) {
+                value.isBloodPressure = true;
+                value.dataValue = value.height + '/' + value.low;
+            }
+        });
+        this.setData({dataList: list}, () => {
+            this.handleTrendData();
+        });
     },
 
     async handleTrendData() {
         let dataListX = [], dataListY = [];
         this.data.dataList.forEach((value) => {
-            const {day: y} = Tools.createDateAndTime(value.createdTimestamp);
-            dataListX.push(y);
-            dataListY.push(value.dataValue);
+            if (value.isBloodPressure) {
+
+            } else {
+                const {day: y} = Tools.createDateAndTime(value.createdTimestamp);
+                dataListX.push(y);
+                dataListY.push(value.dataValue);
+            }
         });
+        if (!dataListX.length) {
+            dataListX.push(0);
+            dataListY.push(0);
+        }
         Trend.setData({dataListX, dataListY, yAxisSplit: 5});
     },
 
@@ -116,8 +143,10 @@ Page({
                 await Protocol.postWeightDataAdd({dataValue: 70});
                 break;
             case 1:
+                await Protocol.postBloodPressureDataAdd({height: 120, low: 80});
                 break;
             case 2:
+                await Protocol.postHeartDataAdd({dataValue: 70});
                 break;
             default:
                 break
