@@ -1,22 +1,22 @@
-<template name="typeCard">
-    <view class="set-content-view flex-column">
+<template name="fatBurnCard">
+<!--燃脂卡片-->
+    <view class="set-content-view flex-column" bindtap="bindTapToResultPage">
         <view class="flex-row" style="justify-content: space-between;width: 100%">
             <view class="flex-row">
-                <image src="{{taskRes.taskList[0].iconUrl}}" class="set-content-icon"></image>
+                <image src="{{fatBurnTask.iconUrl}}" class="set-content-icon"></image>
                 <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                  <!--  <view class="set-content-title">{{taskRes.taskList[0].title}}</view>-->
-                    <view class="set-content-title">记录身体指标</view>
-                    <view class="set-content-content">你知道什么是健康指标么？</view>
+                    <view class="set-content-title">{{fatBurnTask.title}}</view>
+                    <view class="set-content-content">你知道怎样燃脂么？</view>
                 </view>
             </view>
-            <view wx:if="{{!taskRes.taskList[0].finished}}" class="set-content-toFinish" data-type="test"
-                  catchtap="showModal">去完成
+            <view wx:if="{{!fatBurnTask.finished}}" class="set-content-toFinish" data-type="fatBurn"
+                  catchtap="bindTapToFinish">去完成
             </view>
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{taskRes.taskList[0].finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
-            <block wx:if="{{!showBigTip}}">
+        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
+            <block>
                 <canvas canvas-id="bg" class='canvasII'></canvas>
                 <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
                 <image class="fatType1" src="{{fatType}}"></image>
@@ -25,6 +25,6 @@
                 <view class="fatDes">{{fatDes}}</view>
             </block>
         </view>
-
     </view>
+
 </template>

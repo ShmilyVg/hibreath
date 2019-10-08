@@ -116,6 +116,11 @@ export default class Protocol {
         return Network.request({url: 'breathData/list', data: data})
     }
 
+    //上传身体指标
+    static setBodyIndex(data) {
+        return Network.request({url: 'task/bodyIndex', data: data})
+    }
+
     // 减脂目标
     static postSettingsGoals() {
         return Network.request({url: 'settings/goals'})

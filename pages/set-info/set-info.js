@@ -17,6 +17,9 @@ const app = getApp();
 
 Page({
     data: {
+        isfatBurn:false,//燃脂卡片
+        isbodyIndex:false,//记录身体指标卡片
+
         showGuide: false,
         showNewInfo: false,
         noMeasure: false,//没有准确测过体脂率
@@ -49,11 +52,60 @@ Page({
             timer: ''
         },
 
-
-
+        bloodLow:"",
+        heart:"",
+        bloodHeight:"",
+        weight:"",
 
         showModalStatus: false,
         animationData: ''
+    },
+    //上传身体指标
+    formSubmit(e){
+        console.log(e.detail.value)
+        const finaValue = e.detail.value
+        if (this.objIsEmpty(finaValue.weight)) {
+            toast.warn('请填写体重');
+            return;
+        }
+
+        const weightnum = finaValue.weight.split(".");
+        if (weightnum.length > 1 && weightnum[1] >= 10) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if (weightnum[0] >= 1000) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if(finaValue.heart){
+            const heartnum = finaValue.heart.split(".");
+            if (heartnum.length > 1 || heartnum[0] >= 1000) {
+                this.showDialog("心率至多支持3位整数");
+                return;
+            }
+        }
+        if(finaValue.bloodHeight){
+            const bloodHeightnum = finaValue.bloodHeight.split(".");
+            if (bloodHeightnum.length > 1 || bloodHeightnum[0] >= 1000) {
+                this.showDialog("高压至多支持3位整数");
+                return;
+            }
+        }
+        if(finaValue.bloodLow){
+            const bloodLownum = finaValue.bloodLow.split(".");
+            if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
+                this.showDialog("低压至多支持3位整数");
+                return;
+            }
+        }
+
+        Protocol.setBodyIndex(finaValue).then(data => {
+            this.setData({
+                showModalStatus: false,
+            })
+            toast.success('填写成功');
+        });
     },
     //同步离线数据
     async onLoad(e) {
@@ -163,33 +215,64 @@ Page({
 
     async handleTasks() {
         const {result} = await Protocol.postMembersTasks();
-        const quan = result.taskList[0].ext;
-        console.log('quan:', quan);
-        if (result.taskList[0].finished) {
-            this.setData({
-                fatText: quan.des.zhCh,
-                fatTextEn: quan.des.en,
-                score: quan.dataValue,
-                fatDes: quan.visDes,
-                taskRes: result,
-                showNewInfo: false,
-                bgColorSetInfoPage: '#FEF6F2'
-            });
-            Circular.run();
-        } else {
-            this.setData({
-                taskRes: result,
-                showNewInfo: false,
-                bgColorSetInfoPage: '#FEF6F2'
-            });
+        this.setData({
+            indexDayDesc:result.dayDesc,
+            indexfinishNum:result.finishNum,
+            indexgoalDesc:result.goalDesc,
+            indextaskNum:result.taskNum,
+        })
+        const typesArr = result.taskList.map(d => d.type)
+        console.log("123213",typesArr)
+        for (var i = 0; i < typesArr.length; i++){
+            if(typesArr[i] === "fatBurn"){
+                const fatBurnExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isfatBurn:true,
+                        fatBurnFin:true,//完成标志位
+                        fatBurnTask: result.taskList[i],
+                        fatText: fatBurnExt.des.zhCh,
+                        fatTextEn: fatBurnExt.des.en,
+                        score: fatBurnExt.dataValue,
+                        fatDes: fatBurnExt.visDes,
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                    Circular.run();
+                } else {
+                    this.setData({
+                        isfatBurn:true,
+                        fatBurnTask: result.taskList[i],
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                }
+            }
+            if(typesArr[i] === "bodyIndex"){
+                const bodyIndexExt = result.taskList[i].ext;
+                console.log(bodyIndexExt,"typesArr[i]")
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isbodyIndex:true,
+                        bodyIndexFin:true,
+                        bodyIndexTask: result.taskList[i],
+                        bodyIndexExt:bodyIndexExt,
+                    })
+                    console.log(this.data.dataExt)
+                }else{
+                    this.setData({
+                        isbodyIndex:true,
+                        bodyIndexTask: result.taskList[i],
+                    })
+                }
+            }
         }
+
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#F55E6B',
-            animation: {
+          /*  animation: {
                 duration: 400,
                 timingFunc: 'easeIn'
-            }
+            }*/
         })
     },
 
@@ -243,7 +326,7 @@ Page({
                     } else {
                         const num = this.data.info.bodyFatRate.toString().split(".");
                         if (num.length > 1 && num[1] >= 10) {
-                            this.showDialog("至多输入以为小数及两位整数");
+                            this.showDialog("至多输入1位小数及两位整数");
                             return;
                         }
                     }
@@ -412,13 +495,15 @@ Page({
             }, 300)
         }
     },
-    //燃脂去完成按钮
+    //去完成按钮
     bindTapToFinish(e) {
-        console.log(e);
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
-            case 'test':
+            case 'fatBurn':
                 HiNavigator.relaunchToIndex();
+                break
+            case 'bodyIndex':
+                this.showModal();
                 break
         }
     },
@@ -437,10 +522,6 @@ Page({
             if (num > 0 && countNum > 0) {
                 that.data.sync.num = num;
                 that.data.sync.countNum = countNum;
-                console.log("总数",that.data.sync.countNum)
-                console.log("正在同步的", that.data.sync.num)
-                console.log("fff",that.data.sync)
-                console.log("是吗",that.data.countNum >= that.data.sync.num)
                 if (that.data.sync.countNum >= that.data.sync.num) {
                     that.setData({
                         sync: that.data.sync,
@@ -470,12 +551,16 @@ Page({
     },
 
     bindTapToResultPage() {
-        if (this.data.taskRes.taskList[0].finished) {
+        if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
     },
-
+    bindTapToFood(){
+        if (this.data.bodyIndexFin) {
+            HiNavigator.navigateTofood();
+        }
+    },
 
     showModal: function () {
         // 显示遮罩层

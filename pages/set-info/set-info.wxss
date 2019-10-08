@@ -488,11 +488,40 @@
     height: 670rpx;
     margin: 0 37rpx;
 }
-
-
-
-
-
+.bodayIndex-view{
+    margin-top: 15rpx;
+}
+.bodayIndex-textB{
+    font-family: PingFang-SC;
+    font-size: 38rpx;
+    color: #333333;
+    font-weight:500;
+    margin-right: 10rpx;
+}
+.bodayIndex-textS{
+    font-family: PingFang-SC;
+    font-size: 26rpx;
+    color: #333;
+    font-weight:400;
+}
+.bodayIndex-viewRT{
+    font-family:DIN Condensed;
+    font-size: 56rpx;
+    color: #454545;
+    font-weight: bold;
+}
+.bodayIndex-viewRB{
+    font-family: PingFang-SC;
+    font-size: 24rpx;
+    color: #A0A0A0;
+    text-align: right
+}
+.bodayIndex-line{
+    border: 0.5rpx #F2F2F2 solid;
+    width: 100%;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx
+}
 /*弹出层相关*/
 .commodity_screen {
     width: 100%;
@@ -501,7 +530,7 @@
     top: 0;
     left: 0;
     background: #000;
-    opacity: 0.9;
+    opacity: 0.85;
     overflow: hidden;
     z-index: 9;
     color: #fff;
@@ -515,7 +544,7 @@
     left: 0;
     z-index: 10;
     background: #fff;
-    padding-top: 40rpx;
+    padding-top: 30rpx;
     height: 300px;
     text-align: center;
     border-radius: 60rpx 60rpx 0 0;
@@ -526,6 +555,7 @@
     font-family: PingFang-SC;
     color: #292929;
     font-size: 30rpx;
+    background: none;
 }
 .commodity_sub{
     float: right;
@@ -533,7 +563,9 @@
     font-family: PingFang-SC;
     color: #ED6F69;
     font-size: 30rpx;
+    background: none;
 }
+button::after{ border: none; }
 .commodity_input{
     float: right;
 }
