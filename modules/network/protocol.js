@@ -152,4 +152,8 @@ export default class Protocol {
     static postWeightDataList({page, pageSize = 20}) {
         return Network.request({url: 'weightData/list', data: {page, pageSize}})
     }
+
+    static postWeightDataListAll({timeBegin, timeEnd}) {
+        return Network.request({url: 'weightData/listAll', data: arguments[0]});
+    }
 }

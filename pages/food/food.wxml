@@ -1,12 +1,12 @@
 <!--pages/food/food.wxml-->
 <view class="top-view flex-row">
     <view wx:for="{{topChose}}" class="top-view-text" bindtap="bindTapTopChose" data-index="{{index}}"
-          style="color:{{item.isChose?'#ED6F69':'#474747'}};">{{item.text}}
+          style="color:{{index===currentIndex?'#ED6F69':'#474747'}};">{{item.text}}
     </view>
 </view>
 <view class="middle-view flex-column">
     <view class="flex-row">
-        <view class="middle-view-title">{{dataTrendTitle}}</view>
+        <view class="middle-view-title">{{dataTrendTime}}</view>
         <image class="middle-view-arr" src="../../images/arr-right.png"></image>
     </view>
     <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
@@ -14,7 +14,7 @@
             bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     <view class="middle-view-add-view">
         <image class="middle-view-add-image"></image>
-        <view class="middle-view-add-text" bindtap="bindTapAddData">{{addBtnText}}</view>
+        <view class="middle-view-add-text" bindtap="bindTapAddData">{{topChose[currentIndex].addText}}</view>
     </view>
 </view>
 
