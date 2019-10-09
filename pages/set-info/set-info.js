@@ -1,4 +1,8 @@
 // pages/set-info/set-info.js
+/**
+ * @Date: 2019-10-09 11:00:00
+ * @LastEditors: 张浩玉
+ */
 import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";

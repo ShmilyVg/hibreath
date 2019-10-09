@@ -1,5 +1,4 @@
  /**
-  * @Author: 张浩玉
   * @Date: 2019-08-20 11:50:17
   * @LastEditors: 张浩玉
   */
@@ -87,6 +86,9 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
+    static navigateIndexre() {
+        wx.reLaunch({url: '/pages/index/index'});
+    }
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
     }

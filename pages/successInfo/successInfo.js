@@ -1,3 +1,7 @@
+/**
+ * @Date: 2019-10-09 11:00:15
+ * @LastEditors: 张浩玉
+ */
 import HiNavigator from "../../navigator/hi-navigator";
 import toast from "../../view/toast";
 import Protocol from "../../modules/network/protocol";
@@ -26,7 +30,7 @@ Page({
     },
     toIndex(){
        /* HiNavigator.navigateIndexBind({isBind:true})*/
-        HiNavigator.navigateIndex()
+        HiNavigator.navigateIndexre()
     }
 
 })
