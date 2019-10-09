@@ -5,17 +5,24 @@
     </cover-view>
 </cover-view>
 <view class="middle-view flex-column">
-    <view class="flex-row">
+    <view class="flex-row" bindtap="toCalendarPage">
         <view class="middle-view-title">{{dataTrendTime}}</view>
         <image class="middle-view-arr" src="../../images/arr-right.png"></image>
     </view>
-    <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
-            bindtouchstart="touchHandler"
-            bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
-    <view class="middle-view-add-view">
-        <image class="middle-view-add-image"></image>
-        <view class="middle-view-add-text" bindtap="bindTapAddData">{{topChose[currentIndex].addText}}</view>
+    <view class="canvas" style="margin-top: 0;">
+        <canvas canvas-id="lineCanvas" class="canvas" style="height: {{canvasShow?'440rpx':'0'}}" disable-scroll="true"
+                bindtouchstart="touchHandler"
+                bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
+
+
+    <bottom-dialog bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
+        <view class="middle-view-add-view">
+            <image class="middle-view-add-image"></image>
+            <view class="middle-view-add-text">{{topChose[currentIndex].addText}}</view>
+        </view>
+    </bottom-dialog>
+
 </view>
 
 <view class="bottom-view">
@@ -32,3 +39,4 @@
         </view>
     </view>
 </view>
+

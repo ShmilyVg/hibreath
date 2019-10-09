@@ -20,6 +20,40 @@
   align-items: center;
 }
 
+.flex-sub {
+  flex: 1;
+}
+
+.align-items-center{
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.fill-width{
+  width: 100%;
+}
+.fill-height{
+  height: 100%;
+}
+.box-sizing-border-box{
+  box-sizing: border-box;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
 .press-style{
   opacity: 0.5;
 }

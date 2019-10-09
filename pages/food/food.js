@@ -3,6 +3,7 @@ import * as Trend from "../../view/trend";
 import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
+import HiNavigator from "../../navigator/hi-navigator";
 
 const timeObj = {
     _frontTimestamp: 0,
@@ -24,26 +25,73 @@ Page({
 
     data: {
         topChose: [
-            {text: '体重', addText: '记体重'},
-            {text: '血压', addText: '记血压'},
-            {text: '心率', addText: '记心率'}
+            {
+                type: 'weight',
+                text: '体重', addText: '记体重', addProjectList: [
+                    {
+                        id: 'weight',
+                        title: '体重(kg)',
+                        placeholder: '请输入您的体重',
+                        type: 'weight'
+                    }
+                ]
+            },
+            {
+                type: 'bloodPressure',
+                text: '血压', addText: '记血压', addProjectList: [
+                    {
+                        id: 'high',
+                        title: '高压(mmHg)',
+                        placeholder: '请输入您的高压',
+                        type: 'high'
+                    },
+                    {
+                        id: 'low',
+                        title: '低压(mmHg)',
+                        placeholder: '请输入您的低压',
+                        type: 'low'
+                    }]
+            },
+            {
+                type: 'heart',
+                text: '心率', addText: '记心率', addProjectList: [
+                    {
+                        id: 'heart',
+                        title: '心率(BMP)',
+                        placeholder: '请输入您的心率',
+                        type: 'heart'
+                    }
+                ]
+            }
         ],
         currentIndex: 0,
         dataList: [],
         dataTrend: [],
-
+        canvasShow: true,
         dataTrendTime: ''
     },
 
     onLoad() {
+        Trend.init(this);
     },
 
 
     async onReady() {
-        Trend.init(this);
         this.updateTrendTime({frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now()});
     },
 
+    onShow() {
+        const {trendTime} = getApp().globalData;
+
+        if (trendTime) {
+            const {startTimeValue: frontTimestamp, endTimeValue: endTimestamp} = trendTime;
+            this.updateTrendTime({frontTimestamp, endTimestamp});
+        }
+
+    },
+    toCalendarPage() {
+        HiNavigator.navigateToCalendar({type: this.data.topChose[this.data.currentIndex].type});
+    },
     updateTrendTime({frontTimestamp, endTimestamp}) {
         // const {timeObj} = this.data;
         timeObj.frontTimestamp = frontTimestamp;
@@ -107,7 +155,9 @@ Page({
 
     async handleTrendData() {
         let dataListX = [], dataListY = [];
-        this.data.dataList.forEach((value) => {
+        this.data.dataList.sort(function (item1, item2) {
+            return item1.createdTimestamp - item2.createdTimestamp;
+        }).forEach((value) => {
             if (value.isBloodPressure) {
 
             } else {
@@ -131,25 +181,34 @@ Page({
             });
         }
     },
+    onDialogShowEvent(e) {
+        console.log(e);
+        this.setData({
+            canvasShow: !e.detail.show
+        })
+    },
+    async onSubmitEvent(e) {
+        console.log(e);
 
+        const {currentIndex} = this.data, {detail} = e;
+        switch (currentIndex) {
+            case 0:
+                await Protocol.postWeightDataAdd(detail);
+                break;
+            case 1:
+                await Protocol.postBloodPressureDataAdd(detail);
+                break;
+            case 2:
+                await Protocol.postHeartDataAdd(detail);
+                break;
+            default:
+                break;
+        }
+
+        await this.handleListData({isRefresh: true});
+    },
     choseItem() {
         return this.data.currentIndex;
     },
 
-    async bindTapAddData() {
-        const {currentIndex} = this.data;
-        switch (currentIndex) {
-            case 0:
-                await Protocol.postWeightDataAdd({dataValue: 70});
-                break;
-            case 1:
-                await Protocol.postBloodPressureDataAdd({height: 120, low: 80});
-                break;
-            case 2:
-                await Protocol.postHeartDataAdd({dataValue: 70});
-                break;
-            default:
-                break
-        }
-    },
-})
+});

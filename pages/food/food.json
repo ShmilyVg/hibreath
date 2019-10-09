@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "bottom-dialog": "../../components/bottom-dialog/index"
+  }
 }
