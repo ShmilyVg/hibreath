@@ -46,7 +46,7 @@ Page({
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
             list.map(value => {
-                const {time, day, month, year} = tools.createDateAndTime(value.createdTimestamp);
+                const {time, day, month, year} = tools.createDateAndTime(value.time*1000);
                 value.date = `${year}/${month}/${day} ${time}`;
                 let image = '../../images/result/cell';
                 const dValue = value.dataValue;

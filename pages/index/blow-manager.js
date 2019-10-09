@@ -157,7 +157,7 @@ export default class BlowManager {
             blowpicShow: true,//吹气图片显示
             readyimg:false,// 预热图片显示
             blowingImg:false,
-            textState:'已就绪·请吹气',
+            textState:'请吹气',
             textStateEn:'BLOW UP',
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案

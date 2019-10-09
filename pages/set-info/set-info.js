@@ -1,4 +1,8 @@
 // pages/set-info/set-info.js
+/**
+ * @Date: 2019-10-09 11:00:00
+ * @LastEditors: 张浩玉
+ */
 import toast from "../../view/toast";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
@@ -101,6 +105,7 @@ Page({
         }
 
         Protocol.setBodyIndex(finaValue).then(data => {
+            this.handleTasks();
             this.setData({
                 showModalStatus: false,
             })
@@ -235,6 +240,7 @@ Page({
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
                         fatDes: fatBurnExt.visDes,
+                        fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
                     Circular.run();
@@ -553,6 +559,7 @@ Page({
     bindTapToResultPage() {
         if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
+            console.log(fatText, fatTextEn, fatDes, score)
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
     },
@@ -586,6 +593,5 @@ Page({
         this.setData({
             showModalStatus: false,
         })
-
     }
 })
