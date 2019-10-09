@@ -108,7 +108,8 @@ Page({
     },
 
     async handleListData({isRefresh = false} = {}) {
-        const {currentIndex} = this.data, {frontTimestamp: timeBegin, endTimestamp: timeEnd} = timeObj, list = [];
+        const {currentIndex, topChose} = this.data, {frontTimestamp: timeBegin, endTimestamp: timeEnd} = timeObj,
+            list = [];
         switch (currentIndex) {
             case 0: {
                 let {result: {list: weightDataList}} = await Protocol.postWeightDataListAll({
@@ -141,10 +142,11 @@ Page({
         if (isRefresh) {
             this.data.dataList = [];
         }
+        const isBloodPressure = topChose[currentIndex].type === 'bloodPressure';
         list.forEach((value) => {
             const {time, dateX} = Tools.createDateAndTime(value.time * 1000);
             value.date = {time, date: dateX};
-            if (!value.dataValue) {
+            if (isBloodPressure) {
                 value.isBloodPressure = true;
                 value.dataValue = value.height + '/' + value.low;
             }
