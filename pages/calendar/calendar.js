@@ -28,9 +28,9 @@ Page({
         isFirst: true
     },
     onLoad(options) {
-        let info = JSON.parse(options.info);
+        // let info = JSON.parse(options.info);
         // console.log(info);
-        this.data.info = {member_id: info.member_id, item_code: info.item_code, type: info.type};
+        // this.data.info = {member_id: info.member_id, item_code: info.item_code, type: info.type};
         this.clearAndRefresh();
     },
 

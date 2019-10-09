@@ -139,7 +139,9 @@ Page({
 
     async handleTrendData() {
         let dataListX = [], dataListY = [];
-        this.data.dataList.forEach((value) => {
+        this.data.dataList.sort(function (item1,item2) {
+            return item1.createdTimestamp - item2.createdTimestamp;
+        }).forEach((value) => {
             if (value.isBloodPressure) {
 
             } else {
