@@ -57,13 +57,11 @@
 }
 
 .middle-view-add-image{
-    position: absolute;
-    top: 23rpx;
-    left: 20rpx;
     width:54rpx;
     height:54rpx;
-    background:rgba(255,255,255,1);
+    background:#ED6F69;
     border-radius: 50%;
+    margin-left: 20rpx;
 }
 
 .bottom-view{
