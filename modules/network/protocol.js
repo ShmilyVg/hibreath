@@ -130,8 +130,8 @@ export default class Protocol {
         return Network.request({url: 'members/put', data})
     }
 
-    static postItemCalendar(data) {
-        return Network.request({url: 'breathData/item_calendar', data})
+    static postItemCalendar({startTime, endTime, type}) {
+        return Network.request({url: `${type}/item_calendar`, data: {startTime, endTime}});
     }
 
     static postMembersTasks() {

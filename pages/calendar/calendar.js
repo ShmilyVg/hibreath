@@ -2,6 +2,13 @@
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 
+const protocolType = {
+    weight: 'weightData',
+    high: 'bloodPressureData',
+    heart: 'heartData',
+    breath: 'breathData',
+};
+
 Page({
     data: {
         week: [{value: "日"}, {value: "一"}, {value: "二"}, {value: "三"}, {value: "四"}, {value: "五"}, {value: "六"}],
@@ -17,20 +24,16 @@ Page({
             startTimestamp: 0,
             endTimestamp: 0
         },
-        info: {
-            // item_code: "HEALTH_SCORE",
-            // member_id: 2585,
-            // type: 'other-health'
-        },
+        info: {},
         loadingMonthListFailed: false,
         firstLoadingItems: true,
         isNetworkConnected: true,
         isFirst: true
     },
     onLoad(options) {
-        // let info = JSON.parse(options.info);
-        // console.log(info);
-        // this.data.info = {member_id: info.member_id, item_code: info.item_code, type: info.type};
+        let type = options.type;
+        console.log(type);
+        this.data.info = {type};
         this.clearAndRefresh();
     },
 
@@ -76,7 +79,7 @@ Page({
         }
     },
     getTrendTime(startTime, endTime) {
-        Protocol.postItemCalendar({startTime, endTime}).then(res => {
+        Protocol.postItemCalendar({startTime, endTime, type: protocolType[this.data.info.type]}).then(res => {
             this.commonCalendarCbFun(res);
         });
     },
