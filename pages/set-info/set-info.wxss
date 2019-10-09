@@ -239,7 +239,13 @@
     color:rgba(69,69,69,1);
     line-height:96rpx;
 }
+.contentCard{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
 
+}
 .page4{
     width: 450rpx;
     display: flex;
@@ -545,7 +551,7 @@
     z-index: 10;
     background: #fff;
     padding-top: 30rpx;
-    height: 300px;
+    padding-bottom: 60rpx;
     text-align: center;
     border-radius: 60rpx 60rpx 0 0;
 }
