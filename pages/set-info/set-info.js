@@ -196,7 +196,6 @@ Page({
                 birth: this.data.birth,
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
-                showNewInfo: true,
                 bgColorSetInfoPage: '#ffffff'
             });
         }
@@ -374,6 +373,9 @@ Page({
             case 8:
                 await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
+                this.setData({
+                    showNewInfo: true,
+                })
                 return;
         }
         this.setData({
