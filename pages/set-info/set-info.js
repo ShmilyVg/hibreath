@@ -230,6 +230,9 @@ Page({
     },
 
     async handleTasks() {
+        this.setData({
+            showNewInfo: false
+        })
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             indexDayDesc:result.dayDesc,
@@ -373,9 +376,6 @@ Page({
             case 8:
                 await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
-                this.setData({
-                    showNewInfo: true,
-                })
                 return;
         }
         this.setData({

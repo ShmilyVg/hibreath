@@ -130,7 +130,7 @@
             </view>
         </view>
         <view class="flex-column" style="margin-top: -65rpx">
-            <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,showNewInfo,bgColorSetInfoPage,fatType}}"></template>
+            <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
             <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
         </view>
     </block>
