@@ -589,7 +589,16 @@ Page({
             HiNavigator.navigateTofood();
         }
     },
-
+    bindWeightInput(e){
+        const weightNumber = e.detail.value.split(".");
+        console.log('eeeee',weightNumber)
+        if(weightNumber[1]>9){
+            return Number(e.detail.value).toFixed(1);
+        }
+        if(weightNumber.length>2){
+            return parseInt(e.detail.value);
+        }
+    },
     showModal: function () {
         // 显示遮罩层
         var animation = wx.createAnimation({

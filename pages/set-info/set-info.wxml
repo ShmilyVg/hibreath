@@ -159,7 +159,7 @@
         <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 75rpx"></view>
         <view class="commodity_part">
             <view class="commodity_title">体重(kg)</view>
-            <input class="commodity_input" placeholder-class="commodity_inputpla"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
             <view class="clear"></view>
         </view>
         <view class="commodity_part">
