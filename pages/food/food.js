@@ -195,7 +195,7 @@ Page({
         let failed = false;
         for (let key in detail) {
             if (detail.hasOwnProperty(key)) {
-                if (!detail[key]) {
+                if (!parseInt(detail[key])) {
                     failed = true;
                 }
             }
