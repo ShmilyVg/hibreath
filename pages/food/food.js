@@ -24,14 +24,46 @@ Page({
 
     data: {
         topChose: [
-            {text: '体重', addText: '记体重'},
-            {text: '血压', addText: '记血压'},
-            {text: '心率', addText: '记心率'}
+            {
+                text: '体重', addText: '记体重', addProjectList: [
+                    {
+                        id: 'weight',
+                        title: '体重(kg)',
+                        placeholder: '请输入您的体重',
+                        type: 'weight'
+                    }
+                ]
+            },
+            {
+                text: '血压', addText: '记血压', addProjectList: [
+                    {
+                        id: 'high',
+                        title: '高压(mmHg)',
+                        placeholder: '请输入您的高压',
+                        type: 'high'
+                    },
+                    {
+                        id: 'low',
+                        title: '低压(mmHg)',
+                        placeholder: '请输入您的低压',
+                        type: 'low'
+                    }]
+            },
+            {
+                text: '心率', addText: '记心率', addProjectList: [
+                    {
+                        id: 'heart',
+                        title: '心率(BMP)',
+                        placeholder: '请输入您的心率',
+                        type: 'heart'
+                    }
+                ]
+            }
         ],
         currentIndex: 0,
         dataList: [],
         dataTrend: [],
-
+        canvasShow: true,
         dataTrendTime: ''
     },
 
@@ -131,25 +163,34 @@ Page({
             });
         }
     },
+    onDialogShowEvent(e) {
+        console.log(e);
+        this.setData({
+            canvasShow: !e.detail.show
+        })
+    },
+    async onSubmitEvent(e) {
+        console.log(e);
 
+        const {currentIndex} = this.data, {detail} = e;
+        switch (currentIndex) {
+            case 0:
+                await Protocol.postWeightDataAdd(detail);
+                break;
+            case 1:
+                await Protocol.postBloodPressureDataAdd(detail);
+                break;
+            case 2:
+                await Protocol.postHeartDataAdd(detail);
+                break;
+            default:
+                break;
+        }
+
+        await this.handleListData({isRefresh: true});
+    },
     choseItem() {
         return this.data.currentIndex;
     },
 
-    async bindTapAddData() {
-        const {currentIndex} = this.data;
-        switch (currentIndex) {
-            case 0:
-                await Protocol.postWeightDataAdd({dataValue: 70});
-                break;
-            case 1:
-                await Protocol.postBloodPressureDataAdd({height: 120, low: 80});
-                break;
-            case 2:
-                await Protocol.postHeartDataAdd({dataValue: 70});
-                break;
-            default:
-                break
-        }
-    },
-})
+});

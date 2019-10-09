@@ -9,11 +9,14 @@
         <view class="middle-view-title">{{dataTrendTime}}</view>
         <image class="middle-view-arr" src="../../images/arr-right.png"></image>
     </view>
-    <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
-            bindtouchstart="touchHandler"
-            bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view class="canvas" style="margin-top: 0;">
+        <canvas canvas-id="lineCanvas" class="canvas" style="height: {{canvasShow?'440rpx':'0'}}" disable-scroll="true"
+                bindtouchstart="touchHandler"
+                bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    </view>
 
-    <bottom-dialog>
+
+    <bottom-dialog bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
         <view class="middle-view-add-view">
             <image class="middle-view-add-image"></image>
             <view class="middle-view-add-text">{{topChose[currentIndex].addText}}</view>

@@ -150,15 +150,15 @@ export default class Protocol {
         return Network.request({url: 'breathData/listAll', data});
     }
 
-    static postWeightDataAdd({dataValue}) {
+    static postWeightDataAdd({weight: dataValue}) {
         return Network.request({url: 'weightData/add', data: {dataValue}})
     }
 
-    static postHeartDataAdd({dataValue}) {
+    static postHeartDataAdd({heart: dataValue}) {
         return Network.request({url: 'heartData/add', data: {dataValue}})
     }
 
-    static postBloodPressureDataAdd({height, low}) {
+    static postBloodPressureDataAdd({high: height, low}) {
         return Network.request({url: 'bloodPressureData/add', data: arguments[0]})
     }
 
