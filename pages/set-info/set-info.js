@@ -563,6 +563,7 @@ Page({
                     }, 2000)
                 }
             } else {
+                that.handleTasks();
                 that.setData({
                     showBigTip: false
                 })
