@@ -106,7 +106,7 @@
                     <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
                           hover-stay-time="50" bindtap="continue">下一步
                     </view>
-                    <view class="bottom-btn-back" style="opacity: {{page>1?1:0}}" hover-class="press-style"
+                    <view class="bottom-btn-back" wx:if="{{!page<1}}" hover-class="press-style"
                           hover-stay-time="50" bindtap="back">返回
                     </view>
                 </block>
