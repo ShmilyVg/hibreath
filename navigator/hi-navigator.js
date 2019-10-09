@@ -98,4 +98,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToPPM() {
         this.navigateTo({url: '/pages/PPMInfo/PPMInfo'})
     }
+
+    static navigateToCalendar({type}) {
+        this.navigateTo({url: '/pages/calendar/calendar?type=' + type});
+    }
+
 }

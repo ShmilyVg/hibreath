@@ -3,6 +3,7 @@ import * as Trend from "../../view/trend";
 import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
+import HiNavigator from "../../navigator/hi-navigator";
 
 const timeObj = {
     _frontTimestamp: 0,
@@ -25,6 +26,7 @@ Page({
     data: {
         topChose: [
             {
+                type: 'weight',
                 text: '体重', addText: '记体重', addProjectList: [
                     {
                         id: 'weight',
@@ -35,6 +37,7 @@ Page({
                 ]
             },
             {
+                type: 'bloodPressure',
                 text: '血压', addText: '记血压', addProjectList: [
                     {
                         id: 'high',
@@ -50,6 +53,7 @@ Page({
                     }]
             },
             {
+                type: 'heart',
                 text: '心率', addText: '记心率', addProjectList: [
                     {
                         id: 'heart',
@@ -68,14 +72,26 @@ Page({
     },
 
     onLoad() {
+        Trend.init(this);
     },
 
 
     async onReady() {
-        Trend.init(this);
         this.updateTrendTime({frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now()});
     },
 
+    onShow() {
+        const {trendTime} = getApp().globalData;
+
+        if (trendTime) {
+            const {startTimeValue: frontTimestamp, endTimeValue: endTimestamp} = trendTime;
+            this.updateTrendTime({frontTimestamp, endTimestamp});
+        }
+
+    },
+    toCalendarPage() {
+        HiNavigator.navigateToCalendar({type: this.data.topChose[this.data.currentIndex].type});
+    },
     updateTrendTime({frontTimestamp, endTimestamp}) {
         // const {timeObj} = this.data;
         timeObj.frontTimestamp = frontTimestamp;
@@ -139,7 +155,7 @@ Page({
 
     async handleTrendData() {
         let dataListX = [], dataListY = [];
-        this.data.dataList.sort(function (item1,item2) {
+        this.data.dataList.sort(function (item1, item2) {
             return item1.createdTimestamp - item2.createdTimestamp;
         }).forEach((value) => {
             if (value.isBloodPressure) {

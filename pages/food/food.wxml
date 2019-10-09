@@ -5,7 +5,7 @@
     </cover-view>
 </cover-view>
 <view class="middle-view flex-column">
-    <view class="flex-row">
+    <view class="flex-row" bindtap="toCalendarPage">
         <view class="middle-view-title">{{dataTrendTime}}</view>
         <image class="middle-view-arr" src="../../images/arr-right.png"></image>
     </view>

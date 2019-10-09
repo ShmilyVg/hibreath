@@ -4,7 +4,7 @@ import Protocol from "../../modules/network/protocol";
 
 const protocolType = {
     weight: 'weightData',
-    high: 'bloodPressureData',
+    bloodPressure: 'bloodPressureData',
     heart: 'heartData',
     breath: 'breathData',
 };
