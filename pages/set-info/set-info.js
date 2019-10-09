@@ -55,7 +55,7 @@ Page({
             countNum: 0,//需要同步的总数
             timer: ''
         },
-
+        phValue:"写下你的减脂目标",
         bloodLow:"",
         heart:"",
         bloodHeight:"",
@@ -63,6 +63,18 @@ Page({
 
         showModalStatus: false,
         animationData: ''
+    },
+    onFocus: function (e) {
+        this.setData({
+            isFocus:true,
+            phValue:"写下你的减脂目标",
+        })
+    },
+    onBlur: function (e) {
+        this.setData({
+            isFocus:false,
+            phValue: "写下你的减脂目标",
+        })
     },
     //上传身体指标
     formSubmit(e){
