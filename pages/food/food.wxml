@@ -12,10 +12,14 @@
     <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
             bindtouchstart="touchHandler"
             bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
-    <view class="middle-view-add-view">
-        <image class="middle-view-add-image"></image>
-        <view class="middle-view-add-text" bindtap="bindTapAddData">{{topChose[currentIndex].addText}}</view>
-    </view>
+
+    <bottom-dialog>
+        <view class="middle-view-add-view">
+            <image class="middle-view-add-image"></image>
+            <view class="middle-view-add-text">{{topChose[currentIndex].addText}}</view>
+        </view>
+    </bottom-dialog>
+
 </view>
 
 <view class="bottom-view">
@@ -32,3 +36,4 @@
         </view>
     </view>
 </view>
+
