@@ -363,6 +363,10 @@ Page({
                 }
                 break;
             case 7:
+                if (this.objIsEmpty(info.weightGoal)) {
+                    toast.warn('请填写目标体重');
+                    return;
+                }
                 await Protocol.postMembersPut(this.data.info);
                 const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
                 this.setData({project});
@@ -436,6 +440,7 @@ Page({
     },
 
     bindInputWeightGoal(e) {
+        console.log("231",e.detail.value)
         this.setData({'info.weightGoal': e.detail.value});
     },
 
