@@ -10,7 +10,7 @@ Component({
     },
 
     data: {
-        showModalStatus: true,
+        showModalStatus: false,
     },
     lifetimes: {
         created() {
