@@ -159,7 +159,7 @@ export default class Protocol {
     }
 
     static postBloodPressureDataAdd({high: height, low}) {
-        return Network.request({url: 'bloodPressureData/add', data: arguments[0]})
+        return Network.request({url: 'bloodPressureData/add', data: {height, low}})
     }
 
     static postWeightDataList({page, pageSize = 20}) {
