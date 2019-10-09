@@ -55,7 +55,7 @@ Page({
             countNum: 0,//需要同步的总数
             timer: ''
         },
-
+        phValue:"写下你的减脂目标",
         bloodLow:"",
         heart:"",
         bloodHeight:"",
@@ -63,6 +63,18 @@ Page({
 
         showModalStatus: false,
         animationData: ''
+    },
+    onFocus: function (e) {
+        this.setData({
+            isFocus:true,
+            phValue:"写下你的减脂目标",
+        })
+    },
+    onBlur: function (e) {
+        this.setData({
+            isFocus:false,
+            phValue: "写下你的减脂目标",
+        })
     },
     //上传身体指标
     formSubmit(e){
@@ -351,6 +363,10 @@ Page({
                 }
                 break;
             case 7:
+                if (this.objIsEmpty(info.weightGoal)) {
+                    toast.warn('请填写目标体重');
+                    return;
+                }
                 await Protocol.postMembersPut(this.data.info);
                 const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
                 this.setData({project});
@@ -424,6 +440,7 @@ Page({
     },
 
     bindInputWeightGoal(e) {
+        console.log("231",e.detail.value)
         this.setData({'info.weightGoal': e.detail.value});
     },
 
