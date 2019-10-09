@@ -1661,6 +1661,8 @@ function drawRadarDataPoints(series, opts, config, context) {
 
 function drawCanvas(opts, context) {
     context.draw();
+    context.draw();
+    context.draw();
 }
 
 var Timing = {
