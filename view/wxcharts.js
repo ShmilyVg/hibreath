@@ -741,7 +741,7 @@ function drawPointShape(points, color, shape, context) {
     } else if (shape === 'circle') {
         points.forEach(function (item, index) {
             if (item !== null) {
-                context.moveTo(item.x + 3.5, item.y);
+                context.moveTo(item.x + 4, item.y);
                 context.arc(item.x, item.y, 5, 0, 2 * Math.PI, false);
             }
         });
