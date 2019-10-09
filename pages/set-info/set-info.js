@@ -236,6 +236,7 @@ Page({
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
                         fatDes: fatBurnExt.visDes,
+                        fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
                     Circular.run();
@@ -554,6 +555,7 @@ Page({
     bindTapToResultPage() {
         if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
+            console.log(fatText, fatTextEn, fatDes, score)
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
     },
@@ -587,6 +589,5 @@ Page({
         this.setData({
             showModalStatus: false,
         })
-
     }
 })
