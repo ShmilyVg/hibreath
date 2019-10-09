@@ -15,7 +15,7 @@
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{bodyIndexTask.finished}}" class="content" style="height: 450rpx;margin-top: 70rpx">
+        <view wx:if="{{bodyIndexTask.finished}}" class="contentCard" style="margin-top: 70rpx">
             <view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">体重</text>
@@ -35,9 +35,11 @@
                         比上一次 <image style="width: 14rpx;height: 20rpx" src="../../images/set-info/down.png"></image>{{bodyIndexExt.weight.thanValue}}kg
                     </view>
                 </view>
-                <view class="bodayIndex-line"></view>
+
             </view>
-            <view wx:if="bodyIndexExt.bloodPressure">
+
+            <view wx:if="{{!bodyIndexExt.bloodPressure ===''}}">
+                <view class="bodayIndex-line"></view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">血压</text>
                     <text class="bodayIndex-textS">(mmHg)</text>
@@ -45,9 +47,9 @@
                 <view class="bodayIndex-viewRT"  style="float: right">{{bodyIndexExt.bloodPressure.height}}/{{bodyIndexExt.bloodPressure.low}}</view>
                 <view class="clear"></view>
                 <view class="bodayIndex-viewRB" style="text-align: right">{{bodyIndexExt.bloodPressure.descZh}}</view>
-                <view class="bodayIndex-line"></view>
             </view>
-            <view wx:if="bodyIndexExt.heart">
+            <view wx:if="{{!bodyIndexExt.heart ===''}}">
+                <view class="bodayIndex-line"></view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">心率</text>
                     <text class="bodayIndex-textS">(bmp)</text>
