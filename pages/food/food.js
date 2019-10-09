@@ -4,6 +4,7 @@ import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
 import HiNavigator from "../../navigator/hi-navigator";
+import {Toast} from "heheda-common-view";
 
 const timeObj = {
     _frontTimestamp: 0,
@@ -191,21 +192,33 @@ Page({
         console.log(e);
 
         const {currentIndex} = this.data, {detail} = e;
-        switch (currentIndex) {
-            case 0:
-                await Protocol.postWeightDataAdd(detail);
-                break;
-            case 1:
-                await Protocol.postBloodPressureDataAdd(detail);
-                break;
-            case 2:
-                await Protocol.postHeartDataAdd(detail);
-                break;
-            default:
-                break;
+        let failed = false;
+        for (let key in detail) {
+            if (detail.hasOwnProperty(key)) {
+                if (!parseInt(detail[key])) {
+                    failed = true;
+                }
+            }
+        }
+        if (!failed) {
+            switch (currentIndex) {
+                case 0:
+                    await Protocol.postWeightDataAdd(detail);
+                    break;
+                case 1:
+                    await Protocol.postBloodPressureDataAdd(detail);
+                    break;
+                case 2:
+                    await Protocol.postHeartDataAdd(detail);
+                    break;
+                default:
+                    break;
+            }
+            await this.handleListData({isRefresh: true});
+        } else {
+            Toast.warn('请填写完整信息');
         }
 
-        await this.handleListData({isRefresh: true});
     },
     choseItem() {
         return this.data.currentIndex;
