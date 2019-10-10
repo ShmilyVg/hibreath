@@ -216,7 +216,7 @@
 
 .page2-num{
     width:154px;
-    height: 120rpx;
+    height: 130rpx;
     font-size:120rpx;
     font-family:DIN Condensed;
     font-weight:bold;
