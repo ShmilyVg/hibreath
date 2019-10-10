@@ -79,7 +79,7 @@ function normalTrend() {
         dataLabel: false,
         haveNum: true,
         yAxisSplit: yAxisSplit - 1,
-        animation: true
+        animation: false
     });
 }
 
