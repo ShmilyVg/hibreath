@@ -164,35 +164,35 @@ function drewCircular() {
 }
 
 function showType() {
-    if (_page.data.score <= 1) {
+    if (_page.data.score < 1) {
         _page.setData({
             fatType: "../../images/result/type1.png",
             fatText: "未燃脂",
             fatTextEn: "CHIN UP",
             fatDes: ''
         })
-    } else if (_page.data.score <= 2 && _page.data.score > 1) {
+    } else if (_page.data.score < 2 && _page.data.score >= 1) {
         _page.setData({
             fatType: "../../images/result/type2.png",
             fatText: "缓慢燃脂",
             fatTextEn: "SLOW",
             fatDes: '“ 相当于减掉了1-9g脂肪 ”'
         })
-    } else if (_page.data.score <= 4 && _page.data.score > 2) {
+    } else if (_page.data.score < 4 && _page.data.score >= 2) {
         _page.setData({
             fatType: "../../images/result/type3.png",
             fatText: "状态极佳",
             fatTextEn: "PROPER",
             fatDes: '“ 相当于减掉了9-17g脂肪 ”'
         })
-    } else if (_page.data.score <= 6 && _page.data.score > 4) {
+    } else if (_page.data.score < 6 && _page.data.score >= 4) {
         _page.setData({
             fatType: "../../images/result/type4.png",
             fatText: "快速燃脂",
             fatTextEn: "FAST",
             fatDes: '“ 相当于减掉了17-51g脂肪 ”'
         })
-    } else if (_page.data.score <= 10 && _page.data.score > 6) {
+    } else if (_page.data.score < 11 && _page.data.score >= 6) {
         _page.setData({
             fatType: "../../images/result/type5.png",
             fatText: "过度燃脂",
