@@ -48,21 +48,32 @@ function normalTrend() {
         // do something when get system info failed
     }
 
-    const {dataListX, dataListY, yAxisSplit} = trendData;
-
+    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit} = trendData;
+    const series = [{
+        name: dataListY1Name,
+        data: dataListY,
+        color: '#ED6F69',
+        format: function (val) {
+            return val;
+        }
+    }];
+    if (dataListY2 && dataListY2.length) {
+        series.push({
+            name: dataListY2Name,
+            data: dataListY2,
+            color: 'blue',
+            format: function (val) {
+                return val;
+            }
+        });
+    }
     lineChart = new charts({
         canvasId: 'lineCanvas',
         type: 'area',
         lineStyle: 'curve',
         categories: dataListX,
-        series: [{
-            type: 'calibration',
-            data: dataListY,
-            format: function (val) {
-                return val;
-            }
-        }],
-        legend: false,
+        series,
+        legend: true,
         yAxis: {
             format: function (val) {
                 return val;
@@ -72,6 +83,9 @@ function normalTrend() {
         },
         xAxis: {
             fontColor: '#9B9B9B'
+        },
+        extra: {
+            legendTextColor: '#666666',
         },
         width: windowWidth,
         height: windowHeight,

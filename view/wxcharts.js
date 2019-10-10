@@ -327,7 +327,7 @@ function getSeriesDataItem(series, index) {
         if (item.data[index] !== null && typeof item.data[index] !== 'undefined') {
             var seriesItem = {};
             // 方块颜色
-            seriesItem.color = '#ED6F69';
+            seriesItem.color = item.color;
             seriesItem.name = item.name;
             seriesItem.data = item.format ? item.format(item.data[index]) : item.data[index];
             data.push(seriesItem);
@@ -1139,7 +1139,7 @@ function drawAreaDataPoints(series, opts, config, context) {
             // var grad = context.createLinearGradient(0, 0, 0, 100);
             // grad.addColorStop(0, '#64C4FB');
             // grad.addColorStop(1, '#EEF9FF');
-            context.setFillStyle('#ED6F69');
+            context.setFillStyle(eachSeries.color);
             context.setGlobalAlpha(0.7);
 
             context.setLineWidth(2);
