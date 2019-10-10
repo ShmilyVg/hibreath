@@ -62,7 +62,8 @@ Page({
         weight:"",
         taskId:"",
         showModalStatus: false,
-        animationData: ''
+        animationData: '',
+        isfinishedGuide:false,//是否选择了方案
     },
     onFocus: function (e) {
         this.setData({
@@ -168,6 +169,9 @@ Page({
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
+        this.setData({
+            isfinishedGuide:finishedGuide
+        })
         let info = {};
         if (finishedGuide) {
             this.handleTasks();
@@ -563,7 +567,6 @@ Page({
         console.log("000111")
         this.handleBle();
         let that = this;
-        that.handleTasks();
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
         app.onDataSyncListener = ({num, countNum}) => {
@@ -592,6 +595,10 @@ Page({
                 })
             }
         };
+        if(this.data.isfinishedGuide){
+            that.handleTasks();
+        }
+
     },
 
     onHide() {
