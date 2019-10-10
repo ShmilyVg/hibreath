@@ -222,10 +222,7 @@ Page({
                 switch (currentIndex) {
                     case 0:
                         const {value: finalValue} = await dealInputEvent({value, inputType});
-                        console.log(finalValue);
-                        return;
                         await Protocol.postWeightDataAdd(finalValue);
-
                         break;
                     case 1:
                         await Protocol.postBloodPressureDataAdd(value);
