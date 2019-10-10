@@ -20,6 +20,7 @@ Page({
     },
 
     async onLoad(e) {
+        console.log('eeeeeee',e)
         if (e.id) {
             const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
             this.setData({
