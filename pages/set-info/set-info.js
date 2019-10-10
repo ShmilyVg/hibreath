@@ -276,7 +276,7 @@ Page({
                         bodyIndexTask: result.taskList[i],
                         bodyIndexExt:bodyIndexExt,
                     })
-                    console.log(this.data.dataExt)
+                    console.log(bodyIndexExt)
                 }else{
                     this.setData({
                         isbodyIndex:true,
@@ -538,8 +538,10 @@ Page({
     },
 
     onShow() {
+        console.log("000111")
         this.handleBle();
         let that = this;
+        that.handleTasks();
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
         app.onDataSyncListener = ({num, countNum}) => {
@@ -563,7 +565,6 @@ Page({
                     }, 2000)
                 }
             } else {
-                that.handleTasks();
                 that.setData({
                     showBigTip: false
                 })
@@ -588,7 +589,16 @@ Page({
             HiNavigator.navigateTofood();
         }
     },
-
+    bindWeightInput(e){
+        const weightNumber = e.detail.value.split(".");
+        console.log('eeeee',weightNumber)
+        if(weightNumber[1]>9){
+            return Number(e.detail.value).toFixed(1);
+        }
+        if(weightNumber.length>2){
+            return parseInt(e.detail.value);
+        }
+    },
     showModal: function () {
         // 显示遮罩层
         var animation = wx.createAnimation({
