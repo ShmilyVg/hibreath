@@ -64,6 +64,10 @@ Page({
         showModalStatus: false,
         animationData: '',
         isfinishedGuide:false,//是否选择了方案
+        hiddenImg:false,//隐藏左右箭头
+        grayLeft:true,//灰色箭头左
+        grayRight:false,//灰色箭头右
+        currentSwiper:0
     },
     onFocus: function (e) {
         this.setData({
@@ -295,14 +299,23 @@ Page({
                 if (result.taskList[i].finished) {
                     this.setData({
                         sportFin:true,
-                        sportTask: result.taskList[i],
-                        sportExt:sportExt,
+                    })
+                }
+                this.setData({
+                    sportTask: result.taskList[i],
+                    sportExt:sportExt,
+                    aheight:sportExt.recommendList.length*158+110
+                })
+                if(sportExt.recommendList.length<2){
+                    this.setData({
+                        hiddenImg: true,
                     })
                 }else{
                     this.setData({
-                        sportTask: result.taskList[i],
+                        hiddenImg: false,
                     })
                 }
+
             }
         }
 
@@ -622,12 +635,42 @@ Page({
         const weightNumber = e.detail.value.split(".");
         console.log('eeeee',weightNumber[1])
         if(weightNumber[1]>9 ||weightNumber[1] === "0"){
-            //return Number(e.detail.value).toFixed(1);
             return tools.subStringNum(e.detail.value)
         }
         if(weightNumber.length>2){
             return parseInt(e.detail.value);
         }
+    },
+    //轮播图当前
+    swiperChange: function (e) {
+        console.log(e.detail.current,'eeeeee')
+        if(e.detail.current === 0){
+            this.setData({
+                grayLeft: true,
+                grayRight: false
+            })
+        }
+        if(e.detail.current === this.data.sportExt.recommendList.length-1){
+            this.setData({
+                grayLeft: false,
+                grayRight: true
+            })
+        }
+       /* this.setData({
+            currentSwiper: e.detail.current
+        })*/
+    },
+    //运动打卡--左按钮
+    imgToPre(){
+        this.setData({
+            currentSwiper: this.data.currentSwiper-1
+        })
+    },
+    //运动打卡--右按钮
+    imgToNext(){
+        this.setData({
+            currentSwiper: this.data.currentSwiper+1
+        })
     },
     showModal: function () {
         // 显示遮罩层
