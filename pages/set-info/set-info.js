@@ -23,8 +23,9 @@ Page({
         isfatBurn:false,//燃脂卡片
         isbodyIndex:false,//记录身体指标卡片
 
-        showGuide: false,
-        showNewInfo: false,
+        showGuide: false,//立即体验 未注册状态
+        showNewInfo: false,//新手引导页
+
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
             {image: 'man', text: '男士', isChose: false, value: 1},
@@ -128,14 +129,14 @@ Page({
         let that = this;
         console.log('on:', e);
         this.connectionPage = new ConnectionManager(this);
+
         if (e.isNotRegister) {
-            this.setData({
-                showGuide: true,
-                showNewInfo: true
+            console.log(e.isNotRegister,'000000')
+            that.setData({
+                showNewInfo: true,
+                showGuide: true
             })
         }
-
-
         await that.handleGuide(that);
         this.handleBaseInfo();
         Circular.init(this);
@@ -148,12 +149,10 @@ Page({
                     console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
                     if (res.authSetting['scope.userInfo'] === undefined) {
                         that.setData({
-                            showNewInfo: true,
                             showGuide: true,
                         })
                     } else {
                         that.setData({
-                            showNewInfo: true,
                             showGuide: false,
                         })
                     }
