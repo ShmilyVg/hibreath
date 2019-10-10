@@ -558,7 +558,7 @@ Page({
                 this.showModal();
                 break
             case 'sport':
-                this.showModal();
+                HiNavigator.navigateToFreeClock();
                 break
         }
     },

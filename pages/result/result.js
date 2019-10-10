@@ -51,15 +51,15 @@ Page({
                 value.date = `${year}/${month}/${day} ${time}`;
                 let image = '../../images/result/cell';
                 const dValue = value.dataValue;
-                if (dValue > 0 && dValue <= 2) {
+                if (dValue > 0 && dValue <= 1) {
                     image = image + '1';
-                } else if (dValue > 0 && dValue <= 4) {
+                } else if (dValue > 1 && dValue <= 2) {
                     image = image + '2';
-                } else if (dValue > 4 && dValue <= 6) {
+                } else if (dValue > 2 && dValue <=4) {
                     image = image + '3';
-                } else if (dValue > 6 && dValue <= 8) {
+                } else if (dValue > 4 && dValue <= 6) {
                     image = image + '4';
-                } else if (dValue > 8) {
+                } else if (dValue > 6) {
                     image = image + '5';
                 }
                 image = image + '.png';
@@ -128,7 +128,6 @@ Page({
     toChooseDate() {
         let info = {
             end_time: this.data.trendData[0],
-            type:"breath",
             start_time: this.data.trendData[this.data.trendData.length - 1],
         };
         wx.navigateTo({
