@@ -168,8 +168,8 @@ Page({
         this.data.dataList.sort(function (item1, item2) {
             return item1.createdTimestamp - item2.createdTimestamp;
         }).forEach((value) => {
-            const {day: x} = Tools.createDateAndTime(value.createdTimestamp);
-            dataListX.push(x);
+            const {month,day} = Tools.createDateAndTime(value.createdTimestamp);
+            dataListX.push(month + '月' + day+'日');
             if (value.isBloodPressure) {
                 dataListY.push(value.height);
                 dataListY2.push(value.low);

@@ -114,13 +114,15 @@ Page({
         }
         Trend.initTouchHandler();
         let dataListX = [], dataListY = [];
-        list.forEach((value) => {
-            const y = tools.createDateAndTime(value.createdTimestamp).day;
-            dataListX.push(y);
+        list.sort(function (item1, item2) {
+            return item1.createdTimestamp - item2.createdTimestamp;
+        }).forEach((value) => {
+            const {month,day} = tools.createDateAndTime(value.createdTimestamp);
+            dataListX.push(month + '月' + day+'日');
             dataListY.push(value.dataValue);
         });
         let dataTrend = {
-            dataListX:dataListX.reverse(), dataListY: dataListY.reverse(), dataListY1Name: 'PPM', yAxisSplit: 5
+            dataListX, dataListY, dataListY1Name: 'PPM', yAxisSplit: 5
         };
         Trend.setData(dataTrend);
     },
