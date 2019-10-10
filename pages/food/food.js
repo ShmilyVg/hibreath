@@ -157,15 +157,16 @@ Page({
     },
 
     async handleTrendData() {
-        let dataListX = [], dataListY = [];
+        let dataListX = [], dataListY = [], dataListY2 = [];
         this.data.dataList.sort(function (item1, item2) {
             return item1.createdTimestamp - item2.createdTimestamp;
         }).forEach((value) => {
+            const {day: x} = Tools.createDateAndTime(value.createdTimestamp);
+            dataListX.push(x);
             if (value.isBloodPressure) {
-
+                dataListY.push(value.height);
+                dataListY2.push(value.low);
             } else {
-                const {day: y} = Tools.createDateAndTime(value.createdTimestamp);
-                dataListX.push(y);
                 dataListY.push(value.dataValue);
             }
         });
@@ -173,7 +174,7 @@ Page({
             dataListX.push(0);
             dataListY.push(0);
         }
-        Trend.setData({dataListX, dataListY, yAxisSplit: 5});
+        Trend.setData({dataListX, dataListY, dataListY2, yAxisSplit: 5});
     },
 
     bindTapTopChose(e) {
