@@ -149,12 +149,10 @@ Page({
                     console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
                     if (res.authSetting['scope.userInfo'] === undefined) {
                         that.setData({
-                            showNewInfo: true,
                             showGuide: true,
                         })
                     } else {
                         that.setData({
-                            showNewInfo: true,
                             showGuide: false,
                         })
                     }
