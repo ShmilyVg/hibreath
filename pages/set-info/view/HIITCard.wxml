@@ -1,0 +1,30 @@
+<template name="HIITCard">
+<!--燃脂卡片-->
+    <view class="set-content-view flex-column" bindtap="bindTapToResultPage" style="padding-bottom: none">
+        <view class="flex-row" style="justify-content: space-between;width: 100%">
+            <view class="flex-row">
+                <image src="{{sportTask.iconUrl}}" class="set-content-icon"></image>
+                <view class="flex-column" style="align-items: start;margin-left: 20rpx">
+                    <view class="set-content-title">{{sportTask.title}}</view>
+                    <view class="set-content-content">你知道怎样训练么？</view>
+                </view>
+            </view>
+            <view wx:if="{{!sportTask.finished}}" class="set-content-toFinish" data-type="fatBurn"
+                  catchtap="bindTapToFinish">自由打卡
+            </view>
+            <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
+        </view>
+        <view class="dashedLine"></view>
+       <!-- <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
+            <block>
+                <canvas canvas-id="bg" class='canvasII'></canvas>
+                <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
+                <image class="fatType1" src="{{fatType}}"></image>
+                <view class="fatText">{{fatText}}</view>
+                <view class="fatTextEn">{{fatTextEn}}</view>
+                <view class="fatDes">{{fatDes}}</view>
+            </block>
+        </view>-->
+    </view>
+
+</template>

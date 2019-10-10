@@ -60,9 +60,10 @@ Page({
         heart:"",
         bloodHeight:"",
         weight:"",
-
+        taskId:"",
         showModalStatus: false,
-        animationData: ''
+        animationData: '',
+        isfinishedGuide:false,//是否选择了方案
     },
     onFocus: function (e) {
         this.setData({
@@ -115,7 +116,7 @@ Page({
                 return;
             }
         }
-
+        finaValue['taskId'] =this.data.taskId
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
@@ -129,7 +130,7 @@ Page({
         let that = this;
         console.log('on:', e);
         this.connectionPage = new ConnectionManager(this);
-
+        await that.handleGuide(that);
         if (e.isNotRegister) {
             console.log(e.isNotRegister,'000000')
             that.setData({
@@ -137,7 +138,6 @@ Page({
                 showGuide: true
             })
         }
-        await that.handleGuide(that);
         this.handleBaseInfo();
         Circular.init(this);
     },
@@ -146,13 +146,15 @@ Page({
         return new Promise(function (resolve, reject) {
             wx.getSetting({
                 success: (res) => {
-                    console.log('是否授权', res.authSetting['scope.userInfo'] !== undefined);
+                    console.log('是否授权', res.authSetting['scope.userInfo']);
                     if (res.authSetting['scope.userInfo'] === undefined) {
                         that.setData({
+                            showNewInfo: true,
                             showGuide: true,
                         })
                     } else {
                         that.setData({
+                            showNewInfo: false,
                             showGuide: false,
                         })
                     }
@@ -167,6 +169,9 @@ Page({
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
+        this.setData({
+            isfinishedGuide:finishedGuide
+        })
         let info = {};
         if (finishedGuide) {
             this.handleTasks();
@@ -193,6 +198,8 @@ Page({
             // this.data.birth = info.birthday.split("-");
             this.setData({
                 currentDate, goals, info,
+                showNewInfo: true,
+                showGuide: false,
                 birth: this.data.birth,
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
@@ -230,9 +237,6 @@ Page({
     },
 
     async handleTasks() {
-        this.setData({
-            showNewInfo: false
-        })
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             indexDayDesc:result.dayDesc,
@@ -275,12 +279,28 @@ Page({
                         bodyIndexFin:true,
                         bodyIndexTask: result.taskList[i],
                         bodyIndexExt:bodyIndexExt,
+                        taskId:result.taskList[i].id
                     })
                     console.log(bodyIndexExt)
                 }else{
                     this.setData({
                         isbodyIndex:true,
+                        taskId:result.taskList[i].id,
                         bodyIndexTask: result.taskList[i],
+                    })
+                }
+            }
+            if(typesArr[i] === "sport"){
+                const sportExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        sportFin:true,
+                        sportTask: result.taskList[i],
+                        sportExt:sportExt,
+                    })
+                }else{
+                    this.setData({
+                        sportTask: result.taskList[i],
                     })
                 }
             }
@@ -289,10 +309,10 @@ Page({
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#F55E6B',
-          /*  animation: {
-                duration: 400,
-                timingFunc: 'easeIn'
-            }*/
+            /*  animation: {
+                  duration: 400,
+                  timingFunc: 'easeIn'
+              }*/
         })
     },
 
@@ -376,6 +396,9 @@ Page({
             case 8:
                 await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
+                this.setData({
+                    showNewInfo:false
+                })
                 return;
         }
         this.setData({
@@ -530,6 +553,9 @@ Page({
             case 'bodyIndex':
                 this.showModal();
                 break
+            case 'sport':
+                this.showModal();
+                break
         }
     },
 
@@ -541,7 +567,6 @@ Page({
         console.log("000111")
         this.handleBle();
         let that = this;
-        that.handleTasks();
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
         app.onDataSyncListener = ({num, countNum}) => {
@@ -570,6 +595,10 @@ Page({
                 })
             }
         };
+        if(this.data.isfinishedGuide){
+            that.handleTasks();
+        }
+
     },
 
     onHide() {
