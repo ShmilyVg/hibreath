@@ -120,7 +120,7 @@ Page({
             dataListY.push(value.dataValue);
         });
         let dataTrend = {
-            dataListX, dataListY, yAxisSplit: 5
+            dataListX:dataListX.reverse(), dataListY: dataListY.reverse(), dataListY1Name: 'PPM', yAxisSplit: 5
         };
         Trend.setData(dataTrend);
     },
