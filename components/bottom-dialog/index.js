@@ -1,4 +1,4 @@
-import * as tools from "../../utils/tools";
+import {oneDigit} from "../../pages/food/manager";
 
 Component({
     options: {
@@ -53,19 +53,11 @@ Component({
 
         },
 
-        _bindInputEvent(e){
+        _bindInputEvent(e) {
             if (this.data.inputType !== 'digit') {
                 return e.detail.value;
             }
-            const weightNumber = e.detail.value.split(".");
-            console.log('eeeee',weightNumber[1])
-            if(weightNumber[1]>9 ||weightNumber[1] === "0"){
-                //return Number(e.detail.value).toFixed(1);
-                return tools.subStringNum(e.detail.value)
-            }
-            if(weightNumber.length>2){
-                return parseInt(e.detail.value);
-            }
+            return oneDigit(e);
         },
         hideModal() {
             this.setData({

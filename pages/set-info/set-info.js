@@ -15,6 +15,7 @@ import {Toast, WXDialog} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 import ConnectionManager from "../index/connection-manager";
+import {oneDigit} from "../food/manager";
 
 const app = getApp();
 
@@ -318,15 +319,16 @@ Page({
 
             }
         }
-
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#F55E6B',
-            /*  animation: {
-                  duration: 400,
-                  timingFunc: 'easeIn'
-              }*/
-        })
+        setTimeout(() => {
+            wx.setNavigationBarColor({
+                frontColor: '#ffffff',
+                backgroundColor: '#F55E6B',
+                /*  animation: {
+                      duration: 400,
+                      timingFunc: 'easeIn'
+                  }*/
+            })
+        });
     },
 
     async continue() {
@@ -475,15 +477,18 @@ Page({
 
     bindInputWeight(e) {
         this.setData({'info.weight': e.detail.value});
+        return oneDigit(e);
     },
 
     bindInputWeightGoal(e) {
         console.log("231",e.detail.value)
         this.setData({'info.weightGoal': e.detail.value});
+        return oneDigit(e);
     },
 
     bindInputExact(e) {
         this.setData({'info.bodyFatRate': e.detail.value})
+        return oneDigit(e);
     },
 
     bindTapMeals(e) {

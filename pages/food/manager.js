@@ -1,3 +1,5 @@
+import * as tools from "../../utils/tools";
+
 export function dealInputEvent({value, inputType}) {
     if (inputType === 'digit' && value.weight) {
         let arr = value.weight.toString().split("."), [weightIndex0, weightIndex1] = arr;
@@ -19,5 +21,15 @@ export function dealInputEvent({value, inputType}) {
         }
         value.weight = parseFloat(value.weight).toFixed(1);
         return Promise.resolve({value});
+    }
+}
+
+export function oneDigit(e) {
+    const weightNumber = e.detail.value.split(".");
+    if(weightNumber[1]>9 ||weightNumber[1] === "0"){
+        return tools.subStringNum(e.detail.value)
+    }
+    if(weightNumber.length>2){
+        return parseInt(e.detail.value);
     }
 }
