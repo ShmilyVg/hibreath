@@ -9,6 +9,24 @@ import {Toast as toast} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";
+import {getEndZeroTimestamp, getFrontZeroTimestamp, getTimeString} from "../../utils/time";
+
+const timeObj = {
+    _frontTimestamp: 0,
+    _endTimestamp: 0,
+    set frontTimestamp(timestamp) {
+        this._frontTimestamp = getFrontZeroTimestamp({timestamp});
+    },
+    get frontTimestamp() {
+        return this._frontTimestamp;
+    },
+    set endTimestamp(timestamp) {
+        this._endTimestamp = getEndZeroTimestamp({timestamp});
+    },
+    get endTimestamp() {
+        return this._endTimestamp;
+    }
+};
 
 Page({
     data: {
@@ -102,29 +120,27 @@ Page({
                 currenttab: newtab
             });
             if (newtab == 1) {
-                this.handleTrend({});
+                this.handleTrend();
             }
         }
     },
 
-    handleTrend({data}) {
+    handleTrend() {
         let list = this.data.trendData;
-        if (data) {
-            list = data
+        if (list && list.length) {
+            Trend.initTouchHandler();
+            let dataListX = [], dataListY = [];
+            list.forEach((value) => {
+                const {month,day} = tools.createDateAndTime(value.createdTimestamp);
+                dataListX.push(month + '月' + day+'日');
+                dataListY.push(value.dataValue);
+            });
+            let dataTrend = {
+                dataListX, dataListY, dataListY1Name: 'PPM', yAxisSplit: 5
+            };
+            Trend.setData(dataTrend);
         }
-        Trend.initTouchHandler();
-        let dataListX = [], dataListY = [];
-        list.sort(function (item1, item2) {
-            return item1.createdTimestamp - item2.createdTimestamp;
-        }).forEach((value) => {
-            const {month,day} = tools.createDateAndTime(value.createdTimestamp);
-            dataListX.push(month + '月' + day+'日');
-            dataListY.push(value.dataValue);
-        });
-        let dataTrend = {
-            dataListX, dataListY, dataListY1Name: 'PPM', yAxisSplit: 5
-        };
-        Trend.setData(dataTrend);
+
     },
 
     toChooseDate() {
@@ -170,12 +186,29 @@ Page({
                 timeEnd: endTimeValue + (24 * 60 * 60 * 1000)
             });
             if (list.length) {
-                const endData = tools.createDateAndTime(list[0].createdTimestamp);
-                const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
-                let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
-                this.setData({trendDate});
-                this.handleTrend({data: list})
+                list = list.sort(function (item1, item2) {
+                    return item1.createdTimestamp - item2.createdTimestamp;
+                });
+                this.data.trendData = list;
+                this.updateTrendTime({
+                    frontTimestamp: list[0].createdTimestamp,
+                    endTimestamp: list[list.length - 1].createdTimestamp
+                })
+
             }
         }
-    }
+    },
+
+    updateTrendTime({frontTimestamp, endTimestamp}) {
+        timeObj.frontTimestamp = frontTimestamp;
+        timeObj.endTimestamp = endTimestamp;
+        this.setData({
+            trendDate: getTimeString({
+                frontTimestamp: timeObj.frontTimestamp,
+                endTimestamp: timeObj.endTimestamp
+            })
+        }, async () => {
+            this.handleTrend();
+        });
+    },
 })
