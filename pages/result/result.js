@@ -5,7 +5,7 @@
  */
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import toast from "../../view/toast";
+import {Toast as toast} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";

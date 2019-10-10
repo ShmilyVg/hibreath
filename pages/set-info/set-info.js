@@ -3,7 +3,7 @@
  * @Date: 2019-10-09 11:00:00
  * @LastEditors: 张浩玉
  */
-import toast from "../../view/toast";
+import {Toast as toast} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import IndexCommonManager from "../index/view/indexCommon";
