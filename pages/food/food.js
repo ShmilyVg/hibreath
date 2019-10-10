@@ -157,15 +157,16 @@ Page({
     },
 
     async handleTrendData() {
-        let dataListX = [], dataListY = [];
+        let dataListX = [], dataListY = [], dataListY2 = [], dataListY1Name = '', dataListY2Name = '';
         this.data.dataList.sort(function (item1, item2) {
             return item1.createdTimestamp - item2.createdTimestamp;
         }).forEach((value) => {
+            const {day: x} = Tools.createDateAndTime(value.createdTimestamp);
+            dataListX.push(x);
             if (value.isBloodPressure) {
-
+                dataListY.push(value.height);
+                dataListY2.push(value.low);
             } else {
-                const {day: y} = Tools.createDateAndTime(value.createdTimestamp);
-                dataListX.push(y);
                 dataListY.push(value.dataValue);
             }
         });
@@ -173,7 +174,14 @@ Page({
             dataListX.push(0);
             dataListY.push(0);
         }
-        Trend.setData({dataListX, dataListY, yAxisSplit: 5});
+        if (dataListY2.length) {
+            dataListY1Name = '高血压';
+            dataListY2Name = '低血压';
+        }else{
+            const {currentIndex, topChose} = this.data;
+            dataListY1Name = topChose[currentIndex].text;
+        }
+        Trend.setData({dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5});
     },
 
     bindTapTopChose(e) {
