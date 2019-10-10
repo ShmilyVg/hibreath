@@ -131,7 +131,7 @@ Page({
             start_time: this.data.trendData[this.data.trendData.length - 1],
         };
         wx.navigateTo({
-            url: '../calendar/calendar?info=' + JSON.stringify(info)
+            url: '../calendar/calendar?type=' + 'breath'
         });
     },
 
