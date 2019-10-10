@@ -16,7 +16,7 @@
     </view>
 
 
-    <bottom-dialog bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
+    <bottom-dialog inputType="{{topChose[currentIndex].inputType}}" maxLength="{{topChose[currentIndex].maxLength}}" bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
         <view class="flex-row align-items-center middle-view-add-view">
             <image class="middle-view-add-image" src="../../images/food/{{topChose[currentIndex].type}}.png"></image>
             <view class="middle-view-add-text">{{topChose[currentIndex].addText}}</view>
