@@ -12,6 +12,7 @@
         <view wx:for="{{list}}" wx:key="id" class="flex-row fill-width align-items-center space-between commodity_part">
             <view class="commodity_title">{{item.title}}</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="{{maxLength}}" name="{{item.type}}"
+                   bindinput="_bindInputEvent"
                    placeholder="{{item.placeholder}}" type="{{inputType}}"/>
             <view class="clear"></view>
         </view>
