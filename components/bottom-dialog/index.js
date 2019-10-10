@@ -1,3 +1,5 @@
+import * as tools from "../../utils/tools";
+
 Component({
     options: {
         addGlobalClass: true,
@@ -14,7 +16,7 @@ Component({
         maxLength: {
             type: Number,
             value: 3
-        }
+        },
     },
 
     data: {
@@ -49,6 +51,21 @@ Component({
                 })
             }.bind(this), 100);
 
+        },
+
+        _bindInputEvent(e){
+            if (this.data.inputType !== 'digit') {
+                return e.detail.value;
+            }
+            const weightNumber = e.detail.value.split(".");
+            console.log('eeeee',weightNumber[1])
+            if(weightNumber[1]>9 ||weightNumber[1] === "0"){
+                //return Number(e.detail.value).toFixed(1);
+                return tools.subStringNum(e.detail.value)
+            }
+            if(weightNumber.length>2){
+                return parseInt(e.detail.value);
+            }
         },
         hideModal() {
             this.setData({
