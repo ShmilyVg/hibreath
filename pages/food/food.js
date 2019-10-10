@@ -85,6 +85,7 @@ Page({
 
 
     async onReady() {
+        Trend.initTouchHandler();
         this.updateTrendTime({frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now()});
     },
 
