@@ -51,13 +51,13 @@
             </block>
             <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
                 <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
-                    <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3"
+                    <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3" type="number"
                            placeholder="身高" placeholder-class="placeholder"/>
                     <view class="page2-line"></view>
                     <view class="page2-kg">CM</view>
                 </view>
                 <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
-                    <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5"
+                    <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit"
                            placeholder="体重" placeholder-class="placeholder"/>
                     <view class="page2-line"></view>
                     <view class="page2-kg">KG</view>
@@ -76,7 +76,7 @@
                     <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
                 </view>
                 <view wx:else class="flex-column">
-                    <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder"
+                    <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" type="digit"
                            bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
                     <view class="page2-line"></view>
                     <view class="page2-kg">%</view>
@@ -90,7 +90,7 @@
             </view>
             <view wx:if="{{page==7}}" class="flex-column">
                 <view class="page2-title">也可以自定义您的目标体重</view>
-                <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}"/>
+                <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}" type="digit" maxlength="5"/>
                 <view class="page2-line"></view>
                 <view class="page2-kg">KG</view>
             </view>
