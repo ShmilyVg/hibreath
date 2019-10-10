@@ -528,6 +528,11 @@
     margin-top: 40rpx;
     margin-bottom: 40rpx
 }
+.dashedLine{
+    width: 100%;
+    border: 0.5rpx #F2F2F2 dashed;
+    margin-top: 43rpx;
+}
 /*弹出层相关*/
 .commodity_screen {
     width: 100%;

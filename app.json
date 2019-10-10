@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/set-info/set-info",
     "pages/index/index",
     "pages/result/result",
@@ -9,7 +8,9 @@
     "pages/device-manage/device-manage",
     "pages/calendar/calendar",
     "pages/successInfo/successInfo",
-    "pages/food/food"
+    "pages/food/food",
+    "pages/freeClock/freeClock",
+    "pages/videoClock/videoClock"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
