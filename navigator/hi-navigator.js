@@ -24,7 +24,14 @@ export default class HiNavigator extends CommonNavigator {
         getApp().globalData.refreshIndexPage = refresh;
         wx.reLaunch({url: '/pages/index/index'});
     }
-
+    //运动-自由打卡
+    static navigateToFreeClock() {
+        this.navigateTo({url: '/pages/freeClock/freeClock'});
+    }
+    //运动-视频打卡
+    static navigateToVideoClock() {
+        this.navigateTo({url: '/pages/videoClock/videoClock'});
+    }
 
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});

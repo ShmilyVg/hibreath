@@ -128,7 +128,6 @@ Page({
     toChooseDate() {
         let info = {
             end_time: this.data.trendData[0],
-            type:"breath",
             start_time: this.data.trendData[this.data.trendData.length - 1],
         };
         wx.navigateTo({
