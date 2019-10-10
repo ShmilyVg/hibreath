@@ -20,20 +20,7 @@ Page({
     },
 
     async onLoad(e) {
-        if (e.id) {
-            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
-            this.setData({
-                fatDes, score,fatText:des.zhCh, fatTextEn:des.en
-            });
-        } else if (e.score) {
-            const {fatText, fatTextEn, fatDes, score} = e;
-            this.setData({
-                fatText, fatTextEn, fatDes, score
-            });
-        }
-        this.init();
-        Circular.run();
-        this.cellDataHandle({});
+
     },
 
     init() {
@@ -158,7 +145,24 @@ Page({
         })
     },
 
-    async onShow() {
+    async onShow(e) {
+        console.log("eeeeeee",e)
+        if (e.id) {
+            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
+            this.setData({
+                fatDes, score,fatText:des.zhCh, fatTextEn:des.en
+            });
+        } else if (e.score) {
+            const {fatText, fatTextEn, fatDes, score} = e;
+            this.setData({
+                fatText, fatTextEn, fatDes, score
+            });
+        }
+        this.init();
+        Circular.run();
+        this.cellDataHandle({});
+
+
         const trendTime = getApp().globalData.trendTime;
         console.log('trendTime:', trendTime);
         if (trendTime) {
