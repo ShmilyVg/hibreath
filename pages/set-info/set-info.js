@@ -130,7 +130,7 @@ Page({
         console.log('on:', e);
         this.connectionPage = new ConnectionManager(this);
         if (e.isNotRegister) {
-            this.setData({
+            that.setData({
                 showGuide: true,
                 showNewInfo: true
             })
