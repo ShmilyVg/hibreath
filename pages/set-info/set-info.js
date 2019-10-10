@@ -306,15 +306,16 @@ Page({
                 }
             }
         }
-
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#F55E6B',
-            /*  animation: {
-                  duration: 400,
-                  timingFunc: 'easeIn'
-              }*/
-        })
+        setTimeout(() => {
+            wx.setNavigationBarColor({
+                frontColor: '#ffffff',
+                backgroundColor: '#F55E6B',
+                /*  animation: {
+                      duration: 400,
+                      timingFunc: 'easeIn'
+                  }*/
+            })
+        });
     },
 
     async continue() {
