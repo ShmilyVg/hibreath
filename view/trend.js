@@ -61,7 +61,7 @@ function normalTrend() {
         series.push({
             name: dataListY2Name,
             data: dataListY2,
-            color: 'blue',
+            color: '#18D1B9',
             format: function (val) {
                 return val;
             }

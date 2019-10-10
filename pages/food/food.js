@@ -4,7 +4,8 @@ import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
 import HiNavigator from "../../navigator/hi-navigator";
-import {Toast} from "heheda-common-view";
+import {Toast, WXDialog} from "heheda-common-view";
+import {dealInputEvent} from "./manager";
 
 const timeObj = {
     _frontTimestamp: 0,
@@ -28,6 +29,8 @@ Page({
         topChose: [
             {
                 type: 'weight',
+                maxLength: 5,
+                inputType: 'digit',
                 text: '体重', addText: '记体重', addProjectList: [
                     {
                         id: 'weight',
@@ -39,6 +42,8 @@ Page({
             },
             {
                 type: 'bloodPressure',
+                maxLength: 3,
+                inputType: 'number',
                 text: '血压', addText: '记血压', addProjectList: [
                     {
                         id: 'high',
@@ -55,6 +60,8 @@ Page({
             },
             {
                 type: 'heart',
+                maxLength: 3,
+                inputType: 'number',
                 text: '心率', addText: '记心率', addProjectList: [
                     {
                         id: 'heart',
@@ -177,7 +184,7 @@ Page({
         if (dataListY2.length) {
             dataListY1Name = '高血压';
             dataListY2Name = '低血压';
-        }else{
+        } else {
             const {currentIndex, topChose} = this.data;
             dataListY1Name = topChose[currentIndex].text;
         }
@@ -201,30 +208,36 @@ Page({
     async onSubmitEvent(e) {
         console.log(e);
 
-        const {currentIndex} = this.data, {detail} = e;
+        const {currentIndex} = this.data, {detail: {inputType, value}} = e;
         let failed = false;
-        for (let key in detail) {
-            if (detail.hasOwnProperty(key)) {
-                if (!parseInt(detail[key])) {
+        for (let key in value) {
+            if (value.hasOwnProperty(key)) {
+                if (!parseInt(value[key])) {
                     failed = true;
                 }
             }
         }
         if (!failed) {
-            switch (currentIndex) {
-                case 0:
-                    await Protocol.postWeightDataAdd(detail);
-                    break;
-                case 1:
-                    await Protocol.postBloodPressureDataAdd(detail);
-                    break;
-                case 2:
-                    await Protocol.postHeartDataAdd(detail);
-                    break;
-                default:
-                    break;
+            try {
+                switch (currentIndex) {
+                    case 0:
+                        const {value: finalValue} = await dealInputEvent({value, inputType});
+                        await Protocol.postWeightDataAdd(finalValue);
+                        break;
+                    case 1:
+                        await Protocol.postBloodPressureDataAdd(value);
+                        break;
+                    case 2:
+                        await Protocol.postHeartDataAdd(value);
+                        break;
+                    default:
+                        break;
+                }
+                await this.handleListData({isRefresh: true});
+            } catch (e) {
+                console.error(e);
+                WXDialog.showDialog({content: e.errMsg});
             }
-            await this.handleListData({isRefresh: true});
         } else {
             Toast.warn('请填写完整信息');
         }

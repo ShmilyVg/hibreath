@@ -6,7 +6,7 @@
 import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 import IndexCommonManager from "../index/view/indexCommon";
-import WXDialog from "../../view/dialog";
+import {WXDialog} from "heheda-common-view";
 const app = getApp();
 
 Page({

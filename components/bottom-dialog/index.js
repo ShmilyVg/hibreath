@@ -6,6 +6,14 @@ Component({
         list: {
             type: Array,
             value: []
+        },
+        inputType: {
+            type: String,
+            value: 'number'
+        },
+        maxLength: {
+            type: Number,
+            value: 3
         }
     },
 
@@ -52,7 +60,8 @@ Component({
         formSubmit(e) {
             console.log(e.detail.value);
             this.hideModal();
-            this.triggerEvent('onSubmitEvent', {...e.detail.value});
+            const {maxLength, inputType} = this.data;
+            this.triggerEvent('onSubmitEvent', {value: {...e.detail.value}, maxLength, inputType});
 
         }
     }

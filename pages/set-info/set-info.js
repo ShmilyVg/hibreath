@@ -3,16 +3,15 @@
  * @Date: 2019-10-09 11:00:00
  * @LastEditors: 张浩玉
  */
-import toast from "../../view/toast";
+import {Toast as toast} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import WXDialog from "../../view/dialog";
 import IndexCommonManager from "../index/view/indexCommon";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
-import {Toast} from "heheda-common-view";
+import {Toast, WXDialog} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 import ConnectionManager from "../index/connection-manager";

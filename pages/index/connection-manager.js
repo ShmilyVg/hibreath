@@ -1,6 +1,6 @@
-import WXDialog from "../../view/dialog";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import {WXDialog} from "heheda-common-view";
 export default class ConnectionManager {
 
     constructor(page) {
