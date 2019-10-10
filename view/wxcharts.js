@@ -1956,6 +1956,7 @@ var Charts = function Charts(opts) {
     };
 
     drawCharts.call(this, opts.type, opts, config$$1, this.context);
+    drawCharts.call(this, opts.type, opts, config$$1, this.context);
 };
 
 Charts.prototype.updateData = function () {
