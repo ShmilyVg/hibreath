@@ -114,6 +114,14 @@ Page({
                 return;
             }
         }
+        if(finaValue.bloodHeight && !finaValue.bloodLow){
+            this.showDialog("请输入低压");
+            return;
+        }
+        if(finaValue.bloodLow && !finaValue.bloodHeight){
+            this.showDialog("请输入高压");
+            return;
+        }
         if(finaValue.bloodLow){
             const bloodLownum = finaValue.bloodLow.split(".");
             if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
