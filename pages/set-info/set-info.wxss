@@ -539,6 +539,7 @@
     float: left;
     position: relative;
     top:40rpx;
+    z-index: 9;
 }
 .HIITCardImgR{
     width:23rpx;
@@ -546,6 +547,7 @@
     float: right;
     position: relative;
     top:40rpx;
+    z-index: 9;
 }
 .swiperBigTitle{
     text-align: center;
