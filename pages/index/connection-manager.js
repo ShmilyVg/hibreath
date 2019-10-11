@@ -69,18 +69,11 @@ export default class ConnectionManager {
             bgColor:"#EE6F69",//PAGE背景
             tryAgain:false,//未找到设备标志位
             finding:false,//正在寻找设备标志位
-
-
+            readyimg:false,
             stateBtnShow: false,
-
-
             btnState: true,
-
             homePointHot:false,
             blowpicShow: false,
-
-
-
             homeTitle: false,
             homeOrangeBtn: false,
         })
@@ -113,7 +106,7 @@ export default class ConnectionManager {
             homeTitle: false,
             homeOrangeBtn: false,
         });
-    /*        noBind:false,
+     /*        noBind:false,
             stateBtnShow: false,
             finding:false,
             state: "设备已连接",
@@ -133,7 +126,7 @@ export default class ConnectionManager {
             homeOrangeBtn: false,
 
         });
-        this._page.setData({
+          this._page.setData({
             blowNumber: 5
         });
         var that = this;
@@ -142,13 +135,12 @@ export default class ConnectionManager {
             that._page.setData({
                 blowNumber: countDownNum
             })
+            countDownNum--;
             if ( countDownNum == 0) {
                 clearInterval(int);
             }
+        }, 800)*/
 
-            countDownNum--;
-
-        }, 1000)*/
     }
 
     connecting() {

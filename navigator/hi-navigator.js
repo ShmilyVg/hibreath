@@ -43,6 +43,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToDeviceBind() {
         this.reLaunch({url: '/pages/device-bind/device-bind'});
     }
+    static navigateToBind() {
+        this.navigateTo({url: '/pages/device-bind/device-bind'});
+    }
 
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});

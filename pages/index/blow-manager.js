@@ -8,6 +8,7 @@ import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 
 export default class BlowManager {
     constructor(page) {
+        console.log("pagepagepage",page)
         this._page = page;
         this.actionBlow = {};
         console.log("ProtocolState",ProtocolState)
@@ -26,17 +27,16 @@ export default class BlowManager {
         };
 
         this.actionBlow[ProtocolState.BREATH_START] = () => {
-
             this.blowing();
-            this._page.setData({
-                blowNumber: 5
-            });
             this.timerblow();
-
         };
 
         this.actionBlow[ProtocolState.BREATH_FINISH] = () => {
-            this.blowed();
+          /*  console.log('page.data.isShowBlow === true',this._page.data.isShowBlow === true)
+            if(this._page.data.isShowBlow === true){
+                this.blowed();
+            }*/
+            setTimeout(() => { this.blowed();},1000)
         };
       /*  this.actionBlow[ProtocolState.QUERY_DATA_START] =() => {
             this.connected();
@@ -50,12 +50,14 @@ export default class BlowManager {
     }
     //若预热中状态持续＞2分钟，仍然没有进入下一环节，则出现该提示文案
     timer(){
+        console.log("预热",  this._page)
          var that = this;
          let countDownNumHot =120
          setInterval(function () {
              countDownNumHot--;
-             if ( countDownNumHot == 0 && ProtocolState =="pre_hot_start") {
+             if(countDownNumHot == 0 || that._page.data.readyimg !==true ){
                  clearInterval();
+             }else if(countDownNumHot == 0 && that._page.data.readyimg === true){
                  that._page.setData({
                      homePointHot: true
                  })
@@ -64,18 +66,26 @@ export default class BlowManager {
      }
 
     timerblow(){
+        this._page.setData({
+            blowNumber: 5
+        });
         var that = this;
         let countDownNum =4
         var int=setInterval(function () {
             that._page.setData({
                 blowNumber: countDownNum
             })
+            countDownNum--;
             if ( countDownNum == 0) {
                 clearInterval(int);
+             /*   setTimeout(function () {
+                    that._page.setData({
+                        isShowBlow : true
+                    })
+                }, 1000)*/
             }
-            countDownNum--;
-
         }, 1000)
+
     }
     connected() {
         wx.setNavigationBarColor({

@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
 <template is="common"
-          data="{{noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
+          data="{{isShowBlow,noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
 </template>
 
 
