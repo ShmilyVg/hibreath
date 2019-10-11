@@ -10,6 +10,7 @@ function getMinuteObj() {
 
 const {platform} = wx.getSystemInfoSync();
 Component({
+    behaviors: ['wx://form-field'],
     options: {
         addGlobalClass: true,
     },
@@ -43,9 +44,19 @@ Component({
             // this.data.isAndroid = platform === 'android';
         },
         attached() {
+            this.setData({value: this.data.durationIndex});
         },
     },
     methods: {
+        bindMultiPickerChange(e) {
+            console.log(e);
+            this.setData({
+                value: e
+            });
+        },
+        bindMultiPickerColumnChange(e) {
+            console.log(e);
+        },
 
     }
 });
