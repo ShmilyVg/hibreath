@@ -23,6 +23,7 @@ Page({
     data: {
         isfatBurn:false,//燃脂卡片
         isbodyIndex:false,//记录身体指标卡片
+        isSport:false,
 
         showGuide: false,//立即体验 未注册状态
         showNewInfo: false,//新手引导页
@@ -256,6 +257,7 @@ Page({
             indexfinishNum:result.finishNum,
             indexgoalDesc:result.goalDesc,
             indextaskNum:result.taskNum,
+            taskListAll:result.taskList,
         })
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213",typesArr)
@@ -311,6 +313,7 @@ Page({
                     })
                 }
                 this.setData({
+                    isSport:true,
                     sportTask: result.taskList[i],
                     sportExt:sportExt,
                     aheight:sportExt.recommendList.length*158+110

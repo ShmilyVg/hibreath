@@ -531,7 +531,7 @@
     width: 100%;
     border: 0.5rpx #F2F2F2 dashed;
     margin-top: 43rpx;
-    margin-bottom: 18rpx;
+    margin-bottom: 38rpx;
 }
 .HIITCardImgL{
     width:23rpx;
