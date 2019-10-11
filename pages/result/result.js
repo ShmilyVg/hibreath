@@ -57,6 +57,7 @@ Page({
 
     init() {
         Trend.init(this);
+        Trend.initTouchHandler();
         Circular.init(this);
     },
 
@@ -128,7 +129,6 @@ Page({
     handleTrend() {
         let list = this.data.trendData;
         if (list && list.length) {
-            Trend.initTouchHandler();
             let dataListX = [], dataListY = [];
             list.forEach((value) => {
                 const {month,day} = tools.createDateAndTime(value.createdTimestamp);
