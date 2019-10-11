@@ -1,4 +1,4 @@
-<picker name="sportDuration" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{durationIndex}}" range="{{durationArray}}" range-key="content">
+<picker mode="multiSelector" bindcancel="bindCancel" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{durationIndex}}" range="{{durationArray}}" range-key="content">
     <view class="flex-column align-items-center">
         <view class="flex-row align-items-center free-clock-picker">
             <view>{{durationArray[0][durationIndex[0]].content}}</view>

@@ -45,11 +45,12 @@
     box-shadow:0 0 12rpx 0 rgba(237,111,105,1);
 }
 .free-clock-sport-way-content-common{
-    margin-top: -70rpx;
+    margin-top: -65rpx;
     font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     line-height:40rpx;
+    height: 23rpx;
 }
 .free-clock-sport-way-content-unselected{
     color:rgba(69,69,69,1);

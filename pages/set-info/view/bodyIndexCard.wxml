@@ -52,7 +52,7 @@
                 <view class="bodayIndex-line"></view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">心率</text>
-                    <text class="bodayIndex-textS">(bmp)</text>
+                    <text class="bodayIndex-textS">(bpm)</text>
                 </view>
                 <view class="bodayIndex-viewRT"  style="float: right">{{bodyIndexExt.heart.value}}</view>
                 <view class="clear"></view>
