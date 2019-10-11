@@ -131,9 +131,14 @@
             </view>
         </view>
         <view class="flex-column" style="margin-top: -65rpx">
-            <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+            <view wx:for="{{taskListAll}}" wx:key="index">
+                <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+                <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
+                <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
+            </view>
+           <!-- <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
             <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
-            <template is="HIITCard" wx:if="{{isbodyIndex}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
+            <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
         </view>
     </block>
 </view>
