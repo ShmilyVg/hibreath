@@ -34,7 +34,7 @@ Page({
         disblowImg:false,
         blowingImg:false,
         process:false,
-
+        isShowBlow:true,
 
         homeP:[
             "1. 请勿将设备远离手机",
