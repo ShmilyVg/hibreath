@@ -389,6 +389,7 @@
     border-radius:10rpx;
     padding: 44rpx 47rpx 43rpx 30rpx;
     margin-bottom: 20rpx;
+
 }
 
 .set-content-icon {

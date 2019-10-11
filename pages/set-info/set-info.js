@@ -141,6 +141,9 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
+       /* this.setData({
+            page:wx.getStorageSync('currentPage')
+        })*/
         let that = this;
         console.log('on:', e);
         this.connectionPage = new ConnectionManager(this);
@@ -316,7 +319,7 @@ Page({
                     isSport:true,
                     sportTask: result.taskList[i],
                     sportExt:sportExt,
-                    aheight:sportExt.recommendList.length*158+110
+                    aheight:sportExt.recommendList.length*158
                 })
                 if(sportExt.recommendList.length<2){
                     this.setData({
@@ -431,6 +434,9 @@ Page({
         this.setData({
             page: ++this.data.page,
         });
+       /* wx.setStorageSync({
+            currentPage: this.data.page,
+        });*/
     },
 
     objIsEmpty(obj) {
