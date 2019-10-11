@@ -184,8 +184,8 @@ Page({
             dataListY.push(0);
         }
         if (dataListY2.length) {
-            dataListY1Name = '高血压';
-            dataListY2Name = '低血压';
+            dataListY1Name = '高压';
+            dataListY2Name = '低压';
         } else {
             const {currentIndex, topChose} = this.data;
             dataListY1Name = topChose[currentIndex].text;

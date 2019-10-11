@@ -160,6 +160,12 @@ page{
     margin-top: 50rpx;
 }
 
+.middle-view-arr{
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 10rpx;
+}
+
 .canvas-bottom-text{
     font-size: 30rpx;
     color: #718EA0;
