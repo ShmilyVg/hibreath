@@ -669,20 +669,26 @@ Page({
     //轮播图当前
     swiperChange: function (e) {
         console.log(e.detail.current,'eeeeee')
+        this.setData({
+            currentSwiper: e.detail.current
+        })
         if(e.detail.current === 0){
             this.setData({
                 grayLeft: true,
                 grayRight: false
             })
+            return
         }
         if(e.detail.current === this.data.sportExt.recommendList.length-1){
             this.setData({
                 grayLeft: false,
                 grayRight: true
             })
+            return
         }
         this.setData({
-            currentSwiper: e.detail.current
+            grayLeft: false,
+            grayRight: false
         })
     },
     //运动打卡--左按钮
