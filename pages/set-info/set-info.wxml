@@ -133,7 +133,7 @@
         <view class="flex-column" style="margin-top: -65rpx">
             <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
             <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
-            <template is="HIITCard" wx:if="{{isbodyIndex}}" data="{{sportTask,sportExt}}"></template>
+            <template is="HIITCard" wx:if="{{isbodyIndex}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
         </view>
     </block>
 </view>
