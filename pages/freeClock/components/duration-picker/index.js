@@ -32,16 +32,11 @@ Component({
     data: {
         durationArray: [getHoursObj(), getMinuteObj()],
         durationIndex: [0, 20],
-        isAndroid: platform === 'android'
+        isAndroid: platform === 'android',
+        tempDurationFirstIndexValue: 0
     },
     lifetimes: {
         created() {
-            console.log(this.data);
-            const {durationArray, durationIndex} = this.data;
-
-            console.log(durationArray[0][durationIndex[0]].content);
-            // const {platform} = wx.getSystemInfoSync();
-            // this.data.isAndroid = platform === 'android';
         },
         attached() {
             this.setData({value: this.data.durationIndex});
@@ -50,12 +45,34 @@ Component({
     methods: {
         bindMultiPickerChange(e) {
             console.log(e);
+            const {detail: {value}} = e;
             this.setData({
-                value: e
+                durationIndex: value
+            }, () => {
+                this.setData({
+                    value: e
+                });
             });
+
+        },
+        bindCancel(e) {
+            // console.log(e);
         },
         bindMultiPickerColumnChange(e) {
-            console.log(e);
+            const {detail: {column, value}} = e, {durationIndex: [firstIndexValue,endIndexValue]} = this.data;
+            this.data.durationIndex[column] = value;
+            if (column === 0) {
+                if (endIndexValue < 20) {
+                    this.setData({'durationIndex[1]': 20});
+                }
+            } else {
+                if (firstIndexValue === 0) {
+                    if (value < 20) {
+                        this.setData({'durationIndex[1]': 20});
+                    }
+                }
+            }
+
         },
 
     }
