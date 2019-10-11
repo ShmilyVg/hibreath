@@ -22,7 +22,7 @@
             <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{hiddenImg}}" src="../../images/set-info/rightB.png"></image>
             <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{aheight}}rpx">
                 <block wx:for="{{sportExt.recommendList}}" style="height: 500rpx">
-                    <swiper-item>
+                    <swiper-item bindtap="toVideoClock">
                         <view  class="swiperBigTitle" >{{item.title}}</view>
                         <view class="clear"></view>
                         <view wx:for="{{item.list}}" style="margin-bottom: 50rpx">

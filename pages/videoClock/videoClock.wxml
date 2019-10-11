@@ -1,2 +1,45 @@
-<!--pages/videoClock/videoClock.wxml-->
-<text>pages/videoClock/videoClock.wxml</text>
+<view class='process-container'>
+  <!--   <view class='slider-container'>
+         <slider class="sliderM" bindchange="sliderChange" bindchanging="sliderChanging" step="1"  value="{{sliderValue}}"
+                 backgroundColor="#A8A8A8" activeColor="#FFEE83" block-color="#FFEE83"  />
+     </view>-->
+    <progress  activeColor="#ED6F69" backgroundColor="#D2D2D2" percent="{{progressM}}" stroke-width="20" />
+</view>
+<view class="HIIT-headvideo">
+    <video id="videoplayer" class="HIITVideo" enable-progress-gesture="{{false}}" controls="{{false}}" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"  bindtimeupdate="videoUpdate"></video>
+</view>
+<view class="HIIT-desc">
+    <view class="videoTitle">{{indexTitle}}</view>
+    <view class="videoImp">动作要点</view>
+    <view class="videostepList" wx:for="{{indexStepList}}">
+        <text style="margin-right: 20rpx">·</text>{{item}}
+    </view>
+    <view class="videoLine"></view>
+</view>
+
+<!--<view bindtap="lastVideo" wx:if="{{videoLast}}">上一个</view>
+<view bindtap="nextVideo">下一个</view>
+<view bindtap="startVideo">开始</view>
+<view bindtap="stopVideo">暂停</view>-->
+
+<swiper class="HIIT-swiper" display-multiple-items="3" >
+    <block wx:for="{{list}}">
+        <swiper-item bindtap="clickSwiper" data-pid="{{item.videoUrl}}" data-number="{{index}}">
+            <image src="{{item.pic}}"  width="355rpx" height="150rpx"/>
+        </swiper-item>
+    </block>
+</swiper>
+
+
+<view class="modal" hidden="{{hidden}}">
+    <view class="result-container" hidden="{{hidden}}">
+        <view class="title">{{title}}</view>
+        <view class="content">
+            {{content}}
+        </view>
+        <view class='modal-btn-wrapper'>
+            <!--    <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>{{cancelText}}</view>-->
+            <view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>
+        </view>
+    </view>
+</view>

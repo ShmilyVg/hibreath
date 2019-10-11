@@ -581,6 +581,10 @@ Page({
             }, 300)
         }
     },
+    //视频打卡
+    toVideoClock(){
+        HiNavigator.navigateToVideoClock();
+    },
     //去完成按钮
     bindTapToFinish(e) {
         const {currentTarget: {dataset: {type}}} = e;
