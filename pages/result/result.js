@@ -194,8 +194,8 @@ Page({
                     frontTimestamp: list[0].createdTimestamp,
                     endTimestamp: list[list.length - 1].createdTimestamp
                 })
-
             }
+            getApp().globalData.trendTime = null;
         }
     },
 

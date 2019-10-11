@@ -95,6 +95,7 @@ Page({
         if (trendTime) {
             const {startTimeValue: frontTimestamp, endTimeValue: endTimestamp} = trendTime;
             this.updateTrendTime({frontTimestamp, endTimestamp});
+            getApp().globalData.trendTime = null;
         }
 
     },
