@@ -36,5 +36,8 @@ Page({
         }).catch(res => {
             console.log('解绑失败', res);
         }).finally(() => Toast.hiddenLoading());
+    },
+    toBind(){
+        HiNavigator.navigateToBind()
     }
 })
