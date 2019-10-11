@@ -158,7 +158,8 @@
        <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
         <button class="commodity_sub" form-type='submit'>提交</button>
         <view class="clear"></view>
-        <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 75rpx"></view>
+        <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
+        <view style="margin-bottom: 40rpx">*您可以按照实际情况自由填写打卡</view>
         <view class="commodity_part">
             <view class="commodity_title">体重(kg)</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
