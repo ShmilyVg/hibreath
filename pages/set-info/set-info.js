@@ -341,6 +341,7 @@ Page({
 
     async continue() {
         const info = this.data.info;
+        console.log(info.goalDesc.length,'info.goalDesc')
         switch (this.data.page) {
             case 1:
                 if (this.objIsEmpty(info.goalDesc)) {
@@ -430,7 +431,7 @@ Page({
     },
 
     objIsEmpty(obj) {
-        return (typeof (obj) === "undefined" || obj === "");
+        return (typeof (obj) === "undefined" || obj === "" || obj === null);
     },
 
     showDialog(content) {
@@ -443,9 +444,11 @@ Page({
         })
     },
 
-    //BIND
+    //减脂目标
     bindInputGoal(e) {
-        this.setData({'info.goalDesc': e.detail.value})
+        this.setData({
+            'info.goalDesc':  tools.filterEmoji(e.detail.value).trim()
+        })
     },
 
     bindTapSex(e) {
