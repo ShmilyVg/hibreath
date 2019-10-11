@@ -41,7 +41,7 @@ function normalTrend(widthRpx) {
     let windowWidth = 370;
     let windowHeight = 200;
     try {
-        let {windowWidth:sysWidth, pixelRatio} = wx.getSystemInfoSync();
+        let {windowWidth: sysWidth} = wx.getSystemInfoSync(), pixelRatio = 750 / sysWidth;
 
         windowWidth = 370 * ((widthRpx / pixelRatio) || sysWidth) / 375;
         windowHeight = 200 * windowWidth / 370;
