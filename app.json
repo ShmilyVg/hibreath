@@ -10,7 +10,8 @@
     "pages/successInfo/successInfo",
     "pages/food/food",
     "pages/freeClock/freeClock",
-    "pages/videoClock/videoClock"
+    "pages/videoClock/videoClock",
+    "pages/finishClock/finishClock"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

@@ -395,7 +395,6 @@
     width:70rpx;
     height:70rpx;
     background:rgba(255,245,245,1);
-    border:1rpx solid rgba(237, 111, 105, 0.2);
     border-radius:50%;
 }
 
@@ -532,17 +531,23 @@
     width: 100%;
     border: 0.5rpx #F2F2F2 dashed;
     margin-top: 43rpx;
-    margin-bottom: 58rpx;
+    margin-bottom: 18rpx;
 }
 .HIITCardImgL{
     width:23rpx;
     height: 40rpx;
     float: left;
+    position: relative;
+    top:40rpx;
+    z-index: 9;
 }
 .HIITCardImgR{
     width:23rpx;
     height: 40rpx;
     float: right;
+    position: relative;
+    top:40rpx;
+    z-index: 9;
 }
 .swiperBigTitle{
     text-align: center;

@@ -32,7 +32,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToVideoClock() {
         this.navigateTo({url: '/pages/videoClock/videoClock'});
     }
-
+    //完成打卡
+    static navigateToFinishClock() {
+        this.navigateTo({url: '/pages/finishClock/finishClock'});
+    }
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
     }*/
