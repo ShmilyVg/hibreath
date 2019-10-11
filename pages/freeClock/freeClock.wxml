@@ -1,0 +1,25 @@
+<form bindsubmit="submit" class="fill-width flex-column box-sizing-border-box" style="padding: 70rpx 40rpx;">
+    <view class="free-clock-title" style="margin-bottom: 50rpx;">选择运动方式</view>
+    <view class="fill-width flex-row space-between" style="flex-wrap: wrap;">
+        <view wx:for="{{9}}" wx:key="index" class="flex-column align-items-center relative free-clock-sport-way-layout">
+            <image src="" class="free-clock-sport-way-img"></image>
+            <view class=" free-clock-sport-way-bg-common free-clock-sport-way-bg-unselected"></view>
+            <view class="free-clock-sport-way-content-common free-clock-sport-way-content-unselected">跑步</view>
+        </view>
+    </view>
+
+    <view class="free-clock-title" style="margin-top: 20rpx;">选择运动时长</view>
+
+    <view class="fill-width flex-row align-items-center justify-center free-clock-sport-duration-layout">
+        <duration-picker></duration-picker>
+    </view>
+
+
+
+    <view class="free-clock-title" style="margin-top: 70rpx;">说说感受</view>
+
+    <textarea name="sportFeel" placeholder="说说今天的感受吧…（140字）" maxlength="140" placeholder-class="free-clock-say-placeholder-class" class="free-clock-say"></textarea>
+
+    <button form-type="submit" class="flex-row align-items-center justify-center free-btn">完成</button>
+</form>
+

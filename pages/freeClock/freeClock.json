@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "自由打卡"
+  "navigationBarTitleText": "运动自由打卡",
+  "usingComponents": {
+    "duration-picker": "./components/duration-picker/index"
+  }
 }
