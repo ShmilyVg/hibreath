@@ -11,9 +11,9 @@ function init(page) {
     _data = page.data;
 }
 
-function setData(data) {
+function setData(data, widthRpx) {
     trendData = data;
-    normalTrend();
+    normalTrend(widthRpx);
 }
 
 function initTouchHandler() {
@@ -37,15 +37,17 @@ function initTouchHandler() {
     };
 }
 
-function normalTrend() {
+function normalTrend(widthRpx) {
     let windowWidth = 370;
     let windowHeight = 200;
     try {
-        let res = wx.getSystemInfoSync();
-        windowWidth = 370 * res.windowWidth / 375;
+        let {windowWidth:sysWidth, pixelRatio} = wx.getSystemInfoSync();
+
+        windowWidth = 370 * ((widthRpx / pixelRatio) || sysWidth) / 375;
         windowHeight = 200 * windowWidth / 370;
     } catch (e) {
         // do something when get system info failed
+        console.error(e);
     }
 
     const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit} = trendData;

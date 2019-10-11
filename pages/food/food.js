@@ -190,7 +190,7 @@ Page({
             const {currentIndex, topChose} = this.data;
             dataListY1Name = topChose[currentIndex].text;
         }
-        Trend.setData({dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5});
+        Trend.setData({dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5}, 650);
     },
 
     bindTapTopChose(e) {
