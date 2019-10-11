@@ -661,9 +661,9 @@ Page({
                 grayRight: true
             })
         }
-       /* this.setData({
+        this.setData({
             currentSwiper: e.detail.current
-        })*/
+        })
     },
     //运动打卡--左按钮
     imgToPre(){
