@@ -1,4 +1,9 @@
 import Protocol from "../../../../modules/network/protocol";
+import {Toast} from "heheda-common-view";
+
+function getDefaultSportWays() {
+    return new Array(9).fill(0).map((item, index) => ({id: index + 1}));
+}
 
 Component({
     behaviors: ['wx://form-field'],
@@ -18,13 +23,14 @@ Component({
         }
     },
     data: {
-        sportWays: []
+        sportWays: getDefaultSportWays()
     },
     lifetimes: {
         created() {
 
         },
         async attached() {
+            Toast.showLoading();
             const {result: {list: sportWays}} = await Protocol.postSettingsSportStyle();
             const {selectedIds} = this.data;
             this.setData({sportWays}, () => {
@@ -35,6 +41,7 @@ Component({
                         value: this._getValue()
                     });
                 }
+                Toast.hiddenLoading();
             });
         },
     },
