@@ -15,20 +15,22 @@ Component({
         addGlobalClass: true,
     },
     properties: {
-        duration: {
+        minutes: {
             type: Array,
-            value: []
-        },
-        inputType: {
-            type: String,
-            value: 'number'
-        },
-        maxLength: {
-            type: Number,
-            value: 3
+            value: 20
         },
     },
-
+    observers: {
+        'minutes'(value) {
+            const hour = Math.floor(value / 60);
+            const minute = value % 60;
+            this.setData({durationIndex: [hour, minute]},()=>{
+                this.setData({
+                    value: this._getValue()
+                });
+            });
+        }
+    },
     data: {
         durationArray: [getHoursObj(), getMinuteObj()],
         durationIndex: [0, 20],
@@ -39,7 +41,7 @@ Component({
         created() {
         },
         attached() {
-            this.setData({value: this.data.durationIndex});
+            this.setData({value: this._getValue()});
         },
     },
     methods: {
@@ -50,16 +52,20 @@ Component({
                 durationIndex: value
             }, () => {
                 this.setData({
-                    value: e
+                    value: this._getValue()
                 });
             });
 
+        },
+        _getValue() {
+            const {durationArray: [hours, minutes], durationIndex: [firstIndex, lastIndex]} = this.data;
+            return hours[firstIndex].value * 60 + minutes[lastIndex].value;
         },
         bindCancel(e) {
             // console.log(e);
         },
         bindMultiPickerColumnChange(e) {
-            const {detail: {column, value}} = e, {durationIndex: [firstIndexValue,endIndexValue]} = this.data;
+            const {detail: {column, value}} = e, {durationIndex: [firstIndexValue, endIndexValue]} = this.data;
             this.data.durationIndex[column] = value;
             if (column === 0) {
                 if (endIndexValue < 20) {
