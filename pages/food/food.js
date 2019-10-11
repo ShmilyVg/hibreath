@@ -65,7 +65,7 @@ Page({
                 text: '心率', addText: '记心率', addProjectList: [
                     {
                         id: 'heart',
-                        title: '心率(BMP)',
+                        title: '心率(BPM)',
                         placeholder: '请输入您的心率',
                         type: 'heart'
                     }

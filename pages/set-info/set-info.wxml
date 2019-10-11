@@ -181,7 +181,7 @@
             <view class="clear"></view>
         </view>
         <view>
-            <view class="commodity_title">心率(BMP)</view>
+            <view class="commodity_title">心率(BPM)</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='heart' placeholder="请输入您的心率" type="number"/>
             <view class="clear"></view>
         </view>
