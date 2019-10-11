@@ -9,7 +9,7 @@ import {Toast as toast} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";
-import {getEndZeroTimestamp, getFrontZeroTimestamp, getTimeString} from "../../utils/time";
+import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
 
 const timeObj = {
     _frontTimestamp: 0,
@@ -57,6 +57,7 @@ Page({
 
     init() {
         Trend.init(this);
+        Trend.initTouchHandler();
         Circular.init(this);
     },
 
@@ -83,25 +84,18 @@ Page({
                 image = image + '.png';
                 value.image = image
             });
-            const endData = tools.createDateAndTime(list[0].createdTimestamp);
-            const startData = tools.createDateAndTime(list[list.length - 1].createdTimestamp);
-            let trendDate = `${startData.date}-${endData.month}月${endData.day}日`;
 
             if (isRefresh) {
                 this.data.page = 1;
             } else {
                 list = this.data.trendData.concat(list);
             }
-            this.setData({trendDate, trendData: list});
+            this.setData({trendData: list});
         } else {
             --this.data.page;
         }
         wx.stopPullDownRefresh();
         toast.hiddenLoading();
-    },
-
-    onReady() {
-        Circular.createSelectorQuery();
     },
 
     toBind() {
@@ -128,9 +122,10 @@ Page({
     handleTrend() {
         let list = this.data.trendData;
         if (list && list.length) {
-            Trend.initTouchHandler();
             let dataListX = [], dataListY = [];
-            list.forEach((value) => {
+            list.sort(function (item1, item2) {
+                return item1.createdTimestamp - item2.createdTimestamp;
+            }).forEach((value) => {
                 const {month,day} = tools.createDateAndTime(value.createdTimestamp);
                 dataListX.push(month + '月' + day+'日');
                 dataListY.push(value.dataValue);
@@ -144,10 +139,6 @@ Page({
     },
 
     toChooseDate() {
-        let info = {
-            end_time: this.data.trendData[0],
-            start_time: this.data.trendData[this.data.trendData.length - 1],
-        };
         wx.navigateTo({
             url: '../calendar/calendar?type=' + 'breath'
         });
@@ -183,22 +174,25 @@ Page({
             const {startTimeValue, endTimeValue} = trendTime;
             let {result: {list}} = await Protocol.postBreathDatalistAll({
                 timeBegin: startTimeValue,
-                timeEnd: endTimeValue + (24 * 60 * 60 * 1000)
+                timeEnd: endTimeValue
             });
             if (list.length) {
-                list = list.sort(function (item1, item2) {
-                    return item1.createdTimestamp - item2.createdTimestamp;
-                });
                 this.data.trendData = list;
                 this.updateTrendTime({
-                    frontTimestamp: list[0].createdTimestamp,
-                    endTimestamp: list[list.length - 1].createdTimestamp
+                    frontTimestamp: startTimeValue,
+                    endTimestamp: endTimeValue
                 })
-
             }
+            getApp().globalData.trendTime = null;
         }
     },
 
+    onReady() {
+        Circular.createSelectorQuery();
+        Trend.initTouchHandler();
+        this.updateTrendTime({frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now()});
+
+    },
     updateTrendTime({frontTimestamp, endTimestamp}) {
         timeObj.frontTimestamp = frontTimestamp;
         timeObj.endTimestamp = endTimestamp;
