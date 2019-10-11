@@ -177,4 +177,12 @@ export default class Protocol {
     static postHeartDataListAll({timeBegin, timeEnd}) {
         return Network.request({url: 'heartData/listAll', data: arguments[0]});
     }
+
+    static postTaskSportStyle({freestyleIds, duration, feelDesc}) {
+        return Network.request({url: 'task/sportstyle', data: arguments[0]});
+    }
+
+    static postSettingsSportStyle() {
+        return Network.request({url: 'settings/sportstyle'});
+    }
 }
