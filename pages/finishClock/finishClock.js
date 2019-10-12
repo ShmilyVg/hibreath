@@ -24,7 +24,7 @@ Page({
     async onLoad(options) {
         this.dataId = options.dataId;
         const {userInfo: {headUrl: userHead}} = await UserInfo.get();
-        this.setData({userHead, clockWay: 'video' || options.clockWay});
+        this.setData({userHead, clockWay: options.clockWay});
         const {
             result: {
                 sportInfo, time, goalDesc, freestyleIds,
@@ -57,8 +57,8 @@ Page({
     toClockPage(e) {
         const {currentTarget: {dataset: {way}}} = e;
         if (way === 'free') {
-            HiNavigator.redirectToFreeCheck({dataId:this.dataId});
-        }else if (way === 'video') {
+            HiNavigator.redirectToFreeCheck({dataId: this.dataId});
+        } else if (way === 'video') {
 
         }
     },
