@@ -1,1 +1,71 @@
-<view ></view>
+<view class="absolute fill-width finish-clock-top-bg"></view>
+<view class="fill-width flex-column box-sizing-border-box finish-clock-layout">
+    <view class="relative fill-width finish-clock-top-layout">
+        <image class="absolute fill-width finish-clock-top-img" src=""></image>
+        <view class="relative fill-width flex-column box-sizing-border-box finish-clock-layout-inner" style="align-items: flex-start;">
+            <view class="finish-clock-title finish-margin">自由运动打卡</view>
+            <view class="finish-clock-subtitle finish-margin">自由运动·约20分钟</view>
+
+            <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin">
+                <image class="finish-clock-top-head" src="{{userHead}}"></image>
+                <view class="flex-row align-items-center justify-center finish-clock-re-choose-btn">重新选择</view>
+            </view>
+
+            <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin" style="margin-top: 40rpx;">
+                <view class="finish-clock-target-text">我要穿衣更好看</view>
+                <image class="finish-clock-nike-icon" src="../../images/finishClock/nike.png"></image>
+            </view>
+
+            <view class="fill-width finish-clock-line" style="margin-top: 40rpx;margin-bottom: 34rpx;"></view>
+
+            <view class="flex-column" style="align-self: center;">
+                <view class="finish-clock-sport-time">2019/10/08 15:40</view>
+                <view class="finish-clock-finish-sport">完成运动</view>
+            </view>
+
+            <view class="fill-width finish-clock-line" style="margin-top: 33rpx;margin-bottom: 50rpx;"></view>
+
+            <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin">
+                <view class="flex-row align-items-center">
+                    <image class="finish-clock-item-icon" src="../../images/finishClock/{{clockWay==='free'?'leftG':'action'}}.png"></image>
+                    <view class="flex-column" style="align-items: flex-start">
+                        <view class="finish-clock-item-title">9 种</view>
+                        <view class="finish-clock-item-subtitle">{{clockWay==='free'?'运动方式':'动作'}}</view>
+                    </view>
+                </view>
+                <view class="flex-row align-items-center">
+                    <image class="finish-clock-item-icon" src="../../images/finishClock/rightR.png"></image>
+                    <view class="flex-column" style="align-items: flex-start">
+                        <view class="finish-clock-item-title">30 kcal</view>
+                        <view class="finish-clock-item-subtitle">预计消耗</view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </view>
+
+    <view class="finish-clock-bottom-title">本次训练的感受如何？</view>
+
+    <view class="fill-width flex-column align-items-center justify-center finish-clock-bottom-layout">
+        <block wx:if="{{clockWay==='free'}}">
+            <text class="finish-clock-feel-content">改变你的心情\n健身能让你的心情变好，脑内分泌的脑内啡能够让我们感受到愉快的心情，释放焦虑、压力，感到更快乐、更轻松！ 帮助睡眠 健身能帮助我们睡得更好，不管健身的时间是在早上、中午、晚上，67%有健身习惯的人，深夜睡眠品质比没健身习惯的人好！</text>
+        </block>
+        <block wx:else>
+            <block wx:if="{{!feelEn}}">
+                <view class="fill-width flex-row align-items-center box-sizing-border-box space-between" style="padding: 63rpx 70rpx 50rpx;">
+                    <view wx:for="{{feelList}}" wx:key="feelEn" bindtap="onFeelItemClickEvent" data-item="{{item}}" class="flex-column align-items-center">
+                        <image src="../../images/finishClock/feel_0{{item.icon}}.png" class="finish-clock-feel-icon"></image>
+                        <view class="finish-clock-feel-text">{{item.feelDesc}}</view>
+                    </view>
+                </view>
+                <view class="finish-clock-feel-remind">你的反馈将帮助我们改进运动方案</view>
+            </block>
+            <view wx:else class="flex-row align-items-center box-sizing-border-box" style="padding: 35rpx 0;">
+                <image class="finish-clock-feel-small-icon" src="../../images/finishClock/feel_small_0{{feelObj.icon}}.png"></image>
+                <view class="finish-clock-feel-small-icon-text">{{feelObj.feelContent}}</view>
+            </view>
+        </block>
+
+    </view>
+</view>

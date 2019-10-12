@@ -190,7 +190,11 @@ export default class Protocol {
         return Network.request({url: 'sportdata/info', data: {id}});
     }
 
-    static postSportDataPut({freestyleIds, duration, feelDesc, calorie,  id = ''}) {
+    static postSportDataPut({freestyleIds, duration, feelDesc, calorie, id = ''}) {
         return Network.request({url: 'sportdata/put', data: arguments[0]});
+    }
+
+    static postSportDataPutFeel({feelDesc, feelEn, id}) {
+        return Network.request({url: 'sportdata/putfeel', data: arguments[0]});
     }
 }
