@@ -11,12 +11,14 @@ Page({
     async onLoad(options) {
         this.dataId = options.dataId;
         if (this.dataId) {
+            Toast.showLoading();
             const {result: {id, freestyleIds, duration, feelDesc}} = await Protocol.postSportDataInfo({id: this.dataId});
+            Toast.hiddenLoading();
             this.setData({
                 freestyleIds: freestyleIds.map(item => parseInt(item)),
                 duration: duration || 20,
                 feelDesc
-            })
+            });
         }
     },
 
@@ -30,6 +32,7 @@ Page({
         const calorie = sportWays.map(item => item.calorie).reduce((total, current) => {
             return total + current;
         });
+        Toast.showLoading();
         if (!this.dataId) {
             const {result: {id: dataId}} = await Protocol.postTaskSportStyle({
                 duration, freestyleIds, calorie, feelDesc: sportFeel.trim(),
@@ -43,5 +46,6 @@ Page({
             });
             HiNavigator.redirectToFinishCheck({dataId: this.dataId, clockWay: 'free'});
         }
+        Toast.hiddenLoading();
     }
 });

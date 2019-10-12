@@ -113,7 +113,7 @@ export default class HiNavigator extends CommonNavigator {
     }
 
     static redirectToFinishCheck({dataId, clockWay}) {
-        this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&sportType=' + clockWay});
+        this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
     }
 
     static redirectToFreeCheck({dataId}) {

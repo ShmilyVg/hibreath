@@ -55,6 +55,7 @@ Page({
     },
 
     toClockPage(e) {
+        console.log(e);
         const {currentTarget: {dataset: {way}}} = e;
         if (way === 'free') {
             HiNavigator.redirectToFreeCheck({dataId: this.dataId});
