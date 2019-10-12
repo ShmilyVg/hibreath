@@ -41,7 +41,7 @@ Page({
         wx.setNavigationBarTitle({title: sportInfo.title});
         this.setData({
             sportInfo,
-            finishTime: getSportFinishedTime({timestamp: time}),
+            finishTime: getSportFinishedTime({timestamp: time * 1000}),
             goalDesc,
             ...obj
         });
