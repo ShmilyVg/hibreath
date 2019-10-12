@@ -11,7 +11,8 @@
     <view class="bindText" style="margin-bottom: 75rpx">测测你的燃脂情况</view>
     <view class="bindImg"></view>
     <view class="bindSj"></view>
-    <button class="hint-btn"   bindgetuserinfo="onGetUserInfoEvent" >点击绑定燃脂精灵</button>
+   <!-- <button class="hint-btn"   bindgetuserinfo="onGetUserInfoEvent" >点击绑定燃脂精灵</button>-->
+    <button class="hint-btn"   bindtap="onGetUserInfoEvent" >点击绑定燃脂精灵</button>
 </view>
     <!--绑定连接不上情况-->
 <view class="home-again" wx:if="{{tryAgain}}">
