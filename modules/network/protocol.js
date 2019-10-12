@@ -112,8 +112,8 @@ export default class Protocol {
     }
 
     //视频打卡页
-    static postHIIT() {
-        return Network.request({url: 'sport/info'})
+    static postHIIT(data) {
+        return Network.request({url: 'sport/info', data: data})
     }
 
     //上传身体指标

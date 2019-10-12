@@ -13,7 +13,7 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     //吹气完成跳转结果页
     static navigateBlowToResult({id}) {
-        this.reLaunch({url: '/pages/result/result?id=' + id});
+        this.navigateTo({url: '/pages/result/result?id=' + id});
     }
     //历史记录进入结果页
     static navigateToResult({fatText, fatTextEn, fatDes, score}) {
@@ -29,8 +29,8 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/freeClock/freeClock'});
     }
     //运动-视频打卡
-    static navigateToVideoClock() {
-        this.navigateTo({url: '/pages/videoClock/videoClock'});
+    static navigateToVideoClock({id}) {
+        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
     }
     //完成打卡
     static navigateToFinishClock() {

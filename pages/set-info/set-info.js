@@ -42,7 +42,8 @@ Page({
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
-            {text: '单位食堂为主', isChose: false, en: 'shitang'}
+            {text: '单位食堂为主', isChose: false, en: 'shitang'},
+            {text: '居家制作为主', isChose: false, en: 'jujia'}
         ],
         bgColorSetInfoPage: '#ffffff',
         score: 6.5,
@@ -146,8 +147,17 @@ Page({
         })*/
         let that = this;
         console.log('on:', e);
+        if (e.isNotRegister) {
+            that.setData({
+                isNotRegister :e.isNotRegister
+            })
+        }
         this.connectionPage = new ConnectionManager(this);
+        console.log(this.data.showNewInfo,'showNewInfo1')
+        console.log(this.data.showGuide,'this.data.showNewInfo1')
         await that.handleGuide(that);
+        console.log(this.data.showNewInfo,'showNewInfo2')
+        console.log(this.data.showGuide,'this.data.showNewInfo2')
         if (e.isNotRegister) {
             console.log(e.isNotRegister,'000000')
             that.setData({
@@ -155,8 +165,12 @@ Page({
                 showGuide: true
             })
         }
+        console.log(this.data.showNewInfo,'showNewInfo3')
+        console.log(this.data.showGuide,'this.data.showNewInfo3')
         this.handleBaseInfo();
         Circular.init(this);
+        console.log(this.data.showNewInfo,'showNewInfo4')
+        console.log(this.data.showGuide,'this.data.showNewInfo4')
     },
 
     handleGuide(that) {
@@ -164,7 +178,7 @@ Page({
             wx.getSetting({
                 success: (res) => {
                     console.log('是否授权', res.authSetting['scope.userInfo']);
-                    if (res.authSetting['scope.userInfo'] === undefined) {
+                    if (res.authSetting['scope.userInfo'] === undefined &&  that.data.isNotRegister ===1 ) {
                         that.setData({
                             showNewInfo: true,
                             showGuide: true,
@@ -582,15 +596,16 @@ Page({
         }
     },
     //视频打卡
-    toVideoClock(){
-        HiNavigator.navigateToVideoClock();
+    toVideoClock(e){
+        console.log("toVideoClock",e.currentTarget.dataset.id)
+        HiNavigator.navigateToVideoClock({id:e.currentTarget.dataset.id});
     },
     //去完成按钮
     bindTapToFinish(e) {
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'fatBurn':
-                HiNavigator.relaunchToIndex();
+                HiNavigator.navigateIndex();
                 break
             case 'bodyIndex':
                 this.showModal();
