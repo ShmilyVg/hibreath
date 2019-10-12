@@ -29,8 +29,8 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/freeClock/freeClock'});
     }
     //运动-视频打卡
-    static navigateToVideoClock() {
-        this.navigateTo({url: '/pages/videoClock/videoClock'});
+    static navigateToVideoClock({id}) {
+        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
     }
     //完成打卡
     static navigateToFinishClock() {

@@ -6,15 +6,13 @@ Page({
 
     data: {
         videoUrl:"",
-        confirmText: '好哒',
         cancelText: '取消',
-        tintColor: 'color:#00a48f',
-        title:"真棒！",
-        content:"恭喜完成本次运动",
-        hidden:true,
         itemNumber:2,
+        list:[],
         isAutoplay:true,
         isLive:0,//正在播放的视频下标
+        listNow:1,//当前播放的视频
+        listNumber:0,//总视频数
         sliderValue: 0, //控制进度条slider的值，
         updateState: false, //防止视频播放过程中导致的拖拽失效
         progressM:"",
@@ -29,10 +27,20 @@ Page({
 
     onLoad: function (data) {
         console.log("123123",data)
-
+        Protocol.postHIIT({id:data.id}).then(data => {
+            console.log(data,'data')
+            const finaLiat = data.result.sectionList
+            this.setData({
+                list: finaLiat,
+                listNumber:finaLiat.length,
+                videoUrl:finaLiat[0].videoUrl,
+                indexTitle:finaLiat[0].title,
+                indexStepList:finaLiat[0].stepList,
+            })
+        })
     },
     onShow:function () {
-        let list=[
+       /* let list=[
             {"videoUrl": "http://img.hipee.cn/hibreath/video/1%E3%80%82%E6%85%A2%E8%B5%B0%20-%201%E5%88%86%E9%92%9F.mp4",
             "title": "第1个",
             "des": "第1个描述",
@@ -53,16 +61,9 @@ Page({
                 "duration":"3333",
                 "pic": "../../images/hiIi2.png",
                 "stepList":["躺下3"]
-            }];
-        this.setData({
-            list: list,
-            videoUrl:list[0].videoUrl,
-            indexTitle:list[0].title,
-            indexStepList:list[0].stepList,
-        })
-        Protocol.postHIIT().then(data => {
-                console.log(data,'data')
-        })
+            }];*/
+
+
     },
     //播放条时间改表触发
     videoUpdate(e) {
@@ -101,9 +102,7 @@ Page({
     },
 
     confirm: function () {
-        this.setData({
-            hidden: true
-        })
+
 
     },
 
@@ -136,13 +135,15 @@ Page({
                 let vingNext= i+1;
                 if(vingNext>=this.data.list.length){
                     this.setData({
-                        hidden: false,
-                        videoLast: true
+                        indexStepList:this.data.list[vingNext].stepList,
+                        indexTitle:this.data.list[vingNext].title
                     })
                 }else{
                     this.setData({
+                        listNow:vingNext,
                         videoUrl: this.data.list[vingNext].videoUrl,
-                        videoLast: true
+                        indexStepList:this.data.list[vingNext].stepList,
+                        indexTitle:this.data.list[vingNext].title
                     })
                 }
                 return;
@@ -155,7 +156,10 @@ Page({
         var isLive=e.currentTarget.dataset.number; //点击的视频所在数组的下标
         this.setData({
             videoUrl: videoUrl,
-            isLive: isLive
+            isLive: isLive,
+            listNow:isLive+1,
+            indexStepList:this.data.list[isLive].stepList,
+            indexTitle:this.data.list[isLive].title
         })
     },
     startVideo(){
