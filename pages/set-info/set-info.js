@@ -592,7 +592,7 @@ Page({
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'fatBurn':
-                HiNavigator.relaunchToIndex();
+                HiNavigator.navigateIndex();
                 break
             case 'bodyIndex':
                 this.showModal();

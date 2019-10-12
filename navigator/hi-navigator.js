@@ -13,7 +13,7 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     //吹气完成跳转结果页
     static navigateBlowToResult({id}) {
-        this.reLaunch({url: '/pages/result/result?id=' + id});
+        this.navigateTo({url: '/pages/result/result?id=' + id});
     }
     //历史记录进入结果页
     static navigateToResult({fatText, fatTextEn, fatDes, score}) {
