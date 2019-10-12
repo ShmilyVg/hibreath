@@ -65,7 +65,7 @@ export default class HiNavigator extends CommonNavigator {
 
     /*新加跳转*/
     static navigateSuccessInfo() {
-        this.reLaunch({url: '/pages/successInfo/successInfo'})
+        this.navigateTo({url: '/pages/successInfo/successInfo'})
     }
     static navigateToclickBody() {
         this.navigateTo({url: '/pages/set-info/set-info'})
@@ -73,10 +73,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToclickCheck() {
         this.navigateTo({url: '/pages/history/history'})
     }
-    static navigateToclickMine() {
-        this.navigateTo({url: '/pages/device-manage/device-manage'})
-    }
-
 
     static navigateToPlan() {
         this.navigateTo({url: '/pages/plan/plan'})

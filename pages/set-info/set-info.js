@@ -149,28 +149,15 @@ Page({
         console.log('on:', e);
         if (e.isNotRegister) {
             that.setData({
-                isNotRegister :e.isNotRegister
-            })
-        }
-        this.connectionPage = new ConnectionManager(this);
-        console.log(this.data.showNewInfo,'showNewInfo1')
-        console.log(this.data.showGuide,'this.data.showNewInfo1')
-        await that.handleGuide(that);
-        console.log(this.data.showNewInfo,'showNewInfo2')
-        console.log(this.data.showGuide,'this.data.showNewInfo2')
-        if (e.isNotRegister) {
-            console.log(e.isNotRegister,'000000')
-            that.setData({
+                isNotRegister :e.isNotRegister,
                 showNewInfo: true,
                 showGuide: true
             })
         }
-        console.log(this.data.showNewInfo,'showNewInfo3')
-        console.log(this.data.showGuide,'this.data.showNewInfo3')
+        this.connectionPage = new ConnectionManager(this);
+        await that.handleGuide(that);
         this.handleBaseInfo();
         Circular.init(this);
-        console.log(this.data.showNewInfo,'showNewInfo4')
-        console.log(this.data.showGuide,'this.data.showNewInfo4')
     },
 
     handleGuide(that) {
