@@ -1,15 +1,19 @@
 // pages/finishClock/finishClock.js
+import Protocol from "../../modules/network/protocol";
+
 Page({
 
     /**
      * 页面的初始数据
      */
-    data: {},
+    data: {
+        clockWay: 'free'
+    },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
+    async onLoad(options) {
+        this.dataId = options.dataId;
+        this.clockWay = options.clockWay;
+        const {result: {freestyleIds, sectionSize, duration, durationUnit, feelDesc, feelEn}} = await Protocol.postSportDataInfo({id: this.dataId});
 
     },
 

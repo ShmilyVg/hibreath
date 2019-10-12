@@ -35,13 +35,13 @@ Page({
                 duration, freestyleIds, calorie, feelDesc: sportFeel.trim(),
                 id: this.dataId
             });
-            HiNavigator.redirectToFinishCheck({dataId, sportType: 'free'});
+            HiNavigator.redirectToFinishCheck({dataId, clockWay: 'free'});
         } else {
             await Protocol.postSportDataPut({
                 duration, freestyleIds, calorie, feelDesc: sportFeel.trim(),
                 id: this.dataId
             });
-            HiNavigator.redirectToFinishCheck({dataId: this.dataId, sportType: 'free'});
+            HiNavigator.redirectToFinishCheck({dataId: this.dataId, clockWay: 'free'});
         }
     }
 });
