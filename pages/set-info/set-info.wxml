@@ -102,7 +102,7 @@
                     </view>
                 </scroll-view>
             </view>
-            <view class="btn-position flex-column">
+            <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column">
                 <block wx:if="{{page!=8}}">
                     <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
                           hover-stay-time="50" bindtap="continue">下一步

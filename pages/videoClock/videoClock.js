@@ -41,29 +41,6 @@ Page({
         })
     },
     onShow:function () {
-       /* let list=[
-            {"videoUrl": "http://img.hipee.cn/hibreath/video/1%E3%80%82%E6%85%A2%E8%B5%B0%20-%201%E5%88%86%E9%92%9F.mp4",
-            "title": "第1个",
-            "des": "第1个描述",
-            "duration":"11111",
-            "pic": "../../images/hiIi2.png",
-            "stepList":["躺下1"]
-            },
-            {"videoUrl": "http://img.hipee.cn/hibreath/video/9%E3%80%81%E7%96%BE%E9%80%9F%E8%B5%B0-1%E5%88%86%E9%92%9F.mp4",
-                "title": "第2个",
-                "des": "第2个描述",
-                "duration":"2222",
-                "pic": "../../images/hiit1.png",
-                "stepList":["躺下2"]
-            },
-            {"videoUrl": "http://img.hipee.cn/hibreath/video/1%E3%80%82%E6%85%A2%E8%B5%B0%20-%201%E5%88%86%E9%92%9F.mp4",
-                "title": "第3个",
-                "des": "第3个描述",
-                "duration":"3333",
-                "pic": "../../images/hiIi2.png",
-                "stepList":["躺下3"]
-            }];*/
-
 
     },
     //播放条时间改表触发
