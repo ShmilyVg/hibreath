@@ -1,6 +1,7 @@
 // pages/finishClock/finishClock.js
 import Protocol from "../../modules/network/protocol";
 import UserInfo from "../../modules/network/network/libs/userInfo";
+import {getSportFinishedTime} from "../../utils/time";
 
 Page({
 
@@ -16,16 +17,34 @@ Page({
         ],
         feelEn: '',
         feelObj: {feelContent: '', icon: ''},
-
+        sportLeftShowStr: ''
     },
 
     async onLoad(options) {
         this.dataId = options.dataId;
-        this.clockWay = options.clockWay;
         const {userInfo: {headUrl: userHead}} = await UserInfo.get();
-        this.setData({userHead});
-        const {result: {freestyleIds, sectionSize, duration, durationUnit, feelDesc, feelEn}} = await Protocol.postSportDataInfo({id: this.dataId});
-
+        this.setData({userHead, clockWay: options.clockWay});
+        const {
+            result: {
+                sportInfo, time, goalDesc, freestyleIds,
+                sectionSize, duration, durationUnit, feelDesc, feelEn
+            }
+        }
+            = await Protocol.postSportDataInfo({id: this.dataId});
+        let obj = {};
+        if (this.data.clockWay === "free") {
+            obj = {feelDesc};
+            obj['sportLeftShowStr'] = freestyleIds ? (freestyleIds.length + ' 种') : '0 种';
+        } else {
+            obj['sportLeftShowStr'] = sectionSize + ' 组';
+        }
+        wx.setNavigationBarTitle({title: sportInfo.title});
+        this.setData({
+            sportInfo,
+            finishTime: getSportFinishedTime({timestamp: time}),
+            goalDesc,
+            ...obj
+        });
 
     },
     async onFeelItemClickEvent(e) {

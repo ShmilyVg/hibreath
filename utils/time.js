@@ -1,6 +1,22 @@
+function getMonthStr(date) {
+    return ('0' + (date.getMonth() + 1)).slice(-2);
+}
+
+function getDayStr(date) {
+    return ('0' + date.getDate()).slice(-2);
+}
+
+function getHourStr(date) {
+    return ('0' + date.getHours()).slice(-2);
+}
+
+function getMinuteStr(date) {
+    return ('0' + date.getMinutes()).slice(-2);
+}
+
 export function getMonthAndDate({timestamp}) {
     let date = new Date(timestamp);
-    return `${('0' + (date.getMonth() + 1)).slice(-2)}月${('0' + date.getDate()).slice(-2)}日`;
+    return `${getMonthStr(date)}月${getDayStr(date)}日`;
 }
 
 export function getFullDate({timestamp}) {
@@ -41,4 +57,10 @@ export function getTimeString({frontTimestamp, endTimestamp}) {
     } else {
         return `${getFullDate({timestamp: frontTimestamp})}-${getFullDate({timestamp: endTimestamp})}`
     }
+}
+
+
+export function getSportFinishedTime({timestamp}) {
+    const date = new Date(timestamp);
+    return `${date.getFullYear()}/${getMonthStr(date)}/${getDayStr(date)} ${getHourStr(date)}:${getMinuteStr(date)}`;
 }
