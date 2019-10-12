@@ -116,4 +116,11 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/calendar/calendar?type=' + type});
     }
 
+    static redirectToFinishCheck({dataId, clockWay}) {
+        this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&sportType=' + clockWay});
+    }
+
+    static redirectToFreeCheck({dataId}) {
+        this.redirectTo({url: '/pages/freeClock/freeClock?dataId=' + dataId});
+    }
 }
