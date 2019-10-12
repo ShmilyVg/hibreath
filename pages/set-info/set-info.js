@@ -153,6 +153,7 @@ Page({
                 showNewInfo: true,
                 showGuide: true
             })
+            return
         }
         this.connectionPage = new ConnectionManager(this);
         await that.handleGuide(that);
