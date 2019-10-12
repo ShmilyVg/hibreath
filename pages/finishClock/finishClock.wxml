@@ -8,7 +8,7 @@
 
             <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin">
                 <image class="finish-clock-top-head" src="{{userHead}}"></image>
-                <view class="flex-row align-items-center justify-center finish-clock-re-choose-btn">重新选择</view>
+                <view bindtap="toClockPage" data-way="{{clockWay}}" class="flex-row align-items-center justify-center finish-clock-re-choose-btn">重新选择</view>
             </view>
 
             <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin" style="margin-top: 40rpx;">
