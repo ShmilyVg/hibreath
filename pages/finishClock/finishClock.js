@@ -2,6 +2,7 @@
 import Protocol from "../../modules/network/protocol";
 import UserInfo from "../../modules/network/network/libs/userInfo";
 import {getSportFinishedTime} from "../../utils/time";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
@@ -51,6 +52,15 @@ Page({
         const {currentTarget: {dataset: {item}}} = e;
         await Protocol.postSportDataPutFeel({...item, id: this.dataId});
         this.setData({feelEn: item.feelEn, feelObj: {feelContent: item.content, icon: item.icon}});
+    },
+
+    toClockEditPage(e) {
+        const {currentTarget: {dataset: {way}}} = e;
+        if (way === 'free') {
+            HiNavigator.redirectToFreeCheck({dataId:this.dataId});
+        }else if (way === 'video') {
+
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
