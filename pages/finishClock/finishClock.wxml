@@ -12,7 +12,7 @@
             </view>
 
             <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin" style="margin-top: 40rpx;">
-                <view class="finish-clock-target-text">我要穿衣更好看</view>
+                <view class="finish-clock-target-text">{{goalDesc}}</view>
                 <image class="finish-clock-nike-icon" src="../../images/finishClock/nike.png"></image>
             </view>
 
@@ -29,7 +29,7 @@
                 <view class="flex-row align-items-center">
                     <image class="finish-clock-item-icon" src="../../images/finishClock/{{clockWay==='free'?'leftG':'action'}}.png"></image>
                     <view class="flex-column" style="align-items: flex-start">
-                        <view class="finish-clock-item-title">9 种</view>
+                        <view class="finish-clock-item-title">{{sportLeftShowStr}}</view>
                         <view class="finish-clock-item-subtitle">{{clockWay==='free'?'运动方式':'动作'}}</view>
                     </view>
                 </view>
