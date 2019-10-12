@@ -28,7 +28,16 @@
 <swiper class="HIIT-swiper" display-multiple-items="2">
     <block wx:for="{{list}}">
         <swiper-item class="HIIT-swiperItem"  bindtap="clickSwiper" data-pid="{{item.videoUrl}}" data-number="{{index}}">
-            <image src="{{item.imgUrl}}"  width="355rpx" height="150rpx"/>
+            <view class="HIIT-swiperView" style="background-image: url('{{item.imgUrl}}')">
+                <view>
+                    <view class="HIIT-swiperItemTitle">{{item.title}}</view>
+                    <view style="padding-left: 20rpx">
+                        <view class="HIIT-swiperItemDuration">{{item.durationDesc}}</view>
+                        <image style="width: 40rpx;height: 40rpx;float: right;padding-right: 20rpx" src="../../images/finishClock/video.png"></image>
+                        <view class="clear"></view>
+                    </view>
+                </view>
+            </view>
         </swiper-item>
     </block>
 </swiper>

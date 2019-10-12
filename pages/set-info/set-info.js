@@ -42,7 +42,8 @@ Page({
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
-            {text: '单位食堂为主', isChose: false, en: 'shitang'}
+            {text: '单位食堂为主', isChose: false, en: 'shitang'},
+            {text: '居家制作为主', isChose: false, en: 'jujia'}
         ],
         bgColorSetInfoPage: '#ffffff',
         score: 6.5,

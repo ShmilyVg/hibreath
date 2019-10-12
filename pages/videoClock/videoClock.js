@@ -27,6 +27,7 @@ Page({
 
     onLoad: function (data) {
         console.log("123123",data)
+        this.dataId = data.id;
         Protocol.postHIIT({id:data.id}).then(data => {
             console.log(data,'data')
             const finaLiat = data.result.sectionList
@@ -133,14 +134,12 @@ Page({
         for(var i=0;i<this.data.list.length;i++){
             if(this.data.videoUrl == this.data.list[i].videoUrl){
                 let vingNext= i+1;
-                if(vingNext>=this.data.list.length){
-                    this.setData({
-                        indexStepList:this.data.list[vingNext].stepList,
-                        indexTitle:this.data.list[vingNext].title
-                    })
+                console.log("将要播放的视频",vingNext)
+                if(vingNext>this.data.list.length-1){
+                    HiNavigator.redirectToFinishCheck({dataId: this.dataId, clockWay: 'video'});
                 }else{
                     this.setData({
-                        listNow:vingNext,
+                        listNow:vingNext+1,
                         videoUrl: this.data.list[vingNext].videoUrl,
                         indexStepList:this.data.list[vingNext].stepList,
                         indexTitle:this.data.list[vingNext].title
