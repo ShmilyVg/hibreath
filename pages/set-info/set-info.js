@@ -153,10 +153,10 @@ Page({
                 showNewInfo: true,
                 showGuide: true
             })
-            return
+
         }
         this.connectionPage = new ConnectionManager(this);
-        await that.handleGuide(that);
+       /* await that.handleGuide(that);*/
         this.handleBaseInfo();
         Circular.init(this);
     },
@@ -166,7 +166,7 @@ Page({
             wx.getSetting({
                 success: (res) => {
                     console.log('是否授权', res.authSetting['scope.userInfo']);
-                    if (res.authSetting['scope.userInfo'] === undefined &&  that.data.isNotRegister ===1 ) {
+                    if (res.authSetting['scope.userInfo'] === undefined) {
                         that.setData({
                             showNewInfo: true,
                             showGuide: true,
