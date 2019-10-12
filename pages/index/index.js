@@ -223,7 +223,7 @@ Page({
 
 
     onGetUserInfoEvent(e) {
-        const {detail: {userInfo, encryptedData, iv}} = e;
+        /*const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
             Toast.showLoading();
             Login.doRegister({
@@ -234,7 +234,8 @@ Page({
             .then(() => UserInfo.get())
             .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
-        }
+        }*/
+        HiNavigator.navigateToDeviceBind()
     },
     onUnload() {
         //app.getBLEManager().closeAll();

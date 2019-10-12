@@ -96,6 +96,14 @@
     width: 100%;
 }
 
+.btn-positionB{
+    text-align: center;
+    color: white;
+    font-size: 32rpx;
+    width: 100%;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+}
 .placeholder{
     font-size:46rpx;
     font-family:PingFang-SC;
