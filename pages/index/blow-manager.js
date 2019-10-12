@@ -55,7 +55,7 @@ export default class BlowManager {
          let countDownNumHot =120
          setInterval(function () {
              countDownNumHot--;
-             if(countDownNumHot == 0 || that._page.data.readyimg !==true ){
+             if(that._page.data.readyimg !==true){
                  clearInterval();
              }else if(countDownNumHot == 0 && that._page.data.readyimg === true){
                  that._page.setData({

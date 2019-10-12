@@ -141,6 +141,9 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
+       /* this.setData({
+            page:wx.getStorageSync('currentPage')
+        })*/
         let that = this;
         console.log('on:', e);
         this.connectionPage = new ConnectionManager(this);
@@ -316,7 +319,7 @@ Page({
                     isSport:true,
                     sportTask: result.taskList[i],
                     sportExt:sportExt,
-                    aheight:sportExt.recommendList.length*158+110
+                    aheight:sportExt.recommendList.length*158
                 })
                 if(sportExt.recommendList.length<2){
                     this.setData({
@@ -431,6 +434,9 @@ Page({
         this.setData({
             page: ++this.data.page,
         });
+       /* wx.setStorageSync({
+            currentPage: this.data.page,
+        });*/
     },
 
     objIsEmpty(obj) {
@@ -575,6 +581,10 @@ Page({
             }, 300)
         }
     },
+    //视频打卡
+    toVideoClock(){
+        HiNavigator.navigateToVideoClock();
+    },
     //去完成按钮
     bindTapToFinish(e) {
         const {currentTarget: {dataset: {type}}} = e;
@@ -663,20 +673,26 @@ Page({
     //轮播图当前
     swiperChange: function (e) {
         console.log(e.detail.current,'eeeeee')
+        this.setData({
+            currentSwiper: e.detail.current
+        })
         if(e.detail.current === 0){
             this.setData({
                 grayLeft: true,
                 grayRight: false
             })
+            return
         }
         if(e.detail.current === this.data.sportExt.recommendList.length-1){
             this.setData({
                 grayLeft: false,
                 grayRight: true
             })
+            return
         }
         this.setData({
-            currentSwiper: e.detail.current
+            grayLeft: false,
+            grayRight: false
         })
     },
     //运动打卡--左按钮
