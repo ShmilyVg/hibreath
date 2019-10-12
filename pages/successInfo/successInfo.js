@@ -21,6 +21,9 @@ Page({
             backgroundColor: '#EE6F69',
         })
     },
+    onUnload: function () {
+        HiNavigator.navigateIndex();
+    },
     onShow:function () {
 
     },

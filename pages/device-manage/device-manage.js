@@ -31,7 +31,11 @@ Page({
         Toast.showLoading();
         Protocol.postDeviceUnbind({deviceId: this.data.deviceId}).then(data => {
             getApp().getBLEManager().clearConnectedBLE().finally(() => {
-                HiNavigator.reLaunch({url: '/pages/index/index'});
+              /*  HiNavigator.reLaunch({url: '/pages/index/index'});*/
+                Toast.success('解绑成功');
+                wx.navigateBack({
+                    delta: 1
+                });
             });
         }).catch(res => {
             console.log('解绑失败', res);
