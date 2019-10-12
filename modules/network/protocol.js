@@ -111,9 +111,13 @@ export default class Protocol {
         return Network.request({url: 'breathData/sync', data: data});
     }
 
-    //视频打卡页
+    //视频打卡页数据
     static postHIIT(data) {
         return Network.request({url: 'sport/info', data: data})
+    }
+    //视频打卡完成
+    static postHIITFin(data) {
+        return Network.request({url: 'task/sportvideo', data: data})
     }
 
     //上传身体指标

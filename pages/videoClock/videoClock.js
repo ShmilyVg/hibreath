@@ -107,13 +107,18 @@ Page({
             }
         }
     },
-    nextVideo(){
+    async nextVideo(){
         for(var i=0;i<this.data.list.length;i++){
             if(this.data.videoUrl == this.data.list[i].videoUrl){
                 let vingNext= i+1;
                 console.log("将要播放的视频",vingNext)
                 if(vingNext>this.data.list.length-1){
-                    HiNavigator.redirectToFinishCheck({dataId: this.dataId, clockWay: 'video'});
+                    await Protocol.postHIITFin({sportId:this.dataId}).then(data => {
+                        this.setData({
+                            finId:data.result.id
+                        })
+                    })
+                    HiNavigator.redirectToFinishCheck({dataId: this.data.finId, clockWay: 'video'});
                 }else{
                     this.setData({
                         listNow:vingNext+1,
