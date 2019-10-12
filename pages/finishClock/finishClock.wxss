@@ -29,7 +29,6 @@ page{
 
 .finish-clock-top-img{
     height: 230rpx;
-    background-color: #0AC1A1;
 }
 
 .finish-clock-title{
@@ -173,7 +172,7 @@ page{
     font-weight:400;
     color:rgba(69,69,69,1);
     line-height:42rpx;
-    margin: 52rpx 40rpx 33rpx;
+
 }
 
 .finish-clock-feel-small-icon{

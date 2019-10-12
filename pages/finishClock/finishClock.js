@@ -1,6 +1,7 @@
 // pages/finishClock/finishClock.js
 import Protocol from "../../modules/network/protocol";
 import UserInfo from "../../modules/network/network/libs/userInfo";
+import {getSportFinishedTime} from "../../utils/time";
 
 Page({
 
@@ -21,11 +22,12 @@ Page({
 
     async onLoad(options) {
         this.dataId = options.dataId;
-        this.clockWay = options.clockWay;
         const {userInfo: {headUrl: userHead}} = await UserInfo.get();
-        this.setData({userHead});
-        const {result: {freestyleIds, sectionSize, duration, durationUnit, feelDesc, feelEn}} = await Protocol.postSportDataInfo({id: this.dataId});
+        this.setData({userHead, clockWay: options.clockWay});
+        const {result: {sportInfo, time, freestyleIds, sectionSize, duration, durationUnit, feelDesc, feelEn}} = await Protocol.postSportDataInfo({id: this.dataId});
 
+
+        this.setData({sportInfo, finishTime: getSportFinishedTime({timestamp: time}), feelDesc});
 
     },
     async onFeelItemClickEvent(e) {

@@ -1,10 +1,10 @@
 <view class="absolute fill-width finish-clock-top-bg"></view>
 <view class="fill-width flex-column box-sizing-border-box finish-clock-layout">
     <view class="relative fill-width finish-clock-top-layout">
-        <image class="absolute fill-width finish-clock-top-img" src=""></image>
+        <image class="absolute fill-width finish-clock-top-img" src="{{sportInfo.imgUrl}}"></image>
         <view class="relative fill-width flex-column box-sizing-border-box finish-clock-layout-inner" style="align-items: flex-start;">
-            <view class="finish-clock-title finish-margin">自由运动打卡</view>
-            <view class="finish-clock-subtitle finish-margin">自由运动·约20分钟</view>
+            <view class="finish-clock-title finish-margin">{{sportInfo.title}}</view>
+            <view class="finish-clock-subtitle finish-margin">{{sportInfo.desc}}</view>
 
             <view class="fill-width flex-row align-items-center space-between box-sizing-border-box finish-margin">
                 <image class="finish-clock-top-head" src="{{userHead}}"></image>
@@ -19,7 +19,7 @@
             <view class="fill-width finish-clock-line" style="margin-top: 40rpx;margin-bottom: 34rpx;"></view>
 
             <view class="flex-column" style="align-self: center;">
-                <view class="finish-clock-sport-time">2019/10/08 15:40</view>
+                <view class="finish-clock-sport-time">{{finishTime}}</view>
                 <view class="finish-clock-finish-sport">完成运动</view>
             </view>
 
@@ -49,7 +49,9 @@
 
     <view class="fill-width flex-column align-items-center justify-center finish-clock-bottom-layout">
         <block wx:if="{{clockWay==='free'}}">
-            <text class="finish-clock-feel-content">改变你的心情\n健身能让你的心情变好，脑内分泌的脑内啡能够让我们感受到愉快的心情，释放焦虑、压力，感到更快乐、更轻松！ 帮助睡眠 健身能帮助我们睡得更好，不管健身的时间是在早上、中午、晚上，67%有健身习惯的人，深夜睡眠品质比没健身习惯的人好！</text>
+            <view class="fill-width flex-row box-sizing-border-box" style="padding: 50rpx 40rpx 50rpx;">
+                <text class="finish-clock-feel-content">{{feelDesc}}</text>
+            </view>
         </block>
         <block wx:else>
             <block wx:if="{{!feelEn}}">
