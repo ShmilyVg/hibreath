@@ -178,11 +178,19 @@ export default class Protocol {
         return Network.request({url: 'heartData/listAll', data: arguments[0]});
     }
 
-    static postTaskSportStyle({freestyleIds, duration, feelDesc, calorie, dataId: id = ''}) {
+    static postTaskSportStyle({freestyleIds, duration, feelDesc, calorie, id = ''}) {
         return Network.request({url: 'task/sportstyle', data: arguments[0]});
     }
 
     static postSettingsSportStyle() {
         return Network.request({url: 'settings/sportstyle'});
+    }
+
+    static postSportDataInfo({id}) {
+        return Network.request({url: 'sportdata/info', data: {id}});
+    }
+
+    static postSportDataPut({freestyleIds, duration, feelDesc, calorie,  id = ''}) {
+        return Network.request({url: 'sportdata/put', data: arguments[0]});
     }
 }

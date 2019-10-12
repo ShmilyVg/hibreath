@@ -16,7 +16,7 @@ Component({
     },
     properties: {
         minutes: {
-            type: Array,
+            type: Number,
             value: 20
         },
     },
