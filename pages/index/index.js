@@ -240,7 +240,7 @@ Page({
     },
     onUnload() {
         //app.getBLEManager().closeAll();
-        HiNavigator.navigateToSetInfo()
+        //HiNavigator.navigateToSetInfo()
     },
 
 
