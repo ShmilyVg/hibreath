@@ -172,7 +172,7 @@ page{
     font-weight:400;
     color:rgba(69,69,69,1);
     line-height:42rpx;
-
+    word-break: break-all;
 }
 
 .finish-clock-feel-small-icon{
