@@ -8,7 +8,7 @@
 </view>
 <view class="videoPro">{{listNow}}/{{listNumber}}</view>
 <view class="HIIT-headvideo">
-    <video id="videoplayer" class="HIITVideo" enable-progress-gesture="{{false}}" controls="{{false}}" bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"  bindtimeupdate="videoUpdate"></video>
+    <video id="videoplayer" class="HIITVideo" enable-progress-gesture="{{false}}"  bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"  bindtimeupdate="videoUpdate"></video>
 </view>
 <view class="HIIT-desc">
     <view class="videoTitle">{{indexTitle}}</view>
