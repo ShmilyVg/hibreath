@@ -1,6 +1,6 @@
 <template name="fatBurnCard">
 <!--燃脂卡片-->
-    <view class="set-content-view flex-column" bindtap="bindTapToResultPage">
+    <view class="set-content-view flex-column" bindtap="bindTapToResultPage" >
         <view class="flex-row" style="justify-content: space-between;width: 100%;height: 78rpx">
             <view class="flex-row">
                 <image src="{{fatBurnTask.iconUrl}}" class="set-content-icon"></image>
@@ -15,7 +15,7 @@
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx">
+        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx;display:{{hiddenFat}}">
             <block>
                 <canvas canvas-id="bg" class='canvasII'></canvas>
                 <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>

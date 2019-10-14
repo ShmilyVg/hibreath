@@ -714,6 +714,9 @@ Page({
         })
     },
     showModal: function () {
+        this.setData({
+            hiddenFat:"none"
+        })
         // 显示遮罩层
         var animation = wx.createAnimation({
             duration: 200,
@@ -736,6 +739,8 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
+            hiddenFat:"block"
         })
+        this.handleTasks();
     }
 })
