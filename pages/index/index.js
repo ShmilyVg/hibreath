@@ -72,6 +72,7 @@ Page({
     },
 
     onLoad() {
+        app.bLEManager.startData();
         //检测页面保持常亮
         wx.setKeepScreenOn({
             keepScreenOn: true

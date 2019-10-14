@@ -585,7 +585,10 @@ Page({
     },
     //视频打卡
     toVideoClock(e){
-        console.log("toVideoClock",e.currentTarget.dataset.id)
+        console.log("toVideoClock",e.currentTarget)
+        if(e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == ''){
+            HiNavigator.redirectToFinishCheck({dataId:e.currentTarget.dataset.finid, clockWay: 'video'});
+        }
         HiNavigator.navigateToVideoClock({id:e.currentTarget.dataset.id});
     },
     //去完成按钮
@@ -649,7 +652,7 @@ Page({
     onHide() {
         //离开时 告知蓝牙标志位 0x3D   0X02
         app.bLEManager.sendISpage({isSuccess: false});
-    },
+},
 
     bindTapToResultPage() {
         if (this.data.fatBurnFin) {

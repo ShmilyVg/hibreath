@@ -25,7 +25,7 @@
 <view bindtap="startVideo">开始</view>
 <view bindtap="stopVideo">暂停</view>-->
 
-<swiper class="HIIT-swiper" display-multiple-items="2">
+<swiper class="HIIT-swiper">
     <block wx:for="{{list}}">
         <swiper-item class="HIIT-swiperItem"  bindtap="clickSwiper" data-pid="{{item.videoUrl}}" data-number="{{index}}">
             <view class="HIIT-swiperView" style="background-image: url('{{item.imgUrl}}')">
