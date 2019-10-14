@@ -16,6 +16,7 @@ Page({
             {feelDesc: '还不错', icon: '2', feelEn: 'suit', content: '还不错哦，继续努力'},
             {feelDesc: '太简单了', icon: '3', feelEn: 'easy', content: '感谢您的反馈'},
         ],
+        typeText:'重新选择',
         feelEn: '',
         feelObj: {feelContent: '', icon: ''},
         sportLeftShowStr: ''
@@ -37,6 +38,10 @@ Page({
             obj = {feelDesc};
             obj['sportLeftShowStr'] = freestyleIds ? (freestyleIds.length + ' 种') : '0 种';
         } else {
+            this.setData({
+                ornId:sportInfo.id,
+                typeText:"查看课程"
+            })
             obj['sportLeftShowStr'] = sectionSize + ' 组';
         }
         wx.setNavigationBarTitle({title: sportInfo.title});
@@ -60,7 +65,7 @@ Page({
         if (way === 'free') {
             HiNavigator.redirectToFreeCheck({dataId: this.dataId});
         } else if (way === 'video') {
-
+            HiNavigator.navigateToVideoClock({id:this.data.ornId});
         }
     },
     /**
