@@ -1398,7 +1398,7 @@ function drawYAxis(series, opts, config, context) {
     var eachSpacing = Math.floor(spacingValid / config.yAxisSplit);
     var startX = config.padding + yAxisTotalWidth;
     var endX = opts.width - config.padding;
-    var endY = opts.height - config.padding - config.xAxisHeight - config.legendHeight;
+    var endY = opts.height - config.padding - config.xAxisHeight - config.legendHeight + 10;
 
     // set YAxis background
     context.setFillStyle(opts.background || '#ffffff');
