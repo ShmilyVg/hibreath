@@ -22,7 +22,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
-        wx.reLaunch({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pages/index/index'});
     }
     //运动-自由打卡
     static navigateToFreeClock() {
@@ -41,11 +41,9 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
-        this.reLaunch({url: '/pages/device-bind/device-bind'});
-    }
-    static navigateToBind() {
         this.navigateTo({url: '/pages/device-bind/device-bind'});
     }
+
 
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
@@ -66,9 +64,6 @@ export default class HiNavigator extends CommonNavigator {
     /*新加跳转*/
     static navigateSuccessInfo() {
         this.navigateTo({url: '/pages/successInfo/successInfo'})
-    }
-    static navigateToclickBody() {
-        this.navigateTo({url: '/pages/set-info/set-info'})
     }
     static navigateToclickCheck() {
         this.navigateTo({url: '/pages/history/history'})
@@ -100,6 +95,9 @@ export default class HiNavigator extends CommonNavigator {
     }
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
+    }
+    static navigateIndexSuc({data}) {
+        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
     }
     static navigateIndexBind({isBind}) {
         wx.reLaunch({url: '/pages/index/index?isBind=' + isBind});

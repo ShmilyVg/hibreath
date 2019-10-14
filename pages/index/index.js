@@ -35,7 +35,7 @@ Page({
         blowingImg:false,
         process:false,
         isShowBlow:true,
-
+        //isSuccessInfo:false,//是否绑定完成页进入标志
         homeP:[
             "1. 请勿将设备远离手机",
             "2. 请勿关闭小程序",
@@ -55,9 +55,6 @@ Page({
         HiNavigator.navigateToclickCheck();
     },
 
-    bindBtnClick() {
-        HiNavigator.navigateToDeviceBind();
-    },
     disconnectBtnClick() {
         if (this.data.stateBtnShow){
             app.getBLEManager().connect();
@@ -71,7 +68,13 @@ Page({
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },
 
-    onLoad() {
+    onLoad(e) {
+        console.log('isSuccessInfo',e)
+        if(e.isSuccessInfo){
+            this.setData({
+                isSuccessInfo: e.isSuccessInfo
+            })
+        }
         app.bLEManager.startData();
         //检测页面保持常亮
         wx.setKeepScreenOn({
@@ -240,7 +243,12 @@ Page({
     },
     onUnload() {
         //app.getBLEManager().closeAll();
-        //HiNavigator.navigateToSetInfo()
+        if(this.data.isSuccessInfo === "true"){
+            HiNavigator.navigateToSetInfo()
+            this.setData({
+                isSuccessInfo: false,
+            })
+        }
     },
 
 
