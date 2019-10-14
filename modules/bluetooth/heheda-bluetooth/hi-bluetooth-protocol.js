@@ -173,6 +173,11 @@ export default class HiBlueToothProtocol {
         this.action['0x03']();
     }
 
+    startData() {
+        this.sendData({command: '0x05'});
+        console.log("执行重新获取状态")
+    }
+
     getDeviceIsBind() {
         this._isBindMark = this._isBindMark || wx.getStorageSync('isBindDevice');
         console.log('获取设备是否被绑定', this._isBindMark);

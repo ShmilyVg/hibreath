@@ -25,7 +25,7 @@
                     <swiper-item>
                         <view  class="swiperBigTitle" >{{item.title}}</view>
                         <view class="clear"></view>
-                        <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" bindtap="toVideoClock" data-id="{{item.id}}">
+                        <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" bindtap="toVideoClock" data-id="{{item.id}}" data-finId="{{item.dataId}}">
                             <image class="swiperImg"  src="{{item.imgUrl}}"></image>
                             <view style="float: left">
                                 <view class="swiperSmallTitle">{{item.title}}</view>
