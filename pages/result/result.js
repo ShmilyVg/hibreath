@@ -38,11 +38,11 @@ Page({
     },
 
     async onLoad(e) {
-        console.log('eeeeeee',e)
+        console.log('eeeeeee', e)
         if (e.id) {
             const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
             this.setData({
-                fatDes, score,fatText:des.zhCh, fatTextEn:des.en
+                fatDes, score, fatText: des.zhCh, fatTextEn: des.en
             });
         } else if (e.score) {
             const {fatText, fatTextEn, fatDes, score} = e;
@@ -66,7 +66,7 @@ Page({
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
             list.map(value => {
-                const {time, day, month, year} = tools.createDateAndTime(value.time*1000);
+                const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
                 value.date = `${year}/${month}/${day} ${time}`;
                 let image = '../../images/result/cell';
                 const dValue = value.dataValue;
@@ -74,7 +74,7 @@ Page({
                     image = image + '1';
                 } else if (dValue > 1 && dValue <= 2) {
                     image = image + '2';
-                } else if (dValue > 2 && dValue <=4) {
+                } else if (dValue > 2 && dValue <= 4) {
                     image = image + '3';
                 } else if (dValue > 4 && dValue <= 6) {
                     image = image + '4';
@@ -114,26 +114,31 @@ Page({
                 currenttab: newtab
             });
             if (newtab == 1) {
-                this.handleTrend();
+                const {frontTimestamp, endTimestamp} = timeObj;
+                this.updateTrendTime({
+                    frontTimestamp: frontTimestamp || getLatestOneWeekTimestamp(),
+                    endTimestamp: endTimestamp || Date.now()
+                });
             }
         }
     },
 
-    handleTrend() {
-        let list = this.data.trendData;
+    async handleTrend({list}) {
         if (list && list.length) {
             let dataListX = [], dataListY = [];
             list.sort(function (item1, item2) {
                 return item1.createdTimestamp - item2.createdTimestamp;
             }).forEach((value) => {
-                const {month,day} = tools.createDateAndTime(value.createdTimestamp);
-                dataListX.push(month + '月' + day+'日');
+                const {month, day} = tools.createDateAndTime(value.createdTimestamp);
+                dataListX.push(month + '月' + day + '日');
                 dataListY.push(value.dataValue);
             });
             let dataTrend = {
                 dataListX, dataListY, dataListY1Name: 'PPM', yAxisSplit: 5
             };
             Trend.setData(dataTrend);
+        } else {
+            toast.showText('该时间段内没有燃脂数据');
         }
 
     },
@@ -172,17 +177,10 @@ Page({
         console.log('trendTime:', trendTime);
         if (trendTime) {
             const {startTimeValue, endTimeValue} = trendTime;
-            let {result: {list}} = await Protocol.postBreathDatalistAll({
-                timeBegin: startTimeValue,
-                timeEnd: endTimeValue
+            this.updateTrendTime({
+                frontTimestamp: startTimeValue,
+                endTimestamp: endTimeValue
             });
-            if (list.length) {
-                this.data.trendData = list;
-                this.updateTrendTime({
-                    frontTimestamp: startTimeValue,
-                    endTimestamp: endTimeValue
-                })
-            }
             getApp().globalData.trendTime = null;
         }
     },
@@ -190,19 +188,26 @@ Page({
     onReady() {
         Circular.createSelectorQuery();
         Trend.initTouchHandler();
-        this.updateTrendTime({frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now()});
-
     },
-    updateTrendTime({frontTimestamp, endTimestamp}) {
+    async updateTrendTime({frontTimestamp, endTimestamp}) {
         timeObj.frontTimestamp = frontTimestamp;
         timeObj.endTimestamp = endTimestamp;
-        this.setData({
-            trendDate: getTimeString({
-                frontTimestamp: timeObj.frontTimestamp,
-                endTimestamp: timeObj.endTimestamp
-            })
-        }, async () => {
-            this.handleTrend();
+        let {result: {list}} = await Protocol.postBreathDatalistAll({
+            timeBegin: timeObj.frontTimestamp,
+            timeEnd: timeObj.endTimestamp
         });
+        if (list && list.length) {
+            this.setData({
+                trendDate: getTimeString({
+                    frontTimestamp: timeObj.frontTimestamp,
+                    endTimestamp: timeObj.endTimestamp
+                })
+            }, async () => {
+                this.handleTrend({list});
+            });
+        } else {
+            toast.showText('该时间段内没有燃脂数据');
+        }
+
     },
-})
+});
