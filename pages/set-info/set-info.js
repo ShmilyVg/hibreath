@@ -277,7 +277,7 @@ Page({
                         fatText: fatBurnExt.des.zhCh,
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
-                        fatDes: fatBurnExt.visDes,
+                        fatDes: '"'+fatBurnExt.visDes+'"',
                         fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
