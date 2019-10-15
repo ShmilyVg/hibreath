@@ -3,17 +3,14 @@
  * @Date: 2019-10-09 11:00:00
  * @LastEditors: 张浩玉
  */
-import {Toast as toast} from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import IndexCommonManager from "../index/view/indexCommon";
-import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
-import {Toast, WXDialog} from "heheda-common-view";
 import * as Circular from "../result/view/circular";
-import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
 import ConnectionManager from "../index/connection-manager";
 import {oneDigit} from "../food/manager";
 
@@ -21,9 +18,9 @@ const app = getApp();
 
 Page({
     data: {
-        isfatBurn:false,//燃脂卡片
-        isbodyIndex:false,//记录身体指标卡片
-        isSport:false,
+        isfatBurn: false,//燃脂卡片
+        isbodyIndex: false,//记录身体指标卡片
+        isSport: false,
 
         showGuide: false,//立即体验 未注册状态
         showNewInfo: false,//新手引导页
@@ -58,34 +55,101 @@ Page({
             countNum: 0,//需要同步的总数
             timer: ''
         },
-        phValue:"写下你的减脂目标",
-        bloodLow:"",
-        heart:"",
-        bloodHeight:"",
-        weight:"",
-        taskId:"",
+        phValue: "写下你的减脂目标",
+        bloodLow: "",
+        heart: "",
+        bloodHeight: "",
+        weight: "",
+        taskId: "",
         showModalStatus: false,
         animationData: '',
-        isfinishedGuide:false,//是否选择了方案
-        hiddenImg:false,//隐藏左右箭头
-        grayLeft:true,//灰色箭头左
-        grayRight:false,//灰色箭头右
-        currentSwiper:0
+        isfinishedGuide: false,//是否选择了方案
+        hiddenImg: false,//隐藏左右箭头
+        grayLeft: true,//灰色箭头左
+        grayRight: false,//灰色箭头右
+        currentSwiper: 0
     },
     onFocus: function (e) {
         this.setData({
-            isFocus:true,
-            phValue:"写下你的减脂目标",
+            isFocus: true,
+            phValue: "写下你的减脂目标",
         })
     },
     onBlur: function (e) {
         this.setData({
-            isFocus:false,
+            isFocus: false,
             phValue: "写下你的减脂目标",
         })
     },
+
+
+    onShow() {
+        console.log("000111")
+        this.handleBle();
+        let that = this;
+        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
+        app.bLEManager.sendISpage({isSuccess: true});
+        app.onDataSyncListener = ({num, countNum}) => {
+            console.log('同步离线数据：', num, countNum);
+            if (num > 0 && countNum > 0) {
+                that.data.sync.num = num;
+                that.data.sync.countNum = countNum;
+                if (that.data.sync.countNum >= that.data.sync.num) {
+                    that.setData({
+                        sync: that.data.sync,
+                        showBigTip: true
+                    });
+
+                    clearTimeout(that.data.sync.timer);
+                    that.data.sync.timer = '';
+                    that.data.sync.timer = setTimeout(function () {
+                        that.handleTasks();
+                        that.setData({
+                            showBigTip: false
+                        });
+                    }, 2000)
+                }
+            } else {
+                that.setData({
+                    showBigTip: false
+                })
+            }
+        };
+        if (this.data.isfinishedGuide) {
+            that.handleTasks();
+        }
+    },
+
+    onHide() {
+        //离开时 告知蓝牙标志位 0x3D   0X02
+        app.bLEManager.sendISpage({isSuccess: false});
+        console.log('breath_user_info_input onHide info====', this.data.info);
+        if (this.data.info) {
+            let {info, page, scrollLeft, schemaId} = this.data, obj = {};
+            for (let key in info) {
+                if (info.hasOwnProperty(key)) {
+                    let item = info[key];
+                    if (item) {
+                        obj[key] = item;
+                    }
+                }
+            }
+            if (info['sex'] === 0) {
+                obj['sex'] = 0;
+                obj['sexStr'] = 'woman';
+            }
+            obj['page'] = page;
+            if (page >= 8) {
+                obj['scrollLeft'] = scrollLeft;
+                obj['schemaId'] = schemaId;
+            }
+            wx.setStorageSync('breath_user_info_input', obj);
+        }
+
+    },
+
     //上传身体指标
-    formSubmit(e){
+    formSubmit(e) {
         console.log(e.detail.value)
         const finaValue = e.detail.value
         if (this.objIsEmpty(finaValue.weight)) {
@@ -102,36 +166,36 @@ Page({
             this.showDialog("体重至多支持3位整数+1位小数");
             return;
         }
-        if(finaValue.heart){
+        if (finaValue.heart) {
             const heartnum = finaValue.heart.split(".");
             if (heartnum.length > 1 || heartnum[0] >= 1000) {
                 this.showDialog("心率至多支持3位整数");
                 return;
             }
         }
-        if(finaValue.bloodHeight){
+        if (finaValue.bloodHeight) {
             const bloodHeightnum = finaValue.bloodHeight.split(".");
             if (bloodHeightnum.length > 1 || bloodHeightnum[0] >= 1000) {
                 this.showDialog("高压至多支持3位整数");
                 return;
             }
         }
-        if(finaValue.bloodHeight && !finaValue.bloodLow){
+        if (finaValue.bloodHeight && !finaValue.bloodLow) {
             this.showDialog("请输入低压");
             return;
         }
-        if(finaValue.bloodLow && !finaValue.bloodHeight){
+        if (finaValue.bloodLow && !finaValue.bloodHeight) {
             this.showDialog("请输入高压");
             return;
         }
-        if(finaValue.bloodLow){
+        if (finaValue.bloodLow) {
             const bloodLownum = finaValue.bloodLow.split(".");
             if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
                 this.showDialog("低压至多支持3位整数");
                 return;
             }
         }
-        finaValue['taskId'] =this.data.taskId
+        finaValue['taskId'] = this.data.taskId
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
@@ -142,21 +206,21 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
-       /* this.setData({
-            page:wx.getStorageSync('currentPage')
-        })*/
+        /* this.setData({
+             page:wx.getStorageSync('currentPage')
+         })*/
         let that = this;
         console.log('on:', e);
         if (e.isNotRegister) {
             that.setData({
-                isNotRegister :e.isNotRegister,
+                isNotRegister: e.isNotRegister,
                 showNewInfo: true,
                 showGuide: true
             })
 
         }
         this.connectionPage = new ConnectionManager(this);
-       /* await that.handleGuide(that);*/
+        /* await that.handleGuide(that);*/
         this.handleBaseInfo();
         Circular.init(this);
     },
@@ -189,12 +253,14 @@ Page({
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
         this.setData({
-            isfinishedGuide:finishedGuide
+            isfinishedGuide: finishedGuide
         })
         let info = {};
         if (finishedGuide) {
             this.handleTasks();
         } else {
+
+
             info = {
                 goalDesc: '',
                 sex: 0,
@@ -205,6 +271,32 @@ Page({
                 bodyFatRate: '',
                 weightGoal: '',
             };
+            const userInfoInput = wx.getStorageSync('breath_user_info_input');
+            console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
+            let page = 1, project = [];
+            if (userInfoInput) {
+                info = Object.assign(info, userInfoInput);
+                page = userInfoInput.page || 1;
+                const sexValue = info.sex;
+                for (let item of this.data.sexBox) {
+                    item.isChose = item.value === sexValue;
+                }
+
+                const mealValue = info.mealType;
+                for (let item of this.data.meals) {
+                    item.isChose = mealValue === item.en;
+                }
+                const {birthday} = info;
+                if (birthday) {
+                    this.data.birth = birthday.split('-');
+                }
+                if (page >= 8) {
+                    const {result: {list}} = await Protocol.postSettingsLosefatSchema();
+                    project.push(...list);
+
+                }
+
+            }
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
@@ -215,15 +307,22 @@ Page({
             // });
             //
             // this.data.birth = info.birthday.split("-");
-            this.setData({
+            let obj = {
                 currentDate, goals, info,
                 showNewInfo: true,
                 showGuide: false,
                 birth: this.data.birth,
                 meals: this.data.meals,
                 sexBox: this.data.sexBox,
-                bgColorSetInfoPage: '#ffffff'
-            });
+                bgColorSetInfoPage: '#ffffff',
+                page,
+            };
+            if (project.length) {
+                obj['project'] = project;
+                obj['scrollLeft'] = info.scrollLeft;
+                obj['schemaId'] = info.schemaId;
+            }
+            this.setData(obj);
         }
     },
 
@@ -258,76 +357,76 @@ Page({
     async handleTasks() {
         const {result} = await Protocol.postMembersTasks();
         this.setData({
-            indexDayDesc:result.dayDesc,
-            indexfinishNum:result.finishNum,
-            indexgoalDesc:result.goalDesc,
-            indextaskNum:result.taskNum,
-            taskListAll:result.taskList,
+            indexDayDesc: result.dayDesc,
+            indexfinishNum: result.finishNum,
+            indexgoalDesc: result.goalDesc,
+            indextaskNum: result.taskNum,
+            taskListAll: result.taskList,
         })
         const typesArr = result.taskList.map(d => d.type)
-        console.log("123213",typesArr)
-        for (var i = 0; i < typesArr.length; i++){
-            if(typesArr[i] === "fatBurn"){
+        console.log("123213", typesArr)
+        for (var i = 0; i < typesArr.length; i++) {
+            if (typesArr[i] === "fatBurn") {
                 const fatBurnExt = result.taskList[i].ext;
                 if (result.taskList[i].finished) {
                     this.setData({
-                        isfatBurn:true,
-                        fatBurnFin:true,//完成标志位
+                        isfatBurn: true,
+                        fatBurnFin: true,//完成标志位
                         fatBurnTask: result.taskList[i],
                         fatText: fatBurnExt.des.zhCh,
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
                         fatDes: fatBurnExt.visDes,
-                        fatType:fatBurnExt.iconUrl,
+                        fatType: fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
                     Circular.run();
                 } else {
                     this.setData({
-                        isfatBurn:true,
+                        isfatBurn: true,
                         fatBurnTask: result.taskList[i],
                         bgColorSetInfoPage: '#FEF6F2'
                     });
                 }
             }
-            if(typesArr[i] === "bodyIndex"){
+            if (typesArr[i] === "bodyIndex") {
                 const bodyIndexExt = result.taskList[i].ext;
-                console.log(bodyIndexExt,"typesArr[i]")
+                console.log(bodyIndexExt, "typesArr[i]")
                 if (result.taskList[i].finished) {
                     this.setData({
-                        isbodyIndex:true,
-                        bodyIndexFin:true,
+                        isbodyIndex: true,
+                        bodyIndexFin: true,
                         bodyIndexTask: result.taskList[i],
-                        bodyIndexExt:bodyIndexExt,
-                        taskId:result.taskList[i].id
+                        bodyIndexExt: bodyIndexExt,
+                        taskId: result.taskList[i].id
                     })
                     console.log(bodyIndexExt)
-                }else{
+                } else {
                     this.setData({
-                        isbodyIndex:true,
-                        taskId:result.taskList[i].id,
+                        isbodyIndex: true,
+                        taskId: result.taskList[i].id,
                         bodyIndexTask: result.taskList[i],
                     })
                 }
             }
-            if(typesArr[i] === "sport"){
+            if (typesArr[i] === "sport") {
                 const sportExt = result.taskList[i].ext;
                 if (result.taskList[i].finished) {
                     this.setData({
-                        sportFin:true,
+                        sportFin: true,
                     })
                 }
                 this.setData({
-                    isSport:true,
+                    isSport: true,
                     sportTask: result.taskList[i],
-                    sportExt:sportExt,
-                    aheight:sportExt.recommendList.length*158
+                    sportExt: sportExt,
+                    aheight: sportExt.recommendList.length * 158
                 })
-                if(sportExt.recommendList.length<2){
+                if (sportExt.recommendList.length < 2) {
                     this.setData({
                         hiddenImg: true,
                     })
-                }else{
+                } else {
                     this.setData({
                         hiddenImg: false,
                     })
@@ -349,7 +448,7 @@ Page({
 
     async continue() {
         const info = this.data.info;
-        console.log(info.goalDesc.length,'info.goalDesc')
+        console.log(info.goalDesc.length, 'info.goalDesc')
         switch (this.data.page) {
             case 1:
                 if (this.objIsEmpty(info.goalDesc)) {
@@ -429,16 +528,16 @@ Page({
                 await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
                 this.setData({
-                    showNewInfo:false
+                    showNewInfo: false
                 })
                 return;
         }
         this.setData({
             page: ++this.data.page,
         });
-       /* wx.setStorageSync({
-            currentPage: this.data.page,
-        });*/
+        /* wx.setStorageSync({
+             currentPage: this.data.page,
+         });*/
     },
 
     objIsEmpty(obj) {
@@ -458,7 +557,7 @@ Page({
     //减脂目标
     bindInputGoal(e) {
         this.setData({
-            'info.goalDesc':  tools.filterEmoji(e.detail.value).trim()
+            'info.goalDesc': tools.filterEmoji(e.detail.value).trim()
         })
     },
 
@@ -503,7 +602,7 @@ Page({
     },
 
     bindInputWeightGoal(e) {
-        console.log("231",e.detail.value)
+        console.log("231", e.detail.value)
         this.setData({'info.weightGoal': e.detail.value});
         return oneDigit(e);
     },
@@ -584,12 +683,12 @@ Page({
         }
     },
     //视频打卡
-    toVideoClock(e){
-        console.log("toVideoClock",e.currentTarget)
-        if(e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == ''){
-            HiNavigator.redirectToFinishCheck({dataId:e.currentTarget.dataset.finid, clockWay: 'video'});
+    toVideoClock(e) {
+        console.log("toVideoClock", e.currentTarget)
+        if (e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == '') {
+            HiNavigator.redirectToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
         }
-        HiNavigator.navigateToVideoClock({id:e.currentTarget.dataset.id});
+        HiNavigator.navigateToVideoClock({id: e.currentTarget.dataset.id});
     },
     //去完成按钮
     bindTapToFinish(e) {
@@ -611,49 +710,6 @@ Page({
         this.data.schemaId = e.currentTarget.dataset.index
     },
 
-    onShow() {
-        console.log("000111")
-        this.handleBle();
-        let that = this;
-        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
-        app.bLEManager.sendISpage({isSuccess: true});
-        app.onDataSyncListener = ({num, countNum}) => {
-            console.log('同步离线数据：', num, countNum);
-            if (num > 0 && countNum > 0) {
-                that.data.sync.num = num;
-                that.data.sync.countNum = countNum;
-                if (that.data.sync.countNum >= that.data.sync.num) {
-                    that.setData({
-                        sync: that.data.sync,
-                        showBigTip: true
-                    });
-
-                    clearTimeout(that.data.sync.timer);
-                    that.data.sync.timer = '';
-                    that.data.sync.timer = setTimeout(function () {
-                        that.handleTasks();
-                        that.setData({
-                            showBigTip: false
-                        });
-                    }, 2000)
-                }
-            } else {
-                that.setData({
-                    showBigTip: false
-                })
-            }
-        };
-        if(this.data.isfinishedGuide){
-            that.handleTasks();
-        }
-
-    },
-
-    onHide() {
-        //离开时 告知蓝牙标志位 0x3D   0X02
-        app.bLEManager.sendISpage({isSuccess: false});
-},
-
     bindTapToResultPage() {
         if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
@@ -661,35 +717,35 @@ Page({
             HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
         }
     },
-    bindTapToFood(){
+    bindTapToFood() {
         if (this.data.bodyIndexFin) {
             HiNavigator.navigateTofood();
         }
     },
-    bindWeightInput(e){
+    bindWeightInput(e) {
         const weightNumber = e.detail.value.split(".");
-        console.log('eeeee',weightNumber[1])
-        if(weightNumber[1]>9 ||weightNumber[1] === "0"){
+        console.log('eeeee', weightNumber[1])
+        if (weightNumber[1] > 9 || weightNumber[1] === "0") {
             return tools.subStringNum(e.detail.value)
         }
-        if(weightNumber.length>2){
+        if (weightNumber.length > 2) {
             return parseInt(e.detail.value);
         }
     },
     //轮播图当前
     swiperChange: function (e) {
-        console.log(e.detail.current,'eeeeee')
+        console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current
         })
-        if(e.detail.current === 0){
+        if (e.detail.current === 0) {
             this.setData({
                 grayLeft: true,
                 grayRight: false
             })
             return
         }
-        if(e.detail.current === this.data.sportExt.recommendList.length-1){
+        if (e.detail.current === this.data.sportExt.recommendList.length - 1) {
             this.setData({
                 grayLeft: false,
                 grayRight: true
@@ -702,15 +758,15 @@ Page({
         })
     },
     //运动打卡--左按钮
-    imgToPre(){
+    imgToPre() {
         this.setData({
-            currentSwiper: this.data.currentSwiper-1
+            currentSwiper: this.data.currentSwiper - 1
         })
     },
     //运动打卡--右按钮
-    imgToNext(){
+    imgToNext() {
         this.setData({
-            currentSwiper: this.data.currentSwiper+1
+            currentSwiper: this.data.currentSwiper + 1
         })
     },
     showModal: function () {
