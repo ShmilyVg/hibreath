@@ -4,7 +4,7 @@
   * @LastEditors: 张浩玉
   */
 import HiNavigator from "../../navigator/hi-navigator";
-import toast from "../../view/toast";
+ import {Toast as toast} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {PostUrl, UploadUrl} from "../../utils/config";
 Page({
