@@ -67,7 +67,8 @@ Page({
         hiddenImg: false,//隐藏左右箭头
         grayLeft: true,//灰色箭头左
         grayRight: false,//灰色箭头右
-        currentSwiper: 0
+        currentSwiper: 0,
+        isFood:false
     },
     onFocus: function (e) {
         this.setData({
@@ -725,9 +726,10 @@ Page({
                 })
             }
         };
-        if(this.data.isfinishedGuide){
+        if(this.data.isfinishedGuide || this.data.isFood){
             that.handleTasks();
         }
+
 
     },
 
