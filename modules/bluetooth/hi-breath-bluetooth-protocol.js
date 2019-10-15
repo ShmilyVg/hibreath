@@ -7,6 +7,11 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
         super({blueToothManager, deviceIndexNum: 6});
         this.action = {
             ...this.action,
+            //按键检测
+            '0x3e': () => {
+                super.sendData({command: '0x3f'});
+                return {state: ProtocolState.KEY_CONFIRM};
+            },
             //由设备发出的预热请求
             '0x30': () => {
                 super.sendData({command: '0x31'});

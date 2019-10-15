@@ -82,44 +82,6 @@ Page({
         })
     },
 
-
-    onShow() {
-        console.log("000111")
-        this.handleBle();
-        let that = this;
-        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
-        app.bLEManager.sendISpage({isSuccess: true});
-        app.onDataSyncListener = ({num, countNum}) => {
-            console.log('同步离线数据：', num, countNum);
-            if (num > 0 && countNum > 0) {
-                that.data.sync.num = num;
-                that.data.sync.countNum = countNum;
-                if (that.data.sync.countNum >= that.data.sync.num) {
-                    that.setData({
-                        sync: that.data.sync,
-                        showBigTip: true
-                    });
-
-                    clearTimeout(that.data.sync.timer);
-                    that.data.sync.timer = '';
-                    that.data.sync.timer = setTimeout(function () {
-                        that.handleTasks();
-                        that.setData({
-                            showBigTip: false
-                        });
-                    }, 2000)
-                }
-            } else {
-                that.setData({
-                    showBigTip: false
-                })
-            }
-        };
-        if (this.data.isfinishedGuide) {
-            that.handleTasks();
-        }
-    },
-
     onHide() {
         //离开时 告知蓝牙标志位 0x3D   0X02
         app.bLEManager.sendISpage({isSuccess: false});
@@ -199,6 +161,7 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
+                hiddenFat:"block",
                 showModalStatus: false,
             })
             toast.success('填写成功');
@@ -376,10 +339,14 @@ Page({
                         fatText: fatBurnExt.des.zhCh,
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
-                        fatDes: fatBurnExt.visDes,
-                        fatType: fatBurnExt.iconUrl,
+                        fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
+                    if(!fatBurnExt.visDes == ""){
+                        this.setData({
+                            fatDes: '"'+fatBurnExt.visDes+'"'
+                        })
+                    }
                     Circular.run();
                 } else {
                     this.setData({
@@ -710,6 +677,48 @@ Page({
         this.data.schemaId = e.currentTarget.dataset.index
     },
 
+    onShow() {
+        console.log("000111")
+        this.handleBle();
+        let that = this;
+        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
+        app.bLEManager.sendISpage({isSuccess: true});
+        app.onDataSyncListener = ({num, countNum}) => {
+            console.log('同步离线数据：', num, countNum);
+            if (num > 0 && countNum > 0) {
+                that.data.sync.num = num;
+                that.data.sync.countNum = countNum;
+                if (that.data.sync.countNum >= that.data.sync.num) {
+                    that.setData({
+                        sync: that.data.sync,
+                        showBigTip: true,
+                        hiddenFat:"none",
+                    });
+
+                    clearTimeout(that.data.sync.timer);
+                    that.data.sync.timer = '';
+                    that.data.sync.timer = setTimeout(function () {
+                        that.setData({
+                            showBigTip: false,
+                            hiddenFat:"block",
+                        });
+                        that.handleTasks();
+                    }, 2000)
+                }
+            } else {
+                that.setData({
+                    showBigTip: false,
+                    hiddenFat:"block",
+                })
+            }
+        };
+        if(this.data.isfinishedGuide){
+            that.handleTasks();
+        }
+
+    },
+
+
     bindTapToResultPage() {
         if (this.data.fatBurnFin) {
             const {fatText, fatTextEn, fatDes, score} = this.data;
@@ -770,6 +779,9 @@ Page({
         })
     },
     showModal: function () {
+        this.setData({
+            hiddenFat:"none"
+        })
         // 显示遮罩层
         var animation = wx.createAnimation({
             duration: 200,
@@ -792,6 +804,8 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
+            hiddenFat:"block"
         })
+        this.handleTasks();
     }
 })

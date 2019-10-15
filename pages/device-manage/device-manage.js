@@ -42,6 +42,6 @@ Page({
         }).finally(() => Toast.hiddenLoading());
     },
     toBind(){
-        HiNavigator.navigateToBind()
+        HiNavigator.navigateToDeviceBind()
     }
 })

@@ -1,0 +1,26 @@
+<view class="section">
+    <textarea bindblur="bindTextAreaBlur" auto-height placeholder-class="" placeholder="说说今日的感受吧...(140字以内)" />
+</view>
+<view class='photo'>
+    <view class='title'>
+        九宫格打卡页面
+    </view>
+    <view class='up-pic'>
+        <view class='flex pic-box'>
+            <block wx:key="imgbox" wx:for="{{imgbox}}">
+                <view class='ap-box'>
+                    <view class='add-pic'>
+                        <image class='add-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
+                        <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
+                            <image class='img' src='../../../assets/images/remove.png'></image>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+                <!--<image class='img' src='../../../assets/images/addPhoto.png'></image>-->
+                上传
+            </view>
+        </view>
+    </view>
+</view>

@@ -22,7 +22,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
-        wx.reLaunch({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pages/index/index'});
     }
     //运动-自由打卡
     static navigateToFreeClock() {
@@ -41,11 +41,9 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
-        this.reLaunch({url: '/pages/device-bind/device-bind'});
-    }
-    static navigateToBind() {
         this.navigateTo({url: '/pages/device-bind/device-bind'});
     }
+
 
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
@@ -53,6 +51,9 @@ export default class HiNavigator extends CommonNavigator {
 
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
+    }
+    static reLaunchToSetInfo() {
+        this.redirectTo({url: '/pages/set-info/set-info'})
     }
     static navigateTofood() {
         this.navigateTo({url: '/pages/food/food'})
@@ -66,9 +67,6 @@ export default class HiNavigator extends CommonNavigator {
     /*新加跳转*/
     static navigateSuccessInfo() {
         this.navigateTo({url: '/pages/successInfo/successInfo'})
-    }
-    static navigateToclickBody() {
-        this.navigateTo({url: '/pages/set-info/set-info'})
     }
     static navigateToclickCheck() {
         this.navigateTo({url: '/pages/history/history'})
@@ -95,15 +93,16 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
-    static navigateIndexre() {
-        wx.reLaunch({url: '/pages/index/index'});
+    static navigateIndexSuc({data}) {
+        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
+        console.log("4444444444444444444")
     }
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
+        console.log("33333333333333333")
     }
-    static navigateIndexBind({isBind}) {
-        wx.reLaunch({url: '/pages/index/index?isBind=' + isBind});
-    }
+
+
     static navigateToPPM() {
         this.navigateTo({url: '/pages/PPMInfo/PPMInfo'})
     }

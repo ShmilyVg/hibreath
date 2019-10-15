@@ -132,7 +132,7 @@
         </view>
         <view class="flex-column" style="margin-top: -65rpx">
             <view wx:for="{{taskListAll}}" wx:key="index">
-                <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+                <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}"  data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
                 <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
                 <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
             </view>
@@ -153,7 +153,6 @@
 
 
 <!--底部弹窗-->
-
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
 <!--<view class="commodity_screen" bindtap="hideModal"></view>

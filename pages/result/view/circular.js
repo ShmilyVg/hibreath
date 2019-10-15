@@ -25,16 +25,16 @@ function drewCircular() {
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
-    if (circleScore <= 10) {
+    if (circleScore < 10) {
         gradient.addColorStop("0", "#542EE3");
         gradient.addColorStop("0.2", "#250099");
-    } else if (10 < circleScore && circleScore <= 20) {
+    } else if (10 <= circleScore && circleScore < 20) {
         gradient.addColorStop("0", "#0026FE");
         gradient.addColorStop("0.4", "#00CFFF");
-    } else if (20 < circleScore && circleScore <= 40) {
+    } else if (20 <= circleScore && circleScore < 40) {
         gradient.addColorStop("0", "#20D9D1");
         gradient.addColorStop("0.6", "#00B96C");
-    } else if (40 < circleScore && circleScore <= 60) {
+    } else if (40 <= circleScore && circleScore < 60) {
         gradient.addColorStop("0", "#FFE300");
         gradient.addColorStop("0.8", "#FF9F00");
     } else {
@@ -176,21 +176,21 @@ function showType() {
             fatType: "../../images/result/type2.png",
             fatText: "缓慢燃脂",
             fatTextEn: "SLOW",
-            fatDes: '“ 相当于减掉了1-9g脂肪 ”'
+            fatDes: '"相当于减掉了1-9g脂肪"'
         })
     } else if (_page.data.score < 4 && _page.data.score >= 2) {
         _page.setData({
             fatType: "../../images/result/type3.png",
             fatText: "状态极佳",
             fatTextEn: "PROPER",
-            fatDes: '“ 相当于减掉了9-17g脂肪 ”'
+            fatDes: '"相当于减掉了9-17g脂肪"'
         })
     } else if (_page.data.score < 6 && _page.data.score >= 4) {
         _page.setData({
             fatType: "../../images/result/type4.png",
             fatText: "快速燃脂",
             fatTextEn: "FAST",
-            fatDes: '“ 相当于减掉了17-51g脂肪 ”'
+            fatDes: '"相当于减掉了17-51g脂肪"'
         })
     } else if (_page.data.score < 11 && _page.data.score >= 6) {
         _page.setData({

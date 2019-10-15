@@ -12,6 +12,11 @@ export default class BlowManager {
         this._page = page;
         this.actionBlow = {};
         console.log("ProtocolState",ProtocolState)
+
+        this.actionBlow[ProtocolState.KEY_CONFIRM] = () => {
+            this.connected();
+        };
+
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
             this.timer()

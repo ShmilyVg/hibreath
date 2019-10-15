@@ -1,0 +1,12 @@
+/* 上传图片部分 */
+.photo {display: flex;flex-direction: column;justify-content:center;align-items: flex-start;padding: 0 31.2rpx;border-bottom:1px solid #e7e7e7;padding-bottom:23.4rpx;}
+.photo .title {margin-top:31.2rpx;}
+.flex{display:flex;}
+.up-pic{display:flex;justify-content:flex-start;align-items:center;}
+.pic-box{flex-flow:wrap;}
+.ap-box{position:relative;}
+.add-pic{width:124.8rpx;height:124.8rpx;margin-right:45rpx;margin-bottom:23.4rpx;position:relative;}
+.add-pic image {width:124.8rpx;height:124.8rpx;margin-top:10rpx;}
+/* 删除图片 */
+.img-de{width:40rpx;height:40rpx;border-radius:50%;position:absolute;right:-10rpx;top:-10rpx;}
+.img-de image {width:40rpx;height:40rpx;}
