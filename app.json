@@ -11,7 +11,8 @@
     "pages/food/food",
     "pages/freeClock/freeClock",
     "pages/videoClock/videoClock",
-    "pages/finishClock/finishClock"
+    "pages/finishClock/finishClock",
+    "pages/imgClock/imgClock"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

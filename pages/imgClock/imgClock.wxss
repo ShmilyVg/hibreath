@@ -1,12 +1,117 @@
 /* 上传图片部分 */
-.photo {display: flex;flex-direction: column;justify-content:center;align-items: flex-start;padding: 0 31.2rpx;border-bottom:1px solid #e7e7e7;padding-bottom:23.4rpx;}
-.photo .title {margin-top:31.2rpx;}
-.flex{display:flex;}
-.up-pic{display:flex;justify-content:flex-start;align-items:center;}
-.pic-box{flex-flow:wrap;}
-.ap-box{position:relative;}
-.add-pic{width:124.8rpx;height:124.8rpx;margin-right:45rpx;margin-bottom:23.4rpx;position:relative;}
-.add-pic image {width:124.8rpx;height:124.8rpx;margin-top:10rpx;}
+.photo {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: flex-start;
+    padding: 0 31.2rpx;
+    padding-bottom:23.4rpx;
+}
+.photo .title {
+    margin-top:31.2rpx;
+}
+.flex{
+    display:flex;
+}
+.up-pic{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+.pic-box{
+    flex-flow:wrap;
+}
+.ap-box{
+    position:relative;
+}
+.add-pic{
+    width:124.8rpx;
+    height:124.8rpx;
+    margin-right:45rpx;
+    margin-bottom:23.4rpx;
+    position:relative;
+}
+.add-pic image {
+    width:124.8rpx;
+    height:124.8rpx;
+    margin-top:10rpx;
+}
 /* 删除图片 */
-.img-de{width:40rpx;height:40rpx;border-radius:50%;position:absolute;right:-10rpx;top:-10rpx;}
-.img-de image {width:40rpx;height:40rpx;}
+.img-de{
+    width:40rpx;
+    height:40rpx;
+    border-radius:50%;
+    position:absolute;
+    right:-10rpx;
+    top:-10rpx;
+}
+.img-de image {
+    width:40rpx;
+    height:40rpx;
+}
+page{
+    padding: 70rpx 40rpx;
+    box-sizing: border-box;
+}
+.imgClock-top{
+    width: 100%;
+    height: 160rpx;
+    background:rgba(237,111,105,1);
+    box-shadow:0prx 2rpx 10rpx 0rpx rgba(237,111,105,1);
+    border-radius:20rpx;
+    padding: 30rpx 40rpx;
+    box-sizing: border-box;
+    margin-bottom: 60rpx;
+}
+.imgClock-titleB{
+    font-size:40rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.imgClock-titleS{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1)
+}
+.free-btn{
+    width:500rpx;
+    height:100rpx;
+    margin-top: 100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:42rpx;
+}
+.free-clock-say{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    background:rgba(245,245,245,1);
+    border-radius:20rpx;
+    padding: 38rpx 50rpx;
+}
+
+.free-clock-say-placeholder-class{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(177,177,177,1);
+    line-height:42rpx;
+}
+.free-clock-title{
+    font-size:38rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:53rpx;
+    margin-left: 10rpx;
+    align-self: flex-start;
+    margin-bottom: 40rpx;
+}
