@@ -135,6 +135,7 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
+                hiddenFat:"block",
                 showModalStatus: false,
             })
             toast.success('填写成功');
