@@ -52,6 +52,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }
+    static reLaunchToSetInfo() {
+        this.redirectTo({url: '/pages/set-info/set-info'})
+    }
     static navigateTofood() {
         this.navigateTo({url: '/pages/food/food'})
     }
@@ -90,18 +93,16 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
-    static navigateIndexre() {
-        wx.reLaunch({url: '/pages/index/index'});
+    static navigateIndexSuc({data}) {
+        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
+        console.log("4444444444444444444")
     }
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
+        console.log("33333333333333333")
     }
-    static navigateIndexSuc({data}) {
-        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
-    }
-    static navigateIndexBind({isBind}) {
-        wx.reLaunch({url: '/pages/index/index?isBind=' + isBind});
-    }
+
+
     static navigateToPPM() {
         this.navigateTo({url: '/pages/PPMInfo/PPMInfo'})
     }

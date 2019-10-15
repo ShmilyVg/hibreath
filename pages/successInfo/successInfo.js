@@ -26,15 +26,17 @@ Page({
     },
     onShow:function () {
 
+
+
+
     },
     swiperChange: function (e) {
         this.setData({
             currentSwiper: e.detail.current
         })
+
     },
     toIndex(){
-       /* HiNavigator.navigateIndexBind({isBind:true})*/
-      /*  HiNavigator.navigateIndexre()*/
         HiNavigator.navigateIndexSuc({data:true})
     }
 

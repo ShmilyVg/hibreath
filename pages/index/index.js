@@ -243,11 +243,15 @@ Page({
     },
     onUnload() {
         //app.getBLEManager().closeAll();
+        console.log("2323",getCurrentPages())
         if(this.data.isSuccessInfo === "true"){
-            HiNavigator.navigateToSetInfo()
             this.setData({
                 isSuccessInfo: false,
             })
+            HiNavigator.reLaunchToSetInfo()
+           /* wx.navigateBack({
+                delta: 7
+            })*/
         }
     },
 
