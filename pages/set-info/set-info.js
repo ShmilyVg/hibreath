@@ -215,14 +215,28 @@ Page({
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
+
         this.setData({
             isfinishedGuide: finishedGuide
-        })
+        });
         let info = {};
+
+        function setSexFun(sexValue) {
+            if (sexValue !== 1) {
+                info.sex = 0;
+                info.sexStr = 'woman';
+            } else {
+                info.sex = 1;
+                info.sexStr = 'man';
+            }
+
+            for (let item of this.data.sexBox) {
+                item.isChose = item.value === sexValue;
+            }
+        }
         if (finishedGuide) {
             this.handleTasks();
         } else {
-
 
             info = {
                 goalDesc: '',
@@ -234,16 +248,14 @@ Page({
                 bodyFatRate: '',
                 weightGoal: '',
             };
+            accountInfo.detail && ({detail: {sex: info.sex}} = accountInfo);
+
             const userInfoInput = wx.getStorageSync('breath_user_info_input');
             console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
             let page = 1, project = [];
             if (userInfoInput) {
                 info = Object.assign(info, userInfoInput);
                 page = userInfoInput.page || 1;
-                const sexValue = info.sex;
-                for (let item of this.data.sexBox) {
-                    item.isChose = item.value === sexValue;
-                }
 
                 const mealValue = info.mealType;
                 for (let item of this.data.meals) {
@@ -260,6 +272,7 @@ Page({
                 }
 
             }
+            setSexFun.call(this, info.sex);
             // info = accountInfo.detail;
             // this.data.meals.map(value => {
             //     value.isChose = value.en === info.mealType;
