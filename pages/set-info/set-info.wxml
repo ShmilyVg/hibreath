@@ -143,13 +143,13 @@
     </block>
 </view>
 
-<cover-view wx:if="{{showBigTip}}" class="flex-column">
-    <cover-view class="tip-full"></cover-view>
-    <cover-view class="tip-view flex-column">
-        <cover-view class="tip-view-title">正在上传检测记录</cover-view>
-        <cover-view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</cover-view>
-    </cover-view>
-</cover-view>
+<view wx:if="{{showBigTip}}" class="flex-column">
+    <view class="tip-full"></view>
+    <view class="tip-view flex-column">
+        <view class="tip-view-title">正在上传检测记录</view>
+        <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
+    </view>
+</view>
 
 
 <!--底部弹窗-->

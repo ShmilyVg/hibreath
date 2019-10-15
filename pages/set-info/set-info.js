@@ -630,7 +630,8 @@ Page({
                 if (that.data.sync.countNum >= that.data.sync.num) {
                     that.setData({
                         sync: that.data.sync,
-                        showBigTip: true
+                        showBigTip: true,
+                        hiddenFat:"none",
                     });
 
                     clearTimeout(that.data.sync.timer);
@@ -638,13 +639,15 @@ Page({
                     that.data.sync.timer = setTimeout(function () {
                         that.handleTasks();
                         that.setData({
-                            showBigTip: false
+                            showBigTip: false,
+                            hiddenFat:"block",
                         });
                     }, 2000)
                 }
             } else {
                 that.setData({
-                    showBigTip: false
+                    showBigTip: false,
+                    hiddenFat:"block",
                 })
             }
         };
