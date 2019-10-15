@@ -22,7 +22,7 @@
                 <image class="fatType1" src="{{fatType}}"></image>
                 <view class="fatText">{{fatText}}</view>
                 <view class="fatTextEn">{{fatTextEn}}</view>
-                <view wx:if="{{fatDes ==''}}" class="fatDes">{{fatDes}}</view>
+                <view wx:if="{{fatDes ==''}}" class="fatDes"></view>
                 <view wx:else class="fatDes">{{fatDes}}</view>
             </block>
         </view>

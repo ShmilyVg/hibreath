@@ -278,10 +278,14 @@ Page({
                         fatText: fatBurnExt.des.zhCh,
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
-                        fatDes: '"'+fatBurnExt.visDes+'"',
                         fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2'
                     });
+                    if(!fatBurnExt.visDes == ""){
+                        this.setData({
+                            fatDes: '"'+fatBurnExt.visDes+'"'
+                        })
+                    }
                     Circular.run();
                 } else {
                     this.setData({
