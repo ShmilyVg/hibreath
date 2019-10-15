@@ -637,11 +637,11 @@ Page({
                     clearTimeout(that.data.sync.timer);
                     that.data.sync.timer = '';
                     that.data.sync.timer = setTimeout(function () {
-                        that.handleTasks();
                         that.setData({
                             showBigTip: false,
                             hiddenFat:"block",
                         });
+                        that.handleTasks();
                     }, 2000)
                 }
             } else {
