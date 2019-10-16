@@ -20,7 +20,6 @@ Page({
     data: {
         isfatBurn: false,//燃脂卡片
         isbodyIndex: false,//记录身体指标卡片
-        isSport: false,
 
         showGuide: false,//立即体验 未注册状态
         showNewInfo: false,//新手引导页
@@ -398,7 +397,6 @@ Page({
                     })
                 }
                 this.setData({
-                    isSport: true,
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
                     aheight: sportExt.recommendList.length * 158
@@ -414,15 +412,33 @@ Page({
                 }
 
             }
+            if(typesArr[i] === "food"){
+                const foodExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        foodFin: true,
+                    })
+                }
+                this.setData({
+                    foodTask: result.taskList[i],
+                    foodExt: foodExt,
+                    foodAheight: foodExt.mealList.length * 158
+                })
+                if (foodExt.mealList.length < 2) {
+                    this.setData({
+                        foodHiddenImg: true,
+                    })
+                } else {
+                    this.setData({
+                        foodHiddenImg: false,
+                    })
+                }
+            }
         }
         setTimeout(() => {
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
                 backgroundColor: '#F55E6B',
-                /*  animation: {
-                      duration: 400,
-                      timingFunc: 'easeIn'
-                  }*/
             })
         });
     },

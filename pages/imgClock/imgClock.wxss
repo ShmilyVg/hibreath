@@ -24,17 +24,29 @@
 .ap-box{
     position:relative;
 }
+.show-view{
+    width: 210rpx;
+    height: 210rpx;
+    margin-right: 20rpx;
+}
+.show-pic{
+    width: 210rpx;
+    height: 210rpx;
+
+}
 .add-pic{
-    width:124.8rpx;
-    height:124.8rpx;
-    margin-right:45rpx;
-    margin-bottom:23.4rpx;
+    width:210rpx;
+    height:210rpx;
+    margin-right:20rpx;
+    margin-bottom:20rpx;
     position:relative;
+    background: #F5F5F5
 }
 .add-pic image {
-    width:124.8rpx;
-    height:124.8rpx;
-    margin-top:10rpx;
+    width: 90rpx;
+    height: 78rpx;
+    margin-left: 60rpx;
+    margin-top: 66rpx;
 }
 /* 删除图片 */
 .img-de{
@@ -42,8 +54,8 @@
     height:40rpx;
     border-radius:50%;
     position:absolute;
-    right:-10rpx;
-    top:-10rpx;
+    right: 45rpx;
+    top: 15rpx;
 }
 .img-de image {
     width:40rpx;

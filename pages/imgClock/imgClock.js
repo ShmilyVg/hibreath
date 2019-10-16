@@ -1,8 +1,7 @@
- /**
-  * @Author: 张浩玉
-  * @Date: 2019-08-30 11:26:32
-  * @LastEditors: 张浩玉
-  */
+/**
+ * @Date: 2019-10-16 17:21:47
+ * @LastEditors: 张浩玉
+ */
 import HiNavigator from "../../navigator/hi-navigator";
  import {Toast as toast} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
@@ -10,14 +9,26 @@ import {PostUrl, UploadUrl} from "../../utils/config";
 Page({
 
     data: {
-        imgbox:[]
+        imgbox:[],
+        imageUrl:[]
     },
 
     onLoad: function () {
 
     },
-    onShow:function () {
+    async onShow () {
+        const {result}= await Protocol.getSoul()
+        this.setData({
+            tag:result.tag,
+            description:result.description,
+        })
+    },
+    submit(){
+        console.log("imgbox",this.data.imgbox)
+        console.log("imageUrl",this.data.imageUrl)
+        Protocol.postFood().then(data => {
 
+        });
     },
     bindTextAreaBlur: function(e) {
         console.log(e.detail.value)
@@ -33,6 +44,30 @@ Page({
         } else if (imgbox.length == 9) {
             n = 1;
         }
+        /*
+          wx.chooseImage({
+            count: 1,
+            sizeType: ['compressed'],
+            sourceType: ['album', 'camera'],
+            success: function (res) {
+                Toast.showLoading();
+                let path = res.tempFilePaths[0];
+                wxp.uploadFile({
+                    url: 'https://backend.hipee.cn/hipee-upload/hibox/mp/upload/image.do',
+                    filePath: path,
+                    name: path
+                }).then((res: any) => {
+                    console.log(res);
+                    Toast.hiddenLoading();
+                    let data = res.data;
+                    let image = JSON.parse(data).result.img_url;
+                    console.log('图片：', image);
+                    that.setDataSmart({
+                        portraitUrl: image
+                    })
+                })
+            }
+        }*/
         wx.chooseImage({
             count: n, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -55,14 +90,9 @@ Page({
                     if (res.tempFilePaths.length !== 1) {
                         for (var i = 0; i < res.tempFilePaths.length; i++) {
                             wx.uploadFile({
-                                url: UploadUrl, // 接口地址
+                                url: 'https://backend.hipee.cn/hipee-upload/hibox/mp/upload/image.do', // 接口地址
                                 filePath: res.tempFilePaths[i], // 上传文件的临时路径
                                 name: 'file',
-                                formData: { // 上传路径等参数
-                                    type: 0,
-                                    project: "aaa", // 项目名称
-                                    path: "bbb" // 项目路径文件夹
-                                },
                                 success(res) {
                                     // 采用选择几张就直接上传几张，最后拼接返回的url
                                     wx.hideLoading()
@@ -80,12 +110,12 @@ Page({
                         wx.uploadFile({
                             url: UploadUrl,
                             filePath: res.tempFilePaths[0],
-                            name: 'file',
+                            name: res.tempFilePaths[0],
                             success(res) {
-                                 console.log(res,"成功返回")
                                 wx.hideLoading()
                                 var obj = JSON.parse(res.data)
-                                urlList.push(obj.url);
+                                console.log(obj,"成功返回")
+                                urlList.push(obj.result.img_url);
                                 var tem = that.data.imageUrl
                                 that.setData({
                                     imageUrl: tem.concat(urlList)
@@ -110,5 +140,13 @@ Page({
             urls: this.data.imgbox // 需要预览的图片http链接列表
         })
     },
-
+    //删除图片
+    deleteImg: function (e) {
+        var that = this;
+        var images = that.data.uploadedImages;
+        that.setData({
+            uploadedImages: images,
+            imgBoolean: true
+        });
+    },
 })
