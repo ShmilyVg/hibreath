@@ -1,0 +1,66 @@
+.message-detail-layout {
+    padding: 70rpx 40rpx;
+    align-self: flex-start;
+}
+
+.message-detail-head-img{
+    width:90rpx;
+    height:90rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+    background-color: ghostwhite;
+}
+
+.message-detail-nickname{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+}
+
+.message-detail-time{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+    line-height:33rpx;
+}
+
+.message-detail-desc{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    word-break: break-all;
+    margin-top: 42rpx;
+    margin-bottom: 35rpx;
+}
+
+.message-detail-setting-layout{
+    padding: 0 30rpx;
+}
+
+.message-detail-setting-point{
+    width:8rpx;
+    height:8rpx;
+    background:rgba(155,155,155,1);
+}
+
+.message-detail-setting-point:nth-child(2){
+    margin: 10rpx 0;
+}
+
+.message-detail-image-item{
+    width:210rpx;
+    height:210rpx;
+    border-radius:10rpx;
+    background-color: ghostwhite;
+    margin-bottom: 16rpx;
+}
+
+.message-detail-image-item:nth-child(3n-1) {
+    margin-left: 16rpx;
+    margin-right: 16rpx;
+}

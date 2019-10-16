@@ -1,16 +1,16 @@
-function getMonthStr(date) {
+export function getMonthStr(date) {
     return ('0' + (date.getMonth() + 1)).slice(-2);
 }
 
-function getDayStr(date) {
+export function getDayStr(date) {
     return ('0' + date.getDate()).slice(-2);
 }
 
-function getHourStr(date) {
+export function getHourStr(date) {
     return ('0' + date.getHours()).slice(-2);
 }
 
-function getMinuteStr(date) {
+export function getMinuteStr(date) {
     return ('0' + date.getMinutes()).slice(-2);
 }
 
