@@ -40,6 +40,9 @@ Component({
       bindTapSportType(e){
           HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
       },
+      toRules(){
+
+      },
       //轮播图当前
       swiperChange: function (e) {
           console.log(e.detail.current, 'eeeeee')

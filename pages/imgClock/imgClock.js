@@ -3,18 +3,20 @@
  * @LastEditors: 张浩玉
  */
 import HiNavigator from "../../navigator/hi-navigator";
- import {Toast as toast} from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {PostUrl, UploadUrl} from "../../utils/config";
 Page({
 
     data: {
         imgbox:[],
-        imageUrl:[]
+        imageUrl:[],
+        disable:true
     },
 
-    onLoad: function () {
-
+    onLoad: function (e) {
+        console.log(e,'e')
+        this.taskId = e.id
     },
     async onShow () {
         const {result}= await Protocol.getSoul()
@@ -23,16 +25,41 @@ Page({
             description:result.description,
         })
     },
+    showDialog(content) {
+        WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
+    },
     submit(){
         console.log("imgbox",this.data.imgbox)
         console.log("imageUrl",this.data.imageUrl)
-        Protocol.postFood().then(data => {
+        console.log("132",this.data.desc)
+      /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
+            this.showDialog("请选择照片");
+            return
+        }*/
+        Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
 
         });
     },
-    bindTextAreaBlur: function(e) {
-        console.log(e.detail.value)
+    //控制完成按钮是否可以点击
+    disBtn(){
+        if(this.data.desc || this.data.imgbox.length>0){
+            this.setData({
+                disable:false
+            })
+        }else{
+            this.setData({
+                disable:true
+            })
+        }
     },
+    bindTextAreaBlur: function(e) {
+        console.log("e",e.detail.value)
+        this.setData({
+            desc:e.detail.value
+        })
+        this.disBtn()
+    }
+    ,
     // 上传图片 &&&
     addPic1: function (e) {
         var imgbox = this.data.imgbox;
@@ -131,6 +158,7 @@ Page({
                 });
             }
         })
+        that.disBtn()
     },
     // 点击预览大图
     previewImage(e) {
@@ -141,12 +169,13 @@ Page({
         })
     },
     //删除图片
-    deleteImg: function (e) {
-        var that = this;
-        var images = that.data.uploadedImages;
-        that.setData({
-            uploadedImages: images,
-            imgBoolean: true
+    imgDelete: function (e) {
+        console.log(e.currentTarget.dataset.deindex,'e')
+        console.log(this.data.imgbox,'eeee')
+        this.data.imgbox.splice(e.currentTarget.dataset.deindex,1)
+        this.setData({
+            imgbox: this.data.imgbox,
         });
+        this.disBtn()
     },
 })

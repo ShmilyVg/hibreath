@@ -4,31 +4,31 @@
         <view class="flex-row">
             <image src="{{foodTask.iconUrl}}" class="set-content-icon"></image>
             <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                <view class="set-content-title">{{sportTask.title}}</view>
+                <view class="set-content-title">{{foodTask.title}}</view>
                 <view class="set-content-content">你知道怎样健康饮食么？</view>
             </view>
         </view>
-        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{item.id}}"
+        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{foodTask.id}}"
               bindtap="bindTapSportType">去记录
         </view>
         <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
     </view>
-    <view wx:if="{{foodExt.isMeal}}" style="width: 100%">
-        <view class="dashedLine"></view>
+    <view class="dashedLine"></view>
+    <view wx:if="{{!foodExt.isMeal}}" style="width: 100%">
         <image class="HIITCardImgL"  wx:if="{{grayLeft}}" hidden="{{foodHiddenImg}}" src="../../images/set-info/leftG.png"></image>
         <image class="HIITCardImgL" bindtap="imgToPre" wx:else hidden="{{foodHiddenImg}}" src="../../images/set-info/leftB.png"></image>
         <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{foodHiddenImg}}" src="../../images/set-info/rightG.png"></image>
         <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{foodHiddenImg}}" src="../../images/set-info/rightB.png"></image>
         <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{foodAheight}}rpx">
-            <block wx:for="{{foodExt.recommendList}}" style="height: 500rpx">
+            <block wx:for="{{foodExt.mealList}}" style="height: 500rpx">
                 <swiper-item>
                     <view  class="swiperBigTitle" >{{item.title}}</view>
                     <view class="clear"></view>
-                    <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" bindtap="toVideoClock" data-id="{{item.id}}" data-finId="{{item.dataId}}">
+                    <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" >
                         <image class="swiperImg"  src="{{item.imgUrl}}"></image>
                         <view style="float: left">
                             <view class="swiperSmallTitle">{{item.title}}</view>
-                            <view class="swiperDes">{{item.desc}}</view>
+                            <view class="swiperDes">{{item.quantityDesc}}</view>
                         </view>
                         <view class="clear"></view>
                     </view>
@@ -37,7 +37,9 @@
         </swiper>
     </view>
     <view wx:else style="width: 100%;">
-        <view style="text-align: center">自由饮食日</view>
-        <view class="dashedLine"></view>
+        <view class="noMeakTetx1">自由饮食日</view>
+        <view class="noMeakTetx2">自由饮食日虽然不强制具体吃什么</view>
+        <view class="noMeakTetx2">但也不可以随意放纵哦</view>
+        <button class="noMeakBtn1" bindtap="toRules">查看饮食原则</button>
     </view>
 </view>

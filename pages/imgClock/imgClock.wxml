@@ -14,7 +14,7 @@
                     <view class='ap-box'>
                         <view class='show-view'>
                             <image class='show-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
-                            <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete1'>
+                            <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete'>
                                 <image style="width: 52rpx;height: 52rpx" src='../../images/imgClock/delete.png'></image>
                             </view>
                         </view>
@@ -27,6 +27,6 @@
         </view>
     </view>
     <view class="free-clock-title" style="margin-top: 60rpx;">说说感受</view>
-    <textarea placeholder-class="free-clock-say-placeholder-class" class="fill-width box-sizing-border-box free-clock-say" bindblur="bindTextAreaBlur"  placeholder-class="" placeholder="说说今日的感受吧...(140字以内)" />
-    <button form-type="submit" class="flex-row align-items-center justify-center free-btn">完成</button>
+    <textarea placeholder-class="free-clock-say-placeholder-class" class="fill-width box-sizing-border-box free-clock-say" bindinput="bindTextAreaBlur"  placeholder-class="" placeholder="说说今日的感受吧...(140字以内)" />
+    <button form-type="submit" disabled="{{disable}}" class="flex-row align-items-center justify-center free-btn">完成</button>
 </form>
