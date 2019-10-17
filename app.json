@@ -13,7 +13,7 @@
     "pages/videoClock/videoClock",
     "pages/finishClock/finishClock",
     "pages/imgClock/imgClock",
-    "pages/dynamicDetails/dynamicDetails"
+    "pages/message-detail/message-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

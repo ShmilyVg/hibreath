@@ -124,4 +124,8 @@ export default class HiNavigator extends CommonNavigator {
     static redirectToFreeCheck({dataId}) {
         this.redirectTo({url: '/pages/freeClock/freeClock?dataId=' + dataId});
     }
+
+    static navigateToMessageDetail({messageId}) {
+        this.navigateTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
+    }
 }

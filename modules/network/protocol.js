@@ -203,4 +203,13 @@ export default class Protocol {
     static postSportDataPutFeel({feelDesc, feelEn, id}) {
         return Network.request({url: 'sportdata/putfeel', data: arguments[0]});
     }
+
+    static postDynamicInfo({id}) {
+        return Network.request({url: 'dynamic/info', data: arguments[0]});
+    }
+
+    static postDynamicDelete({id}) {
+        return Network.request({url: 'dynamic/delete', data: arguments[0]});
+    }
+
 }
