@@ -11,7 +11,15 @@
         <view class='up-pic'>
             <view class='flex pic-box'>
                 <block wx:key="imgbox" wx:for="{{imgbox}}">
-                    <view class='ap-box'>
+                    <view class='ap-box imgMargin' wx:if="{{index == 2 ||index == 5 ||index == 8}}">
+                        <view class='show-view'>
+                            <image class='show-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
+                            <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete'>
+                                <image style="width: 52rpx;height: 52rpx" src='../../images/imgClock/delete.png'></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class='ap-box' wx:else>
                         <view class='show-view'>
                             <image class='show-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
                             <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete'>
@@ -20,7 +28,7 @@
                         </view>
                     </view>
                 </block>
-                <view class='add-pic' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+                <view class="add-pic" bindtap='addPic1' wx:if="{{imgbox.length<9}}">
                     <image class='add-pic-img' src='../../images/imgClock/img.png'></image>
                 </view>
             </view>

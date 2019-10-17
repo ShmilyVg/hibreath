@@ -4,6 +4,6 @@
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "light",
   "usingComponents": {
-    "uploadImgCard": "../../components/uploadImgCard/uploadImgCard"
+    "foodCard": "../../components/foodCard/foodCard"
   }
 }

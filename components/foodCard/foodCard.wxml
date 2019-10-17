@@ -14,7 +14,7 @@
         <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
     </view>
     <view class="dashedLine"></view>
-    <view wx:if="{{!foodExt.isMeal}}" style="width: 100%">
+    <view wx:if="{{foodExt.isMeal}}" style="width: 100%">
         <image class="HIITCardImgL"  wx:if="{{grayLeft}}" hidden="{{foodHiddenImg}}" src="../../images/set-info/leftG.png"></image>
         <image class="HIITCardImgL" bindtap="imgToPre" wx:else hidden="{{foodHiddenImg}}" src="../../images/set-info/leftB.png"></image>
         <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{foodHiddenImg}}" src="../../images/set-info/rightG.png"></image>

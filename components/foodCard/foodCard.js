@@ -56,7 +56,7 @@ Component({
               })
               return
           }
-          if (e.detail.current === this.data.sportExt.recommendList.length - 1) {
+          if (e.detail.current === this.data.foodExt.mealList.length - 1) {
               this.setData({
                   grayLeft: false,
                   grayRight: true
@@ -68,19 +68,19 @@ Component({
               grayRight: false
           })
       },
-      //运动打卡--左按钮
+      //饮食打卡--左按钮
       imgToPre() {
           this.setData({
               currentSwiper: this.data.currentSwiper - 1
           })
       },
-      //运动打卡--右按钮
+      //饮食打卡--右按钮
       imgToNext() {
           this.setData({
               currentSwiper: this.data.currentSwiper + 1
           })
       },
-      //视频打卡
+      //饮食打卡
       toVideoClock(e) {
           console.log("toVideoClock", e.currentTarget)
           if (e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == '') {

@@ -71,30 +71,7 @@ Page({
         } else if (imgbox.length == 9) {
             n = 1;
         }
-        /*
-          wx.chooseImage({
-            count: 1,
-            sizeType: ['compressed'],
-            sourceType: ['album', 'camera'],
-            success: function (res) {
-                Toast.showLoading();
-                let path = res.tempFilePaths[0];
-                wxp.uploadFile({
-                    url: 'https://backend.hipee.cn/hipee-upload/hibox/mp/upload/image.do',
-                    filePath: path,
-                    name: path
-                }).then((res: any) => {
-                    console.log(res);
-                    Toast.hiddenLoading();
-                    let data = res.data;
-                    let image = JSON.parse(data).result.img_url;
-                    console.log('图片：', image);
-                    that.setDataSmart({
-                        portraitUrl: image
-                    })
-                })
-            }
-        }*/
+
         wx.chooseImage({
             count: n, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -117,7 +94,7 @@ Page({
                     if (res.tempFilePaths.length !== 1) {
                         for (var i = 0; i < res.tempFilePaths.length; i++) {
                             wx.uploadFile({
-                                url: 'https://backend.hipee.cn/hipee-upload/hibox/mp/upload/image.do', // 接口地址
+                                url: 'https://backend.hipee.cn/hipee-uploadtest/hibreath/mp/upload/image.do', // 接口地址
                                 filePath: res.tempFilePaths[i], // 上传文件的临时路径
                                 name: 'file',
                                 success(res) {
@@ -159,6 +136,7 @@ Page({
             }
         })
         that.disBtn()
+        console.log("IMGBOX",that.data.imgbox)
     },
     // 点击预览大图
     previewImage(e) {
