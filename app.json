@@ -12,7 +12,8 @@
     "pages/freeClock/freeClock",
     "pages/videoClock/videoClock",
     "pages/finishClock/finishClock",
-    "pages/imgClock/imgClock"
+    "pages/imgClock/imgClock",
+    "pages/dynamicDetails/dynamicDetails"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

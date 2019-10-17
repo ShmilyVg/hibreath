@@ -67,7 +67,10 @@ Page({
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },
-
+    //离开页面时通知设备储存离线数据
+    onHide() {
+        app.bLEManager.sendISvalue({isSuccess: false});
+    },
     onLoad(e) {
         console.log('isSuccessInfo',e)
         if(e.isSuccessInfo){
@@ -153,6 +156,7 @@ Page({
         this.setData({
             isBind: currPage.data.isBind
         })*/
+       app.bLEManager.sendISvalue({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
 

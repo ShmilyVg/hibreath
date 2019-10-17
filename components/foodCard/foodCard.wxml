@@ -8,10 +8,10 @@
                 <view class="set-content-content">你知道怎样健康饮食么？</view>
             </view>
         </view>
-        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{foodTask.id}}"
+        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport"
               bindtap="bindTapSportType">去记录
         </view>
-        <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
+        <image src="../../images/set-info/finished.png" bindtap="toDynamicDetails" data-finId="{{foodTask.id}}" wx:else class="set-content-finished"></image>
     </view>
     <view class="dashedLine"></view>
     <view wx:if="{{foodExt.isMeal}}" style="width: 100%">

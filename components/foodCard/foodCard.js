@@ -80,13 +80,10 @@ Component({
               currentSwiper: this.data.currentSwiper + 1
           })
       },
-      //饮食打卡
-      toVideoClock(e) {
-          console.log("toVideoClock", e.currentTarget)
-          if (e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == '') {
-              HiNavigator.redirectToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
-          }
-          HiNavigator.navigateToVideoClock({id: e.currentTarget.dataset.id});
-      },
+      //饮食打卡详情
+      toDynamicDetails(e){
+          console.log('2',e)
+          HiNavigator.navigateToDynamicDetails({id: e.currentTarget.dataset.finid});
+      }
   }
 })
