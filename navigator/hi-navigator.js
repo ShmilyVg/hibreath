@@ -36,6 +36,14 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }
+    //饮食打卡-去打卡
+    static navigateToImgClock({id}) {
+        this.navigateTo({url: '/pages/imgClock/imgClock?id=' + id});
+    }
+    //饮食打卡-打卡详情
+    static navigateToDynamicDetails({id}) {
+        this.navigateTo({url: '/pages/dynamicDetails/dynamicDetails?id=' + id});
+    }
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
     }*/
@@ -95,11 +103,9 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     static navigateIndexSuc({data}) {
         this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
-        console.log("4444444444444444444")
     }
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
-        console.log("33333333333333333")
     }
 
 

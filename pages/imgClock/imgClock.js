@@ -1,27 +1,65 @@
- /**
-  * @Author: 张浩玉
-  * @Date: 2019-08-30 11:26:32
-  * @LastEditors: 张浩玉
-  */
+/**
+ * @Date: 2019-10-16 17:21:47
+ * @LastEditors: 张浩玉
+ */
 import HiNavigator from "../../navigator/hi-navigator";
- import {Toast as toast} from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {PostUrl, UploadUrl} from "../../utils/config";
 Page({
 
     data: {
-        imgbox:[]
+        imgbox:[],
+        imageUrl:[],
+        disable:true
     },
 
-    onLoad: function () {
-
+    onLoad: function (e) {
+        console.log(e,'e')
+        this.taskId = e.id
     },
-    onShow:function () {
+    async onShow () {
+        const {result}= await Protocol.getSoul()
+        this.setData({
+            tag:result.tag,
+            description:result.description,
+        })
+    },
+    showDialog(content) {
+        WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
+    },
+    submit(){
+        console.log("imgbox",this.data.imgbox)
+        console.log("imageUrl",this.data.imageUrl)
+        console.log("132",this.data.desc)
+      /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
+            this.showDialog("请选择照片");
+            return
+        }*/
+        Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
 
+        });
+    },
+    //控制完成按钮是否可以点击
+    disBtn(){
+        if(this.data.desc || this.data.imgbox.length>0){
+            this.setData({
+                disable:false
+            })
+        }else{
+            this.setData({
+                disable:true
+            })
+        }
     },
     bindTextAreaBlur: function(e) {
-        console.log(e.detail.value)
-    },
+        console.log("e",e.detail.value)
+        this.setData({
+            desc:e.detail.value
+        })
+        this.disBtn()
+    }
+    ,
     // 上传图片 &&&
     addPic1: function (e) {
         var imgbox = this.data.imgbox;
@@ -33,6 +71,7 @@ Page({
         } else if (imgbox.length == 9) {
             n = 1;
         }
+
         wx.chooseImage({
             count: n, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -55,14 +94,9 @@ Page({
                     if (res.tempFilePaths.length !== 1) {
                         for (var i = 0; i < res.tempFilePaths.length; i++) {
                             wx.uploadFile({
-                                url: UploadUrl, // 接口地址
+                                url: 'https://backend.hipee.cn/hipee-uploadtest/hibreath/mp/upload/image.do', // 接口地址
                                 filePath: res.tempFilePaths[i], // 上传文件的临时路径
                                 name: 'file',
-                                formData: { // 上传路径等参数
-                                    type: 0,
-                                    project: "aaa", // 项目名称
-                                    path: "bbb" // 项目路径文件夹
-                                },
                                 success(res) {
                                     // 采用选择几张就直接上传几张，最后拼接返回的url
                                     wx.hideLoading()
@@ -80,12 +114,12 @@ Page({
                         wx.uploadFile({
                             url: UploadUrl,
                             filePath: res.tempFilePaths[0],
-                            name: 'file',
+                            name: res.tempFilePaths[0],
                             success(res) {
-                                 console.log(res,"成功返回")
                                 wx.hideLoading()
                                 var obj = JSON.parse(res.data)
-                                urlList.push(obj.url);
+                                console.log(obj,"成功返回")
+                                urlList.push(obj.result.img_url);
                                 var tem = that.data.imageUrl
                                 that.setData({
                                     imageUrl: tem.concat(urlList)
@@ -101,6 +135,8 @@ Page({
                 });
             }
         })
+        that.disBtn()
+        console.log("IMGBOX",that.data.imgbox)
     },
     // 点击预览大图
     previewImage(e) {
@@ -110,5 +146,14 @@ Page({
             urls: this.data.imgbox // 需要预览的图片http链接列表
         })
     },
-
+    //删除图片
+    imgDelete: function (e) {
+        console.log(e.currentTarget.dataset.deindex,'e')
+        console.log(this.data.imgbox,'eeee')
+        this.data.imgbox.splice(e.currentTarget.dataset.deindex,1)
+        this.setData({
+            imgbox: this.data.imgbox,
+        });
+        this.disBtn()
+    },
 })

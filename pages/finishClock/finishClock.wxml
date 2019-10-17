@@ -45,11 +45,11 @@
         </view>
     </view>
 
-    <view class="finish-clock-bottom-title">本次训练的感受如何？</view>
-
+    <view wx:if="{{clockWay ==='free' && feelDesc !== ''}}" class="finish-clock-bottom-title">本次训练的感受如何？</view>
+    <view wx:elif="{{clockWay ==='video'}}" class="finish-clock-bottom-title">本次训练的感受如何？</view>
     <view class="fill-width flex-column align-items-center justify-center finish-clock-bottom-layout">
         <block wx:if="{{clockWay==='free'}}">
-            <view class="fill-width flex-row box-sizing-border-box" style="padding: 50rpx 40rpx 50rpx;">
+            <view wx:if="{{feelDesc !== ''}}" class="fill-width flex-row box-sizing-border-box" style="padding: 50rpx 40rpx 50rpx;">
                 <text class="finish-clock-feel-content">{{feelDesc}}</text>
             </view>
         </block>

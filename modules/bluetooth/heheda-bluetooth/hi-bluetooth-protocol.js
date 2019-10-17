@@ -105,10 +105,17 @@ export default class HiBlueToothProtocol {
                 //     }
                 // });
             },
-            //小程序传给设备 是否存储数据标志位
+            //APP传给设备 是否同步离线数据 01传 02不传
             '0x3d': ({isSuccess}) => {
                 this.sendData({
                     command: '0x3d',
+                    data: [isSuccess ? 1 : 2]
+                });
+            },
+            //APP通知设备是否上传检测记录
+            '0x40': ({isSuccess}) => {
+                this.sendData({
+                    command: '0x30',
                     data: [isSuccess ? 1 : 2]
                 });
             },
@@ -166,6 +173,12 @@ export default class HiBlueToothProtocol {
         console.log('sendISpage');
         if (this.getDeviceIsBind()) {
             this.action['0x3d']({isSuccess});
+        }
+    }
+    sendISvalue({isSuccess}) {
+        console.log('sendISvalue');
+        if (this.getDeviceIsBind()) {
+            this.action['0x40']({isSuccess});
         }
     }
 

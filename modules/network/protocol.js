@@ -106,11 +106,6 @@ export default class Protocol {
         return Network.request({url: 'breathData/list', data: data})
     }
 
-    //获取减脂方案目标
-    static getTargetNmuber(data) {
-        return Network.request({url: 'breathData/sync', data: data});
-    }
-
     //视频打卡页数据
     static postHIIT(data) {
         return Network.request({url: 'sport/info', data: data})
@@ -129,7 +124,14 @@ export default class Protocol {
     static postSettingsGoals() {
         return Network.request({url: 'settings/goals'})
     }
-
+    //饮食打卡心灵鸡汤
+    static getSoul() {
+        return Network.request({url: 'settings/soul'})
+    }
+    //饮食打卡上传
+    static postFood(data) {
+        return Network.request({url: 'dynamic/publish', data})
+    }
     static postMembersPut(data) {
         return Network.request({url: 'members/put', data})
     }

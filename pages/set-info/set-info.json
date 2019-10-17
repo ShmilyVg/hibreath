@@ -2,5 +2,8 @@
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
   "backgroundColor": "#ffffff",
-  "backgroundTextStyle": "light"
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "foodCard": "../../components/foodCard/foodCard"
+  }
 }
