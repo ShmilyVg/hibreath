@@ -161,7 +161,7 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
-                hiddenFat:"0",
+                hiddenFat:"auto",
                 showModalStatus: false,
             })
             toast.success('填写成功');
@@ -724,7 +724,7 @@ Page({
                     that.setData({
                         sync: that.data.sync,
                         showBigTip: true,
-                        hiddenFat:"600",
+                        hiddenFat:"600rpx",
                     });
 
                     clearTimeout(that.data.sync.timer);
@@ -732,7 +732,7 @@ Page({
                     that.data.sync.timer = setTimeout(function () {
                         that.setData({
                             showBigTip: false,
-                            hiddenFat:"0",
+                            hiddenFat:"auto",
                         });
                         that.handleTasks();
                     }, 2000)
@@ -740,7 +740,7 @@ Page({
             } else {
                 that.setData({
                     showBigTip: false,
-                    hiddenFat:"0",
+                    hiddenFat:"auto",
                 })
             }
         };
@@ -813,7 +813,7 @@ Page({
     },
     showModal: function () {
         this.setData({
-            hiddenFat:"600"
+            hiddenFat:"600rpx"
         })
         // 显示遮罩层
         var animation = wx.createAnimation({
@@ -837,7 +837,7 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-            hiddenFat:"0"
+            hiddenFat:"auto"
         })
         this.handleTasks();
     }

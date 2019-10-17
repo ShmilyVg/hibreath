@@ -15,7 +15,7 @@
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx;margin-left:{{hiddenFat}}rpx">
+        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx;margin-left:{{hiddenFat}}">
             <block>
                 <canvas canvas-id="bg" class='canvasII'></canvas>
                 <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
