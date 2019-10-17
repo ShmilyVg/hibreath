@@ -161,7 +161,7 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
-                hiddenFat:"block",
+                hiddenFat:"0",
                 showModalStatus: false,
             })
             toast.success('填写成功');
@@ -185,6 +185,7 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
+        console.log("this",this)
         Circular.init(this);
     },
 
@@ -710,6 +711,7 @@ Page({
     onShow() {
         console.log("000111")
         this.handleBle();
+
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
@@ -722,7 +724,7 @@ Page({
                     that.setData({
                         sync: that.data.sync,
                         showBigTip: true,
-                        hiddenFat:"none",
+                        hiddenFat:"600",
                     });
 
                     clearTimeout(that.data.sync.timer);
@@ -730,7 +732,7 @@ Page({
                     that.data.sync.timer = setTimeout(function () {
                         that.setData({
                             showBigTip: false,
-                            hiddenFat:"block",
+                            hiddenFat:"0",
                         });
                         that.handleTasks();
                     }, 2000)
@@ -738,7 +740,7 @@ Page({
             } else {
                 that.setData({
                     showBigTip: false,
-                    hiddenFat:"block",
+                    hiddenFat:"0",
                 })
             }
         };
@@ -811,7 +813,7 @@ Page({
     },
     showModal: function () {
         this.setData({
-            hiddenFat:"none"
+            hiddenFat:"600"
         })
         // 显示遮罩层
         var animation = wx.createAnimation({
@@ -835,7 +837,7 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-            hiddenFat:"block"
+            hiddenFat:"0"
         })
         this.handleTasks();
     }
