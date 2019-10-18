@@ -37,7 +37,7 @@ Page({
             return
         }*/
         Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
-
+            HiNavigator.navigateToMessageDetail({messageId: this.taskId});
         });
     },
     //控制完成按钮是否可以点击

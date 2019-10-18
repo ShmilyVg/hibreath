@@ -83,7 +83,7 @@ Component({
       //饮食打卡详情
       toDynamicDetails(e){
           console.log('2',e)
-          HiNavigator.navigateToDynamicDetails({id: e.currentTarget.dataset.finid});
+          HiNavigator.navigateToMessageDetail({messageId: e.currentTarget.dataset.finid});
       }
   }
 })

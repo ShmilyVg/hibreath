@@ -40,10 +40,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToImgClock({id}) {
         this.navigateTo({url: '/pages/imgClock/imgClock?id=' + id});
     }
-    //饮食打卡-打卡详情
-    static navigateToDynamicDetails({id}) {
-        this.navigateTo({url: '/pages/dynamicDetails/dynamicDetails?id=' + id});
-    }
+
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
     }*/

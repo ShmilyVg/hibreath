@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "设备管理",
   "navigationBarTextStyle":"white",
-  "navigationBarBackgroundColor":"#EE6F69"
+  "navigationBarBackgroundColor":"#EE6F69",
+  "disableScroll":true
 }

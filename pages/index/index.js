@@ -22,7 +22,6 @@ Page({
         userInfo: {},
         firstInto: true,
         isBind:false,
-
         noBind:false,
         tryAgain:false,
         finding:false,
@@ -51,7 +50,7 @@ Page({
         electricitypicShow: false,
     },
 
-    historyUrl() {
+        historyUrl() {
         HiNavigator.navigateToclickCheck();
     },
 

@@ -20,6 +20,9 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
     sendISpage({isSuccess}) {
         this.bluetoothProtocol.sendISpage(arguments[0]);
     }
+    sendISvalue({isSuccess}) {
+        this.bluetoothProtocol.sendISvalue(arguments[0]);
+    }
     startData(){
         this.bluetoothProtocol.startData();
     }
