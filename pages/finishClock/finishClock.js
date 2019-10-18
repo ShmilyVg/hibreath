@@ -49,7 +49,8 @@ Page({
             sportInfo,
             finishTime: getSportFinishedTime({timestamp: time * 1000}),
             goalDesc,
-            ...obj
+            ...obj,
+            ...this.showFeelView(feelEn)
         });
         this.showFeelView(feelEn);
     },
@@ -61,15 +62,14 @@ Page({
 
 
     showFeelView(feelEn) {
-        if (!feelEn) {
-            return;
-        }
-        for (let item of this.data.feelList) {
-            if (item.feelEn === feelEn) {
-                this.setData({feelEn, feelObj: {feelContent: item.content, icon: item.icon}});
-                break;
+        if (feelEn) {
+            for (let item of this.data.feelList) {
+                if (item.feelEn === feelEn) {
+                    return {feelEn, feelObj: {feelContent: item.content, icon: item.icon}};
+                }
             }
         }
+        return {};
     },
 
     toClockPage(e) {
