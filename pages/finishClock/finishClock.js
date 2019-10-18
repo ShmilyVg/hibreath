@@ -51,12 +51,25 @@ Page({
             goalDesc,
             ...obj
         });
-
+        this.showFeelView(feelEn);
     },
     async onFeelItemClickEvent(e) {
         const {currentTarget: {dataset: {item}}} = e;
         await Protocol.postSportDataPutFeel({...item, id: this.dataId});
         this.setData({feelEn: item.feelEn, feelObj: {feelContent: item.content, icon: item.icon}});
+    },
+
+
+    showFeelView(feelEn) {
+        if (!feelEn) {
+            return;
+        }
+        for (let item of this.data.feelList) {
+            if (item.feelEn === feelEn) {
+                this.setData({feelEn, feelObj: {feelContent: item.content, icon: item.icon}});
+                break;
+            }
+        }
     },
 
     toClockPage(e) {
