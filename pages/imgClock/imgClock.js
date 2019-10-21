@@ -37,7 +37,7 @@ Page({
             return
         }*/
         Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
-            HiNavigator.navigateToMessageDetail({messageId: this.taskId});
+            HiNavigator.navigateToMessageDetail({messageId: data.result.id});
         });
     },
     //控制完成按钮是否可以点击
@@ -101,8 +101,9 @@ Page({
                                     // 采用选择几张就直接上传几张，最后拼接返回的url
                                     wx.hideLoading()
                                     var obj = JSON.parse(res.data)
+                                    console.log("obj",obj)
                                     var more = []
-                                    more.push(obj.url)
+                                    more.push(obj.result.url)
                                     var tem = that.data.imageUrl
                                     that.setData({
                                         imageUrl: tem.concat(more)
@@ -118,17 +119,18 @@ Page({
                             success(res) {
                                 wx.hideLoading()
                                 var obj = JSON.parse(res.data)
-                                console.log(obj,"成功返回")
+                                console.log(obj.result.img_url,"成功返回")
                                 urlList.push(obj.result.img_url);
                                 var tem = that.data.imageUrl
                                 that.setData({
                                     imageUrl: tem.concat(urlList)
                                 })
+                                console.log("单一照片",that.data.imageUrl)
                             }
                         })
                     }
                 } else {
-                    imgbox[picid] = tempFilePaths[0];
+                    //imgbox[picid] = tempFilePaths[0];
                 }
                 that.setData({
                     imgbox: imgbox

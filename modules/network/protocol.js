@@ -205,7 +205,7 @@ export default class Protocol {
     }
 
     static postDynamicInfo({id}) {
-        return Network.request({url: 'dynamic/info', data: arguments[0]});
+        return Network.request({url: 'dynamic/info', data: {id}});
     }
 
     static postDynamicDelete({id}) {

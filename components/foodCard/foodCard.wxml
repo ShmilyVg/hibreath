@@ -8,10 +8,10 @@
                 <view class="set-content-content">你知道怎样健康饮食么？</view>
             </view>
         </view>
-        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport"
+        <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{foodTask.id}}"
               bindtap="bindTapSportType">去记录
         </view>
-        <image src="../../images/set-info/finished.png" bindtap="toDynamicDetails" data-finId="{{foodTask.id}}" wx:else class="set-content-finished"></image>
+        <image src="../../images/set-info/finished.png" bindtap="toDynamicDetails" data-finId="{{foodExt.dataId}}" wx:else class="set-content-finished"></image>
     </view>
     <view class="dashedLine"></view>
     <view wx:if="{{foodExt.isMeal}}" style="width: 100%">
@@ -24,7 +24,7 @@
                 <swiper-item>
                     <view  class="swiperBigTitle" >{{item.title}}</view>
                     <view class="clear"></view>
-                    <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" >
+                    <view wx:for="{{item.list}}" style="margin-bottom: 50rpx">
                         <image class="swiperImg"  src="{{item.imgUrl}}"></image>
                         <view style="float: left">
                             <view class="swiperSmallTitle">{{item.title}}</view>
@@ -35,6 +35,27 @@
                 </swiper-item>
             </block>
         </swiper>
+        <image src="../../images/set-info/per.png" style="width: 24rpx;height: 24rpx;margin-right: 12rpx;margin-top: 40rpx"></image>
+        <text style="font-size:28rpx;font-family:PingFang SC;font-weight:500;color:rgba(69,69,69,1);">营养占比</text>
+        <view class="flex-row proportionView" style="margin-top: 30rpx">
+            <view class="flex-row proportionList" wx:for="{{proportionList}}">
+                <view class="flex-column" style="width: 146rpx;height: 54rpx;line-height: 54rpx">{{item}}</view>
+            </view>
+        </view>
+        <view class="flex-row proportionNumView" style="">
+            <view class="flex-row proportionNum">
+                <view class="flex-column proportion">{{calorie}}</view>
+            </view>
+            <view class="flex-row proportionNum">
+                <view class="flex-column proportion">{{carbohydrate}}</view>
+            </view>
+            <view class="flex-row proportionNum">
+                <view class="flex-column proportion">{{fat}}</view>
+            </view>
+            <view class="flex-row proportionNum">
+                <view class="flex-column proportion">{{protein}}</view>
+            </view>
+        </view>
     </view>
     <view wx:else style="width: 100%;">
         <view class="noMeakTetx1">自由饮食日</view>

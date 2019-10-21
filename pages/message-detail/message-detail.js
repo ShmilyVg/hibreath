@@ -18,10 +18,19 @@ Page({
     },
 
     async onLoad(options) {
+        console.log(options)
+        this.dataId = options.messageId
         wx.setNavigationBarTitle({title: '动态详情'});
-        const {taskId, imgUrls, desc, createTimestamp, userInfo} = await Protocol.postDynamicInfo({id: options.messageId});
-
-        this.setData({taskId, imgUrls, desc, messageCreateTime: this.getCreateTime(createTimestamp), userInfo});
+        const {result} = await Protocol.postDynamicInfo({id: this.dataId});
+        console.log("nickname",result)
+        this.setData({
+            taskId:result.taskId,
+            imgUrls:result.imgUrls,
+            desc:result.desc,
+            messageCreateTime: this.getCreateTime(result.createTimestamp),
+            headUrl:result.headUrl,
+            nickname:result.nickname
+        });
     },
 
     /**
@@ -37,7 +46,7 @@ Page({
     onMessageSettingEvent() {
         WXDialog.showDialog({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
-                await Protocol.postDynamicDelete({id: this.data.taskId});
+                await Protocol.postDynamicDelete({id: this.dataId});
                 HiNavigator.navigateBack({delta: 1});
             }
         });

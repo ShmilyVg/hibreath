@@ -32,7 +32,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToVideoClock({id}) {
         this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
     }
-    //完成打卡
+    //完成打卡resultresult
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }
@@ -116,6 +116,9 @@ export default class HiNavigator extends CommonNavigator {
 
     static redirectToFinishCheck({dataId, clockWay}) {
         this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
+    }
+    static navigateToFinishCheck({dataId, clockWay}) {
+        this.navigateTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
     }
 
     static redirectToFreeCheck({dataId}) {

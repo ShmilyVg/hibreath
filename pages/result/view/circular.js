@@ -11,17 +11,21 @@ let _page = null;
 let _xWidth = 0;
 
 function init(page) {
+    console.log('dWidth',page)
     _page = page;
     const dWidth = wx.getSystemInfoSync().windowWidth;
     _xWidth = dWidth / 375
 }
 
 function run() {
+    console.log('111111111')
     drewCircular();
     showType();
+    console.log('222222222')
 }
 
 function drewCircular() {
+    console.log("_page.data.score",_page.data.score)
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
@@ -44,6 +48,7 @@ function drewCircular() {
 
     const drawCircle = (target, start, end, color) => {
         //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
+        console.log('_xWidth_xWidth_xWidth',_xWidth)
         target.arc(100*_xWidth, 100*_xWidth, 90*_xWidth, start * Math.PI / 180, end * Math.PI / 180);
         target.setStrokeStyle(color);
         target.setLineWidth("5");
@@ -203,6 +208,7 @@ function showType() {
 }
 
 function createSelectorQuery() {
+    console.log("createSelectorQuery",createSelectorQuery)
     wx.createSelectorQuery().select('#canvas-one').boundingClientRect(function (rect) {
         //监听canvas的宽高
         console.log(rect);

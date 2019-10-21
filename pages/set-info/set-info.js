@@ -361,6 +361,9 @@ Page({
                             fatDes: '"'+fatBurnExt.visDes+'"'
                         })
                     }
+                    console.log("zhgethis",this)
+                  /*  Circular.createSelectorQuery();
+                    Circular.init(this);*/
                     Circular.run();
                 } else {
                     this.setData({
@@ -400,7 +403,7 @@ Page({
                 this.setData({
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
-                    aheight: sportExt.recommendList.length * 158
+                    aheight: sportExt.recommendList[0].list.length * 200
                 })
                 if (sportExt.recommendList.length < 2) {
                     this.setData({
@@ -414,6 +417,10 @@ Page({
 
             }
             if(typesArr[i] === "food"){
+                this.component= this.selectComponent('.countdown')
+                this.setData({
+                    component: this.component,
+                })
                 const foodExt = result.taskList[i].ext;
                 if (result.taskList[i].finished) {
                     this.setData({
@@ -423,8 +430,13 @@ Page({
                 this.setData({
                     foodTask: result.taskList[i],
                     foodExt: foodExt,
-                    foodAheight: foodExt.mealList.length * 158
+                    foodAheight: foodExt.mealList[0].list.length * 200,
+                    calorie:this.data.component.sum(foodExt.mealList[0].list,1),
+                    carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
+                    fat:this.data.component.sum(foodExt.mealList[0].list,3),
+                    protein:this.data.component.sum(foodExt.mealList[0].list,4)
                 })
+
                 if (foodExt.mealList.length < 2) {
                     this.setData({
                         foodHiddenImg: true,
@@ -647,7 +659,7 @@ Page({
 
 
     onReady() {
-        Circular.createSelectorQuery();
+        Circular.createSelectorQuery()
     },
 
     bindScrollView(e) {
@@ -683,8 +695,9 @@ Page({
     //视频打卡
     toVideoClock(e) {
         console.log("toVideoClock", e.currentTarget)
-        if (e.currentTarget.dataset.finid || e.currentTarget.dataset.finid == '') {
-            HiNavigator.redirectToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
+        if (e.currentTarget.dataset.finid) {
+            HiNavigator.navigateToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
+            return
         }
         HiNavigator.navigateToVideoClock({id: e.currentTarget.dataset.id});
     },
@@ -709,9 +722,7 @@ Page({
     },
 
     onShow() {
-        console.log("000111")
         this.handleBle();
-
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
         app.bLEManager.sendISpage({isSuccess: true});
@@ -778,7 +789,8 @@ Page({
     swiperChange: function (e) {
         console.log(e.detail.current, 'eeeeee')
         this.setData({
-            currentSwiper: e.detail.current
+            currentSwiper: e.detail.current,
+            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 240
         })
         if (e.detail.current === 0) {
             this.setData({

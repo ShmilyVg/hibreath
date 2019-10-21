@@ -136,10 +136,15 @@
                 <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
                 <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
                 <foodCard wx:if="{{item.type =='food'}}"
+                          class="countdown"
                                foodTask="{{foodTask}}"
                                foodExt="{{foodExt}}"
                                foodAheight="{{foodAheight}}"
                                foodHiddenImg="{{foodHiddenImg}}"
+                               calorie="{{calorie}}"
+                               carbohydrate="{{carbohydrate}}"
+                               fat="{{fat}}"
+                               protein="{{protein}}"
                 >
 
                 </foodCard>
