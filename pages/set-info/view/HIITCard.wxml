@@ -21,11 +21,11 @@
             <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{hiddenImg}}" src="../../images/set-info/rightG.png"></image>
             <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{hiddenImg}}" src="../../images/set-info/rightB.png"></image>
             <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{aheight}}rpx">
-                <block wx:for="{{sportExt.recommendList}}" style="height: 500rpx">
+                <block wx:for="{{sportExt.recommendList}}" wx:key="{{index}}" style="height: 500rpx">
                     <swiper-item>
                         <view  class="swiperBigTitle" >{{item.title}}</view>
                         <view class="clear"></view>
-                        <view wx:for="{{item.list}}" style="margin-bottom: 50rpx" bindtap="toVideoClock" data-id="{{item.id}}" data-finId="{{item.dataId}}">
+                        <view wx:for="{{item.list}}" wx:key="{{index}}" style="margin-bottom: 50rpx" bindtap="toVideoClock" data-id="{{item.id}}" data-finId="{{item.dataId}}">
                             <image class="swiperImg"  src="{{item.imgUrl}}"></image>
                             <view style="float: left">
                                 <view class="swiperSmallTitle">{{item.title}}</view>

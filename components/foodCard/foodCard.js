@@ -39,6 +39,10 @@ Component({
           type:Number,
           value:0
       },
+      foodcurrentSwiper:{
+          type:Number,
+          value:0
+      },
   },
 
   /**
@@ -50,7 +54,7 @@ Component({
       hiddenImg: false,//隐藏左右箭头
       grayLeft: true,//灰色箭头左
       grayRight: false,//灰色箭头右
-      currentSwiper: 0,
+      foodcurrentSwiper: 0,
       calorie:0,//卡路里
       carbohydrate:0,//碳水化合物
       fat:0,//脂肪
@@ -99,7 +103,7 @@ Component({
       swiperChange: function (e) {
           let currentList = this.data.foodExt.mealList[e.detail.current].list;
           this.setData({
-              currentSwiper: e.detail.current,
+              foodcurrentSwiper: e.detail.current,
               foodAheight: currentList.length * 200,
               calorie:this.sum(currentList,1),
               carbohydrate:this.sum(currentList,2),
@@ -130,13 +134,13 @@ Component({
       //饮食打卡--左按钮
       imgToPre() {
           this.setData({
-              currentSwiper: this.data.currentSwiper - 1
+              foodcurrentSwiper: this.data.foodcurrentSwiper - 1
           })
       },
       //饮食打卡--右按钮
       imgToNext() {
           this.setData({
-              currentSwiper: this.data.currentSwiper + 1
+              foodcurrentSwiper: this.data.foodcurrentSwiper + 1
           })
       },
       //饮食打卡详情

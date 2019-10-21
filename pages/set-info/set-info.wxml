@@ -145,6 +145,7 @@
                                carbohydrate="{{carbohydrate}}"
                                fat="{{fat}}"
                                protein="{{protein}}"
+                               foodcurrentSwiper="{{foodcurrentSwiper}}"
                 >
 
                 </foodCard>

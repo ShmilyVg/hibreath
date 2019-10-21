@@ -56,7 +56,6 @@
     width:210rpx;
     height:210rpx;
     border-radius:10rpx;
-    background-color: ghostwhite;
     margin-bottom: 16rpx;
 }
 

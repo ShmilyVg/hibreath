@@ -274,16 +274,6 @@ Page({
 
             }
             setSexFun.call(this, info.sex);
-            // info = accountInfo.detail;
-            // this.data.meals.map(value => {
-            //     value.isChose = value.en === info.mealType;
-            // });
-            //
-            // this.data.sexBox.map(value => {
-            //     value.isChose = info.sex === value.value;
-            // });
-            //
-            // this.data.birth = info.birthday.split("-");
             let obj = {
                 currentDate, goals, info,
                 showNewInfo: true,
@@ -401,6 +391,7 @@ Page({
                     })
                 }
                 this.setData({
+                    currentSwiper:0,
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
                     aheight: sportExt.recommendList[0].list.length * 200
@@ -428,6 +419,7 @@ Page({
                     })
                 }
                 this.setData({
+                    foodcurrentSwiper:0,
                     foodTask: result.taskList[i],
                     foodExt: foodExt,
                     foodAheight: foodExt.mealList[0].list.length * 200,
