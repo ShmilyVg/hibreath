@@ -127,6 +127,6 @@ export default class HiNavigator extends CommonNavigator {
     }
 
     static navigateToFoodRuler() {
-        this.navigateTo({url:''})
+        this.navigateTo({url: '/pages/food-ruler/food-ruler'});
     }
 }
