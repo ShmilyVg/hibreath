@@ -13,7 +13,8 @@
     "pages/videoClock/videoClock",
     "pages/finishClock/finishClock",
     "pages/imgClock/imgClock",
-    "pages/message-detail/message-detail"
+    "pages/message-detail/message-detail",
+    "pages/food-ruler/food-ruler"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
