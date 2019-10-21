@@ -125,4 +125,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToMessageDetail({messageId}) {
         this.navigateTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
     }
+
+    static navigateToFoodRuler() {
+        this.navigateTo({url:''})
+    }
 }
