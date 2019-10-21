@@ -65,7 +65,7 @@ Component({
           HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
       },
       toRules(){
-
+          HiNavigator.navigateToFoodRuler();
       },
       sum(arr,Num) {
           var result= 0;
