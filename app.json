@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/set-info/set-info",
+    "pages/community/Community",
     "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
@@ -23,6 +24,25 @@
     "backgroundTextStyle": "dark",
     "navigationBarTitleText": "HiPee健康燃脂"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#BBBCCD",
+    "selectedColor": "#EE6F69",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/set-info/set-info",
+        "text": "打卡",
+        "iconPath": "images/loading_fail.png",
+        "selectedIconPath": "images/arr-right.png"
+      },
+      {
+        "pagePath": "pages/Community/Community",
+        "text": "圈子",
+        "iconPath": "images/loading_fail.png",
+        "selectedIconPath": "images/arr-right.png"
+      }
+    ]
+  }
 
 }
