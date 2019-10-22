@@ -187,6 +187,7 @@ Page({
 
     onReady() {
         Circular.createSelectorQuery();
+        Trend.init(this);
         Trend.initTouchHandler();
     },
     async updateTrendTime({frontTimestamp, endTimestamp}) {
