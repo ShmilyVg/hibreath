@@ -64,3 +64,8 @@ export function getSportFinishedTime({timestamp}) {
     const date = new Date(timestamp);
     return `${date.getFullYear()}/${getMonthStr(date)}/${getDayStr(date)} ${getHourStr(date)}:${getMinuteStr(date)}`;
 }
+
+export function getDynamicCreateTime(timestamp) {
+    const date = new Date(timestamp);
+    return `${date.getFullYear()}/${getMonthStr(date)}/${getDayStr(date)} ${getHourStr(date)}:${getMinuteStr(date)}`;
+}

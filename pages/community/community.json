@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#171717",
   "backgroundColor": "#171717",
   "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "setting": "../../components/setting/index",
     "message-item": "../../components/message-item/index"

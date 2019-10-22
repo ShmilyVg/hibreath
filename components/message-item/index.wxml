@@ -1,4 +1,4 @@
-<view class="fill-width flex-column box-sizing-border-box message-item-layout">
+<view class="fill-width flex-column box-sizing-border-box message-item-layout" bindtap="onMessageClickEvent">
     <view class="fill-width flex-row align-items-center space-between">
         <view class="flex-row align-items-center">
             <image src="{{message.headUrl}}" class="message-item-head-img"></image>

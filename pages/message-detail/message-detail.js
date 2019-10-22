@@ -3,7 +3,7 @@ import {previewImage} from "../../view/view";
 import {WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-import {getDayStr, getHourStr, getMinuteStr} from "../../utils/time";
+import {getDayStr, getDynamicCreateTime, getHourStr, getMinuteStr} from "../../utils/time";
 
 Page({
 
@@ -27,7 +27,7 @@ Page({
             taskId:result.taskId,
             imgUrls:result.imgUrls,
             desc:result.desc,
-            messageCreateTime: this.getCreateTime(result.createTimestamp),
+            messageCreateTime: getDynamicCreateTime(result.createTimestamp),
             headUrl:result.headUrl,
             nickname:result.nickname
         });
@@ -39,10 +39,7 @@ Page({
     onReady() {
 
     },
-    getCreateTime(timestamp) {
-        const date = new Date(timestamp);
-        return `${date.getFullYear()}/${getMinuteStr(date)}/${getDayStr(date)} ${getHourStr(date)}:${getMinuteStr(date)}`;
-    },
+    
     onMessageSettingEvent() {
         WXDialog.showDialog({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {

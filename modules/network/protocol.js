@@ -110,6 +110,7 @@ export default class Protocol {
     static postHIIT(data) {
         return Network.request({url: 'sport/info', data: data})
     }
+
     //视频打卡完成
     static postHIITFin(data) {
         return Network.request({url: 'task/sportvideo', data: data})
@@ -224,4 +225,39 @@ export default class Protocol {
         return Network.request({url: 'dynamic/delete', data: arguments[0]});
     }
 
+    /**
+     * 圈子动态
+     * @param groupId
+     * @param timestamp
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postGroupDynamicLatest({groupId, page, pageSize = 5}) {
+        return Network.request({url: 'group/dynamic/lastest', data: arguments[0]});
+    }
+
+    /**
+     * 我的圈子
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postMemberGroupList() {
+        return Network.request({url: 'member/group/list'});
+    }
+
+    /**
+     * 退出圈子
+     * @param groupId
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postMemberGroupExit({groupId}) {
+        return Network.request({url: 'member/group/exit', data: arguments[0]});
+    }
+
+    /**
+     * 圈子详情
+     * @param id
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postGroupInfo({groupId: id}) {
+        return Network.request({url: 'group/info', data: {id}});
+    }
 }
