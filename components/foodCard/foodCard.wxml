@@ -19,7 +19,7 @@
         <image class="HIITCardImgL" bindtap="imgToPre" wx:else hidden="{{foodHiddenImg}}" src="../../images/set-info/leftB.png"></image>
         <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{foodHiddenImg}}" src="../../images/set-info/rightG.png"></image>
         <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{foodHiddenImg}}" src="../../images/set-info/rightB.png"></image>
-        <swiper bindchange="swiperChange"  current="{{foodcurrentSwiper}}"  class="" style="width: 100%;height:{{foodAheight}}rpx">
+        <swiper bindchange="swiperChange"  current="{{foodcurrentSwiper}}"  class="" style="width: 100%;height:{{foodAheight}}rpx;position: relative;top:-10rpx">
             <block wx:for="{{foodExt.mealList}}" wx:key="{{index}}" style="height: 500rpx">
                 <swiper-item>
                     <view  class="swiperBigTitle" >{{item.title}}</view>
