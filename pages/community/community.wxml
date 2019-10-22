@@ -1,5 +1,5 @@
 <view class="relative fill-width flex-column box-sizing-border-box community-layout">
-    <view class="fill-width flex-row align-items-center space-between">
+    <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
             <view class="relative">
                 <image src="" class="community-logo"></image>
@@ -7,5 +7,30 @@
             </view>
             <view class="community-name">记性不太好的矫情中年三寡妇村村委会欢乐多</view>
         </view>
+        <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
     </view>
+    <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
+        <view class="flex-row align-items-center">
+            <view class="community-member-num">10</view>
+            <view class="community-member-description">位·燃脂成员</view>
+        </view>
+
+        <view class="flex-row align-items-center relative">
+            <image wx:for="{{4}}" wx:key="index" src="../../images/finishClock/action.png" class="community-member-head"></image>
+        </view>
+    </view>
+
+    <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
+        <view class="flex-row align-items-center">
+            <image src="" class="community-rank-icon"></image>
+            <view class="community-rank-text">减重榜</view>
+        </view>
+        <view class="fill-height" style="border-left: 2rpx solid white;margin-left: 87rpx;margin-right: 72rpx;"></view>
+        <view class="flex-row align-items-center">
+            <image src="" class="community-rank-icon"></image>
+            <view class="community-rank-text">打卡榜</view>
+        </view>
+    </view>
+
+
 </view>

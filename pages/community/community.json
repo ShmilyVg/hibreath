@@ -3,5 +3,7 @@
   "navigationBarBackgroundColor": "#171717",
   "backgroundColor": "#171717",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "setting": "../../components/setting/index"
+  }
 }
