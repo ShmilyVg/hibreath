@@ -394,7 +394,7 @@ Page({
                     currentSwiper:0,
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
-                    aheight: sportExt.recommendList[0].list.length * 200
+                    aheight: sportExt.recommendList[0].list.length * 220
                 })
                 if (sportExt.recommendList.length < 2) {
                     this.setData({
@@ -786,7 +786,7 @@ Page({
         console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current,
-            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 240
+            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 220
         })
         if (e.detail.current === 0) {
             this.setData({
