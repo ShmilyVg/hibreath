@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "圈子",
+  "navigationBarBackgroundColor": "#171717",
+  "backgroundColor": "#171717",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

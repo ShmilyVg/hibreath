@@ -1,4 +1,11 @@
-<!--pages/community/Community.wxml-->
-<view>
-    圈子
+<view class="relative fill-width flex-column box-sizing-border-box community-layout">
+    <view class="fill-width flex-row align-items-center space-between">
+        <view class="flex-row align-items-center">
+            <view class="relative">
+                <image src="" class="community-logo"></image>
+                <image src="" class="absolute community-switch-icon"></image>
+            </view>
+            <view class="community-name">记性不太好的矫情中年三寡妇村村委会欢乐多</view>
+        </view>
+    </view>
 </view>

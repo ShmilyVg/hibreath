@@ -1,1 +1,37 @@
-/* pages/community/Community.wxss */
+.community-layout {
+    padding: 0 40rpx;
+}
+
+.community-layout:before {
+    content: '';
+    background:linear-gradient(180deg,rgba(23,23,23,1) 0%,rgba(69,69,69,1) 100%);
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 550rpx;
+}
+
+.community-logo{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background-color: #0AC1A1;
+}
+
+.community-switch-icon {
+    width: 40rpx;
+    height: 40rpx;
+    background-color: #EE6F69;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+}
+
+.community-name {
+    width: 350rpx;
+    font-size:32rpx;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:45rpx;
+    margin-left: 30rpx;
+}
