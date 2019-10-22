@@ -1,4 +1,8 @@
 // pages/communityManagement/communityManagement.js
+/**
+ * @Date: 2019-10-22 17:30:00
+ * @LastEditors: 张浩玉
+ */
 Page({
 
   /**
