@@ -8,7 +8,7 @@
     position: absolute;
     z-index: -1;
     width: 100%;
-    height: 550rpx;
+    height: 530rpx;
 }
 
 .community-logo{
@@ -34,4 +34,55 @@
     color:rgba(255,255,255,1);
     line-height:45rpx;
     margin-left: 30rpx;
+}
+
+.community-member-num{
+    font-size:72rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:86rpx;
+}
+
+.community-member-description{
+    font-size:24rpx;
+    font-family:PingFang-SC-Semibold,PingFang-SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:33rpx;
+    margin-left: 10rpx;
+}
+
+.community-member-head{
+    width: 66rpx;
+    height: 66rpx;
+    border: 3rpx solid rgba(255,255,255,1);
+    border-radius: 50%;
+    margin-left: -20rpx;
+    background-color: ghostwhite;
+}
+
+.community-rank-layout {
+    padding: 30rpx 82rpx 30rpx 67rpx;
+    height: 150rpx;
+    background: rgba(238,111,105,1);
+    box-shadow: 0 2rpx 10rpx 0 rgba(238,111,105,1);
+    border-radius: 20rpx;
+    margin-top: 45rpx;
+}
+
+.community-rank-icon {
+    width: 52rpx;
+    height: 50rpx;
+    background-color: #0AC1A1;
+    margin-right: 38rpx;
+}
+
+.community-rank-text {
+    font-size: 30rpx;
+    font-family:PingFang-SC-Semibold,PingFang-SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:42rpx;
+
 }
