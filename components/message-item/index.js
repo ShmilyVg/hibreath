@@ -1,6 +1,7 @@
 import {WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {previewImage} from "../../view/view";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Component({
     options: {
@@ -23,6 +24,9 @@ Component({
         },
     },
     methods: {
+        onMessageClickEvent() {
+            HiNavigator.navigateToMessageDetail({messageId: this.data.message.taskId});
+        },
         onMessageSettingEvent() {
             WXDialog.showDialog({
                 content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
