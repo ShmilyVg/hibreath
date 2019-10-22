@@ -18,7 +18,8 @@
     "pages/food-ruler/food-ruler",
     "pages/createCommunity/createCommunity",
     "pages/memberManagement/memberManagement",
-    "pages/communityManagement/communityManagement"
+    "pages/communityManagement/communityManagement",
+    "pages/shareAddcommunity/shareAddcommunity"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

@@ -140,6 +140,10 @@ export default class Protocol {
     static postMembers(data) {
         return Network.request({url: 'group/members', data})
     }
+    //移除圈子成员
+    static postMembersDelete(data) {
+        return Network.request({url: 'group/members/delete', data})
+    }
     static postMembersPut(data) {
         return Network.request({url: 'members/put', data})
     }
