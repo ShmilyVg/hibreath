@@ -1,0 +1,52 @@
+/* pages/shareAddcommunity/shareAddcommunity.wxss */
+.shareAdd-Span{
+    width:111rpx;
+    height:50rpx;
+    background:rgba(252,236,235,1);
+    border-radius:25rpx;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+    line-height:50rpx;
+    margin-bottom: 10rpx;
+    margin-left: 320rpx;
+    margin-top: 60rpx;
+}
+.shareAdd-Nickname{
+    font-size:42rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+}
+.shareAdd-Text{
+    font-size:32rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-bottom: 67rpx;
+}
+.shareAdd-Img{
+    width:263rpx;
+    height:263rpx;
+    border-radius:50%;
+    margin-bottom: 180rpx;
+}
+.shareAdd-Btn{
+    width:500rpx;
+    height:100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:100rpx;
+}
+.shareAdd-Name{
+    font-size:42rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-bottom: 190rpx;
+}
