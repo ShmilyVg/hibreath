@@ -1,1 +1,60 @@
 /* pages/createCommunity/createCommunity.wxss */
+.createCommunity-View{
+    width:262rpx;
+    height:262rpx;
+    background:rgba(238,111,105,1);
+    border-radius:131rpx;
+    margin: 293rpx auto 192rpx auto;
+
+}
+.createCommunity-Head-Img{
+    width:262rpx;
+    height:262rpx;
+    border-radius:131rpx;
+}
+.createCommunity-Img{
+    width: 90rpx;
+    height: 77rpx;
+    margin-top: 73rpx;
+    margin-left: 85rpx
+}
+.createCommunity-Text{
+    font-size:22rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    margin-top: 20rpx;
+}
+.createCommunity-Inputpla{
+    font-size:42rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+
+}
+.createCommunity-Line{
+    width: 600rpx;
+    border: 0.5rpx #EE6F69 solid;
+    margin-top: 14rpx;
+
+}
+.createCommunity-Btn{
+    width:500rpx;
+    height:100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height: 100rpx;
+    margin-top: 165rpx;
+}
+button[disabled] {
+    color:#fff !important;
+    background:rgba(237,111,105,0.5) !important;
+}
+
+button::after{
+    border:none;
+}

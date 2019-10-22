@@ -1,11 +1,16 @@
 // pages/createCommunity/createCommunity.js
+import {UploadUrl} from "../../utils/config";
+import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      imgUrl:'',
+      name:'',
+      disable:true
   },
 
   /**
@@ -62,5 +67,58 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    createCommunityInput(e){
+        this.setData({
+            name:e.detail.value
+        })
+        this.disBtn();
+    },
+    async createCommunityBtn(){
+        await Protocol.postgroup({name:this.data.name,imgUrl:this.data.imgUrl})
+        HiNavigator.redirectToCommunity
+    },
+    //控制完成按钮是否可以点击
+    disBtn(){
+        if(this.data.name == ''|| this.data.imgUrl==''){
+            this.setData({
+                disable:true
+            })
+        }else{
+            this.setData({
+                disable:false
+            })
+        }
+    },
+    // 上传图片
+    addPic1: function (e) {
+        var that = this;
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success: function (res) {
+                console.log(res)
+                wx.showLoading({ // 添加loading状态
+                    title: '上传中',
+                })
+                    wx.uploadFile({
+                        url: UploadUrl,
+                        filePath: res.tempFilePaths[0],
+                        name: res.tempFilePaths[0],
+                        success(res) {
+                            wx.hideLoading()
+                            var obj = JSON.parse(res.data)
+                            console.log("res",obj)
+                            that.setData({
+                                imgUrl: obj.result.img_url
+                            })
+                            that.disBtn();
+                        }
+                    })
+            }
+        })
+        //that.disBtn()
+
+    }
 })

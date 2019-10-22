@@ -132,6 +132,14 @@ export default class Protocol {
     static postFood(data) {
         return Network.request({url: 'dynamic/publish', data})
     }
+    //创建圈子
+    static postgroup(data) {
+        return Network.request({url: 'group/post', data})
+    }
+    //获取圈子成员
+    static postMembers(data) {
+        return Network.request({url: 'group/members', data})
+    }
     static postMembersPut(data) {
         return Network.request({url: 'members/put', data})
     }

@@ -97,8 +97,10 @@ page{
 }
 button[disabled]{
     color:#fff !important;
-    border: none!important;
     background:rgba(237,111,105,0.5) !important;
+}
+button::after{
+    border:none;
 }
 .free-btn{
     width:500rpx;
