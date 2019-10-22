@@ -4,6 +4,7 @@
   "backgroundColor": "#171717",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "setting": "../../components/setting/index"
+    "setting": "../../components/setting/index",
+    "message-item": "../../components/message-item/index"
   }
 }
