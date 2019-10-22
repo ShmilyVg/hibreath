@@ -15,7 +15,8 @@
     "pages/finishClock/finishClock",
     "pages/imgClock/imgClock",
     "pages/message-detail/message-detail",
-    "pages/food-ruler/food-ruler"
+    "pages/food-ruler/food-ruler",
+    "pages/createCommunity/createCommunity"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

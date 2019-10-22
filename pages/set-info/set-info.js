@@ -421,8 +421,6 @@ Page({
                 if(foodExt.isMeal){
                     this.setData({
                         foodcurrentSwiper:0,
-
-                        foodExt: foodExt,
                         foodAheight: foodExt.mealList[0].list.length * 200,
                         calorie:this.data.component.sum(foodExt.mealList[0].list,1),
                         carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
@@ -432,6 +430,7 @@ Page({
 
                 }
                 this.setData({
+                    foodExt: foodExt,
                     foodTask: result.taskList[i]
                 })
                 if (foodExt.mealList.length < 2) {

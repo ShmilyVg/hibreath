@@ -1,0 +1,7 @@
+<!--pages/createCommunity/createCommunity.wxml-->
+<view>
+    <view style="width:262rpx;height:262rpx;background:rgba(238,111,105,1);border-radius:131rpx;">
+        <image src="../.../images/imgClock/img.png" style="width: 90rpx;height: 77rpx"></image>
+        设置头像
+    </view>
+</view>

@@ -145,7 +145,8 @@ Component({
       },
       //饮食打卡详情
       toDynamicDetails(e){
-          HiNavigator.navigateToMessageDetail({messageId: e.currentTarget.dataset.finid});
+          console.log('eee',e)
+          HiNavigator.navigateToMessageDetail({messageId: e.currentTarget.dataset.dataid});
       }
   }
 })

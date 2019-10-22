@@ -11,7 +11,7 @@
         <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{foodTask.id}}"
               bindtap="bindTapSportType">去记录
         </view>
-        <image src="../../images/set-info/finished.png" bindtap="toDynamicDetails" data-finId="{{foodExt.dataId}}" wx:else class="set-content-finished"></image>
+        <image src="../../images/set-info/finished.png" bindtap="toDynamicDetails" data-dataId="{{foodExt.dataId}}" wx:else class="set-content-finished"></image>
     </view>
     <view class="dashedLine"></view>
     <view wx:if="{{foodExt.isMeal}}" style="width: 100%">
