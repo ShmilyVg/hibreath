@@ -9,7 +9,7 @@
         </view>
         <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
     </view>
-    <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
+    <view bindtap="toMemberManagerPage" class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
             <view class="community-member-num">10</view>
             <view class="community-member-description">位·燃脂成员</view>
