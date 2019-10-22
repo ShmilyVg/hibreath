@@ -1,7 +1,11 @@
 /* pages/set-info/set-info.wxss */
 @import "./view/guide.wxss";
 @import "../result/result.wxss";
-
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
 .title{
     font-size:50rpx;
     font-family:PingFang-SC;
@@ -91,7 +95,7 @@
     position: fixed;
     text-align: center;
     color: white;
-    bottom: 60rpx;
+    bottom: 30rpx;
     font-size:32rpx;
     width: 100%;
 }
@@ -315,13 +319,13 @@
 
 .page7-box{
     width:650rpx;
-    height:160rpx;
+    height:130rpx;
     border-radius:20rpx;
     border:1rpx solid rgba(205,205,205,1);
     font-size:34rpx;
     font-family:PingFang-SC;
     font-weight:400;
-    line-height:160rpx;
+    line-height:130rpx;
     text-align:center;
     margin-bottom: 20rpx;
 }
