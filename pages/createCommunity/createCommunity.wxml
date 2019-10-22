@@ -1,0 +1,6 @@
+<!--pages/createCommunity/createCommunity.wxml-->
+<view>
+    <view style="width:262rpx;height:262rpx;background:rgba(238,111,105,1);border-radius:131rpx;">
+        
+    </view>
+</view>
