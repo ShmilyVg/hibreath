@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/set-info/set-info",
-    "pages/community/Community",
+    "pages/community/community",
     "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
@@ -37,7 +37,7 @@
         "selectedIconPath": "images/arr-right.png"
       },
       {
-        "pagePath": "pages/Community/Community",
+        "pagePath": "pages/community/community",
         "text": "圈子",
         "iconPath": "images/loading_fail.png",
         "selectedIconPath": "images/arr-right.png"

@@ -418,17 +418,22 @@ Page({
                         foodFin: true,
                     })
                 }
-                this.setData({
-                    foodcurrentSwiper:0,
-                    foodTask: result.taskList[i],
-                    foodExt: foodExt,
-                    foodAheight: foodExt.mealList[0].list.length * 200,
-                    calorie:this.data.component.sum(foodExt.mealList[0].list,1),
-                    carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
-                    fat:this.data.component.sum(foodExt.mealList[0].list,3),
-                    protein:this.data.component.sum(foodExt.mealList[0].list,4)
-                })
+                if(foodExt.isMeal){
+                    this.setData({
+                        foodcurrentSwiper:0,
 
+                        foodExt: foodExt,
+                        foodAheight: foodExt.mealList[0].list.length * 200,
+                        calorie:this.data.component.sum(foodExt.mealList[0].list,1),
+                        carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
+                        fat:this.data.component.sum(foodExt.mealList[0].list,3),
+                        protein:this.data.component.sum(foodExt.mealList[0].list,4)
+                    })
+
+                }
+                this.setData({
+                    foodTask: result.taskList[i]
+                })
                 if (foodExt.mealList.length < 2) {
                     this.setData({
                         foodHiddenImg: true,
