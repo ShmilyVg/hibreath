@@ -144,4 +144,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToMemberManagement({dataId}) {
         this.redirectTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});
     }
+
+    static switchToCommunity() {
+        this.switchTab({url: '/pages/community/community'});
+    }
 }

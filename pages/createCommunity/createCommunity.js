@@ -2,6 +2,8 @@
 import {UploadUrl} from "../../utils/config";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+import {getSocialGroupManager} from "../community/social-manager";
+import {Toast} from "heheda-common-view";
 Page({
 
   /**
@@ -75,8 +77,11 @@ Page({
         this.disBtn();
     },
     async createCommunityBtn(){
-        await Protocol.postgroup({name:this.data.name,imgUrl:this.data.imgUrl})
-        HiNavigator.redirectToCommunity
+        Toast.showLoading();
+        const {result: {groupId}} = await Protocol.postgroup({name: this.data.name, imgUrl: this.data.imgUrl});
+        getSocialGroupManager.currentSocial = {groupId};
+        Toast.hiddenLoading();
+        HiNavigator.switchToCommunity();
     },
     //控制完成按钮是否可以点击
     disBtn(){
