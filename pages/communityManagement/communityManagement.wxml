@@ -1,2 +1,19 @@
 <!--pages/communityManagement/communityManagement.wxml-->
+<view>
+    <view wx:for="{{groupList}}" wx:key="{{index}}" bindtap="toCommunity" data-id="{{item.groupId}}" style="margin-bottom: 50rpx">
+        <view class="" style="float: left;width: 25%;height: 168rpx;align-content: center">
+            <image class="community-HeadUrl" src="{{item.imgUrl}}"></image>
+            <view class="{{item.isMajor?'community-Red':'community-Green'}}">{{item.isMajor?'我创建的':'我加入的'}}</view>
+        </view>
+       <view style="float: left;width: 60%;height: 168rpx">
+           <view class="community-Name">{{item.name}}</view>
+           <view class="community-Number">{{item.countMember}}位·燃脂成员</view>
+       </view>
+        <view style="float: left;width: 15%;height: 168rpx;align-items: center;display: flex;">
+            <image class="community-Img" src="{{item.isMajor?'../../images/community/red.png':'../../images/community/green.png'}}"></image>
+            <image src="../../images/community/gray.png" style="width: 19rpx;height: 35rpx"></image>
+        </view>
+        <view class="clear"></view>
+    </view>
+</view>
 <button bindtap="createCommunityBtn"  class="createCommunity-Btn">创建新圈子</button>

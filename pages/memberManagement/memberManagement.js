@@ -11,21 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[{
-        name: "群主",        // 名称
-        headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",    // 头像
-        isMajor: true    // 是否为群主
-    },
-    {
-        name: "成员",
-        headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
-        isMajor: false
-    },{
-            name: "成员",
-            headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
-            isMajor: false
-        }
-    ]
+
   },
 
   /**
@@ -45,11 +31,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   onShow () {
+  async onShow () {
        console.log('2222',this.data.list)
-    //const[list] = await Protocol.postMembers({id:this.dataId});
+    const{result:{list}} = await Protocol.postMembers({id:this.dataId});
     this.setData({
-        memberList:this.data.list
+        memberList:list
     })
   },
     async memberRemove(){
