@@ -3,6 +3,7 @@
  * @Date: 2019-10-22 17:30:00
  * @LastEditors: 张浩玉
  */
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
@@ -32,7 +33,9 @@ Page({
   onShow: function () {
 
   },
-
+  createCommunityBtn(){
+      HiNavigator.navigateToCreateCommunity()
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

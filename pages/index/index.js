@@ -34,6 +34,7 @@ Page({
         blowingImg:false,
         process:false,
         isShowBlow:true,
+        noUpdata:false,//如果点击OTA升级 则跳转时不执行 onUnload 中的跳转 正常跳转到升级页面
         //isSuccessInfo:false,//是否绑定完成页进入标志
         homeP:[
             "1. 请勿将设备远离手机",
@@ -155,6 +156,8 @@ Page({
         this.setData({
             isBind: currPage.data.isBind
         })*/
+       console.log("equipmentId",wx.getStorageSync('deviceId'))
+        console.log("version",wx.getStorageSync('version'))
        app.bLEManager.sendISvalue({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
