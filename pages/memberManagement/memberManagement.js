@@ -6,7 +6,8 @@
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {WXDialog} from "heheda-common-view";
-import {getSocialGroupManager} from "../community/social-manager";
+import {getSocialGroupManager, judgeGroupEmpty} from "../community/social-manager";
+import {showActionSheet} from "../../view/view";
 Page({
 
   /**
@@ -58,6 +59,22 @@ Page({
 
             }
         });
+    },
+    async shareAdd() {
+        try {
+            const {tapIndex} = await showActionSheet({itemList: ['分享小程序邀请', '分享二维码邀请']});
+            switch (tapIndex) {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+            }
+        } catch (e) {
+            console.warn(e);
+        }
+
     },
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,5 +1,4 @@
 import HiNavigator from "../../navigator/hi-navigator";
-
 import Protocol from "../../modules/network/protocol";
 
 Page({
