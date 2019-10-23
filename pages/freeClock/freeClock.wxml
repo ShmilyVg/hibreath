@@ -1,0 +1,18 @@
+<form bindsubmit="submit" class="fill-width flex-column box-sizing-border-box" style="padding: 70rpx 40rpx;">
+    <view class="free-clock-title" style="margin-bottom: 50rpx;">选择运动方式</view>
+
+    <sport-way selectedIds="{{freestyleIds}}" name="sportWays"></sport-way>
+
+    <view class="free-clock-title" style="margin-top: 20rpx;">选择运动时长</view>
+
+    <view class="fill-width flex-row align-items-center justify-center free-clock-sport-duration-layout">
+        <duration-picker minutes="{{duration}}" name="sportDuration"></duration-picker>
+    </view>
+
+    <view class="free-clock-title" style="margin-top: 70rpx;">说说感受</view>
+
+    <textarea value="{{feelDesc}}" name="sportFeel" placeholder="说说今天的感受吧…（140字）" maxlength="140" placeholder-class="free-clock-say-placeholder-class" class="fill-width box-sizing-border-box free-clock-say"></textarea>
+
+    <button form-type="submit" class="flex-row align-items-center justify-center free-btn">完成</button>
+</form>
+

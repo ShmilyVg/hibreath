@@ -1,12 +1,78 @@
 <!--pages/device-bind/device-bind.wxml-->
 
+<!--
 <import src="../index/view/indexCommon.wxml"></import>
 
-<template is="common" data="{{burnupShow,homeHeartBox,homeHeartBoxIndex,picState,btnState,homeTitle,picStateUrl,homeTitleText,hintPic}}"></template>
+<template is="common" data="{{burnupShow,homeHeartBox,btnState,homeTitle,homeTitleText}"></template>
 
-<view class="bind-hint" wx:if="bindHintShow">{{bindHint}}</view>
-<view style="margin-top: 50rpx" wx:if="{{homePShow}}">
-    <view class="home-p" wx:for="{{homeP.length}}" style="margin-left:102rpx">{{homeP[index]}}</view>
+-->
+
+
+<view class="page" style="background-color:{{bgColor}}" >
+    <!--未找到设备-->
+    <view  wx:if="{{nofind}}"  style="padding: 0 50rpx;box-sizing:border-box;">
+        <view class="noBindText" style="margin-top: 80rpx;margin-bottom: 15rpx">出了点小问题</view>
+        <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
+        <view style="margin-top: 50rpx">
+            <view wx:for="{{homeP.length}}">
+                <view class="home-p" wx:if="{{index == 1}}" >
+
+                    <view style="float: left;height: 36rpx;;line-height: 36rpx">
+                        <image class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                        {{homeP[index]}}
+                    </view>
+
+                    <view class="clear"></view>
+                </view>
+                <view class="home-p" wx:else>{{homeP[index]}}</view>
+                <view wx:if="{{index == 4}}" style="height: 47rpx;width: 100%;margin-bottom: 41rpx"></view>
+                <view wx:else style="height: 47rpx;width: 100%;border-bottom: 1px #FF948F solid;margin-bottom: 41rpx"></view>
+            </view>
+
+        </view>
+
+        <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}"  bindtap="reConnectEvent">重试</view>
+    </view>
+    <!--正在寻找设备-->
+    <view wx:if="{{finding}}">
+        <view class="findImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+    <!--找到设备并按键绑定-->
+    <view wx:if="{{finded}}">
+        <view class="findedImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+
 </view>
-
-<view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="margin:64rpx auto;" bindtap="reConnectEvent">重试</view>
+<!--绑定成功-->
+<!--    <view wx:if="{{bindSuccess}}">
+     &lt;!&ndash;   <view>&ndash;&gt;
+    <view class="bindSuccess-top">
+        <image class="bindSuccess-img" src="../../images/device-bind/successBind.png"></image>
+        <view class="bind-text">绑定成功</view>
+    </view>
+    <view class="bindSuccess-bto">
+        <view class="bindSuccess-btoText1">教你如何测出准确的结果</view>
+        <view class="bindSuccess-btoText2">建议清晨起床喝一杯温水后进行检测，运动日</view>
+        <view class="bindSuccess-btoText2">课在运动结束后1-3小时内检测</view>
+        <view class="bindSuccess-btoLine"></view>
+        <swiper bindchange="swiperChange"
+                autoplay="true" circular="true" class="bindSuccess-swiper">
+            <block wx:for="{{bindSuccessArr}}">
+                <swiper-item>
+                    <text  class="slide-text">{{item}}</text>
+                </swiper-item>
+            </block>
+        </swiper>
+        &lt;!&ndash;重置小圆点的样式 &ndash;&gt;
+        <view class="dots">
+            <block wx:for="{{bindSuccessArr}}">
+                <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+            </block>
+        </view>
+        <view class="bindSuccess-btn"   bindtap="toIndex">我知道了</view>
+    </view>
+</view>-->

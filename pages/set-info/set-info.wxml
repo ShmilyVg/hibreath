@@ -1,55 +1,203 @@
 <!--pages/set-info/set-info.wxml-->
-<view wx:if="{{isFirst == true}}">
-    身体评估<br/>
-    接下来，会通过几个简单的问题为您推荐最合适的训练计划
-    <button bindtap="setisFirst">开始评估</button>
-</view>
-<view wx:else="{{isFirst == false}}">
-    <view class="flex-row space-between">
-        <view class="title">{{title[page-1]}}</view>
-        <view class="num">{{page}}/4</view>
-    </view>
-    <view class="text" style="margin-bottom: {{page==4?'38rpx':'122rpx'}}">
-        <text>{{text[page-1]}}</text>
-    </view>
-    <view wx:if="{{page==1}}" class="flex-row space-between">
-        <view class="card flex-column" wx:for="{{sexBox}}" bindtap="chooseSex" data-index="{{index}}">
-            <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
-            <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
-        </view>
-    </view>
 
-    <block wx:elif="{{page==2}}">
-        <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}" bindchange="bindBirthChange">
-            <view class="flex-column space-between" style="align-items: flex-start;height: 66rpx;">
-                <view class="birth">{{info.birthday}}</view>
-                <view class="line"></view>
+<import src="./view/goal.wxml"></import>
+<import src="./view/guide.wxml"></import>
+<import src="./view/fatBurnCard.wxml"></import>
+<import src="./view/bodyIndexCard.wxml"></import>
+<import src="./view/HIITCard.wxml"></import>
+<view class="page" style="background-color: {{bgColorSetInfoPage}}">
+    <block wx:if="{{showNewInfo}}">
+        <view class="flex-column" wx:if="{{showGuide}}">
+            <template is="guide"></template>
+        </view>
+
+        <view class="flex-column" wx:else>
+            <view class="title">{{title[page-1]}}</view>
+            <view class="num">{{page}}/8</view>
+
+            <view class="flex-column" wx:if="{{page==1}}">
+                <view class="flex-row">
+                    <image class="page1-image" src="../../images/set-info/page1-up.png"></image>
+                    <template is="goal" data="{{goals}}"></template>
+                    <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
+                </view>
+                <view class="page1-input-view flex-row">
+                   <!-- <image wx:if="{{!info.goalDesc.length}}" class="page1-edit"
+                           src="../../images/set-info/page1-edit.png"></image>-->
+                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="{{phValue}}" maxlength="10"
+                           placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
+                </view>
+
             </view>
-        </picker>
-    </block>
-
-    <block wx:elif="{{page==3}}">
-        <input class="input" type="digit" value="{{info.height}}" bindinput="bindHeightInput" maxlength="3" />
-        <view class="line"></view>
-        <view class="title" style="margin-top: 165rpx">体重(kg)</view>
-        <input class="input"   value="{{info.weight}}" type="digit" bindinput="bindWeightInput" data-nameT="{{info.weight}}" maxlength="3" />
-        <view class="line"></view>
-    </block>
-
-    <view wx:elif="{{page==4 && isexact== true}}" class="page4">
-        <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}" bindtap="page4ItemClick" data-index="{{index}}">
-            <image src="https://backend.hipee.cn/hipee-resource/images/hibreath/{{info.sexStr}}-{{index+1}}.png"></image>
-            <view class="page4-itembottom" style="background:{{choseIndex==index?'#FF5E00':'#656565'}}">{{item}}</view>
+            <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
+                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" bindtap="bindTapSex"
+                      data-index="{{index}}">
+                    <image class="sex-image"
+                           src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
+                    <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+                </view>
+            </view>
+            <block wx:elif="{{page==3}}">
+                <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
+                        bindchange="bindChangeBirth">
+                    <view class="flex-row">
+                        <view wx:for="{{birth}}" class="flex-column" style="width: 154rpx;margin: 0 33rpx">
+                            <view class="page2-line" style="margin-top: 90rpx"></view>
+                            <view class="page2-num" style="margin-top: 48rpx;font-size: 90rpx">{{item}}</view>
+                            <view class="page2-line" style="margin-top: 15rpx"></view>
+                        </view>
+                    </view>
+                </picker>
+            </block>
+            <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
+                <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
+                    <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3" type="number"
+                           placeholder="身高" placeholder-class="placeholder"/>
+                    <view class="page2-line"></view>
+                    <view class="page2-kg">CM</view>
+                </view>
+                <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
+                    <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit"
+                           placeholder="体重" placeholder-class="placeholder"/>
+                    <view class="page2-line"></view>
+                    <view class="page2-kg">KG</view>
+                </view>
+            </view>
+            <block wx:elif="{{page==5}}">
+                <view wx:if="{{noMeasure}}" class="page4">
+                    <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}"
+                          bindtap="bindTapExactClick"
+                          data-index="{{index}}">
+                        <image src="http://backend.hipee.cn/assets/home/images/hb/{{info.sexStr}}{{index}}.png"></image>
+                        <view wx:if="{{choseIndex!=index}}" class="page4-cover"
+                              style="background-color: {{info.sex?'#0AC1A1':'#ED6F69'}}"></view>
+                        <view class="page4-text">{{item}}%</view>
+                    </view>
+                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
+                </view>
+                <view wx:else class="flex-column">
+                    <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" type="digit"
+                           bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
+                    <view class="page2-line"></view>
+                    <view class="page2-kg">%</view>
+                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>没测过体脂率</view>
+                </view>
+            </block>
+            <view wx:elif="{{page==6}}">
+                <view wx:for="{{meals}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
+                      bindtap="bindTapMeals" data-index="{{index}}">{{item.text}}
+                </view>
+            </view>
+            <view wx:if="{{page==7}}" class="flex-column">
+                <view class="page2-title">也可以自定义您的目标体重</view>
+                <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}" type="digit" maxlength="5"/>
+                <view class="page2-line"></view>
+                <view class="page2-kg">KG</view>
+            </view>
+            <view wx:if="{{page==8}}" style="width: 750rpx;">
+                <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
+                    <view style="width: 1480rpx;padding: 0 130rpx">
+                        <image wx:for="{{project}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
+                               data-index="{{index}}"></image>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column">
+                <block wx:if="{{page!=8}}">
+                    <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
+                          hover-stay-time="50" bindtap="continue">下一步
+                    </view>
+                    <view class="bottom-btn-back" hidden="{{page == 1}}" hover-class="press-style"
+                          hover-stay-time="50" bindtap="back">返回
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
+                          hover-stay-time="50" bindtap="continue">开启正式的减脂历程
+                    </view>
+                </block>
+            </view>
         </view>
-        <view bindtap='IntoExact'>我测过准确的体脂率</view>
-        <view  class="page4-hint">*图片来源于网络</view>
-    </view>
-    <view wx:elif="{{page==4 && isexact == false}}" class="page4">
+    </block>
+    <block wx:else>
+        <view class="set-top-view flex-row">
+            <view class="flex-column" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
+                <view class="set-top-title">{{indexgoalDesc}}</view>
+                <view class="set-top-content">{{indexDayDesc}}</view>
+            </view>
+            <view class="flex-column" style="margin-right: 80rpx">
+                <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
+                <view class="set-top-today">今日任务</view>
+            </view>
+        </view>
+        <view class="flex-column" style="margin-top: -65rpx">
+            <view wx:for="{{taskListAll}}" wx:key="index">
+                <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}"  data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+                <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
+                <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
+                <foodCard wx:if="{{item.type =='food'}}"
+                          class="countdown"
+                               foodTask="{{foodTask}}"
+                               foodExt="{{foodExt}}"
+                               foodAheight="{{foodAheight}}"
+                               foodHiddenImg="{{foodHiddenImg}}"
+                               calorie="{{calorie}}"
+                               carbohydrate="{{carbohydrate}}"
+                               fat="{{fat}}"
+                               protein="{{protein}}"
+                               foodcurrentSwiper="{{foodcurrentSwiper}}"
+                >
 
-        <input class="input" type="digit" bindinput="bindExactInput" maxlength="4" />
-        <view class="line"></view>
-        <view bindtap='IntoNoExact'>没测过体脂率</view>
-    </view>
-
-    <view class="bottom-btn btn-position" hover-class="press-style" hover-stay-time="50" bindtap="continue">继续</view>
+                </foodCard>
+            </view>
+           <!-- <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+            <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
+            <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
+        </view>
+    </block>
 </view>
+
+<view wx:if="{{showBigTip}}" class="flex-column">
+    <view class="tip-full"></view>
+    <view class="tip-view flex-column">
+        <view class="tip-view-title">正在上传检测记录</view>
+        <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
+    </view>
+</view>
+
+
+<!--底部弹窗-->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+<!--<view class="commodity_screen" bindtap="hideModal"></view>
+<view animation="{{animationData}}" class="commodity_attr_box">-->
+    <form bindsubmit='formSubmit'>
+        <button  bindtap="hideModal" class="commodity_clear">取消</button>
+       <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
+        <button class="commodity_sub" form-type='submit'>提交</button>
+        <view class="clear"></view>
+        <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
+        <view style="margin-bottom: 40rpx">*您可以按照实际情况自由填写打卡</view>
+        <view class="commodity_part">
+            <view class="commodity_title">体重(kg)</view>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
+            <view class="clear"></view>
+        </view>
+        <view class="commodity_part">
+            <view class="commodity_title">高压(mmHg)</view>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='bloodHeight' placeholder="请输入您的高压" type="number"/>
+            <view class="clear"></view>
+        </view>
+        <view class="commodity_part">
+            <view class="commodity_title">低压(mmHg)</view>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodLow' placeholder="请输入您的低压" type="number"/>
+            <view class="clear"></view>
+        </view>
+        <view>
+            <view class="commodity_title">心率(BPM)</view>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='heart' placeholder="请输入您的心率" type="number"/>
+            <view class="clear"></view>
+        </view>
+    </form>
+</view>
+<!--底部弹窗-->

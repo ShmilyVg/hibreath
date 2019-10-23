@@ -2,7 +2,7 @@
 import "./utils/config";
 import {common} from "./modules/bluetooth/heheda-bluetooth/app/common";
 import HiBreathBlueToothManager from "./modules/bluetooth/hi-breath-bluetooth-manager";
-import {ProtocolState,ConnectState} from "./modules/bluetooth/bluetooth-state";
+import {ProtocolState, ConnectState} from "./modules/bluetooth/bluetooth-state";
 import Protocol from "./modules/network/protocol";
 import {WXDialog} from "heheda-common-view";
 import CommonProtocol from "./modules/network/network/libs/protocol";
@@ -14,30 +14,49 @@ App({
 
     onDeviceBindInfoListener: null,
     onBatteryInfoListener: null,
+    onDataSyncListener: null,
     isOTAUpdate: false,
     otaUrl: {},
     onLaunch(options) {
         let records = [], count = 0;
+        let currentIndex = 0;
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
-        initAnalysisOnApp();
+        let synchronizationData = 0;//已经同步的条数
+        this.outlistAll = true;//总条数标志位
+        // initAnalysisOnApp();
         this.setCommonBLEListener({
             // commonAppSignPowerListener: (hiDevices) => {
             //     this.appBLESignPowerListener && this.appBLESignPowerListener(hiDevices);
             // },
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
-                    console.log('接收到的',finalResult);
+                    console.log('接收到的', finalResult);
                     const {timestamp, result, currentLength: length} = finalResult;
-                    let {currentIndex} = finalResult;
+
+                    /*离线数据相关 currentIndex为需要同步的总条数*/
+                    if (this.outlistAll === true) {
+                        const {currentIndex} = finalResult;//需要同步的总条数
+                        this.globalData.currentIndex = currentIndex;
+                        this.outlistAll = false;
+                        console.log(currentIndex,"第一个currentIndex")
+                    }
+                    /*离线数据相关*/
                     if (records.length < length) {
-                        records.push({dataValue: result, timestamp:timestamp});
+                        records.push({dataValue: result, timestamp: timestamp});
                         count++;
-                        console.log(records,"records")
+                        console.log(records, "records");
+                        console.log(length, "length");
+                        console.log(this.globalData.currentIndex,"第二个currentIndex")
                         if (records.length === length) {
-                            Protocol.postBreathDataSync({items:records}).then(data => {
-                                console.log('同步数据成功2');
+                            Protocol.postBreathDataSync({items: records}).then(data => {
+                                synchronizationData = synchronizationData + records.length;
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
+                                console.log(this.globalData.currentIndex,"第三个currentIndex")
+                                this.onDataSyncListener && this.onDataSyncListener({
+                                    num: synchronizationData,
+                                    countNum: this.globalData.currentIndex
+                                });
                             }).catch(res => {
                                 this.queryDataFinish();
                                 console.log(res, '同步数据失败');
@@ -45,9 +64,6 @@ App({
                         }
                         console.log('同步数据的数组', records);
                     } else if (!length) {
-                        if (count === 0) {
-                            this.isQueryEmptySuccess = true;
-                        }
                         count = 0;
                         this.queryDataFinish();
                         setTimeout(() => {
@@ -101,7 +117,7 @@ App({
 
                 } else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     this.otaVersion = finalResult.version;
-                    console.log("暂时查看电量",finalResult.battery)
+                    console.log("暂时查看电量", finalResult)
                     //TODO 暂时注释掉
                     // Protocol.postDeviceElectricity({electricity: finalResult.battery / 100});
                     if (finalResult.battery < 21) {
@@ -139,9 +155,12 @@ App({
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
 
         this.appLoginListener = ({loginState}) => {
+            console.log('登录状态：', loginState);
             if (loginState === this.NOT_REGISTER) {
+                this.globalData.notRegister = true;
                 this.bLEManager.clearConnectedBLE();
-                // HiNavigator.reLaunchToBindDevicePage();
+            } else {
+                this.globalData.notRegister = true;
             }
         };
     },
@@ -180,6 +199,8 @@ App({
         refreshIndexPage: false,
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
+        notRegister: false,
+        currentIndex:0
     },
     ...common
 });

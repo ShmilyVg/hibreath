@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "运动自由打卡",
+  "usingComponents": {
+    "duration-picker": "./components/duration-picker/index",
+    "sport-way": "./components/sport-way/index"
+  }
+}

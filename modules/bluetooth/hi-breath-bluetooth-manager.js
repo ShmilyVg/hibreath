@@ -12,12 +12,27 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
             hiDeviceName: 'HiKeto-'
         });
     }
-        /*
-        * locationAuthorized  允许微信使用定位的开关  boolean
-        * locationEnabled      地理位置的系统开关      boolean
-        * system              操作系统及版本
-        * platform             客户端平台
-        * */
+
+
+    sendQueryDataSuccessProtocol({isSuccess}) {
+        this.bluetoothProtocol.sendQueryDataSuccessProtocol(arguments[0]);
+    }
+    sendISpage({isSuccess}) {
+        this.bluetoothProtocol.sendISpage(arguments[0]);
+    }
+    sendISvalue({isSuccess}) {
+        this.bluetoothProtocol.sendISvalue(arguments[0]);
+    }
+    startData(){
+        this.bluetoothProtocol.startData();
+    }
+
+    /*
+    * locationAuthorized  允许微信使用定位的开关  boolean
+    * locationEnabled      地理位置的系统开关      boolean
+    * system              操作系统及版本
+    * platform             客户端平台
+    * */
     checkLocationPermission() {
         let isShowDialog = false;
         (this.checkLocationPermission = ({cb} = {}) => {

@@ -1,0 +1,184 @@
+/* components/uploadImgCard/uploadImgCard.wxss */
+.flex-column{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.flex-row{
+    display: flex;
+    align-items: center;
+}
+.clear{
+    clear: both;
+}
+.proportionView{
+    justify-content: space-between;
+    width: 100%;
+    height: 60rpx;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+}
+.proportionList{
+    text-align: center;
+    margin-right: 2rpx;
+    border-radius: 6rpx;
+    width: 146rpx;
+    height: 54rpx;
+    background: #FBE0DF;
+    text-align: center
+}
+.proportionNumView{
+    border-radius: 6rpx;
+}
+.proportionNum{
+    margin-right: 2rpx;
+    width:146rpx;
+    height:78rpx;
+    background:rgba(255,242,241,1);
+    border-radius:6rpx;
+    text-align: center;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    font-size:40rpx;
+}
+.proportion{
+    width: 146rpx;
+    height: 54rpx;
+    line-height: 54rpx
+}
+.noMeakTetx1{
+    text-align:center;
+    font-size:36rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 40rpx;
+}
+.noMeakTetx2{
+    text-align:center;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-bottom: 35rpx;
+}
+.noMeakBtn1{
+    width:216rpx;
+    height:56rpx;
+    background:rgba(255,255,255,1);
+    border:1rpx solid rgba(247,130,124,1);
+    border-radius:28px;
+    color: #ED6F69;
+    font-family: PingFang-SC-Medium;
+    font-size: 24rpx;
+    line-height: 56rpx;
+}
+.set-content-view{
+    width:573rpx;
+    background:rgba(255,255,255,1);
+    border-radius:10rpx;
+    padding: 44rpx 47rpx 43rpx 30rpx;
+    margin-bottom: 20rpx;
+
+}
+.set-content-icon {
+    width:70rpx;
+    height:70rpx;
+    background:rgba(255,245,245,1);
+    border-radius:50%;
+}
+
+.set-content-title {
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:28rpx;
+}
+
+.set-content-content {
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(160,160,160,1);
+    line-height:28rpx;
+    margin-top: 15rpx;
+}
+
+.set-content-toFinish {
+    width:120rpx;
+    height:50rpx;
+    background:rgba(255,242,241,1);
+    border:1rpx solid rgba(247,130,124,1);
+    border-radius:25rpx;
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(237,111,105,1);
+    text-align: center;
+    line-height:50rpx;
+}
+.set-content-finished{
+    width: 86rpx;
+    height: 74rpx;
+}
+.dashedLine{
+    width: 100%;
+    border: 0.5rpx #F2F2F2 dashed;
+    margin-top: 43rpx;
+    margin-bottom: 38rpx;
+}
+.HIITCardImgL{
+    width:43rpx;
+    height: 60rpx;
+    float: left;
+    position: relative;
+    top:10rpx;
+    padding: 10rpx 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
+    z-index: 9;
+}
+.HIITCardImgR{
+    width:43rpx;
+    height: 60rpx;
+    float: right;
+    position: relative;
+    top:10rpx;
+    z-index: 9;
+    padding: 10rpx 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
+}
+.swiperBigTitle{
+    text-align: center;
+    font-size:36rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 63rpx;
+    margin-left: 201rpx;
+    float: left;
+}
+.swiperImg{
+    width: 180rpx;
+    height: 108rpx;
+    float: left;
+    margin-right: 32rpx;
+}
+.swiperSmallTitle{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    margin-top: 19rpx;
+    margin-bottom: 19rpx;
+}
+.swiperDes{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(160,160,160,1);
+}

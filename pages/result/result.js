@@ -1,133 +1,214 @@
 // pages/result/result.js
+/**
+ * @Date: 2019-09-23 14:30:30
+ * @LastEditors: 张浩玉
+ */
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import toast from "../../view/toast";
+import {Toast as toast} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
+import * as Trend from "../../view/trend";
+import * as Circular from "./view/circular";
+import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
+
+const timeObj = {
+    _frontTimestamp: 0,
+    _endTimestamp: 0,
+    set frontTimestamp(timestamp) {
+        this._frontTimestamp = getFrontZeroTimestamp({timestamp});
+    },
+    get frontTimestamp() {
+        return this._frontTimestamp;
+    },
+    set endTimestamp(timestamp) {
+        this._endTimestamp = getEndZeroTimestamp({timestamp});
+    },
+    get endTimestamp() {
+        return this._endTimestamp;
+    }
+};
 
 Page({
     data: {
-        dateText: {},
-        mainColor: '',
-        isChose: false,
-        shareIn:true,
-        score: "",
-        LVcolor:["#0088B8","#00B898","#10A000","#F8A000","#E87001","#F83801"],
-        tintColor: 'color:#00a48f',
-        noAddPlan:true,//未加入减脂方案
-        halfMonth:false,//是否超过半个月
-        isHave:false,//是否生成过身体评估报告
-        // 0 第一次使用 1 比上次大但没超过当前区间  2 比上次大并且超过当前区间  3 本次检测结果小于等于上次检测结果
-        beyondLastTime:{
-            type:0,
-            title:"真棒！！",
-            content:"与上次检测相比，燃脂效果并未提升，坚持减脂方案才会有收获"
+        score: 3.5, //传入的进度， 0~100，绘制到此参数处停止。
+        currenttab: '0',
+        trendDate: '',
+        page: 1,
+        tabIsShow: true
+    },
+
+    async onLoad(e) {
+        console.log('eeeeeee', e)
+        if (e.id) {
+            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
+            this.setData({
+                fatDes, score, fatText: des.zhCh, fatTextEn: des.en
+            });
+        } else if (e.score) {
+            const {fatText, fatTextEn, fatDes, score} = e;
+            this.setData({
+                fatText, fatTextEn, fatDes, score
+            });
+        }
+        this.init();
+        Circular.run();
+        this.cellDataHandle({});
+    },
+
+    init() {
+        Trend.init(this);
+        Trend.initTouchHandler();
+        Circular.init(this);
+    },
+
+    async cellDataHandle({page = 1, isRefresh = true}) {
+        toast.showLoading();
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
+        if (list.length) {
+            list.map(value => {
+                const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
+                value.date = `${year}/${month}/${day} ${time}`;
+                let image = '../../images/result/cell';
+                const dValue = value.dataValue;
+                if (dValue >= 0 && dValue < 1) {
+                    image = image + '1';
+                } else if (dValue >= 1 && dValue < 2) {
+                    image = image + '2';
+                } else if (dValue >= 2 && dValue < 4) {
+                    image = image + '3';
+                } else if (dValue >= 4 && dValue < 6) {
+                    image = image + '4';
+                } else if (dValue >= 6) {
+                    image = image + '5';
+                }
+                image = image + '.png';
+                value.image = image
+            });
+
+            if (isRefresh) {
+                this.data.page = 1;
+            } else {
+                list = this.data.trendData.concat(list);
+            }
+            this.setData({trendData: list});
+        } else {
+            --this.data.page;
+        }
+        wx.stopPullDownRefresh();
+        toast.hiddenLoading();
+    },
+
+    toBind() {
+        HiNavigator.navigateToDeviceUnbind();
+    },
+
+    toIndex() {
+        HiNavigator.navigateIndex();
+    },
+
+    //切换标签页
+    selectTab(e) {
+        let newtab = e.currentTarget.dataset.tabid;
+        if (this.data.currenttab !== newtab) {
+            this.setData({
+                currenttab: newtab
+            });
+            if (newtab == 1) {
+                const {frontTimestamp, endTimestamp} = timeObj;
+                this.updateTrendTime({
+                    frontTimestamp: frontTimestamp || getLatestOneWeekTimestamp(),
+                    endTimestamp: endTimestamp || Date.now()
+                });
+            }
         }
     },
 
-    onShow: function () {
+    async handleTrend({list}) {
+        if (list && list.length) {
+            let dataListX = [], dataListY = [];
+            list.sort(function (item1, item2) {
+                return item1.createdTimestamp - item2.createdTimestamp;
+            }).forEach((value) => {
+                const {month, day} = tools.createDateAndTime(value.createdTimestamp);
+                dataListX.push(month + '月' + day + '日');
+                dataListY.push(value.dataValue);
+            });
+            let dataTrend = {
+                dataListX, dataListY, dataListY1Name: 'PPM', yAxisSplit: 5
+            };
+            Trend.setData(dataTrend);
+        } else {
+            toast.showText('该时间段内没有燃脂数据');
+        }
 
     },
 
-    onLoad: function (options) {
-        console.log(options,"options")
- /*       if(options.shareId){
+    toChooseDate() {
+        wx.navigateTo({
+            url: '../calendar/calendar?type=' + 'breath'
+        });
+    },
+
+    onReachBottom() {
+        console.log('onReachBottom');
+        if (this.data.currenttab === '0') {
+            this.cellDataHandle({page: ++this.data.page, isRefresh: false})
+        }
+    },
+
+    onPullDownRefresh() {
+        console.log('onPullDownRefresh');
+        if (this.data.currenttab === '0') {
+            this.cellDataHandle({});
+        } else {
+            wx.stopPullDownRefresh();
+        }
+    },
+
+    onPageScroll: function (e) {
+        this.data.tabIsShow = !(e.scrollTop > 430);
+        this.setData({
+            tabIsShow: this.data.tabIsShow
+        })
+    },
+
+    async onShow() {
+        const trendTime = getApp().globalData.trendTime;
+        console.log('trendTime:', trendTime);
+        if (trendTime) {
+            const {startTimeValue, endTimeValue} = trendTime;
+            this.updateTrendTime({
+                frontTimestamp: startTimeValue,
+                endTimestamp: endTimeValue
+            });
+            getApp().globalData.trendTime = null;
+        }
+    },
+
+    onReady() {
+        Circular.createSelectorQuery();
+        Trend.init(this);
+        Trend.initTouchHandler();
+    },
+    async updateTrendTime({frontTimestamp, endTimestamp}) {
+        timeObj.frontTimestamp = frontTimestamp;
+        timeObj.endTimestamp = endTimestamp;
+        let {result: {list}} = await Protocol.postBreathDatalistAll({
+            timeBegin: timeObj.frontTimestamp,
+            timeEnd: timeObj.endTimestamp
+        });
+        if (list && list.length) {
             this.setData({
-                shareIn:false,//隐藏文字按钮
-            })
-            Protocol.postshareInfo({shareId:options.shareId}).then(data=>{
-                let _data = data.result;
-                this.setData({
-                    list: _data.list,
-                    score:_data.score,
-                    Percentage:_data.Percentage,
-                    beyondLastTime:{ type:0,},//隐藏弹窗
-                    halfMonth:false,
-                    resultDate:tools.createDateAndTime(_data.testTimestamp).date,
-                    resultTime:tools.createDateAndTime(_data.testTimestamp).time,
-                    noAddPlan:false,
-                    isHave:true,
-                    des:_data.des,
-                    shareId:_data.shareId,
+                trendDate: getTimeString({
+                    frontTimestamp: timeObj.frontTimestamp,
+                    endTimestamp: timeObj.endTimestamp
                 })
+            }, async () => {
+                this.handleTrend({list});
             });
-        }else{
-            Protocol.postSetGradeInfo({id:options.id}).then(data=>{
-                let _data = data.result;
-                this.setData({
-                    list: _data.list,
-                    score:_data.score,
-                    Percentage:_data.Percentage,
-                    beyondLastTime:_data.beyondLastTime,
-                    halfMonth:_data.halfMonth,
-                    resultDate:tools.createDateAndTime(_data.testTimestamp).date,
-                    resultTime:tools.createDateAndTime(_data.testTimestamp).time,
-                    /!*  noAddPlan:_data.noAddPlan,*!/
-                    noAddPlan:true,
-                    isHave:_data.isHave,
-                    shareId:_data.shareId,
-                    des:_data.des
-                })
-            });
-        }*/
-        let list=[
-            {
-                "gradeNumber": "ppm<10",
-                "gradeType": "没有燃脂",
-                "section": false
-            },
-            {
-                "gradeNumber": "10≤ppm＜50",
-                "gradeType": "开始燃脂",
-                "section": true
-            },
-            {
-                "gradeNumber": "50≤ppm＜70",
-                "gradeType": "充分燃脂",
-                "section": false
-            },
-            {
-                "gradeNumber": "ppm≥70",
-                "gradeType": "燃脂过量",
-                "section": false
-            },
-
-        ]
-        this.setData({
-            list:list,
-        })
-    },
-
-    //检测是否生成过身体评估报告 是的话显示弹窗 没有直接进入评估
-    toSetInfo() {
-        wx.showModal({
-            title: '小贴士',
-            content: '检测到您已生成过身体评估报告，是否要更新身体数据？',
-            cancelText:'不需要',
-            confirmText:'需要更新',
-            success (res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                    HiNavigator.navigateToSetInfo();
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
-            }
-        })
-    },
-    cancel: function () {
+        } else {
+            toast.showText('该时间段内没有燃脂数据');
+        }
 
     },
-    confirm: function () {
-        this.setData({
-            "beyondLastTime.type": 0
-        })
-    },
-    onShareAppMessage() {
-        console.log("shareId",this.data.shareId)
-        this.confirm();
-        return {title: this.data.res, path: '/pages/result/result?shareId=' + this.data.shareId};
-    },
-    toPPM(){
-        HiNavigator.navigateToPPM();
-    },
-})
+});

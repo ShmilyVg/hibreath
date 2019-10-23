@@ -1,11 +1,13 @@
 <!--pages/device-manage/device-manage.wxml-->
 <view wx:if="{{isBind}}" class="flex-column">
-    <image class="image" src="../../images/device-manage/broken.png"></image>
     <text class="device-name">燃脂检测仪</text>
-    <view class="bottom-btn btn-bg" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
+    <view class="againImg"></view>
+    <view class="bindSj"></view>
+    <view class="home-orangebtn" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
 </view>
 <view class="flex-column" wx:else>
-    <image class="image" src="../../images/device-manage/broken.png"></image>
     <text class="device-name">燃脂检测仪</text>
-    <view class="bottom-btn btn-bg" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">暂未绑定设备</view>
+    <view class="againImg"></view>
+   <!-- <view class="bindSj"></view>-->
+    <view class="home-orangebtn" hover-class="press-style" bindtap="toBind" hover-stay-time="50" >暂未绑定设备</view>
 </view>

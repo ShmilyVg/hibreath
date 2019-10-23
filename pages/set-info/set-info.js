@@ -1,257 +1,852 @@
 // pages/set-info/set-info.js
-import toast from "../../view/toast";
+/**
+ * @Date: 2019-10-09 11:00:00
+ * @LastEditors: 张浩玉
+ */
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import WXDialog from "../../view/dialog";
+import IndexCommonManager from "../index/view/indexCommon";
+import HiNavigator from "../../navigator/hi-navigator";
+import Login from "../../modules/network/login";
+import UserInfo from "../../modules/network/userInfo";
+import * as Circular from "../result/view/circular";
+import ConnectionManager from "../index/connection-manager";
+import {oneDigit} from "../food/manager";
 
+const app = getApp();
 
 Page({
-
     data: {
-        isFirst:true,//身体评估引导页标志位
-        isexact:true,//是否准确测过体脂率
-        sexBox: [{image: 'man', text: '男士', isChose: false}, {image: 'woman', text: '女士', isChose: false}],
+        isfatBurn: false,//燃脂卡片
+        isbodyIndex: false,//记录身体指标卡片
+
+        showGuide: false,//立即体验 未注册状态
+        showNewInfo: false,//新手引导页
+
+        noMeasure: false,//没有准确测过体脂率
+        sexBox: [
+            {image: 'man', text: '男士', isChose: false, value: 1},
+            {image: 'woman', text: '女士', isChose: true, value: 0}
+        ],
         currentDate: '2018-12-19',
         page: 1,
-        choseIndex:"3",
-        title: ['你的性别是？', '你的出生日期？', '身高(cm)？', '体脂率(%)'],
-        text: ['告诉我们关于你的事，\n让我帮你获得更适合的健康方案', '我们会针对不同的年龄为你定制相应的健康方案', '', ''],
-        page4MenItem: ['3-4%', '6-7%', '10-12%', '15%', '20%', '25%', '30%', '35%', '40%'],
-        page4WomenItem: ['10-12%', '15-17%', '20-22%', '25%', '30%', '35%', '40%', '45%', '50%'],
-        itemBackgroundColor: '#656565',
+        title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
+        page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
+        page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
+        birth: ['1980', '01', '01'],
+        meals: [
+            {text: '外卖为主', isChose: false, en: 'waimai'},
+            {text: '外出就餐为主', isChose: false, en: 'waichu'},
+            {text: '单位食堂为主', isChose: false, en: 'shitang'},
+            {text: '居家制作为主', isChose: false, en: 'jujia'}
+        ],
+        bgColorSetInfoPage: '#ffffff',
+        score: 6.5,
+        showBigTip: false,
+        schemaId: 0,
+        scrollLeft: 490,
+        timer: '',
+        bigTipNum: 0,
+        bigTipCountNum: 20,
+        sync: {
+            num: 0,
+            countNum: 0,//需要同步的总数
+            timer: ''
+        },
+        phValue: "写下你的减脂目标",
+        bloodLow: "",
+        heart: "",
+        bloodHeight: "",
+        weight: "",
+        taskId: "",
+        showModalStatus: false,
+        animationData: '',
+        isfinishedGuide: false,//是否选择了方案
+        hiddenImg: false,//隐藏左右箭头
+        grayLeft: true,//灰色箭头左
+        grayRight: false,//灰色箭头右
+        currentSwiper: 0,
+        isFood:false
     },
-    onLoad: function (options) {
-        //截止日期范围
-        let timeS = tools.createDateAndTime(Date.parse(new Date()));
-        let currentDate = `${timeS.year}-${timeS.month}-${timeS.day}`;
+    onFocus: function (e) {
         this.setData({
-            currentDate: currentDate
+            isFocus: true,
+            phValue: "写下你的减脂目标",
         })
-        Protocol.postPhysical().then(data => {
-            let dataInfo = data.result
-            if(dataInfo.info.birthday !== ""){
-                this.setData({
-                    birthday: dataInfo.info.birthday
-                })
-            }else{
-                this.setData({
-                    birthday: '1980-01-01',
-                })
-            }
-            if(dataInfo.info.height !== ""){
-                this.setData({
-                    height: dataInfo.info.height
-                })
-            }else{
-                this.setData({
-                    height: '175',
-                })
-            }
-            if(dataInfo.info.weight !== ""){
-                this.setData({
-                    weight: dataInfo.info.weight
-                })
-            }else{
-                this.setData({
-                    weight: '70',
-                })
-            }
-            if(dataInfo.info.bodyFatRate !== ""){
-                this.setData({
-                    bodyFatRate: dataInfo.info.bodyFatRate
-                })
-            }else{
-                this.setData({
-                    bodyFatRate: '25%',
-                })
-            }
-           //获取上次填写性别 出生日期等记录
-        })
-        let info={
-            birthday: '1980-01-01',
-            sex:'',
-            height:'11',
-            weight:'',
-            bodyFatRate:'25%',
-        };
-       /* for(var i=0;i<this.data.sexBox.length;i++){
-            if(this.data.info.sex ==this.data.sexBox[i]. image){
-
-            }
-        }*/
-
+    },
+    onBlur: function (e) {
         this.setData({
-            info: info
+            isFocus: false,
+            phValue: "写下你的减脂目标",
         })
     },
 
-    continue() {
-        switch (this.data.page) {
-            case 1:
-                console.log(this.data.info.sex == "","性别")
-                if (typeof (this.data.info.sex) == "undefined" || this.data.info.sex === "") {
-                    toast.warn('请选择性别');
+    onHide() {
+        //离开时 告知蓝牙标志位 0x3D   0X02
+        app.bLEManager.sendISpage({isSuccess: false});
+        console.log('breath_user_info_input onHide info====', this.data.info);
+        if (this.data.info) {
+            let {info, page, scrollLeft, schemaId} = this.data, obj = {};
+            for (let key in info) {
+                if (info.hasOwnProperty(key)) {
+                    let item = info[key];
+                    if (item) {
+                        obj[key] = item;
+                    }
+                }
+            }
+            if (info['sex'] === 0) {
+                obj['sex'] = 0;
+                obj['sexStr'] = 'woman';
+            }
+            obj['page'] = page;
+            if (page >= 8) {
+                obj['scrollLeft'] = scrollLeft;
+                obj['schemaId'] = schemaId;
+            }
+            wx.setStorageSync('breath_user_info_input', obj);
+        }
+
+    },
+
+    //上传身体指标
+    formSubmit(e) {
+        console.log(e.detail.value)
+        const finaValue = e.detail.value
+        if (this.objIsEmpty(finaValue.weight)) {
+            toast.warn('请填写体重');
+            return;
+        }
+
+        const weightnum = finaValue.weight.split(".");
+        if (weightnum.length > 1 && weightnum[1] >= 10) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if (weightnum[0] >= 1000) {
+            this.showDialog("体重至多支持3位整数+1位小数");
+            return;
+        }
+        if (finaValue.heart) {
+            const heartnum = finaValue.heart.split(".");
+            if (heartnum.length > 1 || heartnum[0] >= 1000) {
+                this.showDialog("心率至多支持3位整数");
+                return;
+            }
+        }
+        if (finaValue.bloodHeight) {
+            const bloodHeightnum = finaValue.bloodHeight.split(".");
+            if (bloodHeightnum.length > 1 || bloodHeightnum[0] >= 1000) {
+                this.showDialog("高压至多支持3位整数");
+                return;
+            }
+        }
+        if (finaValue.bloodHeight && !finaValue.bloodLow) {
+            this.showDialog("请输入低压");
+            return;
+        }
+        if (finaValue.bloodLow && !finaValue.bloodHeight) {
+            this.showDialog("请输入高压");
+            return;
+        }
+        if (finaValue.bloodLow) {
+            const bloodLownum = finaValue.bloodLow.split(".");
+            if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
+                this.showDialog("低压至多支持3位整数");
+                return;
+            }
+        }
+        finaValue['taskId'] = this.data.taskId
+        Protocol.setBodyIndex(finaValue).then(data => {
+            this.handleTasks();
+            this.setData({
+                hiddenFat:"auto",
+                showModalStatus: false,
+            })
+            toast.success('填写成功');
+        });
+    },
+    //同步离线数据
+    async onLoad(e) {
+        /* this.setData({
+             page:wx.getStorageSync('currentPage')
+         })*/
+        let that = this;
+        console.log('on:', e);
+        if (e.isNotRegister) {
+            that.setData({
+                isNotRegister: e.isNotRegister,
+                showNewInfo: true,
+                showGuide: true
+            })
+
+        }
+        this.connectionPage = new ConnectionManager(this);
+        /* await that.handleGuide(that);*/
+        this.handleBaseInfo();
+        console.log("this",this)
+        Circular.init(this);
+    },
+
+    handleGuide(that) {
+        return new Promise(function (resolve, reject) {
+            wx.getSetting({
+                success: (res) => {
+                    console.log('是否授权', res.authSetting['scope.userInfo']);
+                    if (res.authSetting['scope.userInfo'] === undefined) {
+                        that.setData({
+                            showNewInfo: true,
+                            showGuide: true,
+                        })
+                    } else {
+                        that.setData({
+                            showNewInfo: false,
+                            showGuide: false,
+                        })
+                    }
+                    resolve();
+                }
+            });
+        });
+    },
+    async handleBaseInfo() {
+        const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
+        const currentDate = `${year}-${month}-${day}`;
+        const {result: {list: goals}} = await Protocol.postSettingsGoals();
+        const {result: accountInfo} = await Protocol.getAccountInfo();
+        const finishedGuide = accountInfo.finishedGuide;
+
+        this.setData({
+            isfinishedGuide: finishedGuide
+        });
+        let info = {};
+
+        function setSexFun(sexValue) {
+            if (sexValue !== 1) {
+                info.sex = 0;
+                info.sexStr = 'woman';
+            } else {
+                info.sex = 1;
+                info.sexStr = 'man';
+            }
+
+            for (let item of this.data.sexBox) {
+                item.isChose = item.value === sexValue;
+            }
+        }
+        if (finishedGuide) {
+            this.handleTasks();
+        } else {
+
+            info = {
+                goalDesc: '',
+                sex: 0,
+                sexStr: 'woman',
+                birthday: '1980-01-01',
+                height: '',
+                weight: '',
+                bodyFatRate: '',
+                weightGoal: '',
+            };
+            accountInfo.detail && ({detail: {sex: info.sex}} = accountInfo);
+
+            const userInfoInput = wx.getStorageSync('breath_user_info_input');
+            console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
+            let page = 1, project = [];
+            if (userInfoInput) {
+                info = Object.assign(info, userInfoInput);
+                page = userInfoInput.page || 1;
+
+                const mealValue = info.mealType;
+                for (let item of this.data.meals) {
+                    item.isChose = mealValue === item.en;
+                }
+                const {birthday} = info;
+                if (birthday) {
+                    this.data.birth = birthday.split('-');
+                }
+                if (page >= 8) {
+                    const {result: {list}} = await Protocol.postSettingsLosefatSchema();
+                    project.push(...list);
+
+                }
+
+            }
+            setSexFun.call(this, info.sex);
+            let obj = {
+                currentDate, goals, info,
+                showNewInfo: true,
+                showGuide: false,
+                birth: this.data.birth,
+                meals: this.data.meals,
+                sexBox: this.data.sexBox,
+                bgColorSetInfoPage: '#ffffff',
+                page,
+            };
+            if (project.length) {
+                obj['project'] = project;
+                obj['scrollLeft'] = info.scrollLeft;
+                obj['schemaId'] = info.schemaId;
+            }
+            this.setData(obj);
+        }
+    },
+
+    handleBle() {
+        this.indexCommonManager = new IndexCommonManager(this);
+        app.setBLEListener({
+            bleStateListener: () => {
+                console.log("setPage-bleStateListener", app.getLatestBLEState())
+            },
+            receiveDataListener: ({finalResult, state}) => {
+                console.log("setPage-receiveDataListener", finalResult, state);
+            }
+        });
+        Protocol.getDeviceBindInfo().then(data => {
+            let deviceInfo = data.result;
+            console.log('获取到的设备', data);
+
+            if (!deviceInfo) {
+                app.getBLEManager().clearConnectedBLE();
+                this.connectionPage.unbind();
+            } else {
+                app.getBLEManager().setBindMarkStorage();
+                app.getBLEManager().connect({macId: deviceInfo.mac});
+            }
+        });
+        /*  const isBindDevice = wx.getStorageSync('isBindDevice');
+          if (isBindDevice) {
+              app.getBLEManager().connect();
+          }*/
+    },
+
+    async handleTasks() {
+        const {result} = await Protocol.postMembersTasks();
+        this.setData({
+            indexDayDesc: result.dayDesc,
+            indexfinishNum: result.finishNum,
+            indexgoalDesc: result.goalDesc,
+            indextaskNum: result.taskNum,
+            taskListAll: result.taskList,
+        })
+        const typesArr = result.taskList.map(d => d.type)
+        console.log("123213", typesArr)
+        for (var i = 0; i < typesArr.length; i++) {
+            if (typesArr[i] === "fatBurn") {
+                const fatBurnExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isfatBurn: true,
+                        fatBurnFin: true,//完成标志位
+                        fatBurnTask: result.taskList[i],
+                        fatText: fatBurnExt.des.zhCh,
+                        fatTextEn: fatBurnExt.des.en,
+                        score: fatBurnExt.dataValue,
+                        fatType:fatBurnExt.iconUrl,
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                    if(!fatBurnExt.visDes == ""){
+                        this.setData({
+                            fatDes: '"'+fatBurnExt.visDes+'"'
+                        })
+                    }
+                    console.log("zhgethis",this)
+                  /*  Circular.createSelectorQuery();
+                    Circular.init(this);*/
+                    Circular.run();
                 } else {
                     this.setData({
-                        page: ++this.data.page,
+                        isfatBurn: true,
+                        fatBurnTask: result.taskList[i],
+                        bgColorSetInfoPage: '#FEF6F2'
+                    });
+                }
+            }
+            if (typesArr[i] === "bodyIndex") {
+                const bodyIndexExt = result.taskList[i].ext;
+                console.log(bodyIndexExt, "typesArr[i]")
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        isbodyIndex: true,
+                        bodyIndexFin: true,
+                        bodyIndexTask: result.taskList[i],
+                        bodyIndexExt: bodyIndexExt,
+                        taskId: result.taskList[i].id
                     })
+                    console.log(bodyIndexExt)
+                } else {
+                    this.setData({
+                        isbodyIndex: true,
+                        taskId: result.taskList[i].id,
+                        bodyIndexTask: result.taskList[i],
+                    })
+                }
+            }
+            if (typesArr[i] === "sport") {
+                const sportExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        sportFin: true,
+                    })
+                }
+                this.setData({
+                    currentSwiper:0,
+                    sportTask: result.taskList[i],
+                    sportExt: sportExt,
+                    aheight: sportExt.recommendList[0].list.length * 220
+                })
+                if (sportExt.recommendList.length < 2) {
+                    this.setData({
+                        hiddenImg: true,
+                    })
+                } else {
+                    this.setData({
+                        hiddenImg: false,
+                    })
+                }
+
+            }
+            if(typesArr[i] === "food"){
+                this.component= this.selectComponent('.countdown')
+                this.setData({
+                    component: this.component,
+                })
+                const foodExt = result.taskList[i].ext;
+                if (result.taskList[i].finished) {
+                    this.setData({
+                        foodFin: true,
+                    })
+                }
+                if(foodExt.isMeal){
+                    this.setData({
+                        foodcurrentSwiper:0,
+                        foodAheight: foodExt.mealList[0].list.length * 200,
+                        calorie:this.data.component.sum(foodExt.mealList[0].list,1),
+                        carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
+                        fat:this.data.component.sum(foodExt.mealList[0].list,3),
+                        protein:this.data.component.sum(foodExt.mealList[0].list,4)
+                    })
+
+                }
+                this.setData({
+                    foodExt: foodExt,
+                    foodTask: result.taskList[i]
+                })
+                if (foodExt.mealList.length < 2) {
+                    this.setData({
+                        foodHiddenImg: true,
+                    })
+                } else {
+                    this.setData({
+                        foodHiddenImg: false,
+                    })
+                }
+            }
+        }
+        setTimeout(() => {
+            wx.setNavigationBarColor({
+                frontColor: '#ffffff',
+                backgroundColor: '#F55E6B',
+            })
+        });
+    },
+
+    async continue() {
+        const info = this.data.info;
+        console.log(info.goalDesc.length, 'info.goalDesc')
+        switch (this.data.page) {
+            case 1:
+                if (this.objIsEmpty(info.goalDesc)) {
+                    toast.warn('请填写目标');
+                    return;
                 }
                 break;
             case 2:
-                this.setData({
-                    page: ++this.data.page,
-                });
+                if (this.objIsEmpty(info.sex)) {
+                    toast.warn('请选择性别');
+                    return;
+                }
                 break;
             case 3:
-                if (typeof (this.data.info.height) == "undefined" || typeof (this.data.info.weight) == "undefined"  || this.data.info.height === ""  || this.data.info.weight === "") {
-                   if(typeof (this.data.info.height) == "undefined"   || this.data.info.height === "" ){
-                       toast.warn('请填写身高');
-                   }else if(typeof (this.data.info.weight) == "undefined" || this.data.info.weight === ""){
-                       toast.warn('请填写体重');
-                   }
-                } else {
-                    this.setData({
-                        page: ++this.data.page,
-                    })
-                }
                 break;
             case 4:
-                console.log(typeof (this.data.choseIndex) == "undefined")
-                console.log(this.data.isexact)
-                if (typeof (this.data.choseIndex) == "undefined" && this.data.isexact == true) {
-                    toast.warn('请选择图片');
-                } else if(typeof (this.data.choseIndex) !== "undefined" && this.data.isexact == true) {
-                    let list = this.data.page4MenItem;
-                    if (this.data.info.sex === 0) {
-                        list = this.data.page4WomenItem;
-                    }
-                    this.setData({
-                        'info.bodyFatRate': list[this.data.choseIndex]
-                    });
-                    Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
-                        this.setisFirst();
-                    })
-                }else if(typeof (this.data.info.bodyFatRate) == "undefined" && this.data.isexact == false  || this.data.info.bodyFatRate === ""){
-                    toast.warn('请填写体脂率');
-                }else if(this.data.isexact == false && this.data.info.bodyFatRate>=100){
-                    WXDialog.showDialog({
-                        title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
-                        }
-                    });
-
-                }else if(this.data.isexact == false){
-                    if(this.data.info.bodyFatRate.toString().split(".")[1].length>1){
-                        WXDialog.showDialog({
-                            title: '小贴士', content:"请精确到小数点后一位", confirmText: '我知道了', confirmEvent: () => {
-                            }
-                        });
-                }}else{
-                    Protocol.postBreathPlanAnalysis(this.data.info).then(data => {
-                        this.setisFirst();
-                    })
+                if (this.objIsEmpty(info.height)) {
+                    toast.warn('请填写身高');
+                    return;
+                } else if (this.objIsEmpty(info.weight)) {
+                    toast.warn('请填写体重');
+                    return;
                 }
                 break;
+            case 5:
+                if (this.data.noMeasure) {
+                    if (this.objIsEmpty(this.data.choseIndex)) {
+                        toast.warn('请选择图片');
+                        return;
+                    } else {
+                        let list = this.data.page4MenItem;
+                        if (this.data.info.sex === 0) {
+                            list = this.data.page4WomenItem;
+                        }
+                        this.setData({
+                            'info.bodyFatRate': list[this.data.choseIndex]
+                        });
+                    }
+                } else {
+                    if (this.objIsEmpty(info.bodyFatRate)) {
+                        toast.warn('请填写体脂率');
+                        return;
+                    } else if (parseInt(this.data.info.bodyFatRate) >= 100) {
+                        this.showDialog("请输入正确的体脂率，体脂率范围1%-100%");
+                        return;
+                    } else {
+                        const num = this.data.info.bodyFatRate.toString().split(".");
+                        if (num.length > 1 && num[1] >= 10) {
+                            this.showDialog("至多输入1位小数及两位整数");
+                            return;
+                        }
+                    }
+                }
+                break;
+            case 6:
+                let isChoseMeals = false;
+                this.data.meals.forEach(value => {
+                    if (value.isChose) {
+                        isChoseMeals = true;
+                    }
+                });
+                if (!isChoseMeals) {
+                    toast.warn('请选择三餐');
+                    return
+                }
+                break;
+            case 7:
+                if (this.objIsEmpty(info.weightGoal)) {
+                    toast.warn('请填写目标体重');
+                    return;
+                }
+                await Protocol.postMembersPut(this.data.info);
+                const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
+                this.setData({project});
+                break;
+            case 8:
+                await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
+                this.handleTasks();
+                this.setData({
+                    showNewInfo: false
+                })
+                return;
         }
+        this.setData({
+            page: ++this.data.page,
+        });
+        /* wx.setStorageSync({
+             currentPage: this.data.page,
+         });*/
     },
 
-    chooseSex(e) {
-        console.log(e,'eee')
-        let choseIndex = e.currentTarget.dataset.index;
+    objIsEmpty(obj) {
+        return (typeof (obj) === "undefined" || obj === "" || obj === null);
+    },
+
+    showDialog(content) {
+        WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
+    },
+
+    back() {
+        this.setData({
+            page: --this.data.page
+        })
+    },
+
+    //减脂目标
+    bindInputGoal(e) {
+        this.setData({
+            'info.goalDesc': tools.filterEmoji(e.detail.value).trim()
+        })
+    },
+
+    bindTapSex(e) {
+        let choseIndex = e.currentTarget.dataset.index, postSex = 0, sexStr = '';
         this.data.sexBox.map((value, index) => {
             value.isChose = choseIndex == index;
+            if (value.isChose) {
+                postSex = value.value;
+                sexStr = value.image;
+            }
         });
-        let postSex = 0;
-        let sexStr = 'woman';
-        if (choseIndex == 0) {
-            postSex = 1;
-            sexStr = 'man'
-        }
         this.setData({
             sexBox: this.data.sexBox,
             'info.sex': postSex,
             'info.sexStr': sexStr
         })
     },
-    setisFirst(){
+
+    bindChangeBirth(e) {
+        const value = e.detail.value;
+        const birthArr = value.split("-");
         this.setData({
-            'isFirst': false
+            'info.birthday': value,
+            birth: birthArr
         })
     },
 
-    bindBirthChange(e) {
-        let value = e.detail.value;
+    bindInputHeight(e) {
+        const height = e.detail.value;
+        let weightGoal = (height / 100) * (height / 100) * 21;
+        weightGoal = weightGoal.toFixed(1);
         this.setData({
-            'info.birthday': value
-        })
+            'info.height': height,
+            'info.weightGoal': weightGoal
+        });
     },
 
-    bindHeightInput(e) {
-        this.setData({
-            'info.height': e.detail.value
-        })
-        console.log(typeof(e.detail.value),"89888")
+    bindInputWeight(e) {
+        this.setData({'info.weight': e.detail.value});
+        return oneDigit(e);
     },
 
-      bindWeightInput(e) {
-        this.setData({
-            'info.weight': e.detail.value
-        })
-        console.log("test,",this.info.weight)
+    bindInputWeightGoal(e) {
+        console.log("231", e.detail.value)
+        this.setData({'info.weightGoal': e.detail.value});
+        return oneDigit(e);
     },
 
-   /* bindWeightInput(e) {
-        let that =this;
-        let dataset =e.currentTarget.dataset;
-        console.log(dataset,"dataset")
-        let value = e.detail.value;
-        let nameTest =dataset.nameT;
-        that.data[nameTest]=value;
-        this.setData({
-            'info.weight':  that.data[nameTest]
-        })
-        console.log("test,",that.data[nameTest])
-    },*/
-
-
-    //填写体脂率
-    bindExactInput(e){
-        var BMINumber;
-        BMINumber = e.detail.value;
-        console.log(BMINumber);
-        this.setData({
-            'info.bodyFatRate': BMINumber
-        })
-       /* if (BMINumber.toString().split(".")[1].length<=1 && Number(BMINumber)<100) { //正则验证，小数点后不能大于1位数字
-            this.setData({
-                'info.bodyFatRate': BMINumber+"%"
-            })
-        } else {
-            WXDialog.showDialog({
-                title: '小贴士', content:"请输入正确的体脂率，体脂率范围1%-100%", confirmText: '我知道了', confirmEvent: () => {
-
-                }
-            });
-        };
-*/
+    bindInputExact(e) {
+        this.setData({'info.bodyFatRate': e.detail.value})
+        return oneDigit(e);
     },
 
-    page4ItemClick(e){
+    bindTapMeals(e) {
+        let choseIndex = e.currentTarget.dataset.index;
+        this.data.meals.map((value, index) => {
+            value.isChose = choseIndex == index;
+        });
+        const en = this.data.meals[choseIndex].en;
+        this.setData({meals: this.data.meals, 'info.mealType': en})
+    },
+
+    bindTapExactClick(e) {
         let index = e.currentTarget.dataset.index;
         this.setData({
-           choseIndex: index
+            choseIndex: index
         });
     },
 
-    IntoExact(){
-        this.setData({
-            isexact: false
-        });
+    bindTapSwitchExact() {
+        this.setData({noMeasure: !this.data.noMeasure});
     },
 
-    IntoNoExact(){
+    async onGetUserInfoEvent(e) {
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            try {
+                await Login.doRegister({userInfo, encryptedData, iv});
+                const userInfo = await UserInfo.get();
+                this.setData({userInfo, showGuide: false});
+                Toast.hiddenLoading();
+            } catch (e) {
+                Toast.warn('获取信息失败');
+            }
+        }
+    },
+
+
+    onReady() {
+        Circular.createSelectorQuery()
+    },
+
+    bindScrollView(e) {
+        console.log(e.detail.scrollLeft);
+        clearTimeout(this.data.timer);
+        this.data.timer = '';
+        const scrollLeft = e.detail.scrollLeft;
+        let that = this;
+        let project = this.data.project;
+        if (scrollLeft < 130) {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 0,
+                    schemaId: project[0].id
+                })
+            }, 300)
+        } else if (scrollLeft >= 130 && scrollLeft < 340) {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 490,
+                    schemaId: project[1].id
+                })
+            }, 300)
+        } else {
+            this.data.timer = setTimeout(function () {
+                that.setData({
+                    scrollLeft: 1400,
+                    schemaId: project[2].id
+                })
+            }, 300)
+        }
+    },
+    //视频打卡
+    toVideoClock(e) {
+        console.log("toVideoClock", e.currentTarget)
+        if (e.currentTarget.dataset.finid) {
+            HiNavigator.navigateToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
+            return
+        }
+        HiNavigator.navigateToVideoClock({id: e.currentTarget.dataset.id});
+    },
+    //去完成按钮
+    bindTapToFinish(e) {
+        const {currentTarget: {dataset: {type}}} = e;
+        switch (type) {
+            case 'fatBurn':
+                HiNavigator.navigateIndex();
+                break
+            case 'bodyIndex':
+                this.showModal();
+                break
+            case 'sport':
+                HiNavigator.navigateToFreeClock();
+                break
+        }
+    },
+
+    async bindTapProject(e) {
+        this.data.schemaId = e.currentTarget.dataset.index
+    },
+
+    onShow() {
+        this.handleBle();
+        let that = this;
+        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
+        app.bLEManager.sendISpage({isSuccess: true});
+        app.onDataSyncListener = ({num, countNum}) => {
+            console.log('同步离线数据：', num, countNum);
+            if (num > 0 && countNum > 0) {
+                that.data.sync.num = num;
+                that.data.sync.countNum = countNum;
+                if (that.data.sync.countNum >= that.data.sync.num) {
+                    that.setData({
+                        sync: that.data.sync,
+                        showBigTip: true,
+                        hiddenFat:"600rpx",
+                    });
+
+                    clearTimeout(that.data.sync.timer);
+                    that.data.sync.timer = '';
+                    that.data.sync.timer = setTimeout(function () {
+                        that.setData({
+                            showBigTip: false,
+                            hiddenFat:"auto",
+                        });
+                        that.handleTasks();
+                    }, 2000)
+                }
+            } else {
+                that.setData({
+                    showBigTip: false,
+                    hiddenFat:"auto",
+                })
+            }
+        };
+        if(this.data.isfinishedGuide || this.data.isFood){
+            that.handleTasks();
+        }
+
+
+    },
+
+
+    bindTapToResultPage() {
+        if (this.data.fatBurnFin) {
+            const {fatText, fatTextEn, fatDes, score} = this.data;
+            console.log(fatText, fatTextEn, fatDes, score)
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+        }
+    },
+    bindTapToFood() {
+        if (this.data.bodyIndexFin) {
+            HiNavigator.navigateTofood();
+        }
+    },
+    bindWeightInput(e) {
+        const weightNumber = e.detail.value.split(".");
+        console.log('eeeee', weightNumber[1])
+        if (weightNumber[1] > 9 || weightNumber[1] === "0") {
+            return tools.subStringNum(e.detail.value)
+        }
+        if (weightNumber.length > 2) {
+            return parseInt(e.detail.value);
+        }
+    },
+    //轮播图当前
+    swiperChange: function (e) {
+        console.log(e.detail.current, 'eeeeee')
         this.setData({
-            isexact: true
-        });
+            currentSwiper: e.detail.current,
+            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 220
+        })
+        if (e.detail.current === 0) {
+            this.setData({
+                grayLeft: true,
+                grayRight: false
+            })
+            return
+        }
+        if (e.detail.current === this.data.sportExt.recommendList.length - 1) {
+            this.setData({
+                grayLeft: false,
+                grayRight: true
+            })
+            return
+        }
+        this.setData({
+            grayLeft: false,
+            grayRight: false
+        })
+    },
+    //运动打卡--左按钮
+    imgToPre() {
+        this.setData({
+            currentSwiper: this.data.currentSwiper - 1
+        })
+    },
+    //运动打卡--右按钮
+    imgToNext() {
+        this.setData({
+            currentSwiper: this.data.currentSwiper + 1
+        })
+    },
+    showModal: function () {
+        this.setData({
+            hiddenFat:"600rpx"
+        })
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "ease-in-out",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(500).step()
+        this.setData({
+            animationData: animation.export(),
+            showModalStatus: true
+        })
+        setTimeout(function () {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export()
+            })
+        }.bind(this), 200)
+    },
+    hideModal: function () {
+        this.setData({
+            showModalStatus: false,
+            hiddenFat:"auto"
+        })
+        this.handleTasks();
     }
-
 })

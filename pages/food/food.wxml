@@ -1,0 +1,42 @@
+<!--pages/food/food.wxml-->
+<cover-view class="top-view flex-row">
+    <cover-view wx:for="{{topChose}}" class="top-view-text" bindtap="bindTapTopChose" data-index="{{index}}"
+          style="color:{{index===currentIndex?'#ED6F69':'#474747'}};">{{item.text}}
+    </cover-view>
+</cover-view>
+<view class="middle-view flex-column">
+    <view class="flex-row align-items-center" bindtap="toCalendarPage">
+        <view class="middle-view-title">{{dataTrendTime}}</view>
+        <image class="middle-view-arr" src="../../images/arr-right.png"></image>
+    </view>
+    <view class="canvas" style="margin-top: 0;">
+        <canvas canvas-id="lineCanvas" class="canvas" style="height: {{canvasShow?'440rpx':'0'}}" disable-scroll="true"
+                bindtouchstart="touchHandler"
+                bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    </view>
+
+
+    <bottom-dialog inputType="{{topChose[currentIndex].inputType}}" maxLength="{{topChose[currentIndex].maxLength}}" bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
+        <view class="flex-row align-items-center middle-view-add-view">
+            <image class="middle-view-add-image" src="../../images/food/{{topChose[currentIndex].type}}.png"></image>
+            <view class="middle-view-add-text">{{topChose[currentIndex].addText}}</view>
+        </view>
+    </bottom-dialog>
+
+</view>
+
+<view class="bottom-view">
+    <view wx:for="{{dataList}}" class="bottom-view-cell">
+        <view class="flex-column" style="width: 100%">
+            <view class="flex-row" style="justify-content: space-between;width: 100%">
+                <view class="flex-column" style="margin-top: 40rpx;align-items:start">
+                    <view class="bottom-view-cell-title">{{item.date.time}}</view>
+                    <view class="bottom-view-cell-content">{{item.date.date}}</view>
+                </view>
+                <view class="flex-row bottom-view-cell-right">{{item.dataValue}}<mark class="bottom-view-cell-right-r">{{item.unit}}</mark></view>
+            </view>
+            <view class="bottom-view-line"></view>
+        </view>
+    </view>
+</view>
+

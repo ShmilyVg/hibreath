@@ -1,0 +1,97 @@
+.free-clock-title{
+    font-size:38rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:53rpx;
+    margin-left: 10rpx;
+    align-self: flex-start;
+    margin-bottom: 40rpx;
+}
+.free-clock-sport-way-layout {
+    margin-bottom: 75rpx;
+}
+
+.free-clock-sport-way-layout:nth-child(4n+2) {
+    margin-left: 50rpx;
+}
+.free-clock-sport-way-layout:nth-child(4n+3) {
+    margin-left: 50rpx;
+    margin-right: 50rpx;
+}
+
+.free-clock-sport-way-img{
+    width: 90rpx;
+    height: 90rpx;
+    background-color: #0AC1A1;
+    border-radius: 50%;
+    margin-bottom: -45rpx;
+}
+
+.free-clock-sport-way-bg-common{
+    width:130rpx;
+    height:170rpx;
+    border-radius:10rpx;
+    z-index: -1;
+}
+
+.free-clock-sport-way-bg-unselected{
+    background:rgba(245,245,245,1);
+    box-shadow:0 0 12rpx 0 transparent;
+}
+
+.free-clock-sport-way-bg-selected{
+    background:linear-gradient(138deg,rgba(247,168,162,1) 0%,rgba(237,111,105,1) 100%);
+    box-shadow:0 0 12rpx 0 rgba(237,111,105,1);
+}
+.free-clock-sport-way-content-common{
+    margin-top: -65rpx;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    line-height:40rpx;
+    height: 23rpx;
+}
+.free-clock-sport-way-content-unselected{
+    color:rgba(69,69,69,1);
+}
+.free-clock-sport-way-content-selected{
+    color:rgba(255,255,255,1);
+}
+
+.free-clock-sport-duration-layout {
+    background:rgba(245,245,245,1);
+    border-radius:20rpx;
+}
+
+.free-clock-say{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    background:rgba(245,245,245,1);
+    border-radius:20rpx;
+    padding: 38rpx 50rpx;
+}
+
+.free-clock-say-placeholder-class{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(177,177,177,1);
+    line-height:42rpx;
+}
+
+.free-btn{
+    width:500rpx;
+    height:100rpx;
+    margin-top: 100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:42rpx;
+}

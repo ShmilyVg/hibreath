@@ -1,71 +1,85 @@
-<!--pages/result/result.wxml-->
-
-<!--<view class="background-view flex-column" style="background-color: {{mainColor}}">-->
-<view class="resultHead">
-
+<view class="result-top flex-row">
+    <view class="flex-row">
+        <image class="result-img1" src="../../images/result/circle.png"></image>
+        <text class="result-text1">最近一次</text>
+    </view>
+    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
 </view>
-<view class="background-view">
-    <view class="score">
-        <view class="scoreText1">本次检测结果:{{score}}</view>
-        <view class="scoreText2">
-            PPM
-            <icon bindtap="toPPM" type="info" size="40"/>
-        </view>
-        <view clgradeass="clear"></view>
-    </view>
-    <view class="resultDate">{{resultDate}} {{resultTime}}</view>
-    <!--<button wx:="isShare" data-id="shareBtn" open-type="share">分享</button>-->
-
-    <view class="resultText">"相当于步行的速度,超越全平台2%的用户"</view>
-    <view class="result-list" wx:for="{{list}}">
-        <view  wx:if="{{item.section == true}}"  wx:key="section" style="color: {{LVcolor[index]}};display:flex;justify-content: center;">
-            <view>
-                <view class="resultNumber">{{item.gradeNumber}}</view>
-                <view class="resultGrade">{{item.gradeType}}</view>
-            </view>
-    <!--        <view  style="display: flex;align-items: center">
-                <image class="resultImg" src="../../images/result/lv{{item.grade}}c.png"></image>
-                <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
-            </view>-->
-        </view>
-        <view wx:else="{{item.section == false}}" style="color: #929292;display:flex;justify-content: center;">
-            <view>
-                <view class="resultNumber">{{item.gradeNumber}}</view>
-                <view class="resultGrade">{{item.gradeType}}</view>
-            </view>
-          <!--  <view  style="display: flex;align-items: center">
-                <image class="resultImg" src="../../images/result/lv{{item.grade}}.png"></image>
-                <image hidden="{{index ==2 ||index ==5}}" class="resultLine" src="../../images/result/line.png"></image>
-            </view>-->
-        </view>
-
-    </view>
+<view class='content'>
+    <canvas canvas-id="bg" class='canvasII'></canvas>
+    <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
+ <!--   <view class="result-line"></view>-->
+    <image class="fatType1" src="{{fatType}}"></image>
+    <view class="fatText">{{fatText}}</view>
+    <view class="fatTextEn">{{fatTextEn}}</view>
+    <view class="fatDes" >{{fatDes}}</view>
+</view>
+<button wx:if="{{fatDes !==''}}" class="result-btn" bindtap="toIndex">吹一吹</button>
+<button wx:else class="result-btn2" bindtap="toIndex">吹一吹</button>
+<view wx:if="{{tabIsShow}}" class="result_tab">
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
     <view class="clear"></view>
-    <view wx:if="{{shareIn}}" style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;margin-top: 90rpx">
-        <view wx:if="{{noAddPlan}}"  class="resultBtn" hover-class="press-style" hover-stay-time="50" bindtap="toSetInfo"></view>
-    </view>
-    <view wx:if="{{shareIn}}" style="display: flex;flex-direction: row;justify-content: center;flex-wrap: wrap;">
-        <view class="resultSJ"></view>
-    </view>
-
-    <view wx:if="{{shareIn}}" class="resultBottomText">定制加速燃脂计划</view>
-    <block wx:if="{{halfMonth}}">
-        专属营养师
-        <view>燃脂效果一直不佳？为您推荐专属营养师</view>
-        <image src=""></image>
-    </block>
-
 </view>
+<view wx:else class="result_tab" style="opacity: 0"></view>
+
+<view wx:if="{{!tabIsShow}}" class="result_tab_top">
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+    <view class="clear"></view>
+</view>
+
+<!--燃脂记录  -->
+<view wx:if="{{currenttab==='0'}}">
+    <view wx:for="{{trendData}}" class="flex-column cell">
+        <view class="flex-row" style="width:100%;justify-content: space-between">
+            <view class="flex-column" style="align-items: start;height: 160rpx">
+                <view class="cell-title">{{item.desZh}}</view>
+                <view class="cell-date">{{item.date}}</view>
+            </view>
+            <view class="cell-image">
+                <image src="{{item.image}}" class="cell-image-image"></image>
+                <view class="cell-image-text">{{item.dataValue}}</view>
+            </view>
+        </view>
+        <view class="cell-line"></view>
+    </view>
+</view>
+
+<!--燃脂趋势 -->
+<view wx:if="{{currenttab==='1'}}" >
+    <block wx:if="{{!noData}}">
+        <view class="canvas-base-view">
+            <view class="flex-row"
+                  style="justify-content: center;width: 100%;align-items: center;margin-top: 20rpx;"
+                  bindtap="toChooseDate">
+                <view class="canvas-bottom-text">{{trendDate}}</view>
+                <image class="middle-view-arr" src="../../images/arr-right.png"></image>
+            </view>
+            <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
+                    bindtouchstart="touchHandler"
+                    bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+
+        </view>
+    </block>
+    <block wx:else>
+        <view class="flex-column index-history-no-data-text">
+            <template is="no-data" data="{{content:'暂无趋势数据'}}"></template>
+        </view>
+    </block>
+</view>
+
+
 <!-- 弹窗组件 -->
-<view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
+<!--<view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
     <view class="result-container">
         <view class="title" bindtap='confirm'>{{beyondLastTime.title}}</view>
         <view class="content" bindtap='confirm'>
             {{beyondLastTime.content}}
         </view>
         <view class='modal-btn-wrapper'>
-            <!--<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>-->
+            &lt;!&ndash;<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>&ndash;&gt;
             <button data-id="shareBtn"  open-type="share">分享</button>
         </view>
     </view>
-</view>
+</view>-->

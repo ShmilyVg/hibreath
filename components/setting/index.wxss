@@ -1,0 +1,12 @@
+.message-detail-setting-layout{
+    padding: 0 30rpx;
+}
+
+.message-detail-setting-point{
+    width:8rpx;
+    height:8rpx;
+}
+
+.message-detail-setting-point:nth-child(2){
+    margin: 10rpx 0;
+}

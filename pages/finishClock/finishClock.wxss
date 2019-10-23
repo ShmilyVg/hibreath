@@ -1,0 +1,190 @@
+/* pages/finishClock/finishClock.wxss */
+page{
+    background-color: rgba(245,245,245,1);
+}
+
+.finish-clock-top-bg{
+    height: 200rpx;
+    background:linear-gradient(180deg,rgba(23,23,23,1) 0%,rgba(69,69,69,1) 100%);
+}
+
+.finish-clock-layout{
+    padding: 60rpx 40rpx;
+}
+
+.finish-clock-top-layout{
+    background: rgba(255,255,255,1);
+    border-radius: 20rpx;
+    overflow: hidden;
+
+}
+.finish-margin{
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+.finish-clock-layout-inner{
+    z-index: 1;
+    padding: 46rpx 30rpx 50rpx 30rpx;
+}
+
+.finish-clock-top-img{
+    height: 230rpx;
+}
+
+.finish-clock-title{
+    font-size:42rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:59rpx;
+    text-shadow:0 2rpx 4rpx rgba(0,0,0,0.5);
+}
+
+.finish-clock-subtitle{
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:37rpx;
+    text-shadow:0 2rpx 4rpx rgba(0,0,0,0.5);
+    margin-bottom: 30rpx;
+}
+
+
+.finish-clock-top-head{
+    width: 110rpx;
+    height: 110rpx;
+    border: 4rpx solid rgba(255,255,255,1);
+    margin-left: 3rpx;
+    border-radius: 50%;
+}
+
+.finish-clock-re-choose-btn{
+    width:200rpx;
+    height:71rpx;
+    background:rgba(237,111,105,1);
+    box-shadow:0 2rpx 10rpx 0 rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:40rpx;
+}
+
+.finish-clock-target-text{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+
+}
+
+.finish-clock-sport-time{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+}
+
+.finish-clock-finish-sport{
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+}
+
+.finish-clock-item-icon{
+    width: 90rpx;
+    height: 90rpx;
+    margin-right: 30rpx;
+}
+
+.finish-clock-line{
+    border-bottom: 1rpx solid #f2f2f2;
+}
+
+.finish-clock-item-title {
+    font-size:30rpx;
+    font-family:PingFang-SC-Semibold,PingFang-SC;
+    font-weight:600;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+}
+
+.finish-clock-item-subtitle {
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+}
+
+.finish-clock-nike-icon{
+    width: 76rpx;
+    height: 60rpx;
+}
+
+.finish-clock-bottom-title{
+    font-size:38rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:53rpx;
+    margin: 70rpx 10rpx 40rpx;
+    align-self: flex-start;
+}
+
+.finish-clock-bottom-layout{
+    background:rgba(255,255,255,1);
+    border-radius:20rpx;
+}
+
+.finish-clock-feel-icon{
+    width: 100rpx;
+    height: 100rpx;
+    margin-bottom: 18rpx;
+}
+
+.finish-clock-feel-text{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+}
+
+.finish-clock-feel-remind{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(150,150,150,1);
+    line-height:33rpx;
+    margin-bottom: 60rpx;
+}
+
+.finish-clock-feel-content{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    word-break: break-all;
+}
+
+.finish-clock-feel-small-icon{
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.finish-clock-feel-small-icon-text{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+    margin-left: 32rpx;
+}

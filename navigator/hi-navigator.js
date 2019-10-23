@@ -1,5 +1,4 @@
  /**
-  * @Author: 张浩玉
   * @Date: 2019-08-20 11:50:17
   * @LastEditors: 张浩玉
   */
@@ -17,25 +16,39 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/result/result?id=' + id});
     }
     //历史记录进入结果页
-    static navigateToResult({id}) {
-        this.navigateTo({url: '/pages/result/result?id=' + id});
+    static navigateToResult({fatText, fatTextEn, fatDes, score}) {
+        this.navigateTo({url:`/pages/result/result?fatText=${fatText}&fatTextEn=${fatTextEn}&fatDes=${fatDes}&score=${score}`});
     }
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
-        wx.reLaunch({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pages/index/index'});
     }
-    static navigateToStrategy() {
-        this.navigateTo({url: '/pages/strategy/strategy'});
+    //运动-自由打卡
+    static navigateToFreeClock() {
+        this.navigateTo({url: '/pages/freeClock/freeClock'});
+    }
+    //运动-视频打卡
+    static navigateToVideoClock({id}) {
+        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
+    }
+    //完成打卡resultresult
+    static navigateToFinishClock() {
+        this.navigateTo({url: '/pages/finishClock/finishClock'});
+    }
+    //饮食打卡-去打卡
+    static navigateToImgClock({id}) {
+        this.navigateTo({url: '/pages/imgClock/imgClock?id=' + id});
     }
 
 /*    static navigateToHistory() {
         this.navigateTo({url: '/pages/history/history'});
     }*/
-
+    //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
         this.navigateTo({url: '/pages/device-bind/device-bind'});
     }
+
 
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
@@ -44,6 +57,12 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }
+    static reLaunchToSetInfo() {
+        this.redirectTo({url: '/pages/set-info/set-info'})
+    }
+    static navigateTofood() {
+        this.navigateTo({url: '/pages/food/food'})
+    }
 
     static relaunchToUpdatePage({binUrl, datUrl}) {
         getApp().otaUrl = arguments[0];
@@ -51,34 +70,20 @@ export default class HiNavigator extends CommonNavigator {
     }
 
     /*新加跳转*/
-
-    static navigateToclickBody() {
-        this.navigateTo({url: '/pages/set-info/set-info'})
+    static navigateSuccessInfo() {
+        this.navigateTo({url: '/pages/successInfo/successInfo'})
     }
     static navigateToclickCheck() {
         this.navigateTo({url: '/pages/history/history'})
     }
-    static navigateToclickMine() {
-        this.navigateTo({url: '/pages/device-manage/device-manage'})
-    }
-    static navigateToBMIhistoryInfo() {
-        this.navigateTo({url: '/pages/BMIhistoryInfo/BMIhistoryInfo'})
-    }
-    static navigateToBMIhistory() {
-        this.navigateTo({url: '/pages/BMIhistory/BMIhistory'})
-    }
+
     static navigateToPlan() {
         this.navigateTo({url: '/pages/plan/plan'})
     }
     static navigateTarget() {
         this.navigateTo({url: '/pages/setTarget/setTarget'})
     }
-    static navigatePlanInfo() {
-        this.navigateTo({url: '/pages/planInfo/planInfo'})
-    }
-    static navigateSuccessInfo() {
-        this.navigateTo({url: '/pages/successInfo/successInfo'})
-    }
+
 
     static navigateToHIIT({id}) {
         this.navigateTo({url: '/pages/HIITInfo/HIITInfo?id=' + id})
@@ -88,17 +93,59 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/cookInfo/cookInfo?id=' + id})
     }
 
-    static navigateToshoppingList({id}) {
-        this.navigateTo({url: '/pages/shoppingList/shoppingList?id=' + id})
-    }
+
    /* static navigatoResult({score}) {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
-    static navigateIndex() {
-        wx.reLaunch({url: '/pages/index/index'});
+    static navigateIndexSuc({data}) {
+        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
     }
+    static navigateIndex() {
+        this.navigateTo({url: '/pages/index/index'});
+    }
+
+
     static navigateToPPM() {
         this.navigateTo({url: '/pages/PPMInfo/PPMInfo'})
+    }
+
+    static navigateToCalendar({type}) {
+        this.navigateTo({url: '/pages/calendar/calendar?type=' + type});
+    }
+
+    static redirectToFinishCheck({dataId, clockWay}) {
+        this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
+    }
+    static navigateToFinishCheck({dataId, clockWay}) {
+        this.navigateTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
+    }
+
+    static redirectToFreeCheck({dataId}) {
+        this.redirectTo({url: '/pages/freeClock/freeClock?dataId=' + dataId});
+    }
+
+    static navigateToMessageDetail({messageId}) {
+        this.navigateTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
+    }
+    static redirectToMessageDetail({messageId}) {
+        this.redirectTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
+    }
+
+    static navigateToFoodRuler() {
+        this.navigateTo({url: '/pages/food-ruler/food-ruler'});
+    }
+    static navigateToCreateCommunity() {
+        this.navigateTo({url: '/pages/createCommunity/createCommunity'});
+    }
+    static navigateToCommunityManagement() {
+        this.navigateTo({url: '/pages/communityManagement/communityManagement'});
+    }
+    static navigateToMemberManagement({dataId}) {
+        this.redirectTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});
+    }
+
+    static switchToCommunity() {
+        this.switchTab({url: '/pages/community/community'});
     }
 }

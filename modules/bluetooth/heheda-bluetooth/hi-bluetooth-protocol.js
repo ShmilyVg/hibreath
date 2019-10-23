@@ -21,7 +21,7 @@ export default class HiBlueToothProtocol {
             },
             //由设备发出的连接反馈 1接受 2不接受 后面的是
             '0x02': ({dataArray}) => {
-                console.log(dataArray,"查看是否允许绑定")
+                console.log(dataArray, "查看是否允许绑定")
                 const isConnected = HexTools.hexArrayToNum(dataArray.slice(0, 1)) === 1;
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(1));
                 console.log('绑定结果', dataArray, deviceId, isConnected);
@@ -42,7 +42,7 @@ export default class HiBlueToothProtocol {
                         console.log('绑定协议报错', res);
                         blueToothManager.updateBLEStateImmediately(blueToothManager.getState({connectState: CommonConnectState.UNBIND}))
                     });
-                }else{
+                } else {
                     blueToothManager.clearConnectedBLE();
                 }
                 // isConnected && this.startCommunication();
@@ -57,16 +57,19 @@ export default class HiBlueToothProtocol {
             },
             //由设备发出的时间戳请求，并隔一段时间发送同步数据
             '0x04': ({dataArray}) => {
-                console.log("请求",dataArray)
+                console.log("请求", dataArray)
                 const battery = HexTools.hexArrayToNum(dataArray.slice(0, 1));
                 const version = HexTools.hexArrayToNum(dataArray.slice(1, 3));
                 const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 11));
-                this._syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
+                const _syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
+                console.log("总数", _syncCount)
                 const now = Date.now() / 1000;
                 this.sendData({command: '0x05', data: [now]}).then(() => {
                     this.sendQueryDataRequiredProtocol();
                 });
-                return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId}};
+                return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId,_syncCount}};
+                wx.setStorageSync('version',  version);
+                wx.setStorageSync('deviceId', deviceId);
             },
             //设备发出待机状态通知
             '0x06': () => {
@@ -103,6 +106,20 @@ export default class HiBlueToothProtocol {
                 //         blueToothManager.updateBLEStateImmediately(this.protocolBody.getOtherStateAndResultWithConnectedState({protocolState: CommonProtocolState.QUERY_DATA_FINISH}));
                 //     }
                 // });
+            },
+            //APP传给设备 是否同步离线数据 01传 02不传
+            '0x3d': ({isSuccess}) => {
+                this.sendData({
+                    command: '0x3d',
+                    data: [isSuccess ? 1 : 2]
+                });
+            },
+            //APP通知设备是否上传检测记录
+            '0x40': ({isSuccess}) => {
+                this.sendData({
+                    command: '0x30',
+                    data: [isSuccess ? 1 : 2]
+                });
             },
             '0xab': ({dataArray}) => {
                 if (!!this._updateTool) {
@@ -154,8 +171,26 @@ export default class HiBlueToothProtocol {
         }
     }
 
+    sendISpage({isSuccess}) {
+        console.log('sendISpage');
+        if (this.getDeviceIsBind()) {
+            this.action['0x3d']({isSuccess});
+        }
+    }
+    sendISvalue({isSuccess}) {
+        console.log('sendISvalue');
+        if (this.getDeviceIsBind()) {
+            this.action['0x40']({isSuccess});
+        }
+    }
+
     startCommunication() {
         this.action['0x03']();
+    }
+
+    startData() {
+        this.sendData({command: '0x05'});
+        console.log("执行重新获取状态")
     }
 
     getDeviceIsBind() {

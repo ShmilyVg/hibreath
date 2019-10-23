@@ -1,0 +1,3 @@
+<view bindtap="onSettingClickEvent" class="flex-column box-sizing-border-box message-detail-setting-layout">
+    <view wx:for="{{3}}" wx:key="index" class="message-detail-setting-point" style="background-color: {{color}}"></view>
+</view>

@@ -1,0 +1,7 @@
+<view class="fill-width flex-row space-between" style="flex-wrap: wrap;">
+    <view bindtap="_onSportWayItemClick" data-item="{{item}}" wx:for="{{sportWays}}" wx:key="id" class="flex-column align-items-center relative free-clock-sport-way-layout">
+        <image src="{{item.imgUrl}}" class="free-clock-sport-way-img"></image>
+        <view class=" free-clock-sport-way-bg-common {{item.selected?'free-clock-sport-way-bg-selected':'free-clock-sport-way-bg-unselected'}}"></view>
+        <view class="free-clock-sport-way-content-common {{item.selected?'free-clock-sport-way-content-selected':'free-clock-sport-way-content-unselected'}}">{{item.title||' '}}</view>
+    </view>
+</view>

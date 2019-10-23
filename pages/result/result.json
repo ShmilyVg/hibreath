@@ -1,4 +1,4 @@
 {
-  "navigationBarTitleText": "检测结果",
-  "navigationBarBackgroundColor": "#282828"
+  "navigationBarTitleText": "燃脂检测",
+  "enablePullDownRefresh": true
 }

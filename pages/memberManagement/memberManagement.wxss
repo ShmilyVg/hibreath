@@ -1,0 +1,102 @@
+/* pages/memberManagement/memberManagement.wxss */
+page{
+    padding: 48rpx 40rpx 0 40rpx;
+    box-sizing: border-box;
+    min-height: 100%;
+    width: 100%;
+}
+.member-Left{
+    float: left;
+}
+.member-Right{
+    float: right;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(238,111,105,1);
+    margin-top: 45rpx;
+}
+.member-Num{
+    font-size:100rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    float: left;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+.member-text{
+    font-size:32rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    float: left;
+    margin-top: 45rpx;
+}
+.member-isMajor{
+    height:133rpx;
+    background:rgba(238,111,105,1);
+    box-shadow:0px 2rpx 10rpx 0rpx rgba(238,111,105,1);
+    border-radius:20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 40rpx;
+}
+.member-headUrl{
+    width:90rpx;
+    height:90rpx;
+    border-radius:65rpx;
+    margin-right: 30rpx;
+    float: left;
+
+}
+.member-TitleTop{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    float: left;
+    margin-top: 26rpx;
+}
+.member-Man{
+    width:100rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    background:rgba(255,255,255,1);
+    border-radius:25rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(238,111,105,1);
+    float: right;
+    text-align: center;
+    margin-top: 26rpx;
+}
+.member-TitleBto{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-top: 26rpx;
+    float: left;
+}
+.member-Remove{
+    width:100rpx;
+    height:50rpx;
+    background:rgba(252,236,235,1);
+    border-radius:25rpx;
+    line-height: 50rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(238,111,105,1);
+    float: right;
+    text-align: center;
+    margin-top: 26rpx;
+}
+.member-else{
+    height:133rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}

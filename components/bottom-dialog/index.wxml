@@ -1,0 +1,20 @@
+<slot catchtap="showModal"></slot>
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="flex-row commodity_attr_box" wx:if="{{showModalStatus}}">
+    <!--<view class="commodity_screen" bindtap="hideModal"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box">-->
+    <form bindsubmit='formSubmit' class="fill-width">
+        <button  bindtap="hideModal" class="commodity_clear">取消</button>
+        <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
+        <button class="commodity_sub" form-type='submit'>提交</button>
+        <view class="clear"></view>
+        <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 75rpx"></view>
+        <view wx:for="{{list}}" wx:key="id" class="flex-row fill-width align-items-center space-between commodity_part">
+            <view class="commodity_title">{{item.title}}</view>
+            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="{{maxLength}}" name="{{item.type}}"
+                   bindinput="_bindInputEvent"
+                   placeholder="{{item.placeholder}}" type="{{inputType}}"/>
+            <view class="clear"></view>
+        </view>
+    </form>
+</view>

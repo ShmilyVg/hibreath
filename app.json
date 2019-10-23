@@ -1,53 +1,52 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/personal/personal",
     "pages/set-info/set-info",
-    "pages/strategy/strategy",
+    "pages/community/community",
+    "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
-    "pages/history/history",
     "pages/update/update",
-    "pages/welcome/welcome",
     "pages/device-manage/device-manage",
-    "pages/BMIhistory/BMIhistory",
-    "pages/BMIhistoryInfo/BMIhistoryInfo",
-    "pages/physical/physical",
-    "pages/plan/plan",
-    "pages/setTarget/setTarget",
-    "pages/cookInfo/cookInfo",
-    "pages/HIITInfo/HIITInfo",
-    "pages/planInfo/planInfo",
+    "pages/calendar/calendar",
     "pages/successInfo/successInfo",
-    "pages/PPMInfo/PPMInfo",
-    "pages/clockIn/clockIn",
-    "pages/shoppingList/shoppingList"
+    "pages/food/food",
+    "pages/freeClock/freeClock",
+    "pages/videoClock/videoClock",
+    "pages/finishClock/finishClock",
+    "pages/imgClock/imgClock",
+    "pages/message-detail/message-detail",
+    "pages/food-ruler/food-ruler",
+    "pages/createCommunity/createCommunity",
+    "pages/memberManagement/memberManagement",
+    "pages/communityManagement/communityManagement",
+    "pages/shareAddcommunity/shareAddcommunity"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#3E3E3E",
-    "backgroundColor": "#3E3E3E",
-    "backgroundTextStyle": "light",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "HiPee健康燃脂"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "color": "#BBBCCD",
+    "selectedColor": "#EE6F69",
     "backgroundColor": "#fff",
-    "list": [{
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/result/result",
-      "text": "燃脂检测"
-    }, {
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/index/index",
-      "text": "燃脂历程"
-    }, {
-      "selectedIconPath": "images/device-bind/connected.png",
-      "iconPath": "images/device-bind/connected.png",
-      "pagePath": "pages/personal/personal",
-      "text": "个人中心"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/set-info/set-info",
+        "text": "打卡",
+        "iconPath": "images/loading_fail.png",
+        "selectedIconPath": "images/arr-right.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "圈子",
+        "iconPath": "images/loading_fail.png",
+        "selectedIconPath": "images/arr-right.png"
+      }
+    ]
   }
+
 }
