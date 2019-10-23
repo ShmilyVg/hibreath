@@ -135,11 +135,14 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToFoodRuler() {
         this.navigateTo({url: '/pages/food-ruler/food-ruler'});
     }
-    static redirectToCommunity() {
-        this.redirectTo({url: '/pages/community/community'});
+    static navigateToFoodRuler() {
+        this.navigateTo({url: '/pages/food-ruler/food-ruler'});
     }
-    static navigateToCommunityManagement({dataId}) {
-        this.redirectTo({url: '/pages/communityManagement/communityManagement?dataId=' + dataId});
+    static navigateToCreateCommunity() {
+        this.navigateTo({url: '/pages/createCommunity/createCommunity'});
+    }
+    static navigateToCommunityManagement() {
+        this.navigateTo({url: '/pages/communityManagement/communityManagement'});
     }
     static navigateToMemberManagement({dataId}) {
         this.redirectTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});

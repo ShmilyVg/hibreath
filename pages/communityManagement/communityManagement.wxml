@@ -1,2 +1,2 @@
 <!--pages/communityManagement/communityManagement.wxml-->
-<text>pages/communityManagement/communityManagement.wxml</text>
+<button bindtap="createCommunityBtn"  class="createCommunity-Btn">创建新圈子</button>

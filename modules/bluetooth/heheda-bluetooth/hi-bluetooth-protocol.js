@@ -68,6 +68,8 @@ export default class HiBlueToothProtocol {
                     this.sendQueryDataRequiredProtocol();
                 });
                 return {state: CommonProtocolState.TIMESTAMP, dataAfterProtocol: {battery, version, deviceId,_syncCount}};
+                wx.setStorageSync('version',  version);
+                wx.setStorageSync('deviceId', deviceId);
             },
             //设备发出待机状态通知
             '0x06': () => {

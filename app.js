@@ -64,9 +64,6 @@ App({
                         }
                         console.log('同步数据的数组', records);
                     } else if (!length) {
-                        if (count === 0) {
-                            this.isQueryEmptySuccess = true;
-                        }
                         count = 0;
                         this.queryDataFinish();
                         setTimeout(() => {
@@ -90,6 +87,9 @@ App({
                                                     confirmText: "立即升级",
                                                     cancelText: "暂时不用",
                                                     confirmEvent: () => {
+                                                        this.setData({
+                                                            noUpdata:false
+                                                        })
                                                         const {url: binUrl, md5: binMd5} = binArray[0];
                                                         const {url: datUrl, md5: datMd5} = datArray[0];
                                                         HiNavigator.relaunchToUpdatePage({binUrl, datUrl});
@@ -120,7 +120,7 @@ App({
 
                 } else if (ProtocolState.TIMESTAMP === state.protocolState) {
                     this.otaVersion = finalResult.version;
-                    console.log("暂时查看电量", finalResult.battery)
+                    console.log("暂时查看电量", finalResult)
                     //TODO 暂时注释掉
                     // Protocol.postDeviceElectricity({electricity: finalResult.battery / 100});
                     if (finalResult.battery < 21) {
@@ -203,7 +203,7 @@ App({
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
         notRegister: false,
-        currentIndex:0,
+        currentIndex:0
     },
     ...common
 });

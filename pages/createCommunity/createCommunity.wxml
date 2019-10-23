@@ -1,7 +1,7 @@
 <!--pages/createCommunity/createCommunity.wxml-->
 <view>
     <view class="createCommunity-View">
-        <view wx:if="{{imageUrl}}" class="createCommunity-Head" bindtap="addPic1">
+        <view wx:if="{{imgUrl}}" class="createCommunity-Head" bindtap="addPic1">
             <image class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
         </view>
         <view wx:else class="createCommunity-Head" bindtap='addPic1'>
