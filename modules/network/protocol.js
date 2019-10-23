@@ -258,6 +258,6 @@ export default class Protocol {
      * @returns {*|Promise|Promise<any>}
      */
     static postGroupInfo({groupId: id}) {
-        return Network.request({url: 'group/info', data: {id}});
+        return Network.request({url: 'group/info', data: {id}}).then(res => Promise.resolve({...res, groupId: id}));
     }
 }
