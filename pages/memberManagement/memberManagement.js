@@ -45,11 +45,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  async onShow () {
+   onShow () {
        console.log('2222',this.data.list)
-      const {result: {list}} = await Protocol.postMembers({id:this.dataId});
+    //const[list] = await Protocol.postMembers({id:this.dataId});
     this.setData({
-        memberList:list
+        memberList:this.data.list
     })
   },
     async memberRemove(){
