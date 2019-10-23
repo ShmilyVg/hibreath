@@ -23,8 +23,10 @@ Page({
         ]
     },
 
+    isUpdateAllWhenLoad: false,
     async onLoad(options) {
-        this.updateAll();
+        await this.updateAll();
+        this.isUpdateAllWhenLoad = true;
     },
     async toMemberManagerPage() {
         HiNavigator.navigateToMemberManagement({dataId: (await judgeGroupEmpty()).groupId});
@@ -56,17 +58,17 @@ Page({
     },
 
     async onShow() {
-        function showData({currentSocial}) {
-            this.setData({currentSocial}, async () => {
-                this.setData({
-                    dynamicList: await getGroupDynamicManager.getGroupDynamicList()
+        if (this.isUpdateAllWhenLoad) {
+            const showData = function ({currentSocial}) {
+                this.setData({currentSocial}, async () => {
+                    this.setData({
+                        dynamicList: await getGroupDynamicManager.getGroupDynamicList()
+                    });
                 });
-            });
+            };
+            await getSocialGroupManager.getSocialGroupList();
+            showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
         }
-
-        await getSocialGroupManager.getSocialGroupList();
-        showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
-
     },
 
 
@@ -76,19 +78,31 @@ Page({
 
     async updateAll() {
         function showData({currentSocial}) {
-            this.setData({currentSocial}, async () => {
-                this.setData({
-                    dynamicList: await getGroupDynamicManager.getGroupDynamicList()
+            return new Promise((resolve, reject) => {
+                this.setData({currentSocial}, async () => {
+                    try {
+                        const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
+                        this.setData({
+                            dynamicList
+                        }, resolve);
+                    } catch (e) {
+                        reject(e);
+                    }
                 });
-            });
+            })
+
         }
 
-        await getSocialGroupManager.getSocialGroupList();
-        getGroupDynamicManager.clear();
-        showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
+        try {
+            await getSocialGroupManager.getSocialGroupList();
+            getGroupDynamicManager.clear();
+            await showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
+        } catch (e) {
+            console.error('community.js updateAll error', e);
+        }
     },
 
-    onPullDownRefresh() {
-        this.updateAll();
+    async onPullDownRefresh() {
+        await this.updateAll();
     }
 });
