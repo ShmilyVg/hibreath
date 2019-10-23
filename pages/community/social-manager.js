@@ -9,7 +9,7 @@ class SocialGroupManager {
     }
 
     async getSocialGroupList() {
-        const {result: {list: groupList}} = await Protocol.postMemberGroupList(), myGroup = [], otherGroup = [];
+        const {result: {list: groupList}} = await Protocol.postMemberGroupList();
         // myGroup.push(...list.filter(item => item.isMajor));
         // otherGroup.push(...list.filter(item => !item.isMajor));
         if (!groupList.length) {

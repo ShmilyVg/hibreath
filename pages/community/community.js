@@ -33,7 +33,8 @@ Page({
     },
     async onCommunitySettingClickEvent() {
         try {
-            switch (await showActionSheet({itemList: ['更多圈子', '删除该圈子']})) {
+            const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子']});
+            switch (tapIndex) {
                 case 0:
                     HiNavigator.navigateToCommunityManagement();
                     break;
