@@ -21,9 +21,8 @@
 .community-switch-icon {
     width: 40rpx;
     height: 40rpx;
-    background-color: #EE6F69;
-    right: 0;
-    bottom: 0;
+    right: -5rpx;
+    bottom: 10rpx;
     border-radius: 50%;
 }
 
@@ -72,9 +71,8 @@
 }
 
 .community-rank-icon {
-    width: 52rpx;
-    height: 50rpx;
-    background-color: #0AC1A1;
+    width: 53rpx;
+    height: 51rpx;
     margin-right: 38rpx;
 }
 

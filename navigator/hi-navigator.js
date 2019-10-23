@@ -142,7 +142,7 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/communityManagement/communityManagement'});
     }
     static navigateToMemberManagement({dataId}) {
-        this.redirectTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});
+        this.navigateTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});
     }
 
     static switchToCommunity() {

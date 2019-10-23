@@ -86,5 +86,16 @@ export function judgeGroupEmpty() {
     }
 }
 
+export async function getSocialGroupMembersViewInfo() {
+    const {result: group} = await Protocol.postGroupInfo({groupId: socialGroupManager.currentSocial.groupId});
+    if (group.memberImgs) {
+        group.memberImgs = group.memberImgs.slice(0, 3);
+    } else {
+        group.memberImgs = [];
+    }
+    const {memberImgs, memberCount} = group;
+    return {memberCount, memberImgs};
+}
+
 export {socialGroupManager as getSocialGroupManager, groupDynamicManager as getGroupDynamicManager};
 

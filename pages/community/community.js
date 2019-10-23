@@ -1,6 +1,11 @@
 // pages/community/Community.js
 import {showActionSheet} from "../../view/view";
-import {getGroupDynamicManager, getSocialGroupManager, judgeGroupEmpty} from "./social-manager";
+import {
+    getGroupDynamicManager,
+    getSocialGroupManager,
+    getSocialGroupMembersViewInfo,
+    judgeGroupEmpty
+} from "./social-manager";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 
@@ -11,16 +16,8 @@ Page({
      */
     data: {
         currentSocial: {},
-        dynamicList: [
-            {
-                "imgUrls": ["http://tmp/wx3092c4629e38d21e.o6zAJs-ZTh1KE_1mWKYSo5jiADbc.qNpkLcR0ytCF8a0984514410a7da5719368bb39d1a24.png", "http://tmp/wx3092c4629e38d21e.o6zAJs-ZTh1KE_1mWKYSo5jiADbc.xF0JVgK6QAdK9c45a6b96cb01d63e8e3a743821b4107.png"],
-                "headUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKcfufWYfm64jCLxMoh21yta3dlGRCd8MPvrP7PLeJiaj0Gkh3AvwJFqg65oX2nnQuCUktFIuvzQ1g/132",
-                "nickname": "呵呵哒",
-                "taskId": "14852",
-                "createTimestamp": 1571646527466,
-                "desc": "2"
-            }
-        ]
+        socialMemberInfo: {memberCount: 0, memberImgs: []},
+        dynamicList: []
     },
 
     // isUpdateAllWhenLoad: false,
@@ -69,36 +66,9 @@ Page({
 
     },
 
-    async updateSomeWhenNeed() {
-        function showData({currentSocial}) {
-            return new Promise((resolve, reject) => {
-                this.setData({currentSocial}, async () => {
-                    try {
-                        const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
-                        this.setData({
-                            dynamicList
-                        }, resolve);
-                    } catch (e) {
-                        reject(e);
-                    }
-                });
-            })
-
-        }
-
-        try {
-            await getSocialGroupManager.getSocialGroupList();
-            getGroupDynamicManager.clear();
-            await showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
-        } catch (e) {
-            console.error('community.js updateAll error', e);
-        }
-    },
-
-
     async forceUpdateAll() {
         function showData({currentSocial}) {
-            return new Promise((resolve, reject) => {
+            return new Promise(async (resolve, reject) => {
                 this.setData({currentSocial}, async () => {
                     try {
                         const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
@@ -109,6 +79,7 @@ Page({
                         reject(e);
                     }
                 });
+                this.setData({socialMemberInfo: (await getSocialGroupMembersViewInfo())});
             })
 
         }
