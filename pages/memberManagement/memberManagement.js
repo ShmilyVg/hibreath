@@ -5,6 +5,8 @@
  */
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+import {WXDialog} from "heheda-common-view";
+import {getSocialGroupManager} from "../community/social-manager";
 Page({
 
   /**
@@ -32,14 +34,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow () {
-       console.log('2222',this.data.list)
-    const{result:{list}} = await Protocol.postMembers({id:this.dataId});
+    const{result:{list,countMember,isMajor}} = await Protocol.postMembers({id:this.dataId});
     this.setData({
-        memberList:list
+        memberList:list,
+        countMember:countMember,
+        isMajor:isMajor
     })
   },
-    async memberRemove(){
-        await Protocol.postMembersDelete({groupId:this.data.groupId,memberId:this.data.memberId})
+      memberRemove(e){
+      console.log(e,'e')
+        WXDialog.showDialog({
+            content: '确定要移除他吗\n' + '移除前请确保已和对方沟通过',
+            showCancel: true,
+            confirmText: "确定",
+            cancelText: "取消",
+            confirmEvent: () => {
+                Protocol.postMembersDelete({groupId:Number(this.dataId),memberId:e.currentTarget.dataset.memberid}).then(data => {
+                    getSocialGroupManager.currentSocial = {groupId:Number(this.dataId)};
+                    HiNavigator.switchToCommunity();
+                })
+            },
+            cancelEvent: () => {
+
+            }
+        });
     },
   /**
    * 生命周期函数--监听页面隐藏
