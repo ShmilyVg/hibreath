@@ -240,7 +240,7 @@ export default class Protocol {
      * @returns {*|Promise|Promise<any>}
      */
     static postMemberGroupList() {
-        return Network.request({url: 'member/group/list'});
+        return Network.request({url: 'members/group/list'});
     }
 
     /**
@@ -249,7 +249,7 @@ export default class Protocol {
      * @returns {*|Promise|Promise<any>}
      */
     static postMemberGroupExit({groupId}) {
-        return Network.request({url: 'member/group/exit', data: arguments[0]});
+        return Network.request({url: 'members/group/exit', data: arguments[0]});
     }
 
     /**
