@@ -1,14 +1,14 @@
 <!--pages/memberManagement/memberManagement.wxml-->
 <view>
-    <view class="member-Num">{{}}12</view>
+    <view class="member-Num">{{countMember}}</view>
     <view class="member-text">位·加入该圈子</view>
-    <view class="member-Right">
+    <view class="member-Right" bindtap="shareAdd">
         +邀请好友加入
     </view>
     <view class="clear"></view>
     <view wx:for="{{memberList}}" wx:key="{{index}}">
         <view class="member-isMajor" wx:if="{{item.isMajor}}">
-            <image class="member-headUrl" src="{{item.headUrl}}"></image>
+            <image class="member-headUrl" src="{{item.imgUrl}}"></image>
             <view class="member-TitleTop">{{item.name}}</view>
             <view class="member-Man">圈主</view>
             <view class="clear"></view>
@@ -16,7 +16,7 @@
         <view class="member-else" wx:else>
             <image style="" class="member-headUrl" src="{{item.headUrl}}"></image>
             <view class="member-TitleBto">{{item.name}}</view>
-            <view wx:if="" bindtap="memberRemove" class="member-Remove">移除</view>
+            <view wx:if="{{isMajor}}" bindtap="memberRemove" data-memberId="{{item.memberId}}" data-memberId="{{item.memberId}}" class="member-Remove">移除</view>
             <view class="clear"></view>
         </view>
     </view>

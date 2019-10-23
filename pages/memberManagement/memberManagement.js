@@ -5,27 +5,16 @@
  */
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+import {WXDialog} from "heheda-common-view";
+import {getSocialGroupManager, judgeGroupEmpty} from "../community/social-manager";
+import {showActionSheet} from "../../view/view";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[{
-        name: "群主",        // 名称
-        headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",    // 头像
-        isMajor: true    // 是否为群主
-    },
-    {
-        name: "成员",
-        headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
-        isMajor: false
-    },{
-            name: "成员",
-            headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
-            isMajor: false
-        }
-    ]
+
   },
 
   /**
@@ -45,15 +34,47 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   onShow () {
-       console.log('2222',this.data.list)
-    //const[list] = await Protocol.postMembers({id:this.dataId});
+  async onShow () {
+    const{result:{list,countMember,isMajor}} = await Protocol.postMembers({id:this.dataId});
     this.setData({
-        memberList:this.data.list
+        memberList:list,
+        countMember:countMember,
+        isMajor:isMajor
     })
   },
-    async memberRemove(){
-        await Protocol.postMembersDelete({groupId:this.data.groupId,memberId:this.data.memberId})
+      memberRemove(e){
+      console.log(e,'e')
+        WXDialog.showDialog({
+            content: '确定要移除他吗\n' + '移除前请确保已和对方沟通过',
+            showCancel: true,
+            confirmText: "确定",
+            cancelText: "取消",
+            confirmEvent: () => {
+                Protocol.postMembersDelete({groupId:Number(this.dataId),memberId:e.currentTarget.dataset.memberid}).then(data => {
+                    getSocialGroupManager.currentSocial = {groupId:Number(this.dataId)};
+                    HiNavigator.switchToCommunity();
+                })
+            },
+            cancelEvent: () => {
+
+            }
+        });
+    },
+    async shareAdd() {
+        try {
+            const {tapIndex} = await showActionSheet({itemList: ['分享小程序邀请', '分享二维码邀请']});
+            switch (tapIndex) {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+            }
+        } catch (e) {
+            console.warn(e);
+        }
+
     },
   /**
    * 生命周期函数--监听页面隐藏

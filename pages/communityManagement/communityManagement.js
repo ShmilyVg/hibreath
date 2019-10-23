@@ -4,13 +4,32 @@
  * @LastEditors: 张浩玉
  */
 import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
+import {getSocialGroupManager} from "../community/social-manager";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      list:[{
+          name: "圈子圈子圈子圈子圈子圈子圈子圈子圈子圈子",
+          headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
+          isMajor: true,
+          countMember:10
+      },
+          {
+              name: "圈子圈子圈子圈子圈子圈子圈子",
+              headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
+              isMajor: false,
+              countMember:5
+          },{
+              name: "圈子3",
+              headUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132",
+              isMajor: false,
+              countMember:9
+          }
+      ]
   },
 
   /**
@@ -30,11 +49,18 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  async onShow() {
+      const{result:{list}} = await Protocol.getMygroup()
+      this.setData({
+          groupList:list
+      })
   },
   createCommunityBtn(){
       HiNavigator.navigateToCreateCommunity()
+  },
+  toCommunity(e){
+      getSocialGroupManager.currentSocial = {groupId:e.currentTarget.dataset.id};
+      HiNavigator.switchToCommunity();
   },
   /**
    * 生命周期函数--监听页面隐藏

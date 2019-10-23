@@ -786,7 +786,7 @@ Page({
         console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current,
-            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 220
+            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 240
         })
         if (e.detail.current === 0) {
             this.setData({

@@ -1,4 +1,8 @@
 /* pages/communityManagement/communityManagement.wxss */
+page{
+    box-sizing: border-box;
+    padding: 60rpx 50rpx 0rpx 40rpx;
+}
 .createCommunity-Btn{
     width:500rpx;
     height:100rpx;
@@ -10,4 +14,59 @@
     color:rgba(255,255,255,1);
     line-height: 100rpx;
     margin-top: 165rpx;
+}
+.community-HeadUrl{
+    width:130rpx;
+    height:130rpx;
+    border-radius:65rpx;
+}
+.community-Img{
+    width:40rpx;
+    height:40rpx;
+    margin-right: 30rpx;
+}
+.community-Name{
+    font-size:28prx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    word-break:break-all;
+    width: 90%;
+    height: 110rpx;
+}
+.community-Number{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+}
+.community-Red{
+    width:100rpx;
+    height:35rpx;
+    background:rgba(238,111,105,1);
+    border-radius:18rpx;
+    font-size:16rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 35rpx;
+    position: relative;
+    top: -20rpx;
+    margin-left: 15rpx;
+}
+.community-Green{
+    width:100rpx;
+    height:35rpx;
+    background:rgba(10,193,161,1);
+    border-radius:18rpx;
+    font-size:16rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 35rpx;
+    position: relative;
+    top: -20rpx;
+    margin-left: 15rpx;
 }
