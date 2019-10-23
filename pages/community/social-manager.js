@@ -1,6 +1,7 @@
 import Protocol from "../../modules/network/protocol";
 import {getDynamicCreateTime} from "../../utils/time";
-import {Toast} from "heheda-common-view";
+import {Toast, WXDialog} from "heheda-common-view";
+import HiNavigator from "../../navigator/hi-navigator";
 
 class SocialGroupManager {
     constructor() {
@@ -95,6 +96,23 @@ export async function getSocialGroupMembersViewInfo() {
     }
     const {memberImgs, memberCount} = group;
     return {memberCount, memberImgs};
+}
+
+export async function whenDismissGroup(protocol) {
+    try {
+        await protocol;
+    } catch (e) {
+        console.error(e);
+        const {code} = e.data;
+        if (code === 40011) {
+            WXDialog.showDialog({
+                title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
+                    HiNavigator.switchToCommunity();
+                }
+            });
+        }
+        return Promise.reject(e);
+    }
 }
 
 export {socialGroupManager as getSocialGroupManager, groupDynamicManager as getGroupDynamicManager};

@@ -4,7 +4,7 @@ import {
     getGroupDynamicManager,
     getSocialGroupManager,
     getSocialGroupMembersViewInfo,
-    judgeGroupEmpty
+    judgeGroupEmpty, whenDismissGroup
 } from "./social-manager";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
@@ -15,7 +15,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentSocial: {},
+        currentSocial: {isNotFinished: true},
         socialMemberInfo: {memberCount: 0, memberImgs: []},
         dynamicList: []
     },
@@ -69,6 +69,22 @@ Page({
     async forceUpdateAll() {
         function showData({currentSocial}) {
             return new Promise(async (resolve, reject) => {
+                try {
+                    if (currentSocial.groupId) {
+                        wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#171717'});
+                        wx.setBackgroundColor({
+                            backgroundColor: '#171717', // 窗口的背景色为白色
+                        });
+                    } else {
+                        wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
+                        wx.setBackgroundColor({
+                            backgroundColor: '#ffffff', // 窗口的背景色为白色
+                        });
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
+
                 this.setData({currentSocial}, async () => {
                     try {
                         const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
