@@ -14,13 +14,13 @@
             </view>
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
-        <view class="dashedLine"></view>
-        <view style="width: 100%">
+        <view class="dashedLine"></view>·
+        <view style="width: 100%;">
             <image class="HIITCardImgL"  wx:if="{{grayLeft}}" hidden="{{hiddenImg}}" src="../../images/set-info/leftG.png"></image>
             <image class="HIITCardImgL" bindtap="imgToPre" wx:else hidden="{{hiddenImg}}" src="../../images/set-info/leftB.png"></image>
             <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{hiddenImg}}" src="../../images/set-info/rightG.png"></image>
             <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{hiddenImg}}" src="../../images/set-info/rightB.png"></image>
-            <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{aheight}}rpx">
+            <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{aheight}}rpx;position: relative;top:-50rpx">
                 <block wx:for="{{sportExt.recommendList}}" wx:key="{{index}}" style="height: 500rpx">
                     <swiper-item>
                         <view  class="swiperBigTitle" >{{item.title}}</view>

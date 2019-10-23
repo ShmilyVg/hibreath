@@ -547,20 +547,24 @@
     margin-bottom: 38rpx;
 }
 .HIITCardImgL{
-    width:23rpx;
-    height: 40rpx;
+    width:43rpx;
+    height: 60rpx;
     float: left;
     position: relative;
-    top:40rpx;
+    top:10rpx;
+    padding: 10rpx 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
     z-index: 9;
 }
 .HIITCardImgR{
-    width:23rpx;
-    height: 40rpx;
+    width:43rpx;
+    height: 60rpx;
     float: right;
     position: relative;
-    top:40rpx;
+    top:10rpx;
     z-index: 9;
+    padding: 10rpx 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
 }
 .swiperBigTitle{
     text-align: center;
