@@ -4,7 +4,8 @@ import {
     getGroupDynamicManager,
     getSocialGroupManager,
     getSocialGroupMembersViewInfo,
-    judgeGroupEmpty, whenDismissGroup
+    judgeGroupEmpty,
+    whenDismissGroup
 } from "./social-manager";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
@@ -36,7 +37,7 @@ Page({
                     HiNavigator.navigateToCommunityManagement();
                     break;
                 case 1:
-                    await Protocol.postMemberGroupExit({...(await judgeGroupEmpty())});
+                    await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
                     this.forceUpdateAll();
                     break;
             }

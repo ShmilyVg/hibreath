@@ -10,7 +10,7 @@ class SocialGroupManager {
     }
 
     async getSocialGroupList() {
-        const {result: {list: groupList}} = await Protocol.postMemberGroupList();
+        const {result: {list: groupList}} = await whenDismissGroup(Protocol.postMemberGroupList());
         // myGroup.push(...list.filter(item => item.isMajor));
         // otherGroup.push(...list.filter(item => !item.isMajor));
         if (!groupList.length) {
@@ -62,10 +62,10 @@ class GroupDynamicManager {
     async getGroupDynamicList() {
         const {groupId} = socialGroupManager.currentSocial;
         if (groupId) {
-            const {result: {list: dynamicList}} = await Protocol.postGroupDynamicLatest({
+            const {result: {list: dynamicList}} = await whenDismissGroup(Protocol.postGroupDynamicLatest({
                 groupId,
                 page: this._pageIndex
-            });
+            }));
             this._pageIndex++;
             return dynamicList.map(item => {
                 return {...item, messageCreateTime: getDynamicCreateTime(item.createTimestamp)};
@@ -88,7 +88,7 @@ export function judgeGroupEmpty() {
 }
 
 export async function getSocialGroupMembersViewInfo() {
-    const {result: group} = await Protocol.postGroupInfo({groupId: socialGroupManager.currentSocial.groupId});
+    const {result: group} = await whenDismissGroup(Protocol.postGroupInfo({groupId: socialGroupManager.currentSocial.groupId}));
     if (group.memberImgs) {
         group.memberImgs = group.memberImgs.slice(0, 3);
     } else {
@@ -100,7 +100,7 @@ export async function getSocialGroupMembersViewInfo() {
 
 export async function whenDismissGroup(protocol) {
     try {
-        await protocol;
+       return await protocol;
     } catch (e) {
         console.error(e);
         const {code} = e.data;
