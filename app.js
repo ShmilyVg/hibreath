@@ -87,9 +87,6 @@ App({
                                                     confirmText: "立即升级",
                                                     cancelText: "暂时不用",
                                                     confirmEvent: () => {
-                                                        this.setData({
-                                                            noUpdata:false
-                                                        })
                                                         const {url: binUrl, md5: binMd5} = binArray[0];
                                                         const {url: datUrl, md5: datMd5} = datArray[0];
                                                         HiNavigator.relaunchToUpdatePage({binUrl, datUrl});
