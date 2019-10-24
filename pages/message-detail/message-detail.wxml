@@ -1,7 +1,7 @@
 <view class="fill-width flex-column box-sizing-border-box message-detail-layout">
     <view class="fill-width flex-row align-items-center space-between">
         <view class="flex-row align-items-center">
-            <image src="{{headUrl}}" class="message-detail-head-img"></image>
+            <image src="{{headUrl}}" mode="aspectFill" class="message-detail-head-img"></image>
             <view class="flex-column" style="align-items: flex-start;">
                 <view class="message-detail-nickname">{{nickname}}</view>
                 <view class="message-detail-time">{{messageCreateTime}}</view>
@@ -16,6 +16,6 @@
     <text class="fill-width message-detail-desc">{{desc}}</text>
 
     <view class="fill-width flex-row flex-wrap">
-        <image bindtap="onImagePreview" data-url="{{item}}" wx:for="{{imgUrls}}" wx:key="index" src="{{item}}" class="message-detail-image-item"></image>
+        <image mode="aspectFill" bindtap="onImagePreview" data-url="{{item}}" wx:for="{{imgUrls}}" wx:key="index" src="{{item}}" class="message-detail-image-item"></image>
     </view>
 </view>

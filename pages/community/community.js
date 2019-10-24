@@ -9,6 +9,7 @@ import {
 } from "./social-manager";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+import {Toast} from "heheda-common-view";
 
 Page({
 
@@ -112,5 +113,15 @@ Page({
 
     async onPullDownRefresh() {
         await this.forceUpdateAll();
+        wx.stopPullDownRefresh();
+    },
+
+    async onReachBottom() {
+        Toast.showLoading();
+        const list = await this.getGroupDynamicList();
+        if (list.length) {
+            this.setData({dynamicList: this.data.dynamicList.concat(list)});
+        }
+        Toast.hiddenLoading();
     }
 });

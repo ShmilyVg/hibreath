@@ -66,7 +66,9 @@ class GroupDynamicManager {
                 groupId,
                 page: this._pageIndex
             }));
-            this._pageIndex++;
+            if (dynamicList.length) {
+                this._pageIndex++;
+            }
             return dynamicList.map(item => {
                 return {...item, messageCreateTime: getDynamicCreateTime(item.createTimestamp)};
             })
@@ -100,13 +102,19 @@ export async function getSocialGroupMembersViewInfo() {
 
 export async function whenDismissGroup(protocol) {
     try {
-       return await protocol;
+        return await protocol;
     } catch (e) {
         console.error(e);
         const {code} = e.data;
         if (code === 40011) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
+                    HiNavigator.switchToCommunity();
+                }
+            });
+        }else if (code === 40012) {
+            WXDialog.showDialog({
+                title: '', content: '抱歉\n该圈子已解散', confirmText: '我知道了', confirmEvent: () => {
                     HiNavigator.switchToCommunity();
                 }
             });

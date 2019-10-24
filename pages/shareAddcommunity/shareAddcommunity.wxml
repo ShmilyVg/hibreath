@@ -1,9 +1,9 @@
 <!--pages/shareAddcommunity/shareAddcommunity.wxml-->
 <view style="text-align: center">
     <view class="shareAdd-Span">好友</view>
-    <view class="shareAdd-Nickname">昵称</view>
+    <view class="shareAdd-Nickname">{{memberName}}</view>
     <view class="shareAdd-Text">邀请你加入</view>
-    <image class="shareAdd-Img" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132"></image>
-    <view class="shareAdd-Name">圈子名称圈子名称圈子名称</view>
+    <image class="shareAdd-Img" src="{{imgUrl}}"></image>
+    <view class="shareAdd-Name">{{groupName}}</view>
     <button bindtap="addCommunityBtn" class="shareAdd-Btn">加入圈子</button>
 </view>

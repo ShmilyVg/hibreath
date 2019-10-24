@@ -2,7 +2,7 @@
 <view>
     <view class="createCommunity-View">
         <view wx:if="{{imgUrl}}" class="createCommunity-Head" bindtap="addPic1">
-            <image class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
+            <image mode="aspectFill" class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
         </view>
         <view wx:else class="createCommunity-Head" bindtap='addPic1'>
             <image  class="createCommunity-Img" src="../../images/imgClock/img.png" ></image>
