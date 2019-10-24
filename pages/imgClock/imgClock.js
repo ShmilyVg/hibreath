@@ -55,7 +55,7 @@ Page({
     bindTextAreaBlur: function(e) {
         console.log("e",e.detail.value)
         this.setData({
-            desc:e.detail.value
+            desc:filterEmoji(e.detail.value)
         })
         this.disBtn()
     }
@@ -135,10 +135,12 @@ Page({
                 that.setData({
                     imgbox: imgbox
                 });
+                console.log("IMGBOX",that.data.imgbox)
+                that.disBtn()
             }
         })
-        that.disBtn()
-        console.log("IMGBOX",that.data.imgbox)
+
+
     },
     // 点击预览大图
     previewImage(e) {
