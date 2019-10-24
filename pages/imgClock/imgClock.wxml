@@ -13,7 +13,7 @@
                 <block wx:key="imgbox" wx:for="{{imgbox}}">
                     <view class='ap-box imgMargin' wx:if="{{index == 2 ||index == 5 ||index == 8}}">
                         <view class='show-view'>
-                            <image class='show-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
+                            <image class='show-pic' mode="aspectFill" src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
                             <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete'>
                                 <image style="width: 52rpx;height: 52rpx" src='../../images/imgClock/delete.png'></image>
                             </view>
@@ -21,7 +21,7 @@
                     </view>
                     <view class='ap-box' wx:else>
                         <view class='show-view'>
-                            <image class='show-pic' src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
+                            <image class='show-pic' mode="aspectFill" src='{{item}}' bindtap="previewImage" data-index='{{index}}'></image>
                             <view class='img-de' data-deindex='{{index}}' bindtap='imgDelete'>
                                 <image style="width: 52rpx;height: 52rpx" src='../../images/imgClock/delete.png'></image>
                             </view>
