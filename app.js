@@ -70,7 +70,7 @@ App({
                             console.log('硬件传来的固件版本号', this.otaVersion);
                             console.log('是否显示版本升级标志位', this.needCheckOTAUpdate);
                             if (this.otaVersion !== -1) {
-                                if (this.needCheckOTAUpdate) {
+                               /* if (this.needCheckOTAUpdate) {
                                     this.needCheckOTAUpdate = false;
                                     CommonProtocol.postBlueToothUpdate({
                                         deviceId: this.bLEManager.getDeviceMacAddress(),
@@ -106,7 +106,7 @@ App({
                                         }
                                     });
                                 }
-
+*/
                             }
                         })
                         // this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});

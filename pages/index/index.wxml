@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
 <template is="common"
-          data="{{isShowBlow,noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
+          data="{{needCheckOTAUpdate,isShowBlow,noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
 </template>
 
 
@@ -65,3 +65,8 @@
 
 <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}" style="  position: absolute;left: 70rpx;bottom: 50rpx;">立即使用</view>-->
 </view>
+
+<modal needCheckOTAUpdate="{{needCheckOTAUpdate}}" binUrl="{{binUrl}}" datUrl="{{datUrl}}">
+    <view style="text-align: center">为了给您带来更好的体验</view>
+    <view style="text-align: center"> 即将为设备进行升级</view>
+</modal>

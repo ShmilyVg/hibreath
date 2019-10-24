@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "HiPee健康燃脂",
-  "disableScroll":true
+  "disableScroll":true,
+  "usingComponents": {
+    "modal": "../../components/modal/modal"
+  }
 }

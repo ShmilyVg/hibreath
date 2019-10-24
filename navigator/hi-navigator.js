@@ -66,7 +66,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToUpdatePage({binUrl, datUrl}) {
         getApp().otaUrl = arguments[0];
-        this.reLaunch({url: '/pages/update/update'});
+        this.navigateTo({url: '/pages/update/update'});
     }
 
     /*新加跳转*/

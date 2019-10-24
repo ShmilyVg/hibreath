@@ -1,10 +1,37 @@
 /* pages/update/update.wxss */
 .update-bottom-text{
-    width: 300rpx;
-    padding: 16rpx 0 16rpx 25rpx;
-    font-size: 28rpx;
-    color: #979797;
-    background:rgba(55,55,55,1);
+    font-size:30rpx;
+    font-family:PingFang-SC-Light,PingFang-SC;
+    font-weight:300;
+    color:rgba(155,155,155,1);
+    float: left;
+}
+.update-green{
+    width:12rpx;
+    height:12rpx;
+    border-radius: 50%;
+    background:rgba(13,193,162,1);
+    margin-right: 15rpx;
+    float: left;
+}
+.update-view{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15rpx;
+}
+.update-titleZh{
+    font-size:50rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-bottom: 25rpx;
+}
+.update-titleEn{
+    font-size:30rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-bottom: 130rpx;
 }
 .update-bottom-btn{
     width: 100%;
@@ -14,9 +41,9 @@
     justify-content: center;
 }
 .to-use {
-    width:610rpx;
+    width:500rpx;
     height:100rpx;
-    background:rgba(103,213,184,1);
+    background:rgba(237,111,105,1);
     border-radius:50rpx;
     font-size:32rpx;
     font-weight:500;
@@ -26,14 +53,12 @@
 }
 
 .small-pic {
-    width: 100rpx;
-    height: 100rpx;
+    width: 192rpx;
+    height: 484rpx;
+    margin-top: 165rpx;
 }
 .update-image-center{
-    width: 100%;
-    position: fixed;
-    top: 415rpx;
-    left: 0;
+
     justify-content: center;
 }
 .ani{
@@ -50,5 +75,5 @@
 }
 
 page {
-    background-color: #3E3E3E;
+
 }

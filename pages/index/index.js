@@ -14,7 +14,9 @@ import BlowManager from "./blow-manager";
 import * as tools from "../../utils/tools";
 import {ConnectState, ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import {common} from "../../modules/bluetooth/heheda-bluetooth/app/common";
-import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager"; //页面标志位使用
+import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetooth-manager";
+import CommonProtocol from "../../modules/network/network/libs/protocol";
+import {WXDialog} from "heheda-common-view"; //页面标志位使用
 const app = getApp();
 
 Page({
@@ -34,6 +36,7 @@ Page({
         blowingImg:false,
         process:false,
         isShowBlow:true,
+        needCheckOTAUpdate:true,
         noUpdata:false,//如果点击OTA升级 则跳转时不执行 onUnload 中的跳转 正常跳转到升级页面
         //isSuccessInfo:false,//是否绑定完成页进入标志
         homeP:[
@@ -87,6 +90,7 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         //this.connectionPage.unbind();
         this.blowPage = new BlowManager(this);
+        console.log('this.blowPagethis.blowPage',this.blowPage)
         //this.blowPage.blowing();
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
@@ -156,8 +160,9 @@ Page({
         this.setData({
             isBind: currPage.data.isBind
         })*/
-       console.log("equipmentId",wx.getStorageSync('deviceId'))
-        console.log("version",wx.getStorageSync('version'))
+       console.log("indexVersion",wx.getStorageSync('indexVersion'))
+       console.log("indexDeviceId",wx.getStorageSync('indexDeviceId'))
+        console.log(this.blowPage._page.data.needCheckOTAUpdate,this.blowPage._page.data,'this.data.needCheckOTAUpdate')
        app.bLEManager.sendISvalue({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;

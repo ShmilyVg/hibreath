@@ -509,6 +509,7 @@ Page({
         });
 
     },
+
     onHide() {
         this.isWhenUpdateHidden = true;
         this.whenUpdateFinished();
@@ -520,6 +521,7 @@ Page({
         }
     },
     onUnload() {
+        this.updateFailAction();
         this.isWhenUpdateHidden = false;
         wx.setKeepScreenOn({
             keepScreenOn: false

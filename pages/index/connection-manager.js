@@ -65,6 +65,7 @@ export default class ConnectionManager {
             backgroundColor: '#EE6F69',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
             bgColor:"#EE6F69",//PAGE背景
             tryAgain:false,//未找到设备标志位
@@ -88,7 +89,7 @@ export default class ConnectionManager {
             tryAgain:true,//未找到设备标志位
             finding:false,//正在寻找设备标志位
             bgColor:"#EE6F69",
-
+            needCheckOTAUpdate:false,
 
             readyimg:false,
             blowpicShow:false,
@@ -149,6 +150,7 @@ export default class ConnectionManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:false,//显示绑定按钮等
             tryAgain:false,//未找到设备标志位
             finding:true,//正在寻找设备标志位
@@ -188,6 +190,7 @@ export default class ConnectionManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:false,
             finding:false,
             blowpicShow: false,

@@ -4,6 +4,8 @@
  */
 import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
+import CommonProtocol from "../../modules/network/network/libs/protocol";
+import {WXDialog} from "heheda-common-view";
 
 
 export default class BlowManager {
@@ -15,12 +17,14 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.KEY_CONFIRM] = () => {
             this.connected();
+            this.alertUpdata()
+
+
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
-            this.timer()
-
+            this.timer();
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
@@ -92,6 +96,50 @@ export default class BlowManager {
         }, 1000)
 
     }
+    alertUpdata(){
+            CommonProtocol.postBlueToothUpdate({
+                deviceId: wx.getStorageSync('indexDeviceId'),
+                version: wx.getStorageSync('indexVersion')
+            }).then(data => {
+                const {update: isUpdate, zip} = data.result;
+                console.log('data.result', data.result);
+                if (zip) {
+                    const {bin: binArray, dat: datArray} = zip;
+                    if (isUpdate && binArray && binArray.length && datArray && datArray.length) {
+                        const {url: binUrl, md5: binMd5} = binArray[0];
+                        const {url: datUrl, md5: datMd5} = datArray[0];
+                        this._page.setData({
+                            needCheckOTAUpdate:true,
+                            binUrl:binUrl,
+                            datUrl:datUrl
+                        })
+
+                       /* WXDialog.showDialog({
+                            content: '为了给您带来更好的体验\n' + '即将为设备进行升级',
+                            showCancel: true,
+                            confirmText: "立即升级",
+                            cancelText: "暂时不用",
+                            confirmEvent: () => {
+                                const {url: binUrl, md5: binMd5} = binArray[0];
+                                const {url: datUrl, md5: datMd5} = datArray[0];
+                                HiNavigator.relaunchToUpdatePage({binUrl, datUrl});
+                            },
+                            cancelEvent: () => {
+                                WXDialog.showDialog({
+                                    content: '好的！本次您可以继续正常使用\n' + '下次在按键检测状态将再次提醒',
+                                    confirmText: '我知道啦',
+
+                                })
+                            }
+                        });*/
+
+                    } else {
+                        console.log('无需升级');
+                    }
+                }
+            });
+    }
+
     connected() {
         wx.setNavigationBarColor({
             frontColor: '#000000',
@@ -108,7 +156,7 @@ export default class BlowManager {
             textStateEn:'',
             disblowImg:false,//吹气不足状态
             process:false,//分析中
-            beginFat:true,//连接成功
+            beginFat:true,//连接成功    条件符合弹出升级弹窗
             topState:"开启您的燃脂之旅",
             topStateS:"短按设备按键·开始检测",
             bgColor:"#fff",
@@ -125,6 +173,7 @@ export default class BlowManager {
             homeTitle: false,
             homeOrangeBtn: false,
         })
+        console.log("this._pagethis._page",this._page.data.needCheckOTAUpdate)
     }
 
     ready() {
@@ -133,6 +182,7 @@ export default class BlowManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
             state: "设备已连接",
@@ -162,6 +212,7 @@ export default class BlowManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
             state: "设备已连接",
@@ -189,7 +240,7 @@ export default class BlowManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
-
+            needCheckOTAUpdate:false,
             noBind:false,
 
             stateBtnShow: false,
@@ -222,6 +273,7 @@ export default class BlowManager {
             backgroundColor: '#ffffff',
         })
         this._page.setData({
+            needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
             finding:false,
@@ -250,7 +302,7 @@ export default class BlowManager {
         })
         this._page.setData({
             noBind:false,
-
+            needCheckOTAUpdate:false,
             stateBtnShow: false,
 
             state: "设备已连接",

@@ -1,0 +1,11 @@
+<!--components/modal/modal.wxml-->
+<view class='mask' wx:if='{{needCheckOTAUpdate}}' bindtap='clickMask'>
+    <view class='modal-content'>
+        <view class="modal-viewT">为了给您带来更好的体验</view>
+        <view class="modal-viewB"> 即将为设备进行升级</view>
+        <view class='modal-btn-wrapper'>
+            <view class='cancel-btn' style='color:#454545' bindtap='cancel'>暂不需要</view>
+            <view class='confirm-btn' style="color:rgba(238,111,105,1);" bindtap='confirm'>立即升级</view>
+        </view>
+    </view>
+</view>
