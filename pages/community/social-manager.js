@@ -112,6 +112,12 @@ export async function whenDismissGroup(protocol) {
                     HiNavigator.switchToCommunity();
                 }
             });
+        }else if (code === 40012) {
+            WXDialog.showDialog({
+                title: '', content: '抱歉\n该圈子已解散', confirmText: '我知道了', confirmEvent: () => {
+                    HiNavigator.switchToCommunity();
+                }
+            });
         }
         return Promise.reject(e);
     }
