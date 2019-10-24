@@ -19,7 +19,9 @@
     "pages/createCommunity/createCommunity",
     "pages/memberManagement/memberManagement",
     "pages/communityManagement/communityManagement",
-    "pages/shareAddcommunity/shareAddcommunity"
+    "pages/shareAddcommunity/shareAddcommunity",
+    "pages/punchList/punchList",
+    "pages/reductionList/reductionList"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

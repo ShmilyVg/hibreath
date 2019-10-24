@@ -5,7 +5,7 @@
  */
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
-import {getSocialGroupManager} from "../community/social-manager";
+import {getSocialGroupManager,whenDismissGroup} from "../community/social-manager";
 Page({
 
   /**
@@ -50,7 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow() {
-      const{result:{list}} = await Protocol.getMygroup()
+      const{result:{list}} = await whenDismissGroup(Protocol.getMygroup())
       this.setData({
           groupList:list
       })

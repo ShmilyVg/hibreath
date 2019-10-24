@@ -18,8 +18,6 @@ export default class BlowManager {
         this.actionBlow[ProtocolState.KEY_CONFIRM] = () => {
             this.connected();
             this.alertUpdata()
-
-
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {

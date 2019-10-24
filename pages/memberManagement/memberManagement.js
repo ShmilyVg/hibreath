@@ -6,7 +6,7 @@
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {WXDialog} from "heheda-common-view";
-import {getSocialGroupManager, judgeGroupEmpty} from "../community/social-manager";
+import {getSocialGroupManager, judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
 import {showActionSheet} from "../../view/view";
 Page({
 
@@ -35,11 +35,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow () {
-    const{result:{list,countMember,isMajor}} = await Protocol.postMembers({id:this.dataId});
+    const{result:{list,countMember,isMajor,sharedId,groupName,memberName}} = await whenDismissGroup(Protocol.postMembers({id:this.dataId}));
     this.setData({
         memberList:list,
         countMember:countMember,
-        isMajor:isMajor
+        isMajor:isMajor,
+        sharedId:sharedId,
+        groupName:groupName,
+        memberName:memberName
     })
   },
       memberRemove(e){
@@ -76,6 +79,7 @@ Page({
         }
 
     },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -108,6 +112,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+      return {
+          title: this.data.memberName+'邀请你加入'+this.data.groupName,
+          path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.sharedId
+      };
   }
 })
