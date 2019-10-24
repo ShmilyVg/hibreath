@@ -2,9 +2,10 @@
 <view>
     <view class="member-Num">{{countMember}}</view>
     <view class="member-text">位·加入该圈子</view>
-    <view class="member-Right" bindtap="shareAdd">
+   <!-- <view class="member-Right" bindtap="shareAdd">
         +邀请好友加入
-    </view>
+    </view>-->
+    <button class="member-Right" data-id="shareBtn"  open-type="share">+邀请好友加入</button>
     <view class="clear"></view>
     <view wx:for="{{memberList}}" wx:key="{{index}}">
         <view class="member-isMajor" wx:if="{{item.isMajor}}">
