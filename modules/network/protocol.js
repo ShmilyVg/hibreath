@@ -264,4 +264,22 @@ export default class Protocol {
     static postGroupInfo({groupId: id}) {
         return Network.request({url: 'group/info', data: {id}}).then(res => Promise.resolve({...res, groupId: id}));
     }
+
+    /**
+     * 获取圈子分享信息
+     * @param sharedId
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postGroupShareInfo({sharedId}) {
+        return Network.request({url: 'group/shareInfo', data: arguments[0]});
+    }
+
+    /**
+     * 加入圈子
+     * @param sharedId
+     * @returns {*|Promise|Promise<any>}
+     */
+    static postGroupJoin({sharedId}) {
+        return Network.request({url: 'group/join', data: arguments[0]});
+    }
 }

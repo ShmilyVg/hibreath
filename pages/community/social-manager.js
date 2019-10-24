@@ -66,7 +66,9 @@ class GroupDynamicManager {
                 groupId,
                 page: this._pageIndex
             }));
-            this._pageIndex++;
+            if (dynamicList.length) {
+                this._pageIndex++;
+            }
             return dynamicList.map(item => {
                 return {...item, messageCreateTime: getDynamicCreateTime(item.createTimestamp)};
             })
@@ -100,7 +102,7 @@ export async function getSocialGroupMembersViewInfo() {
 
 export async function whenDismissGroup(protocol) {
     try {
-       return await protocol;
+        return await protocol;
     } catch (e) {
         console.error(e);
         const {code} = e.data;
