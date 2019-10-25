@@ -28,7 +28,10 @@
     margin-bottom: 90rpx;
     font-size: 28rpx;
 }
-
+.bottom-page8{
+    position: relative;
+    top:20rpx;
+}
 .text {
     font-size:28rpx;
     font-weight:500;
