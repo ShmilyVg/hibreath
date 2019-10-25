@@ -538,9 +538,12 @@ Page({
                 })
                 return;
         }
-        this.setData({
-            page: ++this.data.page,
-        });
+        if(this.data.page<8){
+            this.setData({
+                page: ++this.data.page,
+            });
+        }
+
         /* wx.setStorageSync({
              currentPage: this.data.page,
          });*/
