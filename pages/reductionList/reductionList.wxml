@@ -1,2 +1,47 @@
-<!--pages/reductionList/reductionList.wxml-->
-<text>pages/reductionList/reductionList.wxml</text>
+<!--pages/punchList/punchList.wxml-->
+<view class="punchList_tab">
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>累计打卡</view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" data-tabid="1" bindtap='selectTab'>连续打卡</view>
+    <view class="clear"></view>
+</view>
+<image class="punchList_headUrl" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132"></image>
+<button class="punchList_share" open-type='share'>
+    <text style="font-size: 50rpx">+</text>
+    <text style="font-size: 24rpx">邀请伙伴围观</text>
+</button>
+<view class="clear"></view>
+<view class="punchList_NickName">{{}}@心花怒放@</view>
+<view class="punchList_rank">第1名</view>
+<view class="clear"></view>
+<view class="punchList_Day">
+    <text>109</text>
+    <text>天</text>
+    <text>累计打卡</text>
+</view>
+<view class="punchList_line"></view>
+<view class="punchList_Day">
+    <text>21</text>
+    <text>天</text>
+    <text>连续打卡</text>
+</view>
+<view class="clear"></view>
+<view wx:if="{{currenttab==='0'}}" style="padding-bottom: 30rpx">
+    <view wx:for="{{15}}" class="cell {{index<3?'cellR':'cellB'}}">
+        <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">
+            <view style="width: 100%">
+                <view class="cell-rank {{index<3?'cell-rankR':'cell-rankB'}}">{{index+1}}</view>
+                <image class="cell_headUrl" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132"></image>
+                <view class=" cell-title {{index<3?'cell-titleR':'cell-titleB'}}">蔡泽志{{index+1}}</view>
+                <view class="cell-date">
+                    <text>21</text>
+                    <text>天</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if="{{currenttab==='1'}}" >
+
+</view>
+

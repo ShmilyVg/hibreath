@@ -1,1 +1,1 @@
-/* pages/reductionList/reductionList.wxss */
+@import "../punchList/punchList.wxss";
