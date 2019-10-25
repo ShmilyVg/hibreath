@@ -112,18 +112,19 @@ Page({
             if(this.data.videoUrl == this.data.list[i].videoUrl){
                 let vingNext= i+1;
                 console.log("将要播放的视频",vingNext)
+                if(this.isOnlyread){
+                    wx.navigateBack({
+                        delta: 1
+                    })
+                    return
+                }
                 if(vingNext>this.data.list.length-1){
                     await Protocol.postHIITFin({sportId:this.dataId}).then(data => {
                         this.setData({
                             finId:data.result.id
                         })
                     })
-                    if(this.isOnlyread){
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                        return
-                    }
+
                     HiNavigator.redirectToFinishCheck({dataId: this.data.finId, clockWay: 'video'});
                 }else{
                     this.setData({
