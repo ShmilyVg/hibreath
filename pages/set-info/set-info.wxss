@@ -32,6 +32,11 @@
     position: relative;
     top:20rpx;
 }
+.bottom-btnN{
+    position: static!important;
+    margin-top: 10rpx;
+
+}
 .text {
     font-size:28rpx;
     font-weight:500;
