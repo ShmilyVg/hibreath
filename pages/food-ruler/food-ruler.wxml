@@ -1,1 +1,1 @@
-<web-view src="https://backend.hipee.cn/html/hipee-hibreath/yuanze/index.html"></web-view>
+<web-view src="{{url}}"></web-view>
