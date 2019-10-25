@@ -39,14 +39,14 @@
       {
         "pagePath": "pages/set-info/set-info",
         "text": "打卡",
-        "iconPath": "images/loading_fail.png",
-        "selectedIconPath": "images/arr-right.png"
+        "iconPath": "images/tabBar/clock.png",
+        "selectedIconPath": "images/tabBar/clockR.png"
       },
       {
         "pagePath": "pages/community/community",
         "text": "圈子",
-        "iconPath": "images/loading_fail.png",
-        "selectedIconPath": "images/arr-right.png"
+        "iconPath": "images/tabBar/community.png",
+        "selectedIconPath": "images/tabBar/communityR.png"
       }
     ]
   }

@@ -392,11 +392,11 @@ Page({
                 }
                 if(sportExt.recommendList[0].list.length == 1){
                     this.setData({
-                        aheight: 220,
+                        aheight: 230,
                     })
                 }else{
                     this.setData({
-                        aheight: sportExt.recommendList[0].list.length * 108+205,
+                        aheight: sportExt.recommendList[0].list.length * 110+205,
                     })
                 }
                 this.setData({
@@ -429,11 +429,11 @@ Page({
                 if(foodExt.isMeal){
                     if(foodExt.mealList[0].list.length == 1){
                         this.setData({
-                            foodAheight: 220,
+                            foodAheight: 230,
                         })
                     }else{
                         this.setData({
-                            foodAheight: foodExt.mealList[0].list.length * 108+205,
+                            foodAheight: foodExt.mealList[0].list.length * 110+205,
                         })
                     }
                     this.setData({
@@ -810,11 +810,11 @@ Page({
         })
         if(this.data.sportExt.recommendList[e.detail.current].list.length == 1){
             this.setData({
-                aheight: 220,
+                aheight: 230,
             })
         }else{
             this.setData({
-                aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 108+205,
+                aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 110+205,
             })
         }
 

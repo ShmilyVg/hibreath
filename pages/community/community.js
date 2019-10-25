@@ -68,6 +68,14 @@ Page({
 
     },
 
+    async toReductionList(){
+        HiNavigator.navigateToReductionList({groupId:(await judgeGroupEmpty()).groupId})
+    },
+
+    async toPunchList(){
+        HiNavigator.navigateToPunchList({groupId:(await judgeGroupEmpty()).groupId})
+    },
+
     async forceUpdateAll() {
         function showData({currentSocial}) {
             return new Promise(async (resolve, reject) => {

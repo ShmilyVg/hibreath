@@ -104,11 +104,11 @@ Component({
           let currentList = this.data.foodExt.mealList[e.detail.current].list;
           if(currentList.length==1){
               this.setData({
-                  foodAheight: 220
+                  foodAheight: 230
               })
           }else{
               this.setData({
-                  foodAheight: currentList.length * 108+205
+                  foodAheight: currentList.length * 110+205
               })
           }
           this.setData({

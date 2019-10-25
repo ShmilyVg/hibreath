@@ -152,4 +152,10 @@ export default class HiNavigator extends CommonNavigator {
     static switchToCommunity() {
         this.switchTab({url: '/pages/community/community'});
     }
+    static navigateToReductionList({groupId}) {
+        this.navigateTo({url: '/pages/reductionList/reductionList?groupId=' + groupId});
+    }
+    static navigateToPunchList({groupId}) {
+        this.navigateTo({url: '/pages/punchList/punchList?groupId=' + groupId});
+    }
 }

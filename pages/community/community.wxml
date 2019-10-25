@@ -24,12 +24,12 @@
     </view>
 
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
-        <view class="flex-row align-items-center">
+        <view class="flex-row align-items-center" bindtap="toReductionList">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">减重榜</view>
         </view>
         <view class="fill-height" style="border-left: 2rpx solid white;margin-left: 87rpx;margin-right: 72rpx;"></view>
-        <view class="flex-row align-items-center">
+        <view class="flex-row align-items-center" bindtap="toPunchList">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">打卡榜</view>
         </view>
