@@ -15,7 +15,7 @@
             <view class="clear"></view>
         </view>
         <view class="member-else" wx:else>
-            <image style="" class="member-headUrl" src="{{item.headUrl}}"></image>
+            <image style="" class="member-headUrl" src="{{item.imgUrl}}"></image>
             <view class="member-TitleBto">{{item.name}}</view>
             <view wx:if="{{isMajor}}" bindtap="memberRemove" data-memberId="{{item.memberId}}" data-memberId="{{item.memberId}}" class="member-Remove">移除</view>
             <view class="clear"></view>
