@@ -78,7 +78,7 @@ Page({
         if (way === 'free') {
             HiNavigator.redirectToFreeCheck({dataId: this.dataId});
         } else if (way === 'video') {
-            HiNavigator.navigateToVideoClock({id:this.data.ornId});
+            HiNavigator.navigateToOnlyRaed({id:this.data.ornId});
         }
     },
     /**

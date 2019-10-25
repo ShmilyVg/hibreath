@@ -27,6 +27,7 @@ Page({
     onLoad: function (data) {
         console.log("123123",data)
         this.dataId = data.id;
+        this.isOnlyread=data.isOnlyread;
         Protocol.postHIIT({id:data.id}).then(data => {
             console.log(data,'data')
             const finaLiat = data.result.sectionList
@@ -117,6 +118,12 @@ Page({
                             finId:data.result.id
                         })
                     })
+                    if(this.isOnlyread){
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                        return
+                    }
                     HiNavigator.redirectToFinishCheck({dataId: this.data.finId, clockWay: 'video'});
                 }else{
                     this.setData({

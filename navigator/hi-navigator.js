@@ -32,6 +32,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToVideoClock({id}) {
         this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
     }
+    //查看课程
+    static navigateToOnlyRaed({id}) {
+        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id + '&isOnlyread=true'});
+    }
     //完成打卡resultresult
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});

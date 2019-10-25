@@ -6,8 +6,7 @@
 </view>
 <image class="punchList_headUrl" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyEWO2T2BrgxhJdUcJgOWdvCdFDyG6831ROLzqW8DxAvM5ibPvHnY18S18JXib0qWZVbicxKrxg1lmQ/132"></image>
 <button class="punchList_share" open-type='share'>
-    <text style="font-size: 50rpx">+</text>
-    <text style="font-size: 24rpx">邀请伙伴围观</text>
+    <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
 </button>
 <view class="clear"></view>
 <view class="punchList_NickName">{{}}@心花怒放@</view>
