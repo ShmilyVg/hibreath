@@ -390,11 +390,19 @@ Page({
                         sportFin: true,
                     })
                 }
+                if(sportExt.recommendList[0].list.length == 1){
+                    this.setData({
+                        aheight: 220,
+                    })
+                }else{
+                    this.setData({
+                        aheight: sportExt.recommendList[0].list.length * 108+205,
+                    })
+                }
                 this.setData({
                     currentSwiper:0,
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
-                    aheight: sportExt.recommendList[0].list.length * 220
                 })
                 if (sportExt.recommendList.length < 2) {
                     this.setData({
@@ -419,9 +427,18 @@ Page({
                     })
                 }
                 if(foodExt.isMeal){
+                    if(foodExt.mealList[0].list.length == 1){
+                        this.setData({
+                            foodAheight: 220,
+                        })
+                    }else{
+                        this.setData({
+                            foodAheight: foodExt.mealList[0].list.length * 108+205,
+                        })
+                    }
                     this.setData({
                         foodcurrentSwiper:0,
-                        foodAheight: foodExt.mealList[0].list.length * 200,
+
                         calorie:this.data.component.sum(foodExt.mealList[0].list,1),
                         carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
                         fat:this.data.component.sum(foodExt.mealList[0].list,3),
@@ -790,8 +807,17 @@ Page({
         console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current,
-            aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 240
         })
+        if(this.data.sportExt.recommendList[e.detail.current].list.length == 1){
+            this.setData({
+                aheight: 220,
+            })
+        }else{
+            this.setData({
+                aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 108+205,
+            })
+        }
+
         if (e.detail.current === 0) {
             this.setData({
                 grayLeft: true,

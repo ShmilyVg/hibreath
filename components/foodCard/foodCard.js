@@ -102,9 +102,17 @@ Component({
       //轮播图当前
       swiperChange: function (e) {
           let currentList = this.data.foodExt.mealList[e.detail.current].list;
+          if(currentList.length==1){
+              this.setData({
+                  foodAheight: 220
+              })
+          }else{
+              this.setData({
+                  foodAheight: currentList.length * 108+205
+              })
+          }
           this.setData({
               foodcurrentSwiper: e.detail.current,
-              foodAheight: currentList.length * 200,
               calorie:this.sum(currentList,1),
               carbohydrate:this.sum(currentList,2),
               fat:this.sum(currentList,3),
