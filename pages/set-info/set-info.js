@@ -562,6 +562,7 @@ Page({
 
     //减脂目标
     bindInputGoal(e) {
+        console.log('e.detail.value',e.detail.value)
         this.setData({
             'info.goalDesc': tools.filterEmoji(e.detail.value).trim()
         })

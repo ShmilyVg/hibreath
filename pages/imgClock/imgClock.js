@@ -6,6 +6,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {PostUrl, UploadUrl} from "../../utils/config";
+import * as tools from "../../utils/tools";
 Page({
 
     data: {
@@ -53,9 +54,10 @@ Page({
         }
     },
     bindTextAreaBlur: function(e) {
-        console.log("e",e.detail.value)
+        console.log("e11",e.detail.value)
+        console.log("e2222",tools.filterEmoji(e.detail.value).trim())
         this.setData({
-            desc:filterEmoji(e.detail.value)
+            desc:tools.filterEmoji(e.detail.value).trim()
         })
         this.disBtn()
     }

@@ -187,33 +187,3 @@ page{
     position: relative;
     z-index: 90;
 }
-
-.cell-image-image {
-    width:100rpx;
-    height:89rpx;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 90;
-}
-
-.cell-image-text{
-    width:100rpx;
-    height:69rpx;
-    font-size:38rpx;
-    font-weight:bold;
-    color:rgba(41,41,48,1);
-    position: absolute;
-    top: 25rpx;
-    left: 0;
-    line-height: 69rpx;
-    text-align: center;
-    font-family:DIN Condensed-Bold,DIN Condensed;
-    z-index: 90;
-}
-
-.cell-line {
-    background-color: #F2F2F2;
-    width: 100%;
-    height: 2rpx;
-}
