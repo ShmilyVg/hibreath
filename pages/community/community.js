@@ -62,7 +62,9 @@ Page({
         this.forceUpdateAll();
         // }
     },
-
+    async toImgClock(){
+        HiNavigator.navigateToImgClockcommunity({id:(await judgeGroupEmpty()).groupId})
+    },
 
     onHide() {
 

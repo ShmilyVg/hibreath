@@ -36,7 +36,7 @@ Page({
         blowingImg:false,
         process:false,
         isShowBlow:true,
-        needCheckOTAUpdate:true,
+        needCheckOTAUpdate:false,
         noUpdata:false,//如果点击OTA升级 则跳转时不执行 onUnload 中的跳转 正常跳转到升级页面
         //isSuccessInfo:false,//是否绑定完成页进入标志
         homeP:[
@@ -255,15 +255,19 @@ Page({
     onUnload() {
         //app.getBLEManager().closeAll();
         console.log("2323",getCurrentPages())
-        if(this.data.isSuccessInfo === "true"){
-            this.setData({
-                isSuccessInfo: false,
-            })
-            HiNavigator.reLaunchToSetInfo()
-           /* wx.navigateBack({
-                delta: 7
-            })*/
-        }
+        console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')
+        setTimeout(() => {
+            if(this.data.isSuccessInfo === "true"){
+              /*  this.setData({
+                    isSuccessInfo: false,
+                })*/
+                HiNavigator.reLaunchToSetInfo()
+                /* wx.navigateBack({
+                     delta: 7
+                 })*/
+            }
+        })
+
     },
 
 

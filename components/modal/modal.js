@@ -2,7 +2,7 @@ import {WXDialog} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
 /**
  * 自定义modal浮层
- * 使用方法：
+  * 使用方法：
  * <modal show="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
  <view>你自己需要展示的内容</view>
  </modal>
@@ -11,7 +11,7 @@ import HiNavigator from "../../navigator/hi-navigator";
  show： 控制modal显示与隐藏
  height：modal的高度
  bindcancel：点击取消按钮的回调函数
- bindconfirm：点击确定按钮的回调函数
+ bindconfirm：点+击确定按钮的回调函数
  */
 
 Component({

@@ -40,9 +40,13 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }
-    //饮食打卡-去打卡
+    //饮食打卡-发表动态
     static navigateToImgClock({id}) {
         this.navigateTo({url: '/pages/imgClock/imgClock?id=' + id});
+    }
+    //圈子-发表动态
+    static navigateToImgClockcommunity({id}) {
+        this.navigateTo({url: '/pages/imgClock/imgClock?groupId=' + id});
     }
 
 /*    static navigateToHistory() {
@@ -61,8 +65,12 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToSetInfo() {
         this.navigateTo({url: '/pages/set-info/set-info'})
     }
+
+    static switchToSetInfo() {
+        this.switchTab({url: '/pages/set-info/set-info'});
+    }
     static reLaunchToSetInfo() {
-        this.redirectTo({url: '/pages/set-info/set-info'})
+        this.reLaunch({url: '/pages/set-info/set-info'});
     }
     static navigateTofood() {
         this.navigateTo({url: '/pages/food/food'})

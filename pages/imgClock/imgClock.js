@@ -17,7 +17,12 @@ Page({
 
     onLoad: function (e) {
         console.log(e,'e')
-        this.taskId = e.id
+        if(e.id){
+            this.taskId = e.id
+        }else{
+            this.groupId = e.groupId
+        }
+
     },
     async onShow () {
         const {result}= await Protocol.getSoul()
@@ -37,9 +42,16 @@ Page({
             this.showDialog("请选择照片");
             return
         }*/
-        Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
-            HiNavigator.redirectToMessageDetail({messageId: data.result.id});
-        });
+      if(this.taskId){
+          Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
+              HiNavigator.redirectToMessageDetail({messageId: data.result.id});
+          });
+      }else {
+          Protocol.postPublish({groupId:this.groupId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
+              HiNavigator.switchToCommunity();
+          });
+      }
+
     },
     //控制完成按钮是否可以点击
     disBtn(){

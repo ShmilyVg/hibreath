@@ -1,8 +1,9 @@
 // pages/punchList/punchList.js
 import {getLatestOneWeekTimestamp} from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
+import {whenDismissGroup} from "../community/social-manager";
 /**
- * @Date: 2019-10-25 10:20:53
+ * @Date: 2019-10-28 16:25:49
  * @LastEditors: 张浩玉
  */
 Page({
@@ -21,14 +22,18 @@ Page({
                 currenttab: newtab
             });
             if (newtab == 0) {
-                const{result:{ranklist}}=await Protocol.postAddup();
+                const{result:{ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
                 this.setData({
-                    ranklist:ranklist
+                    ranklist:ranklist,
+                    rankNum:rankNum,
+                    sharedId:sharedId
                 })
             }else{
-                const{result:{ranklist}}=await Protocol.postContinual();
+                const{result:{ranklist}}=await whenDismissGroup(Protocol.postContinual({groupId:this.data.groupId}));
                 this.setData({
-                    ranklist:ranklist
+                    ranklist:ranklist,
+                    rankNum:rankNum,
+                    sharedId:sharedId
                 })
             }
         }
@@ -37,11 +42,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad (options) {
-        const{result:{nickname,headUrl,rankNum,addup,continual,ranklist}}=await Protocol.postAddup();
+      console.log(options)
+      this.setData({
+          groupId:options.groupId
+      })
+        const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
         this.setData({
+            groupName:groupName,
+            sharedId:sharedId,
             nickname:nickname,
-            headUrl:headUrl,
             rankNum:rankNum,
+            headUrl:headUrl,
             addup:addup,
             continual:continual,
             ranklist:ranklist
@@ -94,10 +105,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-      return{
-          title: this.data.memberName+'邀请你加入'+this.data.groupName,
-          path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+      if(this.data.currenttab == '0'){
+              return{
+                  title: '我在'+'['+this.data.groupName+']'+'累计打卡榜总排名第'+this.data.rankNum+'!快来围观!',
+                  path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+              }
+      }else{
+          return{
+              title: '我在'+'['+this.data.groupName+']'+'连续打卡榜总排名第'+this.data.rankNum+'！快来围观！',
+              path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+          }
       }
-
   }
 })

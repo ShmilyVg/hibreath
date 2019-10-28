@@ -38,3 +38,4 @@
     <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>
+<view class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>

@@ -84,3 +84,20 @@
     line-height:42rpx;
 
 }
+.community-clock{
+    width:134rpx;
+    height:134rpx;
+    border-radius: 50%;
+    background:rgba(238,111,105,1);
+    box-shadow:0rpx 0rpx 10rpx 0rpx rgba(238,111,105,1);
+    position: absolute;
+    bottom: 65rpx;
+    right: 40rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    padding-top: 28rpx;
+    box-sizing: border-box;
+}

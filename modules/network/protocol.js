@@ -283,11 +283,23 @@ export default class Protocol {
         return Network.request({url: 'group/join', data: arguments[0]});
     }
     //打卡榜-累计打卡
-    static postAddup() {
-        return Network.request({url: 'ranklist/clockin/addup'});
+    static postAddup({groupId}) {
+        return Network.request({url: 'ranklist/clockin/addup',data:{groupId}});
     }
     //打卡榜-连续打卡
-    static postContinual() {
-        return Network.request({url: 'ranklist/clockin/continual'});
+    static postContinual({groupId}) {
+        return Network.request({url: 'ranklist/clockin/continual',data:{groupId}});
+    }
+    //减重榜-累计减重
+    static postWeight({groupId}) {
+        return Network.request({url: 'ranklist/weight/addup',data:{groupId}});
+    }
+    //减重榜-今日减重
+    static postWeightDay({groupId}) {
+        return Network.request({url: 'ranklist/weight/day',data:{groupId}});
+    }
+    //圈子-发表动态
+    static postPublish(data) {
+        return Network.request({url: 'group/dynamic/publish', data})
     }
 }
