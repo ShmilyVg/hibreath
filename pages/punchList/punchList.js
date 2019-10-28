@@ -13,6 +13,7 @@ Page({
    */
   data: {
       currenttab: '0',
+      isShare:true
   },
     //切换标签页
     async selectTab(e) {
@@ -21,21 +22,40 @@ Page({
             this.setData({
                 currenttab: newtab
             });
-            if (newtab == 0) {
-                const{result:{ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
-                this.setData({
-                    ranklist:ranklist,
-                    rankNum:rankNum,
-                    sharedId:sharedId
-                })
+            if(this.data.getSharedId){
+                if (newtab == 0) {
+                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        rankNum:rankNum,
+                        sharedId:sharedId
+                    })
+                }else{
+                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postContinual({sharedId:this.data.getSharedId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        rankNum:rankNum,
+                        sharedId:sharedId
+                    })
+                }
             }else{
-                const{result:{ranklist}}=await whenDismissGroup(Protocol.postContinual({groupId:this.data.groupId}));
-                this.setData({
-                    ranklist:ranklist,
-                    rankNum:rankNum,
-                    sharedId:sharedId
-                })
+                if (newtab == 0) {
+                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        rankNum:rankNum,
+                        sharedId:sharedId
+                    })
+                }else{
+                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postContinual({groupId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        rankNum:rankNum,
+                        sharedId:sharedId
+                    })
+                }
             }
+
         }
     },
   /**
@@ -43,20 +63,39 @@ Page({
    */
   async onLoad (options) {
       console.log(options)
-      this.setData({
-          groupId:options.groupId
-      })
-        const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
-        this.setData({
-            groupName:groupName,
-            sharedId:sharedId,
-            nickname:nickname,
-            rankNum:rankNum,
-            headUrl:headUrl,
-            addup:addup,
-            continual:continual,
-            ranklist:ranklist
-        })
+      if(options.groupId){
+          this.setData({
+              groupId:options.groupId
+          })
+          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
+          this.setData({
+              groupName:groupName,
+              sharedId:sharedId,
+              nickname:nickname,
+              rankNum:rankNum,
+              headUrl:headUrl,
+              addup:addup,
+              continual:continual,
+              ranklist:ranklist
+          })
+      }else if(options.sharedId){
+          this.setData({
+              getSharedId:options.sharedId,
+              isShare:false
+          })
+          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
+          this.setData({
+              groupName:groupName,
+              sharedId:sharedId,
+              nickname:nickname,
+              rankNum:rankNum,
+              headUrl:headUrl,
+              addup:addup,
+              continual:continual,
+              ranklist:ranklist
+          })
+      }
+
   },
 
   /**

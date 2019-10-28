@@ -13,6 +13,7 @@ Page({
      */
     data: {
         currenttab: '0',
+        isShare:true
     },
     //切换标签页
     async selectTab(e) {
@@ -21,21 +22,40 @@ Page({
             this.setData({
                 currenttab: newtab
             });
-            if (newtab == 0) {
-                const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
-                this.setData({
-                    ranklist:ranklist,
-                    sharedId:sharedId,
-                    rankNum:rankNum
-                })
+            if(this.data.getSharedId){
+                if (newtab == 0) {
+                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        sharedId:sharedId,
+                        rankNum:rankNum
+                    })
+                }else{
+                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeight({sharedId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        sharedId:sharedId,
+                        rankNum:rankNum,
+                    })
+                }
             }else{
-                const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeight({groupId:this.data.groupId}));
-                this.setData({
-                    ranklist:ranklist,
-                    sharedId:sharedId,
-                    rankNum:rankNum,
-                })
+                if (newtab == 0) {
+                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        sharedId:sharedId,
+                        rankNum:rankNum
+                    })
+                }else{
+                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeight({groupId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        sharedId:sharedId,
+                        rankNum:rankNum,
+                    })
+                }
             }
+
         }
     },
     /**
@@ -43,20 +63,39 @@ Page({
      */
     async onLoad (options) {
         console.log(options)
-        this.setData({
-            groupId:options.groupId
-        })
-        const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
-        this.setData({
-            groupName:groupName,
-            sharedId:sharedId,
-            nickname:nickname,
-            headUrl:headUrl,
-            rankNum:rankNum,
-            todayDif:todayDif,
-            totalDif:totalDif,
-            ranklist:ranklist
-        })
+        if(options.sharedId){
+            this.setData({
+                getSharedId:options.sharedId,
+                isShare:false
+            })
+            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
+            this.setData({
+                groupName:groupName,
+                sharedId:sharedId,
+                nickname:nickname,
+                headUrl:headUrl,
+                rankNum:rankNum,
+                todayDif:todayDif,
+                totalDif:totalDif,
+                ranklist:ranklist
+            })
+        }else{
+            this.setData({
+                groupId:options.groupId
+            })
+            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
+            this.setData({
+                groupName:groupName,
+                sharedId:sharedId,
+                nickname:nickname,
+                headUrl:headUrl,
+                rankNum:rankNum,
+                todayDif:todayDif,
+                totalDif:totalDif,
+                ranklist:ranklist
+            })
+        }
+
     },
 
     /**
