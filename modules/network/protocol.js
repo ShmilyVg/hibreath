@@ -282,4 +282,12 @@ export default class Protocol {
     static postGroupJoin({sharedId}) {
         return Network.request({url: 'group/join', data: arguments[0]});
     }
+    //打卡榜-累计打卡
+    static postAddup() {
+        return Network.request({url: 'ranklist/clockin/addup'});
+    }
+    //打卡榜-连续打卡
+    static postContinual() {
+        return Network.request({url: 'ranklist/clockin/continual'});
+    }
 }
