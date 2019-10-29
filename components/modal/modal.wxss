@@ -16,40 +16,39 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 300rpx;
+    height: 340rpx;
     background-color: #fff;
-    border-radius: 10rpx;
+    border-radius: 20rpx;
 }
 .modal-viewT{
     text-align: center;
-    margin-top: 67rpx;
-    font-size:30rpx;
+    margin-top: 60rpx;
+    font-size:38rpx;
     font-family:PingFangSC-Regular,PingFang SC;
     font-weight:400;
-    color:rgba(124,124,124,1);
+    color:#000000;
 }
 .modal-viewB{
     text-align: center;
-    margin-bottom: 48rpx;
-    font-size:30rpx;
+    margin-bottom: 60rpx;
+    font-size:38rpx;
     font-family:PingFangSC-Regular,PingFang SC;
     font-weight:400;
-    color:rgba(124,124,124,1);
+    color:#000000;
 }
 .modal-btn-wrapper{
     display: flex;
     flex-direction: row;
-    height: 100rpx;
-    line-height: 100rpx;
+    height: 120rpx;
+    line-height: 120rpx;
     border-top: 2rpx solid rgba(7,17,27,0.1);
 }
 
 .cancel-btn, .confirm-btn{
     flex: 1;
-    height: 100rpx;
-    line-height: 100rpx;
     text-align: center;
-    font-size: 32rpx;
+    font-size: 35rpx;
+    font-weight: bold;
 }
 
 .cancel-btn{
