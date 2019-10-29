@@ -101,3 +101,23 @@
     padding-top: 28rpx;
     box-sizing: border-box;
 }
+.community-text{
+    font-size:42rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-top: 750rpx;
+    margin-bottom: 152rpx;
+    text-align: center;
+}
+.community-btn{
+    width:500rpx;
+    height:100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    line-height: 100rpx;
+    color:rgba(255,255,255,1);
+}

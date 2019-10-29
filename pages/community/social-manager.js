@@ -15,6 +15,7 @@ class SocialGroupManager {
         // otherGroup.push(...list.filter(item => !item.isMajor));
         if (!groupList.length) {
             this.currentSocial = {};
+            console.log('未加入圈子')
             return;
         }
         let currentSocialGroupId;
@@ -84,6 +85,7 @@ export function judgeGroupEmpty() {
     if (groupId) {
         return Promise.resolve({groupId});
     } else {
+        console.log('未加入圈子')
         Toast.showText('您当前未加入任何圈子');
         return Promise.reject();
     }

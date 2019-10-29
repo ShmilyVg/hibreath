@@ -10,6 +10,8 @@ import {
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
+import Login from "../../modules/network/login";
+import UserInfo from "../../modules/network/userInfo";
 
 Page({
 
@@ -19,7 +21,8 @@ Page({
     data: {
         currentSocial: {isNotFinished: true},
         socialMemberInfo: {memberCount: 0, memberImgs: []},
-        dynamicList: []
+        dynamicList: [],
+        haveGroupId:false
     },
 
     // isUpdateAllWhenLoad: false,
@@ -69,7 +72,20 @@ Page({
     onHide() {
 
     },
-
+    async onGetUserInfoEvent(e) {
+        console.log('e',e)
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            try {
+                await Login.doRegister({userInfo, encryptedData, iv});
+                Toast.hiddenLoading();
+                HiNavigator.navigateToCreateCommunity()
+            } catch (e) {
+                Toast.warn('获取信息失败');
+            }
+        }
+    },
     async toReductionList(){
         HiNavigator.navigateToReductionList({groupId:(await judgeGroupEmpty()).groupId})
     },
@@ -85,13 +101,19 @@ Page({
                     if (currentSocial.groupId) {
                         wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#171717'});
                         wx.setBackgroundColor({
-                            backgroundColor: '#171717', // 窗口的背景色为白色
+                            backgroundColor: '#171717', // 窗口的背景色为黑色
                         });
+                        this.setData({
+                            haveGroupId:true
+                        })
                     } else {
                         wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
                         wx.setBackgroundColor({
                             backgroundColor: '#ffffff', // 窗口的背景色为白色
                         });
+                        this.setData({
+                            haveGroupId:false
+                        })
                     }
                 } catch (e) {
                     console.error(e);
@@ -107,7 +129,11 @@ Page({
                         reject(e);
                     }
                 });
-                this.setData({socialMemberInfo: (await getSocialGroupMembersViewInfo())});
+                console.log('currentSocial.groupId')
+                if(currentSocial.groupId){
+                    this.setData({socialMemberInfo: (await getSocialGroupMembersViewInfo())});
+                }
+
             })
 
         }

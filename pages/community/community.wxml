@@ -1,4 +1,4 @@
-<view class="relative fill-width flex-column box-sizing-border-box community-layout">
+<view wx:if="{{haveGroupId}}" class="relative fill-width flex-column box-sizing-border-box community-layout">
     <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
             <view class="relative">
@@ -38,4 +38,8 @@
     <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>
-<view class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>
+<view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>
+<view wx:else>
+    <view class="community-text">您还未加入任何圈子</view>
+    <button class="community-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">创建新圈子</button>
+</view>
