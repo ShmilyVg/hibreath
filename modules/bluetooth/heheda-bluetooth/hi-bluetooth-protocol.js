@@ -118,7 +118,7 @@ export default class HiBlueToothProtocol {
             //APP通知设备是否上传检测记录
             '0x40': ({isSuccess}) => {
                 this.sendData({
-                    command: '0x30',
+                    command: '0x40',
                     data: [isSuccess ? 1 : 2]
                 });
             },
@@ -190,7 +190,7 @@ export default class HiBlueToothProtocol {
     }
 
     startData() {
-        this.sendData({command: '0x05'});
+        this.sendData({command: '0x05', data: [Date.now() / 1000]});
         console.log("执行重新获取状态")
     }
 

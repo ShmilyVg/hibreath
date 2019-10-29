@@ -52,6 +52,9 @@ Page({
 
 
         electricitypicShow: false,
+        navBarColor:'',//导航字体颜色
+        navBarIconTheme:'',//导航返回键颜色
+        navBarBackground:'',//导航背景色
     },
 
         historyUrl() {
@@ -66,6 +69,13 @@ Page({
 
     setBtnClick() {
         HiNavigator.navigateToDeviceUnbind();
+    },
+    handlerGobackClick(){
+        if(this.data.isSuccessInfo === "true"){
+                HiNavigator.switchToSetInfo()
+                return
+            }
+        HiNavigator.navigateBack({delta: 1});
     },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
@@ -100,7 +110,8 @@ Page({
                 userInfo: info
             })
         }
-        if (this.data.firstInto) {
+        if
+        (this.data.firstInto) {
             Protocol.getAnalysisNotes().then(data => {
                 let noteList = data.result.list;
 
@@ -253,21 +264,9 @@ Page({
         HiNavigator.navigateToDeviceBind()
     },
     onUnload() {
-        //app.getBLEManager().closeAll();
+     /*   app.getBLEManager().closeAll();
         console.log("2323",getCurrentPages())
-        console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')
-        setTimeout(() => {
-            if(this.data.isSuccessInfo === "true"){
-              /*  this.setData({
-                    isSuccessInfo: false,
-                })*/
-                HiNavigator.reLaunchToSetInfo()
-                /* wx.navigateBack({
-                     delta: 7
-                 })*/
-            }
-        })
-
+        console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')*/
     },
 
 

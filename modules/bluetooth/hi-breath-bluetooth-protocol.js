@@ -65,6 +65,9 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                     state: ProtocolState.QUERY_DATA_ING,
                     dataAfterProtocol: {timestamp, result, currentLength, currentIndex}
                 };
+            },
+            '0x41': () => {
+
             }
         }
     }

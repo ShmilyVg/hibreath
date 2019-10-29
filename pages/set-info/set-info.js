@@ -741,7 +741,7 @@ Page({
     onShow() {
         this.handleBle();
         let that = this;
-        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步数据
+        //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
         app.bLEManager.sendISpage({isSuccess: true});
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);

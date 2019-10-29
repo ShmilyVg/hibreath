@@ -60,11 +60,11 @@ export default class ConnectionManager {
 
     }*/
     unbind() {
-        wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-            backgroundColor: '#EE6F69',
-        })
         this._page.setData({
+            navBarColor:'#FFFFFF',//导航字体颜色
+            navBarIconTheme:'white',//导航返回键颜色
+            navBarBackground:'#EE6F69',//导航背景色
+
             needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
             bgColor:"#EE6F69",//PAGE背景
@@ -81,11 +81,11 @@ export default class ConnectionManager {
     }
 
     disconnect() {
-        wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#EE6F69',
-        })
         this._page.setData({
+            navBarColor:'#FFFFFF',//导航字体颜色
+            navBarIconTheme:'white',//导航返回键颜色
+            navBarBackground:'#EE6F69',//导航背景色
+
             tryAgain:true,//未找到设备标志位
             finding:false,//正在寻找设备标志位
             bgColor:"#EE6F69",
@@ -145,11 +145,11 @@ export default class ConnectionManager {
     }
 
     connecting() {
-        wx.setNavigationBarColor({
-            frontColor: '#000000',
-            backgroundColor: '#ffffff',
-        })
         this._page.setData({
+            navBarColor:'#000000',//导航字体颜色
+            navBarIconTheme:'black',//导航返回键颜色
+            navBarBackground:'#FFFFFF',//导航背景色
+
             needCheckOTAUpdate:false,
             noBind:false,//显示绑定按钮等
             tryAgain:false,//未找到设备标志位
@@ -185,11 +185,11 @@ export default class ConnectionManager {
         })
     }
     connected() {
-        wx.setNavigationBarColor({
-            frontColor: '#000000',
-            backgroundColor: '#ffffff',
-        })
         this._page.setData({
+            navBarColor:'#000000',//导航字体颜色
+            navBarIconTheme:'black',//导航返回键颜色
+            navBarBackground:'#FFFFFF',//导航背景色
+
             needCheckOTAUpdate:false,
             noBind:false,
             finding:false,

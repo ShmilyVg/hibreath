@@ -22,7 +22,7 @@ Page({
         })
     },
     onUnload: function () {
-        HiNavigator.navigateIndex();
+       /* HiNavigator.navigateIndex();*/
     },
     onShow:function () {
 

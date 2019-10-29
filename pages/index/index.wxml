@@ -1,5 +1,14 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
+    <navBar
+            title='HiPee健康燃脂'
+            color="{{navBarColor}}"
+            iconTheme="{{navBarIconTheme}}"
+            background='{{navBarBackground}}'
+            back="{{true}}"
+            bindback="handlerGobackClick">
+
+    </navBar>
 <template is="common"
           data="{{needCheckOTAUpdate,isShowBlow,noBind,tryAgain,beginFat,bgColor,btnState,textState,textStateEn,readyimg,process,homePointHot,blowpicShow,blowingImg,disblowImg,blowNumber,homeTitle,homeTitleText}}">
 </template>

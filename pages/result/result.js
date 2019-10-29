@@ -105,7 +105,9 @@ Page({
     toIndex() {
         HiNavigator.navigateIndex();
     },
-
+    handlerGobackClick(){
+        HiNavigator.switchToSetInfo()
+    },
     //切换标签页
     selectTab(e) {
         let newtab = e.currentTarget.dataset.tabid;

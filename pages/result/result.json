@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "燃脂检测",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar"
+  }
 }
