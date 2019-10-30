@@ -51,14 +51,18 @@ Page({
             });
         }
         this.init();
-        Circular.run();
+        setTimeout(() => {
+            Circular.run();
+        },200)
         this.cellDataHandle({});
     },
 
     init() {
         Trend.init(this);
         Trend.initTouchHandler();
-        Circular.init(this);
+        setTimeout(() => {
+            Circular.init(this);
+        },200)
     },
 
     async cellDataHandle({page = 1, isRefresh = true}) {
@@ -185,6 +189,7 @@ Page({
             });
             getApp().globalData.trendTime = null;
         }
+        Circular.run();
     },
 
     onReady() {
