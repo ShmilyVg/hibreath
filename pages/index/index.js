@@ -50,7 +50,7 @@ Page({
 
         homeOrangeBtn: false,
 
-
+        resultDelta:1,
         electricitypicShow: false,
         navBarColor:'',//导航字体颜色
         navBarIconTheme:'',//导航返回键颜色
@@ -72,9 +72,24 @@ Page({
     },
     handlerGobackClick(){
         if(this.data.isSuccessInfo === "true"){
-                HiNavigator.switchToSetInfo()
-                return
+            let pages = getCurrentPages();
+            console.log(pages,'pages')
+            for(var i = 0;i<pages.length;i++){
+                if(pages[i].route ==='pages/result/result'){
+                    this.setData({
+                        resultDelta:this.data.resultDelta+i
+                    })
+                    console.log('this.data.resultDelta',this.data.resultDelta)
+                    wx.navigateBack({
+                        delta:pages.length-this.data.resultDelta
+                    })
+                    return;
+                }
             }
+            console.log('resultDelta',this.data.resultDelta)
+            HiNavigator.switchToSetInfo()
+            return
+        }
         HiNavigator.navigateBack({delta: 1});
     },
     onLaunch(options){
