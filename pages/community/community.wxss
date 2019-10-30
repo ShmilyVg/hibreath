@@ -106,9 +106,11 @@
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(69,69,69,1);
-    margin-top: 750rpx;
-    margin-bottom: 152rpx;
+    padding-top: 750rpx;
+    padding-bottom: 152rpx;
     text-align: center;
+    background-image: url("http://img.hipee.cn/group.png");
+    background-size: 100% 100%;
 }
 .community-btn{
     width:500rpx;
