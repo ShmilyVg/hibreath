@@ -1,4 +1,4 @@
-<navBar
+<!--<navBar
         title='燃脂检测'
         color="#000000"
         iconTheme="black"
@@ -6,7 +6,7 @@
         back="{{true}}"
         bindback="handlerGobackClick">
 
-</navBar>
+</navBar>-->
 <view class="result-top flex-row">
     <view class="flex-row">
         <image class="result-img1" src="../../images/result/circle.png"></image>

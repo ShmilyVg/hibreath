@@ -197,6 +197,9 @@ Page({
         Trend.init(this);
         Trend.initTouchHandler();
     },
+    onUnload(){
+        HiNavigator.switchToSetInfo()
+    },
     async updateTrendTime({frontTimestamp, endTimestamp}) {
         timeObj.frontTimestamp = frontTimestamp;
         timeObj.endTimestamp = endTimestamp;
