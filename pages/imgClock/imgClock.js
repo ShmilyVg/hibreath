@@ -43,11 +43,11 @@ Page({
             return
         }*/
       if(this.taskId){
-          Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
+          Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
               HiNavigator.redirectToMessageDetail({messageId: data.result.id});
           });
       }else {
-          Protocol.postPublish({groupId:this.groupId,desc:this.data.desc,imgUrls:this.data.imgbox}).then(data => {
+          Protocol.postPublish({groupId:this.groupId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
               HiNavigator.switchToCommunity();
           });
       }
@@ -117,13 +117,16 @@ Page({
                                     var obj = JSON.parse(res.data)
                                     console.log("obj",obj)
                                     var more = []
-                                    more.push(obj.result.url)
+                                    more.push(obj.result.img_url)
+                                    console.log(more,'more')
                                     var tem = that.data.imageUrl
                                     that.setData({
                                         imageUrl: tem.concat(more)
                                     })
+                                    console.log('多个照片',that.data.imageUrl)
                                 }
                             })
+
                         }
                     } else {
                         wx.uploadFile({
@@ -143,8 +146,6 @@ Page({
                             }
                         })
                     }
-                } else {
-                    //imgbox[picid] = tempFilePaths[0];
                 }
                 that.setData({
                     imgbox: imgbox
@@ -168,9 +169,9 @@ Page({
     imgDelete: function (e) {
         console.log(e.currentTarget.dataset.deindex,'e')
         console.log(this.data.imgbox,'eeee')
-        this.data.imgbox.splice(e.currentTarget.dataset.deindex,1)
+        this.data.imageUrl.splice(e.currentTarget.dataset.deindex,1)
         this.setData({
-            imgbox: this.data.imgbox,
+            imgbox: this.data.imageUrl,
         });
         this.disBtn()
     },

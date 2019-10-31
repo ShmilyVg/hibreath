@@ -8,12 +8,12 @@
             </view>
         </view>
 
-        <view bindtap="onMessageSettingEvent" class="flex-column box-sizing-border-box message-item-setting-layout">
+        <view wx:if="{{message.action.delete}}" bindtap="onMessageSettingEvent" class="flex-column box-sizing-border-box message-item-setting-layout">
             <view wx:for="{{3}}" wx:key="index" class="message-item-setting-point"></view>
         </view>
     </view>
 
-    <text bindtap="onMessageClickEvent" class="fill-width message-item-desc">{{message.desc}}</text>
+    <text bindtap="onMessageClickEvent" class="fill-width message-item-desc">{{message.desc?message.desc:''}}</text>
 
     <view bindtap="onMessageClickEvent" class="fill-width flex-row flex-wrap">
         <image mode="aspectFill" catchtap="onImagePreview" data-url="{{item}}" wx:for="{{message.imgUrls}}" wx:key="index" src="{{item}}" class="message-item-image-item"></image>

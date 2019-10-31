@@ -50,13 +50,18 @@ Page({
         }
 
     },
-    onDynamicItemDeleteEvent({detail}) {
+     onDynamicItemDeleteEvent({detail}) {
         console.log(detail);
         const {taskId} = detail, {dynamicList} = this.data;
-        const index = dynamicList.findIndex(item => item.taskId === taskId);
+         console.log(dynamicList);
+        const index = dynamicList.findIndex(item => item.id === taskId);
+        console.log(index !== -1,'index')
         if (index !== -1) {
-            dynamicList.splice(index, 1);
-            this.setData({dynamicList});
+             Protocol.postDynamicDelete({id: taskId}).then(()=>{
+                 dynamicList.splice(index, 1);
+                 this.setData({dynamicList});
+             })
+
         }
     },
 

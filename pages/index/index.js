@@ -277,6 +277,7 @@ Page({
      /*   app.getBLEManager().closeAll();
         console.log("2323",getCurrentPages())
         console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')*/
+        app.bLEManager.sendISvalue({isSuccess: false});
     },
 
 

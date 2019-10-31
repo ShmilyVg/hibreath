@@ -30,8 +30,8 @@ Component({
         onMessageSettingEvent() {
             WXDialog.showDialog({
                 content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
-                    // await Protocol.postDynamicDelete({id: this.dataId});
-                    this.triggerEvent('onMessageDeleteEvent', {taskId: this.data.message.taskId});
+                     //await Protocol.postDynamicDelete({id: this.data.message.id});
+                    this.triggerEvent('onMessageDeleteEvent', {taskId: this.data.message.id});
                 }
             });
         },
