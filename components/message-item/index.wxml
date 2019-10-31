@@ -1,9 +1,9 @@
-<view class="fill-width flex-column box-sizing-border-box message-item-layout" bindtap="onMessageClickEvent">
+<view class="fill-width flex-column box-sizing-border-box message-item-layout" >
     <view class="fill-width flex-row align-items-center space-between">
-        <view class="flex-row align-items-center">
-            <image mode="aspectFill" src="{{message.headUrl}}" class="message-item-head-img"></image>
+        <view class="flex-row align-items-center" bindtap="onMessageClickEvent">
+            <image mode="aspectFill" src="{{message.userInfo.headUrl}}" class="message-item-head-img"></image>
             <view class="flex-column" style="align-items: flex-start;">
-                <view class="message-item-nickname">{{message.nickname}}</view>
+                <view class="message-item-nickname">{{message.userInfo.nickname}}</view>
                 <view class="message-item-time">{{message.messageCreateTime}}</view>
             </view>
         </view>
@@ -13,9 +13,9 @@
         </view>
     </view>
 
-    <text class="fill-width message-item-desc">{{message.desc}}</text>
+    <text bindtap="onMessageClickEvent" class="fill-width message-item-desc">{{message.desc}}</text>
 
-    <view class="fill-width flex-row flex-wrap">
-        <image mode="aspectFill" bindtap="onImagePreview" data-url="{{item}}" wx:for="{{message.imgUrls}}" wx:key="index" src="{{item}}" class="message-item-image-item"></image>
+    <view bindtap="onMessageClickEvent" class="fill-width flex-row flex-wrap">
+        <image mode="aspectFill" catchtap="onImagePreview" data-url="{{item}}" wx:for="{{message.imgUrls}}" wx:key="index" src="{{item}}" class="message-item-image-item"></image>
     </view>
 </view>

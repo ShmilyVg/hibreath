@@ -1,3 +1,6 @@
+page{
+    height: 100%;
+}
 .community-layout {
     padding: 0 40rpx;
 }
@@ -90,7 +93,7 @@
     border-radius: 50%;
     background:rgba(238,111,105,1);
     box-shadow:0rpx 0rpx 10rpx 0rpx rgba(238,111,105,1);
-    position: absolute;
+    position: fixed;
     bottom: 65rpx;
     right: 40rpx;
     font-size:30rpx;

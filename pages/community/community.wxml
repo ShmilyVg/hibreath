@@ -39,7 +39,7 @@
 
 </view>
 <view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>
-<view wx:else>
+<view wx:if="{{!haveGroupId}}">
     <view class="community-text">
         <view style="top:700rpx;position: relative">您还未加入任何圈子</view>
     </view>

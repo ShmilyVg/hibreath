@@ -25,7 +25,7 @@ Component({
     },
     methods: {
         onMessageClickEvent() {
-            HiNavigator.navigateToMessageDetail({messageId: this.data.message.taskId});
+            HiNavigator.navigateToMessageDetail({messageId: this.data.message.id});
         },
         onMessageSettingEvent() {
             WXDialog.showDialog({

@@ -73,20 +73,17 @@ Page({
     handlerGobackClick(){
         if(this.data.isSuccessInfo === "true"){
             let pages = getCurrentPages();
-            console.log(pages,'pages')
             for(var i = 0;i<pages.length;i++){
                 if(pages[i].route ==='pages/result/result'){
                     this.setData({
                         resultDelta:this.data.resultDelta+i
                     })
-                    console.log('this.data.resultDelta',this.data.resultDelta)
                     wx.navigateBack({
                         delta:pages.length-this.data.resultDelta
                     })
                     return;
                 }
             }
-            console.log('resultDelta',this.data.resultDelta)
             HiNavigator.switchToSetInfo()
             return
         }
@@ -201,11 +198,6 @@ Page({
         console.log('000',connectState)
         console.log('1111',protocolState)
         console.log("-----1212",)
-       /* if(connectState === "connected"){
-            if(protocolState === "query_data_start" || protocolState === "query_data_ing" || protocolState === "query_data_finish")
-            this.blowPage.connected();
-        }*/
-
         !!action[connectState] && action[connectState]();
         !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({

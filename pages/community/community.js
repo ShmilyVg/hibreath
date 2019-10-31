@@ -154,7 +154,7 @@ Page({
 
     async onReachBottom() {
         Toast.showLoading();
-        const list = await this.getGroupDynamicList();
+        const list = await getGroupDynamicManager.getGroupDynamicList();
         if (list.length) {
             this.setData({dynamicList: this.data.dynamicList.concat(list)});
         }
