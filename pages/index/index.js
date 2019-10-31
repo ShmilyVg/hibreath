@@ -229,7 +229,7 @@ Page({
                         dataValue: toolfinalResult,
                     }).then(data => {
                         console.log(data.result.id)
-                        HiNavigator.navigateBlowToResult({id: data.result.id});
+                        HiNavigator.redirectToBlowToResult({id: data.result.id});
                     });
 
                     //TIMESTAMP 设备获取时间戳
