@@ -27,7 +27,7 @@ Page({
         noBind:false,
         tryAgain:false,
         finding:false,
-        beginFat:false,
+        beginFat:true,
         readyimg:false,
         blowpicShow:false,
         textState:"",
@@ -81,13 +81,16 @@ Page({
                     wx.navigateBack({
                         delta:pages.length-this.data.resultDelta
                     })
+                    app.bLEManager.sendISvalue({isSuccess: false});
                     return;
                 }
             }
             HiNavigator.switchToSetInfo()
+            app.bLEManager.sendISvalue({isSuccess: false});
             return
         }
         HiNavigator.navigateBack({delta: 1});
+        app.bLEManager.sendISvalue({isSuccess: false});
     },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});

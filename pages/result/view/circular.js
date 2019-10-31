@@ -18,10 +18,8 @@ function init(page) {
 }
 
 function run() {
-    console.log('111111111')
     drewCircular();
     showType();
-    console.log('222222222')
 }
 
 function drewCircular() {

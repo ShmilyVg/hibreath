@@ -26,9 +26,6 @@ Page({
     },
     onShow:function () {
 
-
-
-
     },
     swiperChange: function (e) {
         this.setData({

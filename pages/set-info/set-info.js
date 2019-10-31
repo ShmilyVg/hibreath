@@ -42,7 +42,7 @@ Page({
             {text: '居家制作为主', isChose: false, en: 'jujia'}
         ],
         bgColorSetInfoPage: '#ffffff',
-        score: 6.5,
+        score: 0,
         showBigTip: false,
         schemaId: 0,
         scrollLeft: 490,
@@ -67,7 +67,11 @@ Page({
         grayLeft: true,//灰色箭头左
         grayRight: false,//灰色箭头右
         currentSwiper: 0,
-        isFood:false
+        isFood:false,
+        fatText:'',
+        fatTextEn:'',
+        fatType:'',
+
     },
     onFocus: function (e) {
         this.setData({
