@@ -101,6 +101,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         };
         this.errorType[ErrorState.DISCOVER_TIMEOUT.errorCode] = ErrorState.DISCOVER_TIMEOUT;
         this.deviceFindTimeoutIndex = 0;
+        let timeindex = 0;
         wx.onBluetoothAdapterStateChange((res) => {
             console.log('适配器状态changed, now is', res, '是否处于升级状态', getApp().isOTAUpdate);
             const {available, discovering} = res;
@@ -115,7 +116,12 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                 super.closeAdapter().finally(() => this._bleStateListener(this.getState({connectState: CommonConnectState.UNAVAILABLE})));
             } else if (available) {
                 if (!res.discovering && !this._isActiveCloseDiscovery) {
-                    this.openAdapterAndStartBlueToothDeviceDiscovery();
+                    clearTimeout(timeindex);
+                    console.warn('清除重连计数');
+                    timeindex = setTimeout(() => {
+                        console.warn('开始重新连接');
+                        this.openAdapterAndStartBlueToothDeviceDiscovery();
+                    }, 7000);
                 }
 
             }
