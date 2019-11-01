@@ -71,7 +71,7 @@ Page({
         fatText:'',
         fatTextEn:'',
         fatType:'',
-
+        fatDes:''
     },
     onFocus: function (e) {
         this.setData({
@@ -355,9 +355,6 @@ Page({
                             fatDes: '"'+fatBurnExt.visDes+'"'
                         })
                     }
-                    console.log("zhgethis",this)
-                  /*  Circular.createSelectorQuery();
-                    Circular.init(this);*/
                     Circular.run();
                 } else {
                     this.setData({
