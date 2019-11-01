@@ -6,13 +6,10 @@ import HiNavigator from "../../navigator/hi-navigator";
 class SocialGroupManager {
     constructor() {
         this._currentSocial = {};
-        this._isChanged = false;
     }
 
     async getSocialGroupList() {
         const {result: {list: groupList}} = await whenDismissGroup(Protocol.postMemberGroupList());
-        // myGroup.push(...list.filter(item => item.isMajor));
-        // otherGroup.push(...list.filter(item => !item.isMajor));
         if (!groupList.length) {
             this.currentSocial = {};
             console.log('未加入圈子')
@@ -21,7 +18,7 @@ class SocialGroupManager {
         let currentSocialGroupId;
         try {
             currentSocialGroupId = wx.getStorageSync('currentSocialGroupId');
-            console.log(currentSocialGroupId);
+            console.log(currentSocialGroupId,'currentSocialGroupId');
         } catch (e) {
             console.error('wx.getStorageSync(\'currentSocialGroupId\') error', e);
         }

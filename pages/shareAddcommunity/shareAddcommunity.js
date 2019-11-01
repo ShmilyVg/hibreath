@@ -3,6 +3,7 @@ import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast} from "heheda-common-view";
 import {getSocialGroupManager, whenDismissGroup} from "../community/social-manager";
+import Login from "../../modules/network/login";
 
 Page({
 
@@ -27,7 +28,7 @@ Page({
         });
     },
 
-    async addCommunityBtn() {
+   /* async addCommunityBtn() {
         const {sharedId} = this.data;
         if (sharedId) {
             const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
@@ -40,5 +41,31 @@ Page({
         } else {
             Toast.showText('未获取到圈子信息，暂时无法加入');
         }
-    }
+    }*/
+    async onGetUserInfoEvent(e) {
+        console.log('e',e)
+        const {detail: {userInfo, encryptedData, iv}} = e;
+        if (!!userInfo) {
+            Toast.showLoading();
+            try {
+                await Login.doRegister({userInfo, encryptedData, iv});
+                Toast.hiddenLoading();
+            } catch (e) {
+                Toast.warn('获取信息失败');
+            }
+        }
+        const {sharedId} = this.data;
+        if (sharedId) {
+            const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
+            if (groupId) {
+                getSocialGroupManager.currentSocial = {groupId};
+                HiNavigator.switchToCommunity();
+            } else {
+                Toast.showText('抱歉，暂时无法加入该圈子');
+            }
+        } else {
+            Toast.showText('未获取到圈子信息，暂时无法加入');
+        }
+
+    },
 });
