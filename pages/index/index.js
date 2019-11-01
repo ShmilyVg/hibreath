@@ -27,7 +27,7 @@ Page({
         noBind:false,
         tryAgain:false,
         finding:false,
-        beginFat:true,
+        beginFat:false,
         readyimg:false,
         blowpicShow:false,
         textState:"",

@@ -8,8 +8,8 @@
 import {ErrorState} from "../utils/error-state";
 import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
-
-const INIT_TIMEOUT = 10;
+/*暂作修改*/
+const INIT_TIMEOUT = 20;
 export default class AbstractBlueTooth {
     constructor() {
         this._isOpenAdapter = false;
