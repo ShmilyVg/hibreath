@@ -24,34 +24,38 @@ Page({
             });
             if(this.data.getSharedId){
                 if (newtab == 0) {
-                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
+                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
                     this.setData({
                         ranklist:ranklist,
                         sharedId:sharedId,
+                        inRank:inRank,
                         rankNum:rankNum
                     })
                 }else{
-                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeight({sharedId:this.data.groupId}));
+                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeight({sharedId:this.data.groupId}));
                     this.setData({
                         ranklist:ranklist,
                         sharedId:sharedId,
                         rankNum:rankNum,
+                        inRank:inRank
                     })
                 }
             }else{
                 if (newtab == 0) {
-                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
-                    this.setData({
-                        ranklist:ranklist,
-                        sharedId:sharedId,
-                        rankNum:rankNum
-                    })
-                }else{
-                    const{result:{sharedId,ranklist,rankNum}}=await whenDismissGroup(Protocol.postWeight({groupId:this.data.groupId}));
+                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
                     this.setData({
                         ranklist:ranklist,
                         sharedId:sharedId,
                         rankNum:rankNum,
+                        inRank:inRank,
+                    })
+                }else{
+                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeight({groupId:this.data.groupId}));
+                    this.setData({
+                        ranklist:ranklist,
+                        sharedId:sharedId,
+                        rankNum:rankNum,
+                        inRank:inRank,
                     })
                 }
             }
@@ -68,8 +72,9 @@ Page({
                 getSharedId:options.sharedId,
                 isShare:false
             })
-            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
+            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist,inRank}}=await whenDismissGroup(Protocol.postWeightDay({sharedId:this.data.getSharedId}));
             this.setData({
+                inRank:inRank,
                 groupName:groupName,
                 sharedId:sharedId,
                 nickname:nickname,
@@ -83,8 +88,9 @@ Page({
             this.setData({
                 groupId:options.groupId
             })
-            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
+            const{result:{groupName,sharedId,nickname,headUrl,rankNum,todayDif,totalDif,ranklist,inRank}}=await whenDismissGroup(Protocol.postWeightDay({groupId:this.data.groupId}));
             this.setData({
+                inRank:inRank,
                 groupName:groupName,
                 sharedId:sharedId,
                 nickname:nickname,

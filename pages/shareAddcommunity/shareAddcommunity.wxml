@@ -5,5 +5,6 @@
     <view class="shareAdd-Text">邀请你加入</view>
     <image class="shareAdd-Img" src="{{imgUrl}}"></image>
     <view class="shareAdd-Name">{{groupName}}</view>
-    <button bindtap="addCommunityBtn" class="shareAdd-Btn">加入圈子</button>
+    <button wx:if="{{isJoined}}" bindtap="addCommunityBtn" class="shareAdd-Btn">已加入该圈子,点击进入</button>
+    <button wx:else bindtap="addCommunityBtn" class="shareAdd-Btn">加入圈子</button>
 </view>

@@ -73,20 +73,27 @@ page{
     margin-top: 40rpx;
     margin-bottom: 80rpx;
 }
-.punchList_Day text:nth-child(1){
+.punchList_Day-Text1{
     font-size:60rpx;
     font-family:DINCondensed-Bold,DINCondensed;
     font-weight:bold;
     color:rgba(84,84,84,1);
 }
-.punchList_Day text:nth-child(2){
+.punchList_Day-Text2{
     font-size:22rpx;
     font-family:PingFang-SC-Semibold,PingFang-SC;
     font-weight:600;
     color:rgba(84,84,84,1);
     margin-right: 43rpx;
 }
-.punchList_Day text:nth-child(3){
+.punchList_Day-Text3{
+    font-size:22rpx;
+    font-family:PingFang-SC-Semibold,PingFang-SC;
+    font-weight:600;
+    color:rgba(84,84,84,1);
+    margin-right: 43rpx;
+}
+.punchList_Day-Text4{
     font-size:24rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
@@ -97,7 +104,7 @@ page{
     height:49rpx;
     border-right:0.5rpx #D6D6D6 solid;
     float: left;
-    margin: 60rpx 40rpx 0rpx 40rpx;
+    margin: 40rpx 40rpx 0rpx 40rpx;
 }
 .tab_item_active{
     width:320rpx;

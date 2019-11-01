@@ -22,8 +22,8 @@ Page({
     onLoad(options) {
         const {sharedId} = options;
         this.setData({sharedId}, async () => {
-            const {result: {memberName, groupName, imgUrl}} = await whenDismissGroup(Protocol.postGroupShareInfo({sharedId}));
-            this.setData({memberName, groupName, imgUrl});
+            const {result: {memberName, groupName, imgUrl,isJoined}} = await whenDismissGroup(Protocol.postGroupShareInfo({sharedId}));
+            this.setData({memberName, groupName, imgUrl,isJoined});
         });
     },
 

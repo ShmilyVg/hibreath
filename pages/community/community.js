@@ -89,6 +89,8 @@ Page({
             } catch (e) {
                 Toast.warn('获取信息失败');
             }
+        }else{
+            HiNavigator.navigateToCreateCommunity()
         }
     },
     async toReductionList(){

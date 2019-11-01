@@ -24,33 +24,37 @@ Page({
             });
             if(this.data.getSharedId){
                 if (newtab == 0) {
-                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
+                    const{result:{ranklist,rankNum,sharedId,inRank}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
                     this.setData({
                         ranklist:ranklist,
                         rankNum:rankNum,
+                        inRank:inRank,
                         sharedId:sharedId
                     })
                 }else{
-                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postContinual({sharedId:this.data.getSharedId}));
+                    const{result:{ranklist,rankNum,sharedId,inRank}}=await whenDismissGroup(Protocol.postContinual({sharedId:this.data.getSharedId}));
                     this.setData({
                         ranklist:ranklist,
                         rankNum:rankNum,
+                        inRank:inRank,
                         sharedId:sharedId
                     })
                 }
             }else{
                 if (newtab == 0) {
-                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
+                    const{result:{ranklist,rankNum,sharedId,inRank}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
                     this.setData({
                         ranklist:ranklist,
                         rankNum:rankNum,
+                        inRank:inRank,
                         sharedId:sharedId
                     })
                 }else{
-                    const{result:{ranklist,rankNum,sharedId}}=await whenDismissGroup(Protocol.postContinual({groupId:this.data.groupId}));
+                    const{result:{ranklist,rankNum,sharedId,inRank}}=await whenDismissGroup(Protocol.postContinual({groupId:this.data.groupId}));
                     this.setData({
                         ranklist:ranklist,
                         rankNum:rankNum,
+                        inRank:inRank,
                         sharedId:sharedId
                     })
                 }
@@ -67,8 +71,9 @@ Page({
           this.setData({
               groupId:options.groupId
           })
-          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
+          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist,inRank}}=await whenDismissGroup(Protocol.postAddup({groupId:this.data.groupId}));
           this.setData({
+              inRank:inRank,
               groupName:groupName,
               sharedId:sharedId,
               nickname:nickname,
@@ -83,8 +88,9 @@ Page({
               getSharedId:options.sharedId,
               isShare:false
           })
-          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
+          const{result:{nickname,headUrl,groupName,sharedId,rankNum,addup,continual,ranklist,inRank}}=await whenDismissGroup(Protocol.postAddup({sharedId:this.data.getSharedId}));
           this.setData({
+              inRank:inRank,
               groupName:groupName,
               sharedId:sharedId,
               nickname:nickname,
