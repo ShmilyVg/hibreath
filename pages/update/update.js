@@ -504,7 +504,8 @@ Page({
             bleManager.connect();
             setTimeout(() => {
                 Toast.hiddenLoading();
-                HiNavigator.relaunchToIndex({refresh: true});
+               /* HiNavigator.relaunchToIndex({refresh: true});*/
+                HiNavigator.switchToSetInfo()
             }, 3000);
         });
 
