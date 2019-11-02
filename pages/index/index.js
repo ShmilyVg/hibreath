@@ -71,6 +71,9 @@ Page({
         HiNavigator.navigateToDeviceUnbind();
     },
     handlerGobackClick(){
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.sendISvalue({isSuccess: false});
+        }
         if(this.data.isSuccessInfo === "true"){
             let pages = getCurrentPages();
             for(var i = 0;i<pages.length;i++){
@@ -81,23 +84,22 @@ Page({
                     wx.navigateBack({
                         delta:pages.length-this.data.resultDelta
                     })
-                    app.bLEManager.sendISvalue({isSuccess: false});
                     return;
                 }
             }
             HiNavigator.switchToSetInfo()
-            app.bLEManager.sendISvalue({isSuccess: false});
             return
         }
         HiNavigator.navigateBack({delta: 1});
-        app.bLEManager.sendISvalue({isSuccess: false});
     },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },
     //离开页面时通知设备储存离线数据
     onHide() {
-        app.bLEManager.sendISvalue({isSuccess: false});
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.sendISvalue({isSuccess: false});
+        }
     },
     onLoad(e) {
         console.log('isSuccessInfo',e)
@@ -106,7 +108,9 @@ Page({
                 isSuccessInfo: e.isSuccessInfo
             })
         }
-        app.bLEManager.startData();
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.startData();
+        }
         //检测页面保持常亮
         wx.setKeepScreenOn({
             keepScreenOn: true
@@ -189,7 +193,6 @@ Page({
        console.log("indexVersion",wx.getStorageSync('indexVersion'))
        console.log("indexDeviceId",wx.getStorageSync('indexDeviceId'))
         console.log(this.blowPage._page.data.needCheckOTAUpdate,this.blowPage._page.data,'this.data.needCheckOTAUpdate')
-       app.bLEManager.sendISvalue({isSuccess: true});
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
 
@@ -197,6 +200,10 @@ Page({
         console.log("app.getLatestBLEState()",app.getLatestBLEState())
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
+        }
+        if(app.getLatestBLEState().connectState ==='connected'){
+            console.log('发送01命令')
+            app.bLEManager.sendISvalue({isSuccess: true});
         }
         console.log('000',connectState)
         console.log('1111',protocolState)
@@ -277,7 +284,10 @@ Page({
      /*   app.getBLEManager().closeAll();
         console.log("2323",getCurrentPages())
         console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')*/
-        app.bLEManager.sendISvalue({isSuccess: false});
+
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.sendISvalue({isSuccess: false});
+        }
     },
 
 

@@ -9,7 +9,7 @@ import {ErrorState} from "../utils/error-state";
 import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
 /*暂作修改*/
-const INIT_TIMEOUT = 20;
+const INIT_TIMEOUT = 10;
 export default class AbstractBlueTooth {
     constructor() {
         this._isOpenAdapter = false;
@@ -184,6 +184,7 @@ export default class AbstractBlueTooth {
                                 this.resetConnectTimeout();
                                 resolve({isConnected: this._isConnected});
                             }).catch((res) => {
+                                console.log('createBLEConnection-catch',res)
                                 this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
                                 this._isConnected = false;
                                 reject(res);

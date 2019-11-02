@@ -10,7 +10,6 @@ import {WXDialog} from "heheda-common-view";
 
 export default class BlowManager {
     constructor(page) {
-        console.log("pagepagepage",page)
         this._page = page;
         this.actionBlow = {};
         console.log("ProtocolState",ProtocolState)

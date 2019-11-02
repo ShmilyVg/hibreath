@@ -13,6 +13,7 @@ import UserInfo from "../../modules/network/userInfo";
 import * as Circular from "../result/view/circular";
 import ConnectionManager from "../index/connection-manager";
 import {oneDigit} from "../food/manager";
+import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 
 const app = getApp();
 
@@ -88,7 +89,9 @@ Page({
 
     onHide() {
         //离开时 告知蓝牙标志位 0x3D   0X02
-        app.bLEManager.sendISpage({isSuccess: false});
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.sendISpage({isSuccess: false});
+        }
         console.log('breath_user_info_input onHide info====', this.data.info);
         if (this.data.info) {
             let {info, page, scrollLeft, schemaId} = this.data, obj = {};
@@ -173,9 +176,7 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
-        /* this.setData({
-             page:wx.getStorageSync('currentPage')
-         })*/
+
         let that = this;
         console.log('on:', e);
         if (e.isNotRegister) {
@@ -302,6 +303,17 @@ Page({
         app.setBLEListener({
             bleStateListener: () => {
                 console.log("setPage-bleStateListener", app.getLatestBLEState())
+               /*
+                首页提示蓝牙未开启 暂做注释
+               if(app.getLatestBLEState().connectState =='unavailable'&&!this.data.showNewInfo&&!this.data.showGuide){
+                    console.log(this.data.showNewInfo,this.data.showGuide,'状态值！！！！！！！！！！！！！！！！')
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                     },200);
+                }*/
+               if(app.getLatestBLEState().connectState ==='connected'){
+                   app.bLEManager.sendISpage({isSuccess: true});
+               }
             },
             receiveDataListener: ({finalResult, state}) => {
                 console.log("setPage-receiveDataListener", finalResult, state);
@@ -727,7 +739,8 @@ Page({
                 HiNavigator.navigateIndex();
                 break
             case 'bodyIndex':
-                this.showModal();
+                /*this.showModal();*/
+                HiNavigator.navigateToDeviceUnbind();
                 break
             case 'sport':
                 HiNavigator.navigateToFreeClock();
@@ -743,7 +756,7 @@ Page({
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
-        app.bLEManager.sendISpage({isSuccess: true});
+
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
             if (num > 0 && countNum > 0) {
