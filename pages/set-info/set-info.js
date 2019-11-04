@@ -739,8 +739,8 @@ Page({
                 HiNavigator.navigateIndex();
                 break
             case 'bodyIndex':
-                /*this.showModal();*/
-                HiNavigator.navigateToDeviceUnbind();
+                this.showModal();
+               /* HiNavigator.navigateToDeviceUnbind();*/
                 break
             case 'sport':
                 HiNavigator.navigateToFreeClock();
