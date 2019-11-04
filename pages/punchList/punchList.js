@@ -151,15 +151,31 @@ Page({
    */
   onShareAppMessage: function () {
       if(this.data.currenttab == '0'){
+          if(this.data.inRank){
               return{
-                  title: '我在'+'['+this.data.groupName+']'+'累计打卡榜总排名第'+this.data.rankNum+'!快来围观!',
+                  title: '我在['+this.data.groupName+']共累积打卡'+this.data.addup+'天,当前排名第'+this.data.rankNum+'!',
                   path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
               }
-      }else{
-          return{
-              title: '我在'+'['+this.data.groupName+']'+'连续打卡榜总排名第'+this.data.rankNum+'！快来围观！',
-              path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+          }else{
+              return{
+                  title: '我在['+this.data.groupName+']共累积打卡'+this.data.addup+'天,当前未上榜！再接再厉!',
+                  path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+              }
           }
+
+      }else{
+          if(this.data.inRank){
+              return{
+                  title: '我在['+this.data.groupName+']已连续打卡'+this.data.continual+'天,当前排名第'+this.data.rankNum+'!',
+                  path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+              }
+          }else{
+              return{
+                  title: '我在['+this.data.groupName+']已连续打卡'+this.data.continual+'天,当前未上榜！再接再厉!',
+                  path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+              }
+          }
+
       }
   }
 })
