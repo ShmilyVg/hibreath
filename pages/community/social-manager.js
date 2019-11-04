@@ -17,7 +17,8 @@ class SocialGroupManager {
         }
         let currentSocialGroupId;
         try {
-            currentSocialGroupId = wx.getStorageSync('currentSocialGroupId');
+            /*currentSocialGroupId = wx.getStorageSync('currentSocialGroupId');*/
+            currentSocialGroupId = groupList[0].groupId;
             console.log(currentSocialGroupId,'currentSocialGroupId');
         } catch (e) {
             console.error('wx.getStorageSync(\'currentSocialGroupId\') error', e);
@@ -41,7 +42,7 @@ class SocialGroupManager {
 
     set currentSocial(value) {
         this._currentSocial = value;
-        wx.setStorageSync('currentSocialGroupId', value.groupId);
+       /* wx.setStorageSync('currentSocialGroupId', value.groupId);*/
     }
 
 }

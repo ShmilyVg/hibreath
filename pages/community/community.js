@@ -102,9 +102,11 @@ Page({
     },
 
     async forceUpdateAll() {
+        /*console.log(currentSocial,'currentSocial')*/
         function showData({currentSocial}) {
             return new Promise(async (resolve, reject) => {
                 try {
+                    console.log(currentSocial,'currentSocial')
                     if (currentSocial.groupId) {
                         wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#171717'});
                         wx.setBackgroundColor({
@@ -136,7 +138,7 @@ Page({
                         reject(e);
                     }
                 });
-                console.log('currentSocial.groupId')
+                console.log('currentSocial.groupId',currentSocial.groupId)
                 if(currentSocial.groupId){
                     this.setData({socialMemberInfo: (await getSocialGroupMembersViewInfo())});
                 }
