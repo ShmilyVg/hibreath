@@ -120,13 +120,15 @@
     </block>
     <block wx:else>
         <view class="set-top-view flex-row">
-            <view class="flex-column" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
+            <view class="" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
                 <view class="set-top-title">{{indexgoalDesc}}</view>
-                <view class="set-top-content">{{indexDayDesc}}</view>
+                <view class="set-top-content" style="float: left">{{indexDayDesc}}</view>
+                <view class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
             </view>
-            <view class="flex-column" style="margin-right: 80rpx">
-                <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
-                <view class="set-top-today">今日任务</view>
+            <view class="flex-column" style="margin-right: 31rpx">
+               <!-- <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
+                <view class="set-top-today">今日任务</view>-->
+                <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
             </view>
         </view>
         <view class="flex-column" style="margin-top: -65rpx">

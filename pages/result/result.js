@@ -53,7 +53,7 @@ Page({
         this.init();
         setTimeout(() => {
             Circular.run();
-        },200)
+        },600)
         this.cellDataHandle({});
     },
 
@@ -189,7 +189,9 @@ Page({
             });
             getApp().globalData.trendTime = null;
         }
-        Circular.run();
+        setTimeout(() => {
+            Circular.run();
+        },600)
     },
 
     onReady() {

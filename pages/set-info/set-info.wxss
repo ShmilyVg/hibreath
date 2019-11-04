@@ -378,12 +378,18 @@
 }
 
 .set-top-content{
-    font-size:28rpx;
-    font-family:PingFang SC;
+    width:167rpx;
+    height:46rpx;
+    background:rgba(255,255,255,1);
+    border-radius:23rpx;
+    font-size:26rpx;
+    font-family:Source Han Sans CN;
     font-weight:400;
-    color:rgba(255,254,254,1);
-    line-height:28rpx;
-    margin-top: 30rpx;
+    color:rgba(237,111,105,1);
+    line-height:46rpx;
+    text-align: center;
+    margin-top: 40rpx;
+    margin-right: 20rpx;
 }
 
 .set-top-step{
@@ -392,6 +398,8 @@
     font-weight:bold;
     color:rgba(255,254,254,1);
     line-height:28rpx;
+    margin-right: 10rpx;
+    margin-top: 20rpx;
 }
 
 .set-top-today{

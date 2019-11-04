@@ -5,6 +5,7 @@
 .message-detail-setting-point{
     width:8rpx;
     height:8rpx;
+    border-radius: 50%;
 }
 
 .message-detail-setting-point:nth-child(2){

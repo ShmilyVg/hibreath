@@ -14,6 +14,8 @@ import * as Circular from "../result/view/circular";
 import ConnectionManager from "../index/connection-manager";
 import {oneDigit} from "../food/manager";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
+import {showActionSheet} from "../../view/view";
+import {judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
 
 const app = getApp();
 
@@ -336,10 +338,24 @@ Page({
               app.getBLEManager().connect();
           }*/
     },
+    async onCommunitySettingClickEvent() {
+        try {
+            const {tapIndex} = await showActionSheet({itemList: ['退出当前方案'],itemColor:"#ED6F69"});
+            switch (tapIndex) {
+                case 0:
+                    await Protocol.postMembersExit({planId:this.data.planId});
+                    this.handleBaseInfo();
+                    break;
+            }
+        } catch (e) {
+            console.warn(e);
+        }
 
+    },
     async handleTasks() {
         const {result} = await Protocol.postMembersTasks();
         this.setData({
+            planId:result.planId,
             indexDayDesc: result.dayDesc,
             indexfinishNum: result.finishNum,
             indexgoalDesc: result.goalDesc,

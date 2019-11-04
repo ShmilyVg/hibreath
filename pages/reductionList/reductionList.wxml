@@ -12,14 +12,14 @@
 <view class="punchList_rank" wx:if="{{inRank}}">第{{rankNum}}名</view>
 <view class="punchList_rank" wx:else>未上榜</view>
 <view class="clear"></view>
-<view class="punchList_Day">
+<view class="{{todayDif?'punchList_Day1':'punchList_Day2'}}">
     <text wx:if="{{todayDif}}" class="punchList_Day-Text1">{{todayDif}}</text>
     <text wx:if="{{todayDif}}" class="punchList_Day-Text2">kg</text>
     <text wx:if="{{!todayDif}}" class="punchList_Day-Text3">未上榜</text>
     <text class="punchList_Day-Text4">今日减重</text>
 </view>
 <view class="punchList_line"></view>
-<view class="punchList_Day">
+<view class="{{totalDif?'punchList_Day1':'punchList_Day2'}}">
     <text wx:if="{{totalDif}}" class="punchList_Day-Text1">{{totalDif}}</text>
     <text wx:if="{{totalDif}}" class="punchList_Day-Text2">kg</text>
     <text wx:if="{{!totalDif}}" class="punchList_Day-Text3">未上榜</text>

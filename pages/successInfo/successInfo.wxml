@@ -1,4 +1,12 @@
 <view>
+    <navBar
+            color="#FFF"
+            iconTheme="white"
+            background='#EE6F69'
+            back="{{true}}"
+            bindback="handlerGobackClick">
+
+    </navBar>
     <!--   <view>-->
     <view class="bindSuccess-top">
         <image class="bindSuccess-img" src="../../images/device-bind/successBind.png"></image>

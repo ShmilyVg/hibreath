@@ -13,6 +13,7 @@ Page({
             "测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物"
         ],
         currentSwiper: 0,
+        resultDelta:1
     },
 
     onLoad: function () {
@@ -35,6 +36,23 @@ Page({
     },
     toIndex(){
         HiNavigator.navigateIndexSuc({data:true})
+    },
+    handlerGobackClick(){
+        console.log('getCurrentPages()',getCurrentPages())
+        let pages = getCurrentPages();
+        for(var i = 0;i<pages.length;i++){
+            if(pages[i].route ==='pages/result/result'){
+                this.setData({
+                    resultDelta:this.data.resultDelta+i
+                })
+                wx.navigateBack({
+                    delta:pages.length-this.data.resultDelta
+                })
+                console.log('pages.length-this.data.resultDelta',pages.length-this.data.resultDelta)
+                return;
+            }
+        }
+        HiNavigator.switchToSetInfo()
     }
 
 })

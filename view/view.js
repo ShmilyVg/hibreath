@@ -1,7 +1,8 @@
-export function showActionSheet({itemList}) {
+export function showActionSheet({itemList,itemColor}) {
     return new Promise((resolve, reject) => {
         wx.showActionSheet({
             itemList,
+            itemColor,
             success: resolve,
             fail: reject
         });

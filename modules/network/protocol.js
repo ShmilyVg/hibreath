@@ -145,10 +145,6 @@ export default class Protocol {
     static postMembersDelete(data) {
         return Network.request({url: 'group/members/delete', data})
     }
-    //我的圈子
-    static getMygroup() {
-        return Network.request({url: 'members/group/list'})
-    }
     static postMembersPut(data) {
         return Network.request({url: 'members/put', data})
     }
@@ -160,7 +156,10 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
-
+    //退出方案
+    static postMembersExit({planId}) {
+        return Network.request({url: 'members/plan/exit',data: {planId}})
+    }
     static postMembersJoinSchema({schemaId}) {
         return Network.request({url: 'members/joinSchema', data: {schemaId}})
     }

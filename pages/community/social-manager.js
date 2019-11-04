@@ -6,6 +6,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 class SocialGroupManager {
     constructor() {
         this._currentSocial = {};
+        this._groupIdNew ='';
     }
 
     async getSocialGroupList() {
@@ -16,15 +17,29 @@ class SocialGroupManager {
             return;
         }
         let currentSocialGroupId;
-        try {
-            /*currentSocialGroupId = wx.getStorageSync('currentSocialGroupId');*/
-            console.log('this._currentSocial',this._currentSocial.groupId)
-            if(this._currentSocial.groupId){
-                currentSocialGroupId = this._currentSocial.groupId;
+        console.log('this._groupIdNew1',this._groupIdNew)
+        if(this._groupIdNew){
+            for (let item of groupList) {
+                if (this._groupIdNew === item.groupId) {
+                    this.currentSocial = item;
+                    currentSocialGroupId = this._groupIdNew;
+                    break;
+                }
+            }
+            this._groupIdNew =null
+            console.log('this._groupIdNew2',this._groupIdNew)
+        }else{
+            this.currentSocial = groupList[0];
+            currentSocialGroupId = groupList[0].groupId;
+        }
+      /*  try {
+            /!*currentSocialGroupId = wx.getStorageSync('currentSocialGroupId');*!/
+            console.log('this._currentSocial',this._currentSocial)
+            if(this._groupIdNew){
+                currentSocialGroupId = this._groupIdNew;
             }else{
                 currentSocialGroupId = groupList[0].groupId;
             }
-            console.log(currentSocialGroupId,'currentSocialGroupId');
         } catch (e) {
             console.error('wx.getStorageSync(\'currentSocialGroupId\') error', e);
         }
@@ -32,13 +47,14 @@ class SocialGroupManager {
         if (currentSocialGroupId) {
             for (let item of groupList) {
                 if (currentSocialGroupId === item.groupId) {
+                    console.log('111111111111')
                     this.currentSocial = item;
                     break;
                 }
             }
         } else {
             this.currentSocial = groupList[groupList.length - 1];
-        }
+        }*/
     }
 
     get currentSocial() {
@@ -47,6 +63,7 @@ class SocialGroupManager {
 
     set currentSocial(value) {
         this._currentSocial = value;
+        this._groupIdNew = value.groupId;
        /* wx.setStorageSync('currentSocialGroupId', value.groupId);*/
     }
 

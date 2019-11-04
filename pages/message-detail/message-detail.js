@@ -23,10 +23,18 @@ Page({
         wx.setNavigationBarTitle({title: '动态详情'});
         const {result} = await Protocol.postDynamicInfo({id: this.dataId});
         console.log("nickname",result)
+        if(result.desc){
+            this.setData({
+                desc:result.desc,
+            })
+        }else{
+            this.setData({
+                desc:'',
+            })
+        }
         this.setData({
             taskId:result.taskId,
             imgUrls:result.imgUrls,
-            desc:result.desc,
             messageCreateTime: getDynamicCreateTime(result.createTimestamp),
             headUrl:result.headUrl,
             nickname:result.nickname
@@ -39,7 +47,7 @@ Page({
     onReady() {
 
     },
-    
+
     onMessageSettingEvent() {
         WXDialog.showDialog({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {

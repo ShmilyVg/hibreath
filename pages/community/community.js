@@ -19,7 +19,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentSocial: {isNotFinished: true},
+        currentSocial: {},
         socialMemberInfo: {memberCount: 0, memberImgs: []},
         dynamicList: [],
         haveGroupId:false
@@ -35,7 +35,7 @@ Page({
     },
     async onCommunitySettingClickEvent() {
         try {
-            const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子']});
+            const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子'],itemColor:"#454545"});
             switch (tapIndex) {
                 case 0:
                     HiNavigator.navigateToCommunityManagement();
