@@ -3,7 +3,7 @@
         <view class="flex-row align-items-center">
             <view class="relative">
                 <image src="{{currentSocial.imgUrl}}" class="community-logo"></image>
-                <image src="../../images/community/group.png" class="absolute community-switch-icon"></image>
+                <image src="{{socialMemberInfo.isMajor?'../../images/community/group.png':'../../images/community/green.png'}}" class="absolute community-switch-icon"></image>
             </view>
             <view class="community-name">{{currentSocial.name}}</view>
         </view>
@@ -39,7 +39,7 @@
 
 </view>
 <view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>
-<view wx:if="{{!haveGroupId}}">
+<view wx:if="{{noCommunity}}">
     <view class="community-text">
         <view style="top:700rpx;position: relative">您还未加入任何圈子</view>
     </view>

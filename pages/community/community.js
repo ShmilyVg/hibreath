@@ -12,7 +12,7 @@ import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
-
+import {WXDialog} from "heheda-common-view";
 Page({
 
     /**
@@ -20,34 +20,73 @@ Page({
      */
     data: {
         currentSocial: {},
-        socialMemberInfo: {memberCount: 0, memberImgs: []},
+        socialMemberInfo: {memberCount: 0, memberImgs: [],isMajor:false},
         dynamicList: [],
-        haveGroupId:false
+        haveGroupId:false,//有圈子
+        noCommunity:false,
     },
 
-    // isUpdateAllWhenLoad: false,
-    // async onLoad(options) {
-    // await this.forceUpdateAll();
-    // this.isUpdateAllWhenLoad = true;
-    // },
     async toMemberManagerPage() {
         HiNavigator.navigateToMemberManagement({dataId: (await judgeGroupEmpty()).groupId});
     },
+    async updata(){
+        await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
+        this.forceUpdateAll();
+    },
     async onCommunitySettingClickEvent() {
-        try {
-            const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子'],itemColor:"#454545"});
-            switch (tapIndex) {
-                case 0:
-                    HiNavigator.navigateToCommunityManagement();
-                    break;
-                case 1:
-                    await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
-                    this.forceUpdateAll();
-                    break;
+        console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
+        if(this.data.socialMemberInfo.isMajor){
+            try {
+                const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子'],itemColor:"#454545"});
+                switch (tapIndex) {
+                    case 0:
+                        HiNavigator.navigateToCommunityManagement();
+                        break;
+                    case 1:
+                        WXDialog.showDialog({
+                            content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
+                            showCancel: true,
+                            confirmText: "确定",
+                            cancelText: "取消",
+                            confirmEvent: () => {
+                               this.updata()
+                            },
+                            cancelEvent: () => {
+
+                            }
+                        });
+                        break;
+                }
+            } catch (e) {
+                console.warn(e);
             }
-        } catch (e) {
-            console.warn(e);
+        }else{
+            try {
+                const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '退出该圈子'],itemColor:"#454545"});
+                switch (tapIndex) {
+                    case 0:
+                        HiNavigator.navigateToCommunityManagement();
+                        break;
+                    case 1:
+                        WXDialog.showDialog({
+                            content: '确定要退出该圈子吗',
+                            showCancel: true,
+                            confirmText: "确定",
+                            cancelText: "取消",
+                            confirmEvent: () => {
+                                this.updata()
+                            },
+                            cancelEvent: () => {
+
+                            }
+                        });
+                        break;
+                }
+            } catch (e) {
+                console.warn(e);
+            }
         }
+
 
     },
      onDynamicItemDeleteEvent({detail}) {
@@ -102,7 +141,7 @@ Page({
     },
 
     async forceUpdateAll() {
-        /*console.log(currentSocial,'currentSocial')*/
+        console.log('shishishi')
         function showData({currentSocial}) {
             return new Promise(async (resolve, reject) => {
                 try {
@@ -113,7 +152,8 @@ Page({
                             backgroundColor: '#171717', // 窗口的背景色为黑色
                         });
                         this.setData({
-                            haveGroupId:true
+                            haveGroupId:true,
+                            noCommunity:false
                         })
                     } else {
                         wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
@@ -121,7 +161,8 @@ Page({
                             backgroundColor: '#ffffff', // 窗口的背景色为白色
                         });
                         this.setData({
-                            haveGroupId:false
+                            haveGroupId:false,
+                            noCommunity:true
                         })
                     }
                 } catch (e) {

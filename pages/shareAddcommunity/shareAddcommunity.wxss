@@ -1,4 +1,14 @@
 /* pages/shareAddcommunity/shareAddcommunity.wxss */
+.shareAddcommunity-view{
+    text-align: center;
+    background-image: url("https://backend.hipee.cn/hipee-resource/images/hibreath/20191105/e395eb36785717d6c18c7b2b4eb6159e.o6zajs-zth1ke_1mwkyso5jiadbc.9yooxhzzhykle395eb36785717d6c18c7b2b4eb6159e.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+    margin-top: 30rpx;
+    padding-top: 30rpx;
+    height: 852rpx;
+}
 .shareAdd-Span{
     width:111rpx;
     height:50rpx;
@@ -11,20 +21,20 @@
     line-height:50rpx;
     margin-bottom: 10rpx;
     margin-left: 320rpx;
-    margin-top: 60rpx;
 }
 .shareAdd-Nickname{
     font-size:42rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(69,69,69,1);
+    margin: 15rpx 0rpx;
 }
 .shareAdd-Text{
     font-size:32rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(69,69,69,1);
-    margin-bottom: 67rpx;
+    margin-bottom: 110rpx;
 }
 .shareAdd-Img{
     width:263rpx;

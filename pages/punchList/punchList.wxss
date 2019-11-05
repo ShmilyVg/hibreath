@@ -75,7 +75,7 @@ page{
 }
 .punchList_Day2{
     float: left;
-    margin-top: 40rpx;
+    margin-top: 55rpx;
     margin-bottom: 80rpx;
 }
 .punchList_Day-Text1{

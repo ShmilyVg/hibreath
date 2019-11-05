@@ -53,7 +53,7 @@ Page({
         this.init();
         setTimeout(() => {
             Circular.run();
-        },600)
+        },400)
         this.cellDataHandle({});
     },
 
@@ -191,7 +191,7 @@ Page({
         }
         setTimeout(() => {
             Circular.run();
-        },600)
+        },400)
     },
 
     onReady() {

@@ -383,7 +383,9 @@ Page({
                             fatDes: '"'+fatBurnExt.visDes+'"'
                         })
                     }
-                    Circular.run();
+                    setTimeout(() => {
+                        Circular.run();
+                    },600)
                 } else {
                     this.setData({
                         isfatBurn: true,

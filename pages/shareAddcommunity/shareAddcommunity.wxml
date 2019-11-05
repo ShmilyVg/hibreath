@@ -1,5 +1,5 @@
 <!--pages/shareAddcommunity/shareAddcommunity.wxml-->
-<view style="text-align: center">
+<view class="shareAddcommunity-view" style="text-align: center">
     <view class="shareAdd-Span">好友</view>
     <view class="shareAdd-Nickname">{{memberName}}</view>
     <view class="shareAdd-Text">邀请你加入</view>

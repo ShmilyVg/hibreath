@@ -42,12 +42,15 @@ Page({
             this.showDialog("请选择照片");
             return
         }*/
+        Toast.showLoading();
       if(this.taskId){
           Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+              Toast.showLoading();
               HiNavigator.redirectToMessageDetail({messageId: data.result.id});
           });
       }else {
           Protocol.postPublish({groupId:this.groupId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+              Toast.showLoading();
               HiNavigator.switchToCommunity();
           });
       }

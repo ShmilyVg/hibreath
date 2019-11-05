@@ -28,7 +28,7 @@ Page({
         });
     },
 
-   /* async addCommunityBtn() {
+    async addCommunityBtn() {
         const {sharedId} = this.data;
         if (sharedId) {
             const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
@@ -41,7 +41,7 @@ Page({
         } else {
             Toast.showText('未获取到圈子信息，暂时无法加入');
         }
-    }*/
+    },
     async onGetUserInfoEvent(e) {
         console.log('e',e)
         const {detail: {userInfo, encryptedData, iv}} = e;
