@@ -8,7 +8,7 @@
             </view>
         </view>
 
-        <view bindtap="onMessageSettingEvent" class="flex-column box-sizing-border-box message-detail-setting-layout">
+        <view wx:if="{{canDelete}}" bindtap="onMessageSettingEvent" class="flex-column box-sizing-border-box message-detail-setting-layout">
             <view wx:for="{{3}}" wx:key="index" class="message-detail-setting-point"></view>
         </view>
     </view>

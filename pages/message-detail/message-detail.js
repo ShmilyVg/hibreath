@@ -33,6 +33,7 @@ Page({
             })
         }
         this.setData({
+            canDelete:result.action.delete,
             taskId:result.taskId,
             imgUrls:result.imgUrls,
             messageCreateTime: getDynamicCreateTime(result.createTimestamp),
