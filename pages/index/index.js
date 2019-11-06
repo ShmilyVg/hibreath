@@ -125,6 +125,10 @@ Page({
         }
     },
     onLoad(e) {
+        if(app.getLatestBLEState().connectState ==='connected'){
+            console.log('小程序发送40 01命令')
+            app.bLEManager.sendISvalue({isSuccess: true});
+        }
         console.log('isSuccessInfo',e)
         if(e.isSuccessInfo){
             this.setData({
@@ -226,7 +230,7 @@ Page({
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
         if(app.getLatestBLEState().connectState ==='connected'){
-            console.log('发送01命令')
+            console.log('小程序发送40 01命令')
             app.bLEManager.sendISvalue({isSuccess: true});
         }
         console.log('000',connectState)
