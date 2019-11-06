@@ -26,7 +26,7 @@
     margin-top: 20rpx;
 }
 .createCommunity-Inputpla{
-    font-size:42rpx;
+    font-size:35rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(155,155,155,1);

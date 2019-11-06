@@ -159,7 +159,7 @@
     font-weight:bold;
     color:rgba(51,51,51,1);
     margin-bottom: 63rpx;
-    margin-left: 201rpx;
+    width: 100%;
     float: left;
 }
 .swiperImg{

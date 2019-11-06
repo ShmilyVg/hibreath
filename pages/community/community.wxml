@@ -38,7 +38,10 @@
     <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>
-<view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock"><text>发表\n动态</text></view>
+<view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock">
+    <view>发表</view>
+    <view>动态</view>
+</view>
 <view wx:if="{{noCommunity}}">
     <view class="community-text">
         <view style="top:700rpx;position: relative">您还未加入任何圈子</view>

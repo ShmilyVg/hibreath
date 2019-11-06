@@ -192,7 +192,7 @@ export default class BlowManager {
             blowpicShow: false,
             readyimg:true,// 预热图片显示
             blowingImg:false,
-            textState:'预热中',
+            textState:'',
             textStateEn:'PREHEATING',
             disblowImg:false,//吹气不足状态
             process:false,//分析中

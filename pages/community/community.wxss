@@ -18,7 +18,6 @@ page{
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%;
-    background-color: ghostwhite;
 }
 
 .community-switch-icon {
@@ -101,8 +100,10 @@ page{
     font-weight:400;
     color:rgba(255,255,255,1);
     text-align: center;
-    padding-top: 28rpx;
     box-sizing: border-box;
+    line-height: 50rpx;
+    padding-top: 20rpx;
+
 }
 .community-text{
     font-size:42rpx;
