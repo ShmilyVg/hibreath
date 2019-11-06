@@ -45,7 +45,30 @@ Page({
             "3. 请勿关闭手机蓝牙",
             "4. 请勿熄灭屏幕"
         ],
-
+        readImgList:[
+            'http://img.hipee.cn/hibreath/img/2019116/0c2e0bf0-8bd6-4af3-92ac-c662e6578b19.png',
+            'http://img.hipee.cn/hibreath/img/2019116/9741e6e3-74cc-4824-9341-23bae9c1d9a9.png',
+            'http://img.hipee.cn/hibreath/img/2019116/edeba388-e332-4412-ab08-0ac2e84eba97.png',
+            'http://img.hipee.cn/hibreath/img/2019116/863c07b1-bdd2-4b07-90e7-888c3d0d2e6e.png',
+            'http://img.hipee.cn/hibreath/img/2019116/857e9a22-250c-4f06-b682-038c4949e32b.png',
+            'http://img.hipee.cn/hibreath/img/2019116/ad0a5d4a-e6ad-41bc-b130-376ecc42d7ce.png'
+        ],
+        readImgHead:[
+            "零食干扰",
+            "刷牙",
+            "饮酒饮料",
+            "抽烟",
+            "涂抹口红",
+            "喷香水"
+        ],
+        readImgsub:[
+            "避免酒精类零食",
+            "30分钟内",
+            "避免气味干扰",
+            "30分钟内",
+            "30分钟内",
+            "30分钟内"
+        ],
         homeTitle: false,
 
         homeOrangeBtn: false,
