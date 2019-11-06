@@ -343,8 +343,21 @@ Page({
             const {tapIndex} = await showActionSheet({itemList: ['退出当前方案'],itemColor:"#ED6F69"});
             switch (tapIndex) {
                 case 0:
-                    await Protocol.postMembersExit({planId:this.data.planId});
-                    this.handleBaseInfo();
+                    WXDialog.showDialog({
+                        content: '确定要退出该方案吗',
+                        showCancel: true,
+                        confirmText: "确定",
+                        cancelText: "取消",
+                        confirmEvent: () => {
+                            Protocol.postMembersExit({planId:this.data.planId}).then(() =>
+                                this.handleBaseInfo()
+                            )
+                        },
+                        cancelEvent: () => {
+
+                        }
+                    });
+
                     break;
             }
         } catch (e) {
