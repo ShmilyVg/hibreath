@@ -76,6 +76,13 @@
     font-weight:bold;
     margin-top: 10rpx;
 }
+.readyImg-textEn{
+    font-size: 15px;
+    color: #454545;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    margin-top: 15rpx;
+}
 .fatBurning-img{
     width: 106rpx;
     height: 155rpx;

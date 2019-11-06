@@ -21,7 +21,7 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.PRE_HOT_START] = () => {
             this.ready();
-            this.timer();
+           /* this.timer(); 预热超过两分钟提示文字暂时去掉*/
         };
 
         this.actionBlow[ProtocolState.PRE_HOT_FINISH_AND_START_BREATH] = () => {
@@ -192,8 +192,6 @@ export default class BlowManager {
             blowpicShow: false,
             readyimg:true,// 预热图片显示
             blowingImg:false,
-            textState:'',
-            textStateEn:'PREHEATING',
             disblowImg:false,//吹气不足状态
             process:false,//分析中
 
