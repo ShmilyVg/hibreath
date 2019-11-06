@@ -8,6 +8,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import {WXDialog} from "heheda-common-view";
 import {getSocialGroupManager, judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
 import {showActionSheet} from "../../view/view";
+
 Page({
 
   /**
@@ -55,7 +56,15 @@ Page({
             confirmEvent: () => {
                 Protocol.postMembersDelete({groupId:Number(this.dataId),memberId:e.currentTarget.dataset.memberid}).then(data => {
                     getSocialGroupManager.currentSocial = {groupId:Number(this.dataId)};
-                    HiNavigator.switchToCommunity();
+                    wx.showToast({
+                        title: '移除成功',
+                        duration: 1000,
+                        image: '../../images/community/nike.png'
+                    })
+                    setTimeout(() => {
+                        HiNavigator.switchToCommunity();
+                    }, 1000);
+
                 })
             },
             cancelEvent: () => {
