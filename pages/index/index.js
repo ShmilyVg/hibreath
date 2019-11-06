@@ -229,10 +229,6 @@ Page({
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
-        if(app.getLatestBLEState().connectState ==='connected'){
-            console.log('小程序发送40 01命令')
-            app.bLEManager.sendISvalue({isSuccess: true});
-        }
         console.log('000',connectState)
         console.log('1111',protocolState)
         console.log("-----1212",)
@@ -244,6 +240,10 @@ Page({
                 const {connectState, protocolState} = app.getLatestBLEState();
                 console.log("connectState",connectState)
                 console.log("protocolState",protocolState)
+                if(connectState ==='connected'){
+                    console.log('小程序发送40 01命令')
+                    app.bLEManager.sendISvalue({isSuccess: true});
+                }
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
