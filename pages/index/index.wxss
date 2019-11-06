@@ -29,7 +29,7 @@
     font-weight:500;
     color:rgba(237,111,105,1);
     line-height:110rpx;
-    margin: 46rpx  auto 110rpx auto;
+    margin: 46rpx  auto 76rpx auto;
 }
 .readyImg-littleImg{
     width: 33.3%;

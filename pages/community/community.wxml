@@ -23,17 +23,32 @@
         </view>
     </view>
 
-    <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
-        <view class="flex-row align-items-center" bindtap="toReductionList">
+   <!-- <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
+        <view class="flex-row align-items-center" bindtap="toReductionList" style="height: 120rpx;width: 244rpx">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">减重榜</view>
         </view>
-        <view class="fill-height" style="border-left: 2rpx solid white;margin-left: 87rpx;margin-right: 72rpx;"></view>
-        <view class="flex-row align-items-center" bindtap="toPunchList">
+        <view class="fill-height" style="border-left: 2rpx solid white;margin-left: 40rpx;margin-right: 40rpx;"></view>
+        <view class="flex-row align-items-center" bindtap="toPunchList" style="height: 120rpx;width: 244rpx">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">打卡榜</view>
+        </view>
+    </view>-->
+    <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
+        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toReductionList" style="height: 100%;width: 50%;border-right: 1rpx #fff solid">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">减重榜</view>
+        </view>
+        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;padding-left: 72rpx">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">打卡榜</view>
         </view>
     </view>
+
+
+
+
+
 
     <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
