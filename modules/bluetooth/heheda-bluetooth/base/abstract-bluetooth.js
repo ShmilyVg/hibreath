@@ -168,7 +168,7 @@ export default class AbstractBlueTooth {
         return new Promise((resolve, reject) => {
                 this.stopBlueToothDevicesDiscovery().finally(() => {
                     if (!this._isConnected) {
-                        this._isConnected = true;
+                        //蓝牙连接问题暂时处理 this._isConnected = true;
                         let connectionInfo = this.connectionInfo;
                         console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's');
                         wx.createBLEConnection({
