@@ -168,7 +168,8 @@ export default class AbstractBlueTooth {
         return new Promise((resolve, reject) => {
                 this.stopBlueToothDevicesDiscovery().finally(() => {
                     if (!this._isConnected) {
-                        //蓝牙连接问题暂时处理 this._isConnected = true;
+                        //蓝牙连接问题暂时处理
+                        //this._isConnected = true;
                         let connectionInfo = this.connectionInfo;
                         console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's');
                         wx.createBLEConnection({
@@ -179,6 +180,15 @@ export default class AbstractBlueTooth {
                                 // t连接成功
                                 this._getEventAndTimestamp({event: 'linkResultTime', status: 1});
                                 console.log('蓝牙连接成功', res);
+                                var pages = getCurrentPages()    //获取加载的页面
+                                var currentPage = pages[pages.length-1]    //获取当前页面的对象
+                                console.log('getApp()',getApp().bLEManager)
+                                if(currentPage.route ==='pages/index/index'){
+                                    getApp().bLEManager.startData();
+                                    getApp().bLEManager.sendISvalue({isSuccess: true});
+                                    console.log('小程序发送了同步状态的指令 和 40指令')
+                                }
+
                                 this._deviceId = deviceId;
                                 this._isConnected = true;
                                 this.resetConnectTimeout();

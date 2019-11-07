@@ -58,11 +58,13 @@ Component({
 
         cancel() {
             this.setData({ needCheckOTAUpdate: false })
-            WXDialog.showDialog({
-                content: '好的！本次您可以继续正常使用\n' + '下次在按键检测状态将再次提醒',
-                confirmText: '我知道啦',
+            setTimeout(() => {
+                WXDialog.showDialog({
+                    content: '好的！本次您可以继续正常使用\n' + '下次在按键检测状态将再次提醒',
+                    confirmText: '我知道啦',
 
-            })
+                })
+            }, 200);
         },
 
         confirm() {
