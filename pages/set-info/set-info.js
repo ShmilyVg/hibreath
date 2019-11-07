@@ -330,7 +330,10 @@ Page({
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
-                app.getBLEManager().connect({macId: deviceInfo.mac});
+                console.log('app.getLatestBLEState().connectState', app.getLatestBLEState().connectState)
+                if(app.getLatestBLEState().connectState !== 'connected'){
+                    app.getBLEManager().connect({macId: deviceInfo.mac});
+                }
             }
         });
         /*  const isBindDevice = wx.getStorageSync('isBindDevice');

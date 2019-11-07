@@ -128,15 +128,14 @@ Page({
         if(app.getLatestBLEState().connectState ==='connected'){
             console.log('小程序发送40 01命令')
             app.bLEManager.sendISvalue({isSuccess: true});
+            console.log('小程序发送了同步状态的指令')
+            app.bLEManager.startData();
         }
         console.log('isSuccessInfo',e)
         if(e.isSuccessInfo){
             this.setData({
                 isSuccessInfo: e.isSuccessInfo
             })
-        }
-        if(app.getLatestBLEState().connectState ==='connected'){
-            app.bLEManager.startData();
         }
 
         //检测页面保持常亮
@@ -199,13 +198,15 @@ Page({
         Protocol.getDeviceBindInfo().then(data => {
             let deviceInfo = data.result;
             console.log('获取到的设备', data);
-
             if (!deviceInfo) {
                 app.getBLEManager().clearConnectedBLE();
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
-                app.getBLEManager().connect({macId: deviceInfo.mac});
+                console.log('app.getLatestBLEState().connectState', app.getLatestBLEState().connectState)
+                if(app.getLatestBLEState().connectState !== 'connected'){
+                    app.getBLEManager().connect({macId: deviceInfo.mac});
+                }
             }
         });
 
@@ -240,10 +241,11 @@ Page({
                 const {connectState, protocolState} = app.getLatestBLEState();
                 console.log("connectState",connectState)
                 console.log("protocolState",protocolState)
-                if(connectState ==='connected'){
+               /* if(connectState ==='connected'){
                     console.log('小程序发送40 01命令')
                     app.bLEManager.sendISvalue({isSuccess: true});
-                }
+
+                }*/
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
@@ -309,7 +311,7 @@ Page({
         HiNavigator.navigateToDeviceBind()
     },
     onUnload() {
-     /*   app.getBLEManager().closeAll();
+     /* 关闭蓝牙适配器  app.getBLEManager().closeAll();
         console.log("2323",getCurrentPages())
         console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')*/
 

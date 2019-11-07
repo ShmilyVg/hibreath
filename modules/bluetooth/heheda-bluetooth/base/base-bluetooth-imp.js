@@ -125,7 +125,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                     timeindex = setTimeout(() => {
                         console.warn('开始重新连接');
                         this.openAdapterAndStartBlueToothDeviceDiscovery();
-                    }, 7000);
+                    }, 700);
                      /*   this.openAdapterAndStartBlueToothDeviceDiscovery();*/
                 }
 
@@ -156,7 +156,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
 
 
     baseDeviceFindAction(res) {
-        console.log('开始扫描', res);
+        console.log('开始扫描', res,'deviceId',res.devices[0].deviceId);
         const hiDeviceName = this._hiDeviceName || '';
         if (!!this._scanBLDListener) {//首页重连需要清devices，按deviceId连接时，需过滤其他设备
             this._scanBLDListener(res);
