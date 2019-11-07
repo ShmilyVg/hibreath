@@ -1,1 +1,89 @@
-/* pages/caseDetails/caseDetails.wxss */
+
+page{
+  height:100%;
+}
+.programme-header{
+  width:750rpx;
+  height:350rpx;
+  background:#000;
+}
+.programme-header-title{
+  font-size:43rpx;
+  color:#fff;
+  margin:0 0 47rpx 53rpx;
+  padding-top:65rpx;
+}
+.title-box{
+  height:72rpx;
+  color:#fff;
+}
+.title-box image{
+  width:72rpx;
+  height:72rpx;
+  margin-left:51rpx;
+  float:left;
+}
+.box-text{
+  width:180rpx;
+  height:59rpx;
+  font-size:26rpx;
+  margin:0 15rpx;
+  float:left;
+}
+.programme-body{
+  background:rgba(255,255,255,1);
+  position:relative;
+}
+.box-text-right{
+  width:232rpx;
+  font-size:26rpx;
+   float:left;
+   margin-left:15rpx;
+}
+.day-list{
+  height:93rpx;
+  width:582rpx;
+  /* background:rgba(255,255,255,1); */
+  background:red;
+  border-radius:20rpx;
+  position:absolute;
+  left:40rpx;
+  padding:52rpx 44rpx;
+}
+.day-list image{
+  width:38rpx;
+  height:22rpx;
+  float:right;
+  
+}
+.day-list-1{
+  top:70rpx;
+}
+.day-list-title{
+  display: inline-block;
+  width:100%;
+}
+.executeorder{
+ width:70rpx;
+ height:35rpx;
+ font-size:48rpx;
+ font-family:DIN Condensed;
+ font-weight:bold;
+ color:rgba(69,69,69,1);
+ line-height:38rpx;
+ float:left;
+}
+.day-title{
+ width:190rpx;
+ height:37rpx;
+ font-size:38rpx;
+ font-family:PingFang SC;
+ font-weight:500;
+ color:rgba(69,69,69,1);
+ line-height:28rpx;
+ float:left;
+ margin-left:19rpx;
+}
+.day-subtitle{
+  width:100%;
+}

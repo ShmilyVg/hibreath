@@ -1,2 +1,19 @@
-<!--pages/caseDetails/caseDetails.wxml-->
-<text>pages/caseDetails/caseDetails.wxml</text>
+<view class="programme-header">
+  <view class="programme-header-title">7日减脂方案</view>
+  <view class="title-box">
+      <image src="../../images/caseDetails/red.png" ></image>
+      <view class="box-text">帮你少摄入了约 90%糖类</view>
+      <image src="../../images/caseDetails/blue.png" ></image>
+      <view class="box-text-right">少摄入的热量相当于 跑了52公里 </view>
+  </view>
+  <view class="programme-body">
+    <view class="day-list day-list-1">
+        <view class="day-list-title">
+            <view class="executeorder">DAY1</view>
+            <view class="day-title">断糖启动日</view>
+            <image src="../../images/caseDetails/bottom.png"></image>
+        </view>
+        <view class="day-subtitle">减脂第一天，先来清清身体里的“糖"吧!</view>
+    </view>
+  </view>
+</view>
