@@ -21,7 +21,8 @@
     "pages/communityManagement/communityManagement",
     "pages/shareAddcommunity/shareAddcommunity",
     "pages/punchList/punchList",
-    "pages/reductionList/reductionList"
+    "pages/reductionList/reductionList",
+    "pages/caseDetails/caseDetails"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
