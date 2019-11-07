@@ -28,12 +28,18 @@ Page({
         });
     },
 
-    async addCommunityBtn() {
+    async addCommunityBtn(e) {
+        console.log('e',e.currentTarget.dataset.type)
         const {sharedId} = this.data;
         if (sharedId) {
             const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
             if (groupId) {
                 getSocialGroupManager.currentSocial = {groupId};
+                if(e.currentTarget.dataset.type === 'firstEnter'){
+                    getApp().globalData.firstEnter =true
+                    HiNavigator.switchToCommunity({firstEnter:true});
+                    return
+                }
                 HiNavigator.switchToCommunity();
             } else {
                 Toast.showText('抱歉，暂时无法加入该圈子');

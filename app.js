@@ -200,7 +200,8 @@ App({
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
         notRegister: false,
-        currentIndex:0
+        currentIndex:0,
+        firstEnter: false,//被分享者 没有在圈子
     },
     ...common
 });

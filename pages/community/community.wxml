@@ -44,12 +44,6 @@
             <view class="community-rank-text">打卡榜</view>
         </view>
     </view>
-
-
-
-
-
-
     <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>

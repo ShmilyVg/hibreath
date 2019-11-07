@@ -103,7 +103,16 @@ Page({
 
         }
     },
-
+    onLoad(options) {
+        console.log('firstEnter',getApp().globalData.firstEnter)
+        if(getApp().globalData.firstEnter){
+            wx.showToast({
+                title: '加入成功',
+                duration: 1400,
+                image: '../../images/community/nike.png'
+            })
+        }
+    },
     async onShow() {
         // if (this.isUpdateAllWhenLoad) {
         this.forceUpdateAll();
