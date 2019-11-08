@@ -125,6 +125,10 @@ export default class Protocol {
     static postSettingsGoals() {
         return Network.request({url: 'settings/goals'})
     }
+    //首页打卡分享
+    static postSharetask(data) {
+        return Network.request({url: 'members/share/task',data:data})
+    }
     //饮食打卡心灵鸡汤
     static getSoul() {
         return Network.request({url: 'settings/soul'})

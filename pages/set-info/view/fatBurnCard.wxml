@@ -15,16 +15,17 @@
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
 
-        <view wx:if="{{fatBurnTask.finished}}" class="content" style="height: 500rpx;margin-top: 50rpx;margin-left:{{hiddenFat}}">
-            <block>
-                <canvas canvas-id="bg" class='canvasII'></canvas>
-                <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
+        <view wx:if="{{fatBurnTask.finished}}"  style="margin-top: 50rpx;width: 100%">
+               <!-- <canvas canvas-id="bg" class='canvasII'></canvas>
+                <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>-->
                 <image class="fatType1" src="{{fatType}}"></image>
+            <view style="float: left;margin-left: 20rpx">
+                <view class="fatScore">{{score}}</view>
                 <view class="fatText">{{fatText}}</view>
-                <view class="fatTextEn">{{fatTextEn}}</view>
-                <view wx:if="{{fatDes ==''}}" class="fatDes"></view>
-                <view wx:else class="fatDes">{{fatDes}}</view>
-            </block>
+            </view>
+            <view class="clear"></view>
+            <view wx:if="{{fatDes ==''}}" class="fatDes"></view>
+            <view wx:else class="fatDes"style="  margin-top: 64rpx;margin-bottom: 26rpx;">{{fatDes}}</view>
         </view>
     </view>
 

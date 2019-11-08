@@ -124,6 +124,10 @@
                 <view class="set-top-title">{{indexgoalDesc}}</view>
                 <view class="set-top-content" style="float: left">{{indexDayDesc}}</view>
                 <view class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
+                <button class="set-top-contentS" style="float: left" open-type="share">
+                    <image class="shareImg" src="../../images/set-info/shared.png"></image>
+                    分享
+                </button>
             </view>
             <view class="flex-column" style="margin-right: 31rpx">
                <!-- <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
@@ -156,6 +160,7 @@
             <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
         </view>
     </block>
+    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;" canvas-id="myCanvas"></canvas>
 </view>
 
 <view wx:if="{{showBigTip}}" class="flex-column">
@@ -200,5 +205,7 @@
             <view class="clear"></view>
         </view>
     </form>
+
 </view>
+
 <!--底部弹窗-->

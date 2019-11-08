@@ -10,13 +10,14 @@ import IndexCommonManager from "../index/view/indexCommon";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
-import * as Circular from "../result/view/circular";
+
 import ConnectionManager from "../index/connection-manager";
 import {oneDigit} from "../food/manager";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 import {showActionSheet} from "../../view/view";
 import {judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
-
+import * as Shared from "./view/shared.js";
+import {UploadUrl} from "../../utils/config";
 const app = getApp();
 
 Page({
@@ -74,7 +75,20 @@ Page({
         fatText:'',
         fatTextEn:'',
         fatType:'',
-        fatDes:''
+        fatDes:'',
+
+
+        shareTodayDif:"",
+        shareTodayDifImg:"",
+        shareTotalDifImg:"",
+        shareTotalDif:"",
+        shareFat:"",
+        shareFatBurnDesc:"",
+        shareTaskList:"",
+        shareTaskListImg:'',
+        shareImg:"",
+        bgImg:"../../images/set-info/shareBg.png",//分享背景
+        textBg:'../../images/set-info/textBg.png'
     },
     onFocus: function (e) {
         this.setData({
@@ -170,7 +184,6 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
-                hiddenFat:"auto",
                 showModalStatus: false,
             })
             toast.success('填写成功');
@@ -180,6 +193,7 @@ Page({
     async onLoad(e) {
 
         let that = this;
+
         console.log('on:', e);
         if (e.isNotRegister) {
             that.setData({
@@ -193,7 +207,7 @@ Page({
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
         console.log("this",this)
-        Circular.init(this);
+
     },
 
     handleGuide(that) {
@@ -369,15 +383,37 @@ Page({
 
     },
     async handleTasks() {
+        Toast.showLoading();
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
+            sharedId:result.sharedId,
             indexDayDesc: result.dayDesc,
             indexfinishNum: result.finishNum,
             indexgoalDesc: result.goalDesc,
             indextaskNum: result.taskNum,
             taskListAll: result.taskList,
         })
+        if(this.data.sharedId){
+            const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+            this.setData({
+                shareTodayDif:result.todayDif,
+                shareTodayDifImg:result.todayDifImg,
+                shareTotalDifImg:result.totalDifImg,
+                shareTotalDif:result.totalDif,
+                shareFat:result.fatBurn,
+                shareFatBurnDesc:result.fatBurnDesc,
+                shareTaskList:result.taskList,
+            })
+            Shared.getImageInfo(this)
+            Shared.screenWdith(this)
+            setTimeout(() => {
+                Shared.createNewIm(this)
+                Shared.savePic(this)
+            },500)
+
+
+        }
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213", typesArr)
         for (var i = 0; i < typesArr.length; i++) {
@@ -399,9 +435,7 @@ Page({
                             fatDes: '"'+fatBurnExt.visDes+'"'
                         })
                     }
-                    setTimeout(() => {
-                        Circular.run();
-                    },600)
+
                 } else {
                     this.setData({
                         isfatBurn: true,
@@ -514,6 +548,7 @@ Page({
                 backgroundColor: '#F55E6B',
             })
         });
+        Toast.hiddenLoading();
     },
 
     async continue() {
@@ -723,7 +758,7 @@ Page({
 
 
     onReady() {
-        Circular.createSelectorQuery()
+
     },
 
     bindScrollView(e) {
@@ -786,7 +821,7 @@ Page({
         this.data.schemaId = e.currentTarget.dataset.index
     },
 
-    onShow() {
+    async onShow() {
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
@@ -800,7 +835,6 @@ Page({
                     that.setData({
                         sync: that.data.sync,
                         showBigTip: true,
-                        hiddenFat:"600rpx",
                     });
 
                     clearTimeout(that.data.sync.timer);
@@ -808,7 +842,6 @@ Page({
                     that.data.sync.timer = setTimeout(function () {
                         that.setData({
                             showBigTip: false,
-                            hiddenFat:"auto",
                         });
                         that.handleTasks();
                     }, 2000)
@@ -816,7 +849,6 @@ Page({
             } else {
                 that.setData({
                     showBigTip: false,
-                    hiddenFat:"auto",
                 })
             }
         };
@@ -898,9 +930,6 @@ Page({
         })
     },
     showModal: function () {
-        this.setData({
-            hiddenFat:"600rpx"
-        })
         // 显示遮罩层
         var animation = wx.createAnimation({
             duration: 200,
@@ -923,8 +952,22 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-            hiddenFat:"auto"
         })
         this.handleTasks();
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+     onShareAppMessage() {
+        console.log('sharedId',this.data.shareImg)
+        return {
+
+            title: this.data.indexDayDesc,
+            path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.sharedId,
+            imageUrl:this.data.shareImg
+        };
+        console.log('indexDayDesc',this.data.shareImg)
+
     }
 })
