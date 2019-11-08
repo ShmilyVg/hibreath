@@ -305,4 +305,8 @@ export default class Protocol {
     static postPublish(data) {
         return Network.request({url: 'group/dynamic/publish', data})
     }
+    //七日减脂方案
+  static fatReducingScheme({ schemaId }) {
+     return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
+    }
 }

@@ -169,4 +169,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToPunchList({groupId}) {
         this.navigateTo({url: '/pages/punchList/punchList?groupId=' + groupId});
     }
+   static navigateToCaseDetails({ schemaId }) {
+     this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
+    }
 }
