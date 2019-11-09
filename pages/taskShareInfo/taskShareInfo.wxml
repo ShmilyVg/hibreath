@@ -1,0 +1,20 @@
+
+<import src="./view/bodyIndex.wxml"></import>
+<import src="./view/food.wxml"></import>
+<import src="./view/fatBurn.wxml"></import>
+<import src="./view/sport.wxml"></import>
+<view class="page" >
+    <view class="page-header">
+        <view class="title text-center">{{memberName}}减脂第{{dayNum}}天</view>
+        <view class="sub-title text-center">减脂报告</view>
+    </view>
+
+    <view class="card-list">
+     <view class="card-wrap" wx:if="{{!!taskList}}" wx:for="{{taskList}}" wx:key="index" wx:for-item="item">
+         <template is="bodyIndex" wx:if="{{item.type == 'bodyIndex' && !!item.ext}}" data="{{...item.ext, iconUp, iconDown}}"></template>
+         <template is="fatBurn" wx:if="{{item.type == 'fatBurn' && !!item.ext}}" data="{{...item.ext}}"></template>
+         <template is="food" wx:if="{{item.type == 'food' && !!item.ext}}" data="{{...item.ext}}"></template>
+         <template is="sport" wx:if="{{item.type == 'sport' && !!item.ext}}" data="{{...item.ext}}"></template>
+     </view>
+    </view>
+</view>

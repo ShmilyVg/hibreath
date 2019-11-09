@@ -1,0 +1,18 @@
+<template name="fatBurn">
+<view class="card fatbarn">
+            <view class="title text-center">- 燃脂情况 -</view>
+            <view class="fatbarn-value-wrap">
+                <view style="text-algin:right;margin-right:10rpx">
+                    <image style="width:80rpx;height:100%" src="http://img.hipee.cn/hibreath/icon/type5.png" ></image>
+                </view>
+                <view class="fatbarn-value" style="margin-left:10rpx">
+                    <view class="value">3.5</view>
+                    <view class="desc">状态极佳</view>
+                </view>
+            </view>
+            <view class="desc">
+                燃脂速度比上次提高了1.1，不错，肉肉已经从沉睡中苏醒，相当于减掉了1-9g脂肪，虽然燃脂速度不是很快，但是已经很棒啦~
+            </view>
+        </view>
+
+</template>

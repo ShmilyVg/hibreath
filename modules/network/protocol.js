@@ -301,4 +301,12 @@ export default class Protocol {
     static postPublish(data) {
         return Network.request({url: 'group/dynamic/publish', data})
     }
+
+    /**
+     * 任务分享-分享详情
+     * @param {sharedId} param0 
+     */
+    static postTaskSharedInfo({sharedId}){
+        return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
+    }
 }
