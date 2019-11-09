@@ -5,6 +5,7 @@
   "backgroundTextStyle": "light",
   "usingComponents": {
     "foodCard": "../../components/foodCard/foodCard",
-    "setting": "../../components/setting/index"
+    "setting": "../../components/setting/index",
+    "pickerDate":"../../components/pickerDate/index"
   }
 }

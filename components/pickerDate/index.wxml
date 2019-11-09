@@ -1,0 +1,14 @@
+<!--components/pickerDate/index.js.wxml-->
+<view style="margin-top: 110rpx">
+    <picker-view indicator-style="height: 90px;" class="pickerDate" value="{{value}}" bindchange="bindChange">
+        <picker-view-column class="pickerDateColumn">
+            <view wx:for="{{years}}" class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column class="pickerDateColumn" style='margin: 0rpx 67rpx'>
+            <view wx:for="{{months}}"class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column class="pickerDateColumn">
+            <view wx:for="{{days}}"class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+    </picker-view>
+</view>

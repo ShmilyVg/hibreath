@@ -455,7 +455,7 @@
 }
 
 .set-content-view{
-    width:573rpx;
+
     background:rgba(255,255,255,1);
     border-radius:10rpx;
     padding: 44rpx 47rpx 43rpx 30rpx;

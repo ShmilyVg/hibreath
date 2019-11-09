@@ -38,7 +38,7 @@ Page({
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
         page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
-        birth: ['1980', '01', '01'],
+        birth: ['1980', '1', '1'],
         meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
@@ -264,7 +264,7 @@ Page({
                 goalDesc: '',
                 sex: 0,
                 sexStr: 'woman',
-                birthday: '1980-01-01',
+                birthday: '1980-1-1',
                 height: '',
                 weight: '',
                 bodyFatRate: '',
@@ -383,7 +383,7 @@ Page({
 
     },
     async handleTasks() {
-        Toast.showLoading();
+        //Toast.showLoading();
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
@@ -696,7 +696,12 @@ Page({
             birth: birthArr
         })
     },
-
+    showBirth(e){
+        console.log('dddddd',e.detail)
+        this.setData({
+            'info.birthday': e.detail,
+        })
+    },
     bindInputHeight(e) {
         const height = e.detail.value;
         let weightGoal = (height / 100) * (height / 100) * 21;

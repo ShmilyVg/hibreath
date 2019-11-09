@@ -37,7 +37,7 @@
                 </view>
             </view>
             <block wx:elif="{{page==3}}">
-                <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
+               <!-- <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
                         bindchange="bindChangeBirth">
                     <view class="flex-row">
                         <view wx:for="{{birth}}" class="flex-column" style="width: 154rpx;margin: 0 33rpx">
@@ -46,7 +46,12 @@
                             <view class="page2-line" style="margin-top: 15rpx"></view>
                         </view>
                     </view>
-                </picker>
+                </picker>-->
+                <pickerDate bind:childSecDate='showBirth'
+                            style="width: 100%"
+                            birth="{{birth}}"
+                            info="{{info}}"
+                ></pickerDate>
             </block>
             <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
                 <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
@@ -135,8 +140,8 @@
                 <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
             </view>
         </view>
-        <view class="flex-column" style="margin-top: -65rpx">
-            <view wx:for="{{taskListAll}}" wx:key="index">
+        <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
+            <view wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
                 <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}"  data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
                 <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
                 <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
@@ -160,7 +165,7 @@
             <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
         </view>
     </block>
-    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 300rpx;" canvas-id="myCanvas"></canvas>
+    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>
 </view>
 
 <view wx:if="{{showBigTip}}" class="flex-column">
