@@ -1,6 +1,6 @@
 /* pages/set-info/set-info.wxss */
 @import "./view/guide.wxss";
-@import "../result/result.wxss";
+
 ::-webkit-scrollbar{
     width: 0;
     height: 0;
@@ -45,7 +45,30 @@
     margin-top: 50rpx;
     margin-bottom: 122rpx;
 }
-
+.fatType1{
+    width: 99rpx;
+    height: 136rpx;
+    margin-left: 184rpx;
+    float: left;
+}
+.fatText{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}
+.fatDes{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+}
+.fatScore{
+    font-size:76rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+}
 .card{
     width:280rpx;
     height:400rpx;
@@ -391,7 +414,27 @@
     margin-top: 40rpx;
     margin-right: 20rpx;
 }
+.set-top-contentS{
+    width:144rpx;
+    height:48rpx;
+    border:1rpx solid rgba(255,255,255,1);
+    border-radius:24rpx;
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:48rpx;
+    box-sizing: border-box;
+    padding-left: 17rpx ;
+    margin-top: 40rpx;
+    background: #ED6F69;
+}
 
+.shareImg{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 3rpx
+}
 .set-top-step{
     font-size:80rpx;
     font-family:DIN Condensed;
@@ -412,7 +455,7 @@
 }
 
 .set-content-view{
-    width:573rpx;
+
     background:rgba(255,255,255,1);
     border-radius:10rpx;
     padding: 44rpx 47rpx 43rpx 30rpx;
