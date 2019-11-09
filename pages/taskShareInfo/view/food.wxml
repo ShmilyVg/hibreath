@@ -1,0 +1,13 @@
+<template name="food">
+        <view class="card food">
+            <view class="title text-center">- 饮食情况 -</view>
+            <view class="desc">
+                {{desc}}
+            </view>
+            <view class="img-list">
+                <view class="img-wrap" wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
+                    <image src="{{item}}" mode="widthFix"></image>
+                </view>
+            </view>
+        </view>
+</template>

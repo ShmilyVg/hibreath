@@ -1,0 +1,101 @@
+/* pages/taskShareInfo/taskShareInfo.wxss */
+
+@import './view/bodyIndex.wxss';
+@import './view/fatBurn.wxss';
+@import './view/food.wxss';
+@import './view/sport.wxss';
+
+.page{
+    display: block;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: #efefef;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.page-header{
+    display: flex;
+    flex-direction: column;
+    height: 310rpx;
+    width: 100%;
+    background: linear-gradient(rgb(245, 94, 107),rgb(244, 121, 112));
+    color: #FFFEFE;
+}
+
+.page-header .title{
+    margin-top: 73rpx;
+    color: #FFFEFE;
+    font-weight: bold;
+    font-size: 44rpx;
+}
+
+.page-header .sub-title{
+    margin-top: 19rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #FFFEFE;
+
+}
+
+.card-list{
+    display: flex;
+    flex-direction: column;
+    margin-top: -101rpx;
+    padding: 0 40rpx;
+}
+
+.card-wrap {
+    margin-bottom: 20rpx;
+}
+
+.card{
+    border-radius: 20rpx;
+    background-color: #fff;
+    padding-bottom:  61rpx;
+}
+
+
+.card > .title{
+    padding-top:56rpx;
+    margin-bottom: 56rpx;
+    color:#333333;
+    font-size: 36rpx;
+    font-weight: 500;
+}
+
+
+.card> .line{
+    margin-top: 56rpx;
+    display: flex;
+    height: 3rpx;
+    background-color: #EEEEEE ;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-grow1{
+    flex-grow: 1;
+}
+
+.img-wrap{
+    overflow: hidden;
+}
+
+.img-wrap > image{
+    width: 100%;
+    height: 100%;
+}

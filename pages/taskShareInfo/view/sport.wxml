@@ -1,0 +1,44 @@
+<template name="sport">
+     <view class="card sport">
+            <view class="title text-center">- 自由运动情况 -</view>
+            <view class="sport-freestyle">
+                <view class="title">运动方式</view>
+                <view class="sport-styles">
+                    <view class="style" wx:for="{{sportStyle}}" wx:key="index" wx:for-item="item">
+                        <view><image src="{{item.imgUrl}}"></image></view>
+                        <view class="desc">{{item.title}}</view>
+                    </view>
+                </view>
+                <view class="freestyle-desc">
+                    <view class="desc">
+                        <view class="title">运动时长</view>
+                        <view class="value">{{duration}}</view>
+                    </view>
+                    <view class="desc">
+                        <view class="title">预计消耗</view>
+                         <view class="value-wrap">
+                            <view class="value">{{calorie}}</view>
+                            <view class="value-unit">kcal</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="line"></view>
+            <view class="title text-center">- 推荐运动情况 -</view>
+            <view class="recommend-list">
+                <view class="recommend" wx:for="{{recommendList}}" wx:key="index" wx:for-item="item">
+                    <view class="img-wrap">
+                        <image src="{{item.imgUrl}}" mode="widthFix" ></image>
+                    </view>
+                    <view class="flex-grow1">
+                        <view class="title">{{item.title}}</view>
+                         <view class="desc">{{item.desc}}</view>
+                    </view>
+                    <view class="tag">
+                        已完成
+                    </view>
+                </view>
+            </view>
+        </view>
+
+</template>
