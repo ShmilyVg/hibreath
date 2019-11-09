@@ -160,7 +160,7 @@
             <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
         </view>
     </block>
-    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;" canvas-id="myCanvas"></canvas>
+    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 300rpx;" canvas-id="myCanvas"></canvas>
 </view>
 
 <view wx:if="{{showBigTip}}" class="flex-column">

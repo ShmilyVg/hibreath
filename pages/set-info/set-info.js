@@ -405,12 +405,14 @@ Page({
                 shareFatBurnDesc:result.fatBurnDesc,
                 shareTaskList:result.taskList,
             })
-            Shared.getImageInfo(this)
             Shared.screenWdith(this)
+            Shared.getImageInfo(this)
             setTimeout(() => {
                 Shared.createNewIm(this)
-                Shared.savePic(this)
             },500)
+           /* setTimeout(() => {
+                Shared.savePic(this)
+            },500)*/
 
 
         }
@@ -548,7 +550,7 @@ Page({
                 backgroundColor: '#F55E6B',
             })
         });
-        Toast.hiddenLoading();
+
     },
 
     async continue() {

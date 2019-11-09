@@ -22,9 +22,7 @@
     "pages/shareAddcommunity/shareAddcommunity",
     "pages/punchList/punchList",
     "pages/reductionList/reductionList",
-    "pages/caseDetails/caseDetails",
-    "pages/empty/Empty",
-    "pages/empty/empty"
+    "pages/caseDetails/caseDetails"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
