@@ -9,14 +9,17 @@
                         <view class="desc">{{item.title}}</view>
                     </view>
                 </view>
-                <view class="flex flex-grow1 freestyle-desc">
+                <view class="freestyle-desc">
                     <view class="desc">
                         <view class="title">运动时长</view>
                         <view class="value">{{duration}}</view>
                     </view>
                     <view class="desc">
                         <view class="title">预计消耗</view>
-                        <view class="value">{{calorie}}kcal</view>
+                         <view class="value-wrap">
+                            <view class="value">{{calorie}}</view>
+                            <view class="value-unit">kcal</view>
+                        </view>
                     </view>
                 </view>
             </view>

@@ -55,17 +55,26 @@
     font-weight: 500;
 }
 
+.freestyle-desc .value-wrap{
+    display: flex;
+    align-items: baseline;
+}
+
 .freestyle-desc .value{
     color:#454545;
     font-size: 66rpx;
     font-weight: bold;
 }
 
-
+.freestyle-desc .value-unit{
+    color:#454545;
+    font-size: 40rpx;
+    font-weight: bold;
+}
 .recommend-list .recommend{
     display: flex;
     align-items: center;
-    margin-bottom: 80rpx;
+    margin-bottom: 50rpx;
 }
 .recommend-list .img-wrap{
     width: 180rpx;

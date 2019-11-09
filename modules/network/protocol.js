@@ -314,6 +314,7 @@ export default class Protocol {
     static postTaskSharedInfo({sharedId}){
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
     }
+
     
     //七日减脂方案
     static fatReducingScheme({ schemaId }) {
