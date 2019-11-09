@@ -19,7 +19,6 @@ import {judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
 import * as Shared from "./view/shared.js";
 import {UploadUrl} from "../../utils/config";
 const app = getApp();
-
 Page({
     data: {
         isfatBurn: false,//燃脂卡片
@@ -51,6 +50,7 @@ Page({
         schemaId: 0,
         scrollLeft: 490,
         timer: '',
+        _timeoutIndex:'',
         bigTipNum: 0,
         bigTipCountNum: 20,
         sync: {
@@ -85,7 +85,10 @@ Page({
         shareFat:"",
         shareFatBurnDesc:"",
         shareTaskList:"",
-        shareTaskListImg:'',
+        shareTaskListImg0:"",
+        shareTaskListImg1:"",
+        shareTaskListImg2:"",
+        shareTaskListImg3:"",
         shareImg:"",
         bgImg:"../../images/set-info/shareBg.png",//分享背景
         textBg:'../../images/set-info/textBg.png'
@@ -383,7 +386,7 @@ Page({
 
     },
     async handleTasks() {
-        //Toast.showLoading();
+
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
@@ -396,20 +399,35 @@ Page({
         })
         if(this.data.sharedId){
             const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+            if(result.fatBurn){
+                this.setData({
+                    shareFat:result.fatBurn,
+                    shareFatBurnDesc:result.fatBurnDesc
+                })
+            }
             this.setData({
                 shareTodayDif:result.todayDif,
                 shareTodayDifImg:result.todayDifImg,
                 shareTotalDifImg:result.totalDifImg,
                 shareTotalDif:result.totalDif,
-                shareFat:result.fatBurn,
-                shareFatBurnDesc:result.fatBurnDesc,
                 shareTaskList:result.taskList,
             })
-            Shared.screenWdith(this)
+            Toast.showLoading();
             Shared.getImageInfo(this)
+            Shared.screenWdith(this)
             setTimeout(() => {
                 Shared.createNewIm(this)
-            },500)
+            },800)
+
+          /*  console.log('this._timeoutIndex',this.data._timeoutIndex)
+            clearTimeout(this.data.__timeoutIndex);
+            this.data._timeoutIndex = '';
+            let that = this;
+            that.data.__timeoutIndex = setTimeout(function() {
+                Shared.createNewIm(that)
+            }, 500)
+
+            Toast.hiddenLoading();*/
            /* setTimeout(() => {
                 Shared.savePic(this)
             },500)*/
@@ -544,13 +562,13 @@ Page({
                 }
             }
         }
+
         setTimeout(() => {
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
                 backgroundColor: '#F55E6B',
             })
         });
-
     },
 
     async continue() {
@@ -829,6 +847,7 @@ Page({
     },
 
     async onShow() {
+
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
