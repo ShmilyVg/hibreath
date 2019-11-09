@@ -305,7 +305,7 @@ export default class Protocol {
     static postPublish(data) {
         return Network.request({url: 'group/dynamic/publish', data})
     }
-<<<<<<< HEAD
+
 
     /**
      * 任务分享-分享详情
@@ -313,10 +313,10 @@ export default class Protocol {
      */
     static postTaskSharedInfo({sharedId}){
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
-=======
+    }
+    
     //七日减脂方案
-  static fatReducingScheme({ schemaId }) {
+    static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
->>>>>>> 9cfb8c8ee3ba07be9e1c04513f409ebf29947d21
     }
 }
