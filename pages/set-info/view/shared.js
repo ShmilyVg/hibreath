@@ -49,7 +49,14 @@ function getImageInfo(page) {
                 })
             }
         })
+        if(i == that.data.shareTaskList.length-1){
+            setTimeout(() => {
+                createNewIm(that)
+            },400)
+        }
     }
+    console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
+
 
 }
 
@@ -101,13 +108,14 @@ function createNewIm(page){
         ctx.drawImage(that.data.shareTaskListImg1, 65,132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg2, 120,132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg3, 175,132, 44*rpx, 46.5*rpx);
+        console.log('底部图标已绘制')
     }
 
     //ctx.draw();
     ctx.draw(true, () => {
         setTimeout(() => {
             savePic(that)
-        }, 1000)
+        }, 200)
 
     })
 }
@@ -133,6 +141,12 @@ function savePic(page) {
                     shareImg: res.tempFilePath
                 })
                 Toast.hiddenLoading();
+                that.setData({
+                    isOpened:true
+                })
+                that.setData({
+                    actionSheetHidden: !that.data.actionSheetHidden
+                });
                 /*util.savePicToAlbum(res.tempFilePath)*/
             }
         })

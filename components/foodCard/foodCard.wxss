@@ -31,7 +31,12 @@
     text-align: center
 }
 .proportionNumView{
-    border-radius: 6rpx;
+    justify-content: space-between;
+    width: 100%;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
 }
 .proportionNum{
     margin-right: 2rpx;

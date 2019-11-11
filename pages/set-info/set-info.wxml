@@ -145,7 +145,7 @@
                 <view class="set-top-title">{{indexgoalDesc}}</view>
                 <view class="set-top-content" style="float: left">{{indexDayDesc}}</view>
                 <view class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
-                <button class="set-top-contentS" style="float: left" open-type="share">
+                <button class="set-top-contentS" style="float: left" bindtap="listenerButton">
                     <image class="shareImg" src="../../images/set-info/shared.png"></image>
                     分享
                 </button>
@@ -231,3 +231,18 @@
 </view>
 
 <!--底部弹窗-->
+<!--默认action-sheet为隐藏，由button触发-->
+<!--
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
+       <action-sheet-item>
+             <button open-type="share">分享给好友或群</button>
+       </action-sheet-item>
+       <action-sheet-cancel>取消</action-sheet-cancel>
+</action-sheet>
+-->
+<view class="shareContainer" wx:if='{{isOpened}}'>
+   <!-- <view class='shareRow'>{{title}}</view>-->
+    <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
+    <view class='shareRow text-gray margin-top' bindtap='cancel'>取 消</view>
+</view>
+<view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>

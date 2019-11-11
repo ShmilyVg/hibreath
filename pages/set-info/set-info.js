@@ -92,7 +92,8 @@ Page({
         shareTaskListImg3:"",
         shareImg:"",
         bgImg:"../../images/set-info/shareBg.png",//分享背景
-        textBg:'../../images/set-info/textBg.png'
+        textBg:'../../images/set-info/textBg.png',
+        //shareTextList:['分享给好友或群']
     },
     onFocus: function (e) {
         this.setData({
@@ -414,25 +415,6 @@ Page({
                 shareTotalDif:result.totalDif,
                 shareTaskList:result.taskList,
             })
-            Toast.showLoading();
-            Shared.getImageInfo(this)
-            Shared.screenWdith(this)
-            setTimeout(() => {
-                Shared.createNewIm(this)
-            },200)
-
-          /*  console.log('this._timeoutIndex',this.data._timeoutIndex)
-            clearTimeout(this.data.__timeoutIndex);
-            this.data._timeoutIndex = '';
-            let that = this;
-            that.data.__timeoutIndex = setTimeout(function() {
-                Shared.createNewIm(that)
-            }, 500)
-
-            Toast.hiddenLoading();*/
-           /* setTimeout(() => {
-                Shared.savePic(this)
-            },500)*/
         }
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213", typesArr)
@@ -1014,6 +996,22 @@ Page({
         };
         console.log('indexDayDesc',this.data.shareImg)
 
+    },
+    listenerButton: function() {
+        Toast.showLoading()
+        Shared.getImageInfo(this)
+        Shared.screenWdith(this)
+
+    },
+    listenerActionSheet:function() {
+        this.setData({
+            actionSheetHidden: !this.data.actionSheetHidden
+        })
+    },
+    cancel(){
+        this.setData({
+            isOpened: false
+        })
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
