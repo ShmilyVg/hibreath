@@ -736,9 +736,9 @@ swiperLi1{
 }
 .shareRow{
     width: 100%;text-align: center;line-height: 50px;background: #fff;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1rpx solid #f0f0f0;
 }
 .text-gray{color: gray}
-.margin-top{margin-top:10px}
+.margin-top{margin-top:10rpx}
 .shareContainer{background:#f0f0f0;position:fixed;width:100vw;bottom:0;z-index:888;
     font-size:30rpx;}
