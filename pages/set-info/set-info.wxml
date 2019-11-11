@@ -165,6 +165,7 @@
             <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
         </view>
     </block>
+    <!--position: fixed;left: 900rpx;-->
     <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>
 </view>
 
