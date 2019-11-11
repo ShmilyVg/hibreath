@@ -25,12 +25,11 @@
             <view class="day-list-body" wx:if='{{!selectedFlag[index]}}'>
               <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
                 <view class="day-body-foodlist" >
-                  <!-- <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
+                  <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
                     <view class="foodlist-tag">{{item.tag}}</view>
-                  </view>     -->
-                   <view class="foodlist-img" style="background:url(../../images/caseDetails/tu.png) no-repeat center/100% 100%;">
-                    <view class="foodlist-tag">{{item.tag}}</view>
-                  </view>            
+                  </view>   
+               
+                            
                   <view class="foodtask-desc">{{item.desc}} </view>
                   <view class="foodtask-desc">{{item.desc}} </view>
                   <view class="foodtask-desc">{{item.desc}} </view>
