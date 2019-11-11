@@ -411,8 +411,6 @@ Page({
             }
             this.setData({
                 shareTodayDif:result.todayDif,
-
-                shareTotalDifImg:result.totalDifImg,
                 shareTotalDif:result.totalDif,
                 shareTaskList:result.taskList,
             })
@@ -421,7 +419,7 @@ Page({
             Shared.screenWdith(this)
             setTimeout(() => {
                 Shared.createNewIm(this)
-            },800)
+            },200)
 
           /*  console.log('this._timeoutIndex',this.data._timeoutIndex)
             clearTimeout(this.data.__timeoutIndex);
@@ -435,8 +433,6 @@ Page({
            /* setTimeout(() => {
                 Shared.savePic(this)
             },500)*/
-
-
         }
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213", typesArr)
@@ -860,7 +856,6 @@ Page({
     },
 
     async onShow() {
-
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据

@@ -29,7 +29,7 @@
 
             </view>
             <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
-                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" bindtap="bindTapSex"
+                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="{{index}}" bindtap="bindTapSex"
                       data-index="{{index}}">
                     <image class="sex-image"
                            src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
@@ -71,6 +71,7 @@
                 <view wx:if="{{noMeasure}}" class="page4">
                     <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}"
                           bindtap="bindTapExactClick"
+                          wx:key="{{index}}"
                           data-index="{{index}}">
                         <image src="http://backend.hipee.cn/assets/home/images/hb/{{info.sexStr}}{{index}}.png"></image>
                         <view wx:if="{{choseIndex!=index}}" class="page4-cover"
@@ -88,7 +89,7 @@
                 </view>
             </block>
             <view wx:elif="{{page==6}}">
-                <view wx:for="{{meals}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
+                <view wx:for="{{meals}}"  wx:key="{{index}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
                       bindtap="bindTapMeals" data-index="{{index}}">{{item.name}}
                 </view>
             </view>
@@ -99,9 +100,9 @@
                 <view class="page2-kg">KG</view>
             </view>
             <view wx:if="{{page==8}}" style="width: 750rpx;">
-                <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" scroll-with-animation="true">
-                    <view style="padding: 0 130rpx">
-                        <image wx:for="{{project}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
+                <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
+                    <view style="width: 1480rpx;padding: 0 130rpx">
+                        <image wx:for="{{project}}"  wx:key="{{index}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
                                data-index="{{index}}"></image>
                     </view>
                 </scroll-view>
