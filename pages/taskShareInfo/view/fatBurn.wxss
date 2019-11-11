@@ -1,3 +1,7 @@
+.fatbarn{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
 
 .fatbarn-value-wrap{
     display: flex;
@@ -15,13 +19,13 @@
     font-weight: bold;
 }
 
-.fatbarn-value .desc{
+.fatbarn-value > .desc{
     color: #333333;
     font-size: 32rpx;
     font-weight: 500;
 }
 
-.fatbarn > .desc{
+.fatbarn .card-body > .desc{
     margin-top: 61rpx;
     color: #454545;
     font-size:30rpx;
