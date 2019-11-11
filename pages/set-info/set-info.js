@@ -78,9 +78,8 @@ Page({
         fatDes:'',
 
 
-        shareTodayDif:"",
-        shareTodayDifImg:"",
-        shareTotalDifImg:"",
+        shareDown:"../../images/set-info/shareDown.png",
+        shareUp:"../../images/set-info/shareUp.png",
         shareTotalDif:"",
         shareFat:"",
         shareFatBurnDesc:"",
@@ -407,7 +406,7 @@ Page({
             }
             this.setData({
                 shareTodayDif:result.todayDif,
-                shareTodayDifImg:result.todayDifImg,
+
                 shareTotalDifImg:result.totalDifImg,
                 shareTotalDif:result.totalDif,
                 shareTaskList:result.taskList,
@@ -990,7 +989,7 @@ Page({
         return {
 
             title: this.data.indexDayDesc,
-            path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.sharedId,
+            path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
             imageUrl:this.data.shareImg
         };
         console.log('indexDayDesc',this.data.shareImg)

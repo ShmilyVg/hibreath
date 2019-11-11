@@ -9,17 +9,25 @@
         </view>
         <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
     </view>
-    <view bindtap="toMemberManagerPage" class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
-        <view class="flex-row align-items-center">
+    <view bindtap="toMemberManagerPage" class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;margin-left: 25rpx">
+       <!-- <view class="flex-row align-items-center">
             <view class="community-member-num">{{socialMemberInfo.memberCount}}</view>
             <view class="community-member-description">位·燃脂成员</view>
-        </view>
+        </view>-->
 
         <view class="flex-row align-items-center relative">
             <image wx:for="{{socialMemberInfo.memberImgs}}" wx:key="index" src="{{item}}" class="community-member-head"></image>
-            <view class="flex-row align-items-center justify-center" style="padding: 18rpx;border-radius: 50%;background-color: white;margin-left: -20rpx;">
+            <view class="flex-row align-items-center justify-center community-Add">
                 <image src="../../images/community/add.png" style="width: 32rpx;height: 32rpx;border-radius: 50%;"></image>
             </view>
+            <text class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</text>
+        </view>
+        <view class="flex-row align-items-center">
+            <button class="community-Bg" catchtap="showSharedID" open-type="share">
+                <image src="../../images/community/wx.png"class="community-Wx"></image>
+                <view class="community-member-description">邀请好友</view>
+            </button>
+
         </view>
     </view>
 
