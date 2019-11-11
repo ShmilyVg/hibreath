@@ -4,7 +4,7 @@
             <view class="weight-list">
                 <view class="weight">
                     <view class="value small">
-                       {{weight.weight}}Kg
+                       {{weight.weight?weight.weight:0}}Kg
                     </view>
                     <view class="desc samll">初始体重</view>
                 </view>
@@ -24,7 +24,7 @@
             </view>
             <view class="weight-dif">
                 <view class="weight-info right">
-                    <view class="weight-value">{{weight.todayDif}}Kg</view>
+                    <view class="weight-value">{{weight.todayDif?weight.todayDif:0}}Kg</view>
                              <view>
                     <image src="{{weight.todayDif <0?iconDown:iconUp }}"></image>
                     </view>
@@ -37,7 +37,7 @@
                     <view>
                      <image src="{{weight.totalDif <0?iconDown:iconUp }}"></image>
                      </view>
-                    <view  class="weight-value">{{weight.totalDif}}Kg</view>
+                    <view  class="weight-value">{{weight.totalDif?weight.totalDif:0}}Kg</view>
                 </view>
             </view>
             <view class="line"></view>
