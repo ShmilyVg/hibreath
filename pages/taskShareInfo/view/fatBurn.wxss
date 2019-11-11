@@ -30,5 +30,6 @@
     color: #454545;
     font-size:30rpx;
     font-weight: 400;
-    padding: 0 41rpx;
+    padding: 0 11rpx;
+    text-align: justify;
 }
