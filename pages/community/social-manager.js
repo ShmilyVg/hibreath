@@ -140,8 +140,8 @@ export async function getSocialGroupMembersViewInfo() {
     } else {
         group.memberImgs = [];
     }
-    const {memberImgs, memberCount,isMajor} = group;
-    return {memberCount, memberImgs,isMajor};
+    const {memberImgs, memberCount,isMajor,sharedId,name,memberName} = group;
+    return {memberCount, memberImgs,isMajor,sharedId,name,memberName};
 }
 
 export async function whenDismissGroup(protocol) {
