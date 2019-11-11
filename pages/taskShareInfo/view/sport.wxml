@@ -1,11 +1,19 @@
 <template name="sport">
-     <view class="card sport">
-            <view class="title text-center">- 自由运动情况 -</view>
+    <view class="card sport">
+        <view class="title text-center">- {{finished?"自由":""}}运动情况 -</view>
+        <view class="card-body" wx-if="{{!finished}}">
+            <view class="unclockin img-wrap">
+                <image src="/images/taskShareInfo/un_clockin.png"></image>
+            </view>
+        </view>
+        <view class="card-body" wx-if="{{!!finished}}">
             <view class="sport-freestyle">
                 <view class="title">运动方式</view>
                 <view class="sport-styles">
                     <view class="style" wx:for="{{sportStyle}}" wx:key="index" wx:for-item="item">
-                        <view><image src="{{item.imgUrl}}"></image></view>
+                        <view>
+                            <image src="{{item.imgUrl}}"></image>
+                        </view>
                         <view class="desc">{{item.title}}</view>
                     </view>
                 </view>
@@ -16,7 +24,7 @@
                     </view>
                     <view class="desc">
                         <view class="title">预计消耗</view>
-                         <view class="value-wrap">
+                        <view class="value-wrap">
                             <view class="value">{{calorie}}</view>
                             <view class="value-unit">kcal</view>
                         </view>
@@ -28,11 +36,11 @@
             <view class="recommend-list">
                 <view class="recommend" wx:for="{{recommendList}}" wx:key="index" wx:for-item="item">
                     <view class="img-wrap">
-                        <image src="{{item.imgUrl}}" mode="widthFix" ></image>
+                        <image src="{{item.imgUrl}}" mode="widthFix"></image>
                     </view>
                     <view class="flex-grow1">
                         <view class="title">{{item.title}}</view>
-                         <view class="desc">{{item.desc}}</view>
+                        <view class="desc">{{item.desc}}</view>
                     </view>
                     <view class="tag">
                         已完成
@@ -40,5 +48,6 @@
                 </view>
             </view>
         </view>
+    </view>
 
 </template>

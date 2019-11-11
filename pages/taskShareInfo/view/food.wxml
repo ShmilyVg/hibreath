@@ -1,6 +1,12 @@
 <template name="food">
-        <view class="card food">
-            <view class="title text-center">- 饮食情况 -</view>
+    <view class="card food">
+        <view class="title text-center">- 饮食情况 -</view>
+        <view class="card-body" wx-if="{{!finished}}">
+            <view class="unclockin img-wrap">
+                <image src="/images/taskShareInfo/un_clockin.png"></image>
+            </view>
+        </view>
+        <view class="card-body" wx-if="{{!!finished}}">
             <view class="desc">
                 {{desc}}
             </view>
@@ -10,4 +16,5 @@
                 </view>
             </view>
         </view>
+    </view>
 </template>
