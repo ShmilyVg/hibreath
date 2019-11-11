@@ -17,11 +17,26 @@ page{
   height:72rpx;
   color:#fff;
 }
-.title-box image{
+.box-img{
   width:72rpx;
   height:72rpx;
   margin-left:51rpx;
   float:left;
+  border-radius: 45%;
+  text-align:center;
+  line-height:72rpx;
+  font-size:45rpx;
+    font-family: Bodoni MT;
+    font-stretch:ultra-condensed;
+}
+.box-img text{
+  font-size:25rpx;
+}
+.box-img1{
+  background:rgb(226, 107, 107);
+}
+.box-img2{
+  background:rgb(47, 53, 133);
 }
 .box-text{
   width:180rpx;
@@ -30,17 +45,20 @@ page{
   margin:0 15rpx;
   float:left;
 }
+
+.stretch{
+  font-family: Bodoni MT;
+  font-stretch:ultra-condensed;
+  line-height:72rpx;
+  font-size:45rpx;
+}
 .programme-body{
   width:100%;
-  top:0;
-  height:100%;
-  position:relative;
-   background:#ccc;
+ 
+  background:#ccc;
+ 
 }
-.day-list-content{
-  position:relative;
-  
-}
+
 .box-text-right{
   width:232rpx;
   font-size:26rpx;
@@ -49,25 +67,32 @@ page{
 }
 .day-list-content{
   top:-70rpx;
-  position:absolute;
+  position:relative;
   width:100%;
-  height:100%;
-  left:40rpx;
+  box-sizing: border-box;
+  padding:0 40rpx;
+  
 }
+/* //圆角 */
 .day-list-header{
    height:93rpx;
-  width:582rpx;
+  width:584rpx;
   background:#FFFFFF; 
   border-radius:20rpx 20rpx 0 0;
-  padding:52rpx 44rpx;
+  padding:52rpx  44rpx 0 44rpx;
 }
 .day-list-header-radius{
    height:93rpx;
-  width:582rpx;
+  width:584rpx;
   background:#fff; 
   border-radius:20rpx;
   padding:52rpx 44rpx;
 }
+
+
+
+
+
 
 .day-list image{
   width:38rpx;
@@ -103,23 +128,32 @@ page{
 .day-subtitle{
   width:100%;
 }
-.day-list-body{
-  height:369rpx;
-  background:#fff;
+.day-list-body1{
   width:582rpx;
+   height:369rpx;
+}
+.day-list-body{
+  height:420rpx;
+  background:#fff;
+ 
   border-radius:0 0 20rpx 20rpx;
-  padding:52rpx 44rpx;
+  padding:52rpx 44rpx 0 44rpx ;
+  /*  */
+   display: flex;
+   box-sizing: border-box;
+  
+  width: 100%;
+  overflow-y: scroll;
+  white-space: nowrap;
 }
 
 .day-body-foodlist{
   width:190rpx;
+  margin-right:20rpx;
+  height:250rpx;
+  float:left;
 }
-.day-list-body image{
-  width:190rpx;
-  height:160rpx;
-  display:inline-block;
-  margin:22rpx;
-}
+
 .foodtask-desc{
   width:191rpx;
  height:55rpx;
@@ -127,16 +161,19 @@ page{
  font-weight:400;
  color:rgba(69,69,69,1);
  line-height:32rpx;
+ overflow:hidden; 
 }
 .day-list-body-footer{
   border-top:1rpx solid #DDDDDD;
-  margin-top:80rpx;
+  background:#fff;
   height:94rpx;
   line-height:94rpx;
 }
 .foodlist-box{
   /* background:blue; */
   height:250rpx;
+  float:left;
+ 
 }
 .day-list-body-footer{
   height:94rpx;
@@ -151,9 +188,13 @@ color:rgba(69,69,69,1);
 
 .day-list{
   margin-bottom:20rpx;
+  width:100%;
 }
 .programme-footer-text{
-  margin-bottom:20rpx;
+
+ position:relative;
+ top:-30rpx;
+  padding:0 40rpx 30rpx 40rpx;
 }
 .footer-text-title{
   width:80rpx;
@@ -197,4 +238,25 @@ line-height:28rpx;
     line-height:40rpx;
     margin-left:66rpx;
     width:558rpx;
+}
+.foodlist-img{
+
+  width:190rpx;
+  height:160rpx;
+  display:inline-block;
+
+}
+.foodlist-tag{
+  width:62rpx;
+height:37rpx;
+font-size:22rpx;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+background:rgb(155, 150, 150);
+border-radius:15rpx;
+text-align:center;
+line-height:37rpx;
+float:right;
+margin-top:10rpx;
 }

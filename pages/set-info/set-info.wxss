@@ -718,3 +718,13 @@ button::after{ border: none; }
     margin-bottom: 70rpx;
 }
 /*弹出层相关*/
+.swiperLi{
+  width: 100%;
+  height: 670rpx;
+}
+swiperLi1{
+    width: 415rpx;
+  margin: 0 auto;
+  height: 670rpx;
+  transform: scale(0.9);
+}

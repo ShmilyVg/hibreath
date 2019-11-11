@@ -1,6 +1,6 @@
 // pages/caseDetails/caseDetails.js
 import Protocol from "../../modules/network/protocol";
-import HiNavigator from "../../navigator/hi-navigator";
+
 Page({
 
   /**
@@ -8,48 +8,66 @@ Page({
    */
   data: {
     showIndex: 1,
-    index:0,
-    radiusHeader: "day-list-header",
-    fatReduction:"",
-    schemaId:"4"
+    radiusHeader: ["day-list-header", "day-list-header", "day-list-header", "day-list-header"],
+    schemaId:"",
+    selectedFlag: [false, false, false, false],
+    ifAddFood:true
   },
   ifShow: function(e) {
-    if (e.currentTarget.dataset.index != this.data.showIndex) {
-      this.setData({
-        showIndex: e.currentTarget.dataset.index,
-        radiusHeader: "day-list-header"
-      })
+    var index = e.currentTarget.dataset.index;
+ 
+    if (this.data.selectedFlag[index]) {
+      this.data.selectedFlag[index] = false;
+      this.data.radiusHeader[index] = "day-list-header";
+      
     } else {
-      this.setData({
-        showIndex: 0, 
-        radiusHeader: "day-list-header-radius"
-      })
-        
-
+      this.data.selectedFlag[index] = true;
+      this.data.radiusHeader[index] = "day-list-header-radius";
+      console.log(this.data.radiusHeader[index])
+     
     }
+    console.log(this.data.selectedFlag[index])
+    this.setData({
+      selectedFlag: this.data.selectedFlag,
+      radiusHeader: this.data.radiusHeader,
+    })
+    console.log(this.data.selectedFlag)
+  
+
   },
   
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    this.setData({
+      schemaId: options.schemaId
+    })
     this.onfatReduction();
-  
   },
-  
+ 
   
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+   
   },
   async onfatReduction() {
-    console.log(1111);
+    const { result } = await Protocol.fatReducingScheme({ schemaId: this.data.schemaId});
+  
+    this.setData({
+      title: result.title,
+      dayList: result.dayList,
+      loseHot: result.loseHot,
+      loseSugar: result.loseSugar,
+      
+    
+    })
 
-    const fatReduction = await Protocol.fatReducingScheme({ schemaId: this.data.schemaId});
-    console.log(1111, data)
+
+    console.log(123, this.data.dayList)
   },
 
   /**

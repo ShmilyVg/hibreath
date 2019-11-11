@@ -99,13 +99,28 @@
                 <view class="page2-line"></view>
                 <view class="page2-kg">KG</view>
             </view>
-            <view wx:if="{{page==8}}" style="width: 750rpx;">
-                <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
+            <view wx:if="{{page==8}}" style="width: 750rpx;height:670rpx;">
+                <!-- <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
                     <view style="width: 1480rpx;padding: 0 130rpx">
                         <image wx:for="{{project}}"  wx:key="{{index}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
                                data-index="{{index}}"></image>
                     </view>
-                </scroll-view>
+                </scroll-view> -->
+                 <!-- <swiper bindchange="swiperChangecase" circular="true" class="bindSuccess-swiper">
+                      <swiper-item wx:for="{{project}}"  wx:key="{{index}}" data-index="{{index}}">
+                        <image src="{{item.descUrl}}"></image>
+                      </swiper-item>
+                 </swiper>   -->
+                <swiper bindchange="swiperChangeCase" style="height:670rpx;" next-margin="125rpx" previous-margin="125rpx">
+                        <block wx:for="{{project}}" wx:key="index">
+                          <swiper-item style="width:100rpx;height:670rpx;" class="swiperLi">
+
+                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:415rpx;height:670rpx;margin-left:35rpx;"></image>
+                          </swiper-item>
+                        </block>
+                      </swiper>
+
+
             </view>
             <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column {{page ==8?'bottom-btnN':''}}">
                 <block wx:if="{{page!=8}}">
