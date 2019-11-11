@@ -1,6 +1,12 @@
 <template name="bodyIndex">
-<view class="card bodyindex">
-            <view class="title text-center">- 体重 -</view>
+    <view class="card bodyindex">
+        <view class="title text-center">- 体重 -</view>
+        <view class="card-body" wx-if="{{!finished}}">
+            <view class="unclockin img-wrap">
+                <image src="/images/taskShareInfo/un_clockin.png"></image>
+            </view>
+        </view>
+        <view class="card-body" wx-if="{{!!finished}}">
             <view class="weight-list">
                 <view class="weight">
                     <view class="value small">
@@ -8,15 +14,15 @@
                     </view>
                     <view class="desc samll">初始体重</view>
                 </view>
-                 <view  class="weight">
+                <view class="weight">
                     <view class="flex">
                         <view class="value big">{{weight.todayWeight}}</view>
                         <view class="value small">Kg</view>
                     </view>
                     <view class="desc big">今日体重</view>
                 </view>
-                <view  class="weight">
-                    <view  class="value small">
+                <view class="weight">
+                    <view class="value small">
                        {{weight.weightGoal}}Kg
                     </view>
                     <view class="desc samll">目标体重</view>
@@ -25,36 +31,37 @@
             <view class="weight-dif">
                 <view class="weight-info right">
                     <view class="weight-value">{{weight.todayDif?Math.abs(weight.todayDif):0}}Kg</view>
-                             <view>
-                    <image src="{{weight.todayDif <0?iconDown:iconUp }}"></image>
+                    <view>
+                        <image src="{{weight.todayDif <0?iconDown:iconUp }}"></image>
                     </view>
                     <view class="weight-desc">今日减重</view>
-                  
+
                 </view>
                 <view class="line-vertical"></view>
                 <view class="weight-info">
                     <view class="weight-desc">累计减重</view>
                     <view>
-                     <image src="{{weight.totalDif <0?iconDown:iconUp }}"></image>
-                     </view>
-                    <view  class="weight-value">{{weight.totalDif?Math.abs(weight.totalDif):0}}Kg</view>
+                        <image src="{{weight.totalDif <0?iconDown:iconUp }}"></image>
+                    </view>
+                    <view class="weight-value">{{weight.totalDif?Math.abs(weight.totalDif):0}}Kg</view>
                 </view>
             </view>
             <view class="line"></view>
-             <view class="title text-center">- 血压心率 -</view>
-             <view class="flex">
+            <view class="title text-center">- 血压心率 -</view>
+            <view class="flex">
                 <view class="bloodheart">
-                   <view class="bloodheart-value">{{bloodPressure.height}}</view>
+                    <view class="bloodheart-value">{{bloodPressure.height}}</view>
                     <view class="bloodheart-desc">高压</view>
                 </view>
                 <view class="bloodheart">
-                   <view class="bloodheart-value">{{bloodPressure.low}}</view>
-                    <view  class="bloodheart-desc">低压</view>
+                    <view class="bloodheart-value">{{bloodPressure.low}}</view>
+                    <view class="bloodheart-desc">低压</view>
                 </view>
-                 <view class="bloodheart">
-                   <view class="bloodheart-value">{{heart.value}}</view>
-                    <view  class="bloodheart-desc">心率</view>
+                <view class="bloodheart">
+                    <view class="bloodheart-value">{{heart.value}}</view>
+                    <view class="bloodheart-desc">心率</view>
                 </view>
-             </view>
+            </view>
         </view>
+    </view>
 </template>
