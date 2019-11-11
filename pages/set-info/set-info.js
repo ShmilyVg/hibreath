@@ -856,7 +856,7 @@ Page({
 
     async bindTapProject() {
       HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId});
-  
+
     },
 
     async onShow() {
@@ -1014,5 +1014,13 @@ Page({
         };
         console.log('indexDayDesc',this.data.shareImg)
 
+    },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+        if(!this.data.showNewInfo&&!this.data.showGuide){
+            this.handleTasks()
+        }
     }
 })
