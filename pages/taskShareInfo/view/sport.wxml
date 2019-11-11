@@ -32,7 +32,7 @@
                 </view>
             </view>
             <view class="line"></view>
-            <view class="title text-center">- 推荐运动情况 -</view>
+            <view class="title text-center" style="margin-top:61rpx;padding-top:0;">- 推荐运动情况 -</view>
             <view class="recommend-list">
                 <view class="recommend" wx:for="{{recommendList}}" wx:key="index" wx:for-item="item">
                     <view class="img-wrap">

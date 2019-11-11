@@ -86,6 +86,13 @@
     background-color: #EEEEEE ;
 }
 
+.card-body > .line{
+    margin-top: 56rpx;
+    display: flex;
+    height: 3rpx;
+    background-color: #EEEEEE ;
+}
+
 .flex{
     display: flex;
 }

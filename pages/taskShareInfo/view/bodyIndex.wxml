@@ -47,7 +47,7 @@
                 </view>
             </view>
             <view class="line"></view>
-            <view class="title text-center">- 血压心率 -</view>
+            <view class="title text-center" style="margin-top:52rpx;padding-top:0;">- 血压心率 -</view>
             <view class="flex">
                 <view class="bloodheart">
                     <view class="bloodheart-value">{{bloodPressure.height}}</view>

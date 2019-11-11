@@ -26,7 +26,7 @@
 }
 
 .fatbarn .card-body > .desc{
-    margin-top: 61rpx;
+    margin-top: 60rpx;
     color: #454545;
     font-size:30rpx;
     font-weight: 400;
