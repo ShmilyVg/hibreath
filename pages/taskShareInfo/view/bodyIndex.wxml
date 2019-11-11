@@ -8,20 +8,20 @@
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
             <view class="weight-list">
-                <view class="weight">
+                <view class="weight" style="width:213rpx">
                     <view class="value small">
                        {{weight.weight?weight.weight:0}}Kg
                     </view>
                     <view class="desc samll">初始体重</view>
                 </view>
-                <view class="weight">
+                <view class="weight flex-grow1">
                     <view class="flex">
                         <view class="value big">{{weight.todayWeight}}</view>
                         <view class="value small">Kg</view>
                     </view>
                     <view class="desc big">今日体重</view>
                 </view>
-                <view class="weight">
+                <view class="weight"  style="width:213rpx">
                     <view class="value small">
                        {{weight.weightGoal}}Kg
                     </view>
