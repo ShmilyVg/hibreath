@@ -9,7 +9,7 @@
         <view class="card-body" wx-if="{{!!finished}}">
             <view class="fatbarn-value-wrap">
                 <view style="text-algin:right;margin-right:24rpx">
-                    <image style="width:88rpx;height:100%" src="{{iconUrl}}"></image>
+                    <image style="width:88rpx;height:111rpx" src="{{iconUrl}}"></image>
                 </view>
                 <view class="fatbarn-value" style="margin-left:10rpx">
                     <view class="value">{{dataValue}}</view>
