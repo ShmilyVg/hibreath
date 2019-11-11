@@ -297,7 +297,7 @@ Page({
                 if (page >= 8) {
                     const {result: {list}} = await Protocol.postSettingsLosefatSchema();
                     project.push(...list);
-
+                  console.log(456,project)
                 }
 
             }
@@ -648,7 +648,10 @@ Page({
                 }
                 await Protocol.postMembersPut(this.data.info);
                 const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
-                this.setData({project});
+                this.setData({
+                  project: project,
+                  schemaId: project[0].id
+                  });
                 break;
             case 8:
                 await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
@@ -851,8 +854,9 @@ Page({
         }
     },
 
-    async bindTapProject(e) {
-        this.data.schemaId = e.currentTarget.dataset.index
+    async bindTapProject() {
+      HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId});
+  
     },
 
     async onShow() {
@@ -915,6 +919,13 @@ Page({
         if (weightNumber.length > 2) {
             return parseInt(e.detail.value);
         }
+    },
+    //选择方案轮播图
+    swiperChangeCase(e){
+      console.log(4777,e)
+      this.setData({
+        schemaId: this.data.project[e.detail.current].id
+      })
     },
     //轮播图当前
     swiperChange: function (e) {
