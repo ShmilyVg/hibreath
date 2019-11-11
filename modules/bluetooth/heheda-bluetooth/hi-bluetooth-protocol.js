@@ -173,16 +173,16 @@ export default class HiBlueToothProtocol {
     }
 
     sendISpage({isSuccess}) {
-        console.log('sendISpage');
         if (this.getDeviceIsBind()) {
             this.action['0x3d']({isSuccess});
         }
+        console.log('小程序发送了 3d指令');
     }
     sendISvalue({isSuccess}) {
-        console.log('sendISvalue');
         if (this.getDeviceIsBind()) {
             this.action['0x40']({isSuccess});
         }
+        console.log('小程序发送了 40指令');
     }
 
     startCommunication() {

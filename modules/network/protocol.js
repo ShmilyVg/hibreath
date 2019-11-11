@@ -67,7 +67,10 @@ export default class Protocol {
     static postBreathDataSync({items}) {
         return Network.request({url: 'breathData/sync', data: {items}});
     }
-
+    //获取用餐方式
+    static postMealType() {
+        return Network.request({url: 'settings/mealType'});
+    }
 
     //新加请求接口
 
@@ -309,13 +312,13 @@ export default class Protocol {
 
     /**
      * 任务分享-分享详情
-     * @param {sharedId} param0 
+     * @param {sharedId} param0
      */
     static postTaskSharedInfo({sharedId}){
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
     }
 
-    
+
     //七日减脂方案
     static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});

@@ -31,7 +31,6 @@ function screenWdith(page){
     });
 }
 function drawFont(ctx,contentSzie,content,contentX,contentY) {
-    console.log('rpxxxxx',rpx)
     ctx.setFontSize(contentSzie);
     ctx.setFillStyle("#000000");
     ctx.fillText(content, contentX*rpx, contentY*rpx);
@@ -89,9 +88,9 @@ function createNewIm(page){
     }
     if(that.data.shareFat){
         drawFont(ctx, 12,"燃脂情况：",30,100);
-        drawFont(ctx, 17,"3.5",90,100);
+        drawFont(ctx, 17,that.data.shareFat,90,100);
         ctx.drawImage(that.data.textBg, 120*rpx, 85*rpx, 74*rpx, 21.5*rpx);
-        drawFont(ctx, 12,"状态极佳",140,100);
+        drawFont(ctx, 12,that.data.shareFatBurnDesc,140,100);
     }else{
         drawFont(ctx, 12,"燃脂情况：",50,100);
         drawFont(ctx, 17,"未打卡",110,100);

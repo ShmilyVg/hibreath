@@ -89,7 +89,7 @@
             </block>
             <view wx:elif="{{page==6}}">
                 <view wx:for="{{meals}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
-                      bindtap="bindTapMeals" data-index="{{index}}">{{item.text}}
+                      bindtap="bindTapMeals" data-index="{{index}}">{{item.name}}
                 </view>
             </view>
             <view wx:if="{{page==7}}" class="flex-column">

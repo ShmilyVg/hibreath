@@ -38,12 +38,14 @@ Page({
         page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
         page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
         birth: ['1980', '1', '1'],
-        meals: [
+      /*  meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'},
             {text: '居家制作为主', isChose: false, en: 'jujia'}
-        ],
+        ],*/
+        meals:[],
+        secArray:[],
         bgColorSetInfoPage: '#ffffff',
         score: 0,
         showBigTip: false,
@@ -193,9 +195,7 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
-
         let that = this;
-
         console.log('on:', e);
         if (e.isNotRegister) {
             that.setData({
@@ -236,6 +236,11 @@ Page({
     async handleBaseInfo() {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
+        //获取三餐选择方案
+        const {result: {list}} = await Protocol.postMealType();
+        this.setData({
+            meals:list
+        })
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
@@ -628,6 +633,7 @@ Page({
                 }
                 break;
             case 6:
+                console.log('page6',this.data.meals)
                 let isChoseMeals = false;
                 this.data.meals.forEach(value => {
                     if (value.isChose) {
@@ -747,11 +753,19 @@ Page({
 
     bindTapMeals(e) {
         let choseIndex = e.currentTarget.dataset.index;
-        this.data.meals.map((value, index) => {
+        var item = this.data.meals[choseIndex];
+        this.data.secArray.push(item.en)
+        console.log('choseIndex',item)
+        item.isChose = !item.isChose;
+        this.setData({
+            meals: this.data.meals,
+            'info.mealType': this.data.secArray
+        });
+      /*  this.data.meals.map((value, index) => {
             value.isChose = choseIndex == index;
         });
         const en = this.data.meals[choseIndex].en;
-        this.setData({meals: this.data.meals, 'info.mealType': en})
+        this.setData({meals: this.data.meals, 'info.mealType': en})*/
     },
 
     bindTapExactClick(e) {
