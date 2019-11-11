@@ -34,7 +34,7 @@ Page({
         ],
         currentDate: '2018-12-19',
         page: 1,
-        title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
+        title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '是否有条件自己做饭', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
         page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
         birth: ['1980', '1', '1'],
@@ -856,7 +856,7 @@ Page({
 
     async bindTapProject() {
       HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId});
-  
+
     },
 
     async onShow() {
@@ -1014,5 +1014,13 @@ Page({
         };
         console.log('indexDayDesc',this.data.shareImg)
 
+    },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
+        if(!this.data.showNewInfo&&!this.data.showGuide){
+            this.handleTasks()
+        }
     }
 })

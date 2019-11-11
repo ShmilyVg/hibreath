@@ -11,7 +11,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        taskId: 1,
         imgUrls: ['', '', '', '', '', '', '', '', '',],
         desc: '',
         messageCreateTime: ''
@@ -34,7 +33,6 @@ Page({
         }
         this.setData({
             canDelete:result.action.delete,
-            taskId:result.taskId,
             imgUrls:result.imgUrls,
             messageCreateTime: getDynamicCreateTime(result.createTimestamp),
             headUrl:result.headUrl,
