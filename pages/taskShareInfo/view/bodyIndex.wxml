@@ -8,29 +8,29 @@
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
             <view class="weight-list">
-                <view class="weight">
+                <view class="weight" style="width:213rpx">
                     <view class="value small">
-                       {{weight.weight?weight.weight:0}}Kg
+                       {{weight.weight?weight.weight:0}}kg
                     </view>
                     <view class="desc samll">初始体重</view>
                 </view>
-                <view class="weight">
+                <view class="weight flex-grow1">
                     <view class="flex">
                         <view class="value big">{{weight.todayWeight}}</view>
-                        <view class="value small">Kg</view>
+                        <view class="value small">kg</view>
                     </view>
                     <view class="desc big">今日体重</view>
                 </view>
-                <view class="weight">
+                <view class="weight"  style="width:213rpx">
                     <view class="value small">
-                       {{weight.weightGoal}}Kg
+                       {{weight.weightGoal}}kg
                     </view>
                     <view class="desc samll">目标体重</view>
                 </view>
             </view>
             <view class="weight-dif">
                 <view class="weight-info right">
-                    <view class="weight-value">{{weight.todayDif?Math.abs(weight.todayDif):0}}Kg</view>
+                    <view class="weight-value">{{weight.todayDif?Math.abs(weight.todayDif):0}}kg</view>
                     <view>
                         <image src="{{weight.todayDif <0?iconDown:iconUp }}"></image>
                     </view>
@@ -43,11 +43,11 @@
                     <view>
                         <image src="{{weight.totalDif <0?iconDown:iconUp }}"></image>
                     </view>
-                    <view class="weight-value">{{weight.totalDif?Math.abs(weight.totalDif):0}}Kg</view>
+                    <view class="weight-value">{{weight.totalDif?Math.abs(weight.totalDif):0}}kg</view>
                 </view>
             </view>
             <view class="line"></view>
-            <view class="title text-center">- 血压心率 -</view>
+            <view class="title text-center" style="margin-top:52rpx;padding-top:0;">- 血压心率 -</view>
             <view class="flex">
                 <view class="bloodheart">
                     <view class="bloodheart-value">{{bloodPressure.height}}</view>

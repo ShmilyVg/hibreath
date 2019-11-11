@@ -1,13 +1,14 @@
 <template name="sport">
     <view class="card sport">
-        <view class="title text-center">- {{finished?"自由":""}}运动情况 -</view>
+        <view class="title text-center" wx:if="{{sportStyle}}">- {{finished?"自由":""}}运动情况 -</view>
+           <view class="title text-center" wx:if="{{!sportStyle && recommendList && recommendList.length>0}}">- 推荐运动情况  -</view>
         <view class="card-body" wx-if="{{!finished}}">
             <view class="unclockin img-wrap">
                 <image src="/images/taskShareInfo/un_clockin.png"></image>
             </view>
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
-            <view class="sport-freestyle">
+            <view class="sport-freestyle"  wx:if="{{sportStyle}}">
                 <view class="title">运动方式</view>
                 <view class="sport-styles">
                     <view class="style" wx:for="{{sportStyle}}" wx:key="index" wx:for-item="item">
@@ -31,9 +32,9 @@
                     </view>
                 </view>
             </view>
-            <view class="line"></view>
-            <view class="title text-center">- 推荐运动情况 -</view>
-            <view class="recommend-list">
+            <view class="line"  wx:if="{{sportStyle}}"></view>
+            <view class="title text-center" style="margin-top:61rpx;padding-top:0;" wx:if="{{ sportStyle && recommendList && recommendList.length>0}}">- 推荐运动情况 -</view>
+            <view class="recommend-list" wx:if="{{recommendList && recommendList.length>0}}">
                 <view class="recommend" wx:for="{{recommendList}}" wx:key="index" wx:for-item="item">
                     <view class="img-wrap">
                         <image src="{{item.imgUrl}}" mode="widthFix"></image>

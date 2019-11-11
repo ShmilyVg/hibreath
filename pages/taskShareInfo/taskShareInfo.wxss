@@ -70,8 +70,23 @@
     font-weight: 500;
 }
 
+.card-body > .title{
+    padding-top:56rpx;
+    margin-bottom: 56rpx;
+    color:#333333;
+    font-size: 36rpx;
+    font-weight: 500;
+}
+
 
 .card> .line{
+    margin-top: 56rpx;
+    display: flex;
+    height: 3rpx;
+    background-color: #EEEEEE ;
+}
+
+.card-body > .line{
     margin-top: 56rpx;
     display: flex;
     height: 3rpx;
