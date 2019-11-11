@@ -1,38 +1,55 @@
 <view class="programme-header">
-  <view class="programme-header-title">7日减脂方案</view>
+  <view class="programme-header-title">{{title}}</view>
   <view class="title-box">
-      <image src="../../images/caseDetails/red.png" ></image>
-      <view class="box-text">帮你少摄入了约 90%糖类</view>
-      <image src="../../images/caseDetails/blue.png" ></image>
-      <view class="box-text-right">少摄入的热量相当于 跑了52公里 </view>
+      <view class="box-img box-img1">{{loseSugar}}<text>%</text></view>
+      <view class="box-text">帮你少摄入了约 {{loseSugar}}%糖类</view>
+      <view class="box-img box-img2">{{loseHot}}<text>km</text></view>
+      <view class="box-text-right">少摄入的热量相当于 跑了{{loseHot}}公里  </view>
   </view>
 </view>
   <view class="programme-body">
     <view class="day-list-content">
-      <view class="day-list">
-          <view class="{{radiusHeader}}" style="background:#FFFFFF;"  wx:key='{{index}}'>
-            <view class="day-list-title" data-index='{{index + 1}}' catchtap="ifShow" >
-                <view class="executeorder">DAY1</view>
-                <view class="day-title">断糖启动日</view>
-                <image  src="../../images/caseDetails/{{showIndex == index + 1 ? 'bottom':'top'}}.png"></image>
+
+
+
+      <view wx:for="{{dayList}}" class="day-list" wx:key="{{index}}">
+          <view class="{{radiusHeader[index]}}" style="background:#FFFFFF;" >
+            <view class="day-list-title" data-index='{{item.executeOrder - 1}}' catchtap="ifShow" >
+                <view class="executeorder">DAY{{item.executeOrder}}</view>
+                <view class="day-title">{{item.title}}</view>
+                <image  src="../../images/caseDetails/{{selectedFlag[index]? 'top':'bottom'}}.png"></image>
             </view>
-            <view class="day-subtitle">减脂第一天，先来清清身体里的“糖"吧!</view>
+            <view class="day-subtitle">{{item.subTitle}}</view>
           </view>
-          <view class="day-list-body" wx:if="{{showIndex == index + 1}}">
-            <view class="foodlist-box">
-              <view class="day-body-foodlist">
-                <image  src="../../images/caseDetails/red.png"></image>
-                <view class="foodtask-desc">韩式甜辣能量棒 </view>
+            
+            <view class="day-list-body" wx:if='{{!selectedFlag[index]}}'>
+              <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
+                <view class="day-body-foodlist" >
+                  <!-- <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
+                    <view class="foodlist-tag">{{item.tag}}</view>
+                  </view>     -->
+                   <view class="foodlist-img" style="background:url(../../images/caseDetails/tu.png) no-repeat center/100% 100%;">
+                    <view class="foodlist-tag">{{item.tag}}</view>
+                  </view>            
+                  <view class="foodtask-desc">{{item.desc}} </view>
+                  <view class="foodtask-desc">{{item.desc}} </view>
+                  <view class="foodtask-desc">{{item.desc}} </view>
+                </view>
+              </view> 
+              <view class="day-list-body-footer" wx:if="{{}}">
+                  <view class="body-footer-title" >
+                  可选加餐：
+                  </view>
               </view>
-            </view>
-            <view class="day-list-body-footer">
-              <view class="body-footer-title">
-              可选加餐：
-              </view>
-            </view>
           </view>
+          
       </view>
-      <view class="programme-footer-text">
+
+
+
+      
+    </view>
+    <view class="programme-footer-text">
           <view class="footer-text-title">注意</view>
           <view class="footer-text-list">
               <view class="footer-text-list-sequence">1</view>
@@ -51,5 +68,4 @@
                  <view class="footer-content-list">·患有严重慢性疾病、贫血和重度低血糖人群 </view>
           </view>
       </view>
-    </view>
   </view>

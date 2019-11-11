@@ -48,7 +48,7 @@ Page({
         score: 0,
         showBigTip: false,
         schemaId: 0,
-        scrollLeft: 490,
+        scrollLeft: 0,
         timer: '',
         bigTipNum: 0,
         bigTipCountNum: 20,
@@ -97,6 +97,7 @@ Page({
         console.log('breath_user_info_input onHide info====', this.data.info);
         if (this.data.info) {
             let {info, page, scrollLeft, schemaId} = this.data, obj = {};
+          
             for (let key in info) {
                 if (info.hasOwnProperty(key)) {
                     let item = info[key];
@@ -178,7 +179,7 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
-
+     
         let that = this;
         console.log('on:', e);
         if (e.isNotRegister) {
@@ -727,7 +728,7 @@ Page({
     },
 
     bindScrollView(e) {
-        console.log(e.detail.scrollLeft);
+        console.log("位置",e.detail.scrollLeft);
         clearTimeout(this.data.timer);
         this.data.timer = '';
         const scrollLeft = e.detail.scrollLeft;
@@ -781,9 +782,12 @@ Page({
                 break
         }
     },
-
+// 跳转
     async bindTapProject(e) {
-        this.data.schemaId = e.currentTarget.dataset.index
+        // this.data.schemaId = e.currentTarget.dataset.index;
+      this.data.schemaId = "4";
+      HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId });
+      console.log(555,this.data.schemaId )
     },
 
     onShow() {
