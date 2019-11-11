@@ -36,7 +36,31 @@ page{
     line-height:45rpx;
     margin-left: 30rpx;
 }
-
+.community-NumberText{
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.community-Bg{
+    width:220rpx;
+    height:68rpx;
+    background:rgba(255,255,255,1);
+    border-radius:34rpx;
+}
+.community-Wx{
+    width: 38rpx;
+    height: 32rpx;
+    margin-top: 22rpx;
+    float: left
+}
+.community-Add{
+    padding: 18rpx;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: -20rpx;
+    margin-right: 15rpx
+}
 .community-member-num{
     font-size:72rpx;
     font-family:DINCondensed-Bold,DINCondensed;
@@ -46,12 +70,12 @@ page{
 }
 
 .community-member-description{
-    font-size:24rpx;
-    font-family:PingFang-SC-Semibold,PingFang-SC;
-    font-weight:600;
-    color:rgba(255,255,255,1);
-    line-height:33rpx;
-    margin-left: 10rpx;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height: 68rpx;
+    margin-left: 6rpx;
 }
 
 .community-member-head{

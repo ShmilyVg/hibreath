@@ -10,15 +10,15 @@ import IndexCommonManager from "../index/view/indexCommon";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
-import * as Circular from "../result/view/circular";
+
 import ConnectionManager from "../index/connection-manager";
 import {oneDigit} from "../food/manager";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 import {showActionSheet} from "../../view/view";
 import {judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
-
+import * as Shared from "./view/shared.js";
+import {UploadUrl} from "../../utils/config";
 const app = getApp();
-
 Page({
     data: {
         isfatBurn: false,//燃脂卡片
@@ -37,19 +37,22 @@ Page({
         title: ['减脂目标', '性别', '出生日期', '身高体重', '体脂率', '您的三餐选择', '推荐目标体重', '选择一套方案'],
         page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
         page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
-        birth: ['1980', '01', '01'],
-        meals: [
+        birth: ['1980', '1', '1'],
+      /*  meals: [
             {text: '外卖为主', isChose: false, en: 'waimai'},
             {text: '外出就餐为主', isChose: false, en: 'waichu'},
             {text: '单位食堂为主', isChose: false, en: 'shitang'},
             {text: '居家制作为主', isChose: false, en: 'jujia'}
-        ],
+        ],*/
+        meals:[],
+        secArray:[],
         bgColorSetInfoPage: '#ffffff',
         score: 0,
         showBigTip: false,
         schemaId: 0,
-        scrollLeft: 0,
+        scrollLeft: 490,
         timer: '',
+        _timeoutIndex:'',
         bigTipNum: 0,
         bigTipCountNum: 20,
         sync: {
@@ -74,7 +77,22 @@ Page({
         fatText:'',
         fatTextEn:'',
         fatType:'',
-        fatDes:''
+        fatDes:'',
+
+
+        shareDown:"../../images/set-info/shareDown.png",
+        shareUp:"../../images/set-info/shareUp.png",
+        shareTotalDif:"",
+        shareFat:"",
+        shareFatBurnDesc:"",
+        shareTaskList:"",
+        shareTaskListImg0:"",
+        shareTaskListImg1:"",
+        shareTaskListImg2:"",
+        shareTaskListImg3:"",
+        shareImg:"",
+        bgImg:"../../images/set-info/shareBg.png",//分享背景
+        textBg:'../../images/set-info/textBg.png'
     },
     onFocus: function (e) {
         this.setData({
@@ -97,7 +115,6 @@ Page({
         console.log('breath_user_info_input onHide info====', this.data.info);
         if (this.data.info) {
             let {info, page, scrollLeft, schemaId} = this.data, obj = {};
-          
             for (let key in info) {
                 if (info.hasOwnProperty(key)) {
                     let item = info[key];
@@ -171,7 +188,6 @@ Page({
         Protocol.setBodyIndex(finaValue).then(data => {
             this.handleTasks();
             this.setData({
-                hiddenFat:"auto",
                 showModalStatus: false,
             })
             toast.success('填写成功');
@@ -179,7 +195,6 @@ Page({
     },
     //同步离线数据
     async onLoad(e) {
-     
         let that = this;
         console.log('on:', e);
         if (e.isNotRegister) {
@@ -194,7 +209,7 @@ Page({
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
         console.log("this",this)
-        Circular.init(this);
+
     },
 
     handleGuide(that) {
@@ -221,6 +236,11 @@ Page({
     async handleBaseInfo() {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
+        //获取三餐选择方案
+        const {result: {list}} = await Protocol.postMealType();
+        this.setData({
+            meals:list
+        })
         const {result: {list: goals}} = await Protocol.postSettingsGoals();
         const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
@@ -251,7 +271,7 @@ Page({
                 goalDesc: '',
                 sex: 0,
                 sexStr: 'woman',
-                birthday: '1980-01-01',
+                birthday: '1980-1-1',
                 height: '',
                 weight: '',
                 bodyFatRate: '',
@@ -370,15 +390,54 @@ Page({
 
     },
     async handleTasks() {
+
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
+            sharedId:result.sharedId,
             indexDayDesc: result.dayDesc,
             indexfinishNum: result.finishNum,
             indexgoalDesc: result.goalDesc,
             indextaskNum: result.taskNum,
             taskListAll: result.taskList,
         })
+        if(this.data.sharedId){
+            const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+            if(result.fatBurn){
+                this.setData({
+                    shareFat:result.fatBurn,
+                    shareFatBurnDesc:result.fatBurnDesc
+                })
+            }
+            this.setData({
+                shareTodayDif:result.todayDif,
+
+                shareTotalDifImg:result.totalDifImg,
+                shareTotalDif:result.totalDif,
+                shareTaskList:result.taskList,
+            })
+            Toast.showLoading();
+            Shared.getImageInfo(this)
+            Shared.screenWdith(this)
+            setTimeout(() => {
+                Shared.createNewIm(this)
+            },800)
+
+          /*  console.log('this._timeoutIndex',this.data._timeoutIndex)
+            clearTimeout(this.data.__timeoutIndex);
+            this.data._timeoutIndex = '';
+            let that = this;
+            that.data.__timeoutIndex = setTimeout(function() {
+                Shared.createNewIm(that)
+            }, 500)
+
+            Toast.hiddenLoading();*/
+           /* setTimeout(() => {
+                Shared.savePic(this)
+            },500)*/
+
+
+        }
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213", typesArr)
         for (var i = 0; i < typesArr.length; i++) {
@@ -400,9 +459,7 @@ Page({
                             fatDes: '"'+fatBurnExt.visDes+'"'
                         })
                     }
-                    setTimeout(() => {
-                        Circular.run();
-                    },600)
+
                 } else {
                     this.setData({
                         isfatBurn: true,
@@ -509,6 +566,7 @@ Page({
                 }
             }
         }
+
         setTimeout(() => {
             wx.setNavigationBarColor({
                 frontColor: '#ffffff',
@@ -575,6 +633,7 @@ Page({
                 }
                 break;
             case 6:
+                console.log('page6',this.data.meals)
                 let isChoseMeals = false;
                 this.data.meals.forEach(value => {
                     if (value.isChose) {
@@ -660,7 +719,12 @@ Page({
             birth: birthArr
         })
     },
-
+    showBirth(e){
+        console.log('dddddd',e.detail)
+        this.setData({
+            'info.birthday': e.detail,
+        })
+    },
     bindInputHeight(e) {
         const height = e.detail.value;
         let weightGoal = (height / 100) * (height / 100) * 21;
@@ -689,11 +753,19 @@ Page({
 
     bindTapMeals(e) {
         let choseIndex = e.currentTarget.dataset.index;
-        this.data.meals.map((value, index) => {
+        var item = this.data.meals[choseIndex];
+        this.data.secArray.push(item.en)
+        console.log('choseIndex',item)
+        item.isChose = !item.isChose;
+        this.setData({
+            meals: this.data.meals,
+            'info.mealType': this.data.secArray
+        });
+      /*  this.data.meals.map((value, index) => {
             value.isChose = choseIndex == index;
         });
         const en = this.data.meals[choseIndex].en;
-        this.setData({meals: this.data.meals, 'info.mealType': en})
+        this.setData({meals: this.data.meals, 'info.mealType': en})*/
     },
 
     bindTapExactClick(e) {
@@ -724,11 +796,11 @@ Page({
 
 
     onReady() {
-        Circular.createSelectorQuery()
+
     },
 
     bindScrollView(e) {
-        console.log("位置",e.detail.scrollLeft);
+        console.log(e.detail.scrollLeft);
         clearTimeout(this.data.timer);
         this.data.timer = '';
         const scrollLeft = e.detail.scrollLeft;
@@ -782,15 +854,13 @@ Page({
                 break
         }
     },
-// 跳转
+
     async bindTapProject(e) {
-        // this.data.schemaId = e.currentTarget.dataset.index;
-      this.data.schemaId = "4";
-      HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId });
-      console.log(555,this.data.schemaId )
+        this.data.schemaId = e.currentTarget.dataset.index
     },
 
-    onShow() {
+    async onShow() {
+
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
@@ -804,7 +874,6 @@ Page({
                     that.setData({
                         sync: that.data.sync,
                         showBigTip: true,
-                        hiddenFat:"600rpx",
                     });
 
                     clearTimeout(that.data.sync.timer);
@@ -812,7 +881,6 @@ Page({
                     that.data.sync.timer = setTimeout(function () {
                         that.setData({
                             showBigTip: false,
-                            hiddenFat:"auto",
                         });
                         that.handleTasks();
                     }, 2000)
@@ -820,7 +888,6 @@ Page({
             } else {
                 that.setData({
                     showBigTip: false,
-                    hiddenFat:"auto",
                 })
             }
         };
@@ -902,9 +969,6 @@ Page({
         })
     },
     showModal: function () {
-        this.setData({
-            hiddenFat:"600rpx"
-        })
         // 显示遮罩层
         var animation = wx.createAnimation({
             duration: 200,
@@ -927,8 +991,22 @@ Page({
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-            hiddenFat:"auto"
         })
         this.handleTasks();
+    },
+
+    /**
+     * 用户点击右上角分享
+     */
+     onShareAppMessage() {
+        console.log('sharedId',this.data.shareImg)
+        return {
+
+            title: this.data.indexDayDesc,
+            path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
+            imageUrl:this.data.shareImg
+        };
+        console.log('indexDayDesc',this.data.shareImg)
+
     }
 })

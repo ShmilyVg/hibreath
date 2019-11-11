@@ -1,0 +1,25 @@
+<template name="fatBurn">
+    <view class="card fatbarn">
+        <view class="title text-center">- 燃脂情况 -</view>
+        <view class="card-body" wx-if="{{!finished}}">
+              <view class="unclockin img-wrap">
+                <image src="/images/taskShareInfo/un_clockin.png"></image>
+            </view>
+        </view>
+        <view class="card-body" wx-if="{{!!finished}}">
+            <view class="fatbarn-value-wrap">
+                <view style="text-algin:right;margin-right:10rpx">
+                    <image style="width:80rpx;height:100%" src="{{iconUrl}}"></image>
+                </view>
+                <view class="fatbarn-value" style="margin-left:10rpx">
+                    <view class="value">{{dataValue}}</view>
+                    <view class="desc">{{des.zhCn}}</view>
+                </view>
+            </view>
+            <view class="desc">
+                {{visDes}}
+            </view>
+        </view>
+    </view>
+
+</template>

@@ -1,10 +1,11 @@
 <view class="imgClock-top">
     <view style="float: left;width: 80%">
      <!--   <view class="imgClock-titleS">#{{tag}}</view>-->
+        <view style="font-size:30rpx;font-family:PingFang-SC-Regular,PingFang-SC;font-weight:400;color:rgba(255,177,174,1);margin-bottom: 10rpx">#减脂心灵鸡汤</view>
         <view class="imgClock-titleB">{{description}}</view>
     </view>
 
-    <image src="../../images/imgClock/yh.png" style="width: 46rpx;height: 50rpx;float: right;margin-top: 20rpx"></image>
+   <!-- <image src="../../images/imgClock/yh.png" style="width: 46rpx;height: 50rpx;float: right;margin-top: 20rpx"></image>-->
 </view>
 <form bindsubmit="submit">
     <view class='photo'>

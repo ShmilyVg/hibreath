@@ -5,7 +5,7 @@
    <!-- <view class="member-Right" bindtap="shareAdd">
         +邀请好友加入
     </view>-->
-    <button class="member-Right" data-id="shareBtn"  open-type="share">+邀请好友加入</button>
+   <!-- <button class="member-Right" data-id="shareBtn"  open-type="share">+邀请好友加入</button>-->
     <view class="clear"></view>
     <view wx:for="{{memberList}}" wx:key="{{index}}">
         <view class="member-isMajor" wx:if="{{item.isMajor}}">

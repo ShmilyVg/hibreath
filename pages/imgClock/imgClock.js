@@ -111,7 +111,7 @@ Page({
                     if (res.tempFilePaths.length !== 1) {
                         for (var i = 0; i < res.tempFilePaths.length; i++) {
                             wx.uploadFile({
-                                url: 'https://backend.hipee.cn/hipee-uploadtest/hibreath/mp/upload/image.do', // 接口地址
+                                url: UploadUrl, // 接口地址
                                 filePath: res.tempFilePaths[i], // 上传文件的临时路径
                                 name: 'file',
                                 success(res) {

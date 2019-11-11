@@ -1,0 +1,115 @@
+.bodyindex{
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.weight-list{
+    display: flex;
+    height: 250rpx;
+    text-align: center;
+    background-image: url('http://img.hipee.cn/hibreath/icon/circle_bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.weight-list .weight{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.weight .value{
+    color:#454545;
+    font-weight: bold;
+}
+
+.weight .value.small{
+    font-size: 40rpx;
+}
+
+.weight .value.big{
+    font-size: 100rpx;
+}
+
+.weight .desc{
+    color: #454545;
+    font-size: 22rpx;
+    font-weight: 400;
+}
+
+
+.weight .desc.samll{
+    font-size: 22rpx;
+}
+
+.weight .desc.big{
+    font-size: 26rpx;
+}
+
+.weight > .flex{
+    align-items: baseline;
+    justify-content: center;
+}
+
+.weight-dif{
+    display: flex;
+    align-items: center;
+    margin-top: 45rpx;
+}
+
+
+.weight-dif .weight-info{
+    display: flex;
+    flex-grow: 1;
+    align-items: baseline;
+}
+
+.weight-info .weight-desc{
+    margin-right: 10rpx;
+    color: #454545;
+    font-size: 26rpx;
+    font-weight: 400;
+}
+
+.weight-info.right{
+    flex-direction: row-reverse;
+}
+
+.weight-dif .line-vertical{
+    display: inline-block;
+    width: 3rpx;
+    height: 24rpx;
+    margin: 0 24rpx;
+    background-color: #DDDDDD;
+}
+
+.weight-info  .weight-value{
+    color: #454545;
+    font-size: 40rpx;
+    font-weight: bold;
+}
+
+.weight-info  image{
+    width: 20rpx;
+    height: 27rpx;
+}
+
+.bloodheart{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.bloodheart .bloodheart-value{
+    color: #454545;
+    font-size: 54rpx;
+    font-weight: bold;
+}
+
+.bloodheart-desc{
+    color: #454545;
+    font-size: 26rpx;
+}

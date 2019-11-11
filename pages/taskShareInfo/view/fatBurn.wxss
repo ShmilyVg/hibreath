@@ -1,0 +1,30 @@
+
+.fatbarn-value-wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.fatbarn-value{
+    display: flex;
+    flex-direction: column;
+}
+
+.fatbarn-value .value{
+    color: #454545;
+    font-size: 76rpx;
+    font-weight: bold;
+}
+
+.fatbarn-value .desc{
+    color: #333333;
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.fatbarn > .desc{
+    margin-top: 61rpx;
+    color: #454545;
+    font-size:30rpx;
+    font-weight: 400;
+    padding: 0 41rpx;
+}
