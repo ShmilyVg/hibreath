@@ -52,7 +52,7 @@ function getImageInfo(page) {
         if(i == that.data.shareTaskList.length-1){
             setTimeout(() => {
                 createNewIm(that)
-            },400)
+            },600)
         }
     }
     console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
