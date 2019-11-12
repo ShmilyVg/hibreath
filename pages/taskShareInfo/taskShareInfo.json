@@ -3,5 +3,7 @@
   "navigationBarTextStyle": "white",
   "backgroundColor": "#efefef",
   "backgroundTextStyle": "light",
-  "usingComponents": {}
+  "usingComponents": {
+    "duration-picker": "../freeClock/components/duration-picker/index"
+  }
 }
