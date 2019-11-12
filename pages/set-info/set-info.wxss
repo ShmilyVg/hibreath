@@ -455,10 +455,9 @@
 }
 
 .set-content-view{
-
     background:rgba(255,255,255,1);
     border-radius:10rpx;
-    padding: 44rpx 47rpx 43rpx 30rpx;
+    padding: 44rpx;
     margin-bottom: 20rpx;
 
 }
@@ -728,17 +727,35 @@ swiperLi1{
   height: 670rpx;
   transform: scale(0.9);
 }
-
-
-
+/*分享弹窗*/
 .shareMask{
-    background:#000;opacity:0.5;position:fixed;top:0;right:0;bottom: 0;left:0;z-index:600
+    background:#000;
+    opacity:0.5;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom: 0;
+    left:0;
+    z-index:600
 }
 .shareRow{
-    width: 100%;text-align: center;line-height: 50px;background: #fff;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
     border-bottom: 1rpx solid #f0f0f0;
 }
-.text-gray{color: gray}
-.margin-top{margin-top:10rpx}
-.shareContainer{background:#f0f0f0;position:fixed;width:100vw;bottom:0;z-index:888;
-    font-size:30rpx;}
+.text-gray{
+    color: gray
+}
+.margin-top{
+    margin-top:10rpx
+}
+.shareContainer{
+    background:#f0f0f0;
+    position:fixed;
+    width:100vw;
+    bottom:0;
+    z-index:888;
+    font-size:30rpx;
+}

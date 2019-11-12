@@ -141,6 +141,14 @@ function savePic(page) {
                     shareImg: res.tempFilePath
                 })
                 Toast.hiddenLoading();
+                wx.hideTabBar({
+                    fail: function () {
+                        setTimeout(function () {
+                            wx.hideTabBar()
+                        }, 500)
+                    }
+
+                });
                 that.setData({
                     isOpened:true
                 })

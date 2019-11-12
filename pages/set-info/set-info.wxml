@@ -89,8 +89,12 @@
                 </view>
             </block>
             <view wx:elif="{{page==6}}">
-                <view wx:for="{{meals}}"  wx:key="{{index}}" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
-                      bindtap="bindTapMeals" data-index="{{index}}">{{item.name}}
+                <view wx:for="{{meals}}"
+                      wx:key="{{index}}"
+                      class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
+                      >
+                    <view wx:if="{{index == meals.length-1}}" data-index="{{index}}" bindtap="bindTapMealsSecNone">{{item.name}}</view>
+                    <view wx:else data-index="{{index}}" bindtap="bindTapMeals">{{item.name}}</view>
                 </view>
             </view>
             <view wx:if="{{page==7}}" class="flex-column">
@@ -242,6 +246,6 @@
 <view class="shareContainer" wx:if='{{isOpened}}'>
    <!-- <view class='shareRow'>{{title}}</view>-->
     <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
-    <view class='shareRow text-gray margin-top' bindtap='cancel'>取 消</view>
+    <view class='shareRow margin-top' bindtap='cancel'>取 消</view>
 </view>
 <view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>

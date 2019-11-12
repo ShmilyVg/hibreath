@@ -391,7 +391,7 @@ Page({
 
     },
     async handleTasks() {
-
+        Toast.showLoading();
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
@@ -430,14 +430,9 @@ Page({
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
                         fatType:fatBurnExt.iconUrl,
-                        bgColorSetInfoPage: '#FEF6F2'
+                        bgColorSetInfoPage: '#FEF6F2',
+                        fatDes:fatBurnExt.visDes
                     });
-                    if(!fatBurnExt.visDes == ""){
-                        this.setData({
-                            fatDes: '"'+fatBurnExt.visDes+'"'
-                        })
-                    }
-
                 } else {
                     this.setData({
                         isfatBurn: true,
@@ -551,6 +546,7 @@ Page({
                 backgroundColor: '#F55E6B',
             })
         });
+        Toast.hiddenLoading()
     },
 
     async continue() {
@@ -731,22 +727,58 @@ Page({
         this.setData({'info.bodyFatRate': e.detail.value})
         return oneDigit(e);
     },
-
-    bindTapMeals(e) {
+    //三餐选择
+    bindTapMealsSecNone(e){
         let choseIndex = e.currentTarget.dataset.index;
         var item = this.data.meals[choseIndex];
-        this.data.secArray.push(item.en)
+        console.log('meals', this.data.meals)
+        item.isChose = !item.isChose;
+        for(var i=0;i<this.data.meals.length;i++){
+            if(this.data.meals[i].en !== 'none'){
+                this.data.meals[i].isChose = false
+            }
+        }
+        this.setData({
+            meals: this.data.meals,
+            secArray:[]
+        })
+        this.data.secArray.push('none')
+        this.setData({
+            'info.mealType': this.data.secArray
+        });
+        console.log('最终结果1',this.data.secArray)
+    },
+    //数组去重
+    unique(arr) {
+        return Array.from(new Set(arr))
+    },
+    bindTapMeals(e) {
+        for(var i=0;i<this.data.meals.length;i++){
+            if(this.data.meals[i].en == 'none' && this.data.meals[i].isChose == true){
+                this.data.meals[i].isChose = false
+                this.setData({
+                    secArray:[]
+                })
+            }
+        }
+        let choseIndex = e.currentTarget.dataset.index;
+        var item = this.data.meals[choseIndex];
+        console.log('item.isChose == true',item.isChose == true)
+        if(item.isChose == true){
+            this.data.secArray= this.data.secArray.filter(function(items) {
+                     return items != item.en
+                 });
+        }else{
+            this.data.secArray.push(item.en)
+        }
+
         console.log('choseIndex',item)
         item.isChose = !item.isChose;
         this.setData({
             meals: this.data.meals,
             'info.mealType': this.data.secArray
         });
-      /*  this.data.meals.map((value, index) => {
-            value.isChose = choseIndex == index;
-        });
-        const en = this.data.meals[choseIndex].en;
-        this.setData({meals: this.data.meals, 'info.mealType': en})*/
+        console.log('最终结果2',this.unique(this.data.secArray))
     },
 
     bindTapExactClick(e) {
@@ -763,8 +795,8 @@ Page({
     async onGetUserInfoEvent(e) {
         const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
-            Toast.showLoading();
             try {
+                Toast.showLoading();
                 await Login.doRegister({userInfo, encryptedData, iv});
                 const userInfo = await UserInfo.get();
                 this.setData({userInfo, showGuide: false});
@@ -989,7 +1021,6 @@ Page({
      onShareAppMessage() {
         console.log('sharedId',this.data.shareImg)
         return {
-
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
             imageUrl:this.data.shareImg
@@ -1012,6 +1043,14 @@ Page({
         this.setData({
             isOpened: false
         })
+        wx.showTabBar({
+            fail: function () {
+                setTimeout(function () {
+                    wx.showTabBar()
+                }, 500)
+            }
+
+        });
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
