@@ -40,7 +40,8 @@ Page({
     async onLoad(e) {
         console.log('eeeeeee', e)
         if (e.id) {
-            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: e.id});
+            this.dataId =e.id;
+            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: this.dataId});
             this.setData({
                 fatDes, score, fatText: des.zhCh, fatTextEn: des.en
             });
@@ -53,8 +54,9 @@ Page({
         this.cellDataHandle({});
         this.init();
         setTimeout(() => {
-            Circular.run(this);
-        },400)
+            console.log('绘制一次')
+            Circular.run();
+        },650)
 
     },
 
@@ -70,12 +72,14 @@ Page({
         toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
-            this.setData({
-                fatText:list[0].desZh,
-                score:list[0].dataValue,
-                fatTextEn:list[0].des.en,
-                fatDes:list[0].visDes,
-            })
+            if(!this.dataId){
+                this.setData({
+                    fatText:list[0].desZh,
+                    score:list[0].dataValue,
+                    fatTextEn:list[0].des.en,
+                    fatDes:list[0].visDes,
+                })
+            }
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
                 value.date = `${year}/${month}/${day} ${time}`;
@@ -197,7 +201,8 @@ Page({
             getApp().globalData.trendTime = null;
         }
         setTimeout(() => {
-            Circular.run(this);
+            console.log('绘制两次')
+            Circular.run();
         },400)
     },
 

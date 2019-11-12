@@ -70,8 +70,9 @@
     <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
 
     <view wx:if="{{disblowImg}}" class="disblow-error"></view>
-    <view wx:if="{{disblowImg}}" class="disblow-img"></view>
+    <view wx:if="{{disblowImg}}" class="disblow-img disblow-circular{{disblowNumber}}"></view>
     <view wx:if="{{disblowImg}}" class="blowing-imgs"></view>
+
     <view wx:if="{{process}}" class="processC"></view>
     <view wx:if="{{process}}" class="processM"></view>
 
