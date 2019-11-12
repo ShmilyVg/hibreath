@@ -388,7 +388,6 @@ Page({
         } catch (e) {
             console.warn(e);
         }
-
     },
     async handleTasks() {
         Toast.showLoading();
@@ -912,17 +911,38 @@ Page({
     },
 
 
-    bindTapToResultPage() {
+    async bindTapToResultPage() {
         if (this.data.fatBurnFin) {
-            const {fatText, fatTextEn, fatDes, score} = this.data;
+            /*const {fatText, fatTextEn, fatDes, score} = this.data;
             console.log(fatText, fatTextEn, fatDes, score)
-            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});*/
+            HiNavigator.navigateToResultNOnum();
+            return
         }
+        let {result: {list:breathList}} = await Protocol.postBreathDatalistAll({
+            timeBegin: 1510468206000,
+            timeEnd: Date.now()
+        });
+        if(breathList.length>0){
+            HiNavigator.navigateToResultNOnum();
+            return
+        }
+        HiNavigator.navigateIndex();
     },
-    bindTapToFood() {
+    async bindTapToFood() {
         if (this.data.bodyIndexFin) {
             HiNavigator.navigateTofood();
+            return
         }
+        let {result: {list:weightList}}=await Protocol.postWeightDataListAll({
+            timeBegin:1510468206000,
+            timeEnd:Date.now()
+        })
+        if(weightList.length>0){
+            HiNavigator.navigateTofood();
+            return
+        }
+        this.showModal();
     },
     bindWeightInput(e) {
         const weightNumber = e.detail.value.split(".");
@@ -936,7 +956,6 @@ Page({
     },
     //选择方案轮播图
     swiperChangeCase(e){
-      console.log(4777,e)
       this.setData({
         schemaId: this.data.project[e.detail.current].id
       })

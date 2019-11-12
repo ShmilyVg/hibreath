@@ -44,17 +44,18 @@ Page({
             this.setData({
                 fatDes, score, fatText: des.zhCh, fatTextEn: des.en
             });
-        } else if (e.score) {
+        } /*else if (e.score) {
             const {fatText, fatTextEn, fatDes, score} = e;
             this.setData({
                 fatText, fatTextEn, fatDes, score
             });
-        }
+        }*/
+        this.cellDataHandle({});
         this.init();
         setTimeout(() => {
-            Circular.run();
+            Circular.run(this);
         },400)
-        this.cellDataHandle({});
+
     },
 
     init() {
@@ -69,6 +70,12 @@ Page({
         toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
+            this.setData({
+                fatText:list[0].desZh,
+                score:list[0].dataValue,
+                fatTextEn:list[0].des.en,
+                fatDes:list[0].visDes,
+            })
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
                 value.date = `${year}/${month}/${day} ${time}`;
@@ -190,7 +197,7 @@ Page({
             getApp().globalData.trendTime = null;
         }
         setTimeout(() => {
-            Circular.run();
+            Circular.run(this);
         },400)
     },
 

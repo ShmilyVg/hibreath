@@ -18,9 +18,12 @@ export default class HiNavigator extends CommonNavigator {
     static redirectToBlowToResult({id}) {
         this.redirectTo({url: '/pages/result/result?id=' + id});
     }
-    //历史记录进入结果页
+
     static navigateToResult({fatText, fatTextEn, fatDes, score}) {
         this.navigateTo({url:`/pages/result/result?fatText=${fatText}&fatTextEn=${fatTextEn}&fatDes=${fatDes}&score=${score}`});
+    }
+    static navigateToResultNOnum() {
+        this.navigateTo({url: '/pages/result/result'});
     }
 
     static relaunchToIndex({refresh = false} = {}) {

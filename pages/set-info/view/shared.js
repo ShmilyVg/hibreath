@@ -62,6 +62,7 @@ function getImageInfo(page) {
 
 function createNewIm(page){
     let that = page;
+    console.log('处理后的rpx',rpx)
     let ctx = wx.createCanvasContext('myCanvas');
     console.log('page.data.bgImg',page.data.bgImg)
     ctx.drawImage(page.data.bgImg, 0, 0, 463*rpx, 370*rpx);
