@@ -34,30 +34,37 @@ Page({
         currenttab: '0',
         trendDate: '',
         page: 1,
-        tabIsShow: true
+        tabIsShow: true,
+        fatText:'',
+        fatTextEn:'',
+        fatDes:''
     },
 
     async onLoad(e) {
         console.log('eeeeeee', e)
+        this.e= e;
+        this.cellDataHandle({});
+        this.init();
         if (e.id) {
             this.dataId =e.id;
             const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: this.dataId});
             this.setData({
                 fatDes, score, fatText: des.zhCh, fatTextEn: des.en
             });
-        } /*else if (e.score) {
+            setTimeout(() => {
+                console.log('绘制一次')
+                Circular.run();
+            },500)
+        } else if (e.score) {
             const {fatText, fatTextEn, fatDes, score} = e;
             this.setData({
                 fatText, fatTextEn, fatDes, score
             });
-        }*/
-        this.cellDataHandle({});
-        this.init();
-        setTimeout(() => {
-            console.log('绘制一次')
-            Circular.run();
-        },650)
-
+            setTimeout(() => {
+                console.log('绘制一次')
+                Circular.run();
+            },500)
+        }
     },
 
     init() {
@@ -72,13 +79,17 @@ Page({
         toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
-            if(!this.dataId){
+            if(!this.e.id && !this.e.score){
                 this.setData({
                     fatText:list[0].desZh,
                     score:list[0].dataValue,
                     fatTextEn:list[0].des.en,
                     fatDes:list[0].visDes,
                 })
+                setTimeout(() => {
+                    console.log('绘制一次')
+                    Circular.run();
+                },500)
             }
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
@@ -200,10 +211,10 @@ Page({
             });
             getApp().globalData.trendTime = null;
         }
-        setTimeout(() => {
+      /*  setTimeout(() => {
             console.log('绘制两次')
             Circular.run();
-        },400)
+        },650)*/
     },
 
     onReady() {

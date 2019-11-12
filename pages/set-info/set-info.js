@@ -913,10 +913,10 @@ Page({
 
     async bindTapToResultPage() {
         if (this.data.fatBurnFin) {
-            /*const {fatText, fatTextEn, fatDes, score} = this.data;
+            const {fatText, fatTextEn, fatDes, score} = this.data;
             console.log(fatText, fatTextEn, fatDes, score)
-            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});*/
-            HiNavigator.navigateToResultNOnum();
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+            /*HiNavigator.navigateToResultNOnum();*/
             return
         }
         let {result: {list:breathList}} = await Protocol.postBreathDatalistAll({

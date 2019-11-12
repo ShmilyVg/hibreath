@@ -6,6 +6,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import CommonProtocol from "../../modules/network/network/libs/protocol";
 import {WXDialog} from "heheda-common-view";
+import * as Circular from "../result/view/circular";
 
 
 export default class BlowManager {
