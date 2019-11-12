@@ -30,6 +30,7 @@ export default class BlowManager {
 
         this.actionBlow[ProtocolState.BREATH_RESTART] = () => {
             this.disblow();
+            this.distimerblow();
         };
 
         this.actionBlow[ProtocolState.BREATH_START] = () => {
@@ -84,14 +85,25 @@ export default class BlowManager {
             countDownNum--;
             if ( countDownNum == 0) {
                 clearInterval(int);
-             /*   setTimeout(function () {
-                    that._page.setData({
-                        isShowBlow : true
-                    })
-                }, 1000)*/
             }
         }, 1000)
+    }
 
+    distimerblow(){
+        this._page.setData({
+            disblowNumber: 5
+        });
+        var that = this;
+        let countDownNum =4
+        var int=setInterval(function () {
+            that._page.setData({
+                disblowNumber: countDownNum
+            })
+            countDownNum--;
+            if ( countDownNum == 0) {
+                clearInterval(int);
+            }
+        }, 50)
     }
     alertUpdata(){
             CommonProtocol.postBlueToothUpdate({

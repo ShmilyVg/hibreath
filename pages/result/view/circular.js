@@ -17,13 +17,12 @@ function init(page) {
     _xWidth = dWidth / 375
 }
 
-function run(page) {
-    _page = page;
-    drewCircular(_page);
+function run() {
+    drewCircular();
     showType();
 }
 
-function drewCircular(_page) {
+function drewCircular() {
     console.log("_page.data.score",_page)
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);

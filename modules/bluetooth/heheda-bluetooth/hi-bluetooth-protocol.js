@@ -65,7 +65,7 @@ export default class HiBlueToothProtocol {
                 wx.setStorageSync('indexDeviceId', deviceId);
                 const _syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
                 console.log("总数", _syncCount)
-                const now = Date.now() / 1000;
+                const now = Math.round(new Date() / 1000);
                 console.log('小程序下发时间戳',now)
                 this.sendData({command: '0x05', data: [now]}).then(() => {
                     this.sendQueryDataRequiredProtocol();
@@ -190,8 +190,8 @@ export default class HiBlueToothProtocol {
     }
 
     startData() {
-        this.sendData({command: '0x05', data: [Date.now() / 1000]});
-        console.log("执行重新获取状态")
+        this.sendData({command: '0x05', data: [Math.round(new Date() / 1000)]});
+        console.log("执行重新获取状态,发送时间戳为：",Math.round(new Date() / 1000))
     }
 
     getDeviceIsBind() {
