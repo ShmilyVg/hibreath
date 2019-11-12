@@ -39,7 +39,7 @@
           </view>
         </view>
       </view>
- <view class="day-list-body-footer" wx:if="{{item.foodTask.subjoin}}">
+ <view class="day-list-body-footer" wx:if="{{!selectedFlag[index] && item.foodTask.subjoin}}">
           <view class="body-footer-title">
             <block class="body-footer-title">可选加餐：</block>
 
