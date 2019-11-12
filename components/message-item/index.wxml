@@ -16,6 +16,6 @@
     <text bindtap="onMessageClickEvent" class="fill-width message-item-desc">{{message.desc?message.desc:''}}</text>
 
     <view bindtap="onMessageClickEvent" class="fill-width flex-row flex-wrap">
-        <image mode="aspectFill" catchtap="onImagePreview" data-url="{{item}}" wx:for="{{message.imgUrls}}" wx:key="index" src="{{item}}" class="message-item-image-item"></image>
+        <image mode="aspectFill" catchtap="onImagePreview" data-url="{{item}}" wx:for="{{message.imgUrls}}" wx:key="index" src="{{item}}?x-oss-process=style/zoom50" class="message-item-image-item"></image>
     </view>
 </view>
