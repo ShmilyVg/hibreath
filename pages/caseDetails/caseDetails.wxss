@@ -127,18 +127,29 @@ page{
 }
 .day-subtitle{
   width:100%;
+  font-size:24rpx;
+  color:rgba(69,69,69,1);
 }
 .day-list-body1{
   width:582rpx;
-   height:369rpx;
+   
 }
 .day-list-body{
-  height:420rpx;
+  
   background:#fff;
  
   border-radius:0 0 20rpx 20rpx;
   padding:52rpx 44rpx 0 44rpx ;
   /*  */
+   /* display: flex;
+   box-sizing: border-box;
+  
+  width: 100%;
+  overflow-y: scroll;
+  white-space: nowrap; */
+}
+.foodlist-box-list{
+  height:330rpx;
    display: flex;
    box-sizing: border-box;
   
@@ -156,12 +167,12 @@ page{
 
 .foodtask-desc{
   width:191rpx;
- height:55rpx;
  font-size:24rpx;
  font-weight:400;
  color:rgba(69,69,69,1);
  line-height:32rpx;
  overflow:hidden; 
+ text-align: center;
 }
 .day-list-body-footer{
   border-top:1rpx solid #DDDDDD;
@@ -179,8 +190,6 @@ page{
   height:94rpx;
 }
 .body-footer-title{
-width:120rpx;
-height:23rpx;
 font-size:24rpx;
 font-weight:500;
 color:rgba(69,69,69,1);
@@ -195,6 +204,7 @@ color:rgba(69,69,69,1);
  position:relative;
  top:-30rpx;
   padding:0 40rpx 30rpx 40rpx;
+  color:#454545;
 }
 .footer-text-title{
   width:80rpx;
@@ -259,4 +269,9 @@ text-align:center;
 line-height:37rpx;
 float:right;
 margin-top:10rpx;
+}
+.addition-food{
+ float:left;
+  font-size:24rpx;
+  color: #454545 ;
 }

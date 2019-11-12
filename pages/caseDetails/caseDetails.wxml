@@ -23,22 +23,26 @@
           </view>
             
             <view class="day-list-body" wx:if='{{!selectedFlag[index]}}'>
-              <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
-                <view class="day-body-foodlist" >
-                  <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
-                    <view class="foodlist-tag">{{item.tag}}</view>
-                  </view>   
-               
-                            
-                  <view class="foodtask-desc">{{item.desc}} </view>
-                  <view class="foodtask-desc">{{item.desc}} </view>
-                  <view class="foodtask-desc">{{item.desc}} </view>
+                <view class="foodlist-box-list">
+                  <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
+                    <view class="day-body-foodlist" >
+                      <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
+                        <view class="foodlist-tag">{{item.tag}}</view>
+                      </view>        
+                      <view class="foodtask-desc" wx:for="{{item.subList}}">
+                          <view>{{item.title}} X{{item.dosage}}</view>
+                      </view>
+                      
+                    </view>
+                  </view> 
                 </view>
-              </view> 
-              <view class="day-list-body-footer" wx:if="{{}}">
+              <view class="day-list-body-footer" wx:if="{{item.foodTask.subjoin}}" >
                   <view class="body-footer-title" >
-                  可选加餐：
+                     <block class="body-footer-title" >可选加餐：</block>
+                     
+                      <block wx:for="{{item.foodTask.subjoin}}"><block class="addition-food">{{item}} </block></block>
                   </view>
+                  
               </view>
           </view>
           
@@ -48,13 +52,13 @@
 
       
     </view>
-    <view class="programme-footer-text">
+    <view class="programme-footer-text" >
           <view class="footer-text-title">注意</view>
-          <view class="footer-text-list">
-              <view class="footer-text-list-sequence">1</view>
-              <view class="footer-text-list-content">本方案所含代餐需要单独购买；</view>
+          <view class="footer-text-list" wx:for="{{noticeList}}">
+              <view class="footer-text-list-sequence">{{index+1}}</view>
+              <text class="footer-text-list-content">{{item}}</text>
           </view>
-          <view class="footer-text-list">
+          <!-- <view class="footer-text-list">
               <view class="footer-text-list-sequence">2</view>
               <view class="footer-text-list-content"> 代餐中含有乳及乳制品，大豆制品、坚果仁制品和含有麸质的谷物及其制品，请自行核对过敏源；</view>
           </view>
@@ -65,6 +69,6 @@
               <view class="footer-content-list">·正在使用降血压药的患者</view>
                 <view class="footer-content-list"> ·糖尿病患者</view>
                  <view class="footer-content-list">·患有严重慢性疾病、贫血和重度低血糖人群 </view>
-          </view>
+          </view> -->
       </view>
   </view>

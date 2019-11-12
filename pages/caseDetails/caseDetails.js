@@ -62,12 +62,12 @@ Page({
       dayList: result.dayList,
       loseHot: result.loseHot,
       loseSugar: result.loseSugar,
-      
-    
+      noticeList: result.noticeList,
+     
     })
 
 
-    console.log(123, this.data.dayList)
+    //console.log(123, this.data.dayList)
   },
 
   /**
