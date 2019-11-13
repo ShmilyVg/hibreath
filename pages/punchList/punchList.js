@@ -13,7 +13,9 @@ Page({
      */
     data: {
         currenttab: '0',
-        isShare: true
+        isShare: true,
+        getSharedId: null,
+        groupId: null
     },
     //切换标签页
     async selectTab(e) {
