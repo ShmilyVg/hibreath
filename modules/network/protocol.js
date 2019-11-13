@@ -293,7 +293,7 @@ export default class Protocol {
         return Network.request({url: 'ranklist/clockin/addup',data:{groupId, sharedId}});
     }
     //打卡榜-连续打卡
-    static postContinual({groupId}) {
+    static postContinual({groupId, sharedId}) {
         return Network.request({url: 'ranklist/clockin/continual',data:{groupId, sharedId}});
     }
     //减重榜-累计减重
