@@ -289,8 +289,8 @@ export default class Protocol {
         return Network.request({url: 'group/join', data: arguments[0]});
     }
     //打卡榜-累计打卡
-    static postAddup({groupId}) {
-        return Network.request({url: 'ranklist/clockin/addup',data:{groupId}});
+    static postAddup({groupId, sharedId}) {
+        return Network.request({url: 'ranklist/clockin/addup',data:{groupId, sharedId}});
     }
     //打卡榜-连续打卡
     static postContinual({groupId}) {
