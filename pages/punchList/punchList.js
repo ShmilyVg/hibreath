@@ -24,7 +24,7 @@ Page({
             this.setData({
                 currenttab: newtab
             });
-            const { getSharedId, groupId } = this.data;
+            const { sharedId:getSharedId, groupId } = this.data;
             let resultData;
             if (newtab == 0) {
                 resultData = await whenDismissGroup(Protocol.postAddup({ groupId, sharedId: getSharedId }));
@@ -53,7 +53,7 @@ Page({
         this.setData({
             groupId: options.groupId,
             getSharedId,
-            isShare: !sharedId,
+            isShare: !getSharedId,
         });
 
         const { result: { nickname, headUrl, groupName, sharedId, rankNum, addup, continual, ranklist, inRank } } = await whenDismissGroup(Protocol.postAddup({ groupId, sharedId: getSharedId }));

@@ -294,7 +294,7 @@ export default class Protocol {
     }
     //打卡榜-连续打卡
     static postContinual({groupId}) {
-        return Network.request({url: 'ranklist/clockin/continual',data:{groupId}});
+        return Network.request({url: 'ranklist/clockin/continual',data:{groupId, sharedId}});
     }
     //减重榜-累计减重
     static postWeight({groupId}) {
