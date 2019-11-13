@@ -58,15 +58,10 @@ Page({
     },
     //控制完成按钮是否可以点击
     disBtn(){
-        if(this.data.desc || this.data.imgbox.length>0){
-            this.setData({
-                disable:false
-            })
-        }else{
-            this.setData({
-                disable:true
-            })
-        }
+        const {desc, imgbox} = this.data;
+        this.setData({
+            disable: desc || imgbox.length>0
+        })
     },
     bindTextAreaBlur: function(e) {
         console.log("e11",e.detail.value)
@@ -130,6 +125,7 @@ Page({
                                     imgbox
                                 })
                                 console.log('照片',that.data.imageUrl)
+                                that.disBtn()
                             },
                             fail(err){
                                 console.log("uploadFile:", err)
@@ -138,7 +134,6 @@ Page({
                     })
                 } 
                 console.log("IMGBOX",that.data.imgbox)
-                that.disBtn()
             }
         })
 
