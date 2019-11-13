@@ -100,13 +100,17 @@ Page({
             success: function (res) {
                 console.log("res",res)
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                let tempFilePaths = res.tempFilePaths
+                let tempFilePaths = res.tempFiles;
 
                 if (tempFilePaths) {
                     wx.showLoading({ // 添加loading状态
                         title: '上传中',
                     })
-                    tempFilePaths.forEach(path=>{
+                    tempFilePaths.forEach(({path, size})=>{
+                        if(size > 5*1024*1024){// 小于5M
+                            toast.showText("原图不能超过5M");
+                            return;
+                        }
                         wx.uploadFile({
                             url: UploadUrl, // 接口地址
                             filePath: path, // 上传文件的临时路径
@@ -126,6 +130,9 @@ Page({
                                     imgbox
                                 })
                                 console.log('照片',that.data.imageUrl)
+                            },
+                            fail(err){
+                                console.log("uploadFile:", err)
                             }
                         })
                     })
