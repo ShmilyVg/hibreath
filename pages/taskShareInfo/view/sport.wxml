@@ -1,6 +1,6 @@
 <template name="sport">
     <view class="card sport">
-        <view class="title text-center" wx:if="{{sportStyle}}">- {{finished?"自由":""}}运动情况 -</view>
+        <view class="title text-center" wx:if="{{sportStyle || !finished}}">- {{finished?"自由":""}}运动情况 -</view>
            <view class="title text-center" wx:if="{{!sportStyle && recommendList && recommendList.length>0}}">- 推荐运动情况  -</view>
         <view class="card-body" wx-if="{{!finished}}">
             <view class="unclockin img-wrap">

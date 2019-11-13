@@ -13,7 +13,7 @@
     padding: 20rpx;
 }
 
-.food .img-wrap{
+.img-list .img-wrap{
     width: 200rpx;
     height: 200rpx;
     overflow: hidden;

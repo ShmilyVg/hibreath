@@ -84,7 +84,7 @@
 .set-content-view{
     background:rgba(255,255,255,1);
     border-radius:10rpx;
-    padding: 44rpx 47rpx 43rpx 30rpx;
+    padding: 44rpx 47rpx 43rpx 44rpx;
     margin-bottom: 20rpx;
 
 }

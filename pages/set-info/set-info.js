@@ -234,7 +234,7 @@ Page({
             });
         });
     },
-    async handleBaseInfo() {
+    async handleBaseInfo(resetPage) {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
         //获取三餐选择方案
@@ -282,10 +282,10 @@ Page({
 
             const userInfoInput = wx.getStorageSync('breath_user_info_input');
             console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
-            let page = 1, project = [];
+            let page = resetPage||1, project = [];
             if (userInfoInput) {
                 info = Object.assign(info, userInfoInput);
-                page = userInfoInput.page || 1;
+                page = resetPage || userInfoInput.page || 1;
 
                 const mealValue = info.mealType;
                 for (let item of this.data.meals) {
@@ -375,7 +375,7 @@ Page({
                         cancelText: "取消",
                         confirmEvent: () => {
                             Protocol.postMembersExit({planId:this.data.planId}).then(() =>
-                                this.handleBaseInfo()
+                                this.handleBaseInfo(1)
                             )
                         },
                         cancelEvent: () => {
