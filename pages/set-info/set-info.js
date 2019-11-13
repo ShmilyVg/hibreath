@@ -284,7 +284,7 @@ Page({
             console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
             let page = resetPage||1, project = [];
             if (userInfoInput) {
-                info = Object.assign(info, userInfoInput);
+                info = Object.assign(info, userInfoInput, {goalDesc:''});
                 page = resetPage || userInfoInput.page || 1;
 
                 const mealValue = info.mealType;
