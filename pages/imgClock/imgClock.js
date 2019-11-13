@@ -60,7 +60,7 @@ Page({
     disBtn(){
         const {desc, imgbox} = this.data;
         this.setData({
-            disable: desc || imgbox.length>0
+            disable: !(!!desc || imgbox.length>0)
         })
     },
     bindTextAreaBlur: function(e) {
