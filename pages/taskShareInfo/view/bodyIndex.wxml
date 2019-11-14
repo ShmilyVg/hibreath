@@ -30,7 +30,7 @@
             </view>
             <view class="weight-dif">
                 <view class="weight-info right">
-                    <view class="weight-value">{{weight.todayDif?Math.abs(weight.todayDif):0}}kg</view>
+                    <view class="weight-value">{{weight.todayDif<0?(0-weight.todayDif):weight.todayDif}}kg</view>
                     <view>
                         <image src="{{weight.todayDif <0?iconDown:iconUp }}"></image>
                     </view>
@@ -43,7 +43,7 @@
                     <view>
                         <image src="{{weight.totalDif <0?iconDown:iconUp }}"></image>
                     </view>
-                    <view class="weight-value">{{weight.totalDif?Math.abs(weight.totalDif):0}}kg</view>
+                    <view class="weight-value">{{weight.totalDif<0?(0-weight.totalDif):weight.totalDif}}kg</view>
                 </view>
             </view>
             <view class="line"></view>
