@@ -7,6 +7,8 @@
   "usingComponents": {
     "foodCard": "../../components/foodCard/foodCard",
     "setting": "../../components/setting/index",
-    "pickerDate":"../../components/pickerDate/index"
+    "pickerDate":"../../components/pickerDate/index",
+    "my-swiper":"../../components/my-swiper/index",
+    "my-swiper-target": "../../components/my-swiper-target/index"
   }
 }

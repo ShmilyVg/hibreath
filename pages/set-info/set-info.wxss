@@ -187,13 +187,15 @@
 }
 
 .page1-goals-image1{
-    width:50rpx;
-    height:50rpx;
+    width:73rpx;
+    height:73rpx;
     border-radius: 50%;
-    margin-left: 36rpx;
-    margin-right: 29rpx;
+    margin-left: 44rpx;
+    margin-right: 30rpx;
+    margin-top:23rpx;
     background-color: lightblue;
     opacity: 0.3;
+    vertical-align: middle;
 }
 
 .page1-goals-image2{
@@ -213,6 +215,7 @@
     margin-left: 44rpx;
     margin-right: 30rpx;
     background-color: lightblue;
+    float:left;
 }
 
 .page1-input{
@@ -223,6 +226,7 @@
     line-height:56rpx;
     text-align: center;
     width: 100%;
+   
 }
 
 
@@ -233,7 +237,9 @@
     box-shadow:0 0 10rpx 0 rgba(0,0,0,0.12);
     border-radius:10rpx;
     align-items: center;
-    margin-top: 80rpx;
+    margin-top: 250rpx;
+    margin-left:50rpx;
+   
 }
 
 .page1-edit{
@@ -247,6 +253,9 @@
     width: 23rpx;
     height: 23rpx;
     margin: 0 26rpx;
+    margin-top:195px;
+   
+   
 }
 
 .page2-title{
@@ -759,3 +768,24 @@ swiperLi1{
     z-index:888;
     font-size:30rpx;
 }
+
+
+
+
+
+
+.middle-view{
+    width:620rpx;
+    height:110rpx;
+    background:rgba(255,230,228,1);
+    border-radius:70rpx;
+    line-height: 110rpx;
+    text-align: center;
+    font-size:32rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+    margin-top: 580rpx;
+    margin-left:66rpx;
+}
+
