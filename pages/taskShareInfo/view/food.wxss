@@ -1,16 +1,17 @@
-.food > .desc{
-    padding:0 41rpx;
+.food .desc{
+    padding:40rpx;
     color: #454545;
     font-size:30rpx;
     font-weight: 400;
     text-align: justify;
+    box-sizing: border-box;
 }
 
 .food .img-list{
     display: flex;
-    margin-top: 40rpx;
     flex-wrap: wrap;
-    padding: 20rpx;
+    box-sizing: border-box;
+    padding: 40rpx 40rpx 0rpx 40rpx;
 }
 
 .img-list .img-wrap{
