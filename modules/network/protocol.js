@@ -297,12 +297,12 @@ export default class Protocol {
         return Network.request({url: 'ranklist/clockin/continual',data:{groupId, sharedId}});
     }
     //减重榜-累计减重
-    static postWeight({groupId}) {
-        return Network.request({url: 'ranklist/weight/addup',data:{groupId}});
+    static postWeight({groupId,sharedId}) {
+        return Network.request({url: 'ranklist/weight/addup',data:{groupId,sharedId}});
     }
     //减重榜-今日减重
-    static postWeightDay({groupId}) {
-        return Network.request({url: 'ranklist/weight/day',data:{groupId}});
+    static postWeightDay({groupId,sharedId}) {
+        return Network.request({url: 'ranklist/weight/day',data:{groupId,sharedId}});
     }
     //圈子-发表动态
     static postPublish(data) {

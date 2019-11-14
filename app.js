@@ -202,6 +202,7 @@ App({
         notRegister: false,
         currentIndex:0,
         firstEnter: false,//被分享者 没有在圈子
+        issueRefresh:false,//结果页跳转打卡页面 刷新标志位
     },
     ...common
 });

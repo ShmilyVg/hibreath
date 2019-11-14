@@ -209,8 +209,6 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
-        console.log("this",this)
-
     },
 
     handleGuide(that) {
@@ -319,6 +317,7 @@ Page({
                 obj['schemaId'] = info.schemaId;
             }
             this.setData(obj);
+            console.log('handleBaseInfo',this.data.showNewInfo)
         }
     },
 
@@ -390,7 +389,8 @@ Page({
         }
     },
     async handleTasks() {
-        Toast.showLoading();
+        console.log('getCurrentPages()',getCurrentPages())
+        //Toast.showLoading();
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
@@ -531,7 +531,7 @@ Page({
                 backgroundColor: '#F55E6B',
             })
         });
-        Toast.hiddenLoading()
+        //Toast.hiddenLoading()
     },
 
     async continue() {
@@ -858,11 +858,11 @@ Page({
 
     },
 
-    async onShow() {
+     onShow() {
+        console.log('showNewInfo',this.data.showNewInfo,this.data.showGuide)
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
-
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
             if (num > 0 && countNum > 0) {
@@ -881,7 +881,38 @@ Page({
                             showBigTip: false,
                         });
                         that.handleTasks();
+                        if(that.data.showBigTip == false){
+                            if(that.data.fatBurnFin){
+                                WXDialog.showDialog({
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
+                                    showCancel: true,
+                                    confirmText: "查看记录",
+                                    cancelText: "暂不查看",
+                                    confirmEvent: () => {
+                                        HiNavigator.navigateToResultNOnum();
+                                    },
+                                    cancelEvent: () => {
+
+                                    }
+                                });
+                            }else{
+                                WXDialog.showDialog({
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
+                                    showCancel: true,
+                                    confirmText: "查看记录",
+                                    cancelText: "暂不查看",
+                                    confirmEvent: () => {
+                                        HiNavigator.navigateToResultNOnum();
+                                    },
+                                    cancelEvent: () => {
+
+                                    }
+                                });
+                            }
+                        }
                     }, 2000)
+
+
                 }
             } else {
                 that.setData({
@@ -889,10 +920,10 @@ Page({
                 })
             }
         };
-        if(this.data.isfinishedGuide || this.data.isFood){
+        console.log('issueRefresh',getApp().globalData.issueRefresh)
+        if(this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh){
             that.handleTasks();
         }
-
 
     },
 
@@ -948,7 +979,6 @@ Page({
     },
     //轮播图当前
     swiperChange: function (e) {
-        console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current,
         })

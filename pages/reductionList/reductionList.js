@@ -32,7 +32,7 @@ Page({
                         rankNum:rankNum
                     })
                 }else{
-                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeight({sharedId:this.data.groupId}));
+                    const{result:{sharedId,ranklist,rankNum,inRank}}=await whenDismissGroup(Protocol.postWeight({sharedId:this.data.getSharedId}));
                     this.setData({
                         ranklist:ranklist,
                         sharedId:sharedId,
@@ -66,7 +66,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad (options) {
-        console.log(options)
+        console.log('options',options)
         if(options.sharedId){
             this.setData({
                 getSharedId:options.sharedId,
@@ -155,12 +155,12 @@ Page({
             if(this.data.inRank){
                 return{
                     title: '我在'+'['+this.data.groupName+']'+'今日减重榜总排名第'+this.data.rankNum+'!快来围观!',
-                    path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+                    path: '/pages/reductionList/reductionList?sharedId=' + this.data.sharedId
                 }
             }else{
                 return{
                     title: '今日我在'+'['+this.data.groupName+']'+'减重榜未能上榜！再接再厉！',
-                    path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+                    path: '/pages/reductionList/reductionList?sharedId=' + this.data.sharedId
                 }
             }
 

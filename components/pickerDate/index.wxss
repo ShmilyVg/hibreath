@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-size:63rpx;
     font-family:DINCondensed-Bold,DINCondensed;
-    font-weight:bold;
+    font-weight:bold; 
     color:rgba(69,69,69,1);
 }
 .pickerDateColumn{

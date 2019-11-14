@@ -78,6 +78,7 @@ Page({
         navBarColor:'',//导航字体颜色
         navBarIconTheme:'',//导航返回键颜色
         navBarBackground:'',//导航背景色
+        isHidden:false//从后台回到前台
     },
 
         historyUrl() {
@@ -121,15 +122,19 @@ Page({
     //离开页面时通知设备储存离线数据
     onHide() {
         if(app.getLatestBLEState().connectState ==='connected'){
+            this.setData({
+                isHidden:true
+            })
             app.bLEManager.sendISvalue({isSuccess: false});
+            console.log('小程序 在index页面 前台进入后台 发送了40 02命令')
         }
     },
     onLoad(e) {
         if(app.getLatestBLEState().connectState ==='connected'){
-            console.log('小程序发送40 01命令')
             app.bLEManager.sendISvalue({isSuccess: true});
-            console.log('小程序发送了同步状态的指令')
+            console.log('小程序在index页面发送40 01命令')
             app.bLEManager.startData();
+            console.log('小程序在index页面发送了同步状态的指令')
         }
         console.log('isSuccessInfo',e)
         if(e.isSuccessInfo){
@@ -219,6 +224,13 @@ Page({
         this.setData({
             isBind: currPage.data.isBind
         })*/
+        if(app.getLatestBLEState().connectState ==='connected' && this.data.isHidden){
+            this.setData({
+                isHidden:false
+            })
+            app.bLEManager.sendISvalue({isSuccess: true});
+            console.log('小程序 在index页面 后台进入前台后 发送了40 01命令')
+        }
        console.log("indexVersion",wx.getStorageSync('indexVersion'))
        console.log("indexDeviceId",wx.getStorageSync('indexDeviceId'))
         console.log(this.blowPage._page.data.needCheckOTAUpdate,this.blowPage._page.data,'this.data.needCheckOTAUpdate')
@@ -241,11 +253,10 @@ Page({
                 const {connectState, protocolState} = app.getLatestBLEState();
                 console.log("connectState",connectState)
                 console.log("protocolState",protocolState)
-               /* if(connectState ==='connected'){
-                    console.log('小程序发送40 01命令')
+                if(connectState ==='connected'){
                     app.bLEManager.sendISvalue({isSuccess: true});
-
-                }*/
+                    console.log('小程序在index发送40 01命令')
+                }
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },

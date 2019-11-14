@@ -42,6 +42,7 @@
 
 .weight .desc.samll{
     font-size: 22rpx;
+    margin-top: 10rpx;
 }
 
 .weight .desc.big{

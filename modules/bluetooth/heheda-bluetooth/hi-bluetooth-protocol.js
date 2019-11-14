@@ -182,7 +182,6 @@ export default class HiBlueToothProtocol {
         if (this.getDeviceIsBind()) {
             this.action['0x40']({isSuccess});
         }
-        console.log('小程序发送了 40指令');
     }
 
     startCommunication() {

@@ -11,6 +11,7 @@ class SocialGroupManager {
     }
 
     async getSocialGroupList() {
+        console.log('getStorageSync1',wx.getStorageSync('deviceId'))
         if(wx.getStorageSync('currentSocialGroupId')){
             await whenDismissGroup(Protocol.postGroupInfo({groupId: wx.getStorageSync('currentSocialGroupId')}));
         }
@@ -153,7 +154,7 @@ export async function whenDismissGroup(protocol) {
         if (code === 40011) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
-                    wx.clearStorageSync()
+                    wx.clearStorageSync('currentSocialGroupId')
                     wx.switchTab({
                         url: '../community/community',
                         success: function (e) {
@@ -169,7 +170,7 @@ export async function whenDismissGroup(protocol) {
         }else if (code === 40012) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n该圈子已解散', confirmText: '我知道了', confirmEvent: () => {
-                    wx.clearStorageSync()
+                    wx.clearStorageSync('currentSocialGroupId')
                     wx.switchTab({
                         url: '../community/community',
                         success: function (e) {

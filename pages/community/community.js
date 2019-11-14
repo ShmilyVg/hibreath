@@ -49,6 +49,7 @@ Page({
                             confirmText: "确定",
                             cancelText: "取消",
                             confirmEvent: () => {
+                                wx.clearStorageSync('currentSocialGroupId')
                                this.updata()
                             },
                             cancelEvent: () => {
