@@ -23,7 +23,7 @@
     <view class="fatTextEn">{{fatTextEn}}</view>
 
 </view>
-<view class="fatDes" >{{fatDes}}</view>
+<view class="fatDes" style="line-height: 45rpx;">{{fatDes}}</view>
 <button wx:if="{{fatDes !==''}}" class="result-btn" bindtap="toIndex">吹一吹</button>
 <button wx:else class="result-btn2" bindtap="toIndex">吹一吹</button>
 <view wx:if="{{tabIsShow}}" class="result_tab">
