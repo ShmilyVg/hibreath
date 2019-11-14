@@ -10,7 +10,6 @@ import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
-
 const timeObj = {
     _frontTimestamp: 0,
     _endTimestamp: 0,
@@ -223,6 +222,7 @@ Page({
         Trend.initTouchHandler();
     },
     onUnload(){
+        getApp().globalData.issueRefresh = true
         HiNavigator.switchToSetInfo()
     },
     async updateTrendTime({frontTimestamp, endTimestamp}) {

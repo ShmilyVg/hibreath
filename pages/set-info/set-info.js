@@ -209,8 +209,6 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
-        console.log("this",this)
-
     },
 
     handleGuide(that) {
@@ -319,6 +317,7 @@ Page({
                 obj['schemaId'] = info.schemaId;
             }
             this.setData(obj);
+            console.log('handleBaseInfo',this.data.showNewInfo)
         }
     },
 
@@ -859,11 +858,11 @@ Page({
 
     },
 
-    async onShow() {
+     onShow() {
+        console.log('showNewInfo',this.data.showNewInfo,this.data.showGuide)
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
-
         app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
             if (num > 0 && countNum > 0) {
@@ -890,10 +889,10 @@ Page({
                 })
             }
         };
-        if(this.data.isfinishedGuide || this.data.isFood){
+        console.log('issueRefresh',getApp().globalData.issueRefresh)
+        if(this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh){
             that.handleTasks();
         }
-
 
     },
 
@@ -949,7 +948,6 @@ Page({
     },
     //轮播图当前
     swiperChange: function (e) {
-        console.log(e.detail.current, 'eeeeee')
         this.setData({
             currentSwiper: e.detail.current,
         })

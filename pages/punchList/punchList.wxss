@@ -70,7 +70,7 @@ page{
 }
 .punchList_Day1{
     float: left;
-    margin-top: 20rpx;
+    margin-top: 23rpx;
     margin-bottom: 80rpx;
 }
 .punchList_Day2{
@@ -92,7 +92,7 @@ page{
     margin-right: 43rpx;
 }
 .punchList_Day-Text3{
-    font-size:22rpx;
+    font-size:30rpx;
     font-family:PingFang-SC-Semibold,PingFang-SC;
     font-weight:600;
     color:rgba(84,84,84,1);
@@ -106,10 +106,10 @@ page{
 }
 .punchList_line{
     width: 1rpx;
-    height:49rpx;
+    height:50rpx;
     border-right:0.5rpx #D6D6D6 solid;
     float: left;
-    margin: 40rpx 40rpx 0rpx 40rpx;
+    margin: 45rpx 40rpx 0rpx 40rpx;
 }
 .tab_item_active{
     width:320rpx;

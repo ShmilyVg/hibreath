@@ -73,10 +73,10 @@
                           bindtap="bindTapExactClick"
                           wx:key="{{index}}"
                           data-index="{{index}}">
-                        <image src="http://backend.hipee.cn/assets/home/images/hb/{{info.sexStr}}{{index}}.png"></image>
-                        <view wx:if="{{choseIndex!=index}}" class="page4-cover"
-                              style="background-color: {{info.sex?'#0AC1A1':'#ED6F69'}}"></view>
-                        <view class="page4-text">{{item}}%</view>
+                        <image src="http://img.hipee.cn/hibreath/man/{{info.sexStr}}-{{index+1}}.png"></image>
+                      <!--  <view wx:if="{{choseIndex!=index}}" class="page4-cover"
+                              ></view>-->
+                        <view class="page4-text" style="background-color: {{choseIndex !== index?'#A9A9AC':'#ED6F69'}}">{{item}}%</view>
                     </view>
                     <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
                 </view>
