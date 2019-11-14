@@ -390,7 +390,8 @@ Page({
         }
     },
     async handleTasks() {
-        Toast.showLoading();
+        console.log('getCurrentPages()',getCurrentPages())
+        //Toast.showLoading();
         const {result} = await Protocol.postMembersTasks();
         this.setData({
             planId:result.planId,
@@ -531,7 +532,7 @@ Page({
                 backgroundColor: '#F55E6B',
             })
         });
-        Toast.hiddenLoading()
+        //Toast.hiddenLoading()
     },
 
     async continue() {
