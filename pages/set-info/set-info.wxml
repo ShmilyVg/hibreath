@@ -246,6 +246,6 @@
 <view class="shareContainer" wx:if='{{isOpened}}'>
    <!-- <view class='shareRow'>{{title}}</view>-->
     <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
-    <view class='shareRow margin-top' bindtap='cancel'>取 消</view>
+    <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
 </view>
 <view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>

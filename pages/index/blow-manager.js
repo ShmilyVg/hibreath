@@ -207,8 +207,8 @@ export default class BlowManager {
             blowingImg:false,
             disblowImg:false,//吹气不足状态
             process:false,//分析中
-
-
+            textState:"",
+            textStateEn:'',
             homeTitle: false,
             homeOrangeBtn: false,
         })

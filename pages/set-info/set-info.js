@@ -401,20 +401,6 @@ Page({
             indextaskNum: result.taskNum,
             taskListAll: result.taskList,
         })
-        if(this.data.sharedId){
-            const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
-            if(result.fatBurn){
-                this.setData({
-                    shareFat:result.fatBurn,
-                    shareFatBurnDesc:result.fatBurnDesc
-                })
-            }
-            this.setData({
-                shareTodayDif:result.todayDif,
-                shareTotalDif:result.totalDif,
-                shareTaskList:result.taskList,
-            })
-        }
         const typesArr = result.taskList.map(d => d.type)
         console.log("123213", typesArr)
         for (var i = 0; i < typesArr.length; i++) {
@@ -1047,8 +1033,23 @@ Page({
         console.log('indexDayDesc',this.data.shareImg)
 
     },
-    listenerButton: function() {
+    async listenerButton() {
         Toast.showLoading()
+        if(this.data.sharedId){
+            const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+            if(result.fatBurn){
+                this.setData({
+                    shareFat:result.fatBurn,
+                    shareFatBurnDesc:result.fatBurnDesc
+                })
+            }
+            this.setData({
+                shareTodayDif:result.todayDif,
+                shareTotalDif:result.totalDif,
+                shareTaskList:result.taskList,
+            })
+        }
+
         Shared.getImageInfo(this)
         Shared.screenWdith(this)
 
