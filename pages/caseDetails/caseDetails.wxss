@@ -139,7 +139,7 @@ page{
   background:#fff;
  
   border-radius:0 0 20rpx 20rpx;
-  padding:52rpx 44rpx 0 44rpx ;
+  padding:52rpx 30rpx 0 30rpx ;
   /*  */
    /* display: flex;
    box-sizing: border-box;
@@ -151,16 +151,17 @@ page{
 .foodlist-box-list{
   height:330rpx;
    display: flex;
+   justify-content : space-between;
    box-sizing: border-box;
   
   width: 100%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   white-space: nowrap;
 }
 
 .day-body-foodlist{
   width:190rpx;
-  margin-right:20rpx;
+  /* margin-right:20rpx; */
   height:250rpx;
   float:left;
 }
@@ -184,6 +185,9 @@ page{
   /* background:blue; */
   height:250rpx;
   float:left;
+ 
+ width:200rpx;
+
  
 }
 .day-list-body-footer{
@@ -252,7 +256,7 @@ line-height:28rpx;
 .foodlist-img{
 
   width:190rpx;
-  height:160rpx;
+  height:150rpx;
   display:inline-block;
 
 }
