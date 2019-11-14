@@ -86,7 +86,7 @@ export default class Protocol {
 
     //吹气完成进入结果页
     static postSetGradeInfo(data) {
-        return Network.request({url: '/breathData/info', data: data});
+        return Network.request({url: 'breathData/info', data: data});
     }
 
     //分享进入结果页面
