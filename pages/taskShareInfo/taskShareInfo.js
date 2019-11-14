@@ -8,7 +8,7 @@ import Protocol from "../../modules/network/protocol";
 
  Page({
      data:{
-        memberName: '', 
+        memberName: '',
         dayNum: 0,
         taskList:[],
         iconUp: "http://img.hipee.cn/hibreath/icon/up.png",
@@ -29,10 +29,32 @@ import Protocol from "../../modules/network/protocol";
             if(res.code != 1 || !res.result){
                 return;
             }
-
             this.setData({
                 ...res.result
             });
+            console.log('weight.todayDif',this.data.taskList)
+            for(var i =0;i<this.data.taskList.length;i++){
+                if(this.data.taskList[i].type == "bodyIndex"){
+                    if(this.data.taskList[i].ext.weight.todayDif){
+                        this.setData({
+                            todayDif:Math.abs(this.data.taskList[i].ext.weight.todayDif),
+                        })
+                    }else{
+                        this.setData({
+                            todayDif:0,
+                        })
+                    }
+                    if(this.data.taskList[i].ext.weight.totalDif){
+                        this.setData({
+                            totalDif:Math.abs(this.data.taskList[i].ext.weight.totalDif),
+                        })
+                    }else{
+                        this.setData({
+                            totalDif:0,
+                        })
+                    }
+                }
+            }
         }).finally(()=>{
             Toast.hiddenLoading();
         });

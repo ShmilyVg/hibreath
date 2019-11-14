@@ -59,15 +59,17 @@ Page({
     //控制完成按钮是否可以点击
     disBtn(){
         const {desc, imgbox} = this.data;
+        //console.log('test.match(/^[ ]*$/)',desc.match(/^\s*$/))
+        console.log('desc',this.data)
         this.setData({
-            disable: !(!!desc || imgbox.length>0)
+            disable: !(imgbox.length>0 ||desc.match(/^\s*$/) == null)
         })
     },
     bindTextAreaBlur: function(e) {
         console.log("e11",e.detail.value)
-        console.log("e2222",tools.filterEmoji(e.detail.value).trim())
+        console.log("e2222",tools.filterEmoji(e.detail.value))
         this.setData({
-            desc:tools.filterEmoji(e.detail.value).trim()
+            desc:tools.filterEmoji(e.detail.value)
         })
         this.disBtn()
     }
@@ -132,7 +134,7 @@ Page({
                             }
                         })
                     })
-                } 
+                }
                 console.log("IMGBOX",that.data.imgbox)
             }
         })

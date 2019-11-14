@@ -66,7 +66,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad (options) {
-        console.log(options)
+        console.log('options',options)
         if(options.sharedId){
             this.setData({
                 getSharedId:options.sharedId,

@@ -1,6 +1,7 @@
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast} from "heheda-common-view";
+import * as tools from "../../utils/tools";
 
 Page({
     data: {
@@ -21,7 +22,17 @@ Page({
             });
         }
     },
-
+    bindTextAreaBlur: function(e) {
+        if(e.detail.value.match(/^\s*$/) !== null){
+            this.setData({
+                sportFeel:null
+            })
+            return
+        }
+        this.setData({
+            sportFeel:tools.filterEmoji(e.detail.value)
+        })
+    },
     async submit(e) {
         const {value: {sportDuration: duration, sportFeel, sportWays}} = e.detail;
         if (!sportWays || !sportWays.length) {
@@ -35,13 +46,13 @@ Page({
         Toast.showLoading();
         if (!this.dataId) {
             const {result: {id: dataId}} = await Protocol.postTaskSportStyle({
-                duration, freestyleIds, calorie, feelDesc: sportFeel.trim(),
+                duration, freestyleIds, calorie, feelDesc: sportFeel,
                 id: this.dataId
             });
             HiNavigator.redirectToFinishCheck({dataId, clockWay: 'free'});
         } else {
             await Protocol.postSportDataPut({
-                duration, freestyleIds, calorie, feelDesc: sportFeel.trim(),
+                duration, freestyleIds, calorie, feelDesc: sportFeel,
                 id: this.dataId
             });
             HiNavigator.redirectToFinishCheck({dataId: this.dataId, clockWay: 'free'});

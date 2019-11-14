@@ -7,7 +7,7 @@
             </view>
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
-            <view class="desc">
+            <view class="desc" wx:if="{{desc}}">
                 {{desc}}
             </view>
             <view class="img-list">
