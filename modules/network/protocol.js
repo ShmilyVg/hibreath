@@ -289,12 +289,12 @@ export default class Protocol {
         return Network.request({url: 'group/join', data: arguments[0]});
     }
     //打卡榜-累计打卡
-    static postAddup({groupId}) {
-        return Network.request({url: 'ranklist/clockin/addup',data:{groupId}});
+    static postAddup({groupId, sharedId}) {
+        return Network.request({url: 'ranklist/clockin/addup',data:{groupId, sharedId}});
     }
     //打卡榜-连续打卡
-    static postContinual({groupId}) {
-        return Network.request({url: 'ranklist/clockin/continual',data:{groupId}});
+    static postContinual({groupId, sharedId}) {
+        return Network.request({url: 'ranklist/clockin/continual',data:{groupId, sharedId}});
     }
     //减重榜-累计减重
     static postWeight({groupId}) {

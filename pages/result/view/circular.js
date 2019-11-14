@@ -39,14 +39,16 @@ function drewCircular() {
     } else if (40 <= circleScore && circleScore < 60) {
         gradient.addColorStop("0", "#FFE300");
         gradient.addColorStop("0.8", "#FF9F00");
-    } else {
+    } else if (circleScore == 100) {
+        gradient.addColorStop("0", "#ED6F69");
+        gradient.addColorStop("1", "#ED6F69");
+    }else {
         gradient.addColorStop("0", "#FF8F00");
         gradient.addColorStop("1", "#EF2511");
     }
 
     const drawCircle = (target, start, end, color) => {
         //arc 圆心的X坐标  Y坐标  半径  起始弧度  终止弧度 是否逆时针
-        console.log('_xWidth_xWidth_xWidth',_xWidth)
         target.arc(100*_xWidth, 100*_xWidth, 90*_xWidth, start * Math.PI / 180, end * Math.PI / 180);
         target.setStrokeStyle(color);
         target.setLineWidth("5");
@@ -201,7 +203,6 @@ function showType() {
 }
 
 function createSelectorQuery() {
-    console.log("createSelectorQuery",createSelectorQuery)
     wx.createSelectorQuery().select('#canvas-one').boundingClientRect(function (rect) {
         //监听canvas的宽高
         console.log(rect);

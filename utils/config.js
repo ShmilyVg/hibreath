@@ -5,7 +5,7 @@ const Release = false;
 const SoftwareVersion = `${Release?'':'HiBox_Stage '}1.6.5`;
 
 const PostUrl = `https://backend.${Release?'':'stage.'}hipee.cn/hipee-web-hibreath/`;
-const UploadUrl = 'https://backend.hipee.cn/hipee-uploadtest/hibreath/mp/upload/image.do';
+const UploadUrl = 'https://backend.hipee.cn/hipee-upload/hibreath/mp/upload/image.do';
 
 NetworkConfig.setConfig({postUrl: PostUrl});
 

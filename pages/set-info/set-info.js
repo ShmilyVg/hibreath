@@ -234,7 +234,7 @@ Page({
             });
         });
     },
-    async handleBaseInfo() {
+    async handleBaseInfo(resetPage) {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
         //获取三餐选择方案
@@ -282,10 +282,10 @@ Page({
 
             const userInfoInput = wx.getStorageSync('breath_user_info_input');
             console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
-            let page = 1, project = [];
+            let page = resetPage||1, project = [];
             if (userInfoInput) {
-                info = Object.assign(info, userInfoInput);
-                page = userInfoInput.page || 1;
+                info = Object.assign(info, userInfoInput, {goalDesc:''});
+                page = resetPage || userInfoInput.page || 1;
 
                 const mealValue = info.mealType;
                 for (let item of this.data.meals) {
@@ -375,7 +375,7 @@ Page({
                         cancelText: "取消",
                         confirmEvent: () => {
                             Protocol.postMembersExit({planId:this.data.planId}).then(() =>
-                                this.handleBaseInfo()
+                                this.handleBaseInfo(1)
                             )
                         },
                         cancelEvent: () => {
@@ -913,10 +913,10 @@ Page({
 
     async bindTapToResultPage() {
         if (this.data.fatBurnFin) {
-            /*const {fatText, fatTextEn, fatDes, score} = this.data;
+            const {fatText, fatTextEn, fatDes, score} = this.data;
             console.log(fatText, fatTextEn, fatDes, score)
-            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});*/
-            HiNavigator.navigateToResultNOnum();
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
+            /*HiNavigator.navigateToResultNOnum();*/
             return
         }
         let {result: {list:breathList}} = await Protocol.postBreathDatalistAll({
@@ -1075,6 +1075,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        wx.stopPullDownRefresh();
         if(!this.data.showNewInfo&&!this.data.showGuide){
             this.handleTasks()
         }

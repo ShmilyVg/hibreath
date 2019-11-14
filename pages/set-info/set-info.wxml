@@ -103,7 +103,7 @@
                 <view class="page2-line"></view>
                 <view class="page2-kg">KG</view>
             </view>
-            <view wx:if="{{page==8}}" style="width: 750rpx;height:670rpx;">
+            <view wx:if="{{page==8}}" style="width: 750rpx;height:670rpx;margin-top:-51rpx;">
                 <!-- <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
                     <view style="width: 1480rpx;padding: 0 130rpx">
                         <image wx:for="{{project}}"  wx:key="{{index}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
