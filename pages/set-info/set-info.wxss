@@ -349,7 +349,10 @@
     left: 0;
     bottom: 20rpx;
 }
-
+.page5position{
+    position: static !important;
+    margin-top: 50rpx;
+}
 .page6-small-text {
     font-size:32rpx;
     font-family:PingFang-SC;
