@@ -27,7 +27,7 @@ const MAX_Y = parseInt(translateList[translateList.length - 1].translateYValue);
 
 function getNextUpdateList({list}) {
     const {length} = list, middleIndex = Math.floor(length / 2);
-    console.log('getNextUpdateList',list);
+   // console.log('getNextUpdateList',list);
     return list.map((item) => {
         let y = item.translateYValue + DIVIDE_NUM;
         if (y > MAX_Y) {
@@ -80,7 +80,7 @@ Component({
                 this.data.list = list;
                 this.intervalIndex = setInterval(() => {
                     const nextList = getNextUpdateList({list: this.data.list});
-                    console.log(nextList);
+                    //console.log(nextList);
                     this.setData({
                         list: nextList
                     });
