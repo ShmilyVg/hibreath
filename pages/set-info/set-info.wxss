@@ -246,7 +246,7 @@
 .page1-edit{
     width: 60rpx;
     height: 41rpx;
-    margin-left: 110rpx;
+    margin-left: 80rpx;
     margin-right: 10rpx;
 }
 

@@ -28,7 +28,7 @@
                     <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
                 </view>
                 <view class="page1-input-view flex-row" >
-                   <image wx:if="{{!info.goalDesc.length}}" class="page1-edit"
+                   <image class="page1-edit"
                            src="../../images/set-info/page1-edit.png"></image>
                     <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下您的减脂目标" maxlength="10"
                            placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
