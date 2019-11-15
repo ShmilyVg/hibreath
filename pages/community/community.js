@@ -154,7 +154,7 @@ Page({
                 Toast.warn('获取信息失败');
             }
         }else{
-            HiNavigator.navigateToCreateCommunity()
+            //HiNavigator.navigateToCreateCommunity()
         }
     },
     async toReductionList(){

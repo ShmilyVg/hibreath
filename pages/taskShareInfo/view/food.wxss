@@ -5,6 +5,7 @@
     font-weight: 400;
     text-align: justify;
     box-sizing: border-box;
+    word-break:break-all;
 }
 
 .food .img-list{

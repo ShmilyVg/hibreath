@@ -24,8 +24,8 @@ Page({
         isfatBurn: false,//燃脂卡片
         isbodyIndex: false,//记录身体指标卡片
 
-        showGuide: true,//立即体验 未注册状态
-        showNewInfo: true,//新手引导页
+        showGuide: false,//立即体验 未注册状态
+        showNewInfo: false,//新手引导页
 
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
