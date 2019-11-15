@@ -226,7 +226,7 @@
     line-height:56rpx;
     text-align: center;
     width: 100%;
-
+   
 }
 
 
@@ -239,7 +239,7 @@
     align-items: center;
     margin-top: 250rpx;
     margin-left:50rpx;
-
+   
 }
 
 .page1-edit{
@@ -254,8 +254,12 @@
     height: 23rpx;
     margin: 0 26rpx;
     margin-top:195px;
-
-
+   
+}
+.page1-image1{
+    width: 23rpx;
+    height: 23rpx;
+    margin: 0 26rpx;
 }
 
 .page2-title{
@@ -269,7 +273,7 @@
 .page2-num{
     width:154px;
     height: 130rpx;
-    font-size:60rpx;
+    font-size:120rpx;
     font-family:DIN Condensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
@@ -794,5 +798,8 @@ swiperLi1{
     color:rgba(237,111,105,1);
     margin-top: 580rpx;
     margin-left:66rpx;
+}
+.guide-start{
+  margin-left:125rpx;
 }
 
