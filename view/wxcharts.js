@@ -15,7 +15,7 @@ var config = {
     xAxisHeight: 15,
     xAxisLineHeight: 15,
     legendHeight: 15,
-    yAxisTitleWidth: 15,
+    yAxisTitleWidth: 15, 
     padding: 12,
     columePadding: 3,
     fontSize: 13,

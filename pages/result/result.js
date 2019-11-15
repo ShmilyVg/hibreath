@@ -5,7 +5,7 @@
  */
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import {Toast as toast} from "heheda-common-view";
+import {Toast, WXDialog} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";
@@ -75,7 +75,7 @@ Page({
     },
 
     async cellDataHandle({page = 1, isRefresh = true}) {
-        toast.showLoading();
+        Toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
             if(!this.e.id && !this.e.score){
@@ -120,7 +120,7 @@ Page({
             --this.data.page;
         }
         wx.stopPullDownRefresh();
-        toast.hiddenLoading();
+        Toast.hiddenLoading();
     },
 
     toBind() {
@@ -165,7 +165,7 @@ Page({
             };
             Trend.setData(dataTrend);
         } else {
-            toast.showText('该时间段内没有燃脂数据');
+            Toast.showText('该时间段内没有燃脂数据');
         }
 
     },
@@ -242,7 +242,11 @@ Page({
                 this.handleTrend({list});
             });
         } else {
-            toast.showText('该时间段内没有燃脂数据');
+            wx.showToast({
+                title: '暂无燃脂数据',
+                icon: 'none',
+                duration: 2000
+            })
         }
 
     },

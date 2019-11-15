@@ -1,7 +1,7 @@
 // pages/shareAddcommunity/shareAddcommunity.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-import {Toast} from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import {getSocialGroupManager, whenDismissGroup} from "../community/social-manager";
 import Login from "../../modules/network/login";
 
