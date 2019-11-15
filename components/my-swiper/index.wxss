@@ -1,7 +1,7 @@
 
 .my-swiper-content-layout{
     font-size: 46rpx;
-    transition: transform .4s ease-in-out 0s;
+    transition: transform .6s ease-in-out 0s ,opacity .6s ease-in-out 0s, color .6s ease-in-out 0s;
 }
 .fill-width{
   width: 100%;

@@ -11,9 +11,9 @@
             <view class="middle-view" wx:if="{{showGuide}}">慢慢减脂路上·你是否也遇这些困扰</view>
 
                 <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
-                    <image class="page1-image" src="../../images/set-info/page1-up.png"></image>
+                    <image class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
                     <view class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
-                    <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
+                    <image class="page1-image1" src="../../images/set-info/page1-down.png"></image>
                 </view>
             <button wx:if="{{showGuide}}"  class="guide-start" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即体验</button>
 

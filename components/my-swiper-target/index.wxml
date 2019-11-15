@@ -1,3 +1,8 @@
 <view class="fill-width relative" style="display: block;">
-    <view wx:for="{{goalsList}}" wx:key="index" class="fill-width fill-height absolute my-swiper-content-layout guide-target-list" style="padding：40rpx 0；text-align: center;z-index:{{item.index}};position:flex; transform: translateY({{item.translateYValue}}rpx) scale({{item.scaleValue}});color: {{item.color}};opacity:{{item.opacity}};border:1rpx solid #ccc"><image class="page1-goals-image1" src="{{item.headUrl}}"></image>{{item.goalDesc}}</view>
+    <view wx:for="{{list}}" wx:key="id"
+          class="fill-width fill-height absolute my-swiper-content-layout guide-target-list"
+          style="padding：40rpx 0；text-align: center;z-index:{{item.index}};position:flex; transform: translateY({{item.translateYValue}}rpx) scale({{item.scaleValue}});color: {{item.color}};opacity:{{item.opacity}};border:1rpx solid #ccc">
+        <image class="page1-goals-image1" src="{{item.headUrl}}"></image>
+        {{item.goalDesc}}
+    </view>
 </view>
