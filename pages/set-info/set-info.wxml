@@ -41,7 +41,7 @@
 
 
 
-                <view class="page1-input-view flex-row">
+                <view class="page1-input-view flex-row" >
                    <!-- <image wx:if="{{!info.goalDesc.length}}" class="page1-edit"
                            src="../../images/set-info/page1-edit.png"></image>-->
                     <input class="page1-input" value="{{info.goalDesc}}" placeholder="{{phValue}}" maxlength="10"

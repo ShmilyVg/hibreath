@@ -1,0 +1,26 @@
+
+.my-swiper-content-layout{
+    font-size: 46rpx;
+    transition: transform .4s ease-in-out 0s;
+}
+.fill-width{
+  width: 100%;
+}
+.fill-height{
+  height: 100%;
+}
+.box-sizing-border-box{
+  box-sizing: border-box;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
