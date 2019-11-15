@@ -136,6 +136,9 @@ Page({
                     })
                 }
                 console.log("IMGBOX",that.data.imgbox)
+            },
+            fail: function (res) {
+                console.log("相机调用失败",res)
             }
         })
 
