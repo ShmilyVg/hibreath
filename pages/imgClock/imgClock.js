@@ -25,6 +25,9 @@ Page({
 
     },
     async onShow () {
+        wx.onMemoryWarning(function () {
+            console.log('onMemoryWarningReceive')
+        })
         const {result}= await Protocol.getSoul()
         this.setData({
             tag:result.tag,
@@ -136,6 +139,9 @@ Page({
                     })
                 }
                 console.log("IMGBOX",that.data.imgbox)
+            },
+            fail: function (res) {
+                console.log("相机调用失败",res)
             }
         })
 
