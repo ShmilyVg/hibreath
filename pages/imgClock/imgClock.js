@@ -25,6 +25,9 @@ Page({
 
     },
     async onShow () {
+        wx.onMemoryWarning(function () {
+            console.log('onMemoryWarningReceive')
+        })
         const {result}= await Protocol.getSoul()
         this.setData({
             tag:result.tag,
