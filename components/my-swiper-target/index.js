@@ -93,6 +93,7 @@ Component({
 
         detached() {
             clearInterval(this.intervalIndex);
+            console.log('aaaa')
         }
 
 
