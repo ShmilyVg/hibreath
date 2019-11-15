@@ -501,12 +501,12 @@ Page({
                         })
                     }
                     this.setData({
-                        foodcurrentSwiper:0,
+                        foodcurrentSwiper:foodExt.mealIndex,
 
-                        calorie:this.data.component.sum(foodExt.mealList[0].list,1),
-                        carbohydrate:this.data.component.sum(foodExt.mealList[0].list,2),
-                        fat:this.data.component.sum(foodExt.mealList[0].list,3),
-                        protein:this.data.component.sum(foodExt.mealList[0].list,4)
+                        calorie:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,1),
+                        carbohydrate:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,2),
+                        fat:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,3),
+                        protein:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,4)
                     })
 
                 }

@@ -30,7 +30,7 @@
 }
 
 .weight .value.big{
-    font-size: 100rpx;
+    font-size: 60rpx;
 }
 
 .weight .desc{

@@ -8,7 +8,7 @@
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
             <view class="weight-list">
-                <view class="weight" style="width:213rpx">
+                <view class="weight" style="width:200rpx">
                     <view class="value small">
                        {{weight.weight?weight.weight:0}}kg
                     </view>
@@ -21,7 +21,7 @@
                     </view>
                     <view class="desc big">今日体重</view>
                 </view>
-                <view class="weight"  style="width:213rpx">
+                <view class="weight"  style="width:200rpx">
                     <view class="value small">
                        {{weight.weightGoal}}kg
                     </view>
