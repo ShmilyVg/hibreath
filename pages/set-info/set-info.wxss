@@ -190,8 +190,8 @@
     width:73rpx;
     height:73rpx;
     border-radius: 50%;
-    margin-left: 44rpx;
-    margin-right: 30rpx;
+    margin-left: 30rpx;
+    margin-right: 20rpx;
     margin-top:23rpx;
     background-color: lightblue;
     opacity: 0.3;
