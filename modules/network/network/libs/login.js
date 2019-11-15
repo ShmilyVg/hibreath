@@ -66,6 +66,8 @@ const loginFailObj = {
     2: () => {
         console.log('未注册，请先注册');
         _needRegister = true;
+        wx.clearStorageSync('currentSocialGroupId')
+        getApp().globalData.isNoRegister = true
         wx.reLaunch({
           url: '../../../../../pages/set-info/set-info?isNotRegister=1',
         })

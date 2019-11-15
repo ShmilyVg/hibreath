@@ -119,6 +119,18 @@ Page({
     },
     async onShow() {
         // if (this.isUpdateAllWhenLoad) {
+        if(getApp().globalData.isNoRegister){
+            console.log('getApp().globalData.isNoRegister',getApp().globalData.isNoRegister)
+            wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
+            wx.setBackgroundColor({
+                backgroundColor: '#ffffff', // 窗口的背景色为白色
+            });
+            this.setData({
+                haveGroupId:false,
+                noCommunity:true
+            })
+            return
+        }
         this.forceUpdateAll();
         // }
     },
@@ -202,6 +214,7 @@ Page({
         }
 
         try {
+            console.log('getSocialGroupManager.currentSocialgetSocialGroupManager.currentSocial',getSocialGroupManager.currentSocial)
             await getSocialGroupManager.getSocialGroupList();
             getGroupDynamicManager.clear();
             await showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});

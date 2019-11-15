@@ -15,27 +15,27 @@
                     <view class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
                     <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
                 </view>
-            <button wx:if="{{showGuide}}"  wx:if="{{showGuide}}" class="guide-start" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即体验</button>
+            <button wx:if="{{showGuide}}"  class="guide-start" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即体验</button>
 
 
 
 
 
-         
+
         <view class="flex-column" wx:else>
             <view class="title">{{title[page-1]}}</view>
             <view class="num">{{page}}/8</view>
 
             <view class="" wx:if="{{page==1}}">
 
-              
-                
+
+
                 <view class="flex-row" style="margin-top:-250rpx;">
                     <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
-               
+
                     <my-swiper-target class="guide-target"></my-swiper-target>
                     <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
-                      
+
 
                 </view>
 
@@ -173,7 +173,7 @@
             </view>
         </view>
 
-        
+
     </block>
     <block wx:else>
         <view class="set-top-view flex-row">

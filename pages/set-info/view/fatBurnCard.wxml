@@ -25,7 +25,7 @@
             </view>
             <view class="clear"></view>
             <view wx:if="{{fatDes ==''}}" class="fatDes"></view>
-            <view wx:else class="fatDes"style="  margin-top: 64rpx;margin-bottom: 26rpx;">{{fatDes}}</view>
+            <view wx:else class="fatDes"style="  margin-top: 64rpx;margin-bottom: 26rpx;line-height: 45rpx;">{{fatDes}}</view>
         </view>
     </view>
 

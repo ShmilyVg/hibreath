@@ -24,8 +24,8 @@ Page({
         isfatBurn: false,//燃脂卡片
         isbodyIndex: false,//记录身体指标卡片
 
-        showGuide: false,//立即体验 未注册状态
-        showNewInfo: false,//新手引导页
+        showGuide: true,//立即体验 未注册状态
+        showNewInfo: true,//新手引导页
 
         noMeasure: false,//没有准确测过体脂率
         sexBox: [
@@ -198,6 +198,7 @@ Page({
     async onLoad(e) {
         let that = this;
         console.log('on:', e);
+       /* await that.handleGuide(that);*/
         if (e.isNotRegister) {
             that.setData({
                 isNotRegister: e.isNotRegister,
@@ -859,7 +860,6 @@ Page({
     },
 
      onShow() {
-        console.log('showNewInfo',this.data.showNewInfo,this.data.showGuide)
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
