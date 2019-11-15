@@ -76,7 +76,7 @@ Page({
 
     async cellDataHandle({page = 1, isRefresh = true}) {
         Toast.showLoading();
-        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now(),timeBegin:getLatestOneWeekTimestamp()});
         if (list.length) {
             if(!this.e.id && !this.e.score){
                 this.setData({
@@ -142,6 +142,7 @@ Page({
             });
             if (newtab == 1) {
                 const {frontTimestamp, endTimestamp} = timeObj;
+                console.log('getLatestOneWeekTimestamp()',getLatestOneWeekTimestamp())
                 this.updateTrendTime({
                     frontTimestamp: frontTimestamp || getLatestOneWeekTimestamp(),
                     endTimestamp: endTimestamp || Date.now()

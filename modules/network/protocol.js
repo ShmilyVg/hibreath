@@ -34,7 +34,7 @@ export default class Protocol {
          return Network.request({url: 'breathData/add', data: {dataValue}});
      }*/
     static getBreathDataList({page, pageSize = 15, timeBegin, timeEnd}) {
-        return Network.request({url: 'breathData/list', data: {page, pageSize}})
+        return Network.request({url: 'breathData/list', data: {page, pageSize,timeBegin,timeEnd}})
     }
 
     static getAnalysisNotes() {

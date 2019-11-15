@@ -44,7 +44,7 @@ export function getEndZeroTimestamp({timestamp}) {
 
 export function getLatestOneWeekTimestamp() {
     const oneWeekAgoDate = new Date();
-    oneWeekAgoDate.setDate(oneWeekAgoDate.getDate() - 7);
+    oneWeekAgoDate.setDate(oneWeekAgoDate.getDate() - 30);
     return getFrontZeroTimestamp({timestamp: oneWeekAgoDate.getTime()});
 }
 
