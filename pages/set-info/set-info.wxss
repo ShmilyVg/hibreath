@@ -194,7 +194,7 @@
     margin-right: 20rpx;
     margin-top:23rpx;
     background-color: lightblue;
-    opacity: 0.3;
+    /* opacity: 0.3; */
     vertical-align: middle;
 }
 
