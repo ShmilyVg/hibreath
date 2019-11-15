@@ -42,14 +42,14 @@
 
 
                 <view class="page1-input-view flex-row" >
-                   <!-- <image wx:if="{{!info.goalDesc.length}}" class="page1-edit"
-                           src="../../images/set-info/page1-edit.png"></image>-->
-                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="{{phValue}}" maxlength="10"
+                   <image wx:if="{{!info.goalDesc.length}}" class="page1-edit"
+                           src="../../images/set-info/page1-edit.png"></image>
+                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下您的减脂目标" maxlength="10"
                            placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
                 </view>
 
             </view>
-
+            
 
 
 
@@ -163,6 +163,9 @@
                     </view>
                     <view class="bottom-btn-back" hidden="{{page == 1}}" hover-class="press-style"
                           hover-stay-time="50" bindtap="back">返回
+                    </view>
+                     <view class="bottom-btn-back1" hidden="{{page !== 1}}" hover-class="press-style"
+                          hover-stay-time="50" bindtap="back">
                     </view>
                 </block>
                 <block wx:else>
