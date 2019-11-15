@@ -1,8 +1,9 @@
 <view class="fill-width relative" style="display: block;">
     <view wx:for="{{list}}" wx:key="id"
           class="fill-width fill-height absolute my-swiper-content-layout guide-target-list"
-          style="padding：40rpx 0；text-align: center;z-index:{{item.index}};position:flex; transform: translateY({{item.translateYValue}}rpx) scale({{item.scaleValue}});color: {{item.color}};opacity:{{item.opacity}};border:1rpx solid #ccc">
+          style="padding：40rpx 0；text-align: center;z-index:{{item.index}};position:flex; transform: translateY({{item.translateYValue}}rpx) scale({{item.scaleValue}});color: {{item.color}};border:1rpx solid #E9E5EE;border-radius:10rpx;opacity:{{item.opacity}};">
         <image class="page1-goals-image1" src="{{item.headUrl}}"></image>
         {{item.goalDesc}}
     </view>
 </view>
+ 

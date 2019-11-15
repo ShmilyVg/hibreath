@@ -194,7 +194,7 @@
     margin-right: 20rpx;
     margin-top:23rpx;
     background-color: lightblue;
-    opacity: 0.3;
+    /* opacity: 0.3; */
     vertical-align: middle;
 }
 
@@ -246,7 +246,7 @@
 .page1-edit{
     width: 60rpx;
     height: 41rpx;
-    margin-left: 110rpx;
+    margin-left: 80rpx;
     margin-right: 10rpx;
 }
 
