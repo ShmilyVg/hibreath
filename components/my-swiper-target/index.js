@@ -1,24 +1,21 @@
 import Protocol from "../../modules/network/protocol";
 
 const DIVIDE_NUM = 70, contentList = [
-    {content: '我是最开始的'},
-    {content: '我的体重怎么也降不下来'},
-    {content: '太痛苦了，我不想运动'},
-    {content: '今天我好累啊，我应该吃点这个'},
-    {content: '我不能拒绝这些食物'},
-    {content: '我今天难受，吃东西能让我得到安慰'},
-    {content: '反正我已经吃了本不该吃的东西'},
-    {content: '我只吃这一次没有关系'},
-    {content: '我是最后的'},
+  {goalDesc: '认真吃早餐才能每天充满活力'},
+  { goalDesc: '用一个月瘦成闪电'},
+  { goalDesc: '每周跑步30分钟'},
+  { goalDesc: '用一个月瘦成闪电'},
+  { goalDesc: '早睡觉注意身体'},
+  
 ],scaleList = [
 
-    {scaleValue: 0.4, opacity: 0.4,index:1},
+  { scaleValue: 0.4, opacity: 0.4, index: 1},
 
-    { scaleValue: 0.7, opacity: 0.7,index: 2},
-    { scaleValue: 1, opacity: 1, index: 5},
-    { scaleValue: 0.7, opacity: 0.7 ,index: 2},
+  { scaleValue: 0.7, opacity: 0.7, index: 2},
+  { scaleValue: 1, opacity: 1, index: 5},
+  { scaleValue: 0.7, opacity: 0.7, index: 2},
 
-    { scaleValue: 0.4, opacity: 0.4, index: 1},
+  { scaleValue: 0.4, opacity: 0.4, index: 1},
 
 ], translateList = scaleList.map((item, index) => {
     return {...item, translateYValue: DIVIDE_NUM * index};
