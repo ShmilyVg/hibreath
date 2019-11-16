@@ -5,7 +5,7 @@
 <import src="./view/bodyIndexCard.wxml"></import>
 <import src="./view/HIITCard.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
-    <block wx:if="{{showNewInfo}}">
+    <block class="flex-column"  wx:if="{{showNewInfo}}">
 
             <my-swiper wx:if="{{showGuide}}"></my-swiper>
             <view class="middle-view" wx:if="{{showGuide}}">慢慢减脂路上·你是否也遇这些困扰</view>
@@ -20,8 +20,8 @@
             <view class="title">{{title[page-1]}}</view>
             <view class="num">{{page}}/8</view>
 
-            <view class="" wx:if="{{page==1}}">
-                <view class="flex-row" style="margin-top:-250rpx;">
+            <view class="flex-column" wx:if="{{page==1}}">
+                <view class="flex-row" style="height:340rpx;margin-top:-210rpx;">
                     <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
 
                     <my-swiper-target class="guide-target"></my-swiper-target>
@@ -34,6 +34,8 @@
                            placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
                 </view>
             </view>
+
+
             <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
                 <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="{{index}}" bindtap="bindTapSex"
                       data-index="{{index}}">
