@@ -119,7 +119,19 @@ Page({
     },
     async onShow() {
         // if (this.isUpdateAllWhenLoad) {
-        if(getApp().globalData.isNoRegister){
+        wx.getSetting({
+            success: (res) => {
+                console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
+                if (!res.authSetting['scope.userInfo']) {
+                    this.setData({
+                        haveGroupId:false,
+                        noCommunity:true
+                    })
+                }
+            }
+        });
+       /* if(getApp().globalData.isNoRegister){
+            console.log('isNoRegisterisNoRegister',getApp().globalData.isNoRegister)
             getApp().globalData.isNoRegister=false
             console.log('getApp().globalData.isNoRegister',getApp().globalData.isNoRegister)
             wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
@@ -131,7 +143,7 @@ Page({
                 noCommunity:true
             })
             return
-        }
+        }*/
         this.forceUpdateAll();
         // }
     },

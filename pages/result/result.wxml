@@ -8,75 +8,71 @@
 
 </navBar>-->
 <view class="result-top flex-row">
-    <view class="flex-row">
-        <image class="result-img1" src="../../images/result/circle.png"></image>
-        <text class="result-text1">最近一次</text>
-    </view>
-    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
+  <view class="flex-row">
+    <image class="result-img1" src="../../images/result/circle.png"></image>
+    <text class="result-text1">最近一次</text>
+  </view>
+  <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
 </view>
 <view class='content'>
-    <canvas canvas-id="bg" class='canvasII'></canvas>
-    <canvas canvas-id='dashboard' id='canvas-one'  class='canvasI'></canvas>
- <!--   <view class="result-line"></view>-->
-    <image class="fatType1" src="{{fatType}}"></image>
-    <view class="fatText">{{fatText}}</view>
-    <view class="fatTextEn">{{fatTextEn}}</view>
+  <canvas canvas-id="bg" class='canvasII'></canvas>
+  <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
+  <!--   <view class="result-line"></view>-->
+  <image class="fatType1" src="{{fatType}}"></image>
+  <view class="fatText">{{fatText}}</view>
+  <view class="fatTextEn">{{fatTextEn}}</view>
 
 </view>
 <view class="fatDes" style="line-height: 45rpx;">{{fatDes}}</view>
 <button wx:if="{{fatDes !==''}}" class="result-btn" bindtap="toIndex">吹一吹</button>
 <button wx:else class="result-btn2" bindtap="toIndex">吹一吹</button>
 <view wx:if="{{tabIsShow}}" class="result_tab">
-    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
-    <view class="clear"></view>
+  <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
+  <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+  <view class="clear"></view>
 </view>
 <view wx:else class="result_tab" style="opacity: 0"></view>
 
 <view wx:if="{{!tabIsShow}}" class="result_tab_top">
-    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
-    <view class="clear"></view>
+  <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
+  <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+  <view class="clear"></view>
 </view>
 
 <!--燃脂记录  -->
 <view wx:if="{{currenttab==='0'}}">
-    <view wx:for="{{trendData}}" wx:key="{{index}}" class="flex-column cell">
-        <view class="flex-row" style="width:100%;justify-content: space-between">
-            <view class="flex-column" style="align-items: start;height: 160rpx">
-                <view class="cell-title">{{item.desZh}}</view>
-                <view class="cell-date">{{item.date}}</view>
-            </view>
-            <view class="cell-image">
-                <image src="{{item.image}}" class="cell-image-image"></image>
-                <view class="cell-image-text">{{item.dataValue}}</view>
-            </view>
-        </view>
-        <view class="cell-line"></view>
+  <view wx:for="{{trendData}}" wx:key="{{index}}" class="flex-column cell">
+    <view class="flex-row" style="width:100%;justify-content: space-between">
+      <view class="flex-column" style="align-items: start;height: 160rpx">
+        <view class="cell-title">{{item.desZh}}</view>
+        <view class="cell-date">{{item.date}}</view>
+      </view>
+      <view class="cell-image">
+        <image src="{{item.image}}" class="cell-image-image"></image>
+        <view class="cell-image-text">{{item.dataValue}}</view>
+      </view>
     </view>
+    <view class="cell-line"></view>
+  </view>
 </view>
 
 <!--燃脂趋势 -->
 <view wx:if="{{currenttab==='1'}}">
-    <block wx:if="{{!noData}}">
-        <view class="canvas-base-view">
-            <view class="flex-row"
-                  style="justify-content: center;width: 100%;align-items: center;margin-top: 20rpx;"
-                  bindtap="toChooseDate">
-                <view class="canvas-bottom-text">{{trendDate}}</view>
-                <image wx:if="{{trendDate}}" class="middle-view-arr" src="../../images/arr-right.png"></image>
-            </view>
-            <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true"
-                    bindtouchstart="touchHandler"
-                    bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+  <block wx:if="{{!noData}}">
+    <view class="canvas-base-view">
+      <view class="flex-row" style="justify-content: center;width: 100%;align-items: center;margin-top: 20rpx;" bindtap="toChooseDate">
+        <view class="canvas-bottom-text">{{trendDate}}</view>
+        <image wx:if="{{trendDate}}" class="middle-view-arr" src="../../images/arr-right.png"></image>
+      </view>
+      <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
 
-        </view>
-    </block>
-    <block wx:else>
-        <view class="flex-column index-history-no-data-text">
-            <template is="no-data" data="{{content:'暂无趋势数据'}}"></template>
-        </view>
-    </block>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="flex-column index-history-no-data-text">
+      <template is="no-data" data="{{content:'暂无趋势数据'}}"></template>
+    </view>
+  </block>
 </view>
 
 
