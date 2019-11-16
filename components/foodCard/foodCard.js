@@ -188,6 +188,13 @@ Component({
       toDynamicDetails(e){
           console.log('eee',e)
           HiNavigator.navigateToMessageDetail({messageId: e.currentTarget.dataset.dataid});
+      },
+      toDynamicDetailsAll(e){
+        if(this.data.foodTask.finished){
+            HiNavigator.navigateToMessageDetail({messageId: e.currentTarget.dataset.dataid});
+            return
+        }
+          HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
       }
   }
 })
