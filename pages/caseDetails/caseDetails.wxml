@@ -25,7 +25,9 @@
           </view>
           <image class="img-btn" wx:if="{{!item.isHide}}" src="../../images/caseDetails/{{selectedFlag[index]? 'top':'bottom'}}.png"></image>
         </view>
-        <view class="day-subtitle">{{item.subTitle}}</view>
+        <view class="day-subtitle">{{item.subTitle}}
+          <text class="day-subtitle-text" wx:if="{{item.isHide}}" >(*加入该方案后可查看) </text>
+        </view>
       </view>
 
       <view wx:if="{{!item.isHide}}" hidden='{{!selectedFlag[index]}}'>
