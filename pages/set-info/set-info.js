@@ -209,15 +209,15 @@ Page({
         }*/
         wx.getSetting({
             success: (res) => {
-                console.log('是否授权', res.authSetting);
-                if (res.authSetting['scope.userInfo'] === undefined) {
+                console.log('是否授权', res.authSetting['scope.userInfo']);
+                if (res.authSetting['scope.userInfo']) {
                     that.setData({
-                        showNewInfo: true,
-                        showGuide: true,//授权页面显示
+                        showGuide: false,
                     })
                 } else {
                     that.setData({
-                        showGuide: false,
+                        showNewInfo: true,
+                        showGuide: true,//授权页面显示
                     })
                 }
             }
