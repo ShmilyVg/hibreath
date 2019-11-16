@@ -54,7 +54,7 @@
                     </view>
                 </picker>-->
                 <pickerDate bind:childSecDate='showBirth'
-                            style="width: 100%"
+                            style="width: 100%; "
                             birth="{{birth}}"
                             info="{{info}}"
                 ></pickerDate>
@@ -84,14 +84,18 @@
                               ></view>-->
                         <view class="page4-text" style="background-color: {{choseIndex !== index?'#A9A9AC':'#ED6F69'}}">{{item}}%</view>
                     </view>
-                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>我测过准确的体脂率</view>
+                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>
+                      <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
+                    我测过准确的体脂率</view>
                 </view>
                 <view wx:else class="flex-column">
                     <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" type="digit"
                            bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
                     <view class="page2-line"></view>
                     <view class="page2-kg">%</view>
-                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>没测过体脂率</view>
+                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>
+                      <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
+                    没测过体脂率</view>
                 </view>
             </block>
             <view wx:elif="{{page==6}}">
