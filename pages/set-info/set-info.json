@@ -3,7 +3,6 @@
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": true,
   "backgroundColor": "#ffffff",
-  "backgroundTextStyle": "light",
   "usingComponents": {
     "foodCard": "../../components/foodCard/foodCard",
     "setting": "../../components/setting/index",
