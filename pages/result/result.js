@@ -211,9 +211,7 @@ Page({
             });
             getApp().globalData.trendTime = null;
         }
-        if (this.data.currenttab === '0') {
-            this.cellDataHandle({});
-        }
+        this.cellDataHandle({});
       /*  setTimeout(() => {
             console.log('绘制两次')
             Circular.run();
