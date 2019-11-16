@@ -129,7 +129,11 @@ export function judgeGroupEmpty() {
         return Promise.resolve({groupId});
     } else {
         console.log('未加入圈子')
-        Toast.showText('您当前未加入任何圈子');
+        wx.showToast({
+            title: '您当前未加入任何圈子',
+            icon: 'none',
+            duration: 3000
+        })
         return Promise.reject();
     }
 }

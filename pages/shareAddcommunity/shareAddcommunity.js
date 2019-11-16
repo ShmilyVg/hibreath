@@ -42,10 +42,18 @@ Page({
                 }
                 HiNavigator.switchToCommunity();
             } else {
-                Toast.showText('抱歉，暂时无法加入该圈子');
+                wx.showToast({
+                    title: '抱歉,暂时无法加入该圈子',
+                    icon: 'none',
+                    duration: 3000
+                })
             }
         } else {
-            Toast.showText('未获取到圈子信息，暂时无法加入');
+            wx.showToast({
+                title: '未获取到圈子信息，暂时无法加入',
+                icon: 'none',
+                duration: 3000
+            })
         }
     },
     async onGetUserInfoEvent(e) {
@@ -67,10 +75,18 @@ Page({
                 getSocialGroupManager.currentSocial = {groupId};
                 HiNavigator.switchToCommunity();
             } else {
-                Toast.showText('抱歉，暂时无法加入该圈子');
+                wx.showToast({
+                    title: '抱歉，暂时无法加入该圈子',
+                    icon: 'none',
+                    duration: 3000
+                })
             }
         } else {
-            Toast.showText('未获取到圈子信息，暂时无法加入');
+            wx.showToast({
+                title: '未获取到圈子信息，暂时无法加入',
+                icon: 'none',
+                duration: 3000
+            })
         }
 
     },
