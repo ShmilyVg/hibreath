@@ -777,18 +777,30 @@ Page({
     },
 
     async onGetUserInfoEvent(e) {
+        console.log('eee',e)
         const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
+            console.log('111')
+            if(this.data.isfinishedGuide){
+                this.setData({
+                    showNewInfo:false,
+                     showGuide: false
+                })
+                return
+            }
             try {
                 Toast.showLoading();
                 await Login.doRegister({userInfo, encryptedData, iv});
                 const userInfo = await UserInfo.get();
+                console.log('userInfo',userInfo)
                 this.setData({userInfo, showGuide: false});
                 Toast.hiddenLoading();
             } catch (e) {
                 Toast.warn('获取信息失败');
             }
+            return
         }
+        console.log('222')
     },
 
 
