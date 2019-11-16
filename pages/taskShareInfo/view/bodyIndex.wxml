@@ -32,7 +32,7 @@
                 <view class="weight-info right">
                     <view class="weight-value">{{todayDif}}kg</view>
                     <view>
-                        <image src="{{weight.todayDif <=0?iconDown:iconUp }}"></image>
+                        <image src="{{weight.todayDif <=0?iconUp:iconDown}}"></image>
                     </view>
                     <view class="weight-desc">今日减重</view>
 
@@ -41,7 +41,7 @@
                 <view class="weight-info">
                     <view class="weight-desc">累计减重</view>
                     <view>
-                        <image src="{{weight.totalDif <=0?iconDown:iconUp }}"></image>
+                        <image src="{{weight.totalDif <=0?iconUp:iconDown}}"></image>
                     </view>
                     <view class="weight-value">{{totalDif}}kg</view>
                 </view>

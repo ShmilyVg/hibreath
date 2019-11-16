@@ -75,8 +75,9 @@ Page({
     },
 
     async cellDataHandle({page = 1, isRefresh = true}) {
+        console.log('结束时间加几秒解决最新一条不显示的问题',Date.now())
         Toast.showLoading();
-        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now(),timeBegin:getLatestOneWeekTimestamp()});
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now()+25000,timeBegin:getLatestOneWeekTimestamp()});
         if (list.length) {
             if(!this.e.id && !this.e.score){
                 this.setData({
@@ -211,6 +212,7 @@ Page({
             });
             getApp().globalData.trendTime = null;
         }
+        this.cellDataHandle({});
       /*  setTimeout(() => {
             console.log('绘制两次')
             Circular.run();

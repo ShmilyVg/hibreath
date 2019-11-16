@@ -25,6 +25,7 @@ Page({
 
     },
     async onShow () {
+        getApp().globalData.issueRefresh =true
         const {result}= await Protocol.getSoul()
         this.setData({
             tag:result.tag,

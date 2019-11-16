@@ -199,40 +199,34 @@ Page({
         let that = this;
         console.log('on:', e);
        /* await that.handleGuide(that);*/
-        if (e.isNotRegister) {
+        /*if (e.isNotRegister) {
             that.setData({
                 isNotRegister: e.isNotRegister,
                 showNewInfo: true,
                 showGuide: true
             })
 
-        }
+        }*/
+        wx.getSetting({
+            success: (res) => {
+                console.log('是否授权', res.authSetting['scope.userInfo']);
+                if (res.authSetting['scope.userInfo']) {
+                    that.setData({
+                        showGuide: false,
+                    })
+                } else {
+                    that.setData({
+                        showNewInfo: true,
+                        showGuide: true,//授权页面显示
+                    })
+                }
+            }
+        });
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
     },
 
-    handleGuide(that) {
-        return new Promise(function (resolve, reject) {
-            wx.getSetting({
-                success: (res) => {
-                    console.log('是否授权', res.authSetting['scope.userInfo']);
-                    if (res.authSetting['scope.userInfo'] === undefined) {
-                        that.setData({
-                            showNewInfo: true,
-                            showGuide: true,
-                        })
-                    } else {
-                        that.setData({
-                            showNewInfo: false,
-                            showGuide: false,
-                        })
-                    }
-                    resolve();
-                }
-            });
-        });
-    },
     async handleBaseInfo(resetPage) {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
@@ -248,6 +242,11 @@ Page({
         this.setData({
             isfinishedGuide: finishedGuide
         });
+        if(!finishedGuide){
+            this.setData({
+                showNewInfo:true
+            })
+        }
         let info = {};
 
         function setSexFun(sexValue) {
@@ -497,12 +496,11 @@ Page({
                         })
                     }else{
                         this.setData({
-                            foodAheight: foodExt.mealList[0].list.length * 110+205,
+                            foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110+205,
                         })
                     }
                     this.setData({
                         foodcurrentSwiper:foodExt.mealIndex,
-
                         calorie:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,1),
                         carbohydrate:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,2),
                         fat:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,3),
@@ -779,18 +777,30 @@ Page({
     },
 
     async onGetUserInfoEvent(e) {
+        console.log('eee',e)
         const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
+            console.log('111')
+            if(this.data.isfinishedGuide){
+                this.setData({
+                    showNewInfo:false,
+                     showGuide: false
+                })
+                return
+            }
             try {
                 Toast.showLoading();
                 await Login.doRegister({userInfo, encryptedData, iv});
                 const userInfo = await UserInfo.get();
+                console.log('userInfo',userInfo)
                 this.setData({userInfo, showGuide: false});
                 Toast.hiddenLoading();
             } catch (e) {
                 Toast.warn('获取信息失败');
             }
+            return
         }
+        console.log('222')
     },
 
 
@@ -920,11 +930,12 @@ Page({
                 })
             }
         };
-        console.log('issueRefresh',getApp().globalData.issueRefresh)
+
         if(this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh){
+            getApp().globalData.issueRefresh = false
             that.handleTasks();
         }
-
+         console.log('打卡页面更新了',getApp().globalData.issueRefresh,this.data.isfinishedGuide,this.data.isFood)
     },
 
 
@@ -977,7 +988,7 @@ Page({
         schemaId: this.data.project[e.detail.current].id
       })
     },
-    //轮播图当前
+    //运动打卡--轮播图当前
     swiperChange: function (e) {
         this.setData({
             currentSwiper: e.detail.current,

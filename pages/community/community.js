@@ -120,6 +120,7 @@ Page({
     async onShow() {
         // if (this.isUpdateAllWhenLoad) {
         if(getApp().globalData.isNoRegister){
+            getApp().globalData.isNoRegister=false
             console.log('getApp().globalData.isNoRegister',getApp().globalData.isNoRegister)
             wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
             wx.setBackgroundColor({

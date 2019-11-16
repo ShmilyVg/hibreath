@@ -16,8 +16,8 @@
 }
 
 .img-list .img-wrap{
-    width: 200rpx;
-    height: 200rpx;
+    width: 190rpx;
+    height: 190rpx;
     overflow: hidden;
     border-radius: 10rpx;
     margin-bottom: 16rpx;
