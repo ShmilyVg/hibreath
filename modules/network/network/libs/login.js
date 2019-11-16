@@ -68,9 +68,9 @@ const loginFailObj = {
         _needRegister = true;
         wx.clearStorageSync('currentSocialGroupId')
         getApp().globalData.isNoRegister = true
-        wx.reLaunch({
+       /* wx.reLaunch({
           url: '../../../../../pages/set-info/set-info?isNotRegister=1',
-        })
+        })*/
     },
     4000: ({resolve, reject}) => {
         WXDialog.showDialog({
