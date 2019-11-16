@@ -4,8 +4,8 @@
           style="color:{{index===currentIndex?'#ED6F69':'#474747'}};">{{item.text}}
     </cover-view>
 </cover-view>
-<view class="middle-view flex-column">
-    <view class="flex-row align-items-center" bindtap="toCalendarPage">
+<view class="middle-view flex-column" wx:if="{{dataList.length}}" >
+    <view class="flex-row align-items-center" bindtap="toCalendarPage" >
         <view class="middle-view-title">{{dataTrendTime}}</view>
         <image class="middle-view-arr" src="../../images/arr-right.png"></image>
     </view>
@@ -25,7 +25,7 @@
 
 </view>
 
-<view class="bottom-view">
+<view class="bottom-view" wx:if="{{dataList.length}}">
     <view wx:for="{{dataList}}" class="bottom-view-cell">
         <view class="flex-column" style="width: 100%">
             <view class="flex-row" style="justify-content: space-between;width: 100%">
@@ -39,4 +39,9 @@
         </view>
     </view>
 </view>
+<view wx:if="{{!dataList.length}}" >
+  <image  class="empty-img" src="../../images/food/empty.png"></image>
+  <view class="empty-text">暂无记录</view>
+</view>
+
 

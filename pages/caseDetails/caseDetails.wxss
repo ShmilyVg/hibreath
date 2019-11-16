@@ -25,18 +25,23 @@ page{
   border-radius: 45%;
   text-align:center;
   line-height:72rpx;
-  font-size:45rpx;
+  font-size:30rpx;
     font-family: Bodoni MT;
     font-stretch:ultra-condensed;
 }
 .box-img text{
-  font-size:25rpx;
+  font-size:18rpx;
 }
 .box-img1{
   background:#d16560 ;
 }
 .box-img2{
   background:#4966a0;
+  line-height:40rpx;
+}
+.box-img2 text{
+  display:block;
+  line-height:18rpx;
 }
 .box-text{
   width:180rpx;
@@ -263,8 +268,9 @@ height:37rpx;
 font-size:22rpx;
 font-family:PingFang SC;
 font-weight:500;
-color:rgba(255,255,255,1);
-background:rgb(155, 150, 150);
+color:#fff;
+background:#000;
+opacity: 0.3;
 border-radius:15rpx;
 text-align:center;
 line-height:37rpx;

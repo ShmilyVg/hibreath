@@ -11,9 +11,6 @@
 </view>
 <view class="programme-body">
   <view class="day-list-content">
-
-
-
     <view wx:for="{{dayList}}" class="day-list" wx:key="{{index}}">
       <view class="{{radiusHeader[index]}}" style="background:#FFFFFF;">
         <view class="day-list-title" data-index='{{item.executeOrder - 1}}' catchtap="ifShow">
@@ -52,10 +49,6 @@
 
         </view>
     </view>
-
-
-
-
   </view>
   <view class="programme-footer-text">
     <view class="footer-text-title">注意</view>
