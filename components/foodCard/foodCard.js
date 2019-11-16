@@ -44,7 +44,40 @@ Component({
           value:0
       },
   },
+    lifetimes: {
+        // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+        attached: function () {
+            setTimeout(()=>{
+                if(this.data.foodcurrentSwiper == 0){
+                    this.setData({
+                        grayLeft: true,
+                        grayRight: false
+                    })
+                }else if(this.data.foodcurrentSwiper == this.data.foodExt.mealList.length - 1){
+                    this.setData({
+                        grayLeft: false,
+                        grayRight: true
+                    })
+                }else{
+                    this.setData({
+                        grayLeft: false,
+                        grayRight: false
+                    })
+                }
+            })
 
+        },
+        moved: function () { },
+        detached: function () { },
+    },
+    pageLifetimes: {
+        // 组件所在页面的生命周期函数
+        show: function () {
+            console.log('foodcurrentSwiper',this.data.foodcurrentSwiper)
+        },
+        hide: function () { },
+        resize: function () { },
+    },
   /**
    * 组件的初始数据
    */

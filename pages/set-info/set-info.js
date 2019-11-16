@@ -497,12 +497,11 @@ Page({
                         })
                     }else{
                         this.setData({
-                            foodAheight: foodExt.mealList[0].list.length * 110+205,
+                            foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110+205,
                         })
                     }
                     this.setData({
                         foodcurrentSwiper:foodExt.mealIndex,
-
                         calorie:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,1),
                         carbohydrate:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,2),
                         fat:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,3),
@@ -977,7 +976,7 @@ Page({
         schemaId: this.data.project[e.detail.current].id
       })
     },
-    //运动--轮播图当前
+    //运动打卡--轮播图当前
     swiperChange: function (e) {
         this.setData({
             currentSwiper: e.detail.current,
