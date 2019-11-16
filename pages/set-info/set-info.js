@@ -199,8 +199,7 @@ Page({
         let that = this;
         console.log('on:', e);
        /* await that.handleGuide(that);*/
-        if (getApp().globalData.isNoRegister) {
-            getApp().globalData.isNoRegister=false
+        if (e.isNotRegister) {
             that.setData({
                 isNotRegister: e.isNotRegister,
                 showNewInfo: true,
