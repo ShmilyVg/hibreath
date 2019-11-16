@@ -65,7 +65,11 @@ Page({
             },500)
         }
     },
-
+    onshow(){
+        if (this.data.currenttab === '0') {
+            this.cellDataHandle({});
+        }
+    },
     init() {
         Trend.init(this);
         Trend.initTouchHandler();
