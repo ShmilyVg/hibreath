@@ -65,11 +65,7 @@ Page({
             },500)
         }
     },
-    onshow(){
-        if (this.data.currenttab === '0') {
-            this.cellDataHandle({});
-        }
-    },
+
     init() {
         Trend.init(this);
         Trend.initTouchHandler();
@@ -214,6 +210,9 @@ Page({
                 endTimestamp: endTimeValue
             });
             getApp().globalData.trendTime = null;
+        }
+        if (this.data.currenttab === '0') {
+            this.cellDataHandle({});
         }
       /*  setTimeout(() => {
             console.log('绘制两次')
