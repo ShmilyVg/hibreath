@@ -199,14 +199,29 @@ Page({
         let that = this;
         console.log('on:', e);
        /* await that.handleGuide(that);*/
-        if (e.isNotRegister) {
+        /*if (e.isNotRegister) {
             that.setData({
                 isNotRegister: e.isNotRegister,
                 showNewInfo: true,
                 showGuide: true
             })
 
-        }
+        }*/
+        wx.getSetting({
+            success: (res) => {
+                console.log('是否授权', res.authSetting);
+                if (res.authSetting['scope.userInfo'] === undefined) {
+                    that.setData({
+                        showNewInfo: true,
+                        showGuide: true,//授权页面显示
+                    })
+                } else {
+                    that.setData({
+                        showGuide: false,
+                    })
+                }
+            }
+        });
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
@@ -248,6 +263,11 @@ Page({
         this.setData({
             isfinishedGuide: finishedGuide
         });
+        if(!finishedGuide){
+            this.setData({
+                showNewInfo:true
+            })
+        }
         let info = {};
 
         function setSexFun(sexValue) {

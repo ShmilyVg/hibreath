@@ -69,9 +69,9 @@ const loginFailObj = {
         wx.clearStorageSync('currentSocialGroupId')
         //圈子未注册用户显示
         getApp().globalData.isNoRegister = true
-        wx.reLaunch({
+        /*wx.reLaunch({
           url: '../../../../../pages/set-info/set-info?isNotRegister=1',
-        })
+        })*/
     },
     4000: ({resolve, reject}) => {
         WXDialog.showDialog({
