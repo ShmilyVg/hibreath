@@ -71,7 +71,10 @@ Page({
         }
         return {};
     },
-
+    onUnload(){
+        //控制首页打卡情况更新
+        getApp().globalData.issueRefresh = true
+    },
     toClockPage(e) {
         console.log(e);
         const {currentTarget: {dataset: {way}}} = e;

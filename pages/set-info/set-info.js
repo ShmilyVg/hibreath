@@ -227,27 +227,6 @@ Page({
         this.handleBaseInfo();
     },
 
-    handleGuide(that) {
-        return new Promise(function (resolve, reject) {
-            wx.getSetting({
-                success: (res) => {
-                    console.log('是否授权', res.authSetting['scope.userInfo']);
-                    if (res.authSetting['scope.userInfo'] === undefined) {
-                        that.setData({
-                            showNewInfo: true,
-                            showGuide: true,
-                        })
-                    } else {
-                        that.setData({
-                            showNewInfo: false,
-                            showGuide: false,
-                        })
-                    }
-                    resolve();
-                }
-            });
-        });
-    },
     async handleBaseInfo(resetPage) {
         const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
@@ -939,11 +918,12 @@ Page({
                 })
             }
         };
-        console.log('issueRefresh',getApp().globalData.issueRefresh)
+
         if(this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh){
+            getApp().globalData.issueRefresh = false
             that.handleTasks();
         }
-
+         console.log('打卡页面更新了',getApp().globalData.issueRefresh,this.data.isfinishedGuide,this.data.isFood)
     },
 
 

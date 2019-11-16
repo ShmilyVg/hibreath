@@ -46,7 +46,10 @@ Page({
     onReady() {
 
     },
-
+    onUnload(){
+        //控制首页打卡情况更新
+        getApp().globalData.issueRefresh = true
+    },
     onMessageSettingEvent() {
         WXDialog.showDialog({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
