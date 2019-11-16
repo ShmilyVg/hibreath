@@ -297,3 +297,10 @@ page {
     font-size: 24rpx;
     color: #454545;
 }
+.day-subtitle-text{
+font-size:24rpx;
+font-weight:400;
+color: #9B9B9B ;
+line-height:34rpx;
+
+}
