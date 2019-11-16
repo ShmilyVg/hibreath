@@ -15,6 +15,7 @@ export default class ConnectionManager {
 
         this.action[ConnectState.UNAVAILABLE] = () => {
             this.disconnect();
+            console.log('断连现象!!!!,蓝牙适配器不可用，通常是没有在手机设置中开启蓝牙，或是没有直接或间接调用父类中的openAdapter()')
             console.log("this._timeoutIndex",this._timeoutIndex)
             if(this._timeoutIndex !=0){
                 clearTimeout(this._timeoutIndex);
@@ -27,6 +28,7 @@ export default class ConnectionManager {
         //蓝牙连接已断开
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
+                console.log('断连现象!!!!,蓝牙连接已断开')
         };
         //正在连接蓝牙设备
         this.action[ConnectState.CONNECTING] = ()=>{

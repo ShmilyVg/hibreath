@@ -106,7 +106,11 @@ Page({
                     })
                     tempFilePaths.forEach(({path, size})=>{
                         if(size > 5*1024*1024){// 小于5M
-                            toast.showText("原图不能超过5M");
+                            wx.showToast({
+                                title: '原图不可超过5M',
+                                icon: 'none',
+                                duration: 2000
+                            })
                             return;
                         }
                         wx.uploadFile({

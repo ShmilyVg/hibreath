@@ -167,7 +167,11 @@ Page({
             };
             Trend.setData(dataTrend);
         } else {
-            Toast.showText('该时间段内没有燃脂数据');
+            wx.showToast({
+                title: '该时间段内没有燃脂数据',
+                icon: 'none',
+                duration: 2000
+            })
         }
 
     },

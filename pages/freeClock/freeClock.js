@@ -36,7 +36,11 @@ Page({
     async submit(e) {
         const {value: {sportDuration: duration, sportFeel, sportWays}} = e.detail;
         if (!sportWays || !sportWays.length) {
-            Toast.showText('至少要选择一项运动方式', 3000);
+            wx.showToast({
+                title: '至少要选择一项运动方式',
+                icon: 'none',
+                duration: 3000
+            })
             return;
         }
         const freestyleIds = sportWays.map(item => item.id);
