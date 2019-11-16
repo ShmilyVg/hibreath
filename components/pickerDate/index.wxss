@@ -20,6 +20,9 @@
      color: #454545 ;
      font-weight:500;
      font-size:46rpx;
+     height:115rpx;
+     line-height: 115rpx;
+     text-align:center;
 }
 
 
