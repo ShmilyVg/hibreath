@@ -977,7 +977,7 @@ Page({
         schemaId: this.data.project[e.detail.current].id
       })
     },
-    //轮播图当前
+    //运动--轮播图当前
     swiperChange: function (e) {
         this.setData({
             currentSwiper: e.detail.current,
