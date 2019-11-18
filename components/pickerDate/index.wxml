@@ -1,5 +1,5 @@
 <!--components/pickerDate/index.js.wxml-->
-<view style="margin-top: -2rpx;color:#454545;">
+<view style="color:#454545;">
     <!-- <picker-view indicator-style="height: 90px;"  class="pickerDate" value="{{value}}" bindchange="bindChange" style="height: 250px; ">
         <picker-view-column class="pickerDateColumn" >
             <view style="color:#454545;" wx:for="{{years}}"  wx:key="{{index}}" class="pickerDateColumn-view">{{item}}</view>
