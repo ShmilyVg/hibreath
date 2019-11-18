@@ -39,22 +39,25 @@ export default class BaseNetworkImp {
             /*
             * 所有分享页面单独处理 不需要登录
             * */
-            var pages = getCurrentPages()    //获取加载的页面
-            var currentPage = pages[pages.length-1]    //获取当前页面的对象
-            var isSharepage = false
-            console.log('currentPage',currentPage)
-            var sharePage = ['pages/taskShareInfo/taskShareInfo','pages/shareAddcommunity/shareAddcommunity','pages/reductionList/reductionList','pages/punchList/punchList']
-            for(var i =0;i<sharePage.length;i++){
-                if(currentPage.route === sharePage[i]){
-                    isSharepage =true
+            setTimeout(()=>{
+                var pages = getCurrentPages()    //获取加载的页面
+                var currentPage = pages[pages.length-1]    //获取当前页面的对象
+                var isSharepage = false
+                console.log('currentPage',pages)
+                var sharePage = ['pages/taskShareInfo/taskShareInfo','pages/shareAddcommunity/shareAddcommunity','pages/reductionList/reductionList','pages/punchList/punchList']
+                for(var i =0;i<sharePage.length;i++){
+                    if(currentPage.route === sharePage[i]){
+                        isSharepage =true
+                    }
                 }
-            }
-            if (!!_token || requestWithoutLogin || isSharepage) {
-                wx.request(requestObj);
-            } else {
-                BaseNetworkImp.addProtocol({url, requestObj});
+                if (!!_token || requestWithoutLogin || isSharepage) {
+                    wx.request(requestObj);
+                } else {
+                    BaseNetworkImp.addProtocol({url, requestObj});
 
-            }
+                }
+            },10)
+
         });
     }
 

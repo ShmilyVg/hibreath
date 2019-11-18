@@ -10,7 +10,6 @@ function screenWdith(page){
     let that = page;
     wx.getSystemInfo({
         success: function (res) {
-            console.log('ressssssssssssssssssssssssss',res)
             rpx = res.windowWidth/414;
             if(rpx>=1){
                 that.setData({
@@ -52,7 +51,7 @@ function getImageInfo(page) {
         if(i == that.data.shareTaskList.length-1){
             setTimeout(() => {
                 createNewIm(that)
-            },600)
+            },1000)
         }
     }
     console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
