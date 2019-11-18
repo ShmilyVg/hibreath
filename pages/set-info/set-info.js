@@ -895,7 +895,7 @@ Page({
                         if(that.data.showBigTip == false){
                             if(that.data.fatBurnTask.finished){
                                 WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
                                     showCancel: true,
                                     confirmText: "查看记录",
                                     cancelText: "暂不查看",
@@ -908,7 +908,7 @@ Page({
                                 });
                             }else{
                                 WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
                                     showCancel: true,
                                     confirmText: "查看记录",
                                     cancelText: "暂不查看",
