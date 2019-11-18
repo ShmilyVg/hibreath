@@ -891,11 +891,11 @@ Page({
                         that.setData({
                             showBigTip: false,
                         });
-                        console.log('今日燃脂任务是否完成标志位',that.data.fatBurnFin)
-                        if(that.data.showBigTip == false){
+                        console.log('今日燃脂任务是否完成标志位',that.data.fatBurnTask.finished)
+                        if(that.data.fatBurnTask.finished){
                             if(that.data.fatBurnFin){
                                 WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
                                     showCancel: true,
                                     confirmText: "查看记录",
                                     cancelText: "暂不查看",
@@ -908,7 +908,7 @@ Page({
                                 });
                             }else{
                                 WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
                                     showCancel: true,
                                     confirmText: "查看记录",
                                     cancelText: "暂不查看",
