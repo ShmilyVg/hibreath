@@ -232,19 +232,19 @@
             <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
             <view class="clear"></view>
         </view>
-        <view class="commodity_part">
+        <view class="commodity_part" wx:if="">
             <view class="commodity_title">高压(mmHg)</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='bloodHeight' placeholder="请输入您的高压" type="number"/>
             <view class="clear"></view>
         </view>
-        <view class="commodity_part">
+        <view class="commodity_part" wx:if="">
             <view class="commodity_title">低压(mmHg)</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodLow' placeholder="请输入您的低压" type="number"/>
             <view class="clear"></view>
         </view>
         <view>
-            <view class="commodity_title">心率(BPM)</view>
-            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='heart' placeholder="请输入您的心率" type="number"/>
+            <view class="commodity_title" wx:if="">心率(BPM)</view>
+            <input class="commodity_input" wx:if="" placeholder-class="commodity_inputpla" maxlength="3"  name='heart' placeholder="请输入您的心率" type="number"/>
             <view class="clear"></view>
         </view>
     </form>
