@@ -46,10 +46,13 @@ export default class BaseNetworkImp {
                 console.log('currentPage',pages)
                 var sharePage = ['pages/taskShareInfo/taskShareInfo','pages/shareAddcommunity/shareAddcommunity','pages/reductionList/reductionList','pages/punchList/punchList']
                 for(var i =0;i<sharePage.length;i++){
-                    if(currentPage.route === sharePage[i]){
-                        isSharepage =true
+                    if(currentPage !==[]){
+                        if(currentPage.route === sharePage[i]){
+                            isSharepage =true
+                        }
                     }
                 }
+                console.log('是否为分享页面',isSharepage)
                 if (!!_token || requestWithoutLogin || isSharepage) {
                     wx.request(requestObj);
                 } else {
