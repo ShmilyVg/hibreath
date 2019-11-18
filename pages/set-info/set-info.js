@@ -887,10 +887,11 @@ Page({
                     clearTimeout(that.data.sync.timer);
                     that.data.sync.timer = '';
                     that.data.sync.timer = setTimeout(function () {
+                        that.handleTasks();
                         that.setData({
                             showBigTip: false,
                         });
-                        that.handleTasks();
+                        console.log('今日燃脂任务是否完成标志位',that.data.fatBurnFin)
                         if(that.data.showBigTip == false){
                             if(that.data.fatBurnFin){
                                 WXDialog.showDialog({
