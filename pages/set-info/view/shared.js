@@ -46,8 +46,10 @@ function getImageInfo(page) {
                 that.setData({
                     [str]:res.path
                 })
-                if(i == that.data.shareTaskList.length-1){
-                    createNewIm(that)
+                if(that.data.shareTaskListImg0 !==''&&that.data.shareTaskListImg1 !==''&& that.data.shareTaskListImg2 !==''&&that.data.shareTaskListImg3 !==''){
+                    setTimeout(() => {
+                        createNewIm(that)
+                    },500)
                 }
             }
         })
@@ -110,19 +112,16 @@ function createNewIm(page){
     console.log('that.data.shareTaskListImg1',that.data.shareTaskListImg1)
     console.log('that.data.shareTaskListImg2',that.data.shareTaskListImg2)
     console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
-    if(that.data.shareTaskListImg0 !==''&&that.data.shareTaskListImg1 !==''&& that.data.shareTaskListImg2 !==''&&that.data.shareTaskListImg3 !==''){
-        ctx.drawImage(that.data.shareTaskListImg0, 10, 132, 44*rpx, 46.5*rpx);
-        ctx.drawImage(that.data.shareTaskListImg1, 65,132, 44*rpx, 46.5*rpx);
-        ctx.drawImage(that.data.shareTaskListImg2, 120,132, 44*rpx, 46.5*rpx);
-        ctx.drawImage(that.data.shareTaskListImg3, 175,132, 44*rpx, 46.5*rpx);
-        console.log('底部图标已绘制')
-    }
-
+    ctx.drawImage(that.data.shareTaskListImg0, 10, 132, 44*rpx, 46.5*rpx);
+    ctx.drawImage(that.data.shareTaskListImg1, 65,132, 44*rpx, 46.5*rpx);
+    ctx.drawImage(that.data.shareTaskListImg2, 120,132, 44*rpx, 46.5*rpx);
+    ctx.drawImage(that.data.shareTaskListImg3, 175,132, 44*rpx, 46.5*rpx);
+    console.log('底部图标已绘制')
     //ctx.draw();
     ctx.draw(true, () => {
         setTimeout(() => {
             savePic(that)
-        }, 600)
+        }, 200)
 
     })
 }
