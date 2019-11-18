@@ -122,7 +122,7 @@ function createNewIm(page){
     ctx.draw(true, () => {
         setTimeout(() => {
             savePic(that)
-        }, 200)
+        }, 600)
 
     })
 }
