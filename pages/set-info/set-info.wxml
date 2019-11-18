@@ -21,7 +21,7 @@
             <view class="num">{{page}}/8</view>
 
             <view class="flex-column" wx:if="{{page==1}}">
-                <view class="flex-row" style="height:340rpx;margin-top:-210rpx;">
+                <view class="flex-row" style="height:340rpx;margin-top:-230rpx;">
                     <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
 
                     <my-swiper-target class="guide-target"></my-swiper-target>
@@ -56,7 +56,7 @@
                     </view>
                 </picker>-->
                 <pickerDate bind:childSecDate='showBirth'
-                            style="width: 100%; "
+                            style="width: 100%;margin-top:-55rpx; "
                             birth="{{birth}}"
                             info="{{info}}"
                 ></pickerDate>
@@ -127,11 +127,11 @@
                         <image src="{{item.descUrl}}"></image>
                       </swiper-item>
                  </swiper>   -->
-                <swiper bindchange="swiperChangeCase" style="height:670rpx;" next-margin="125rpx" previous-margin="125rpx">
+                <swiper bindchange="swiperChangeCase" style="height:620rpx;margin-top:-20rpx;" next-margin="125rpx" previous-margin="125rpx">
                         <block wx:for="{{project}}" wx:key="index">
-                          <swiper-item style="width:100rpx;height:670rpx;" class="swiperLi">
+                          <swiper-item style="width:100rpx;height:620rpx;" class="swiperLi">
 
-                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:415rpx;height:670rpx;margin-left:35rpx;"></image>
+                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:415rpx;height:620rpx;margin-left:35rpx;"></image>
                           </swiper-item>
                         </block>
                       </swiper>
