@@ -109,7 +109,7 @@ Page({
     },
     onLoad(options) {
         console.log('firstEnter',getApp().globalData.firstEnter)
-        if(!getApp().globalData.firstEnter){
+        if(!getApp().globalData.firstEnter&&getApp().globalData.isShareAddcommunity){
             wx.showToast({
                 title: '加入成功',
                 duration: 1400,

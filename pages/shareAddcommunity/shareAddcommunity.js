@@ -30,13 +30,15 @@ Page({
 
     async addCommunityBtn(e) {
         console.log('e',e.currentTarget.dataset.type)
+        console.log('this.data.isJoined',this.data.isJoined)
         const {sharedId} = this.data;
         if (sharedId) {
             const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
             if (groupId) {
                 getSocialGroupManager.currentSocial = {groupId};
                 if(e.currentTarget.dataset.type === 'firstEnter'){
-                    getApp().globalData.firstEnter = this.data.isJoined
+                    getApp().globalData.firstEnter = this.data.isJoined;
+                    getApp().globalData.isShareAddcommunity = true
                     HiNavigator.switchToCommunity();
                     return
                 }
