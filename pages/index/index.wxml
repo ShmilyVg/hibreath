@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
     <navBar
-            title='HiPee健康燃脂'
+            title='Simple轻松派'
             color="{{navBarColor}}"
             iconTheme="{{navBarIconTheme}}"
             background='{{navBarBackground}}'
