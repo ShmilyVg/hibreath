@@ -1,10 +1,47 @@
 <template name="fatBurn">
     <view class="card fatbarn">
-        <view class="title text-center">- 燃脂情况 -</view>
-        <view class="card-body" wx-if="{{!finished}}">
-              <view class="unclockin img-wrap">
+        <view class="title text-center">- 体重 -</view>
+        <view wx:if="{{bodayFinished}}">
+            <view class="shareInfo-bodyView">
+                <view style="display: flex;align-items: center;justify-content:center">
+                    <view>
+                        <text class="shareInfo-bodyText1">{{todayDif}}</text>
+                        <text class="shareInfo-bodyText2">kg</text>
+                        <image style="width: 25rpx;height: 36rpx" src="{{todayDifImg}}"></image>
+                    </view>
+                    <view>
+
+                    </view>
+                </view>
+                <view style="margin-top: 20rpx">今日减重</view>
+
+            </view>
+            <view class="shareInfo-bodyView">
+                <view style="display: flex;align-items: center;justify-content:center">
+                    <view>
+                        <text class="shareInfo-bodyText1">{{totalDif}}</text>
+                        <text class="shareInfo-bodyText2">kg</text>
+                        <image style="width: 25rpx;height: 36rpx" src="{{totalDifImg}}"></image>
+                    </view>
+                    <view>
+
+                    </view>
+                </view>
+                <view style="margin-top: 20rpx">累计减重</view>
+            </view>
+            <view class="clear"></view>
+        </view>
+        <view wx:else>
+            <view class="unclockin img-wrap">
                 <image src="/images/taskShareInfo/un_clockin.png"></image>
             </view>
+        </view>
+        <view style="width: 100%;border: 0.5rpx #EEEEEE solid;margin-top: 65rpx"></view>
+        <view class="title text-center">- 燃脂情况 -</view>
+        <view class="card-body" wx-if="{{!finished}}">
+          <view class="unclockin img-wrap">
+                <image src="/images/taskShareInfo/un_clockin.png"></image>
+          </view>
         </view>
         <view class="card-body" wx-if="{{!!finished}}">
             <view class="fatbarn-value-wrap">

@@ -36,8 +36,8 @@ Page({
             if (groupId) {
                 getSocialGroupManager.currentSocial = {groupId};
                 if(e.currentTarget.dataset.type === 'firstEnter'){
-                    getApp().globalData.firstEnter =true
-                    HiNavigator.switchToCommunity({firstEnter:true});
+                    getApp().globalData.firstEnter = this.data.isJoined
+                    HiNavigator.switchToCommunity();
                     return
                 }
                 HiNavigator.switchToCommunity();

@@ -6,8 +6,24 @@
                 <image src="/images/taskShareInfo/un_clockin.png"></image>
             </view>
         </view>
-        <view class="card-body" wx-if="{{!!finished}}">
-            <view class="weight-list">
+        <view class="card-body" wx-if="{{finished}}">
+         <!--   <view class="shareInfo-bodyView">
+                <view style="float: left;width: 100%">
+                    <text class="shareInfo-bodyText1">{{todayDif}}</text>
+                    <text class="shareInfo-bodyText2">kg</text>
+                </view>
+                <view style="float: left">
+                    <image style="width: 25rpx;height: 36rpx" src="{{weight.todayDif <0?iconUp:iconDown}}"></image>
+                </view>
+                <view class="clear"></view>
+                <view>今日减重</view>
+
+            </view>
+            <view style="width: 50%;float: left;text-align: center">
+
+            </view>
+            <view class="clear"></view>-->
+       <!--     <view class="weight-list">
                 <view class="weight" style="width:200rpx">
                     <view class="value small">
                        {{weight.weight?weight.weight:0}}kg
@@ -46,9 +62,9 @@
                     <view class="weight-value">{{totalDif}}kg</view>
                 </view>
             </view>
-            <view class="line" wx:if=""></view>
-            <view class="title text-center" style="margin-top:52rpx;padding-top:0;" wx:if="">- 血压心率 -</view>
-            <view class="flex" wx:if="">
+            <view class="line"></view>
+            <view class="title text-center" style="margin-top:52rpx;padding-top:0;">- 血压心率 -</view>
+            <view class="flex">
                 <view class="bloodheart">
                     <view class="bloodheart-value">{{bloodPressure.height}}</view>
                     <view class="bloodheart-desc">高压</view>
@@ -61,7 +77,7 @@
                     <view class="bloodheart-value">{{heart.value}}</view>
                     <view class="bloodheart-desc">心率</view>
                 </view>
-            </view>
+            </view>-->
         </view>
     </view>
 </template>

@@ -13,6 +13,9 @@ import Protocol from "../../modules/network/protocol";
         taskList:[],
         iconUp: "http://img.hipee.cn/hibreath/icon/up.png",
         iconDown:"http://img.hipee.cn/hibreath/icon/down.png",
+         bodayFinished:false,
+         todayDifUp:false,
+         totalDifUp:false
      },
      onLoad(options){
          console.log(options)
@@ -35,22 +38,34 @@ import Protocol from "../../modules/network/protocol";
             console.log('weight.todayDif',this.data.taskList)
             for(var i =0;i<this.data.taskList.length;i++){
                 if(this.data.taskList[i].type == "bodyIndex"){
-                    if(this.data.taskList[i].ext.weight.todayDif){
+                    var todayDif = this.data.taskList[i].ext.weight.todayDif
+                    var totalDif = this.data.taskList[i].ext.weight.totalDif
+                    this.setData({
+                        bodayFinished:this.data.taskList[i].finished,
+                    })
+                    console.log('todayDif',todayDif,this.data.bodayFinished)
+                    if(todayDif){
                         this.setData({
-                            todayDif:Math.abs(this.data.taskList[i].ext.weight.todayDif),
+                            todayDif:Math.abs(todayDif),
+                            todayDifImg:this.data.taskList[i].ext.weight.todayDifImg
                         })
                     }else{
                         this.setData({
                             todayDif:0,
+                            todayDifImg:"https://img.hipee.cn/hibreath/icon/down.png",
+                            todayDifUp:false,
                         })
                     }
-                    if(this.data.taskList[i].ext.weight.totalDif){
+                    if(totalDif){
                         this.setData({
-                            totalDif:Math.abs(this.data.taskList[i].ext.weight.totalDif),
+                            totalDif:Math.abs(totalDif),
+                            totalDifImg:this.data.taskList[i].ext.weight.totalDifImg,
                         })
                     }else{
                         this.setData({
                             totalDif:0,
+                            totalDifImg:"https://img.hipee.cn/hibreath/icon/down.png",
+                            totalDifUp:false,
                         })
                     }
                 }

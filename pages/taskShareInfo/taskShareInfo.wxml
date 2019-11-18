@@ -12,10 +12,10 @@
     <view class="card-list">
      <view class="card-wrap" wx:if="{{!!taskList}}" wx:for="{{taskList}}" wx:key="index" wx:for-item="item">
 
-         <template is="bodyIndex" wx:if="{{item.type == 'bodyIndex'}}"
+        <!-- <template is="bodyIndex" wx:if="{{item.type == 'bodyIndex'}}"
                    data="{{finished:item.finished, ...item.ext, iconUp, iconDown,todayDif,totalDif}}"
-         ></template>
-         <template is="fatBurn" wx:if="{{item.type == 'fatBurn'}}" data="{{finished:item.finished, ...item.ext}}"></template>
+         ></template>-->
+         <template is="fatBurn" wx:if="{{item.type == 'fatBurn'}}" data="{{finished:item.finished, ...item.ext,bodayFinished,todayDifImg,totalDifImg,todayDif,totalDif}}"></template>
          <template is="food" wx:if="{{item.type == 'food'}}" data="{{finished:item.finished, ...item.ext}}"></template>
          <template is="sport" wx:if="{{item.type == 'sport' }}" data="{{finished:item.finished, ...item.ext}}"></template>
      </view>

@@ -173,7 +173,7 @@ Page({
             }else{
                 return{
                     title: '我在'+'['+this.data.groupName+']'+'累积减重榜未能上榜！再接再厉！',
-                    path: '/pages/punchList/punchList?sharedId=' + this.data.sharedId
+                    path: '/pages/reductionList/reductionList?sharedId=' + this.data.sharedId
                 }
             }
 

@@ -2,7 +2,25 @@
     padding-left: 30rpx;
     padding-right: 30rpx;
 }
-
+.shareInfo-bodyView{
+    width: 50%;
+    float: left;
+    text-align: center
+}
+.shareInfo-bodyText1{
+    font-size:76rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-left: 25rpx;
+}
+.shareInfo-bodyText2{
+    font-size:50rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-right: 17rpx;
+}
 .weight-list{
     display: flex;
     height: 250rpx;
