@@ -46,9 +46,9 @@
                     <view class="weight-value">{{totalDif}}kg</view>
                 </view>
             </view>
-            <view class="line"></view>
-            <view class="title text-center" style="margin-top:52rpx;padding-top:0;">- 血压心率 -</view>
-            <view class="flex">
+            <view class="line" wx:if=""></view>
+            <view class="title text-center" style="margin-top:52rpx;padding-top:0;" wx:if="">- 血压心率 -</view>
+            <view class="flex" wx:if="">
                 <view class="bloodheart">
                     <view class="bloodheart-value">{{bloodPressure.height}}</view>
                     <view class="bloodheart-desc">高压</view>
