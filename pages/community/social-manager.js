@@ -5,8 +5,6 @@ import HiNavigator from "../../navigator/hi-navigator";
 import {getSocialGroupManager} from "social-manager";
 class SocialGroupManager {
     constructor(Page) {
-        console.log('pp',Page)
-        console.log('SocialGroupManager',SocialGroupManager)
         this._currentSocial = {};
     }
 

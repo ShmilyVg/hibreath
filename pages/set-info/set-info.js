@@ -86,10 +86,7 @@ Page({
         shareFat:"",
         shareFatBurnDesc:"",
         shareTaskList:"",
-        shareTaskListImg0:"",
-        shareTaskListImg1:"",
-        shareTaskListImg2:"",
-        shareTaskListImg3:"",
+        shareTaskListImg:[],
         shareImg:"",
         bgImg:"../../images/set-info/shareBg.png",//分享背景
         textBg:'../../images/set-info/textBg.png',
@@ -522,6 +519,23 @@ Page({
                     })
                 }
             }
+        /*    if(this.data.sharedId){
+                const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+                if(result.fatBurn){
+                    this.setData({
+                        shareFat:result.fatBurn,
+                        shareFatBurnDesc:result.fatBurnDesc
+                    })
+                }
+                this.setData({
+                    shareTodayDif:result.todayDif,
+                    shareTotalDif:result.totalDif,
+                    shareTaskList:result.taskList,
+                })
+            }
+
+            Shared.getImageInfo(this)
+            Shared.screenWdith(this)*/
         }
 
         setTimeout(() => {
@@ -893,7 +907,19 @@ Page({
                         });
                         console.log('今日燃脂任务是否完成标志位',that.data.fatBurnTask,that.data.fatBurnTask.finished)
                         if(that.data.showBigTip == false){
-                            if(that.data.fatBurnTask.finished){
+                            WXDialog.showDialog({
+                                content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
+                                showCancel: true,
+                                confirmText: "查看记录",
+                                cancelText: "暂不查看",
+                                confirmEvent: () => {
+                                    HiNavigator.navigateToResultNOnum();
+                                },
+                                cancelEvent: () => {
+
+                                }
+                            });
+                        /*    if(that.data.fatBurnTask.finished){
                                 WXDialog.showDialog({
                                     content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
                                     showCancel: true,
@@ -919,7 +945,7 @@ Page({
 
                                     }
                                 });
-                            }
+                            }*/
                         }
                     }, 2000)
 
