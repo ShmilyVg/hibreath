@@ -106,8 +106,11 @@ function createNewIm(page){
         drawFont(ctx, 12,"燃脂情况：",50,100);
         drawFont(ctx, 17,"未打卡",110,100);
     }
-    console.log('that.data.shareTaskListImg2222222',that.data.shareTaskListImg1)
-    if(that.data.shareTaskListImg3 !==''){
+    console.log('that.data.shareTaskListImg0',that.data.shareTaskListImg0)
+    console.log('that.data.shareTaskListImg1',that.data.shareTaskListImg1)
+    console.log('that.data.shareTaskListImg2',that.data.shareTaskListImg2)
+    console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
+    if(that.data.shareTaskListImg0 !==''&&that.data.shareTaskListImg1 !==''&& that.data.shareTaskListImg2 !==''&&that.data.shareTaskListImg3 !==''){
         ctx.drawImage(that.data.shareTaskListImg0, 10, 132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg1, 65,132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg2, 120,132, 44*rpx, 46.5*rpx);

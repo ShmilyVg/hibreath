@@ -1,6 +1,7 @@
 /**
  * @Date: 2019-10-29 16:48:21
  * @LastEditors: 张浩玉
+ * 引用https://github.com/lingxiaoyi/navigation-bar
  */
 Component({
   options: {
