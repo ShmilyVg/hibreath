@@ -887,12 +887,13 @@ Page({
                     clearTimeout(that.data.sync.timer);
                     that.data.sync.timer = '';
                     that.data.sync.timer = setTimeout(function () {
+                        that.handleTasks();
                         that.setData({
                             showBigTip: false,
                         });
-                        that.handleTasks();
+                        console.log('今日燃脂任务是否完成标志位',that.data.fatBurnTask,that.data.fatBurnTask.finished)
                         if(that.data.showBigTip == false){
-                            if(that.data.fatBurnFin){
+                            if(that.data.fatBurnTask.finished){
                                 WXDialog.showDialog({
                                     content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
                                     showCancel: true,
