@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
     <navBar
-            title='Simple轻松派'
+            title='Slimple轻松派'
             color="{{navBarColor}}"
             iconTheme="{{navBarIconTheme}}"
             background='{{navBarBackground}}'
