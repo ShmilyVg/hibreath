@@ -1067,6 +1067,9 @@ Page({
      */
      onShareAppMessage() {
         console.log('sharedId',this.data.shareImg)
+        this.setData({
+            isOpened: false
+        })
         return {
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,

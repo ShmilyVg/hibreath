@@ -46,15 +46,19 @@ function getImageInfo(page) {
                 that.setData({
                     [str]:res.path
                 })
+                if(i == that.data.shareTaskList.length-1){
+                    createNewIm(that)
+                }
             }
         })
-        if(i == that.data.shareTaskList.length-1){
+       /* console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)*/
+       /* if(i == that.data.shareTaskList.length-1){
             setTimeout(() => {
                 createNewIm(that)
             },1000)
-        }
+        }*/
     }
-    console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)
+
 
 
 }
@@ -103,7 +107,7 @@ function createNewIm(page){
         drawFont(ctx, 17,"未打卡",110,100);
     }
     console.log('that.data.shareTaskListImg2222222',that.data.shareTaskListImg1)
-    if(that.data.shareTaskListImg3){
+    if(that.data.shareTaskListImg3 !==''){
         ctx.drawImage(that.data.shareTaskListImg0, 10, 132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg1, 65,132, 44*rpx, 46.5*rpx);
         ctx.drawImage(that.data.shareTaskListImg2, 120,132, 44*rpx, 46.5*rpx);
