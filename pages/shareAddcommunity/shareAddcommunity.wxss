@@ -34,13 +34,13 @@
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(69,69,69,1);
-    margin-bottom: 110rpx;
+    margin-bottom: 105rpx;
 }
 .shareAdd-Img{
     width:263rpx;
     height:263rpx;
     border-radius:50%;
-    margin-bottom: 180rpx;
+    margin-bottom: 110rpx;
 }
 .shareAdd-Btn{
     width:500rpx;
