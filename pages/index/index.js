@@ -319,6 +319,7 @@ Page({
             .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
         }*/
+        console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
         HiNavigator.navigateToDeviceBind()
     },
     onUnload() {

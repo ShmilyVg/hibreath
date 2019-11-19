@@ -14,7 +14,7 @@
         <view class="noBindText" style="margin-top: 80rpx;margin-bottom: 15rpx">出了点小问题</view>
         <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
         <view style="margin-top: 50rpx">
-            <view wx:for="{{homeP.length}}">
+            <view wx:for="{{homeP.length}}" wx:key="{{index}}">
                 <view class="home-p" wx:if="{{index == 1}}" >
 
                     <view style="float: left;height: 36rpx;;line-height: 36rpx">

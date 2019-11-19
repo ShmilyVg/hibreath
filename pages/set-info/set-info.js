@@ -1082,6 +1082,14 @@ Page({
         this.setData({
             isOpened: false
         })
+        wx.showTabBar({
+            fail: function () {
+                setTimeout(function () {
+                    wx.showTabBar()
+                }, 500)
+            }
+
+        });
         return {
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,

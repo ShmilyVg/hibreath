@@ -75,6 +75,7 @@ export default class AbstractBlueTooth {
      * @returns {Promise<any>}
      */
     openAdapter() {
+        console.log('我被调用了')
         const isBugPhone = this.isBugPhone;
         !this._deviceId && (this._deviceId = this.getDeviceMacAddress());
         this._isActiveCloseBLE = false;

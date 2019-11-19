@@ -90,6 +90,9 @@ Page({
     },
 
     reConnectEvent() {
+        //检测蓝牙状态
+
+        console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
         app.getBLEManager().connect();
     },
     showTips(){
