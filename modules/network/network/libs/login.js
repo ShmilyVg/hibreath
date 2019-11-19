@@ -93,6 +93,7 @@ function login({resolve, reject}) {
             })
         }
     ).then(data => {
+        getApp().globalData.isLogin = true
         setToken({data});
         console.log('登录成功，开始重发协议');
      /*   wx.reLaunch({
