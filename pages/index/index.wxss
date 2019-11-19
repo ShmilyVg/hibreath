@@ -355,9 +355,9 @@
     animation:mySix 1s linear infinite alternate;
 }
 @keyframes mySix {
-    0%    {background-image: url("http://backend.hipee.cn/assets/home/images/hb/readyBwhite.png")}
-    50%    {background-image: url("http://backend.hipee.cn/assets/home/images/hb/readyBwhite.png")}
-    100%    {background-image: url("http://backend.hipee.cn/assets/home/images/hb/readyBred.png")}
+    0%    {background-image: url("http://img.hipee.cn/hibreath/icon/readyBwhite.png")}
+    50%    {background-image: url("http://img.hipee.cn/hibreath/icon/readyBwhite.png")}
+    100%    {background-image: url("http://img.hipee.cn/hibreath/icon/readBred.png")}
 }
 .findImd{
     width: 320rpx;

@@ -96,8 +96,8 @@ function createNewIm(page){
         }
 
     }else{
-        ctx.drawImage(that.data.shareDown, 125*rpx, 30*rpx, 12.5*rpx, 18*rpx);
-        drawFont(ctx, 45,"0",90,60);
+        ctx.drawImage(that.data.shareDown, 115*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+        drawFont(ctx, 45,"0",104,60);
     }
   /*  if(that.data.shareTotalDif){
         if(that.data.shareTotalDif>=0){
@@ -135,7 +135,7 @@ function createNewIm(page){
     ctx.stroke()
     for(let i = 0;i<that.data.shareTaskList.length;i++){
         console.log('that.data.shareTaskListImg+i',that.data.shareTaskListImg[0])
-        ctx.drawImage(that.data.shareTaskListImg[i], 17.5+55*i, 140, 41*rpx, 41*rpx);
+        ctx.drawImage(that.data.shareTaskListImg[i], 17.5+55*i, 140, 43*rpx, 43*rpx);
     }
     console.log('底部图标已绘制')
     //ctx.draw();
