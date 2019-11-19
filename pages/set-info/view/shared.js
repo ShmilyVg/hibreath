@@ -6,7 +6,6 @@ import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
  * @LastEditors: 张浩玉
  */
 var rpx;
-var isShareTodayDif;
 function screenWdith(page){
     let that = page;
     rpx = 500/414;
@@ -36,19 +35,9 @@ function screenWdith(page){
     });*/
 }
 function drawFont(ctx,contentSzie,content,contentX,contentY) {
-    if(isShareTodayDif == true){
-        isShareTodayDif = false
-        ctx.setFontSize(contentSzie);
-        ctx.setFillStyle("#000000");
-        ctx.setTextAlign('center')
-        ctx.fillText(content, contentX*rpx, contentY*rpx);
-    }else{
-        ctx.setFontSize(contentSzie);
-        ctx.setFillStyle("#000000");
-        ctx.setTextAlign('start')
-        ctx.fillText(content, contentX*rpx, contentY*rpx);
-    }
-
+    ctx.setFontSize(contentSzie);
+    ctx.setFillStyle("#000000");
+    ctx.fillText(content, contentX*rpx, contentY*rpx);
 }
 
 function getImageInfo(page) {
@@ -92,19 +81,18 @@ function createNewIm(page){
     let ctx = wx.createCanvasContext('myCanvas');
     console.log('page.data.bgImg',page.data.bgImg)
     ctx.drawImage(page.data.bgImg, 0, 0, 500, 400);
-    drawFont(ctx, 14,"今日减重(kg)",75,17);
+    ctx.setTextAlign('center')
+    drawFont(ctx, 14,"今日减重(kg)",110,17);
     //drawFont(ctx, 13.6,"累计减重(kg)",127,17);
     if(that.data.shareTodayDif){
         if(that.data.shareTodayDif>=0){
-            isShareTodayDif = true
             drawFont(ctx, 45,that.data.shareTodayDif,104,60);
             const metrics = ctx.measureText(that.data.shareTodayDif).width
-            ctx.drawImage(that.data.shareDown, (70+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+            ctx.drawImage(that.data.shareDown, (65+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
         }else{
-            isShareTodayDif = true
             drawFont(ctx, 45,Math.abs(that.data.shareTodayDif),104,60);
             const metrics = ctx.measureText(Math.abs(that.data.shareTodayDif)).width
-            ctx.drawImage(that.data.shareUp, (70+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+            ctx.drawImage(that.data.shareUp, (65+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
         }
 
     }else{
@@ -120,9 +108,10 @@ function createNewIm(page){
     }else{
         drawFont(ctx, 45,'0',144,60);
     }*/
+    ctx.setTextAlign('left')
     if(that.data.shareFat){
         drawFont(ctx, 11,"燃脂指数:",19,100);
-        ctx.drawImage(that.data.textBg, 60*rpx, 85*rpx, 9*rpx, 13*rpx);
+        ctx.drawImage(that.data.textBg, 60*rpx, 88*rpx, 9*rpx, 13*rpx);
         drawFont(ctx, 18,that.data.shareFat,75,100);
         /*drawFont(ctx, 12,that.data.shareFatBurnDesc,140,100);*/
     }else{
@@ -132,9 +121,9 @@ function createNewIm(page){
     drawFont(ctx, 11,"累计减重:",115,100);
     if(that.data.shareTotalDif){
         if(that.data.shareTotalDif>=0){
-            drawFont(ctx, 18,that.data.shareTotalDif,355/2,100);
+            drawFont(ctx, 18,that.data.shareTotalDif,160,100);
         }else{
-            drawFont(ctx, 18,Math.abs(that.data.shareTotalDif),355/2,100);
+            drawFont(ctx, 18,Math.abs(that.data.shareTotalDif),160,100);
         }
     }else{
         drawFont(ctx, 18,'0',160,100);
@@ -146,7 +135,7 @@ function createNewIm(page){
     ctx.stroke()
     for(let i = 0;i<that.data.shareTaskList.length;i++){
         console.log('that.data.shareTaskListImg+i',that.data.shareTaskListImg[0])
-        ctx.drawImage(that.data.shareTaskListImg[i], 17.5+55*i, 145, 41*rpx, 41*rpx);
+        ctx.drawImage(that.data.shareTaskListImg[i], 17.5+55*i, 140, 41*rpx, 41*rpx);
     }
     console.log('底部图标已绘制')
     //ctx.draw();

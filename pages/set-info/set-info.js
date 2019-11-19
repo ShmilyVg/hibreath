@@ -519,7 +519,7 @@ Page({
                     })
                 }
             }
-        /*    if(this.data.sharedId){
+            /*if(this.data.sharedId){
                 const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
                 if(result.fatBurn){
                     this.setData({
