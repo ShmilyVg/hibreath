@@ -28,7 +28,7 @@ export default class ConnectionManager {
         //蓝牙连接已断开
             this.action[ConnectState.DISCONNECT] = () => {
             this.disconnect();
-                console.log('断连现象!!!!,蓝牙连接已断开')
+            console.log('断连现象!!!!,蓝牙连接已断开')
         };
         //正在连接蓝牙设备
         this.action[ConnectState.CONNECTING] = ()=>{
