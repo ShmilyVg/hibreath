@@ -200,21 +200,10 @@ Page({
         console.log('on:', e);
         app.appLoginListener= function(state){
                 if(state == this.NOT_REGISTER){
-                    wx.getSetting({
-                        success: (res) => {
-                            console.log('是否授权', res.authSetting['scope.userInfo']);
-                            if (res.authSetting['scope.userInfo']) {
-                                that.setData({
-                                    showGuide: false,
-                                })
-                            } else {
-                                that.setData({
-                                    showNewInfo: true,
-                                    showGuide: true, //授权页面显示
-                                })
-                            }
-                        }
-                    });
+                    that.setData({
+                        showNewInfo: true,
+                        showGuide: true, //授权页面显示
+                    })
                 }
         }
         /* await that.handleGuide(that);*/
