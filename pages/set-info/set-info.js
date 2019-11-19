@@ -195,6 +195,7 @@ Page({
     async onLoad(e) {
         let that = this;
         console.log('on:', e);
+
         app.appLoginListener= function({loginState}){
             console.log('set-info', `appLoginListener-> ${loginState}`)
             if(loginState == this.NOT_REGISTER){
@@ -203,6 +204,10 @@ Page({
                     showGuide: true, //授权页面显示
                 })
             }
+        }
+
+        if(!app.globalData.isLogin){
+            app.doLogin();
         }
 
         this.connectionPage = new ConnectionManager(this);
