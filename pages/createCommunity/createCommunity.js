@@ -4,6 +4,7 @@ import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {getSocialGroupManager} from "../community/social-manager";
 import {Toast} from "heheda-common-view";
+import * as tools from "../../utils/tools";
 Page({
 
   /**
@@ -72,7 +73,7 @@ Page({
   },
     createCommunityInput(e){
         this.setData({
-            name:e.detail.value
+            name:tools.filterEmoji(e.detail.value)
         })
         this.disBtn();
     },
