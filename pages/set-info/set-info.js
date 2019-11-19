@@ -195,32 +195,13 @@ Page({
     async onLoad(e) {
         let that = this;
         console.log('on:', e);
-       /* await that.handleGuide(that);*/
-        /*if (e.isNotRegister) {
-            that.setData({
-                isNotRegister: e.isNotRegister,
-                showNewInfo: true,
-                showGuide: true
-            })
-
-        }*/
-        app.appLoginListener= function(state){
-            if(state == this.NOT_REGISTER){
-                wx.getSetting({
-                    success: (res) => {
-                        console.log('是否授权', res.authSetting['scope.userInfo']);
-                        if (res.authSetting['scope.userInfo']) {
-                            that.setData({
-                                showGuide: false,
-                            })
-                        } else {
-                            that.setData({
-                                showNewInfo: true,
-                                showGuide: true, //授权页面显示
-                            })
-                        }
-                    }
-                });
+        app.appLoginListener= function({loginState}){
+            console.log('set-info', `appLoginListener-> ${loginState}`)
+            if(loginState == this.NOT_REGISTER){
+                that.setData({
+                    showNewInfo: true,
+                    showGuide: true, //授权页面显示
+                })
             }
         }
 
