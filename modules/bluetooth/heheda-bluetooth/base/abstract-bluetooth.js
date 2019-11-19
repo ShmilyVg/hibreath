@@ -173,6 +173,7 @@ export default class AbstractBlueTooth {
                         //this._isConnected = true;
                         let connectionInfo = this.connectionInfo;
                         console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's');
+                        console.log('deviceIddeviceIddeviceIddeviceId',deviceId)
                         wx.createBLEConnection({
                             // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
                             deviceId,
