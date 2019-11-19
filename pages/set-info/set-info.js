@@ -3,7 +3,7 @@
  * @Date: 2019-10-09 11:00:00
  * @LastEditors: 张浩玉
  */
-import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import IndexCommonManager from "../index/view/indexCommon";
@@ -12,25 +12,25 @@ import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
 
 import ConnectionManager from "../index/connection-manager";
-import { oneDigit } from "../food/manager";
-import { ConnectState } from "../../modules/bluetooth/bluetooth-state";
-import { showActionSheet } from "../../view/view";
-import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
+import {oneDigit} from "../food/manager";
+import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
+import {showActionSheet} from "../../view/view";
+import {judgeGroupEmpty, whenDismissGroup} from "../community/social-manager";
 import * as Shared from "./view/shared.js";
-import { UploadUrl } from "../../utils/config";
+import {UploadUrl} from "../../utils/config";
 const app = getApp();
 Page({
     data: {
-        isfatBurn: false, //燃脂卡片
-        isbodyIndex: false, //记录身体指标卡片
+        isfatBurn: false,//燃脂卡片
+        isbodyIndex: false,//记录身体指标卡片
 
-        showGuide: false, //立即体验 未注册状态
-        showNewInfo: false, //新手引导页
+        showGuide: false,//立即体验 未注册状态
+        showNewInfo: false,//新手引导页
 
-        noMeasure: false, //没有准确测过体脂率
+        noMeasure: false,//没有准确测过体脂率
         sexBox: [
-            { image: 'man', text: '男士', isChose: false, value: 1 },
-            { image: 'woman', text: '女士', isChose: true, value: 0 }
+            {image: 'man', text: '男士', isChose: false, value: 1},
+            {image: 'woman', text: '女士', isChose: true, value: 0}
         ],
         currentDate: '2018-12-19',
         page: 1,
@@ -38,26 +38,26 @@ Page({
         page4MenItem: ['4', '7', '10', '15', '20', '25', '30', '35', '40'],
         page4WomenItem: ['10', '15', '20', '25', '30', '35', '40', '45', '50'],
         birth: ['1980', '1', '1'],
-        /*  meals: [
-              {text: '外卖为主', isChose: false, en: 'waimai'},
-              {text: '外出就餐为主', isChose: false, en: 'waichu'},
-              {text: '单位食堂为主', isChose: false, en: 'shitang'},
-              {text: '居家制作为主', isChose: false, en: 'jujia'}
-          ],*/
-        meals: [],
-        secArray: [],
+      /*  meals: [
+            {text: '外卖为主', isChose: false, en: 'waimai'},
+            {text: '外出就餐为主', isChose: false, en: 'waichu'},
+            {text: '单位食堂为主', isChose: false, en: 'shitang'},
+            {text: '居家制作为主', isChose: false, en: 'jujia'}
+        ],*/
+        meals:[],
+        secArray:[],
         bgColorSetInfoPage: '#ffffff',
         score: 0,
         showBigTip: false,
         schemaId: 0,
         scrollLeft: 490,
         timer: '',
-        _timeoutIndex: '',
+        _timeoutIndex:'',
         bigTipNum: 0,
         bigTipCountNum: 20,
         sync: {
             num: 0,
-            countNum: 0, //需要同步的总数
+            countNum: 0,//需要同步的总数
             timer: ''
         },
         phValue: "写下你的减脂目标",
@@ -68,37 +68,37 @@ Page({
         taskId: "",
         showModalStatus: false,
         animationData: '',
-        isfinishedGuide: false, //是否选择了方案
-        hiddenImg: false, //隐藏左右箭头
-        grayLeft: true, //灰色箭头左
-        grayRight: false, //灰色箭头右
+        isfinishedGuide: false,//是否选择了方案
+        hiddenImg: false,//隐藏左右箭头
+        grayLeft: true,//灰色箭头左
+        grayRight: false,//灰色箭头右
         currentSwiper: 0,
-        isFood: false,
-        fatText: '',
-        fatTextEn: '',
-        fatType: '',
-        fatDes: '',
+        isFood:false,
+        fatText:'',
+        fatTextEn:'',
+        fatType:'',
+        fatDes:'',
 
 
-        shareDown: "../../images/set-info/shareDown.png",
-        shareUp: "../../images/set-info/shareUp.png",
-        shareTotalDif: "",
-        shareFat: "",
-        shareFatBurnDesc: "",
-        shareTaskList: "",
-        shareTaskListImg: [],
-        shareImg: "",
-        bgImg: "../../images/set-info/shareBg.png", //分享背景
-        textBg: '../../images/set-info/textBg.png',
+        shareDown:"../../images/set-info/shareDown.png",
+        shareUp:"../../images/set-info/shareUp.png",
+        shareTotalDif:"",
+        shareFat:"",
+        shareFatBurnDesc:"",
+        shareTaskList:"",
+        shareTaskListImg:[],
+        shareImg:"",
+        bgImg:"../../images/set-info/shareBg.png",//分享背景
+        textBg:'../../images/set-info/textBg.png',
         //shareTextList:['分享给好友或群']
     },
-    onFocus: function(e) {
+    onFocus: function (e) {
         this.setData({
             isFocus: true,
             phValue: "写下你的减脂目标",
         })
     },
-    onBlur: function(e) {
+    onBlur: function (e) {
         this.setData({
             isFocus: false,
             phValue: "写下你的减脂目标",
@@ -107,13 +107,12 @@ Page({
 
     onHide() {
         //离开时 告知蓝牙标志位 0x3D   0X02
-        if (app.getLatestBLEState().connectState === 'connected') {
-            app.bLEManager.sendISpage({ isSuccess: false });
+        if(app.getLatestBLEState().connectState ==='connected'){
+            app.bLEManager.sendISpage({isSuccess: false});
         }
-
         console.log('breath_user_info_input onHide info====', this.data.info);
         if (this.data.info) {
-            let { info, page, scrollLeft, schemaId } = this.data, obj = {};
+            let {info, page, scrollLeft, schemaId} = this.data, obj = {};
             for (let key in info) {
                 if (info.hasOwnProperty(key)) {
                     let item = info[key];
@@ -192,8 +191,6 @@ Page({
             toast.success('填写成功');
         });
     },
-
-
     //同步离线数据
     async onLoad(e) {
         let that = this;
@@ -215,6 +212,25 @@ Page({
             })
 
         }*/
+        app.appLoginListener= function(state){
+            if(state == this.NOT_REGISTER){
+                wx.getSetting({
+                    success: (res) => {
+                        console.log('是否授权', res.authSetting['scope.userInfo']);
+                        if (res.authSetting['scope.userInfo']) {
+                            that.setData({
+                                showGuide: false,
+                            })
+                        } else {
+                            that.setData({
+                                showNewInfo: true,
+                                showGuide: true, //授权页面显示
+                            })
+                        }
+                    }
+                });
+            }
+        }
 
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
@@ -222,23 +238,23 @@ Page({
     },
 
     async handleBaseInfo(resetPage) {
-        const { year, month, day } = tools.createDateAndTime(Date.parse(new Date()));
+        const {year, month, day} = tools.createDateAndTime(Date.parse(new Date()));
         const currentDate = `${year}-${month}-${day}`;
         //获取三餐选择方案
-        const { result: { list } } = await Protocol.postMealType();
+        const {result: {list}} = await Protocol.postMealType();
         this.setData({
-            meals: list
+            meals:list
         })
-        const { result: { list: goals } } = await Protocol.postSettingsGoals();
-        const { result: accountInfo } = await Protocol.getAccountInfo();
+        const {result: {list: goals}} = await Protocol.postSettingsGoals();
+        const {result: accountInfo} = await Protocol.getAccountInfo();
         const finishedGuide = accountInfo.finishedGuide;
 
         this.setData({
             isfinishedGuide: finishedGuide
         });
-        if (!finishedGuide) {
+        if(!finishedGuide){
             this.setData({
-                showNewInfo: true
+                showNewInfo:true
             })
         }
         let info = {};
@@ -270,36 +286,33 @@ Page({
                 bodyFatRate: '',
                 weightGoal: '',
             };
-            accountInfo.detail && ({ detail: { sex: info.sex } } = accountInfo);
+            accountInfo.detail && ({detail: {sex: info.sex}} = accountInfo);
 
             const userInfoInput = wx.getStorageSync('breath_user_info_input');
             console.log('breath_user_info_input handleBaseInfo() data====', userInfoInput);
-            let page = resetPage || 1,
-                project = [];
+            let page = resetPage||1, project = [];
             if (userInfoInput) {
-                info = Object.assign(info, userInfoInput, { goalDesc: '' });
+                info = Object.assign(info, userInfoInput, {goalDesc:''});
                 page = resetPage || userInfoInput.page || 1;
 
                 const mealValue = info.mealType;
                 for (let item of this.data.meals) {
                     item.isChose = mealValue === item.en;
                 }
-                const { birthday } = info;
+                const {birthday} = info;
                 if (birthday) {
                     this.data.birth = birthday.split('-');
                 }
                 if (page >= 8) {
-                    const { result: { list } } = await Protocol.postSettingsLosefatSchema();
+                    const {result: {list}} = await Protocol.postSettingsLosefatSchema();
                     project.push(...list);
-                    console.log(456, project)
+                  console.log(456,project)
                 }
 
             }
             setSexFun.call(this, info.sex);
             let obj = {
-                currentDate,
-                goals,
-                info,
+                currentDate, goals, info,
                 showNewInfo: true,
                 showGuide: false,
                 birth: this.data.birth,
@@ -314,7 +327,7 @@ Page({
                 obj['schemaId'] = info.schemaId;
             }
             this.setData(obj);
-            console.log('handleBaseInfo', this.data.showNewInfo)
+            console.log('handleBaseInfo',this.data.showNewInfo)
         }
     },
 
@@ -323,19 +336,19 @@ Page({
         app.setBLEListener({
             bleStateListener: () => {
                 console.log("setPage-bleStateListener", app.getLatestBLEState())
-                    /*
-                     首页提示蓝牙未开启 暂做注释
-                    if(app.getLatestBLEState().connectState =='unavailable'&&!this.data.showNewInfo&&!this.data.showGuide){
-                         console.log(this.data.showNewInfo,this.data.showGuide,'状态值！！！！！！！！！！！！！！！！')
-                         setTimeout(() => {
-                             WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-                          },200);
-                     }*/
-                if (app.getLatestBLEState().connectState === 'connected') {
-                    app.bLEManager.sendISpage({ isSuccess: true });
-                }
+               /*
+                首页提示蓝牙未开启 暂做注释
+               if(app.getLatestBLEState().connectState =='unavailable'&&!this.data.showNewInfo&&!this.data.showGuide){
+                    console.log(this.data.showNewInfo,this.data.showGuide,'状态值！！！！！！！！！！！！！！！！')
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                     },200);
+                }*/
+               if(app.getLatestBLEState().connectState ==='connected'){
+                   app.bLEManager.sendISpage({isSuccess: true});
+               }
             },
-            receiveDataListener: ({ finalResult, state }) => {
+            receiveDataListener: ({finalResult, state}) => {
                 console.log("setPage-receiveDataListener", finalResult, state);
             }
         });
@@ -349,8 +362,8 @@ Page({
             } else {
                 app.getBLEManager().setBindMarkStorage();
                 console.log('app.getLatestBLEState().connectState', app.getLatestBLEState().connectState)
-                if (app.getLatestBLEState().connectState !== 'connected') {
-                    app.getBLEManager().connect({ macId: deviceInfo.mac });
+                if(app.getLatestBLEState().connectState !== 'connected'){
+                    app.getBLEManager().connect({macId: deviceInfo.mac});
                 }
             }
         });
@@ -361,7 +374,7 @@ Page({
     },
     async onCommunitySettingClickEvent() {
         try {
-            const { tapIndex } = await showActionSheet({ itemList: ['退出当前方案'], itemColor: "#ED6F69" });
+            const {tapIndex} = await showActionSheet({itemList: ['退出当前方案'],itemColor:"#ED6F69"});
             switch (tapIndex) {
                 case 0:
                     WXDialog.showDialog({
@@ -370,7 +383,7 @@ Page({
                         confirmText: "确定",
                         cancelText: "取消",
                         confirmEvent: () => {
-                            Protocol.postMembersExit({ planId: this.data.planId }).then(() =>
+                            Protocol.postMembersExit({planId:this.data.planId}).then(() =>
                                 this.handleBaseInfo(1)
                             )
                         },
@@ -386,12 +399,12 @@ Page({
         }
     },
     async handleTasks() {
-        console.log('getCurrentPages()', getCurrentPages())
-            //Toast.showLoading();
-        const { result } = await Protocol.postMembersTasks();
+        console.log('getCurrentPages()',getCurrentPages())
+        //Toast.showLoading();
+        const {result} = await Protocol.postMembersTasks();
         this.setData({
-            planId: result.planId,
-            sharedId: result.sharedId,
+            planId:result.planId,
+            sharedId:result.sharedId,
             indexDayDesc: result.dayDesc,
             indexfinishNum: result.finishNum,
             indexgoalDesc: result.goalDesc,
@@ -406,14 +419,14 @@ Page({
                 if (result.taskList[i].finished) {
                     this.setData({
                         isfatBurn: true,
-                        fatBurnFin: true, //完成标志位
+                        fatBurnFin: true,//完成标志位
                         fatBurnTask: result.taskList[i],
                         fatText: fatBurnExt.des.zhCh,
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
-                        fatType: fatBurnExt.iconUrl,
+                        fatType:fatBurnExt.iconUrl,
                         bgColorSetInfoPage: '#FEF6F2',
-                        fatDes: fatBurnExt.visDes
+                        fatDes:fatBurnExt.visDes
                     });
                 } else {
                     this.setData({
@@ -450,17 +463,17 @@ Page({
                         sportFin: true,
                     })
                 }
-                if (sportExt.recommendList[0].list.length == 1) {
+                if(sportExt.recommendList[0].list.length == 1){
                     this.setData({
                         aheight: 230,
                     })
-                } else {
+                }else{
                     this.setData({
-                        aheight: sportExt.recommendList[0].list.length * 110 + 205,
+                        aheight: sportExt.recommendList[0].list.length * 110+205,
                     })
                 }
                 this.setData({
-                    currentSwiper: 0,
+                    currentSwiper:0,
                     sportTask: result.taskList[i],
                     sportExt: sportExt,
                 })
@@ -475,8 +488,8 @@ Page({
                 }
 
             }
-            if (typesArr[i] === "food") {
-                this.component = this.selectComponent('.countdown')
+            if(typesArr[i] === "food"){
+                this.component= this.selectComponent('.countdown')
                 this.setData({
                     component: this.component,
                 })
@@ -486,22 +499,22 @@ Page({
                         foodFin: true,
                     })
                 }
-                if (foodExt.isMeal) {
-                    if (foodExt.mealList[0].list.length == 1) {
+                if(foodExt.isMeal){
+                    if(foodExt.mealList[0].list.length == 1){
                         this.setData({
                             foodAheight: 230,
                         })
-                    } else {
+                    }else{
                         this.setData({
-                            foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110 + 205,
+                            foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110+205,
                         })
                     }
                     this.setData({
-                        foodcurrentSwiper: foodExt.mealIndex,
-                        calorie: this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list, 1),
-                        carbohydrate: this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list, 2),
-                        fat: this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list, 3),
-                        protein: this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list, 4)
+                        foodcurrentSwiper:foodExt.mealIndex,
+                        calorie:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,1),
+                        carbohydrate:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,2),
+                        fat:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,3),
+                        protein:this.data.component.sum(foodExt.mealList[foodExt.mealIndex].list,4)
                     })
 
                 }
@@ -547,7 +560,7 @@ Page({
         //Toast.hiddenLoading()
     },
 
-    async continue () {
+    async continue() {
         const info = this.data.info;
         console.log(info.goalDesc.length, 'info.goalDesc')
         switch (this.data.page) {
@@ -605,7 +618,7 @@ Page({
                 }
                 break;
             case 6:
-                console.log('page6', this.data.meals)
+                console.log('page6',this.data.meals)
                 let isChoseMeals = false;
                 this.data.meals.forEach(value => {
                     if (value.isChose) {
@@ -623,21 +636,21 @@ Page({
                     return;
                 }
                 await Protocol.postMembersPut(this.data.info);
-                const { result: { list: project } } = await Protocol.postSettingsLosefatSchema();
+                const {result: {list: project}} = await Protocol.postSettingsLosefatSchema();
                 this.setData({
-                    project: project,
-                    schemaId: project[0].id
-                });
+                  project: project,
+                  schemaId: project[0].id
+                  });
                 break;
             case 8:
-                await Protocol.postMembersJoinSchema({ schemaId: this.data.schemaId });
+                await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
                 this.handleTasks();
                 this.setData({
                     showNewInfo: false
                 })
                 return;
         }
-        if (this.data.page < 8) {
+        if(this.data.page<8){
             this.setData({
                 page: ++this.data.page,
             });
@@ -649,11 +662,11 @@ Page({
     },
 
     objIsEmpty(obj) {
-        return (typeof(obj) === "undefined" || obj === "" || obj === null);
+        return (typeof (obj) === "undefined" || obj === "" || obj === null);
     },
 
     showDialog(content) {
-        WXDialog.showDialog({ title: '小贴士', content, confirmText: '我知道了' });
+        WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
 
     back() {
@@ -664,16 +677,14 @@ Page({
 
     //减脂目标
     bindInputGoal(e) {
-        console.log('e.detail.value', e.detail.value)
+        console.log('e.detail.value',e.detail.value)
         this.setData({
             'info.goalDesc': tools.filterEmoji(e.detail.value).trim()
         })
     },
 
     bindTapSex(e) {
-        let choseIndex = e.currentTarget.dataset.index,
-            postSex = 0,
-            sexStr = '';
+        let choseIndex = e.currentTarget.dataset.index, postSex = 0, sexStr = '';
         this.data.sexBox.map((value, index) => {
             value.isChose = choseIndex == index;
             if (value.isChose) {
@@ -696,8 +707,8 @@ Page({
             birth: birthArr
         })
     },
-    showBirth(e) {
-        console.log('dddddd', e.detail)
+    showBirth(e){
+        console.log('dddddd',e.detail)
         this.setData({
             'info.birthday': e.detail,
         })
@@ -713,72 +724,72 @@ Page({
     },
 
     bindInputWeight(e) {
-        this.setData({ 'info.weight': e.detail.value });
+        this.setData({'info.weight': e.detail.value});
         return oneDigit(e);
     },
 
     bindInputWeightGoal(e) {
         console.log("231", e.detail.value)
-        this.setData({ 'info.weightGoal': e.detail.value });
+        this.setData({'info.weightGoal': e.detail.value});
         return oneDigit(e);
     },
 
     bindInputExact(e) {
-        this.setData({ 'info.bodyFatRate': e.detail.value })
+        this.setData({'info.bodyFatRate': e.detail.value})
         return oneDigit(e);
     },
     //三餐选择
-    bindTapMealsSecNone(e) {
+    bindTapMealsSecNone(e){
         let choseIndex = e.currentTarget.dataset.index;
         var item = this.data.meals[choseIndex];
         console.log('meals', this.data.meals)
         item.isChose = !item.isChose;
-        for (var i = 0; i < this.data.meals.length; i++) {
-            if (this.data.meals[i].en !== 'none') {
+        for(var i=0;i<this.data.meals.length;i++){
+            if(this.data.meals[i].en !== 'none'){
                 this.data.meals[i].isChose = false
             }
         }
         this.setData({
             meals: this.data.meals,
-            secArray: []
+            secArray:[]
         })
         this.data.secArray.push('none')
         this.setData({
             'info.mealType': this.data.secArray
         });
-        console.log('最终结果1', this.data.secArray)
+        console.log('最终结果1',this.data.secArray)
     },
     //数组去重
     unique(arr) {
         return Array.from(new Set(arr))
     },
     bindTapMeals(e) {
-        for (var i = 0; i < this.data.meals.length; i++) {
-            if (this.data.meals[i].en == 'none' && this.data.meals[i].isChose == true) {
+        for(var i=0;i<this.data.meals.length;i++){
+            if(this.data.meals[i].en == 'none' && this.data.meals[i].isChose == true){
                 this.data.meals[i].isChose = false
                 this.setData({
-                    secArray: []
+                    secArray:[]
                 })
             }
         }
         let choseIndex = e.currentTarget.dataset.index;
         var item = this.data.meals[choseIndex];
-        console.log('item.isChose == true', item.isChose == true)
-        if (item.isChose == true) {
-            this.data.secArray = this.data.secArray.filter(function(items) {
-                return items != item.en
-            });
-        } else {
+        console.log('item.isChose == true',item.isChose == true)
+        if(item.isChose == true){
+            this.data.secArray= this.data.secArray.filter(function(items) {
+                     return items != item.en
+                 });
+        }else{
             this.data.secArray.push(item.en)
         }
 
-        console.log('choseIndex', item)
+        console.log('choseIndex',item)
         item.isChose = !item.isChose;
         this.setData({
             meals: this.data.meals,
             'info.mealType': this.data.secArray
         });
-        console.log('最终结果2', this.unique(this.data.secArray))
+        console.log('最终结果2',this.unique(this.data.secArray))
     },
 
     bindTapExactClick(e) {
@@ -789,27 +800,27 @@ Page({
     },
 
     bindTapSwitchExact() {
-        this.setData({ noMeasure: !this.data.noMeasure });
+        this.setData({noMeasure: !this.data.noMeasure});
     },
 
     async onGetUserInfoEvent(e) {
-        console.log('eee', e)
-        const { detail: { userInfo, encryptedData, iv } } = e;
+        console.log('eee',e)
+        const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
             console.log('111')
-            if (this.data.isfinishedGuide) {
+            if(this.data.isfinishedGuide){
                 this.setData({
-                    showNewInfo: false,
-                    showGuide: false
+                    showNewInfo:false,
+                     showGuide: false
                 })
                 return
             }
             try {
                 Toast.showLoading();
-                await Login.doRegister({ userInfo, encryptedData, iv });
+                await Login.doRegister({userInfo, encryptedData, iv});
                 const userInfo = await UserInfo.get();
-                console.log('userInfo', userInfo)
-                this.setData({ userInfo, showGuide: false });
+                console.log('userInfo',userInfo)
+                this.setData({userInfo, showGuide: false});
                 Toast.hiddenLoading();
             } catch (e) {
                 Toast.warn('获取信息失败');
@@ -832,21 +843,21 @@ Page({
         let that = this;
         let project = this.data.project;
         if (scrollLeft < 130) {
-            this.data.timer = setTimeout(function() {
+            this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 0,
                     schemaId: project[0].id
                 })
             }, 300)
         } else if (scrollLeft >= 130 && scrollLeft < 340) {
-            this.data.timer = setTimeout(function() {
+            this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 490,
                     schemaId: project[1].id
                 })
             }, 300)
         } else {
-            this.data.timer = setTimeout(function() {
+            this.data.timer = setTimeout(function () {
                 that.setData({
                     scrollLeft: 1400,
                     schemaId: project[2].id
@@ -858,21 +869,21 @@ Page({
     toVideoClock(e) {
         console.log("toVideoClock", e.currentTarget)
         if (e.currentTarget.dataset.finid) {
-            HiNavigator.navigateToFinishCheck({ dataId: e.currentTarget.dataset.finid, clockWay: 'video' });
+            HiNavigator.navigateToFinishCheck({dataId: e.currentTarget.dataset.finid, clockWay: 'video'});
             return
         }
-        HiNavigator.navigateToVideoClock({ id: e.currentTarget.dataset.id });
+        HiNavigator.navigateToVideoClock({id: e.currentTarget.dataset.id});
     },
     //去完成按钮
     bindTapToFinish(e) {
-        const { currentTarget: { dataset: { type } } } = e;
+        const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'fatBurn':
                 HiNavigator.navigateIndex();
                 break
             case 'bodyIndex':
                 this.showModal();
-                /* HiNavigator.navigateToDeviceUnbind();*/
+               /* HiNavigator.navigateToDeviceUnbind();*/
                 break
             case 'sport':
                 HiNavigator.navigateToFreeClock();
@@ -881,15 +892,15 @@ Page({
     },
 
     async bindTapProject() {
-        HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId });
+      HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId});
 
     },
 
-    onShow() {
+     onShow() {
         this.handleBle();
         let that = this;
         //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
-        app.onDataSyncListener = ({ num, countNum }) => {
+        app.onDataSyncListener = ({num, countNum}) => {
             console.log('同步离线数据：', num, countNum);
             if (num > 0 && countNum > 0) {
                 that.data.sync.num = num;
@@ -902,15 +913,15 @@ Page({
 
                     clearTimeout(that.data.sync.timer);
                     that.data.sync.timer = '';
-                    that.data.sync.timer = setTimeout(function() {
+                    that.data.sync.timer = setTimeout(function () {
                         that.handleTasks();
                         that.setData({
                             showBigTip: false,
                         });
-                        console.log('今日燃脂任务是否完成标志位', that.data.fatBurnTask, that.data.fatBurnTask.finished)
-                        if (that.data.showBigTip == false) {
+                        console.log('今日燃脂任务是否完成标志位',that.data.fatBurnTask,that.data.fatBurnTask.finished)
+                        if(that.data.showBigTip == false){
                             WXDialog.showDialog({
-                                content: '上传成功，本次共上传' + that.data.sync.num + '条结果',
+                                content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
                                 showCancel: true,
                                 confirmText: "查看记录",
                                 cancelText: "暂不查看",
@@ -921,33 +932,33 @@ Page({
 
                                 }
                             });
-                            /*    if(that.data.fatBurnTask.finished){
-                                    WXDialog.showDialog({
-                                        content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
-                                        showCancel: true,
-                                        confirmText: "查看记录",
-                                        cancelText: "暂不查看",
-                                        confirmEvent: () => {
-                                            HiNavigator.navigateToResultNOnum();
-                                        },
-                                        cancelEvent: () => {
+                        /*    if(that.data.fatBurnTask.finished){
+                                WXDialog.showDialog({
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
+                                    showCancel: true,
+                                    confirmText: "查看记录",
+                                    cancelText: "暂不查看",
+                                    confirmEvent: () => {
+                                        HiNavigator.navigateToResultNOnum();
+                                    },
+                                    cancelEvent: () => {
 
-                                        }
-                                    });
-                                }else{
-                                    WXDialog.showDialog({
-                                        content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
-                                        showCancel: true,
-                                        confirmText: "查看记录",
-                                        cancelText: "暂不查看",
-                                        confirmEvent: () => {
-                                            HiNavigator.navigateToResultNOnum();
-                                        },
-                                        cancelEvent: () => {
+                                    }
+                                });
+                            }else{
+                                WXDialog.showDialog({
+                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
+                                    showCancel: true,
+                                    confirmText: "查看记录",
+                                    cancelText: "暂不查看",
+                                    confirmEvent: () => {
+                                        HiNavigator.navigateToResultNOnum();
+                                    },
+                                    cancelEvent: () => {
 
-                                        }
-                                    });
-                                }*/
+                                    }
+                                });
+                            }*/
                         }
                     }, 2000)
 
@@ -960,27 +971,27 @@ Page({
             }
         };
 
-        if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
+        if(this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh){
             getApp().globalData.issueRefresh = false
             that.handleTasks();
         }
-        console.log('打卡页面更新了', getApp().globalData.issueRefresh, this.data.isfinishedGuide, this.data.isFood)
+         console.log('打卡页面更新了',getApp().globalData.issueRefresh,this.data.isfinishedGuide,this.data.isFood)
     },
 
 
     async bindTapToResultPage() {
         if (this.data.fatBurnFin) {
-            const { fatText, fatTextEn, fatDes, score } = this.data;
+            const {fatText, fatTextEn, fatDes, score} = this.data;
             console.log(fatText, fatTextEn, fatDes, score)
-            HiNavigator.navigateToResult({ fatText, fatTextEn, fatDes, score });
+            HiNavigator.navigateToResult({fatText, fatTextEn, fatDes, score});
             /*HiNavigator.navigateToResultNOnum();*/
             return
         }
-        let { result: { list: breathList } } = await Protocol.postBreathDatalistAll({
+        let {result: {list:breathList}} = await Protocol.postBreathDatalistAll({
             timeBegin: 1510468206000,
             timeEnd: Date.now()
         });
-        if (breathList.length > 0) {
+        if(breathList.length>0){
             HiNavigator.navigateToResultNOnum();
             return
         }
@@ -991,11 +1002,11 @@ Page({
             HiNavigator.navigateTofood();
             return
         }
-        let { result: { list: weightList } } = await Protocol.postWeightDataListAll({
-            timeBegin: 1510468206000,
-            timeEnd: Date.now()
+        let {result: {list:weightList}}=await Protocol.postWeightDataListAll({
+            timeBegin:1510468206000,
+            timeEnd:Date.now()
         })
-        if (weightList.length > 0) {
+        if(weightList.length>0){
             HiNavigator.navigateTofood();
             return
         }
@@ -1012,23 +1023,23 @@ Page({
         }
     },
     //选择方案轮播图
-    swiperChangeCase(e) {
-        this.setData({
-            schemaId: this.data.project[e.detail.current].id
-        })
+    swiperChangeCase(e){
+      this.setData({
+        schemaId: this.data.project[e.detail.current].id
+      })
     },
     //运动打卡--轮播图当前
-    swiperChange: function(e) {
+    swiperChange: function (e) {
         this.setData({
             currentSwiper: e.detail.current,
         })
-        if (this.data.sportExt.recommendList[e.detail.current].list.length == 1) {
+        if(this.data.sportExt.recommendList[e.detail.current].list.length == 1){
             this.setData({
                 aheight: 230,
             })
-        } else {
+        }else{
             this.setData({
-                aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 110 + 205,
+                aheight: this.data.sportExt.recommendList[e.detail.current].list.length * 110+205,
             })
         }
 
@@ -1063,7 +1074,7 @@ Page({
             currentSwiper: this.data.currentSwiper + 1
         })
     },
-    showModal: function() {
+    showModal: function () {
         // 显示遮罩层
         var animation = wx.createAnimation({
             duration: 200,
@@ -1076,14 +1087,14 @@ Page({
             animationData: animation.export(),
             showModalStatus: true
         })
-        setTimeout(function() {
+        setTimeout(function () {
             animation.translateY(0).step()
             this.setData({
                 animationData: animation.export()
             })
         }.bind(this), 200)
     },
-    hideModal: function() {
+    hideModal: function () {
         this.setData({
             showModalStatus: false,
         })
@@ -1093,33 +1104,33 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage() {
-        console.log('sharedId', this.data.shareImg)
+     onShareAppMessage() {
+        console.log('sharedId',this.data.shareImg)
         this.setData({
             isOpened: false
         })
         return {
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
-            imageUrl: this.data.shareImg
+            imageUrl:this.data.shareImg
         };
-        console.log('indexDayDesc', this.data.shareImg)
+        console.log('indexDayDesc',this.data.shareImg)
 
     },
     async listenerButton() {
         Toast.showLoading()
-        if (this.data.sharedId) {
-            const { result } = await Protocol.postSharetask({ sharedId: this.data.sharedId });
-            if (result.fatBurn) {
+        if(this.data.sharedId){
+            const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
+            if(result.fatBurn){
                 this.setData({
-                    shareFat: result.fatBurn,
-                    shareFatBurnDesc: result.fatBurnDesc
+                    shareFat:result.fatBurn,
+                    shareFatBurnDesc:result.fatBurnDesc
                 })
             }
             this.setData({
-                shareTodayDif: result.todayDif,
-                shareTotalDif: result.totalDif,
-                shareTaskList: result.taskList,
+                shareTodayDif:result.todayDif,
+                shareTotalDif:result.totalDif,
+                shareTaskList:result.taskList,
             })
         }
 
@@ -1127,18 +1138,18 @@ Page({
         Shared.screenWdith(this)
 
     },
-    listenerActionSheet: function() {
+    listenerActionSheet:function() {
         this.setData({
             actionSheetHidden: !this.data.actionSheetHidden
         })
     },
-    cancel() {
+    cancel(){
         this.setData({
             isOpened: false
         })
         wx.showTabBar({
-            fail: function() {
-                setTimeout(function() {
+            fail: function () {
+                setTimeout(function () {
                     wx.showTabBar()
                 }, 500)
             }
@@ -1150,7 +1161,7 @@ Page({
      */
     async onPullDownRefresh() {
         Toast.showLoading();
-        if (!this.data.showNewInfo && !this.data.showGuide) {
+        if(!this.data.showNewInfo&&!this.data.showGuide){
             await this.handleTasks()
         }
 
