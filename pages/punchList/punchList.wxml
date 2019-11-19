@@ -19,7 +19,7 @@
     <text wx:if="{{addup == null}}" class="punchList_Day-Text3">未上榜</text>
     <text class="punchList_Day-Text4">累计打卡</text>
 </view>
-<view class="punchList_line"></view>
+<view class="punchList_lineP"></view>
 <view class="{{continual == null?'punchList_Day2':'punchList_Day1'}}">
     <text wx:if="{{continual !== null}}" class="punchList_Day-Text1">{{continual}}</text>
     <text wx:if="{{continual !== null}}" class="punchList_Day-Text2">天</text>

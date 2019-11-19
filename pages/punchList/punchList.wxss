@@ -109,6 +109,13 @@ page{
     height:50rpx;
     border-right:0.5rpx #D6D6D6 solid;
     float: left;
+    margin: 45rpx 20rpx 0rpx 20rpx;
+}
+.punchList_lineP{
+    width: 1rpx;
+    height:50rpx;
+    border-right:0.5rpx #D6D6D6 solid;
+    float: left;
     margin: 45rpx 40rpx 0rpx 40rpx;
 }
 .tab_item_active{
