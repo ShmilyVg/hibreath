@@ -61,6 +61,11 @@ function getImageInfo(page) {
                         createNewIm(that)
                     },500)
                 }
+            },
+            fail(res){
+                console.log('set-info/shared', res);
+                Toast.hiddenLoading();
+                Toast.showText('分享失败，请重试');
             }
         })
        /* console.log('that.data.shareTaskListImg3',that.data.shareTaskListImg3)*/
