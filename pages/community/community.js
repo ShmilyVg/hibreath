@@ -122,7 +122,7 @@ Page({
         wx.getSetting({
             success: (res) => {
                 console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
-                if (!res.authSetting['scope.userInfo']) {
+                if (!res.authSetting['scope.userInfo'] &&!getApp().globalData.isLogin) {
                     wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
                     wx.setBackgroundColor({
                         backgroundColor: '#ffffff', // 窗口的背景色为白色
