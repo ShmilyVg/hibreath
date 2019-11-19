@@ -41,6 +41,7 @@ Page({
                     backgroundColor: '#fff',
                 })
                 this.indexCommonManager.setSearchingState();
+                console.log('this.indexCommonManager',this.indexCommonManager)
                 this.setData({
                     bgColor:"#fff",
                     finding:true,//正在寻找设备标志位
@@ -136,6 +137,7 @@ Page({
                     setTimeout(() => HiNavigator.navigateSuccessInfo());
                     /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
+                    console.log('diao')
                     this.showResult({state: state.connectState});
                 }
             },

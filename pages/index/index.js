@@ -307,6 +307,30 @@ Page({
 
 
     onGetUserInfoEvent(e) {
+        wx.getSystemInfo({
+            success (res) {
+                console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
+                if(res.locationEnabled && res.bluetoothEnabled){
+                    HiNavigator.navigateToDeviceBind()
+                    return
+                }else if(!res.bluetoothEnabled){
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                    },200);
+                    return
+                }else if(!res.locationEnabled){
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS', confirmText: '我知道了'});
+                    },200);
+                    return
+                }else{
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                    },200);
+                    return
+                }
+            }
+        })
         /*const {detail: {userInfo, encryptedData, iv}} = e;
         if (!!userInfo) {
             Toast.showLoading();
@@ -319,7 +343,7 @@ Page({
             .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
         }*/
-        wx.openBluetoothAdapter({
+     /*   wx.openBluetoothAdapter({
             success (res) {
                 console.log(res,'success')
                 HiNavigator.navigateToDeviceBind()
@@ -332,9 +356,7 @@ Page({
                     },200);
                 }
             }
-        })
-        //console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
-        //HiNavigator.navigateToDeviceBind()
+        })*/
     },
     onUnload() {
      /* 关闭蓝牙适配器  app.getBLEManager().closeAll();
