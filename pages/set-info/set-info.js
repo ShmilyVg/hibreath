@@ -195,6 +195,13 @@ Page({
     async onLoad(e) {
         let that = this;
         console.log('on:', e);
+        wx.showTabBar({
+            fail: function () {
+                setTimeout(function () {
+                    wx.showTabBar()
+                }, 500)
+            }
+        });
        /* await that.handleGuide(that);*/
         /*if (e.isNotRegister) {
             that.setData({
@@ -1140,7 +1147,6 @@ Page({
                     wx.showTabBar()
                 }, 500)
             }
-
         });
     },
     /**
