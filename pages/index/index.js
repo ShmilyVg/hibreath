@@ -319,8 +319,22 @@ Page({
             .then(({userInfo}) => !this.setData({userInfo}) && HiNavigator.navigateToDeviceBind())
             .catch(() => setTimeout(Toast.warn, 0, '获取信息失败')).finally(Toast.hiddenLoading);
         }*/
-        console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
-        HiNavigator.navigateToDeviceBind()
+        wx.openBluetoothAdapter({
+            success (res) {
+                console.log(res,'success')
+                HiNavigator.navigateToDeviceBind()
+            },
+            fail (res) {
+                console.log(res,'fail')
+                if(res.errCode == 10001 ||res.errCode == 10000){
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                    },200);
+                }
+            }
+        })
+        //console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
+        //HiNavigator.navigateToDeviceBind()
     },
     onUnload() {
      /* 关闭蓝牙适配器  app.getBLEManager().closeAll();

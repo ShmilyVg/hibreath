@@ -91,9 +91,20 @@ Page({
 
     reConnectEvent() {
         //检测蓝牙状态
-
-        console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
-        app.getBLEManager().connect();
+        wx.openBluetoothAdapter({
+            success (res) {
+                console.log(res,'success')
+                app.getBLEManager().connect();
+            },
+            fail (res) {
+                console.log(res,'fail')
+                if(res.errCode == 10001 ||res.errCode == 10000){
+                    setTimeout(() => {
+                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                    },200);
+                }
+            }
+        })
     },
     showTips(){
         WXDialog.showDialog({title: '小贴士', content:"请前往手机「设置」 找到「微信」 应用，打开「微信定位/位置权限」", confirmText: '我知道了'});
