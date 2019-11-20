@@ -8,8 +8,6 @@ export default class IndexCommonManager {
     }
     setSearchingState() {
         getApp().getBLEManager().checkLocationPermission();
-        console.log('getApp().getBLEManager()',getApp().getBLEManager())
-        console.log('getApp().getBLEManager()',getApp().getBLEManager().checkLocationPermission())
         this._page.setData({
 
             btnState: false,

@@ -307,6 +307,14 @@ Page({
 
 
     onGetUserInfoEvent(e) {
+      /*  wx.openBluetoothAdapter({
+            success (res) {
+                console.log(res,'resresres')
+            },
+            fail (res) {
+                console.log(res,'failfailfail')
+            }
+        })*/
         wx.getSystemInfo({
             success (res) {
                 console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
