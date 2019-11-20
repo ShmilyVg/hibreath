@@ -116,6 +116,9 @@ Page({
         }
         HiNavigator.navigateBack({delta: 1});
     },
+    preheatImg(){
+      
+    },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
     },

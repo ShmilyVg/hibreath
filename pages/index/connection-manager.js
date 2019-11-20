@@ -79,6 +79,7 @@ export default class ConnectionManager {
             blowpicShow: false,
             homeTitle: false,
             homeOrangeBtn: false,
+   
         })
     }
 
