@@ -155,7 +155,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             noBind:false,
             finding:false,
             blowpicShow: false,
@@ -191,7 +191,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
@@ -219,7 +219,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
@@ -247,7 +247,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             needCheckOTAUpdate:false,
             noBind:false,
 
@@ -280,7 +280,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             needCheckOTAUpdate:false,
             noBind:false,
             stateBtnShow: false,
@@ -308,7 +308,7 @@ export default class BlowManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
+            tryAgain:false,
             noBind:false,
             needCheckOTAUpdate:false,
             stateBtnShow: false,
