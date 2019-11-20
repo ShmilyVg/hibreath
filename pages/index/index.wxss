@@ -393,6 +393,32 @@
   right: 30rpx;
 }
 
+.preheat-img{
+  width:406rpx;
+  height:382rpx;
+  margin:41rpx 172rpx 55rpx 172rpx;
+  position:relative;
+}
+.move-img{
+  width:228rpx;
+  height:94rpx;
+  position:absolute;
+  top:135rpx;
+  left:-70rpx; 
+}
+.move-img{
+  animation:myopacity 2s linear normal;
+}
+@keyframes myopacity
+{
+  0%   {opacity: 0;}
+  25%  {opacity: 0.2;}
+  50%  {opacity: 0.6;}
+  75%  {opacity: 0.8;}
+  100% {opacity: 1;}
+}
+
+
 
 
 
