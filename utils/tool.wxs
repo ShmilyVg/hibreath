@@ -1,0 +1,28 @@
+/*精准判断字符数
+function getByteLen(val) {
+      var len = 0;
+      for (var i = 0; i < val.length; i++) {
+        var a = val.charAt(i);
+        if (a.match(/[^\x00-\xff]/ig) != null) {
+          len += 2;
+        }
+        else {
+          len += 1;
+        }
+      }
+      return len;
+    };
+*/
+function my_slice(str,length){
+   if(str){
+    if(str.length<=length){
+           return str;
+       }
+       console.log('2222',str)
+       str=str.slice(0,length)+'...';
+         return str;
+   }
+};
+module.exports = {
+  my_slice:my_slice
+};
