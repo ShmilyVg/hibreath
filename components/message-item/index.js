@@ -52,8 +52,9 @@ Component({
         undateName(arr){
             if(arr.length>0){
                 arr.map((value, index) => {
+                    console.log('value.nickname',value.nickname)
                     if(value.nickname){
-                        this.data.listArray = []
+                        //this.data.listArray = []
                         this.data.listArray.push(value.nickname)
                         this.setData({
                             nickNameList:this.data.listArray.join(',')
@@ -92,6 +93,7 @@ Component({
                 'message.praiseInfo.list.':result.praiseInfo.list,
                 'message.action.liked':!this.data.message.action.liked,
             })
+            this.data.listArray = []
             this.undateName(result.praiseInfo.list)
         },
       /*  async giveHeart(){
