@@ -30,7 +30,7 @@
                 <view class="page1-input-view flex-row" >
                    <image class="page1-edit"
                            src="../../images/set-info/page1-edit.png"></image>
-                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下您的减脂目标" maxlength="10"
+                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下你的减脂宣言" maxlength="10"
                            placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
                 </view>
             </view>
@@ -226,7 +226,7 @@
         <button class="commodity_sub" form-type='submit'>提交</button>
         <view class="clear"></view>
         <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
-        <view style="margin-bottom: 40rpx">*您可以按照实际情况自由填写打卡</view>
+        <view style="margin-bottom: 40rpx">*尽量保持每天在同一时间、条件下测量</view>
         <view class="commodity_part">
             <view class="commodity_title">体重(kg)</view>
             <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>

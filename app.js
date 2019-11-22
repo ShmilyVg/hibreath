@@ -8,8 +8,6 @@ import {WXDialog} from "heheda-common-view";
 import CommonProtocol from "./modules/network/network/libs/protocol";
 import {initAnalysisOnApp} from "./modules/analysis/mta";
 import HiNavigator from "./navigator/hi-navigator";
-
-const log = require('./log.js')
 App({
 
     onDeviceBindInfoListener: null,

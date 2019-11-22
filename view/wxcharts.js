@@ -16,7 +16,7 @@ var config = {
     xAxisLineHeight: 15,
     legendHeight: 15,
     yAxisTitleWidth: 15, 
-    padding: 12,
+    psadding: 12,
     columePadding: 3,
     fontSize: 13,
     dataPointShape: ['diamond', 'circle', 'triangle', 'rect'],

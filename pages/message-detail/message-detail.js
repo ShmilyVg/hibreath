@@ -1,6 +1,6 @@
 // pages/message-detail/message-detail.js
 import {previewImage} from "../../view/view";
-import {WXDialog} from "heheda-common-view";
+import {Toast as toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {getDayStr, getDynamicCreateTime, getHourStr, getMinuteStr} from "../../utils/time";
@@ -32,11 +32,12 @@ Page({
             })
         }
         this.setData({
+            result:result,
             canDelete:result.action.delete,
             imgUrls:result.imgUrls,
             messageCreateTime: getDynamicCreateTime(result.createTimestamp),
-            headUrl:result.headUrl,
-            nickname:result.nickname
+            headUrl:result.userInfo.headUrl,
+            nickname:result.userInfo.nickname
         });
     },
 
@@ -55,6 +56,7 @@ Page({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
                 await Protocol.postDynamicDelete({id: this.dataId});
                 HiNavigator.navigateBack({delta: 1});
+                toast.success('删除成功');
             }
         });
     },
