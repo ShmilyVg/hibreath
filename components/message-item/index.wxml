@@ -24,13 +24,13 @@
     <view bindtap="giveHeart" class="giveHeartImgView">
         <image src="{{message.action.liked?'../../images/community/solidHeart.png':'../../images/community/heartB.png'}}" class="giveHeartImg"></image>
     </view>
-    <view class="giveHeartNum">{{message.praiseInfo.totalCount}}</view>
+    <view bindtap="giveHeart" class="giveHeartNum">{{message.praiseInfo.totalCount}}</view>
 </view>
 <view class="commentView">
     <view bindtap="goCommunity" class="giveHeartImgView">
         <image src="../../images/community/comment.png" class="giveHeartImg"></image>
     </view>
-    <view class="giveCommentNum">{{message.commentInfo.totalCount}}</view>
+    <view bindtap="goCommunity" class="giveCommentNum">{{message.commentInfo.totalCount}}</view>
 </view>
 <view class="clear"></view>
 <view class="extraBottomview" wx:if="{{message.praiseInfo.list.length>0 || message.commentInfo.list.length>0}}">

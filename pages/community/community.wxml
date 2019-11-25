@@ -52,7 +52,7 @@
             <view class="community-rank-text">打卡榜</view>
         </view>
     </view>
-    <message-item class="fill-width" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
+    <message-item class="fill-width" style="padding-bottom: 30rpx" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>
 <view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock">

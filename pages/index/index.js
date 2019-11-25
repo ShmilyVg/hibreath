@@ -18,7 +18,7 @@ import HiBreathBlueToothManager from "../../modules/bluetooth/hi-breath-bluetoot
 import CommonProtocol from "../../modules/network/network/libs/protocol";
 import {WXDialog} from "heheda-common-view"; //页面标志位使用
 const app = getApp();
-
+const log = require('../../log.js')
 Page({
     data: {
         userInfo: {},
@@ -117,7 +117,7 @@ Page({
         HiNavigator.navigateBack({delta: 1});
     },
     preheatImg(){
-      
+
     },
     onLaunch(options){
         this.commonOnLaunch({options, bLEManager: new HiBreathBlueToothManager()});
@@ -279,6 +279,8 @@ Page({
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
                     const toolfinalResult = tools.subStringNum(finalResult.result)/10
+                    log.info('在线检测数值处理前',finalResult.result)
+                    log.info('在线检测数值处理后',toolfinalResult)
                     Protocol.getBreathDataAdd({
                         dataValue: toolfinalResult,
                     }).then(data => {

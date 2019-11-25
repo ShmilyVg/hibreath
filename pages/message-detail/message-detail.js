@@ -68,6 +68,7 @@ Page({
         this.setData({
             commentInfoList:result.list,
             commentInfoTime: getDynamicCreateTime(result.createTimestamp),
+            'message.commentInfo.totalCount':result.list.length
         })
     },
     //更新点赞 头像数组
@@ -127,6 +128,10 @@ Page({
         })
     },
     finClick(){
+        wx.pageScrollTo({
+            scrollTop: 800,
+            duration: 100,
+        })
         if(this.data.isReply){
             this.finCReply()
         }else{

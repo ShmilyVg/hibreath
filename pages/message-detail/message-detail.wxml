@@ -53,7 +53,7 @@
                 <view class="commentInfoList-time" style="margin-right: 15rpx">{{tools.getDynamicCreateTime(item.timestamp)}}</view>
                 <view class="clear"></view>
                 <view class="commentInfoList-content">
-                    <text wx:if="{{item.toName}}">回复</text>
+                    <text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:#454545;" wx:if="{{item.toName}}">回复</text>
                     <text style="font-size:24rpx;font-family:PingFang SC;font-weight:400;color:rgba(238,111,105,1);" wx:if="{{item.toName}}">{{item.toName}}</text>
                     <text wx:if="{{item.toName}}">:</text>
                     {{item.content}}

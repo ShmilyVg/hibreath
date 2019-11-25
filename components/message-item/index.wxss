@@ -67,6 +67,7 @@
 .giveHeartView{
     width: 200rpx;
     height: 50rpx;
+    line-height: 50rpx;
     display: flex;
     align-items:center;
     float: left
