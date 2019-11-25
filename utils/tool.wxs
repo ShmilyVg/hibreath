@@ -1,18 +1,4 @@
-/*精准判断字符数
-function getByteLen(val) {
-      var len = 0;
-      for (var i = 0; i < val.length; i++) {
-        var a = val.charAt(i);
-        if (a.match(/[^\x00-\xff]/ig) != null) {
-          len += 2;
-        }
-        else {
-          len += 1;
-        }
-      }
-      return len;
-    };
-*/
+
 function my_slice(str,length){
    if(str){
     if(str.length<=length){
@@ -23,6 +9,36 @@ function my_slice(str,length){
          return str;
    }
 };
+ function getMonthStr(date) {
+    str = ('0' + (date.getMonth() + 1)).slice(-2)
+    return str;
+};
+
+ function getDayStr(date) {
+    str = ('0' + date.getDate()).slice(-2)
+    return str;
+};
+
+ function getHourStr(date) {
+     str = ('0' + date.getHours()).slice(-2)
+    return str;
+};
+
+ function getMinuteStr(date) {
+    str = ('0' + date.getMinutes()).slice(-2)
+    return str;
+};
+ function getDynamicCreateTime(timestamp) {
+     var date = getDate(timestamp);
+    return getMonthStr(date)+'/'+getDayStr(date);
+};
+ function getCommentTime(timestamp) {
+     var date = getDate(timestamp);
+    return +getHourStr(date)+':'+getMinuteStr(date);
+};
+
 module.exports = {
-  my_slice:my_slice
+  my_slice:my_slice,
+  getDynamicCreateTime:getDynamicCreateTime,
+  getCommentTime:getCommentTime
 };

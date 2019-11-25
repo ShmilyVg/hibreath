@@ -21,7 +21,7 @@
     </view>
 </view>
 <view class="giveHeartView">
-    <view bindtap="giveHeart" class="giveHeartImgView" data-index="{{}}">
+    <view bindtap="giveHeart" class="giveHeartImgView">
         <image src="{{message.action.liked?'../../images/community/solidHeart.png':'../../images/community/heartB.png'}}" class="giveHeartImg"></image>
     </view>
     <view class="giveHeartNum">{{message.praiseInfo.totalCount}}</view>
