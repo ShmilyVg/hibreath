@@ -116,9 +116,11 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
-    static navigateIndexSuc({data}) {
-        this.navigateTo({url: '/pages/index/index?isSuccessInfo=' + data});
+  
+    static navigateIndexSuc({ data }) {
+      this.navigateTo({ url: '/pages/index/index?isSuccessInfo=' + data });
     }
+
     static navigateIndex() {
         this.navigateTo({url: '/pages/index/index'});
     }
@@ -175,13 +177,16 @@ export default class HiNavigator extends CommonNavigator {
    static navigateToCaseDetails({ schemaId }) {
      this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
     }
-  static navigateToSetup({ socialMemberInfo}) {
-    this.navigateTo({ url: '/pages/set-up/set-up?socialMemberInfo=' + socialMemberInfo} );
+  static navigateToSetup({ socialMemberInfo, currentSocial}) {
+    this.navigateTo({ url: '/pages/set-up/set-up?socialMemberInfo=' + socialMemberInfo + '&currentSocial=' + currentSocial} );
     }
   static navigateToCircleInformation({ groupName }) {
     this.navigateTo({ url: '/pages/set-up/circleInformation/circleInformation?groupName=' + groupName });
   }
   static navigateToRename({ memberName }) {
     this.navigateTo({ url: '/pages/set-up/rename/rename?memberName=' + memberName });
+  }
+  static navigateToChangeCommunity({ groupId, name, imgUrl}) {
+    this.navigateTo({ url: '/pages/createCommunity/createCommunity?groupId=' + groupId + '&name=' + name + '&imgUrl=' + imgUrl });
   }
 }

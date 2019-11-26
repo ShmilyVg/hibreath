@@ -348,5 +348,9 @@ export default class Protocol {
     static postDeletecomment({commentId}){
         return Network.request({url: 'group/dynamic/delComment', data:{commentId}})
     }
+    //修改圈子信息
+    static postChangeCommunity({ id, name, imgUrl=''}) {
+      return Network.request({ url: 'group/put', data: { id, name, imgUrl } })
+      }
 
 }

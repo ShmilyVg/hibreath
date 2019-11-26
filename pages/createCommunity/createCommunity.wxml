@@ -1,5 +1,5 @@
 <!--pages/createCommunity/createCommunity.wxml-->
-<view>
+<view wx:if="{{!groupId}}">
     <view class="createCommunity-View">
         <view wx:if="{{imgUrl}}" class="createCommunity-Head" bindtap="addPic1">
             <image mode="aspectFill" class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
@@ -14,4 +14,21 @@
         <view class="createCommunity-Line"></view>
     </view>
     <button bindtap="createCommunityBtn" disabled="{{disable}}" class="createCommunity-Btn">创建新圈子</button>
+</view>
+
+<view else>
+    <view class="createCommunity-View">
+        <view wx:if="{{imgUrl}}" class="createCommunity-Head" bindtap="addPic1">
+            <image mode="aspectFill" class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
+        </view>
+        <view wx:else class="createCommunity-Head" bindtap='addPic1'>
+            <image  class="createCommunity-Img" src="{{imgUrl}}" ></image>
+            <view class="createCommunity-Text" style="text-align: center">设置头像</view>
+        </view>
+    </view>
+    <view style="margin-left: 73rpx">
+        <input class="createCommunity-Input" placeholder-class="createCommunity-Inputpla" bindinput="createCommunityInput" maxlength="20" value="{{name}}" type="text"/>
+        <view class="createCommunity-Line"></view>
+    </view>
+    <button bindtap="changeCommunityBtn" disabled="{{disable}}" class="createCommunity-Btn">保存</button>
 </view>
