@@ -1,0 +1,44 @@
+
+function my_slice(str,length){
+   if(str){
+    if(str.length<=length){
+           return str;
+       }
+       console.log('2222',str)
+       str=str.slice(0,length)+'...';
+         return str;
+   }
+};
+ function getMonthStr(date) {
+    str = ('0' + (date.getMonth() + 1)).slice(-2)
+    return str;
+};
+
+ function getDayStr(date) {
+    str = ('0' + date.getDate()).slice(-2)
+    return str;
+};
+
+ function getHourStr(date) {
+     str = ('0' + date.getHours()).slice(-2)
+    return str;
+};
+
+ function getMinuteStr(date) {
+    str = ('0' + date.getMinutes()).slice(-2)
+    return str;
+};
+ function getDynamicCreateTime(timestamp) {
+     var date = getDate(timestamp);
+    return getMonthStr(date)+'/'+getDayStr(date);
+};
+ function getCommentTime(timestamp) {
+     var date = getDate(timestamp);
+    return +getHourStr(date)+':'+getMinuteStr(date);
+};
+
+module.exports = {
+  my_slice:my_slice,
+  getDynamicCreateTime:getDynamicCreateTime,
+  getCommentTime:getCommentTime
+};

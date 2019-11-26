@@ -8,6 +8,7 @@
 import {ErrorState} from "../utils/error-state";
 import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
+const log = require('../../../../log.js')
 /*暂作修改*/
 const INIT_TIMEOUT = 10;
 export default class AbstractBlueTooth {
@@ -93,6 +94,7 @@ export default class AbstractBlueTooth {
                                 // });
                             }, fail: (res) => {
                                 console.log('打开蓝牙Adapter失败', res);
+                                log.warn('打开蓝牙Adapter失败', res)
                                 this._isOpenAdapter = false;
                                 reject(res);
                             }
@@ -124,6 +126,7 @@ export default class AbstractBlueTooth {
                                 resolve({isOpenAdapter: this._isOpenAdapter});
                             }, fail: function (res) {
                                 console.log('断开蓝牙Adapter失败', res);
+                                log.warn('断开蓝牙Adapter失败', res)
                                 this._isConnected = false;
                                 reject(res);
                             }
@@ -205,6 +208,7 @@ export default class AbstractBlueTooth {
                                 // t连接失败
                                 this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
                                 console.log('蓝牙连接失败', res);
+                                log.warn('蓝牙连接失败', res)
                                 this._isConnected = false;
                                 const errCode = res.errCode;
                                 if (errCode === 10003 || errCode === 10012) {
@@ -250,6 +254,7 @@ export default class AbstractBlueTooth {
                             resolve();
                         }, fail: res => {
                             console.log('断开连接失败', res);
+                            log.warn('断开连接失败', res)
                             const errCode = res.errCode;
                             if (errCode === 10000 || errCode === 10001) {
                                 resolve();

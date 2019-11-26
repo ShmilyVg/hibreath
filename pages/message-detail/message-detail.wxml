@@ -1,3 +1,4 @@
+<wxs src="../../utils/tool.wxs" module="tools"></wxs>
 <view class="fill-width flex-column box-sizing-border-box message-detail-layout">
     <view class="fill-width flex-row align-items-center space-between">
         <view class="flex-row align-items-center">
@@ -18,4 +19,73 @@
     <view class="fill-width flex-row flex-wrap">
         <image mode="aspectFill" bindtap="onImagePreview" data-url="{{item}}" wx:for="{{imgUrls}}" wx:key="index" src="{{item}}" class="message-detail-image-item"></image>
     </view>
+</view>
+<view class="message-detail-bottom">
+    <view bindtap="giveHeart" class="giveHeartImgView">
+        <image src="{{result.action.liked?'../../images/community/solidHeart.png':'../../images/community/heartB.png'}}" class="giveHeartImg"></image>
+        <view class="message-detail-heartCount">{{result.praiseInfo.totalCount}}</view>
+    </view>
+    <view>
+        <view wx:if="{{headUrlList.length>0}}"  wx:for="{{headUrlList}}" wx:key="{{index}}"  style="float: left">
+            <image src="{{item}}" style="width:58rpx;height: 58rpx;border-radius: 50%;margin:0rpx 8rpx 16rpx 8rpx"></image>
+        </view>
+        <view wx:if="{{!headUrlList}}" class="message-detail-noheadUrl">还没有赞哦,快来抢坐沙发!</view>
+    </view>
+    <view class="clear"></view>
+</view>
+<block wx:if="{{commentInfoList.length>0}}">
+    <view class="grayLine"></view>
+    <view style="box-sizing: border-box;padding: 0rpx 40rpx 80rpx 40rpx">
+        <view class="commentInfoList-top">
+            <text style="margin-right: 10rpx">全部评论</text>{{commentInfoList.length}}
+        </view>
+        <view wx:for="{{commentInfoList}}" wx:key="{{index}}" style="display: flex;margin-bottom: 20rpx">
+            <view>
+                <image src="{{item.headUrl}}" style="width:58rpx;height: 58rpx;border-radius: 50%;margin:0rpx 25rpx 0rpx 0rpx"></image>
+            </view>
+            <view style="width: 100%"
+                  data-action="{{item.action}}"
+                  data-dataId="{{item.commentId}}"
+                  data-nickName="{{item.fromName}}"
+                  bindtap="clickAction">
+                <view class="commentInfoList-fromName">{{item.fromName}}</view>
+                <view class="commentInfoList-time">{{tools.getCommentTime(item.timestamp)}}</view>
+                <view class="commentInfoList-time" style="margin-right: 15rpx">{{tools.getDynamicCreateTime(item.timestamp)}}</view>
+                <view class="clear"></view>
+                <view class="commentInfoList-content">
+                    <text style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:#454545;" wx:if="{{item.toName}}">回复</text>
+                    <text style="font-size:24rpx;font-family:PingFang SC;font-weight:400;color:rgba(238,111,105,1);" wx:if="{{item.toName}}">{{item.toName}}</text>
+                    <text wx:if="{{item.toName}}">:</text>
+                    {{item.content}}
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
+<!--悬浮input-->
+<view class="commentTextInput"wx:if="{{clickInput}}" bindtap="clickInput"  style="z-index: 999">
+    <input
+              class="commentTextarea"
+              placeholder-class="textareaPlaceholder"
+              cursor-spacing="15"
+              placeholder="请留点什么吧"
+    />
+    <view class="commentContentView commentContentWhite">评论</view>
+</view>
+
+<!--评论多行输入-->
+<view class="commentTextView" wx:if="{{clickComment}}"  style="z-index: 999">
+    <textarea
+            class="commentTextarea"
+            placeholder-class="textareaPlaceholder"
+            bindinput="textBindinput"
+            bindfocus="textBindfocus"
+            bindblur="textBindblur"
+            maxlength="500"
+            cursor-spacing="15"
+            show-confirm-bar="{{flase}}"
+            placeholder="{{placeholderText}}"
+            auto-focus
+    />
+    <view class="commentContentView {{commentContent?'commentContentRed':'commentContentWhite'}}" bindtap="finClick">评论</view>
 </view>

@@ -1,4 +1,7 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "动态详情"
+  "navigationBarTitleText": "动态详情",
+  "usingComponents": {
+    "message-item": "../../components/message-item/index"
+  }
 }

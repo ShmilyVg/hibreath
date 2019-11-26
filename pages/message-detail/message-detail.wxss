@@ -1,5 +1,5 @@
 .message-detail-layout {
-    padding: 70rpx 40rpx;
+    padding: 70rpx 40rpx 40rpx 40rpx;
     align-self: flex-start;
 }
 
@@ -62,4 +62,115 @@
 .message-detail-image-item:nth-child(3n-1) {
     margin-left: 16rpx;
     margin-right: 16rpx;
+}
+.message-detail-bottom{
+    box-sizing: border-box;
+    padding: 0 40rpx;
+    display: flex;
+}
+.giveHeartImgView{
+    width: 50rpx;
+    height: 50rpx;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 25rpx;
+}
+.giveHeartImg{
+    width: 39rpx;
+    height:34rpx;
+}
+.message-detail-heartCount{
+    font-size:20rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+}
+.message-detail-noheadUrl{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(155,155,155,1);
+}
+.grayLine{
+    width:750rpx;
+    height:16rpx;
+    background:rgba(245,245,249,1);
+    margin: 50rpx 0rpx;
+}
+.commentInfoList-top{
+    font-size:30prx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-bottom: 40rpx;
+}
+.commentInfoList-fromName{
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    float: left;
+    color:rgba(238,111,105,1);
+}
+.commentInfoList-time{
+    float: right;
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+}
+.commentInfoList-content{
+    margin: 20rpx 0 40rpx 0;
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+}
+.commentTextarea{
+    padding-left: 10rpx;
+    height: 70rpx;
+    width: 84%;
+    background: #fff;
+    border-radius: 8rpx;
+    padding-top: 15rpx;
+    padding-bottom: 15rpx;
+    box-sizing: border-box;
+    float: left;
+}
+.commentTextInput{
+    background: #F7F7F7;
+    box-sizing: border-box;
+    padding: 15rpx;
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.commentTextView{
+    background: #F7F7F7;
+    box-sizing: border-box;
+    padding: 15rpx;
+    width: 100%;
+    height: 100rpx;
+    position: absolute;
+    left: 0;
+}
+.commentContentView{
+    float: left;
+    text-align: center;
+    height:70rpx;
+    width: 12%;
+    margin-left: 3%;
+    line-height: 70rpx;
+    border-radius:8rpx;
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+.commentContentRed{
+    background:rgba(238,111,105,1);
+}
+.commentContentWhite{
+    background:rgba(195,197,200,1);
 }

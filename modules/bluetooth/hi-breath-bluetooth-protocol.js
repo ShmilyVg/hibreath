@@ -1,8 +1,8 @@
 import {HexTools, HiBlueToothProtocol} from "./heheda-bluetooth/index";
 import {ProtocolState} from "./bluetooth-state";
 import * as tools from "../../utils/tools";
+const log = require('../../log.js')
 export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
-
     constructor(blueToothManager) {
         super({blueToothManager, deviceIndexNum: 6});
         this.action = {
@@ -49,11 +49,13 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x3c': ({dataArray}) => {
                 console.log("查看数据结果",dataArray)
+                log.info("查看数据结果",dataArray)
                 /*     const result = HexTools.hexArrayToNum(dataArray.slice(4, 6));*/
                 //结果保留一位小数并不四舍五入
                 const b = dataArray[4]/10+dataArray[5]/100;
                 const result = tools.subStringNum(b);
                 console.log('数据2 result',result);
+                log.info("数据2 result",result)
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 console.log('数据2 timestamp',timestamp);
                 const currentLength = HexTools.hexArrayToNum(dataArray.slice(6, 7));
