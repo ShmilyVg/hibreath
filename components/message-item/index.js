@@ -11,6 +11,10 @@ Component({
         message: {
             type: Object,
             value: {taskId: "", imgUrls: ['', '', '',], desc: '', messageCreateTime: '', headUrl: '', nickname: ''}
+        },
+        scrollTopNum:{
+            type: Number,
+            value:0
         }
     },
 
@@ -25,6 +29,7 @@ Component({
         placeholderText:'评论',
         isReply:false,//回复标志位 区别评论
         commentId:'',//评论Id
+        textareaHeight:0
     },
     lifetimes: {
         created() {
@@ -71,7 +76,7 @@ Component({
         },
         //更新评论列表
         async undateComment(){
-            const {result} = await this.whenDismissGroup(Protocol.postCommentList({dynamicId:this.data.message.id}));
+            const {result} = await this.whenDismissGroup(Protocol.postCommentList({dynamicId:this.data.message.id,pageSize:50000}));
             this.setData({
                 'message.commentInfo.list':result.list,
                 'message.commentInfo.totalCount':result.list.length
@@ -135,6 +140,13 @@ Component({
             }else{
                 this.finComment()
             }
+            console.log('this.data.scrollTopNum',this.data.scrollTopNum)
+            setTimeout(()=>{
+                wx.pageScrollTo({
+                    scrollTop: this.data.scrollTopNum,
+                    duration: 100,
+                })
+            },10)
         },
         //完成评论
         async finComment(){
@@ -158,7 +170,10 @@ Component({
         },
         //输入框聚焦事件
         textBindfocus(e){
-            console.log('e',e)
+            this.setData({
+                textareaHeight:e.detail.height
+            })
+            console.log('e',this.data.textareaHeight)
         },
         //输入框失去聚焦事件
         textBindblur(){

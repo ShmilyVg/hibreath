@@ -45,6 +45,7 @@
     <view wx:if="{{message.praiseInfo.list.length>0 && message.commentInfo.list.length>0}}" class="message-item-line"></view>
     <view wx:if="{{message.commentInfo.list.length>0}}">
         <view class="extraBottomview-commentView"
+              hover-class="commentHover"
               wx:for="{{message.commentInfo.list}}"
               wx:key="{{index}}"
               data-action="{{item.action}}"
@@ -61,9 +62,10 @@
 </view>
 
 <!--评论多行输入-->
-<view class="commentTextView" wx:if="{{clickComment}}" style="z-index: 999">
-    <textarea
+<view class="commentTextView" wx:if="{{clickComment}}" style="z-index: 999;">
+   <!-- <textarea
             class="commentTextarea"
+            fixed="true"
             placeholder-class="textareaPlaceholder"
             bindinput="textBindinput"
             bindfocus="textBindfocus"
@@ -71,6 +73,19 @@
             maxlength="500"
             cursor-spacing="15"
             show-confirm-bar="{{flase}}"
+            placeholder="{{placeholderText}}"
+            auto-focus
+    />-->
+    <input
+            style="height: 70rpx"
+            value="{{textareaValue}}"
+            class="commentTextarea"
+            placeholder-class="textareaPlaceholder"
+            bindinput="textBindinput"
+            bindfocus="textBindfocus"
+            bindblur="textBindblur"
+            maxlength="500"
+            cursor-spacing="15"
             placeholder="{{placeholderText}}"
             auto-focus
     />

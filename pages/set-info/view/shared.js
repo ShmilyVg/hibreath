@@ -1,6 +1,6 @@
 import {UploadUrl} from "../../../utils/config";
 import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
-
+const log = require('../../../log.js')
 /**
  * @Date: 2019-11-08 16:05:43
  * @LastEditors: 张浩玉
@@ -93,6 +93,7 @@ function createNewIm(page){
         if(that.data.shareTodayDif>=0){
             drawFont(ctx, 45,that.data.shareTodayDif,104,60);
             const metrics = ctx.measureText(that.data.shareTodayDif).width
+            log.info('metrics',metrics)
             if(that.data.shareTodayDif<10){
                 ctx.drawImage(that.data.shareDown, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
@@ -102,6 +103,7 @@ function createNewIm(page){
         }else{
             drawFont(ctx, 45,Math.abs(that.data.shareTodayDif),104,60);
             const metrics = ctx.measureText(Math.abs(that.data.shareTodayDif)).width
+            log.info('metrics',metrics)
             if(Math.abs(that.data.shareTodayDif)<10){
                 ctx.drawImage(that.data.shareUp, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{

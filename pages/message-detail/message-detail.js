@@ -21,7 +21,7 @@ Page({
         isReply:false,//回复标志位 区别评论
         commentId:'',//评论Id
         clickComment:false,
-        clickInput:true
+        isFocus:false
     },
 
     async onLoad(options) {
@@ -51,7 +51,8 @@ Page({
         this.undateName(result.praiseInfo.list)
         this.undateComment()
     },
-
+    async onShow(){
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -64,7 +65,7 @@ Page({
     },
     //更新评论列表
     async undateComment(){
-        const {result} = await whenDismissGroup(Protocol.postCommentList({dynamicId:this.dataId}));
+        const {result} = await whenDismissGroup(Protocol.postCommentList({dynamicId:this.dataId,pageSize:50000}));
         this.setData({
             commentInfoList:result.list,
             commentInfoTime: getDynamicCreateTime(result.createTimestamp),
@@ -119,17 +120,21 @@ Page({
         const {currentTarget: {dataset: {url: current}}} = e;
         await previewImage({current, urls: this.data.imgUrls});
     },
-    //点击评论
-    goCommunity(){
-        this.setData({
-            placeholderText:"评论",
-            clickComment:!this.data.clickComment,
-            isReply:false
-        })
+
+    onPageScroll: function (e) {
+        if(!this.data.clickComment){
+            this.setData({
+                clickComment:true
+            })
+        }
     },
     finClick(){
+        if(!this.data.commentContent || this.data.commentContent ==""){
+            toast.warn('请输入评论')
+            return
+        }
         wx.pageScrollTo({
-            scrollTop: 800,
+            scrollTop: 18000,
             duration: 100,
         })
         if(this.data.isReply){
@@ -137,6 +142,13 @@ Page({
         }else{
             this.finComment()
         }
+        this.setData({
+            placeholderText:"评论",
+            commentContent:"",
+            textareaValue:null,
+            isReply:false,
+            clickComment:false
+        })
     },
     //完成评论
     async finComment(){
@@ -160,22 +172,17 @@ Page({
     },
     //输入框聚焦事件
     textBindfocus(e){
-        console.log('e',e)
+      /*  console.log('eeeee',e)
+        this.setData({
+            textareaHeight:0
+        })
+        console.log('e',this.data.textareaHeight)*/
     },
     //输入框失去聚焦事件
     textBindblur(){
-        this.setData({
-            clickComment:false,
-            clickInput:true,
-        })
+
     },
-    //点击悬浮输入框
-    clickInput(){
-        this.setData({
-            clickInput:false,
-            clickComment:true
-        })
-    },
+
     //点击评论进行回复或者删除
     async clickAction(e){
         console.log(e,'eeee')
@@ -198,8 +205,6 @@ Page({
                     if(itemList[0] == '回复'){
                         this.setData({
                             placeholderText:"回复"+fromName,
-                            clickComment:!this.data.clickComment,
-                            clickInput:false,
                             isReply:true,
                             commentId:dataid
                         })
@@ -231,8 +236,6 @@ Page({
                     if(itemList[1] == '回复'){
                         this.setData({
                             placeholderText:"回复"+fromName,
-                            clickComment:!this.data.clickComment,
-                            clickInput:false,
                             isReply:true,
                             commentId:dataid
                         })
