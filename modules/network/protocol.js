@@ -323,8 +323,30 @@ export default class Protocol {
     static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
     }
-  //更改圈子名字
+    //更改圈子名字
     static postUpdataMember({ name,groupId }) {
       return Network.request({ url: 'group/member/update', data: { name, groupId } });
     }
+    //圈子-动态-点赞
+    static postGiveHeart({dynamicId}){
+        return Network.request({url: 'group/dynamic/giveLike', data:{dynamicId}})
+    }
+
+    //圈子-动态-取消点赞
+    static postNoHeart({dynamicId}){
+        return Network.request({url: 'group/dynamic/abandonLike', data:{dynamicId}})
+    }
+    //圈子-评论-添加评论
+    static postAddComment({dynamicId,content,commentId}){
+        return Network.request({url: 'group/dynamic/addComment', data:{dynamicId,content,commentId}})
+    }
+    //圈子-评论-评论列表
+    static postCommentList({dynamicId}){
+        return Network.request({url: 'group/dynamic/commentList', data:{dynamicId}})
+    }
+    //圈子-评论-删除评论
+    static postDeletecomment({commentId}){
+        return Network.request({url: 'group/dynamic/delComment', data:{commentId}})
+    }
+
 }
