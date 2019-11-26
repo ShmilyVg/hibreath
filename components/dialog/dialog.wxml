@@ -1,0 +1,24 @@
+
+<view class="wx-popup " hidden="{{flag}}" >
+  <scroll-view class='popup-container'  >
+    <view class=" wx-popup-title" >
+        <view class="flex-column title-text">
+            <view class="title-text-top">需要发表至</view>
+             <view class="title-text-bottom">哪个圈子</view>
+        </view>
+        <image src="../../images/community/cancel.png"  class="btn-no cancel" bindtap='_error'></image>
+    </view>
+    
+    
+    <scroll-view class="wx-popup-con" scroll-y="true"  >
+        <view class="popup-list {{idx==item.groupId?'popup-list-hover':'popup-list'}}" data-id="{{item.groupId}}" data-isChose="{{isChose}}"  wx:for="{{list}}" wx:key="{{index}}"  bindtap="selectApply">
+          <image  class="popup-list-img" src="{{item.imgUrl}}"></image>
+          <text class="popup-list-text">{{item.name}}</text>
+        </view>
+
+    </scroll-view>
+    <view class="wx-popup-btn" >
+      <text class="btn-ok" bindtap='_success'>{{btn_ok}}</text>
+    </view>
+  </scroll-view>
+</view>

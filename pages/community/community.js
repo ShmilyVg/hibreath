@@ -13,6 +13,7 @@ import {Toast} from "heheda-common-view";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
 import {WXDialog} from "heheda-common-view";
+const app = getApp()
 Page({
 
     /**
@@ -37,26 +38,29 @@ Page({
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
         if(this.data.socialMemberInfo.isMajor){
             try {
-                const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '删除该圈子'],itemColor:"#454545"});
+              const { tapIndex } = await showActionSheet({ itemList: ['设置','更多圈子'],itemColor:"#454545"});
                 switch (tapIndex) {
                     case 0:
+                    HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo) });
+                        break;
+                        //        WXDialog.showDialog({
+                        //     content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
+                        //     showCancel: true,
+                        //     confirmText: "确定",
+                        //     cancelText: "取消",
+                        //     confirmEvent: () => {
+                        //         wx.clearStorageSync('currentSocialGroupId')
+                        //        this.updata()
+                        //     },
+                        //     cancelEvent: () => {
+
+                        //     }
+                        // });
+                        // break;
+                    case 1:
                         HiNavigator.navigateToCommunityManagement();
                         break;
-                    case 1:
-                        WXDialog.showDialog({
-                            content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
-                            showCancel: true,
-                            confirmText: "确定",
-                            cancelText: "取消",
-                            confirmEvent: () => {
-                                wx.clearStorageSync('currentSocialGroupId')
-                               this.updata()
-                            },
-                            cancelEvent: () => {
-
-                            }
-                        });
-                        break;
+                
                 }
             } catch (e) {
                 console.warn(e);
@@ -235,6 +239,7 @@ Page({
             await getSocialGroupManager.getSocialGroupList();
             getGroupDynamicManager.clear();
             await showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
+          console.log("currentSocial", this.data.currentSocial)
         } catch (e) {
             console.error('community.js updateAll error', e);
         }
@@ -259,5 +264,9 @@ Page({
             path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.socialMemberInfo.sharedId,
             //imageUrl:'https://backend.hipee.cn/hipee-resource/images/hibreath/20191104/95748a6a66c2aa77818764b93a693ea8.o6zajs-zth1ke_1mwkyso5jiadbc.plktmxj2ockf95748a6a66c2aa77818764b93a693ea8.png'
         };
-    }
+    },
+
+
+    
+ 
 });

@@ -1,0 +1,90 @@
+.message-item-layout {
+    padding: 70rpx 0rpx 40rpx 0rpx;
+    align-self: flex-start;
+}
+
+.message-item-head-img{
+    width:90rpx;
+    height:90rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+    background-color: ghostwhite;
+}
+
+.message-item-nickname{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+}
+
+.message-item-time{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+    line-height:33rpx;
+}
+
+.message-item-desc{
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    word-break: break-all;
+    margin-top: 42rpx;
+    margin-bottom: 35rpx;
+}
+
+.message-item-setting-layout{
+    padding: 0 30rpx;
+}
+
+.message-item-setting-point{
+    width:8rpx;
+    height:8rpx;
+    background:rgba(155,155,155,1);
+}
+
+.message-item-setting-point:nth-child(2){
+    margin: 10rpx 0;
+}
+
+.message-item-image-item{
+    width:210rpx;
+    height:210rpx;
+    border-radius:10rpx;
+    margin-bottom: 16rpx;
+    background-color: ghostwhite;
+}
+
+.message-item-image-item:nth-child(3n-1) {
+    margin-left: 16rpx;
+    margin-right: 16rpx;
+}
+
+.thumbs-up{
+  width:100%;
+  height:100rpx;
+}
+.thumbs-up-img{
+  width:50rpx;
+  height:50rpx;
+  vertical-align: middle;
+  margin-right:10rpx;
+}
+.thumbs-up-list{
+  width:100%;
+  background:rgb(248, 229, 229);
+  padding:20rpx;
+}
+.thumbs-up-text{
+  margin-right:80rpx;
+}
+.commentNum-list{
+  border-top:1px solid #ccc;
+  background:rgb(248, 229, 229);
+  width:100%;
+}

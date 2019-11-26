@@ -65,7 +65,7 @@ Component({
 
     },
     hide() {
-
+      clearInterval(this.intervalIndex);
     }
   },
   lifetimes: {
@@ -77,7 +77,7 @@ Component({
       
       this.intervalIndex = setInterval(() => {
         const nextList = getNextUpdateList({ list: this.data.list });
-        console.log(nextList);
+        
         this.setData({
           list: nextList
         });

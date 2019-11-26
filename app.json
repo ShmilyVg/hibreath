@@ -23,7 +23,9 @@
     "pages/punchList/punchList",
     "pages/reductionList/reductionList",
     "pages/caseDetails/caseDetails",
-    "pages/taskShareInfo/taskShareInfo"
+    "pages/taskShareInfo/taskShareInfo",
+    "pages/set-up/set-up",
+    "pages/set-up/rename/rename"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

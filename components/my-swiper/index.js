@@ -80,6 +80,7 @@ Component({
                 this.setData({
                     list: getNextUpdateList({list: this.data.list})
                 });
+            
             }, 2000);
         },
         detached() {

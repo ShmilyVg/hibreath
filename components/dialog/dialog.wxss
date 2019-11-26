@@ -1,0 +1,101 @@
+.wx-popup {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 10;
+}
+.popup-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height:736rpx;
+  width: 80%;
+  max-width: 600rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  box-sizing: bordre-box;
+  transform: translate(-50%, -50%); 
+  overflow: hidden;
+  background: #fff;
+}
+.wx-popup-title {
+
+  padding: 40rpx;
+}
+.title-text{
+  float:left;
+}
+.title-text-top{
+  font-size:26rpx;
+  color: #181818 ;
+}
+.title-text-bottom{
+  font-size:40rpx;
+}
+.cancel{
+   float:right;
+  
+  width:30rpx;
+  height:30rpx;
+}
+.popup-list{
+  width:509rpx;
+  height:132rpx;
+ display: flex;
+  align-items: center;
+  background: #F8F8F8 ;
+  margin-bottom:10rpx;
+  border-radius:20rpx;
+   border:1px solid #F8F8F8;
+}
+.popup-list-hover{
+   width:509rpx;
+  height:132rpx;
+ display: flex;
+  align-items: center;
+  background: rgba(251,232,230,1)  ;
+  margin-bottom:10rpx;
+  border-radius:20rpx;
+  border:1px solid rgba(237,111,105,1);
+}
+.wx-popup-con {
+  margin: 80rpx 40rpx 39rpx 40rpx;
+  height:400rpx;
+}
+.wx-popup-btn {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40rpx;
+}
+.wx-popup-btn text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 380rpx;
+  height: 78rpx;
+  border-radius: 39rpx;
+  background:#ED6F69;
+  color:#fff;
+}
+.popup-list-img{
+  width:80rpx;
+  height:80rpx;
+  border-radius:50%;
+  vertical-align: middle;
+  margin-left:27rpx;
+}
+.popup-list-text{
+width:335rpx;
+height:63rpx;
+font-size:28rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(237,111,105,1);
+line-height:36rpx;
+margin-left:23rpx;
+
+}
+

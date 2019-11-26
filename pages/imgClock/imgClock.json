@@ -1,1 +1,7 @@
-{"navigationBarTitleText": "发表动态"}
+{
+  "component": true,
+  "navigationBarTitleText": "发表动态",
+  "usingComponents": {
+    "popup": "../../components/dialog/dialog"
+  }
+}

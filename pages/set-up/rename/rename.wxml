@@ -1,0 +1,9 @@
+<!--pages/set-up/rename/rename.wxml-->
+<block>
+    <view>
+      <input class="materials" value="{{completedName}}" bindinput="bindInputName"  placeholder="请填写我在该圈子的昵称" />
+    </view>
+    <button class=" {{userIdCardNameif?'materials-btn1':'materials-btn'}}" bindtap="materialsBtn">保存</button>
+</block>
+
+ 

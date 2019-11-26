@@ -12,7 +12,9 @@ Page({
     data: {
         imgbox:[],
         imageUrl:[],
-        disable:true
+        disable:true,
+        ifShow:true,
+
     },
 
     onLoad: function (e) {
@@ -36,6 +38,7 @@ Page({
         WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
     submit(){
+        
         console.log("imgbox",this.data.imgbox)
         console.log("imageUrl",this.data.imageUrl)
         console.log("132",this.data.desc)
@@ -43,17 +46,15 @@ Page({
             this.showDialog("请选择照片");
             return
         }*/
-        Toast.showLoading();
       if(this.taskId){
+          Toast.showLoading();
           Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
               Toast.showLoading();
               HiNavigator.redirectToMessageDetail({messageId: data.result.id});
           });
       }else {
-          Protocol.postPublish({groupId:this.groupId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
-              Toast.showLoading();
-              HiNavigator.switchToCommunity();
-          });
+        this.showPopup();
+          
       }
 
     },
@@ -164,4 +165,43 @@ Page({
         });
         this.disBtn()
     },
+
+    
+  onReady: function () {
+    //获得popup组件
+    this.popup = this.selectComponent("#popup");
+  },
+
+  showPopup(e) {
+
+    console.log(e)
+    this.popup.showPopup();
+    this.setData({
+      ifShow: !this.data.ifShow
+    })
+  },
+
+  //取消事件
+  _error() {
+    console.log('你点击了取消');
+    this.popup.hidePopup();
+    this.setData({
+      ifShow: !this.data.ifShow
+    })
+  },
+  //确认事件
+  _success(e) {
+    console.log('你点击了确定',e);
+    const {detail:{groupId}} = e;
+    this.popup.hidePopup();
+    Toast.showLoading();
+    Protocol.postPublish({ groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
+      wx.hideLoading();
+      HiNavigator.switchToCommunity();
+    });
+    this.setData({
+      ifShow: !this.data.ifShow
+    })
+  }
+
 })

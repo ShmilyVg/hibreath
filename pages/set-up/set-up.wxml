@@ -1,0 +1,24 @@
+<!--pages/set-up/set-up.wxml-->
+<view class="body-main" wx:if="{{socialMemberInfo.isMajor}}">
+  <view class=" materials materials-border" >
+    <view class=" materials-left">编辑圈子资料</view>
+    <image src="../../images/set-up/right.png" class=" materials-right"></image>
+  </view>
+  <view class="materials" bindtap="onRename">
+    <view class=" materials-left">我在该圈子的昵称</view>
+    
+    <image src="../../images/set-up/right.png" class=" materials-right"></image>
+    <view class=" materials-text">{{socialMemberInfo.memberName}} </view>
+  </view>
+  <view class="delete-circle" bindtap="deleteCircle">删除该圈子</view>
+</view>
+
+<view class="body-main" wx:else>
+  <view class="materials" bindtap="onRename">
+    <view class=" materials-left">我在该圈子的昵称</view>
+    <image src="../../images/set-up/right.png" class=" materials-right"></image>
+    <view class=" materials-text">{{socialMemberInfo.memberName}} </view>
+  </view>
+  <view class="delete-circle" bindtap="signOut">退出该圈子</view>
+</view>
+

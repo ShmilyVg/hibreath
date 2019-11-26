@@ -1,0 +1,41 @@
+/* pages/set-up/set-up.wxss */
+page{
+   background:#F5F5F5;
+    color:#454545;
+}
+
+
+.materials{
+ line-height:132rpx;
+  padding:0 41rpx;
+  height:132rpx; 
+  background:#fff;
+ 
+}
+.materials-left{
+  float:left;
+}
+.materials-right{
+  float:right;
+  color: #9B9B9B;
+  width:16rpx;
+  height:26rpx;
+  margin-top:56rpx;
+  margin-left:22rpx;
+}
+.materials-text{
+   float:right;
+  color: #9B9B9B;
+ 
+}
+.materials-border{
+  border-bottom:1px solid #F2F2F2;
+}
+.delete-circle{
+  height:102rpx;
+  line-height:102rpx;
+  text-align:center;
+  margin-top:20rpx;
+   background:#fff;
+   color:#ED6F69;
+}

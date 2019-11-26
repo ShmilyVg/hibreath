@@ -1,0 +1,35 @@
+/* pages/set-up/rename/rename.wxss */
+/* pages/set-up/view/circleInformation.wxss */
+page{
+   background:rgba(245,245,245,1);
+    color:#454545;
+}
+.materials{
+ line-height:132rpx;
+  padding:0 41rpx;
+  height:132rpx; 
+  background:#fff;
+ 
+}
+.materials-btn{
+  width:500rpx;
+  height:100rpx;
+  background:rgba(231,231,231,1);
+  border-radius:50rpx;
+  margin-top:60rpx;
+  color:#9B9B9B;
+  font-size:30rpx;
+  line-height:100rpx;
+}
+.materials-btn1{
+  width:500rpx;
+  height:100rpx;
+  background:#ED6F69;
+  border-radius:50rpx;
+  margin-top:60rpx;
+  color:#FFFFFF;
+  font-size:30rpx;
+  line-height:100rpx;
+}
+
+

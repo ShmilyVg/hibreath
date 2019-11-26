@@ -56,6 +56,7 @@
 
 </view>
 <view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock">
+
     <view>发表</view>
     <view>动态</view>
 </view>
@@ -65,3 +66,4 @@
     </view>
     <button class="community-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">创建新圈子</button>
 </view>
+
