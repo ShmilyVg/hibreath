@@ -341,8 +341,8 @@ export default class Protocol {
         return Network.request({url: 'group/dynamic/addComment', data:{dynamicId,content,commentId}})
     }
     //圈子-评论-评论列表
-    static postCommentList({dynamicId}){
-        return Network.request({url: 'group/dynamic/commentList', data:{dynamicId}})
+    static postCommentList({dynamicId,pageSize}){
+        return Network.request({url: 'group/dynamic/commentList', data:{dynamicId,pageSize}})
     }
     //圈子-评论-删除评论
     static postDeletecomment({commentId}){
