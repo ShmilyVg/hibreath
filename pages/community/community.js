@@ -37,7 +37,7 @@ Page({
     async onCommunitySettingClickEvent() {
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
         if(this.data.socialMemberInfo.isMajor){
-            try {
+            try { 
               const { tapIndex } = await showActionSheet({ itemList: ['设置','更多圈子'],itemColor:"#454545"});
                 switch (tapIndex) {
                     case 0:
@@ -68,24 +68,31 @@ Page({
             }
         }else{
             try {
-                const {tapIndex} = await showActionSheet({itemList: ['更多圈子', '退出该圈子'],itemColor:"#454545"});
+              const { tapIndex } = await showActionSheet({ itemList: ['设置', '更多圈子'],itemColor:"#454545"});
                 switch (tapIndex) {
                     case 0:
-                        HiNavigator.navigateToCommunityManagement();
-                        break;
-                    case 1:
-                        WXDialog.showDialog({
-                            content: '确定要退出该圈子吗',
-                            showCancel: true,
-                            confirmText: "确定",
-                            cancelText: "取消",
-                            confirmEvent: () => {
-                                this.updata()
-                            },
-                            cancelEvent: () => {
+                    HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo), currentSocial: JSON.stringify(this.data.currentSocial) });
+                    console.log(this.data.currentSocial)
+                    break;
 
-                            }
-                        });
+                        // WXDialog.showDialog({
+                        //   content: '确定要退出该圈子吗',
+                        //   showCancel: true,
+                        //   confirmText: "确定",
+                        //   cancelText: "取消",
+                        //   confirmEvent: () => {
+                        //     this.updata()
+                        //   },
+                        //   cancelEvent: () => {
+
+                        //   }
+                        // });
+                        // break;
+
+                        // HiNavigator.navigateToCommunityManagement();
+                        // break;
+                    case 1:
+                        HiNavigator.navigateToCommunityManagement();
                         break;
                 }
             } catch (e) {

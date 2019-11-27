@@ -183,8 +183,8 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToCircleInformation({ groupName }) {
     this.navigateTo({ url: '/pages/set-up/circleInformation/circleInformation?groupName=' + groupName });
   }
-  static navigateToRename({ memberName }) {
-    this.navigateTo({ url: '/pages/set-up/rename/rename?memberName=' + memberName });
+  static navigateToRename({ name }) {
+    this.navigateTo({ url: '/pages/set-up/rename/rename?name=' + name });
   }
   static navigateToChangeCommunity({ groupId, name, imgUrl}) {
     this.navigateTo({ url: '/pages/createCommunity/createCommunity?groupId=' + groupId + '&name=' + name + '&imgUrl=' + imgUrl });

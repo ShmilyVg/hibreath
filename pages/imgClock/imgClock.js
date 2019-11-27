@@ -202,9 +202,12 @@ Page({
   _success(e) {
     console.log('你点击了确定',e);
     const {detail:{groupId}} = e;
+    this.setData({
+      groupId: groupId
+    })
     this.popup.hidePopup();
     Toast.showLoading();
-    Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+    Protocol.postFood({ groupId: this.data.groupId,taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
       Toast.showLoading();
       HiNavigator.redirectToMessageDetail({messageId: data.result.id});
     });

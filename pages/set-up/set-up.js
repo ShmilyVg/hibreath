@@ -29,7 +29,7 @@ Page({
     })
     console.log("currentSocial", this.data.currentSocial)
    
-    //console.log("socialMemberInfo", this.data.socialMemberInfo.name, this.data.socialMemberInfo.name)
+    console.log("socialMemberInfo", this.data.socialMemberInfo, this.data.socialMemberInfo.name)
     
   },
 
@@ -83,9 +83,66 @@ Page({
   },
   async updata() {
     await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
-  
+    // this.forceUpdateAll();
   },
- 
+  async forceUpdateAll() {
+    console.log('shishishi')
+    function showData({ currentSocial }) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          console.log(currentSocial, 'currentSocial')
+          if (currentSocial.groupId) {
+            wx.setNavigationBarColor({ frontColor: '#ffffff', backgroundColor: '#171717' });
+            wx.setBackgroundColor({
+              backgroundColor: '#171717', // 窗口的背景色为黑色
+            });
+            this.setData({
+              haveGroupId: true,
+              noCommunity: false
+            })
+          } else {
+            wx.setNavigationBarColor({ frontColor: '#000000', backgroundColor: '#ffffff' });
+            wx.setBackgroundColor({
+              backgroundColor: '#ffffff', // 窗口的背景色为白色
+            });
+            this.setData({
+              haveGroupId: false,
+              noCommunity: true
+            })
+          }
+        } catch (e) {
+          console.error(e);
+        }
+
+        this.setData({ currentSocial }, async () => {
+          try {
+            const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
+            this.setData({
+              dynamicList
+            }, resolve);
+          } catch (e) {
+            reject(e);
+          }
+        });
+        console.log('currentSocial.groupId', currentSocial.groupId)
+        if (currentSocial.groupId) {
+          this.setData({ socialMemberInfo: (await getSocialGroupMembersViewInfo()) });
+        }
+
+      })
+
+    }
+
+    try {
+      console.log('getSocialGroupManager.currentSocialgetSocialGroupManager.currentSocial', getSocialGroupManager.currentSocial)
+      await getSocialGroupManager.getSocialGroupList();
+      getGroupDynamicManager.clear();
+      await showData.call(this, { currentSocial: getSocialGroupManager.currentSocial });
+      console.log("currentSocial", this.data.currentSocial)
+    } catch (e) {
+      console.error('community.js updateAll error', e);
+    }
+  },
   
   deleteCircle: function(){
            WXDialog.showDialog({
@@ -94,9 +151,9 @@ Page({
               confirmText: "确定",
               cancelText: "取消",
               confirmEvent: () => {
-                  wx.clearStorageSync('currentSocialGroupId')
+                wx.clearStorageSync('currentSocialGroupId')
                 this.updata()
-                  HiNavigator.switchToCommunity();
+                HiNavigator.switchToCommunity();                 
               },
               cancelEvent: () => {
 
@@ -105,9 +162,25 @@ Page({
          
   },
   signOut:function(){
-    wx.setStorageSync('currentSocialGroupId', "");
-    HiNavigator.switchToCommunity();
+       WXDialog.showDialog({
+                content: '确定要退出该圈子吗',
+                showCancel: true,
+                confirmText: "确定",
+                cancelText: "取消",
+                confirmEvent: () => {
+                 wx.clearStorageSync('currentSocialGroupId');
+                  this.updata();
+                  
+                  HiNavigator.switchToCommunity();
+                },
+                cancelEvent: () => {
 
+                }
+               
+        });
+     //wx.setStorageSync('currentSocialGroupId', "");
+   
+    
   },
   onRename: function () {
     
@@ -115,7 +188,7 @@ Page({
     //   groupId  : wx.getStorageSync('currentSocialGroupId')
     // })
     
-    HiNavigator.navigateToRename({ memberName: this.data.socialMemberInfo.memberName });
+    HiNavigator.navigateToRename({ name: this.data.socialMemberInfo.name });
    
   },
   async modifyingData(){
