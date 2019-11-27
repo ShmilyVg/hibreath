@@ -148,12 +148,25 @@ Component({
             })
         },
         finClick(){
+            if(!this.data.commentContent || this.data.commentContent ==""){
+                toast.warn('请输入评论')
+                this.setData({
+                    clickComment:true,
+                })
+                return
+            }
             if(this.data.isReply){
                 this.finCReply()
             }else{
                 this.finComment()
             }
             console.log('this.data.scrollTopNum',this.data.scrollTopNum)
+            this.setData({
+                placeholderText:"评论",
+                commentContent:"",
+                textareaValue:null,
+                isReply:false
+            })
             setTimeout(()=>{
                 wx.pageScrollTo({
                     scrollTop: this.data.scrollTopNum,
