@@ -16,7 +16,7 @@
     <button bindtap="createCommunityBtn" disabled="{{disable}}" class="createCommunity-Btn">创建新圈子</button>
 </view>
 
-<view else>
+<view wx:else>
     <view class="createCommunity-View">
         <view wx:if="{{imgUrl}}" class="createCommunity-Head" bindtap="addPic1">
             <image mode="aspectFill" class="createCommunity-Head-Img"  src="{{imgUrl}}" ></image>
