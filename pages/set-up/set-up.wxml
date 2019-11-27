@@ -1,7 +1,7 @@
 <!--pages/set-up/set-up.wxml-->
 <view class="body-main" wx:if="{{socialMemberInfo.isMajor}}">
-  <view class=" materials materials-border" >
-    <view class=" materials-left">编辑圈子资料</view>
+  <view class=" materials materials-border" bindtap="modifyingData">
+    <view class=" materials-left" >编辑圈子资料</view>
     <image src="../../images/set-up/right.png" class=" materials-right"></image>
   </view>
   <view class="materials" bindtap="onRename">

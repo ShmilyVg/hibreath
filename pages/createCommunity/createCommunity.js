@@ -1,5 +1,12 @@
 // pages/createCommunity/createCommunity.js
 import {UploadUrl} from "../../utils/config";
+// import {
+//   getGroupDynamicManager,
+//   getSocialGroupManager,
+//   getSocialGroupMembersViewInfo,
+//   judgeGroupEmpty,
+//   whenDismissGroup
+// } from "./social-manager";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {getSocialGroupManager} from "../community/social-manager";
@@ -20,7 +27,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
+   
+    this.setData({
+      groupId:options.groupId,
+      name: options.name,
+      imgUrl: options.imgUrl
+    })
+    console.log(this.data.groupId)
+    console.log(this.data.name, this.data.imgUrl)
+  },
 
+  changeCommunityBtn:function(){
+    Protocol.postChangeCommunity({ id: this.data.groupId, name: this.data.name, imgUrl: this.data.imgUrl}).then(data => {
+      HiNavigator.switchToCommunity();
+      console.log(1111)
+    });
+    console.log(this.data.groupId, this.data.name, this.data.imgUrl)
   },
 
   /**

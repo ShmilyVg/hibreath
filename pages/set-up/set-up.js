@@ -24,11 +24,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      socialMemberInfo: JSON.parse(options.socialMemberInfo)
+      socialMemberInfo: JSON.parse(options.socialMemberInfo),
+      currentSocial: JSON.parse(options.currentSocial) 
     })
-    console.log("socialMemberInfo",this.data.socialMemberInfo)
+    console.log("currentSocial", this.data.currentSocial)
    
-    
+    //console.log("socialMemberInfo", this.data.socialMemberInfo.name, this.data.socialMemberInfo.name)
     
   },
 
@@ -80,6 +81,10 @@ Page({
   onShareAppMessage: function () {
 
   },
+  async updata() {
+    await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
+  
+  },
  
   
   deleteCircle: function(){
@@ -90,7 +95,7 @@ Page({
               cancelText: "取消",
               confirmEvent: () => {
                   wx.clearStorageSync('currentSocialGroupId')
-                  
+                this.updata()
                   HiNavigator.switchToCommunity();
               },
               cancelEvent: () => {
@@ -105,12 +110,20 @@ Page({
 
   },
   onRename: function () {
-    // let userInfo = (wx.getStorageSync('userInfo') || "");
+    
     // this.setData({
-    //   memberName : userInfo.nickname
+    //   groupId  : wx.getStorageSync('currentSocialGroupId')
     // })
     
     HiNavigator.navigateToRename({ memberName: this.data.socialMemberInfo.memberName });
+   
+  },
+  async modifyingData(){
+    this.setData({
+      groupId  : wx.getStorageSync('currentSocialGroupId')
+    })
+    HiNavigator.navigateToChangeCommunity({ groupId: this.data.groupId, name: this.data.currentSocial.name, imgUrl: this.data.currentSocial.imgUrl});
   }
+
 
 })

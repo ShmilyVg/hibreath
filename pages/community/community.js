@@ -41,7 +41,8 @@ Page({
               const { tapIndex } = await showActionSheet({ itemList: ['设置','更多圈子'],itemColor:"#454545"});
                 switch (tapIndex) {
                     case 0:
-                    HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo) });
+                    HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo), currentSocial: JSON.stringify(this.data.currentSocial)});
+                    console.log( this.data.currentSocial)
                         break;
                         //        WXDialog.showDialog({
                         //     content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
