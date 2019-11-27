@@ -24,6 +24,9 @@ Page({
         }else{
             this.groupId = e.groupId
         }
+        this.setData({
+          groupId: this.groupId 
+        })
 
     },
     async onShow () {
@@ -47,13 +50,19 @@ Page({
             return
         }*/
       if(this.taskId){
-          Toast.showLoading();
-          Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
-              Toast.showLoading();
-              HiNavigator.redirectToMessageDetail({messageId: data.result.id});
-          });
-      }else {
+          // Toast.showLoading();
+          // Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+          //     Toast.showLoading();
+          //     HiNavigator.redirectToMessageDetail({messageId: data.result.id});
+          // });
         this.showPopup();
+      }else {
+        console.log(this.groupId)
+        Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
+        wx.hideLoading();
+        HiNavigator.switchToCommunity();
+
+      });
           
       }
 
@@ -195,9 +204,9 @@ Page({
     const {detail:{groupId}} = e;
     this.popup.hidePopup();
     Toast.showLoading();
-    Protocol.postPublish({ groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
-      wx.hideLoading();
-      HiNavigator.switchToCommunity();
+    Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+      Toast.showLoading();
+      HiNavigator.redirectToMessageDetail({messageId: data.result.id});
     });
     this.setData({
       ifShow: !this.data.ifShow
