@@ -37,7 +37,7 @@ Component({
         },
         attached() {
             setTimeout(()=>{
-                console.log('我执行了更新点赞昵称')
+                console.log('我执行了更新点赞昵称1')
                 this.data.listArray = []
                this.undateName(this.data.message.praiseInfo.list)
             },100)
@@ -45,8 +45,9 @@ Component({
     },
     pageLifetimes: {
         show() {
+            console.log('this.data.scrollTopNum',this.data.scrollTopNum)
             setTimeout(()=>{
-                console.log('我执行了更新点赞昵称')
+                console.log('我执行了更新点赞昵称2')
                 this.data.listArray = []
                 this.undateName(this.data.message.praiseInfo.list)
             },100)
@@ -71,7 +72,8 @@ Component({
         undateName(arr){
             if(arr.length>0){
                 arr.map((value, index) => {
-                    if(value.nickname){
+                    console.log('value.nickname',value)
+                    if(value){
                         //this.data.listArray = []
                         this.data.listArray.push(value.nickname)
                         this.setData({
@@ -149,7 +151,7 @@ Component({
         },
         finClick(){
             if(!this.data.commentContent || this.data.commentContent ==""){
-                toast.warn('请输入评论')
+                toast.warn('请输入评论',1000)
                 this.setData({
                     clickComment:true,
                 })
@@ -178,13 +180,13 @@ Component({
         async finComment(){
             await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent}));
             this.undateComment()
-            toast.success('评论成功');
+            toast.success('评论成功',800);
         },
         //完成回复
         async finCReply(){
             await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent,commentId:this.data.commentId}));
             this.undateComment()
-            toast.success('回复成功');
+            toast.success('回复成功',800);
         },
         //多行输入
         textBindinput(e){
@@ -244,7 +246,7 @@ Component({
                                     try{
                                         await this.whenDismissGroup(Protocol.postDeletecomment({commentId:dataid}));
                                         this.undateComment()
-                                        toast.success('删除成功');
+                                        toast.success('删除成功',800);
                                     }catch (e) {
 
                                     }
@@ -276,7 +278,7 @@ Component({
                                     try{
                                         await this.whenDismissGroup(Protocol.postDeletecomment({commentId:dataid}));
                                         this.undateComment()
-                                        toast.success('删除成功');
+                                        toast.success('删除成功',800);
                                     }catch (e) {
 
                                     }

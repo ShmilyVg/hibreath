@@ -9,7 +9,7 @@ class SocialGroupManager {
     }
 
     async getSocialGroupList() {
-        console.log('getStorageSync1',wx.getStorageSync('deviceId'))
+        console.log('currentSocialGroupId',wx.getStorageSync('currentSocialGroupId'))
         if(wx.getStorageSync('currentSocialGroupId')){
             await whenDismissGroup(Protocol.postGroupInfo({groupId: wx.getStorageSync('currentSocialGroupId')}));
         }
@@ -108,14 +108,23 @@ class GroupDynamicManager {
                 groupId,
                 page: this._pageIndex
             }));
+
             if (dynamicList.length) {
                 this._pageIndex++;
             }
+           /* console.log('communityScrollTop执行了',wx.getStorageSync('communityScrollTop'))
+            wx.pageScrollTo({
+                scrollTop: wx.getStorageSync('communityScrollTop'),
+                duration: 100,
+            })
+            console.log('communityScrollTop执行了')*/
             return dynamicList.map(item => {
                 return {...item, messageCreateTime: getDynamicCreateTime(item.createTimestamp)};
             })
+
         }
         return [];
+
     }
 }
 

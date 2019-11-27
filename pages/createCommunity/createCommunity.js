@@ -27,8 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-   
+
+
     this.setData({
       groupId:options.groupId,
       name: options.name,
@@ -109,7 +109,8 @@ Page({
     },
     //控制完成按钮是否可以点击
     disBtn(){
-        if(this.data.name == ''|| this.data.imgUrl==''){
+      console.log('imgUrl', this.data.imgUrl)
+        if(this.data.name == ''|| this.data.imgUrl=='' || !this.data.imgUrl){
             this.setData({
                 disable:true
             })

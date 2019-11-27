@@ -253,6 +253,7 @@ Page({
 
     async onReachBottom() {
         Toast.showLoading();
+        console.log('22')
         const list = await getGroupDynamicManager.getGroupDynamicList();
         if (list.length) {
             this.setData({dynamicList: this.data.dynamicList.concat(list)});
@@ -270,6 +271,7 @@ Page({
         this.setData({
             scrollTopNum:e.scrollTop
         })
+        //wx.setStorageSync('communityScrollTop', e.scrollTop);
     },
 
 
