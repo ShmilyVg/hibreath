@@ -97,9 +97,9 @@ page{
 }
 
 .community-rank-icon {
-    width: 53rpx;
-    height: 51rpx;
-    margin-right: 38rpx;
+    width: 31rpx;
+    height: 30rpx;
+    margin-right: 16rpx;
 }
 
 .community-rank-text {

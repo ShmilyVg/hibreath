@@ -115,7 +115,7 @@ Page({
             content: '确定要删除此条动态吗？', showCancel: true, confirmEvent: async () => {
                 await Protocol.postDynamicDelete({id: this.dataId});
                 HiNavigator.navigateBack({delta: 1});
-                toast.success('删除成功');
+                toast.success('删除成功',800);
             }
         });
     },
@@ -129,7 +129,7 @@ Page({
     },
     finClick(){
         if(!this.data.commentContent || this.data.commentContent ==""){
-            toast.warn('请输入评论')
+            toast.warn('请输入评论',800)
             return
         }
 
@@ -156,13 +156,13 @@ Page({
     async finComment(){
         await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent}));
         this.undateComment()
-        toast.success('评论成功');
+        toast.success('评论成功',800);
     },
     //完成回复
     async finCReply(){
         await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent,commentId:this.data.commentId}));
         this.undateComment()
-        toast.success('回复成功');
+        toast.success('回复成功',800);
     },
     //多行输入
     textBindinput(e){
@@ -221,7 +221,7 @@ Page({
                                 try{
                                     await whenDismissGroup(Protocol.postDeletecomment({commentId:dataid}));
                                     this.undateComment()
-                                    toast.success('删除成功');
+                                    toast.success('删除成功',800);
                                 }catch (e) {
 
                                 }
@@ -253,7 +253,7 @@ Page({
                                 try{
                                     await whenDismissGroup(Protocol.postDeletecomment({commentId:dataid}));
                                     this.undateComment()
-                                    toast.success('删除成功');
+                                    toast.success('删除成功',800);
                                 }catch (e) {
 
                                 }

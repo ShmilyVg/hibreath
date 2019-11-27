@@ -31,7 +31,7 @@ App({
             commonAppReceiveDataListener: ({finalResult, state}) => {
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
                     console.log('接收到的', finalResult);
-                    log.info('接收到的', finalResult)
+                    log.warn('接收到的', finalResult)
                     const {timestamp, result, currentLength: length} = finalResult;
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/

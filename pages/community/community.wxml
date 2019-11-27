@@ -43,14 +43,32 @@
         </view>
     </view>-->
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
-        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toReductionList" style="height: 100%;width: 50%;border-right: 1rpx #fff solid">
+        <view class="" bindtap="toReductionList" style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-start">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">减重榜</view>
         </view>
-        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;padding-left: 72rpx">
+        <view style="height:61rpx;background:#fff;opacity: 0.4;width: 1rpx"></view>
+        <view class="" bindtap=""  style="height: 100%;width: 55%;display: flex;align-items: center;justify-content: center;">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">减脂榜</view>
+        </view>
+        <view style="height:61rpx;background:#fff;opacity: 0.4;width: 1rpx"></view>
+        <view class="" bindtap="toPunchList"  style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-end">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">打卡榜</view>
         </view>
+        <!--<view class="flex-row align-items-center box-sizing-border-box" bindtap="toReductionList" style="height: 100%;width: 50%;">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">减重榜</view>
+        </view>
+        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">减脂榜</view>
+        </view>
+        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;">
+            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <view class="community-rank-text">打卡榜</view>
+        </view>-->
     </view>
     <message-item class="fill-width" style="padding-bottom: 30rpx" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" scrollTopNum="{{scrollTopNum}}" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 

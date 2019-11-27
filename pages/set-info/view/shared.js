@@ -93,7 +93,8 @@ function createNewIm(page){
         if(that.data.shareTodayDif>=0){
             drawFont(ctx, 45,that.data.shareTodayDif,104,60);
             const metrics = ctx.measureText(that.data.shareTodayDif).width
-            log.info('metrics',metrics)
+            log.warn('metrics',metrics)
+            console.log('metrics',metrics)
             if(that.data.shareTodayDif<10){
                 ctx.drawImage(that.data.shareDown, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
@@ -103,7 +104,8 @@ function createNewIm(page){
         }else{
             drawFont(ctx, 45,Math.abs(that.data.shareTodayDif),104,60);
             const metrics = ctx.measureText(Math.abs(that.data.shareTodayDif)).width
-            log.info('metrics',metrics)
+            log.warn('metrics',metrics)
+            console.log('metrics',metrics)
             if(Math.abs(that.data.shareTodayDif)<10){
                 ctx.drawImage(that.data.shareUp, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
