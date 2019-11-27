@@ -2,7 +2,7 @@
     <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
             <view class="relative">
-                <image src="{{currentSocial.imgUrl}}" class="community-logo"></image>
+                <image mode="center" src="{{currentSocial.imgUrl}}" class="community-logo"></image>
                 <image src="{{socialMemberInfo.isMajor?'../../images/community/group.png':'../../images/community/green.png'}}" class="absolute community-switch-icon"></image>
             </view>
             <view class="community-name">{{currentSocial.name}}</view>
@@ -48,7 +48,7 @@
             <view class="community-rank-text">减重榜</view>
         </view>
         <view style="height:61rpx;background:#fff;opacity: 0.4;width: 1rpx"></view>
-        <view class="" bindtap=""  style="height: 100%;width: 55%;display: flex;align-items: center;justify-content: center;">
+        <view class="" bindtap=""  style="height: 100%;width: 54%;display: flex;align-items: center;justify-content: center;">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">减脂榜</view>
         </view>
@@ -70,7 +70,7 @@
             <view class="community-rank-text">打卡榜</view>
         </view>-->
     </view>
-    <message-item class="fill-width" style="padding-bottom: 30rpx" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" scrollTopNum="{{scrollTopNum}}" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
+    <message-item class="fill-width" style="padding-bottom: 30rpx" bind:onMessageDeleteEvent="onDynamicItemDeleteEvent" bind:onNoupdate="onNoupdate" scrollTopNum="{{scrollTopNum}}" wx:for="{{dynamicList}}" wx:key="taskId" message="{{item}}"></message-item>
 
 </view>
 <view wx:if="{{haveGroupId}}" class="community-clock" bindtap="toImgClock">
