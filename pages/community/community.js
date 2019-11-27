@@ -267,7 +267,6 @@ Page({
         };
     },
     onPageScroll: function (e) {
-        console.log('e',e.scrollTop)
         this.setData({
             scrollTopNum:e.scrollTop
         })

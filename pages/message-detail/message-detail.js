@@ -133,21 +133,24 @@ Page({
             toast.warn('请输入评论')
             return
         }
-        wx.pageScrollTo({
-            scrollTop: 18000,
-            duration: 100,
-        })
+        setTimeout(()=>{
+            wx.pageScrollTo({
+                scrollTop: 18000,
+                duration: 100,
+            })
+        },10)
+
         if(this.data.isReply){
             this.finCReply()
         }else{
             this.finComment()
         }
         this.setData({
+            clickComment:false,
             placeholderText:"评论",
             commentContent:"",
             textareaValue:null,
-            isReply:false,
-            clickComment:false
+            isReply:false
         })
     },
     //完成评论

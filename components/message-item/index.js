@@ -57,7 +57,6 @@ Component({
         undateName(arr){
             if(arr.length>0){
                 arr.map((value, index) => {
-                    console.log('value.nickname',value.nickname)
                     if(value.nickname){
                         //this.data.listArray = []
                         this.data.listArray.push(value.nickname)

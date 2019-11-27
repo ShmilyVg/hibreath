@@ -90,6 +90,7 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(155,155,155,1);
+    margin-top: 8rpx;
 }
 .grayLine{
     width:750rpx;

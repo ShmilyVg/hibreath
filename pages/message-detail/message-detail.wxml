@@ -29,7 +29,7 @@
         <view wx:if="{{headUrlList.length>0}}"  wx:for="{{headUrlList}}" wx:key="{{index}}"  style="float: left">
             <image src="{{item}}" style="width:58rpx;height: 58rpx;border-radius: 50%;margin:0rpx 8rpx 16rpx 8rpx"></image>
         </view>
-        <view wx:if="{{!headUrlList}}" class="message-detail-noheadUrl">还没有赞哦,快来抢坐沙发!</view>
+        <view wx:if="{{headUrlList.length == 0}}" class="message-detail-noheadUrl">还没有赞哦,快来抢坐沙发!</view>
     </view>
     <view class="clear"></view>
 </view>
@@ -62,6 +62,7 @@
         </view>
     </view>
 </block>
+<view style="height: 40rpx;width: 100%"></view>
 <!--评论多行输入-->
 <view class="commentTextView" wx:if="{{clickComment}}" style="z-index: 999;">
     <!--<textarea
