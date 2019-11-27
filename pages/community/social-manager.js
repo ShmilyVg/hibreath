@@ -112,7 +112,7 @@ class GroupDynamicManager {
             if (dynamicList.length) {
                 this._pageIndex++;
             }
-           /* console.log('communityScrollTop执行了',wx.getStorageSync('communityScrollTop'))
+          /*  console.log('communityScrollTop执行了',wx.getStorageSync('communityScrollTop'))
             wx.pageScrollTo({
                 scrollTop: wx.getStorageSync('communityScrollTop'),
                 duration: 100,
