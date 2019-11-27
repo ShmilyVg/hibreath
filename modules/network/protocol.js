@@ -324,8 +324,8 @@ export default class Protocol {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
     }
     //更改圈子名字
-    static postUpdataMember({ name,groupId }) {
-      return Network.request({ url: 'group/member/update', data: { name, groupId } });
+  static postUpdataMember({ name,groupId }) {
+    return Network.request({ url: 'group/member/update', data: { name, groupId } });
     }
     //圈子-动态-点赞
     static postGiveHeart({dynamicId}){

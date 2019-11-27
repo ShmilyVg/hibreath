@@ -17,17 +17,17 @@ Page({
   onLoad: function (options) {
       console.log(options)
       this.setData({ 
-        memberName: options.memberName
+        name: options.name
       })
   },
   bindInputName(e) {
    
     this.setData({
-      name: e.detail.value
+      memberName: e.detail.value
     })
     console.log('e.detail.value', e.detail.value)
 
-    if (this.data.name == "") {
+    if (this.data.memberName == "") {
       //如果不为空，就返回true.
       this.setData({
         userIdCardNameif: false
@@ -42,7 +42,7 @@ Page({
 
   },
   materialsBtn:function(){
-    console.log(this.data.name)
+    // console.log(this.data.name)
     let groupId = (wx.getStorageSync('currentSocialGroupId') || "");
     this.setData({
       groupId: groupId
@@ -52,8 +52,8 @@ Page({
     //   HiNavigator.switchToCommunity();
      
     // } 
-    console.log(this.data.name, this.data.groupId)
-    Protocol.postUpdataMember({ name: this.data.name, groupId: this.data.groupId }).then(data => {
+    console.log(this.data.memberName, this.data.name, this.data.groupId)
+    Protocol.postUpdataMember({ name: this.data.memberName, groupId: this.data.groupId }).then(data => {
       HiNavigator.switchToCommunity();
 
     });

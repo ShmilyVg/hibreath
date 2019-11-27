@@ -29,7 +29,7 @@ Page({
     })
     console.log("currentSocial", this.data.currentSocial)
    
-    //console.log("socialMemberInfo", this.data.socialMemberInfo.name, this.data.socialMemberInfo.name)
+    console.log("socialMemberInfo", this.data.socialMemberInfo, this.data.socialMemberInfo.name)
     
   },
 
@@ -188,7 +188,7 @@ Page({
     //   groupId  : wx.getStorageSync('currentSocialGroupId')
     // })
     
-    HiNavigator.navigateToRename({ memberName: this.data.socialMemberInfo.memberName });
+    HiNavigator.navigateToRename({ name: this.data.socialMemberInfo.name });
    
   },
   async modifyingData(){
