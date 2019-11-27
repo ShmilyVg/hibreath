@@ -152,7 +152,7 @@ Page({
               cancelText: "取消",
               confirmEvent: () => {
                 wx.clearStorageSync('currentSocialGroupId')
-                this.updata()
+
                 HiNavigator.switchToCommunity();                 
               },
               cancelEvent: () => {

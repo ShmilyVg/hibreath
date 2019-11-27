@@ -11,6 +11,7 @@ class SocialGroupManager {
     async getSocialGroupList() {
         console.log('currentSocialGroupId',wx.getStorageSync('currentSocialGroupId'))
         if(wx.getStorageSync('currentSocialGroupId')){
+          console.log('我执行了1')
             await whenDismissGroup(Protocol.postGroupInfo({groupId: wx.getStorageSync('currentSocialGroupId')}));
         }
         const {result: {list: groupList}} = await whenDismissGroup(Protocol.postMemberGroupList());
@@ -147,6 +148,7 @@ export function judgeGroupEmpty() {
 
 export async function getSocialGroupMembersViewInfo() {
     const {result: group} = await whenDismissGroup(Protocol.postGroupInfo({groupId: socialGroupManager.currentSocial.groupId}));
+    console.log('222000')
     if (group.memberImgs) {
         group.memberImgs = group.memberImgs.slice(0, 3);
     } else {
