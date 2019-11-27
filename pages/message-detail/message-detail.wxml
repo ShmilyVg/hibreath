@@ -61,10 +61,11 @@
             </view>
         </view>
     </view>
+    <view style="height: 120rpx;width: 100%"></view>
 </block>
-<view style="height: 40rpx;width: 100%"></view>
+<!--<view style="height: 60rpx;width: 100%"></view>-->
 <!--评论多行输入-->
-<view class="commentTextView" wx:if="{{clickComment}}" style="z-index: 999;">
+<view class="commentTextView" style="z-index: 999;">
     <!--<textarea
             style="height: 70rpx"
             value="{{textareaValue}}"

@@ -20,7 +20,6 @@ Page({
         placeholderText:'评论',
         isReply:false,//回复标志位 区别评论
         commentId:'',//评论Id
-        clickComment:false,
         isFocus:false
     },
 
@@ -72,6 +71,10 @@ Page({
             'message.commentInfo.totalCount':result.list.length
         })
     },
+     onPullDownRefresh() {
+        this.undateComment();
+        wx.stopPullDownRefresh();
+    },
     //更新点赞 头像数组
     undateName(arr){
         if(arr.length>0){
@@ -122,23 +125,14 @@ Page({
     },
 
     onPageScroll: function (e) {
-        if(!this.data.clickComment){
-            this.setData({
-                clickComment:true
-            })
-        }
+
     },
     finClick(){
         if(!this.data.commentContent || this.data.commentContent ==""){
             toast.warn('请输入评论')
             return
         }
-        setTimeout(()=>{
-            wx.pageScrollTo({
-                scrollTop: 18000,
-                duration: 100,
-            })
-        },10)
+
 
         if(this.data.isReply){
             this.finCReply()
@@ -146,12 +140,17 @@ Page({
             this.finComment()
         }
         this.setData({
-            clickComment:false,
             placeholderText:"评论",
             commentContent:"",
             textareaValue:null,
             isReply:false
         })
+        setTimeout(()=>{
+            wx.pageScrollTo({
+                scrollTop: 18000,
+                duration: 100,
+            })
+        },10)
     },
     //完成评论
     async finComment(){

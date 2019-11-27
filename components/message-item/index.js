@@ -37,9 +37,23 @@ Component({
         },
         attached() {
             setTimeout(()=>{
+                console.log('我执行了更新点赞昵称')
+                this.data.listArray = []
                this.undateName(this.data.message.praiseInfo.list)
             },100)
         },
+    },
+    pageLifetimes: {
+        show() {
+            setTimeout(()=>{
+                console.log('我执行了更新点赞昵称')
+                this.data.listArray = []
+                this.undateName(this.data.message.praiseInfo.list)
+            },100)
+        },
+        hide() {
+
+        }
     },
     methods: {
         onMessageClickEvent() {
