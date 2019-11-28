@@ -167,6 +167,12 @@ Page({
             return
         }*/
         this.forceUpdateAll();
+       /* this.messageItem = this.selectComponent("#messageItem");
+        this.data.dynamicList.map((value, index) => {
+            if(value){
+                this.messageItem.undateName(value.praiseInfo.list)
+            }
+        });*/
         // }
     },
     async toImgClock(){
@@ -240,8 +246,10 @@ Page({
                     try {
                         const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
                         this.setData({
-                            dynamicList
+                            dynamicList,
+                            canUpdate:true
                         }, resolve);
+                        console.log('最新数组',this.data.dynamicList)
                     } catch (e) {
                         reject(e);
                     }

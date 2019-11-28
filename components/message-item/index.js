@@ -15,6 +15,10 @@ Component({
         scrollTopNum:{
             type: Number,
             value:0
+        },
+        canUpdate:{
+            type:Boolean,
+            value:false
         }
     },
 
@@ -45,11 +49,15 @@ Component({
     },
     pageLifetimes: {
         show() {
-            setTimeout(()=>{
-                console.log('我执行了更新点赞昵称2')
-                this.data.listArray = []
-                this.undateName(this.data.message.praiseInfo.list)
-            },100)
+            this.data.listArray = []
+            /*console.log('canUpdate',this.data.canUpdate)
+                setTimeout(()=>{
+                    if(this.data.canUpdate){
+                    console.log('我执行了更新点赞昵称2')
+                    this.data.listArray = []
+                    this.undateName(this.data.message.praiseInfo.list)
+                    }
+                },100)*/
         },
         hide() {
 
@@ -69,11 +77,10 @@ Component({
         },
         //更新点赞 昵称
         undateName(arr){
+            console.log('arrarrarrarr',arr)
             if(arr.length>0){
                 arr.map((value, index) => {
-                    console.log('value.nickname',value)
                     if(value){
-                        //this.data.listArray = []
                         this.data.listArray.push(value.nickname)
                         this.setData({
                             nickNameList:this.data.listArray.join(',')

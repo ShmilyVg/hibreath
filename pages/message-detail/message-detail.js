@@ -77,6 +77,7 @@ Page({
     },
     //更新点赞 头像数组
     undateName(arr){
+        console.log('我被执')
         if(arr.length>0){
             arr.map((value, index) => {
                 console.log('value.nickname',value.headUrl)
@@ -269,6 +270,5 @@ Page({
         }catch (e) {
             console.warn(e);
         }
-
     },
 });

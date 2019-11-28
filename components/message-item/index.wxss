@@ -164,8 +164,8 @@
     float: left;
     text-align: center;
     height:70rpx;
-    width: 12%;
-    margin-left: 3%;
+    width: 80%;
+    margin-left: 10%;
     line-height: 70rpx;
     border-radius:8rpx;
     font-size:26rpx;
