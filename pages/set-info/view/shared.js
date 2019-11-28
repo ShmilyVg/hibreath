@@ -168,8 +168,6 @@ function createNewIm(page){
 
 function savePic(page) {
     let that = page;
-    console.log('kuandu',that.data.windowWidth)
-    console.log('gaodu',that.data.canvasHeight)
     setTimeout(() => {
         wx.canvasToTempFilePath({
             x: 0,
