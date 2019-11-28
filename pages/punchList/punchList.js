@@ -15,7 +15,9 @@ Page({
         currenttab: '0',
         isShare: true,
         getSharedId: null,
-        groupId: null
+        groupId: null,
+        backgroundImg:"",
+
     },
     //切换标签页
     async selectTab(e) {
@@ -41,6 +43,7 @@ Page({
             })
         }
     },
+    // 
     /**
      * 生命周期函数--监听页面加载
      */
@@ -67,21 +70,24 @@ Page({
             addup: addup,
             continual: continual,
             ranklist: ranklist
-        })
+        });
+    
+     
+     
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+      
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+      
     },
 
     /**

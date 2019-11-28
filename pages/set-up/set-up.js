@@ -88,9 +88,9 @@ Page({
               showCancel: true,
               confirmText: "确定",
               cancelText: "取消",
-              confirmEvent: () => {
+             confirmEvent: async () => {
                 wx.clearStorageSync('currentSocialGroupId')
-
+               await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
                 HiNavigator.switchToCommunity();
               },
               cancelEvent: () => {

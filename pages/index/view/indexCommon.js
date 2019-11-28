@@ -29,15 +29,16 @@ export default class IndexCommonManager {
             nofind: false,
             homeOrangeBtn: false,
         })
-       /* var that = this;
-        let countDownNum =5
-        setInterval(function () {
-            countDownNum--;
-            if ( countDownNum == 0) {
-                clearInterval();
-                that.setDissearchState()
-            }
-        }, 1000)*/
+
+        // var that = this;
+        // let countDownNum =5
+        // setInterval(function () {
+        //     countDownNum--;
+        //     if ( countDownNum == 0) {
+        //         clearInterval();
+        //         that.setDissearchState()
+        //     }
+        // }, 1000)
 
     }
 

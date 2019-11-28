@@ -52,7 +52,7 @@
             请打开吹嘴的盖子进行预热
         </view> -->
 
-        <view class="preheat-img" style="background:url(../../images/index/preheat.png) no-repeat;background-size:406rpx 382rpx;">
+        <view class="preheat-img preheat-img-preheat">
             <image class="move-img" src="../../images/index/pre.png"></image>
         </view>
 
