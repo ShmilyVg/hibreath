@@ -25,12 +25,12 @@ Page({
   onLoad: function (options) {
     this.setData({
       socialMemberInfo: JSON.parse(options.socialMemberInfo),
-      currentSocial: JSON.parse(options.currentSocial) 
+      currentSocial: JSON.parse(options.currentSocial)
     })
     console.log("currentSocial", this.data.currentSocial)
-   
+
     console.log("socialMemberInfo", this.data.socialMemberInfo, this.data.socialMemberInfo.name)
-    
+
   },
 
   /**
@@ -44,9 +44,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
-  
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -81,69 +81,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  async updata() {
-    await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
-    // this.forceUpdateAll();
-  },
-  async forceUpdateAll() {
-    console.log('shishishi')
-    function showData({ currentSocial }) {
-      return new Promise(async (resolve, reject) => {
-        try {
-          console.log(currentSocial, 'currentSocial')
-          if (currentSocial.groupId) {
-            wx.setNavigationBarColor({ frontColor: '#ffffff', backgroundColor: '#171717' });
-            wx.setBackgroundColor({
-              backgroundColor: '#171717', // 窗口的背景色为黑色
-            });
-            this.setData({
-              haveGroupId: true,
-              noCommunity: false
-            })
-          } else {
-            wx.setNavigationBarColor({ frontColor: '#000000', backgroundColor: '#ffffff' });
-            wx.setBackgroundColor({
-              backgroundColor: '#ffffff', // 窗口的背景色为白色
-            });
-            this.setData({
-              haveGroupId: false,
-              noCommunity: true
-            })
-          }
-        } catch (e) {
-          console.error(e);
-        }
 
-        this.setData({ currentSocial }, async () => {
-          try {
-            const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
-            this.setData({
-              dynamicList
-            }, resolve);
-          } catch (e) {
-            reject(e);
-          }
-        });
-        console.log('currentSocial.groupId', currentSocial.groupId)
-        if (currentSocial.groupId) {
-          this.setData({ socialMemberInfo: (await getSocialGroupMembersViewInfo()) });
-        }
-
-      })
-
-    }
-
-    try {
-      console.log('getSocialGroupManager.currentSocialgetSocialGroupManager.currentSocial', getSocialGroupManager.currentSocial)
-      await getSocialGroupManager.getSocialGroupList();
-      getGroupDynamicManager.clear();
-      await showData.call(this, { currentSocial: getSocialGroupManager.currentSocial });
-      console.log("currentSocial", this.data.currentSocial)
-    } catch (e) {
-      console.error('community.js updateAll error', e);
-    }
-  },
-  
   deleteCircle: function(){
            WXDialog.showDialog({
               content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
@@ -153,13 +91,13 @@ Page({
               confirmEvent: () => {
                 wx.clearStorageSync('currentSocialGroupId')
 
-                HiNavigator.switchToCommunity();                 
+                HiNavigator.switchToCommunity();
               },
               cancelEvent: () => {
 
               }
             });
-         
+
   },
   signOut:function(){
        WXDialog.showDialog({
@@ -167,29 +105,28 @@ Page({
                 showCancel: true,
                 confirmText: "确定",
                 cancelText: "取消",
-                confirmEvent: () => {
+                confirmEvent: async () => {
                  wx.clearStorageSync('currentSocialGroupId');
-                  this.updata();
-                  
-                  HiNavigator.switchToCommunity();
+                await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
+                HiNavigator.switchToCommunity();
                 },
                 cancelEvent: () => {
 
                 }
-               
+
         });
      //wx.setStorageSync('currentSocialGroupId', "");
-   
-    
+
+
   },
   onRename: function () {
-    
+
     // this.setData({
     //   groupId  : wx.getStorageSync('currentSocialGroupId')
     // })
-    
+
     HiNavigator.navigateToRename({ name: this.data.socialMemberInfo.name });
-   
+
   },
   async modifyingData(){
     this.setData({

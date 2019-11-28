@@ -37,7 +37,7 @@ Page({
     async onCommunitySettingClickEvent() {
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
         if(this.data.socialMemberInfo.isMajor){
-            try { 
+            try {
               const { tapIndex } = await showActionSheet({ itemList: ['设置','更多圈子'],itemColor:"#454545"});
                 switch (tapIndex) {
                     case 0:
@@ -115,6 +115,12 @@ Page({
              })
 
         }
+    },
+    onNoupdate({detail}) {
+        console.log(detail);
+        this.setData({
+            noUpdateAll:detail.noUpdateAll
+        })
     },
     showSharedID(){
         console.log(this.data.socialMemberInfo.sharedId)
@@ -195,7 +201,14 @@ Page({
     },
 
     async forceUpdateAll() {
-        console.log('shishishi')
+        if(this.data.noUpdateAll){
+            this.setData({
+                noUpdateAll:false,
+            })
+            console.log('没更新执行')
+            return
+        }
+        console.log('更新被执行了')
         function showData({currentSocial}) {
             return new Promise(async (resolve, reject) => {
                 try {

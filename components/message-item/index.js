@@ -45,7 +45,6 @@ Component({
     },
     pageLifetimes: {
         show() {
-            console.log('this.data.scrollTopNum',this.data.scrollTopNum)
             setTimeout(()=>{
                 console.log('我执行了更新点赞昵称2')
                 this.data.listArray = []
@@ -98,6 +97,7 @@ Component({
             })
         },
         async onImagePreview(e) {
+            this.triggerEvent('onNoupdate', {noUpdateAll: true});
             const {currentTarget: {dataset: {url: current}}} = e;
             await previewImage({current, urls: this.data.message.imgUrls});
         },
