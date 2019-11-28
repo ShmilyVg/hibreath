@@ -91,7 +91,6 @@
 .set-content-icon {
     width:70rpx;
     height:70rpx;
-    background:rgba(255,245,245,1);
     border-radius:50%;
 }
 
