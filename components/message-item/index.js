@@ -49,7 +49,7 @@ Component({
                 console.log('我执行了更新点赞昵称2')
                 this.data.listArray = []
                 this.undateName(this.data.message.praiseInfo.list)
-            },100)
+            },500)
         },
         hide() {
 
@@ -71,7 +71,6 @@ Component({
         undateName(arr){
             if(arr.length>0){
                 arr.map((value, index) => {
-                    console.log('value.nickname',value)
                     if(value){
                         //this.data.listArray = []
                         this.data.listArray.push(value.nickname)
