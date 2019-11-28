@@ -94,5 +94,8 @@
             placeholder="{{placeholderText}}"
             focus="{{isReply}}"
     />
-    <view class="commentContentView {{commentContent?'commentContentRed':'commentContentWhite'}}" bindtap="finClick">评论</view>
+    <view style="float: left;width: 16%">
+        <view class="commentContentView {{commentContent?'commentContentRed':'commentContentWhite'}}" bindtap="finClick">评论</view>
+    </view>
+
 </view>
