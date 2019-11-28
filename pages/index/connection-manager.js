@@ -109,34 +109,36 @@ export default class ConnectionManager {
 
             homeTitle: false,
             homeOrangeBtn: false,
-      /*      navBarColor:'#000000',//导航字体颜色
-            navBarIconTheme:'black',//导航返回键颜色
-            navBarBackground:'#FFFFFF',//导航背景色
-
-            needCheckOTAUpdate:false,
-            noBind:false,
-
-            stateBtnShow: false,
-
-            state: "设备已连接",
 
 
-            btnState: false,
+            // navBarColor:'#000000',//导航字体颜色
+            // navBarIconTheme:'black',//导航返回键颜色
+            // navBarBackground:'#FFFFFF',//导航背景色
 
-            bgColor:"#fff",
-            beginFat:false,
-            blowpicShow: false,//吹气图片
-            readyimg:false,// 预热图片
-            blowingImg:false,
-            disblowImg:true,//吹气不足状态
-            textState:'吹气不足',
-            textStateEn:'NOT ENOUGH',
-            homePointHot:false, //吹气时 隐藏预热过长文案
-            process:false,//分析中
+            // needCheckOTAUpdate:false,
+            // noBind:false,
+
+            // stateBtnShow: false,
+
+            // state: "设备已连接",
 
 
-            homeTitle: false,
-            homeOrangeBtn: false,*/
+            // btnState: false,
+
+            // bgColor:"#fff",
+            // beginFat:false,
+            // blowpicShow: false,//吹气图片
+            // readyimg:false,// 预热图片
+            // blowingImg:false,
+            // disblowImg:true,//吹气不足状态
+            // textState:'吹气不足',
+            // textStateEn:'NOT ENOUGH',
+            // homePointHot:false, //吹气时 隐藏预热过长文案
+            // process:false,//分析中
+
+
+            // homeTitle: false,
+            // homeOrangeBtn: false,
         });
     }
 
