@@ -1,0 +1,43 @@
+<!--pages/device-bind/device-bind.wxml-->
+<!--
+<template is="common" data="{{burnupShow,homeHeartBox,btnState,homeTitle,homeTitleText}"></template>
+-->
+<view class="page" style="background-color:{{bgColor}}" >
+    <!--未找到设备-->
+    <view  wx:if="{{nofind}}"  style="padding: 0 50rpx;box-sizing:border-box;">
+        <view class="noBindText" style="margin-top: 80rpx;margin-bottom: 15rpx">出了点小问题</view>
+        <view class="noBindText" style="margin-bottom: 75rpx">需要您检查再试试</view>
+        <view style="margin-top: 50rpx">
+            <view wx:for="{{homeP.length}}" wx:key="{{index}}">
+                <view class="home-p" wx:if="{{index == 1}}" >
+
+                    <view style="float: left;height: 36rpx;;line-height: 36rpx">
+                        <image class="nofind-img" bindtap="showTips" src="../../images/device-bind/How.png"></image>
+                        {{homeP[index]}}
+                    </view>
+
+                    <view class="clear"></view>
+                </view>
+                <view class="home-p" wx:else>{{homeP[index]}}</view>
+                <view wx:if="{{index == 4}}" style="height: 47rpx;width: 100%;margin-bottom: 41rpx"></view>
+                <view wx:else style="height: 47rpx;width: 100%;border-bottom: 1px #FF948F solid;margin-bottom: 41rpx"></view>
+            </view>
+
+        </view>
+
+        <view class="home-orangebtn" wx:if="{{homeOrangeBtn}}"  bindtap="reConnectEvent">重试</view>
+    </view>
+    <!--正在寻找设备-->
+    <view wx:if="{{finding}}">
+        <view class="findImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+    <!--找到设备并按键绑定-->
+    <view wx:if="{{finded}}">
+        <view class="findedImd"></view>
+        <view class="contentTextB">{{contentStateB}}</view>
+        <view class="contentTextS">{{contentStateS}}</view>
+    </view>
+
+</view>
