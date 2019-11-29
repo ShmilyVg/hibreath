@@ -1,5 +1,5 @@
 import {Network} from "./network/index";
-
+import BaseNetworkImp from "./network/libs/base/base-network-imp";
 export default class Protocol {
 
     // /**
@@ -351,6 +351,41 @@ export default class Protocol {
     //修改圈子信息
     static postChangeCommunity({ id, name, imgUrl=''}) {
       return Network.request({ url: 'group/put', data: { id, name, imgUrl } })
-      }
+    }
+    //获取电话号码
+    static getPhoneNum({encryptedData, iv}) {
+        return new Promise((resolve, reject) =>
+            this.wxLogin().then(res => {
+                const {code} = res;
+                return BaseNetworkImp.request({
+                    url: 'account/getphoneNum',
+                    data: {code, encrypted_data: encryptedData, iv},
+                    requestWithoutLogin: true
+                })
+            }).then(data => {
+                resolve(data.result.phoneNumber);
+            }).catch(res => {
+                console.log('getPhoneNum failed:', res);
+                reject(res);
+            })
+        )
+    }
+    static wxReLogin(resolve, reject) {
+        wx.login({
+            success: resolve, fail: res => {
+                WXDialog.showDialog({
+                    title: '糟糕', content: '抱歉，目前小程序无法登录，请稍后重试', confirmEvent: () => {
+                        this.wxReLogin(resolve, reject);
+                    }
+                });
+                console.log('wx login failed', res);
+            }
+        })
+    }
 
+    static wxLogin() {
+        return new Promise((resolve, reject) =>
+            this.wxReLogin(resolve, reject)
+        );
+    }
 }

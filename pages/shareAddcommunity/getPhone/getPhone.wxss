@@ -1,0 +1,31 @@
+/* pages/shareAddcommunity/getPhone/getPhone.wxss */
+.getPhone{
+    text-align: center;
+}
+.getPhone-text1{
+    font-size:40rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    margin-bottom: 30rpx;
+}
+.getPhone-text2{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+}
+.getPhone-btn{
+    text-align: center;
+    width:500rpx;
+    height:100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height: 100rpx;
+    margin-top: 300rpx;
+}
+button::after{ border: none; }

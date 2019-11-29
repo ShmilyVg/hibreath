@@ -1,0 +1,7 @@
+<!--pages/shareAddcommunity/getPhone/getPhone.wxml-->
+<view class="getPhone">
+    <image src="../../../images/community/phone.png" style="width: 370rpx;height: 308rpx;margin: 233rpx auto 89rpx auto"></image>
+    <view class="getPhone-text1">授权获取你的手机号</view>
+    <view class="getPhone-text2">便于后期减脂管理</view>
+    <button class="getPhone-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权获取手机号</button>
+</view>
