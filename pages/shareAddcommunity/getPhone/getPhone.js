@@ -59,6 +59,7 @@ Page({
               console.error(e);
               wx.showToast({
                   title: '授权手机号失败，请重试',
+                  icon: 'none',
                   duration: 1000,
               })
           } finally {

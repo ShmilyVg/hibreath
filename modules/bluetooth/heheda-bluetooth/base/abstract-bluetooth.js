@@ -187,8 +187,8 @@ export default class AbstractBlueTooth {
                                 console.log('蓝牙连接成功', res);
                                 var pages = getCurrentPages()    //获取加载的页面
                                 var currentPage = pages[pages.length-1]    //获取当前页面的对象
-                                console.log('getApp()',getApp().bLEManager)
-                                if(currentPage.route ==='pages/index/index'){
+                                console.log('getApp()',getApp().bLEManager,currentPage.route)
+                                if(currentPage.route ==='pagesIndex/index/index'){
                                     getApp().bLEManager.startData();
                                     getApp().bLEManager.sendISvalue({isSuccess: true});
                                     console.log('小程序发送了同步状态的指令 和 40指令')

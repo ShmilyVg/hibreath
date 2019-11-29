@@ -411,10 +411,10 @@
   height:94rpx;
   position:absolute;
   top:135rpx;
-  left:-70rpx; 
+  left:-70rpx;
 }
 .move-img{
-  animation:myopacity 2s linear normal;
+  animation:myopacity 4s linear normal;
 }
 @keyframes myopacity
 {

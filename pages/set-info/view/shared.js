@@ -98,7 +98,7 @@ function createNewIm(page){
             if(that.data.shareTodayDif<10){
                 ctx.drawImage(that.data.shareDown, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
-                ctx.drawImage(that.data.shareDown, (65+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+                ctx.drawImage(that.data.shareDown, (75+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }
 
         }else{
@@ -109,7 +109,7 @@ function createNewIm(page){
             if(Math.abs(that.data.shareTodayDif)<10){
                 ctx.drawImage(that.data.shareUp, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
-                ctx.drawImage(that.data.shareUp, (65+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+                ctx.drawImage(that.data.shareUp, (75+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }
 
         }

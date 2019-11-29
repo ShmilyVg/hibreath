@@ -2,7 +2,6 @@
   "pages": [
     "pages/set-info/set-info",
     "pages/community/community",
-    "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
     "pages/update/update",
@@ -27,6 +26,14 @@
     "pages/taskShareInfo/taskShareInfo",
     "pages/set-up/set-up",
     "pages/set-up/rename/rename"
+  ],
+  "subpackages":[
+  {
+    "root":"pagesIndex",
+    "pages":[
+      "index/index"
+    ]
+  }
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

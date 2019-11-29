@@ -28,7 +28,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
-        wx.redirectTo({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pagesIndex/index/index'});
     }
     //运动-自由打卡
     static navigateToFreeClock() {
@@ -118,11 +118,11 @@ export default class HiNavigator extends CommonNavigator {
     }*/
 
     static navigateIndexSuc({ data }) {
-      this.navigateTo({ url: '/pages/index/index?isSuccessInfo=' + data });
+      this.navigateTo({ url: '/pagesIndex/index/index?isSuccessInfo=' + data });
     }
 
     static navigateIndex() {
-        this.navigateTo({url: '/pages/index/index'});
+        this.navigateTo({url: '/pagesIndex/index/index'});
     }
 
 

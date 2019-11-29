@@ -1,7 +1,6 @@
 <!--pages/device-bind/device-bind.wxml-->
 
 <!--
-<import src="../index/view/indexCommon.wxml"></import>
 
 <template is="common" data="{{burnupShow,homeHeartBox,btnState,homeTitle,homeTitleText}"></template>
 

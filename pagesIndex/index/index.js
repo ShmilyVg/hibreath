@@ -4,9 +4,7 @@
  */
 //index.js
 //获取应用实例
-import Login from "../../modules/network/login";
-import UserInfo from "../../modules/network/userInfo";
-import {Toast} from "heheda-common-view";
+
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import ConnectionManager from "./connection-manager";
