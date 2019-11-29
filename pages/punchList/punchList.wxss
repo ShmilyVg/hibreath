@@ -320,10 +320,13 @@ page{
 }
 .cellColorGold{
   color:#FFB000;
+  
 }
 .cellColorSilver{
    color:#929FAE;
+   
 }
 .cellColorCopper{
   color:#C58D61;
+ 
 }
