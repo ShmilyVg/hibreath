@@ -10,7 +10,7 @@
         <text wx:if="{{todayDif !== null}}" class="punchList_Day-Text1">{{todayDif}}</text>
         <text wx:if="{{todayDif !== null}}" class="punchList_Day-Text2">kg</text>
         <view wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</view>
-        <text class="punchList_Day-Text4">今日燃脂</text>
+        <text class="punchList_Day-Text4">今日减重</text>
     </view>
     <!-- 左 -->   
     <!--头像-->
@@ -33,7 +33,7 @@
        </view>
         <view class="punchList_NickName">{{nickname}}</view>
         <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
-            <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
+            <view style="font-size: 24rpx;width: 100%;line-height:75rpx;">邀请伙伴围观</view>
         </button>
       </view >
       <!--头像-->
@@ -44,13 +44,13 @@
            <text wx:if="{{totalDif !== null}}" class="punchList_Day-Text2">kg</text>
         </view>
         <view wx:if="{{totalDif == null}}" class="punchList_Day-Text3">未打卡</view>
-        <view class="punchList_Day-Text4">连续燃脂天数</view>
+        <view class="punchList_Day-Text4">累计减重</view>
     </view>
     <!-- 右 -->
 </view>
 <!-- 更改 -->
 <view class="clear"></view>
-<view  style="padding-bottom: 30rpx">
+<view  style="padding: 30rpx 0;">
     <view wx:if="{{ranklist.length>0}}">
         <view wx:for="{{ranklist}}" wx:key="{{index}}" class="cell {{'cellB'}}">
             <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">

@@ -6,7 +6,6 @@
 </view>
 <view class="punchList-main">
     <!-- 左 -->
-   
     <view class="{{todayValue == null?'punchList_Day2':'punchList_Day1'}}">
         <view wx:if="{{todayValue !== null}}" class="fatBurningState">{{dataDesc}}</view>
         <view wx:else class="fatBurningStateNull"></view>
@@ -37,13 +36,13 @@
 
       <view class="punchList_NickName">{{nickname}}</view>
       <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
-        <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
+        <view style="font-size: 24rpx;width: 100%;line-height:75rpx;">邀请伙伴围观</view>
       </button>
     </view >
  <!--对 头像 -->
     <!-- 右 -->
     <view class="{{todayCount == null?'punchList_Day2':'punchList_Day1'}}">
-        <view  class="fatBurningStateNull" style="margin-bottom:5rpx;"></view>
+        <view  class="fatBurningStateNull"></view>
         <view wx:if="{{todayCount !== null}}" class="punchList_Day-Text1">{{todayCount}}</view>
         <view wx:if="{{todayCount == null}}" class="punchList_Day-Text3">未上榜</view>
         <view class="punchList_Day-Text4">连续燃脂天数</view>
@@ -52,8 +51,8 @@
 </view>
 <view class="clear"></view>
 <!-- 更改 -->
-<view style="font-size:26rpx;color:#A3A3A3;line-height:37rpx;text-align:center;margin-bottom:22rpx;">“过度燃脂”不计入排行哦～</view>
-<view  style="padding-bottom: 30rpx">
+<view style="font-size:26rpx;color:#A3A3A3;line-height:37rpx;text-align:center;margin:22rpx 0;">“过度燃脂”不计入排行哦～</view>
+<view  style="padding: 30rpx 0;">
     <view wx:if="{{ranklist.length>0}}">
         <view wx:for="{{ranklist}}" wx:key="{{index}}" class="cell {{'cellB'}}">
             <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">
@@ -67,7 +66,7 @@
                       </view>
                       <view class=" cell-title {{'cell-titleB'}}  cellColorGold">{{item.nickname}}</view>
                       <view class="cell-date">
-                          <view  style="text-align:center;line-height:55rpx;" class="cellColorGold">{{item.fieldValue}}</view>
+                          <view  style="text-align:center;line-height:55rpx;font-size:48rpx;" class="cellColorGold">{{item.fieldValue}}<text wx:if="{{!item.dataDesc}}" style="font-size:22rpx;">天</text></view>
                           <view style="font-size:20rpx;color: #A3A3A3;text-align:center;line-height:28rpx;">{{item.dataDesc}}</view>
                       </view>
                     </block>
@@ -77,7 +76,7 @@
                         </view>
                         <view class=" cell-title {{'cell-titleB'}} cellColorSilver">{{item.nickname}}</view>
                         <view class="cell-date">
-                            <view  style="text-align:center;line-height:55rpx;" class="cellColorSilver">{{item.fieldValue}}</view>
+                            <view  style="text-align:center;line-height:55rpx;font-size:48rpx;" class="cellColorSilver">{{item.fieldValue}}<text wx:if="{{!item.dataDesc}}" style="font-size:22rpx;">天</text></view>
                             <view style="font-size:20rpx;color: #A3A3A3;text-align:center;line-height:28rpx;">{{item.dataDesc}}</view>
                         </view>
                     </block>
@@ -87,7 +86,7 @@
                         </view>
                         <view class=" cell-title {{'cell-titleB'}} cellColorCopper">{{item.nickname}}</view>
                         <view class="cell-date">
-                            <view  style="text-align:center;line-height:55rpx;" class="cellColorCopper">{{item.fieldValue}}</view>
+                            <view  style="text-align:center;line-height:55rpx;font-size:48rpx;" class="cellColorCopper">{{item.fieldValue}}<text wx:if="{{!item.dataDesc}}" style="font-size:22rpx;">天</text></view>
                             <view style="font-size:20rpx;color: #A3A3A3;text-align:center;line-height:28rpx;">{{item.dataDesc}}</view>
                         </view>
                     </block>
@@ -97,7 +96,7 @@
                         </view>
                          <view class=" cell-title {{'cell-titleB'}}">{{item.nickname}}</view>
                         <view class="cell-date">
-                            <view  style="text-align:center;line-height:55rpx;color:#545454;">{{item.fieldValue}}</view>
+                            <view  style="text-align:center;line-height:55rpx;color:#545454;font-size:48rpx;">{{item.fieldValue}}<text wx:if="{{!item.dataDesc}}" style="font-size:22rpx;">天</text></view>
                             <view style="font-size:20rpx;color: #A3A3A3;text-align:center;line-height:28rpx;">{{item.dataDesc}}</view>
                         </view>
                     </block>

@@ -106,8 +106,9 @@ page{
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(255,255,255,1);
-  
 }
+
+
 .punchList_NickName{
     font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
@@ -190,7 +191,7 @@ page{
 .headUrl-content{
   float:left;
   width:240rpx;
-  height:340rpx;
+  height:410rpx;
   display: flex;
   flex-direction:column;
   align-items:center;
@@ -319,10 +320,13 @@ page{
 }
 .cellColorGold{
   color:#FFB000;
+  
 }
 .cellColorSilver{
    color:#929FAE;
+   
 }
 .cellColorCopper{
   color:#C58D61;
+ 
 }
