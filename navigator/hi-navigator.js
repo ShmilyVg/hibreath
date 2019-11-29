@@ -60,7 +60,7 @@ export default class HiNavigator extends CommonNavigator {
     }*/
     //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
-        this.navigateTo({url: '/pages/device-bind/device-bind'});
+        this.navigateTo({url: '/pagesIndex/device-bind/device-bind'});
     }
 
 

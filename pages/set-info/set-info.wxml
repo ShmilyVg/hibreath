@@ -1,5 +1,6 @@
 <!--pages/set-info/set-info.wxml-->
 
+
 <import src="./view/guide.wxml"></import>
 <import src="./view/fatBurnCard.wxml"></import>
 <import src="./view/bodyIndexCard.wxml"></import>
