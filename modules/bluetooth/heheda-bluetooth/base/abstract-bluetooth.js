@@ -191,7 +191,7 @@ export default class AbstractBlueTooth {
                                 if(currentPage.route ==='pagesIndex/index/index'){
                                     getApp().bLEManager.startData();
                                     getApp().bLEManager.sendISvalue({isSuccess: true});
-                                    console.log('小程序发送了同步状态的指令 和 40指令')
+                                    console.log('小程序发送了同步状态的指令 和 40-01指令 允许上传在线检测数据')
                                 }
 
                                 this._deviceId = deviceId;

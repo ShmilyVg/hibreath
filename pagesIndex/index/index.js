@@ -93,8 +93,10 @@ Page({
         HiNavigator.navigateToDeviceUnbind();
     },
     handlerGobackClick(){
+        console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
         if(app.getLatestBLEState().connectState ==='connected'){
             app.bLEManager.sendISvalue({isSuccess: false});
+            console.log('小程序告知了设备不要上传在线监测数据')
         }
         if(this.data.isSuccessInfo === "true"){
             let pages = getCurrentPages();
@@ -127,7 +129,7 @@ Page({
                 isHidden:true
             })
             app.bLEManager.sendISvalue({isSuccess: false});
-            console.log('小程序 在index页面 前台进入后台 发送了40 02命令')
+            console.log('小程序 在index页面 前台进入后台 发送了40 02命令  告知了设备不要上传在线监测数据')
         }
     },
     onLoad(e) {
@@ -232,8 +234,7 @@ Page({
             app.bLEManager.sendISvalue({isSuccess: true});
             console.log('小程序 在index页面 后台进入前台后 发送了40 01命令')
         }
-       console.log("indexVersion",wx.getStorageSync('indexVersion'))
-       console.log("indexDeviceId",wx.getStorageSync('indexDeviceId'))
+
         console.log(this.blowPage._page.data.needCheckOTAUpdate,this.blowPage._page.data,'this.data.needCheckOTAUpdate')
         const action = this.connectionPage.action;
         const actionBlow = this.blowPage.actionBlow;
@@ -255,6 +256,7 @@ Page({
                 console.log("connectState",connectState)
                 console.log("protocolState",protocolState)
                 if(connectState ==='connected'){
+
                     app.bLEManager.sendISvalue({isSuccess: true});
                     console.log('小程序在index发送40 01命令')
                 }
@@ -376,6 +378,7 @@ Page({
 
         if(app.getLatestBLEState().connectState ==='connected'){
             app.bLEManager.sendISvalue({isSuccess: false});
+            console.log('告知了设备不要上传在线监测数据')
         }
     },
 

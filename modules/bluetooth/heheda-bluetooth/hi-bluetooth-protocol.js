@@ -176,7 +176,6 @@ export default class HiBlueToothProtocol {
         if (this.getDeviceIsBind()) {
             this.action['0x3d']({isSuccess});
         }
-        console.log('小程序发送了 3d指令');
     }
     sendISvalue({isSuccess}) {
         if (this.getDeviceIsBind()) {
