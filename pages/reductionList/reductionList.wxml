@@ -9,14 +9,12 @@
     <view class="{{todayDif == null?'punchList_Day2':'punchList_Day1'}}">
         <text wx:if="{{todayDif !== null}}" class="punchList_Day-Text1">{{todayDif}}</text>
         <text wx:if="{{todayDif !== null}}" class="punchList_Day-Text2">kg</text>
-        <text wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</text>
-        <text class="punchList_Day-Text4">今日减重</text>
+        <view wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</view>
+        <text class="punchList_Day-Text4">今日燃脂</text>
     </view>
     <!-- 左 -->   
     <!--头像-->
       <view class="headUrl-content" >
-
-
        <view class="headUrl-box backgroundImg-goldbig " wx:if="{{rankNum==1}}" >
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
           <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{addup?'rankNum':''}}</view>
@@ -25,7 +23,7 @@
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
           <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{addup?'rankNum':''}}</view>
        </view>
-          <view class="headUrl-box backgroundImg-copper" wx:elif="{{rankNum==3}}">
+          <view class="headUrl-box backgroundImg-copperbig" wx:elif="{{rankNum==3}}">
           <image class="punchList_headUrl " src="{{headUrl}}" ></image>
           <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{addup?'rankNum':''}}</view>
        </view>
@@ -33,23 +31,20 @@
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
           <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{addup?'rankNum':''}}</view>
        </view>
-
-
-
         <view class="punchList_NickName">{{nickname}}</view>
         <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
             <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
         </button>
       </view >
       <!--头像-->
-    <!-- <view class="punchList_line"></view> -->
-    <!--<view class="{{totalDif?'punchList_Day1':'punchList_Day2'}}">-->
     <!-- 右 -->
     <view class="{{totalDif == null?'punchList_Day2':'punchList_Day1'}}">
-        <text wx:if="{{totalDif !== null}}" class="punchList_Day-Text1">{{totalDif}}</text>
-        <text wx:if="{{totalDif !== null}}" class="punchList_Day-Text2">kg</text>
-        <text wx:if="{{totalDif == null}}" class="punchList_Day-Text3">未打卡</text>
-        <text class="punchList_Day-Text4">累计减重</text>
+        <view>
+           <text wx:if="{{totalDif !== null}}" class="punchList_Day-Text1">{{totalDif}}</text>
+           <text wx:if="{{totalDif !== null}}" class="punchList_Day-Text2">kg</text>
+        </view>
+        <view wx:if="{{totalDif == null}}" class="punchList_Day-Text3">未打卡</view>
+        <view class="punchList_Day-Text4">连续燃脂天数</view>
     </view>
     <!-- 右 -->
 </view>
@@ -62,27 +57,47 @@
                 <view style="width: 100%">
                     <view class="cell-rank {{index<3?'cell-rankR':'cell-rankB'}}">{{index+1}}</view>
                       <!-- 更改 -->
-                      <view wx:if="{{index==0}}" class="cell_headUrl-box backgroundImg-gold">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:elif="{{index==1}}" class="cell_headUrl-box backgroundImg-silver">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:elif="{{index==2}}" class="cell_headUrl-box backgroundImg-copper">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:else="{{index>=3}}" class="cell_headUrl-box ">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-                    <!-- 更改 -->
-                    <view class=" cell-title {{index<3?'cell-titleR':'cell-titleB'}}">{{item.nickname}}</view>
-                    <view class="cell-date">
+                       <block wx:if="{{index==0}}">
+                       <view  class="cell_headUrl-box backgroundImg-gold">
+                         <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                       </view>
+                      <view class=" cell-title cell-titleB cellColorGold">{{item.nickname}}</view>
+                      <view class="cell-date cellColorGold">
                         <text>{{item.fieldValue}}</text>
                         <text>kg</text>
-                    </view>
+                      </view>
+                    </block>
+                    <block wx:elif="{{index==1}}">
+                        <view  class="cell_headUrl-box backgroundImg-silver">
+                          <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB cellColorSilver">{{item.nickname}}</view>
+                        <view class="cell-date cellColorSilver">
+                          <text>{{item.fieldValue}}</text>
+                          <text>kg</text>
+                        </view>
+                    </block>
+                     <block wx:elif="{{index==2}}" >
+                        <view class="cell_headUrl-box backgroundImg-copper">
+                           <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB cellColorCopper">{{item.nickname}}</view>
+                        <view class="cell-date cellColorCopper">
+                          <text>{{item.fieldValue}}</text>
+                          <text>kg</text>
+                        </view>
+                     </block>
+                     <block wx:else="{{index>=3}}">
+                        <view class="cell_headUrl-box ">
+                          <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB ">{{item.nickname}}</view>
+                        <view class="cell-date ">
+                          <text>{{item.fieldValue}}</text>s
+                          <text>kg</text>
+                        </view>
+                     </block>
+                    <!-- 更改 -->
                 </view>
             </view>
         </view>

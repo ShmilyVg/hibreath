@@ -205,6 +205,9 @@ Page({
     async toPunchList(){
         HiNavigator.navigateToPunchList({groupId:(await judgeGroupEmpty()).groupId})
     },
+     async toFatBurningList(){
+       HiNavigator.navigateToFatBurningList({ groupId: (await judgeGroupEmpty()).groupId })
+     },
 
     async forceUpdateAll() {
         if(this.data.noUpdateAll){

@@ -24,7 +24,8 @@
     "pages/caseDetails/caseDetails",
     "pages/taskShareInfo/taskShareInfo",
     "pages/set-up/set-up",
-    "pages/set-up/rename/rename"
+    "pages/set-up/rename/rename",
+    "pages/fatBurningList/fatBurningList"
   ],
   "subpackages":[
   {
