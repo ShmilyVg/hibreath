@@ -28,7 +28,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToIndex({refresh = false} = {}) {
         getApp().globalData.refreshIndexPage = refresh;
-        wx.redirectTo({url: '/pages/index/index'});
+        wx.redirectTo({url: '/pagesIndex/index/index'});
     }
     //运动-自由打卡
     static navigateToFreeClock() {
@@ -116,13 +116,13 @@ export default class HiNavigator extends CommonNavigator {
         let url = `/pages/result/result?id=${score}`;
         wx.navigateTo({url});
     }*/
-  
+
     static navigateIndexSuc({ data }) {
-      this.navigateTo({ url: '/pages/index/index?isSuccessInfo=' + data });
+      this.navigateTo({ url: '/pagesIndex/index/index?isSuccessInfo=' + data });
     }
 
     static navigateIndex() {
-        this.navigateTo({url: '/pages/index/index'});
+        this.navigateTo({url: '/pagesIndex/index/index'});
     }
 
 
@@ -170,6 +170,10 @@ export default class HiNavigator extends CommonNavigator {
     }
     static navigateToReductionList({groupId}) {
         this.navigateTo({url: '/pages/reductionList/reductionList?groupId=' + groupId});
+    }
+    /*授权获取手机号*/
+    static navigateToGetPhone({sharedId}) {
+        this.navigateTo({url: '/pages/shareAddcommunity/getPhone/getPhone?sharedId=' + sharedId});
     }
     static navigateToPunchList({groupId}) {
         this.navigateTo({url: '/pages/punchList/punchList?groupId=' + groupId});

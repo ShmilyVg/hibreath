@@ -6,12 +6,12 @@
 import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
-import IndexCommonManager from "../index/view/indexCommon";
+import IndexCommonManager from "./view/indexCommon";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import UserInfo from "../../modules/network/userInfo";
 
-import ConnectionManager from "../index/connection-manager";
+import ConnectionManager from "./view/connection-manager";
 import {oneDigit} from "../food/manager";
 import {ConnectState} from "../../modules/bluetooth/bluetooth-state";
 import {showActionSheet} from "../../view/view";

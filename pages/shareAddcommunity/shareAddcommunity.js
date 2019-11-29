@@ -14,7 +14,8 @@ Page({
         memberName: '',
         groupName: '',
         imgUrl: '',
-        sharedId: ''
+        sharedId: '',
+        isExistPhone:false
     },
 
     /**
@@ -23,33 +24,38 @@ Page({
     onLoad(options) {
         const {sharedId} = options;
         this.setData({sharedId}, async () => {
-            const {result: {memberName, groupName, imgUrl,isJoined}} = await whenDismissGroup(Protocol.postGroupShareInfo({sharedId}));
-            this.setData({memberName, groupName, imgUrl,isJoined});
+            const {result: {memberName, groupName, imgUrl,isJoined,isExistPhone}} = await whenDismissGroup(Protocol.postGroupShareInfo({sharedId}));
+            this.setData({memberName, groupName, imgUrl,isJoined,isExistPhone});
         });
     },
 
     async addCommunityBtn(e) {
         console.log('e',e.currentTarget.dataset.type)
         console.log('this.data.isJoined',this.data.isJoined)
-        const {sharedId} = this.data;
+        const {sharedId,isExistPhone} = this.data;
         if (sharedId) {
-            const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
-            if (groupId) {
-                getSocialGroupManager.currentSocial = {groupId};
-                if(e.currentTarget.dataset.type === 'firstEnter'){
-                    getApp().globalData.firstEnter = this.data.isJoined;
-                    getApp().globalData.isShareAddcommunity = true
+            if(isExistPhone){
+                const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
+                if (groupId) {
+                    getSocialGroupManager.currentSocial = {groupId};
+                    if(e.currentTarget.dataset.type === 'firstEnter'){
+                        getApp().globalData.firstEnter = this.data.isJoined;
+                        getApp().globalData.isShareAddcommunity = true
+                        HiNavigator.switchToCommunity();
+                        return
+                    }
                     HiNavigator.switchToCommunity();
-                    return
+                } else {
+                    wx.showToast({
+                        title: '抱歉,暂时无法加入该圈子',
+                        icon: 'none',
+                        duration: 3000
+                    })
                 }
-                HiNavigator.switchToCommunity();
-            } else {
-                wx.showToast({
-                    title: '抱歉,暂时无法加入该圈子',
-                    icon: 'none',
-                    duration: 3000
-                })
+            }else{
+                HiNavigator.navigateToGetPhone({sharedId})
             }
+
         } else {
             wx.showToast({
                 title: '未获取到圈子信息，暂时无法加入',
@@ -70,19 +76,20 @@ Page({
                 Toast.warn('获取信息失败');
             }
         }
-        const {sharedId} = this.data;
+   /*     const {sharedId,isExistPhone} = this.data;
+        console.log(this.data,'this.data')
         if (sharedId) {
-            const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
-            if (groupId) {
-                getSocialGroupManager.currentSocial = {groupId};
-                HiNavigator.switchToCommunity();
-            } else {
-                wx.showToast({
-                    title: '抱歉，暂时无法加入该圈子',
-                    icon: 'none',
-                    duration: 3000
-                })
-            }
+                const {result: {groupId}} = await whenDismissGroup(Protocol.postGroupJoin({sharedId}));
+                if (groupId) {
+                    getSocialGroupManager.currentSocial = {groupId};
+                    HiNavigator.switchToCommunity();
+                } else {
+                    wx.showToast({
+                        title: '抱歉，暂时无法加入该圈子',
+                        icon: 'none',
+                        duration: 3000
+                    })
+                }
         } else {
             wx.showToast({
                 title: '未获取到圈子信息，暂时无法加入',
@@ -90,6 +97,6 @@ Page({
                 duration: 3000
             })
         }
-
+*/
     },
 });

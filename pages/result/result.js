@@ -130,6 +130,7 @@ Page({
 
     toIndex() {
         //检测蓝牙状态
+      /*  HiNavigator.navigateIndex();*/
         wx.openBluetoothAdapter({
             success (res) {
                 HiNavigator.navigateIndex();

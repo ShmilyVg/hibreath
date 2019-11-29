@@ -14,7 +14,7 @@ Page({
         imageUrl:[],
         disable:true,
         ifShow:true,
-
+        desc:''
     },
 
     onLoad: function (e) {
@@ -25,7 +25,7 @@ Page({
             this.groupId = e.groupId
         }
         this.setData({
-          groupId: this.groupId 
+            groupId: this.groupId
         })
 
     },
@@ -41,30 +41,30 @@ Page({
         WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
     submit(){
-        
+
         console.log("imgbox",this.data.imgbox)
         console.log("imageUrl",this.data.imageUrl)
         console.log("132",this.data.desc)
-      /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
-            this.showDialog("请选择照片");
-            return
-        }*/
-      if(this.taskId){
-          // Toast.showLoading();
-          // Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
-          //     Toast.showLoading();
-          //     HiNavigator.redirectToMessageDetail({messageId: data.result.id});
-          // });
-        this.showPopup();
-      }else {
-        console.log(this.groupId)
-        Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
-        wx.hideLoading();
-        HiNavigator.switchToCommunity();
+        /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
+              this.showDialog("请选择照片");
+              return
+          }*/
+        if(this.taskId){
+            // Toast.showLoading();
+            // Protocol.postFood({taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+            //     Toast.showLoading();
+            //     HiNavigator.redirectToMessageDetail({messageId: data.result.id});
+            // });
+            this.showPopup();
+        }else {
+            console.log(this.groupId)
+            Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
+                wx.hideLoading();
+                HiNavigator.switchToCommunity();
 
-      });
-          
-      }
+            });
+
+        }
 
     },
     //控制完成按钮是否可以点击
@@ -129,7 +129,9 @@ Page({
                             name: 'file',
                             success(res) {
                                 // 采用选择几张就直接上传几张，最后拼接返回的url
+                                console.log('that.data.imageUrl11',that.data.imageUrl)
                                 imgbox.push(path)
+                                console.log('that.data.imageUrl22',that.data.imageUrl)
                                 wx.hideLoading()
                                 var obj = JSON.parse(res.data)
                                 console.log("obj",obj)
@@ -170,50 +172,50 @@ Page({
         console.log(this.data.imgbox,'eeee')
         this.data.imageUrl.splice(e.currentTarget.dataset.deindex,1)
         this.setData({
-            imgbox: this.data.imageUrl,
+            imgbox: [].concat(this.data.imageUrl),
         });
         this.disBtn()
     },
 
-    
-  onReady: function () {
-    //获得popup组件
-    this.popup = this.selectComponent("#popup");
-  },
 
-  showPopup(e) {
+    onReady: function () {
+        //获得popup组件
+        this.popup = this.selectComponent("#popup");
+    },
 
-    console.log(e)
-    this.popup.showPopup();
-    this.setData({
-      ifShow: !this.data.ifShow
-    })
-  },
+    showPopup(e) {
 
-  //取消事件
-  _error() {
-    console.log('你点击了取消');
-    this.popup.hidePopup();
-    this.setData({
-      ifShow: !this.data.ifShow
-    })
-  },
-  //确认事件
-  _success(e) {
-    console.log('你点击了确定',e);
-    const {detail:{groupId}} = e;
-    this.setData({
-      groupId: groupId
-    })
-    this.popup.hidePopup();
-    Toast.showLoading();
-    Protocol.postFood({ groupId: this.data.groupId,taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
-      Toast.showLoading();
-      HiNavigator.redirectToMessageDetail({messageId: data.result.id});
-    });
-    this.setData({
-      ifShow: !this.data.ifShow
-    })
-  }
+        console.log(e)
+        this.popup.showPopup();
+        this.setData({
+            ifShow: !this.data.ifShow
+        })
+    },
+
+    //取消事件
+    _error() {
+        console.log('你点击了取消');
+        this.popup.hidePopup();
+        this.setData({
+            ifShow: !this.data.ifShow
+        })
+    },
+    //确认事件
+    _success(e) {
+        console.log('你点击了确定',e);
+        const {detail:{groupId}} = e;
+        this.setData({
+            groupId: groupId
+        })
+        this.popup.hidePopup();
+        Toast.showLoading();
+        Protocol.postFood({ groupId: this.data.groupId,taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
+            Toast.showLoading();
+            HiNavigator.redirectToMessageDetail({messageId: data.result.id});
+        });
+        this.setData({
+            ifShow: !this.data.ifShow
+        })
+    }
 
 })

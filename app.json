@@ -2,7 +2,6 @@
   "pages": [
     "pages/set-info/set-info",
     "pages/community/community",
-    "pages/index/index",
     "pages/result/result",
     "pages/device-bind/device-bind",
     "pages/update/update",
@@ -20,6 +19,7 @@
     "pages/memberManagement/memberManagement",
     "pages/communityManagement/communityManagement",
     "pages/shareAddcommunity/shareAddcommunity",
+    "pages/shareAddcommunity/getPhone/getPhone",
     "pages/punchList/punchList",
     "pages/reductionList/reductionList",
     "pages/caseDetails/caseDetails",
@@ -27,6 +27,14 @@
     "pages/set-up/set-up",
     "pages/set-up/rename/rename",
     "pages/fatBurningList/fatBurningList"
+  ],
+  "subpackages":[
+  {
+    "root":"pagesIndex",
+    "pages":[
+      "index/index"
+    ]
+  }
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
