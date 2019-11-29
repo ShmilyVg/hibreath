@@ -37,7 +37,7 @@
 
       <view class="punchList_NickName">{{nickname}}</view>
       <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
-        <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
+        <view style="font-size: 24rpx;width: 100%;line-height:75rpx;">邀请伙伴围观</view>
       </button>
     </view >
  <!--对 头像 -->
@@ -53,7 +53,7 @@
 <view class="clear"></view>
 <!-- 更改 -->
 <view style="font-size:26rpx;color:#A3A3A3;line-height:37rpx;text-align:center;margin-bottom:22rpx;">“过度燃脂”不计入排行哦～</view>
-<view  style="padding-bottom: 30rpx">
+<view  style="padding: 30rpx 0;">
     <view wx:if="{{ranklist.length>0}}">
         <view wx:for="{{ranklist}}" wx:key="{{index}}" class="cell {{'cellB'}}">
             <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">
