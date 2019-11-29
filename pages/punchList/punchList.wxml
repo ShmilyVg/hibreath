@@ -5,10 +5,6 @@
     <view class="clear"></view>
 </view>
 <!-- 更改 -->
-<!-- <view class="punchList_rank" wx:if="{{inRank}}">第{{rankNum}}名</view>
-<view class="punchList_rank" wx:else>未上榜</view> -->
-<!-- <view class="clear"></view> -->
- 
 <view class="punchList-main">
     <!-- 左 -->
     <view class="{{addup == null?'punchList_Day2':'punchList_Day1'}}">
@@ -20,26 +16,22 @@
     <!-- 左 -->
     <!-- 对头像 -->
     <view class="headUrl-content" >
-      <!-- <view class="headUrl-box" style=" background-image:url(../../images/punchList/goldbig.png);background-size:150rpx 150rpx;"> -->
         <view class="headUrl-box backgroundImg-goldbig " wx:if="{{rankNum==1}}" >
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum}}</view>
+          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
          <view class="headUrl-box backgroundImg-silverbig" wx:elif="{{rankNum==2}}" >
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum}}</view>
+          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
-          <view class="headUrl-box backgroundImg-copper" wx:elif="{{rankNum==3}}">
+          <view class="headUrl-box backgroundImg-copperbig" wx:elif="{{rankNum==3}}">
           <image class="punchList_headUrl " src="{{headUrl}}" ></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum}}</view>
+          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
           <view class="headUrl-box"  wx:else="{{rankNum>=4}}">
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum}}</view>
+          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum?rankNum:''}}</view>
        </view>
-
-
-
       <view class="punchList_NickName">{{nickname}}</view>
       <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
         <view style="font-size: 24rpx;width: 100%">邀请伙伴围观</view>
@@ -47,53 +39,64 @@
     </view >
  <!--对 头像 -->
     <!-- 右 -->
-    <!-- <view class="punchList_lineP"></view> -->
     <view class="{{continual == null?'punchList_Day2':'punchList_Day1'}}">
         <text wx:if="{{continual !== null}}" class="punchList_Day-Text1" style="margin-left:60rpx;">{{continual}}</text>
         <text wx:if="{{continual !== null}}" class="punchList_Day-Text2">天</text>
         <text wx:if="{{continual == null}}" class="punchList_Day-Text3">未上榜</text>
         <text class="punchList_Day-Text4">连续打卡</text>
     </view>
-
 </view>
-
-
-
 <view class="clear"></view>
-
-
-
 <!-- 更改 -->
-
 <view  style="padding-bottom: 30rpx">
     <view wx:if="{{ranklist.length>0}}">
         <view wx:for="{{ranklist}}" wx:key="{{index}}" class="cell {{'cellB'}}">
             <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">
                 <view style="width: 100%">
-                    <view class="cell-rank {{index<3?'cell-rankR':'cell-rankB'}}">{{index+1}}</view>
-                    <!-- <image class="cell_headUrl" src="{{item.headUrl}}"></image> -->
+                    <view class="cell-rank cell-rankB">{{index+1}}</view>
                     <!-- 更改 -->
-                     <view wx:if="{{index==0}}" class="cell_headUrl-box backgroundImg-gold">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:elif="{{index==1}}" class="cell_headUrl-box backgroundImg-silver">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:elif="{{index==2}}" class="cell_headUrl-box backgroundImg-copper">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-
-                     <view wx:else="{{index>=3}}" class="cell_headUrl-box ">
-                        <image class="cell_headUrl" src="{{item.headUrl}}"></image>
-                     </view>
-                    <!-- 更改 -->
-                    <view class=" cell-title {{index<3?'cell-titleR':'cell-titleB'}}">{{item.nickname}}</view>
-                    <view class="cell-date">
+                    <block wx:if="{{index==0}}">
+                       <view  class="cell_headUrl-box backgroundImg-gold">
+                         <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                       </view>
+                      <view class=" cell-title cell-titleB cellColorGold">{{item.nickname}}</view>
+                      <view class="cell-date cellColorGold">
                         <text>{{item.fieldValue}}</text>
                         <text>天</text>
-                    </view>
+                      </view>
+                    </block>
+                    <block wx:elif="{{index==1}}">
+                        <view  class="cell_headUrl-box backgroundImg-silver">
+                          <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB cellColorSilver">{{item.nickname}}</view>
+                        <view class="cell-date cellColorSilver">
+                          <text>{{item.fieldValue}}</text>
+                          <text>天</text>
+                        </view>
+                    </block>
+                     <block wx:elif="{{index==2}}" >
+                        <view class="cell_headUrl-box backgroundImg-copper">
+                           <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB cellColorCopper">{{item.nickname}}</view>
+                        <view class="cell-date cellColorCopper">
+                          <text>{{item.fieldValue}}</text>
+                          <text>天</text>
+                        </view>
+                     </block>
+                     <block wx:else="{{index>=3}}">
+                        <view class="cell_headUrl-box ">
+                          <image class="cell_headUrl" src="{{item.headUrl}}"></image>
+                        </view>
+                        <view class=" cell-title cell-titleB ">{{item.nickname}}</view>
+                        <view class="cell-date ">
+                          <text>{{item.fieldValue}}</text>
+                          <text>天</text>
+                        </view>
+                     </block>              
+                    <!-- 更改 -->
+     
                 </view>
             </view>
         </view>

@@ -174,6 +174,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToPunchList({groupId}) {
         this.navigateTo({url: '/pages/punchList/punchList?groupId=' + groupId});
     }
+    //减脂榜
+   static navigateToFatBurningList({ groupId }) {
+     this.navigateTo({ url: '/pages/fatBurningList/fatBurningList?groupId=' + groupId });
+    }
    static navigateToCaseDetails({ schemaId }) {
      this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
     }

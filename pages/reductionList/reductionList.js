@@ -103,8 +103,26 @@ Page({
             })
         };
      
-
+      this.tryDriver()
     },
+  //更改颜色
+  tryDriver: function () {
+    if (this.data.rankNum == 1) {
+      this.data.cellColor = "cellColorGold";
+    } else if (this.data.rankNum == 2) {
+      this.data.cellColor = "cellColorSilver";
+    } else if (this.data.rankNum == 3) {
+      this.data.cellColor = "cellColorCopper";
+    } else {
+      this.data.cellColor = "";
+    }
+
+    this.setData({
+      cellColor: this.data.cellColor
+    })
+    console.log(this.data.rankNum)
+    console.log(this.data.cellColor)
+  },
 
     /**
      *

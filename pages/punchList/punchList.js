@@ -15,8 +15,8 @@ Page({
         currenttab: '0',
         isShare: true,
         getSharedId: null,
-        groupId: null,
-        backgroundImg:"",
+        groupId: null
+        
 
     },
     //切换标签页
@@ -71,10 +71,27 @@ Page({
             continual: continual,
             ranklist: ranklist
         });
-    
-     
+      console.log(this.data.ranklist)
+      this.tryDriver();
      
     },
+  tryDriver: function () {
+    if (this.data.ranklist.index== 0) {
+      this.data.ranklist.cellColor = "cellColorGold";
+    } else if (this.data.ranklist.index == 1) {
+      this.data.ranklist.cellColor = "cellColorSilver";
+    } else if (this.data.ranklist.index == 2) {
+      this.data.ranklist.cellColor = "cellColorCopper";
+    } else {
+      this.data.ranklist.cellColor = "";
+    }
+
+    this.setData({
+      cellColor: this.data.ranklist.cellColor
+    })
+    console.log(this.data.ranklist.cellColor)
+    console.log(this.data.cellColor)
+  },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

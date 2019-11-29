@@ -304,6 +304,15 @@ export default class Protocol {
     static postWeightDay({groupId,sharedId}) {
         return Network.request({url: 'ranklist/weight/day',data:{groupId,sharedId}});
     }
+    //减脂榜-今日减脂
+   static postBreathDay({ groupId, sharedId }) {
+     return Network.request({ url: 'ranklist/breath/day', data: { groupId, sharedId } });
+    }
+    //减脂榜-累计减脂
+   static postBreath({ groupId, sharedId }) {
+     return Network.request({ url: 'ranklist/breath/addup', data: { groupId, sharedId } });
+    }
+
     //圈子-发表动态
     static postPublish(data) {
         return Network.request({url: 'group/dynamic/publish', data})
