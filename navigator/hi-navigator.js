@@ -182,8 +182,13 @@ export default class HiNavigator extends CommonNavigator {
    static navigateToFatBurningList({ groupId }) {
      this.navigateTo({ url: '/pages/fatBurningList/fatBurningList?groupId=' + groupId });
     }
+    //七日减脂方案
    static navigateToCaseDetails({ schemaId }) {
      this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
+    }
+    //七日减脂方案详情
+  static navigateToCaseDetailsInformation({ schemaId }) {
+    this.navigateTo({ url: '/pages/caseDetailsInformation/caseDetailsInformation?schemaId=' + schemaId });
     }
   static navigateToSetup({ socialMemberInfo, currentSocial}) {
     this.navigateTo({ url: '/pages/set-up/set-up?socialMemberInfo=' + socialMemberInfo + '&currentSocial=' + currentSocial} );

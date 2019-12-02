@@ -105,5 +105,5 @@
             </view>
         </view>
     </view>
-    <view wx:else style="text-align: center;margin-top: 300rpx;color: rgba(163,163,163,1);">暂无成员上榜</view>
+    <view wx:else style="text-align: center;margin-top: 230rpx;color: rgba(163,163,163,1);">暂无成员上榜</view>
 </view>

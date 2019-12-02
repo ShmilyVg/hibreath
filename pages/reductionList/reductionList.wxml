@@ -93,7 +93,7 @@
                         </view>
                         <view class=" cell-title cell-titleB ">{{item.nickname}}</view>
                         <view class="cell-date ">
-                          <text>{{item.fieldValue}}</text>s
+                          <text>{{item.fieldValue}}</text>
                           <text>kg</text>
                         </view>
                      </block>
@@ -102,5 +102,5 @@
             </view>
         </view>
     </view>
-   <view wx:else style="text-align: center;margin-top: 300rpx;color: rgba(163,163,163,1);">暂无成员上榜</view>
+   <view wx:else style="text-align: center;margin-top: 230rpx;color: rgba(163,163,163,1);">暂无成员上榜</view>
 </view>

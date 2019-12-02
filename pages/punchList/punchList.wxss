@@ -251,10 +251,14 @@ page{
     background:rgba(245,245,245,1);
 }
 .cell-rank{
+    width:45rpx;
     font-size:40rpx;
     font-family:DINCondensed-Bold,DINCondensed;
     font-weight:bold;
     float: left;
+}
+.cell-rank text{
+  float:right;
 }
 .cell-rankR{
     color:rgba(237,111,105,1);

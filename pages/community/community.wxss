@@ -152,3 +152,14 @@ page{
     color:rgba(255,255,255,1);
     margin-top: 40rpx;
 }
+.noDynamic{
+  width:100%;
+  height:45rpx;
+  font-size:32rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(155,155,155,1);
+  line-height:45rpx;
+  margin-top:230rpx;
+  text-align:center;
+}
