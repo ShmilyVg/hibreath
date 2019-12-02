@@ -88,7 +88,7 @@ Page({
       isShare: !getSharedId,
     });
 
-    const { result: { nickname, headUrl, groupName, sharedId, rankNum, todayValue, dataDesc, ranklist, inRank } } = await whenDismissGroup(Protocol.postBreath({ groupId, sharedId: getSharedId }));
+    const { result: { nickname, headUrl, groupName, sharedId, rankNum, todayValue, dataDesc, ranklist, inRank } } = await whenDismissGroup(Protocol.postBreathDay({ groupId, sharedId: getSharedId }));
     this.setData({
       inRank: inRank,
       groupName: groupName,
