@@ -9,7 +9,7 @@
     <view class="{{todayValue == null?'punchList_Day2':'punchList_Day1'}}">
         <view wx:if="{{todayValue !== null}}" class="fatBurningState">{{dataDesc}}</view>
         <view wx:else class="fatBurningStateNull"></view>
-        <view wx:if="{{todayValue !== null}}" class="punchList_Day-Text1" style="margin-left:80rpx;">{{todayValue}}</view>
+        <view wx:if="{{todayValue !== null}}" class="punchList_Day-Text1" style="text-align:center;margin-left:-5rpx;">{{todayValue}}</view>
        
         <view wx:if="{{todayValue == null}}" class="punchList_Day-Text3" >未上榜</view>
         <view class="punchList_Day-Text4">今日燃脂</view>
