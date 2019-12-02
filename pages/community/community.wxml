@@ -95,5 +95,5 @@
     </view>
     <button class="community-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">创建新圈子</button>
 </view>
-<view class="noDynamic" wx:if="{{!dynamicList}}">暂无发表动态</view> 
+<view class="noDynamic" wx:if="{{dynamicList.length==0}}">暂无发表动态</view> 
 
