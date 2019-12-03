@@ -203,8 +203,8 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pages/createCommunity/createCommunity?groupId=' + groupId + '&name=' + name + '&imgUrl=' + imgUrl });
   }
   //自由日饮食原则
-  static navigateToIntroductionPlan() {
-    this.navigateTo({ url: '/pages/introductionPlan/introductionPlan'});
+  static navigateToProgrammeDetails() {
+    this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
   
 }
