@@ -231,10 +231,6 @@ Page({
             getApp().globalData.trendTime = null;
         }
         this.cellDataHandle({});
-      /*  setTimeout(() => {
-            console.log('绘制两次')
-            Circular.run();
-        },650)*/
     },
 
     onReady() {
