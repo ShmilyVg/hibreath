@@ -27,9 +27,9 @@ function deleteLineBreak(str) {
 }
 
 //PPM 小数位不为0则保留一位小数 不四舍五入  小数位为0 则取整 1.0=>1
-/*function resultRe(score){
+function resultRe(score){
     return parseFloat(( parseInt( score * 100 ) / 100 ).toFixed(1))
-}*/
+}
 function subStringNum(a) {
     var a_type = typeof(a);
     if (a_type == "number") {
@@ -58,6 +58,7 @@ function filterSpace(name){
 module.exports = {
     createDateAndTime,
     deleteLineBreak,
+    resultRe,
     subStringNum,
     createDateAndTime06,
     filterEmoji,
