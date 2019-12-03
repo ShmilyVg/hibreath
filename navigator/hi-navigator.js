@@ -187,8 +187,8 @@ export default class HiNavigator extends CommonNavigator {
      this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
     }
     //七日减脂方案详情
-  static navigateToCaseDetailsInformation({ schemaId }) {
-    this.navigateTo({ url: '/pages/caseDetailsInformation/caseDetailsInformation?schemaId=' + schemaId });
+  static navigateToCaseDetailsInformation({ planId }) {
+    this.navigateTo({ url: '/pages/caseDetailsInformation/caseDetailsInformation?planId=' + planId });
     }
   static navigateToSetup({ socialMemberInfo, currentSocial}) {
     this.navigateTo({ url: '/pages/set-up/set-up?socialMemberInfo=' + socialMemberInfo + '&currentSocial=' + currentSocial} );
@@ -202,4 +202,9 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToChangeCommunity({ groupId, name, imgUrl}) {
     this.navigateTo({ url: '/pages/createCommunity/createCommunity?groupId=' + groupId + '&name=' + name + '&imgUrl=' + imgUrl });
   }
+  //自由日饮食原则
+  static navigateToIntroductionPlan() {
+    this.navigateTo({ url: '/pages/introductionPlan/introductionPlan'});
+  }
+  
 }

@@ -332,6 +332,10 @@ export default class Protocol {
     static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
     }
+    //七日减脂方案详情
+   static fatReducingSchemeInfo({ planId }) {
+     return Network.request({ url: 'losefatSchema/info', data: { planId } });
+    }
     //更改圈子名字
   static postUpdataMember({ name,groupId }) {
     return Network.request({ url: 'group/member/update', data: { name, groupId } });
