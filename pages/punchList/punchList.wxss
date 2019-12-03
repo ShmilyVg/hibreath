@@ -251,10 +251,14 @@ page{
     background:rgba(245,245,245,1);
 }
 .cell-rank{
+    width:45rpx;
     font-size:40rpx;
     font-family:DINCondensed-Bold,DINCondensed;
     font-weight:bold;
     float: left;
+}
+.cell-rank text{
+  float:right;
 }
 .cell-rankR{
     color:rgba(237,111,105,1);
@@ -306,7 +310,7 @@ page{
   font-family:PingFang-SC-Regular,PingFang-SC;
   font-weight:400;
   color:rgba(237,111,105,1);
-  margin-left:60rpx;
+  margin-left:53rpx;
   margin-top:-30rpx;
   text-align:center;
   line-height:32rpx;
