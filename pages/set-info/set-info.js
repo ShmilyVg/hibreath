@@ -354,9 +354,13 @@ Page({
     },
     async onCommunitySettingClickEvent() {
         try {
-            const {tapIndex} = await showActionSheet({itemList: ['退出当前方案'],itemColor:"#ED6F69"});
+          const { tapIndex } = await showActionSheet({ itemList: ['查看方案介绍','退出当前方案'],itemColor:"#ED6F69"});
             switch (tapIndex) {
                 case 0:
+                    console.log(this.data.planId)
+                    HiNavigator.navigateToCaseDetailsInformation({ planId: this.data.planId });
+                    break;
+                case 1:
                     WXDialog.showDialog({
                         content: '确定要退出该方案吗',
                         showCancel: true,
@@ -392,7 +396,7 @@ Page({
             taskListAll: result.taskList,
         })
         const typesArr = result.taskList.map(d => d.type)
-        console.log("123213", typesArr)
+        //console.log("123213", typesArr)
         for (var i = 0; i < typesArr.length; i++) {
             if (typesArr[i] === "fatBurn") {
                 const fatBurnExt = result.taskList[i].ext;

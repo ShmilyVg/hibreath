@@ -1,0 +1,71 @@
+<!--pages/caseDetailsInformation/caseDetailsInformation.wxml-->
+<view class="programme-header">
+  <view class="programme-header-title">{{title}}</view>
+  <view class="title-box">
+    <view class="box-img box-img1">{{loseSugar}}<text>%</text>
+    </view>
+    <view class="box-text">帮你少摄入了约 {{loseSugar}}%糖类</view>
+    <view class="box-img box-img2">{{loseHot}}<text>km</text>
+    </view>
+    <view class="box-text-right">少摄入的热量相当于 跑了{{loseHot}}公里  </view>
+  </view>
+</view>
+<view class="programme-body">
+  <view class="day-list-content">
+    <view wx:for="{{dayList}}" class="day-list" wx:key="{{index}}">
+      <view class="day-list-header" style="background:#FFFFFF;">
+        <view style="display:flex;  align-items: center;" data-index='{{item.executeOrder - 1}}' catchtap="ifShow">
+          <view class="day-list-title" >
+            <view class="executeorder">
+              DAY{{item.executeOrder}}
+              <block wx:if="{{item.isHide}}">
+              ~DAY{{totalDay}}
+              </block>
+            </view>
+            <view class="day-title">{{item.title}}</view>
+          </view>
+          <image class="img-btn" wx:if="{{item.foodTask.list.length!==0}}" src="../../images/caseDetails/{{selectedFlag[index]? 'top':'bottom'}}.png"></image>
+        </view>
+        <view class="day-subtitle" wx:if="{{item.foodTask.list.length!==0}}">{{item.subTitle}}</view>
+        <view class="day-subtitle-box" wx:if="{{item.foodTask.list.length==0}}" bindtap="toIntroductionPlan">
+          <view class="day-subtitle-btn">查看饮食原则</view>
+        </view>
+      </view>
+
+      <view wx:if="{{item.foodTask.list.length!==0}}" hidden='{{!selectedFlag[index]}}'>
+        <view class="day-list-body">
+          <view class="foodlist-box-list">
+            <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
+              <view class="day-body-foodlist">
+                <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
+                  <view class="foodlist-tag">{{item.tag}}</view>
+                </view>
+                <view class="foodtask-desc" wx:for="{{item.subList}}" wx:key="{{index}}">
+                  <view style="width: 6rpx;height: 6rpx;border-radius: 50%;background: #AAA;float: left;margin-top: 12rpx;margin-right: 10rpx"></view>
+                  <view style="float: left;white-space: pre-line;width: 175rpx">{{item.title}} X{{item.dosage}}{{item.unit}}</view>
+                  <view class="clear"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="day-list-body-footer" wx:if="{{item.foodTask.subjoin && item.foodTask.subjoin.length >0}}">
+          <view class="body-footer-title">
+            <block class="body-footer-title">可选加餐：</block>
+            <block wx:for="{{item.foodTask.subjoin}}" wx:key="{{index}}">
+              <block class="addition-food">{{item}} </block>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="programme-footer-text">
+    <view class="footer-text-title">注意</view>
+    <view class="footer-text-list" wx:for="{{noticeList}}" wx:key="{{index}}">
+      <view class="footer-text-list-sequence">{{index+1}}</view>
+      <text class="footer-text-list-content">{{item}}</text>
+    </view>
+  </view>
+</view>
+

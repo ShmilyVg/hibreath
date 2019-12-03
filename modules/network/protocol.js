@@ -332,6 +332,10 @@ export default class Protocol {
     static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});
     }
+    //七日减脂方案详情
+   static getFatReducingScheme({ planId }) {
+     return Network.request({ url: 'losefatSchema/get', data: { planId } });
+    }
     //更改圈子名字
   static postUpdataMember({ name,groupId }) {
     return Network.request({ url: 'group/member/update', data: { name, groupId } });
@@ -400,5 +404,17 @@ export default class Protocol {
         return new Promise((resolve, reject) =>
             this.wxReLogin(resolve, reject)
         );
+    }
+    //删除体重记录
+  static postDeleteWeightData({ id}) {
+      return Network.request({ url: 'weightData/delete', data: { id } })
+    }
+    //删除血压记录
+  static postDeleteBloodPressureData({ id }) {
+      return Network.request({ url: 'bloodPressureData/delete', data: { id } })
+    }
+    //删除心率记录
+  static postDeleteHeartData({ id }) {
+      return Network.request({ url: 'heartData/delete', data: { id} })
     }
 }
