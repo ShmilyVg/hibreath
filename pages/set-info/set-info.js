@@ -1098,7 +1098,7 @@ Page({
         return {
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
-            imageUrl:this.data.shareImg
+            imageUrl:this.data.shareImg,
         };
         console.log('indexDayDesc',this.data.shareImg)
 
