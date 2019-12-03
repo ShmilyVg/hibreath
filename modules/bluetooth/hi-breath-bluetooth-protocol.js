@@ -28,7 +28,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 /*return {state: ProtocolState.PRE_HOT_START};*/
                   return {state: ProtocolState.BREATH_RESTART};
             },
-            //由设备发出的显示结果请求
+            //由设备发出的显示结果请求 在线检测结果处理
             '0x36': ({dataArray}) => {
                 console.log(dataArray,"77777")
                 super.sendData({command: '0x37'});
@@ -37,6 +37,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 const dou = HexTools.hexArrayToNum(dataArray.slice(5, 6));
                 const finalDou = '0' + Math.floor(dou >= 100 ? dou / 10 : dou);
                 const result = HexTools.hexArrayToNum(dataArray.slice(4, 5)) + '.' + finalDou.slice(-2);
+                console.log('在线检测结果打印log',dou,finalDou,result)
                 return {state: ProtocolState.BREATH_RESULT, dataAfterProtocol: {result, timestamp}};
             },
             '0x38': () => {

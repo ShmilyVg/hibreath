@@ -859,7 +859,18 @@ Page({
         const {currentTarget: {dataset: {type}}} = e;
         switch (type) {
             case 'fatBurn':
-                HiNavigator.navigateIndex();
+                wx.openBluetoothAdapter({
+                    success (res) {
+                        HiNavigator.navigateIndex();
+                    },
+                    fail (res) {
+                        if(res.errCode == 10001 ||res.errCode == 10000){
+                            setTimeout(() => {
+                                WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                            },200);
+                        }
+                    }
+                })
                 break
             case 'bodyIndex':
                 this.showModal();
