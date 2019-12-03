@@ -278,7 +278,7 @@ Page({
                 console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
-                    const toolfinalResult = tools.subStringNum(finalResult.result)/10
+                    const toolfinalResult = tools.resultRe(tools.subStringNum(finalResult.result)/10)
                     log.warn('在线检测数值处理前',finalResult.result)
                     log.warn('在线检测数值处理后',toolfinalResult)
                     Protocol.getBreathDataAdd({
