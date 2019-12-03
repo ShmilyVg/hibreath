@@ -6,7 +6,7 @@ import { getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, 
 import HiNavigator from "../../navigator/hi-navigator";
 import { Toast, WXDialog } from "heheda-common-view";
 import { dealInputEvent } from "./manager";
-
+import { previewImage, showActionSheet } from "../../view/view";
 const timeObj = {
   _frontTimestamp: 0,
   _endTimestamp: 0,
@@ -157,7 +157,7 @@ Page({
     if (isRefresh) {
       this.data.dataList = [];
     }
-    
+
     const isBloodPressure = topChose[currentIndex].type === 'bloodPressure';
     list.forEach((value) => {
       const { time, dateX } = Tools.createDateAndTime(value.time * 1000);
@@ -255,5 +255,62 @@ Page({
   choseItem() {
     return this.data.currentIndex;
   },
+  async deleteDataValue(e) {
+    try {
+      const { tapIndex } = await showActionSheet({ itemList: ['删除记录'], itemColor: "#ED6F69" });
+      switch (tapIndex) {
+        case 0:
+          WXDialog.showDialog({
+            content: '确定要删除记录',
+            showCancel: true,
+            confirmText: "确定",
+            cancelText: "取消",
+            confirmEvent: () => {
+              
+              if (this.data.currentIndex == 0) {
+                // console.log('体重')
+                // console.log(e)
+                // console.log(e.currentTarget.dataset.index)
+                this.data.id = e.currentTarget.dataset.index;
+                const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
+                Protocol.postDeleteWeightData({ id: this.data.id }).then(async () =>{
+                  let { result: { list: weightDataList } } = await Protocol.postWeightDataListAll({
+                    timeBegin,
+                    timeEnd
+                  });
+                  }
+                )
+              } else if (this.data.currentIndex == 0) {
+                this.data.id = e.currentTarget.dataset.index;
+                const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
+                Protocol.postDeleteBloodPressureData({ id: this.data.id }).then(async () => {
+                  let { result: { list: weightDataList } } = await Protocol.postBloodPressureDataListAll({
+                    timeBegin,
+                    timeEnd
+                  });
+                }
+                )
+              } else {
+                this.data.id = e.currentTarget.dataset.index;
+                const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
+                Protocol.postDeleteHeartData({ id: this.data.id }).then(async () => {
+                  let { result: { list: weightDataList } } = await Protocol.postHeartDataListAll({
+                    timeBegin,
+                    timeEnd
+                  });
+                }
+                )
+              }
+            },
+            cancelEvent: () => {
+
+            }
+          });
+          break;
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 
 });
