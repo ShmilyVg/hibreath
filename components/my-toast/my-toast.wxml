@@ -1,0 +1,5 @@
+<!--components/my-toast/my-toast.wxml-->
+<view class="my-toast-view">
+    <image src="{{toastImg}}" style="width: 103rpx;height: 79rpx"></image>
+    <view>{{toastText}}</view>
+</view>

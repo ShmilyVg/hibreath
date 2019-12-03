@@ -8,6 +8,7 @@
     "setting": "../../components/setting/index",
     "pickerDate":"../../components/pickerDate/index",
     "my-swiper":"../../components/my-swiper/index",
-    "my-swiper-target": "../../components/my-swiper-target/index"
+    "my-swiper-target": "../../components/my-swiper-target/index",
+    "exciting-window":"../../components/exciting-window/exciting-window"
   }
 }

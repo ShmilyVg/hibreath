@@ -512,23 +512,6 @@ Page({
                     })
                 }
             }
-            /*if(this.data.sharedId){
-                const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
-                if(result.fatBurn){
-                    this.setData({
-                        shareFat:result.fatBurn,
-                        shareFatBurnDesc:result.fatBurnDesc
-                    })
-                }
-                this.setData({
-                    shareTodayDif:result.todayDif,
-                    shareTotalDif:result.totalDif,
-                    shareTaskList:result.taskList,
-                })
-            }
-
-            Shared.getImageInfo(this)
-            Shared.screenWdith(this)*/
         }
 
         setTimeout(() => {
@@ -648,7 +631,7 @@ Page({
     showDialog(content) {
         WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
-
+    /*新手引导返回上一步*/
     back() {
         this.setData({
             page: --this.data.page

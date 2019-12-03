@@ -33,7 +33,7 @@ Component({
         placeholderText:'评论',
         isReply:false,//回复标志位 区别评论
         commentId:'',//评论Id
-        textareaHeight:0
+        textareaHeight:0,
     },
     lifetimes: {
         created() {
@@ -125,6 +125,17 @@ Component({
                 'message.praiseInfo.list.':result.praiseInfo.list,
                 'message.action.liked':!this.data.message.action.liked,
             })
+            if(result.action.liked){
+                this.setData({
+                    showMytoast:true,
+                    toastType:'giveLike'
+                })
+                setTimeout(()=>{
+                    this.setData({
+                        showMytoast:false,
+                    })
+                },1000)
+            }
             this.data.listArray = []
             this.undateName(result.praiseInfo.list)
         },
@@ -191,13 +202,30 @@ Component({
         async finComment(){
             await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent}));
             this.undateComment()
-            toast.success('评论成功',800);
+            //toast.success('评论成功',800);
+            this.setData({
+                showMytoast:true,
+                toastType:'comment'
+            })
+            setTimeout(()=>{
+                this.setData({
+                    showMytoast:false,
+                })
+            },1000)
         },
         //完成回复
         async finCReply(){
             await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent,commentId:this.data.commentId}));
             this.undateComment()
-            toast.success('回复成功',800);
+            this.setData({
+                showMytoast:true,
+                toastType:'reComment'
+            })
+            setTimeout(()=>{
+                this.setData({
+                    showMytoast:false,
+                })
+            },1000)
         },
         //多行输入
         textBindinput(e){

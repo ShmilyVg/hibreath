@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "my-toast": "../my-toast/my-toast"
+
   }
 }

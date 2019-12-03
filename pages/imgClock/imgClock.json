@@ -2,6 +2,7 @@
   "component": true,
   "navigationBarTitleText": "发表动态",
   "usingComponents": {
-    "popup": "../../components/dialog/dialog"
+    "popup": "../../components/dialog/dialog",
+    "my-toast": "../../components/my-toast/my-toast"
   }
 }

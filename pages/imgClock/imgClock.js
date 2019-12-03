@@ -60,7 +60,17 @@ Page({
             console.log(this.groupId)
             Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
                 wx.hideLoading();
-                HiNavigator.switchToCommunity();
+
+                this.setData({
+                    showMytoast:true,
+                    toastType:'imgClock'
+                })
+                setTimeout(()=>{
+                    this.setData({
+                        showMytoast:false,
+                    })
+                    HiNavigator.switchToCommunity();
+                },1000)
 
             });
 

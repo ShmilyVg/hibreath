@@ -1,0 +1,36 @@
+/* components/exciting-window/exciting-window.wxss */
+.exciting-window-container {
+   /* height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+    opacity: 0.8;
+    background-color: #000000;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .85);
+    z-index: 10;
+    padding-top: 100rpx;
+}
+.exciting-window-show{
+    width: 750rpx;
+    height: 966rpx;
+    margin: 0 auto;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    animation:myOne 1s  infinite alternate;
+}
+@keyframes myOne{
+    0% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    20% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+    40% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    60% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+    80% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    100% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+}
