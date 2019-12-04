@@ -44,6 +44,7 @@ Page({
         this.e= e;
         this.cellDataHandle({});
         this.init();
+        /*存在id 即为在线检测进入结果页面*/
         if (e.id) {
             this.dataId =e.id;
             const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: this.dataId});
@@ -54,6 +55,25 @@ Page({
                 console.log('绘制一次')
                 Circular.run();
             },500)
+            const {result} = await Protocol.postIncentive();
+            if(result.taskInfo.fatBurn.todayFirst){
+                this.setData({
+                    showExcitation: true,
+                    toastType:'fatBurn',
+                    toastResult:result,
+                })
+            }else{
+                this.setData({
+                    showMytoast:true,
+                    toastType:'fatBurn'
+                })
+                setTimeout(()=>{
+                    this.setData({
+                        showMytoast:false,
+                    })
+                },1000)
+            }
+
         } else if (e.score) {
             const {fatText, fatTextEn, fatDes, score} = e;
             this.setData({
