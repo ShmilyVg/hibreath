@@ -818,3 +818,29 @@ swiperLi1{
  vertical-align: middle;
  margin-right:5rpx;
 }
+.timeHeader{
+  padding:0 40rpx;
+  height:122rpx;
+  line-height:122rpx;
+}
+.timeHeader-left{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(155,155,155,1);
+  line-height:28rpx;
+}
+.timeHeader-center{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(41,41,48,1);
+  line-height:28rpx;
+}
+.timeHeader-right{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:#ED6F69;
+  line-height:28rpx;
+}

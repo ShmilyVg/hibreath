@@ -57,7 +57,7 @@
                     </view>
                 </picker>-->
                 <pickerDate bind:childSecDate='showBirth'
-                            style="width: 100%;margin-top:-55rpx; "
+                            style="width: 100%;margin-top:-55rpx;"
                             birth="{{birth}}"
                             info="{{info}}"
                 ></pickerDate>
@@ -152,9 +152,20 @@
                     </view>
                 </block>
                 <block wx:else>
-                    <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
+                    <!-- <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
                           hover-stay-time="50" bindtap="continue">开启正式的减脂历程
-                    </view>
+                    </view> -->
+                 
+                      <!-- 增加弹窗 -->
+                         <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
+                          hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
+                         </view>
+
+
+                     <!--底部弹窗-->
+                  
+                      <!--底部弹窗-->
+                      <!-- 增加弹窗 -->
                 </block>
             </view>
         </view>
@@ -221,7 +232,21 @@
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
 <!--<view class="commodity_screen" bindtap="hideModal"></view>
 <view animation="{{animationData}}" class="commodity_attr_box">-->
-    <form bindsubmit='formSubmit'>
+    <view wx:if="{{page==8&&showNewInfo}}">
+   
+<view class="flex-row timeHeader" style="justify-content: space-between;">
+        <view class="timeHeader-left"  bindtap="hideModalCancel" >取消</view>
+        <view class="timeHeader-center">请选择开始时间</view>
+        <view class="timeHeader-right"  bindtap="hideModalConfirm">确定</view>
+     </view>
+     <view class="clear"></view>
+      <pickerDateStart bind:childSecDate='showBirthStart'
+                            style="width: 100%;margin-top:30rpx;"
+                            birth="{{birth}}"
+                            info="{{info}}"
+      ></pickerDateStart>
+    </view>
+    <form bindsubmit='formSubmit' wx:else>
         <button  bindtap="hideModal" class="commodity_clear">取消</button>
        <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
         <button class="commodity_sub" form-type='submit'>提交</button>
@@ -249,6 +274,7 @@
             <view class="clear"></view>
         </view>
     </form>
+    
 </view>
 
 <!--底部弹窗-->

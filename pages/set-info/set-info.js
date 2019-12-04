@@ -90,7 +90,9 @@ Page({
         shareImg:"",
         bgImg:"../../images/set-info/shareBg.png",//分享背景
         textBg:'../../images/set-info/textBg.png',
-        //shareTextList:['分享给好友或群']
+        //shareTextList:['分享给好友或群'],
+        date: '2019-12-04',
+        startTime:''
     },
     onFocus: function (e) {
         this.setData({
@@ -697,6 +699,14 @@ Page({
             'info.birthday': e.detail,
         })
     },
+    //开始时间
+   showBirthStart(e){
+     console.log('dddddd', e.detail)
+     this.setData({
+       'info.startTime': e.detail
+     })
+     console.log(this.data.info)
+   },
     bindInputHeight(e) {
         const height = e.detail.value;
         let weightGoal = (height / 100) * (height / 100) * 21;
@@ -861,6 +871,7 @@ Page({
     //去完成按钮
     bindTapToFinish(e) {
         const {currentTarget: {dataset: {type}}} = e;
+        console.log(e);
         switch (type) {
             case 'fatBurn':
                 wx.openBluetoothAdapter({
@@ -1087,14 +1098,28 @@ Page({
             this.setData({
                 animationData: animation.export()
             })
-        }.bind(this), 200)
+        }.bind(this), 200);
+     
     },
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-        })
-        this.handleTasks();
+        }) 
+        this.handleTasks();    
     },
+    hideModalConfirm(){
+      this.setData({
+        showModalStatus: false
+      });
+      this.continue();
+    },
+    hideModalCancel(){
+      this.setData({
+        showModalStatus: false
+      });
+    },
+
+
 
     /**
      * 用户点击右上角分享
@@ -1170,5 +1195,19 @@ Page({
 
         wx.stopPullDownRefresh();
         Toast.hiddenLoading();
-    }
+    },
+    bindDateChange: function (e) {
+      this.setData({
+        date: e.detail.value
+      })
+    },
+   async bindTimeChange(){
+     await Protocol.postMembersJoinSchema({ schemaId: this.data.schemaId });
+     this.handleTasks();
+     this.setData({
+       showNewInfo: false
+     })
+   },
+ 
+
 })
