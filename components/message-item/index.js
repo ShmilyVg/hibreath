@@ -103,8 +103,7 @@ Component({
         async undateComment(){
             const {result} = await this.whenDismissGroup(Protocol.postCommentList({dynamicId:this.data.message.id,pageSize:50000}));
             this.setData({
-                'message.commentInfo.list':result.list,
-                'message.commentInfo.totalCount':result.list.length
+                'message.commentInfo.list':result.list
             })
         },
         async onImagePreview(e) {
