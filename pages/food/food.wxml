@@ -44,3 +44,9 @@
   <view class="empty-text">暂无记录</view>
 </view>
 
+<!--toast弹窗-->
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
+>
+</my-toast>

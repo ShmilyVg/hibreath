@@ -69,6 +69,18 @@ Component({
                     toastText:'体重信息已记录啦！'
                 })
             }
+            if(this.data.toastType =='blood'){
+                this.setData({
+                    toastImg:'../../images/toast/blood.png',
+                    toastText:'血压信息已记录啦！'
+                })
+            }
+            if(this.data.toastType =='heart'){
+                this.setData({
+                    toastImg:'../../images/toast/heart.png',
+                    toastText:'心率信息已记录啦！'
+                })
+            }
         },
         detached() {
 
