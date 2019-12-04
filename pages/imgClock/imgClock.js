@@ -7,6 +7,7 @@ import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {PostUrl, UploadUrl} from "../../utils/config";
 import * as tools from "../../utils/tools";
+const app = getApp();
 Page({
 
     data: {
@@ -60,8 +61,9 @@ Page({
             console.log(this.groupId)
             Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
                 wx.hideLoading();
-
-                this.setData({
+                app.globalData.isImgClock = true
+                HiNavigator.switchToCommunity();
+            /*    this.setData({
                     showMytoast:true,
                     toastType:'imgClock'
                 })
@@ -70,7 +72,7 @@ Page({
                         showMytoast:false,
                     })
                     HiNavigator.switchToCommunity();
-                },1000)
+                },1000)*/
 
             });
 

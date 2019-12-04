@@ -136,6 +136,18 @@ Page({
         }
     },
     async onShow() {
+        if(app.globalData.isImgClock){
+            app.globalData.isImgClock=false
+            this.setData({
+                showMytoast:true,
+                toastType:'imgClock'
+            })
+            setTimeout(()=>{
+                this.setData({
+                    showMytoast:false,
+                })
+            },1000)
+        }
         // if (this.isUpdateAllWhenLoad) {
         wx.getSetting({
             success: (res) => {

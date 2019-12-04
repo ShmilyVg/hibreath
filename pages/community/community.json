@@ -6,6 +6,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "setting": "../../components/setting/index",
-    "message-item": "../../components/message-item/index"
+    "message-item": "../../components/message-item/index",
+    "my-toast": "../../components/my-toast/my-toast"
   }
 }
