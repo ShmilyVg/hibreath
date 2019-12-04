@@ -4,6 +4,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "message-item": "../../components/message-item/index",
-    "my-toast": "../../components/my-toast/my-toast"
+    "my-toast": "../../components/my-toast/my-toast",
+    "exciting-window":"../../components/exciting-window/exciting-window"
   }
 }

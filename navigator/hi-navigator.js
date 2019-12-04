@@ -148,8 +148,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToMessageDetail({messageId}) {
         this.navigateTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
     }
-    static redirectToMessageDetail({messageId}) {
-        this.redirectTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
+    static redirectToMessageDetail({messageId,taskId}) {
+        this.redirectTo({url: '/pages/message-detail/message-detail?messageId=' + messageId + '&taskId=' + taskId});
     }
 
     static navigateToFoodRuler() {
@@ -206,5 +206,5 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToProgrammeDetails() {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
-  
+
 }

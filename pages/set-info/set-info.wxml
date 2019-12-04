@@ -214,16 +214,21 @@
         <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
     </view>
 </view>
-<!--打卡完成激励弹窗-->
-<!--
-<exciting-window
-        wx:if="{{showExcitation}}"
-        setType="fatBurn"
-
+<!--非首次打卡完成toast弹窗-->
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
 >
 
+</my-toast>
+<!--首次打卡完成激励弹窗-->
+<exciting-window
+        wx:if="{{showExcitation}}"
+        bind:getShowExcitation="getShowExcitation"
+        toastType="{{toastType}}"
+        toastResult="{{toastResult}}"
+>
 </exciting-window>
--->
 
 <!--底部弹窗-->
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>

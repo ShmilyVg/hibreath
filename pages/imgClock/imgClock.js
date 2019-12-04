@@ -221,7 +221,7 @@ Page({
         Toast.showLoading();
         Protocol.postFood({ groupId: this.data.groupId,taskId:this.taskId,desc:this.data.desc,imgUrls:this.data.imageUrl}).then(data => {
             Toast.showLoading();
-            HiNavigator.redirectToMessageDetail({messageId: data.result.id});
+            HiNavigator.redirectToMessageDetail({messageId: data.result.id,taskId:this.taskId});
         });
         this.setData({
             ifShow: !this.data.ifShow
