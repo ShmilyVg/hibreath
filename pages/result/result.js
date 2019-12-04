@@ -62,6 +62,7 @@ Page({
                     showExcitation: true,
                     toastType:'fatBurn',
                     toastResult:result,
+                    canvasMargin:3000
                 })
             }else{
                 this.setData({
@@ -72,7 +73,7 @@ Page({
                     this.setData({
                         showMytoast:false,
                     })
-                },1000)
+                },1200)
             }
 
         } else if (e.score) {
@@ -86,7 +87,13 @@ Page({
             },500)
         }
     },
-
+    getShowExcitation(e){
+        console.log('e11',e)
+        this.setData({
+            showExcitation:e.detail.showExcitation,
+            canvasMargin:0
+        })
+    },
     init() {
         Trend.init(this);
         Trend.initTouchHandler();
