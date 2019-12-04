@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "bottom-dialog": "../../components/bottom-dialog/index"
+    "bottom-dialog": "../../components/bottom-dialog/index",
+    "my-toast": "../../components/my-toast/my-toast"
   }
 }

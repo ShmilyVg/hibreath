@@ -63,7 +63,22 @@
     </view>
     <view style="height: 120rpx;width: 100%"></view>
 </block>
-<!--<view style="height: 60rpx;width: 100%"></view>-->
+
+<!--非首次打卡完成toast弹窗-->
+<my-toast
+          wx:if="{{showMytoast}}"
+          toastType="{{toastType}}"
+>
+
+</my-toast>
+<!--首次完成饮食打卡激励弹窗-->
+<exciting-window
+        wx:if="{{showExcitation}}"
+        bind:getShowExcitation="getShowExcitation"
+        toastType="{{toastType}}"
+        toastResult="{{toastResult}}"
+>
+</exciting-window>
 <!--评论多行输入-->
 <view class="commentTextView" style="z-index: 999;">
     <!--<textarea

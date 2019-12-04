@@ -103,3 +103,10 @@
     <view style="text-align: center">为了给您带来更好的体验</view>
     <view style="text-align: center"> 即将为设备进行升级</view>
 </modal>
+<!--打卡完成激励弹窗-->
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
+>
+
+</my-toast>

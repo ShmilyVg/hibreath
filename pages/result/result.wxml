@@ -74,8 +74,20 @@
     </view>
   </block>
 </view>
-
-
+<!--非首次打卡完成激励弹窗-->
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
+>
+</my-toast>
+<!--首次打卡完成激励弹窗-->
+<exciting-window
+        wx:if="{{showExcitation}}"
+        bind:getShowExcitation="getShowExcitation"
+        toastType="{{toastType}}"
+        toastResult="{{toastResult}}"
+>
+</exciting-window>
 <!-- 弹窗组件 -->
 <!--<view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
     <view class="result-container">

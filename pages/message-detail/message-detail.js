@@ -49,6 +49,26 @@ Page({
         this.data.listArray = []
         this.undateName(result.praiseInfo.list)
         this.undateComment()
+        if(options.taskId){
+            const {result} = await Protocol.postIncentive();
+            if(result.taskInfo.food.todayFirst){
+                this.setData({
+                    showExcitation: true,
+                    toastType:'food',
+                    toastResult:result,
+                })
+            }else{
+                this.setData({
+                    showMytoast: true,
+                    toastType:'imgClock',
+                })
+                setTimeout(()=>{
+                    this.setData({
+                        showMytoast:false,
+                    })
+                },1000)
+            }
+        }
     },
     async onShow(){
     },
@@ -69,6 +89,11 @@ Page({
             commentInfoList:result.list,
             commentInfoTime: getDynamicCreateTime(result.createTimestamp),
             'message.commentInfo.totalCount':result.list.length
+        })
+    },
+    getShowExcitation(e){
+        this.setData({
+            showExcitation:e.detail.showExcitation,
         })
     },
      onPullDownRefresh() {
@@ -108,6 +133,17 @@ Page({
         this.setData({
             result:result,
         })
+        if(result.action.liked){
+            this.setData({
+                showMytoast:true,
+                toastType:'giveLike'
+            })
+            setTimeout(()=>{
+                this.setData({
+                    showMytoast:false,
+                })
+            },1000)
+        }
         this.data.listArray = []
         this.undateName(result.praiseInfo.list)
     },
@@ -157,13 +193,29 @@ Page({
     async finComment(){
         await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent}));
         this.undateComment()
-        toast.success('评论成功',800);
+        this.setData({
+            showMytoast:true,
+            toastType:'comment'
+        })
+        setTimeout(()=>{
+            this.setData({
+                showMytoast:false,
+            })
+        },1000)
     },
     //完成回复
     async finCReply(){
         await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent,commentId:this.data.commentId}));
         this.undateComment()
-        toast.success('回复成功',800);
+        this.setData({
+            showMytoast:true,
+            toastType:'reComment'
+        })
+        setTimeout(()=>{
+            this.setData({
+                showMytoast:false,
+            })
+        },1000)
     },
     //多行输入
     textBindinput(e){

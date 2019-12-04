@@ -3,6 +3,8 @@
   "navigationBarTitleText": "动态详情",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "message-item": "../../components/message-item/index"
+    "message-item": "../../components/message-item/index",
+    "my-toast": "../../components/my-toast/my-toast",
+    "exciting-window":"../../components/exciting-window/exciting-window"
   }
 }

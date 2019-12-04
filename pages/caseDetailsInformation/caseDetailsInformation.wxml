@@ -18,8 +18,8 @@
           <view class="day-list-title" >
             <view class="executeorder">
               DAY{{item.executeOrder}}
-              <block wx:if="{{item.isHide}}">
-              ~DAY{{totalDay}}
+              <block wx:if="{{item.endExecuteOrder>0}}">
+              ~DAY{{item.endExecuteOrder}}
               </block>
             </view>
             <view class="day-title">{{item.title}}</view>

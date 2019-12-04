@@ -232,12 +232,39 @@ Page({
           case 0:
             const { value: finalValue } = await dealInputEvent({ value, inputType });
             await Protocol.postWeightDataAdd(finalValue);
+              this.setData({
+                  showMytoast:true,
+                  toastType:'weight'
+              })
+              setTimeout(()=>{
+                  this.setData({
+                      showMytoast:false,
+                  })
+              },1000)
             break;
           case 1:
             await Protocol.postBloodPressureDataAdd(value);
+              this.setData({
+                  showMytoast:true,
+                  toastType:'blood'
+              })
+              setTimeout(()=>{
+                  this.setData({
+                      showMytoast:false,
+                  })
+              },1000)
             break;
           case 2:
             await Protocol.postHeartDataAdd(value);
+              this.setData({
+                  showMytoast:true,
+                  toastType:'heart'
+              })
+              setTimeout(()=>{
+                  this.setData({
+                      showMytoast:false,
+                  })
+              },1000)
             break;
           default:
             break;
@@ -266,7 +293,7 @@ Page({
             confirmText: "确定",
             cancelText: "取消",
             confirmEvent: () => {
-              
+
               if (this.data.currentIndex == 0) {
                 // console.log('体重')
                 // console.log(e)

@@ -204,7 +204,8 @@ App({
         firstEnter: false,//被分享者 没有在圈子
         isShareAddcommunity:false,//是不是由圈子分享进入的圈子首页
         issueRefresh:false,//结果页跳转打卡页面 刷新标志位
-        isLogin:false//登录状态标志位
+        isLogin:false,//登录状态标志位
+        isImgClock:false
     },
     ...common
 });

@@ -2,6 +2,8 @@
   "navigationBarTitleText": "燃脂检测",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "navBar": "/components/navBar/navBar"
+    "navBar": "/components/navBar/navBar",
+    "exciting-window":"../../components/exciting-window/exciting-window",
+    "my-toast": "/components/my-toast/my-toast"
   }
 }

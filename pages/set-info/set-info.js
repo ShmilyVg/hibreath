@@ -139,7 +139,7 @@ Page({
     },
 
     //上传身体指标
-    formSubmit(e) {
+    async formSubmit(e) {
         console.log(e.detail.value)
         const finaValue = e.detail.value
         if (this.objIsEmpty(finaValue.weight)) {
@@ -186,13 +186,25 @@ Page({
             }
         }
         finaValue['taskId'] = this.data.taskId
-        Protocol.setBodyIndex(finaValue).then(data => {
-            this.handleTasks();
+        await Protocol.setBodyIndex(finaValue)
+        this.handleTasks();
+        this.setData({
+            showModalStatus: false,
+        })
+        const {result} = await Protocol.postIncentive();
+        if(result.taskInfo.bodyIndex.todayFirst){
             this.setData({
-                showModalStatus: false,
+                showExcitation: true,
+                toastType:'weight',
+                toastResult:result,
             })
-            toast.success('填写成功');
-        });
+        }
+    },
+    getShowExcitation(e){
+      console.log('e11',e)
+        this.setData({
+            showExcitation:e.detail.showExcitation,
+        })
     },
     //同步离线数据
     async onLoad(e) {
@@ -216,6 +228,8 @@ Page({
         this.connectionPage = new ConnectionManager(this);
         /* await that.handleGuide(that);*/
         this.handleBaseInfo();
+       /* const {result} = await Protocol.postIncentive();
+        console.log('result11',result.taskInfo.bodyIndex.weight)*/
     },
 
     async handleBaseInfo(resetPage) {
@@ -424,7 +438,7 @@ Page({
             }
             if (typesArr[i] === "bodyIndex") {
                 const bodyIndexExt = result.taskList[i].ext;
-                console.log(bodyIndexExt, "typesArr[i]")
+
                 if (result.taskList[i].finished) {
                     this.setData({
                         isbodyIndex: true,
@@ -518,23 +532,6 @@ Page({
                     })
                 }
             }
-            /*if(this.data.sharedId){
-                const {result} = await Protocol.postSharetask({sharedId:this.data.sharedId});
-                if(result.fatBurn){
-                    this.setData({
-                        shareFat:result.fatBurn,
-                        shareFatBurnDesc:result.fatBurnDesc
-                    })
-                }
-                this.setData({
-                    shareTodayDif:result.todayDif,
-                    shareTotalDif:result.totalDif,
-                    shareTaskList:result.taskList,
-                })
-            }
-
-            Shared.getImageInfo(this)
-            Shared.screenWdith(this)*/
         }
 
         setTimeout(() => {
@@ -654,7 +651,7 @@ Page({
     showDialog(content) {
         WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
-
+    /*新手引导返回上一步*/
     back() {
         this.setData({
             page: --this.data.page
@@ -1140,7 +1137,7 @@ Page({
         return {
             title: this.data.indexDayDesc,
             path: '/pages/taskShareInfo/taskShareInfo?sharedId=' + this.data.sharedId,
-            imageUrl:this.data.shareImg
+            imageUrl:this.data.shareImg,
         };
         console.log('indexDayDesc',this.data.shareImg)
 

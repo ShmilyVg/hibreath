@@ -365,6 +365,10 @@ export default class Protocol {
     static postChangeCommunity({ id, name, imgUrl=''}) {
       return Network.request({ url: 'group/put', data: { id, name, imgUrl } })
     }
+    //打卡激励信息
+    static postIncentive() {
+        return Network.request({url: 'members/task/incentive'});
+    }
     //获取电话号码
     static getPhoneNum({encryptedData, iv}) {
         return new Promise((resolve, reject) =>
