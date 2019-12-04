@@ -295,7 +295,7 @@ Page({
         }
 
     },
-  async deleteDataValue(){
+  async deleteDataValue(e){
     try {
       const { tapIndex } = await showActionSheet({ itemList: ['删除记录'], itemColor: "#ED6F69" });
       switch (tapIndex) {
@@ -307,9 +307,10 @@ Page({
             cancelText: "取消",
             confirmEvent: () => {
               console.log('燃脂')
-              this.data.id = e.currentTarget.dataset.index;
-              Protocol.postDeleteBreathData({ id: this.data.id }).then(() => {
-                this.cellDataHandle({ page = 1, isRefresh = true });
+              console.log(e)
+              this.data.breathid = e.currentTarget.dataset.index;
+              Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
+                this.cellDataHandle({});
               })
               
             },
