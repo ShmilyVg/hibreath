@@ -5,7 +5,6 @@
   "navigationBarTextStyle":"white",
   "usingComponents": {
     "modal": "../../components/modal/modal",
-    "navBar": "/components/navBar/navBar",
-    "my-toast": "../my-toast/my-toast"
+    "navBar": "/components/navBar/navBar"
   }
 }
