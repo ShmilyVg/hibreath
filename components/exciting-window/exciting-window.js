@@ -31,7 +31,6 @@ Component({
 */
         },
         attached() {
-            console.log('toastResulttoastResult',this.data.toastResult.taskInfo.bodyIndex,this.data.toastType)
             if(this.data.toastType === 'fatBurn'){
                 this.setData({
                     excitingTitleL:"燃脂情况",
@@ -44,13 +43,13 @@ Component({
                     this.setData({
                         excitingContent:"恭喜！比上次结果多出",
                         excitingReduce:false,
-                        excitingNumber:this.data.toastResult.taskInfo.bodyIndex.thanValue
+                        excitingNumber:this.data.toastResult.taskInfo.fatBurn.thanValue
                     })
-                }else if(this.data.toastResult.taskInfo.bodyIndex.thanValue<0){
+                }else if(this.data.toastResult.taskInfo.fatBurn.thanValue<0){
                     this.setData({
                         excitingContent:"比上次结果少了",
                         excitingReduce:true,
-                        excitingNumber:Math.abs(this.data.toastResult.taskInfo.bodyIndex.thanValue)
+                        excitingNumber:Math.abs(this.data.toastResult.taskInfo.fatBurn.thanValue)
                     })
                 }else{
                     this.setData({

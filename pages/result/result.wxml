@@ -14,7 +14,7 @@
   </view>
   <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
 </view>
-<view class='content'>
+<view class='content' style="margin-left: {{canvasMargin}}rpx">
   <canvas canvas-id="bg" class='canvasII'></canvas>
   <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
   <!--   <view class="result-line"></view>-->
