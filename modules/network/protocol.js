@@ -417,4 +417,8 @@ export default class Protocol {
   static postDeleteHeartData({ id }) {
       return Network.request({ url: 'heartData/delete', data: { id} })
     }
+  //删除燃脂记录
+  static postDeleteBreathData({ id }) {
+    return Network.request({ url: 'breathData/delete', data: { id } })
+  }
 }

@@ -26,7 +26,7 @@
 </view>
 
 <view class="bottom-view" wx:if="{{dataList.length}}">
-    <view wx:for="{{dataList}}" class="bottom-view-cell" bindtap="deleteDataValue" data-index="{{index}}">
+    <view wx:for="{{dataList}}" class="bottom-view-cell" bindtap="deleteDataValue" data-index="{{item.id}}">
         <view class="flex-column" style="width: 100%">
             <view class="flex-row" style="justify-content: space-between;width: 100%">
                 <view class="flex-column" style="margin-top: 40rpx;align-items:start">

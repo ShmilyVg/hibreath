@@ -296,37 +296,26 @@ Page({
 
               if (this.data.currentIndex == 0) {
                 // console.log('体重')
-                // console.log(e)
-                // console.log(e.currentTarget.dataset.index)
+                console.log(e)
+                console.log(e.currentTarget.dataset.index)
                 this.data.id = e.currentTarget.dataset.index;
                 const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
-                Protocol.postDeleteWeightData({ id: this.data.id }).then(async () =>{
-                  let { result: { list: weightDataList } } = await Protocol.postWeightDataListAll({
-                    timeBegin,
-                    timeEnd
-                  });
-                  }
-                )
-              } else if (this.data.currentIndex == 0) {
+                Protocol.postDeleteWeightData({ id: this.data.id }).then(()=>{
+                  this.handleListData({ isRefresh: true });
+                })
+
+              } else if (this.data.currentIndex == 1) {
                 this.data.id = e.currentTarget.dataset.index;
                 const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
-                Protocol.postDeleteBloodPressureData({ id: this.data.id }).then(async () => {
-                  let { result: { list: weightDataList } } = await Protocol.postBloodPressureDataListAll({
-                    timeBegin,
-                    timeEnd
-                  });
-                }
-                )
+                Protocol.postDeleteBloodPressureData({ id: this.data.id }).then(() => {
+                  this.handleListData({ isRefresh: true });
+                })
               } else {
                 this.data.id = e.currentTarget.dataset.index;
                 const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
-                Protocol.postDeleteHeartData({ id: this.data.id }).then(async () => {
-                  let { result: { list: weightDataList } } = await Protocol.postHeartDataListAll({
-                    timeBegin,
-                    timeEnd
-                  });
-                }
-                )
+                Protocol.postDeleteHeartData({ id: this.data.id }).then(() => {
+                  this.handleListData({ isRefresh: true });
+                })
               }
             },
             cancelEvent: () => {

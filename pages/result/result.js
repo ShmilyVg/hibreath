@@ -10,6 +10,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import * as Trend from "../../view/trend";
 import * as Circular from "./view/circular";
 import {getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString} from "../../utils/time";
+import { previewImage, showActionSheet } from "../../view/view";
 const timeObj = {
     _frontTimestamp: 0,
     _endTimestamp: 0,
@@ -287,4 +288,32 @@ Page({
         }
 
     },
+  async deleteDataValue(){
+    try {
+      const { tapIndex } = await showActionSheet({ itemList: ['删除记录'], itemColor: "#ED6F69" });
+      switch (tapIndex) {
+        case 0:
+          WXDialog.showDialog({
+            content: '确定要删除记录',
+            showCancel: true,
+            confirmText: "确定",
+            cancelText: "取消",
+            confirmEvent: () => {
+              console.log('燃脂')
+              this.data.id = e.currentTarget.dataset.index;
+              Protocol.postDeleteBreathData({ id: this.data.id }).then(() => {
+                this.cellDataHandle({ page = 1, isRefresh = true });
+              })
+              
+            },
+            cancelEvent: () => {
+
+            }
+          });
+          break;
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 });
