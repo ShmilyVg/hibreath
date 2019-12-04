@@ -1,0 +1,29 @@
+/* components/pickerDate/index.js.wxss */
+.pickerDate{
+    height: 166rpx;
+    width: 100%;
+    padding: 0rpx 102rpx;
+    box-sizing: border-box;
+    font-size:46rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+}
+.pickerDateColumn{
+    height: 166rpx;
+    border-top:1px solid red;
+    border-bottom:1px solid red;
+    text-align:center;
+}
+
+.pickerDateColumn-view{
+     color: #454545 ;
+     font-weight:500;
+     font-size:46rpx;
+     height:115rpx;
+     line-height: 115rpx;
+     text-align:center;
+}
+
+
+

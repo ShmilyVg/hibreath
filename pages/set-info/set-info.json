@@ -7,6 +7,7 @@
     "foodCard": "../../components/foodCard/foodCard",
     "setting": "../../components/setting/index",
     "pickerDate":"../../components/pickerDate/index",
+    "pickerDateStart": "../../components/pickerDateStart/index",
     "my-swiper":"../../components/my-swiper/index",
     "my-swiper-target": "../../components/my-swiper-target/index",
     "exciting-window":"../../components/exciting-window/exciting-window"

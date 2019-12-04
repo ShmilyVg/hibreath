@@ -1,0 +1,28 @@
+<!--components/pickerDate/index.js.wxml-->
+<view style="color:#454545;">
+    <!-- <picker-view indicator-style="height: 90px;"  class="pickerDate" value="{{value}}" bindchange="bindChange" style="height: 250px; ">
+        <picker-view-column class="pickerDateColumn" >
+            <view style="color:#454545;" wx:for="{{years}}"  wx:key="{{index}}" class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column class="pickerDateColumn" >
+            <view wx:for="{{months}}"  wx:key="{{index}}"class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column class="pickerDateColumn">
+            <view wx:for="{{days}}"  wx:key="{{index}}"class="pickerDateColumn-view">{{item}}</view>
+        </picker-view-column>
+    </picker-view> -->
+
+
+      <picker-view indicator-style="height: 55px; border-top:1px solid red; border-bottom:1px solid red;" style="width: 80%; height: 540rpx;margin-left:10% " value="{{value}}" bindchange="bindChange">
+    <picker-view-column >
+      <view wx:for="{{years}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{months}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{days}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}日</view>
+    </picker-view-column>
+  </picker-view>
+
+</view>
