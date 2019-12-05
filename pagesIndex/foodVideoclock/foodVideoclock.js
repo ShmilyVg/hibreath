@@ -58,10 +58,8 @@ Page({
                 duration: e.detail.duration
             })
         }
-        if(e.detail.currentTime === e.detail.duration){
-            await Protocol.postFoodvideo({taskId:this.dataId})
-            HiNavigator.switchToSetInfo()
-        }
+        console.log('e.detail.currentTime',e.detail.currentTime,e.detail.duration)
+
     },
     sliderChanging(e) {
         this.setData({
@@ -80,8 +78,9 @@ Page({
     },
 
     //视频播放完成后处理   视频自动连续播放&&ALL后弹窗 显示运动完成弹窗
-    bindended(){
-        this.nextVideo()
+    async bindended(){
+        await Protocol.postFoodvideo({taskId:this.dataId})
+        HiNavigator.switchToSetInfo()
     },
 
     cancel: function () {

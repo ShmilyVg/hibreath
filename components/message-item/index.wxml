@@ -47,7 +47,7 @@
         <view class="extraBottomview-commentView"
               hover-class="commentHover"
               wx:for="{{message.commentInfo.list}}"
-              wx:key="{{index}}"
+              wx:key="index"
               data-action="{{item.action}}"
               data-dataId="{{item.commentId}}"
               data-nickName="{{item.fromName}}"

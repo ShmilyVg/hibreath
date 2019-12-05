@@ -1,5 +1,5 @@
 <template name="foodVideo">
-    <view class="set-content-view flex-column" bindtap="bindTapToResultPage" >
+    <view class="set-content-view flex-column" bindtap="bindTapToVideo" data-dataId="{{id}}" data-videoUrl="{{ext.videoUrl}}">
         <view class="flex-row" style="justify-content: space-between;width: 100%;height: 78rpx">
             <view class="flex-row">
                 <image src="{{iconUrl}}" class="set-content-icon"></image>
