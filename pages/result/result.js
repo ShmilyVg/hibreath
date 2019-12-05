@@ -145,11 +145,13 @@ Page({
             }
             this.setData({trendData: list});
         } else {
-          console.log(list)
-             --this.data.page;
-          this.setData({
-            trendData:[]
-          })
+          if (isRefresh) {
+            this.setData({
+              trendData: []
+            })
+          } else {
+            --this.data.page;
+          }   
         }
         wx.stopPullDownRefresh();
         Toast.hiddenLoading();
