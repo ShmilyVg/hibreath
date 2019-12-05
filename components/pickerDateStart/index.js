@@ -5,7 +5,7 @@ const months = []
 const days = []
 const secYear = date.getFullYear();
 const secMopnth = date.getMonth() + 1;
-const secDay = date.getDate()+1;
+const secDay = date.getDate();
 const secMopnthMax = secMopnth;
 const secDayMax = secDay+14;
 
