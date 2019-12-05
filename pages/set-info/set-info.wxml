@@ -1,10 +1,9 @@
 <!--pages/set-info/set-info.wxml-->
-
-
 <import src="./view/guide.wxml"></import>
 <import src="./view/fatBurnCard.wxml"></import>
 <import src="./view/bodyIndexCard.wxml"></import>
 <import src="./view/HIITCard.wxml"></import>
+<import src="./view/foodVideo.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
     <block class="flex-column"  wx:if="{{showNewInfo}}">
 
@@ -131,7 +130,6 @@
                 <swiper bindchange="swiperChangeCase" style="height:620rpx;margin-top:-20rpx;" next-margin="125rpx" previous-margin="125rpx">
                         <block wx:for="{{project}}" wx:key="index">
                           <swiper-item style="width:100rpx;height:620rpx;" class="swiperLi">
-
                              <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:415rpx;height:620rpx;margin-left:35rpx;"></image>
                           </swiper-item>
                         </block>
@@ -155,7 +153,7 @@
                     <!-- <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
                           hover-stay-time="50" bindtap="continue">开启正式的减脂历程
                     </view> -->
-                 
+
                       <!-- 增加弹窗 -->
                          <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
                           hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
@@ -163,7 +161,7 @@
 
 
                      <!--底部弹窗-->
-                  
+
                       <!--底部弹窗-->
                       <!-- 增加弹窗 -->
                 </block>
@@ -176,9 +174,10 @@
         <view class="set-top-view flex-row">
             <view class="" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
                 <view class="set-top-title">{{indexgoalDesc}}</view>
-                <view class="set-top-content" style="float: left">{{indexDayDesc}}</view>
-                <view class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
-                <button class="set-top-contentS" style="float: left" bindtap="listenerButton">
+                <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>
+                <view wx:if="{{!caseOnReady}}" class="set-top-content" style="float: left">{{indexDayDesc}}</view>
+                <view wx:if="{{!caseOnReady}}" class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
+                <button wx:if="{{!caseOnReady}}" class="set-top-contentS" style="float: left" bindtap="listenerButton">
                     <image class="shareImg" src="../../images/set-info/shared.png"></image>
                     分享
                 </button>
@@ -190,7 +189,11 @@
             </view>
         </view>
         <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
-            <view wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
+            <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
+                <template is="foodVideo" wx:if="{{item.type =='videoFood'}}"  data="{{...item}}"></template>
+                <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}"  data="{{...item}}"></template>
+            </view>
+            <view wx:if="{{!caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
                 <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}"  data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
                 <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
                 <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
@@ -247,7 +250,7 @@
 <!--<view class="commodity_screen" bindtap="hideModal"></view>
 <view animation="{{animationData}}" class="commodity_attr_box">-->
     <view wx:if="{{page==8&&showNewInfo}}">
-   
+
 <view class="flex-row timeHeader" style="justify-content: space-between;">
         <view class="timeHeader-left"  bindtap="hideModalCancel" >取消</view>
         <view class="timeHeader-center">请选择开始时间</view>
@@ -288,7 +291,7 @@
             <view class="clear"></view>
         </view>
     </form>
-    
+
 </view>
 
 <!--底部弹窗-->

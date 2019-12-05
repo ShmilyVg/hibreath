@@ -405,6 +405,7 @@ Page({
         this.setData({
             planId:result.planId,
             sharedId:result.sharedId,
+            caseOnReady:result.onReady,
             indexDayDesc: result.dayDesc,
             indexfinishNum: result.finishNum,
             indexgoalDesc: result.goalDesc,
@@ -888,8 +889,11 @@ Page({
                 this.showModal();
                /* HiNavigator.navigateToDeviceUnbind();*/
                 break
-            case 'sport':
-                HiNavigator.navigateToFreeClock();
+            case 'videoFood':
+                HiNavigator.navigateTofoodVideoclock({id:e.currentTarget.dataset.dataid,videoUrl:e.currentTarget.dataset.videourl});
+                break
+            case 'videoLosefat':
+                HiNavigator.navigateTofoodVideoclock({id:e.currentTarget.dataset.dataid,videoUrl:e.currentTarget.dataset.videourl});
                 break
         }
     },
@@ -1096,13 +1100,13 @@ Page({
                 animationData: animation.export()
             })
         }.bind(this), 200);
-     
+
     },
     hideModal: function () {
         this.setData({
             showModalStatus: false,
-        }) 
-        this.handleTasks();    
+        })
+        this.handleTasks();
     },
     hideModalConfirm(){
       this.setData({
@@ -1205,6 +1209,6 @@ Page({
        showNewInfo: false
      })
    },
- 
+
 
 })
