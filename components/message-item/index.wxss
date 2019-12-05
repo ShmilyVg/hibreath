@@ -68,6 +68,7 @@
     width: 200rpx;
     height: 50rpx;
     display: flex;
+    line-height: 50rpx;
     align-items:center;
     float: left
 }
