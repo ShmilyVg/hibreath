@@ -699,7 +699,7 @@ Page({
     },
     //开始时间
    showBirthStart(){
-   
+
 
    },
     bindInputHeight(e) {
@@ -1107,8 +1107,6 @@ Page({
     },
     hideModalConfirm(){
       const startTime = this.selectComponent('#pickerDateStart').getDateStart();
-      debugger
-      
       this.setData({
         startTime,
         showModalStatus: false
