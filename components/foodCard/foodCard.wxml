@@ -5,7 +5,7 @@
             <image src="{{foodTask.iconUrl}}" class="set-content-icon"></image>
             <view class="flex-column" style="align-items: start;margin-left: 20rpx">
                 <view class="set-content-title">{{foodTask.title}}</view>
-                <view class="set-content-content">你知道怎样健康饮食么？</view>
+                <view class="set-content-content">{{foodTask.subTitle}}</view>
             </view>
         </view>
         <view wx:if="{{!foodTask.finished}}" class="set-content-toFinish" data-type="sport" data-finId="{{foodTask.id}}"

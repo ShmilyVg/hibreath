@@ -54,20 +54,17 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached: function () {
-      /*if(this.data.info.birthday)*/ 
-      console.log(years)
+      /*if(this.data.info.birthday)*/
+      console.log(years,months,days[0])
       const date = new Date()
-      console.log(date.getYear())
+      console.log('date.getYear()',date.getYear())
       this.data.value.push(secYear -1);
       this.data.value.push(secMopnth - 2)
       this.data.value.push(secDay -6)
       console.log('d3e1233213', this.data.value)
       this.setData({
         value: this.data.value
-
       })
-     
-      
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行
@@ -90,11 +87,11 @@ Component({
    */
   data: {
     years: years,
-    year: '',
+    year: years,
     months: months,
-    month: '',
+    month: months,
     days: days,
-    day: '',
+    day: days[0],
     value: [],
     secYear:''
   },
@@ -103,7 +100,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getDateStart(){
+      getDateStart(){
       const { year, month, day } = this.data;
       return year + '-' + month + '-' + day;
     },
@@ -116,11 +113,11 @@ Component({
         month: this.data.months[val[1]],
         day: this.data.days[val[2]],
       })
-      console.log('this.data.year+\'-\'+this.data.month+\'-\'+this.data.day', this.data.year + '-' + this.data.month + '-' + this.data.day)
+      console.log('99999', this.data.year + '-' + this.data.month + '-' + this.data.day)
       this.triggerEvent("childSecDate", { date: this.data.year + '-' + this.data.month + '-' + this.data.day});
     },
     setTime:function(){
-      
+
     }
   }
 })

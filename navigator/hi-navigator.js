@@ -30,6 +30,10 @@ export default class HiNavigator extends CommonNavigator {
         getApp().globalData.refreshIndexPage = refresh;
         wx.redirectTo({url: '/pagesIndex/index/index'});
     }
+    //准备日-视频打卡
+    static navigateTofoodVideoclock({id,videoUrl}) {
+        this.navigateTo({url: '/pagesIndex/foodVideoclock/foodVideoclock?id=' + id +'&videoUrl=' + videoUrl});
+    }
     //运动-自由打卡
     static navigateToFreeClock() {
         this.navigateTo({url: '/pages/freeClock/freeClock'});
@@ -42,7 +46,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToOnlyRaed({id}) {
         this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id + '&isOnlyread=true'});
     }
-    //完成打卡resultresult
+    //完成打卡
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }

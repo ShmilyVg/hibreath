@@ -114,6 +114,10 @@ export default class Protocol {
         return Network.request({url: 'sport/info', data: data})
     }
 
+    //准备日视频打卡完成
+    static postFoodvideo(data) {
+        return Network.request({url: 'task/commonFinish', data: data})
+    }
     //视频打卡完成
     static postHIITFin(data) {
         return Network.request({url: 'task/sportvideo', data: data})
