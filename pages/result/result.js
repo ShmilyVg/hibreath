@@ -39,7 +39,6 @@ Page({
         fatTextEn:'',
         fatDes:''
     },
-
     async onLoad(e) {
         console.log('eeeeeee', e)
         this.e= e;
@@ -146,7 +145,11 @@ Page({
             }
             this.setData({trendData: list});
         } else {
-            --this.data.page;
+          console.log(list)
+             --this.data.page;
+          this.setData({
+            trendData:[]
+          })
         }
         wx.stopPullDownRefresh();
         Toast.hiddenLoading();
@@ -310,9 +313,9 @@ Page({
               console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
-                this.cellDataHandle({ isRefresh: true })
+                 this.cellDataHandle({});
               })
-              
+
             },
             cancelEvent: () => {
 
