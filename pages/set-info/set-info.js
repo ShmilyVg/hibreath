@@ -627,7 +627,7 @@ Page({
                   });
                 break;
             case 8:
-                await Protocol.postMembersJoinSchema({schemaId: this.data.schemaId});
+            await Protocol.postMembersJoinSchema({ schemaId: this.data.schemaId, startTime: this.data.startTime});
                 this.handleTasks();
                 this.setData({
                     showNewInfo: false
@@ -698,12 +698,9 @@ Page({
         })
     },
     //开始时间
-   showBirthStart(e){
-     console.log('dddddd', e.detail)
-     this.setData({
-       'info.startTime': e.detail
-     })
-     console.log(this.data.info)
+   showBirthStart(){
+   
+
    },
     bindInputHeight(e) {
         const height = e.detail.value;
@@ -1109,9 +1106,14 @@ Page({
         this.handleTasks();
     },
     hideModalConfirm(){
+      const startTime = this.selectComponent('#pickerDateStart').getDateStart();
+      debugger
+      
       this.setData({
+        startTime,
         showModalStatus: false
       });
+      this.showBirthStart();
       this.continue();
     },
     hideModalCancel(){
