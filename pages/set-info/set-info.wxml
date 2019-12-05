@@ -254,11 +254,10 @@
         <view class="timeHeader-right"  bindtap="hideModalConfirm">确定</view>
      </view>
      <view class="clear"></view>
-      <pickerDateStart bind:childSecDate='showBirthStart'
-                            style="width: 100%;margin-top:30rpx;"
-                            birth="{{birth}}"
-                            info="{{info}}"
-      ></pickerDateStart>
+      <pickerDateStart id="pickerDateStart"
+                      style="width: 100%;margin-top:30rpx;"
+                          
+      ></pickerDateStart> 
     </view>
     <form bindsubmit='formSubmit' wx:else>
         <button  bindtap="hideModal" class="commodity_clear">取消</button>

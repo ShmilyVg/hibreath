@@ -3,16 +3,30 @@ const date = new Date()
 const years = []
 const months = []
 const days = []
+const secYear = date.getFullYear();
+const secMopnth = date.getMonth() + 1;
+const secDay = date.getDate()+1;
+const secMopnthMax = secMopnth;
+const secDayMax = secDay+14;
 
-for (let i = 1890; i <= date.getFullYear(); i++) {
+if (secDay + 14 > 31) {
+  secMopnthMax = secMopnth + 1,
+    secDayMax = secDay + 14 - 31,
+    secDay = 1
+}
+if (secMopnthMax > 12) {
+  secMopnth = 1,
+  secYear = secYear + 1
+}
+for (let i = secYear; i <= secYear; i++) {
   years.push(i)
 }
 
-for (let i = 1; i <= 12; i++) {
+for (let i = secMopnth; i <= secMopnthMax; i++) {
   months.push(i)
 }
 
-for (let i = 1; i <= 31; i++) {
+for (let i = secDay; i <= secDayMax; i++) {
   days.push(i)
 }
 Component({
@@ -40,17 +54,13 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached: function () {
-      /*if(this.data.info.birthday)*/
-      let date = new Date();
-      this.data.secYear = date.getYear();;
-      this.data.secMopnth = date.getMonth()+1;
-      this.data.secDay = date.getDate();
-      console.log(1111,this.data.secYear, date.getMonth(), date.getDate())
-      console.log(this.data.secYear)
-
-      this.data.value.push(this.data.secYear +11);
-      this.data.value.push(this.data.secMopnth - 2)
-      this.data.value.push(this.data.secDay +1)
+      /*if(this.data.info.birthday)*/ 
+      console.log(years)
+      const date = new Date()
+      console.log(date.getYear())
+      this.data.value.push(secYear -1);
+      this.data.value.push(secMopnth - 2)
+      this.data.value.push(secDay -6)
       console.log('d3e1233213', this.data.value)
       this.setData({
         value: this.data.value
@@ -93,19 +103,24 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getDateStart(){
+      const { year, month, day } = this.data;
+      return year + '-' + month + '-' + day;
+    },
     bindChange: function (e) {
       console.log(e, 'eeee')
       const val = e.detail.value
       this.setData({
+        value:[val[0],val[1],val[2]],
         year: this.data.years[val[0]],
         month: this.data.months[val[1]],
-        day: this.data.days[val[2]]
+        day: this.data.days[val[2]],
       })
       console.log('this.data.year+\'-\'+this.data.month+\'-\'+this.data.day', this.data.year + '-' + this.data.month + '-' + this.data.day)
-      this.triggerEvent("childSecDate", this.data.year + '-' + this.data.month + '-' + this.data.day);
+      this.triggerEvent("childSecDate", { date: this.data.year + '-' + this.data.month + '-' + this.data.day});
     },
     setTime:function(){
-     
+      
     }
   }
 })

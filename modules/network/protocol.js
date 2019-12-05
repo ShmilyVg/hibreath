@@ -167,8 +167,8 @@ export default class Protocol {
     static postMembersExit({planId}) {
         return Network.request({url: 'members/plan/exit',data: {planId}})
     }
-    static postMembersJoinSchema({schemaId}) {
-        return Network.request({url: 'members/joinSchema', data: {schemaId}})
+  static postMembersJoinSchema({ schemaId, startTime}) {
+    return Network.request({ url: 'members/joinSchema', data: { schemaId, startTime}})
     }
 
     static postSettingsLosefatSchema() {

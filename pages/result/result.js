@@ -310,7 +310,7 @@ Page({
               console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
-                this.cellDataHandle({});
+                this.cellDataHandle({ isRefresh: true })
               })
               
             },
