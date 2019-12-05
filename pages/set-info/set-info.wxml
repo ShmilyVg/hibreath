@@ -150,25 +150,12 @@
                     </view>
                 </block>
                 <block wx:else>
-                    <!-- <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
-                          hover-stay-time="50" bindtap="continue">开启正式的减脂历程
-                    </view> -->
-
-                      <!-- 增加弹窗 -->
-                         <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
-                          hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
-                         </view>
-
-
-                     <!--底部弹窗-->
-
-                      <!--底部弹窗-->
-                      <!-- 增加弹窗 -->
+                     <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
+                      hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
+                     </view>
                 </block>
             </view>
         </view>
-
-
     </block>
     <block wx:else>
         <view class="set-top-view flex-row">
@@ -212,9 +199,7 @@
 
                 </foodCard>
             </view>
-           <!-- <template is="fatBurnCard" wx:if="{{isfatBurn}}" data="{{fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
-            <template is="bodyIndexCard" wx:if="{{isbodyIndex}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
-            <template is="HIITCard" wx:if="{{isSport}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>-->
+
         </view>
     </block>
     <!--position: fixed;left: 900rpx;-->
@@ -259,8 +244,8 @@
      <view class="clear"></view>
       <pickerDateStart id="pickerDateStart"
                       style="width: 100%;margin-top:30rpx;"
-                          
-      ></pickerDateStart> 
+
+      ></pickerDateStart>
     </view>
     <form bindsubmit='formSubmit' wx:else>
         <button  bindtap="hideModal" class="commodity_clear">取消</button>

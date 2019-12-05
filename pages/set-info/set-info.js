@@ -893,6 +893,10 @@ Page({
                 break
         }
     },
+    //准备日 视频打卡完成后
+    bindTapToVideo(e){
+        HiNavigator.navigateTofoodVideoclock({id:e.currentTarget.dataset.dataid,videoUrl:e.currentTarget.dataset.videourl});
+    },
 
     async bindTapProject() {
       HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId});
