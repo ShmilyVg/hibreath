@@ -35,7 +35,8 @@
       "pages": [
         "index/index",
         "device-bind/device-bind",
-        "foodVideoclock/foodVideoclock"
+        "foodVideoclock/foodVideoclock",
+        "noticeList/noticeList"
       ]
     }
   ],

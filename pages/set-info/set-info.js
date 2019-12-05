@@ -411,6 +411,7 @@ Page({
             indexgoalDesc: result.goalDesc,
             indextaskNum: result.taskNum,
             taskListAll: result.taskList,
+            bgColorSetInfoPage: '#FEF6F2',
         })
         const typesArr = result.taskList.map(d => d.type)
         //console.log("123213", typesArr)
@@ -426,14 +427,12 @@ Page({
                         fatTextEn: fatBurnExt.des.en,
                         score: fatBurnExt.dataValue,
                         fatType:fatBurnExt.iconUrl,
-                        bgColorSetInfoPage: '#FEF6F2',
                         fatDes:fatBurnExt.visDes
                     });
                 } else {
                     this.setData({
                         isfatBurn: true,
                         fatBurnTask: result.taskList[i],
-                        bgColorSetInfoPage: '#FEF6F2'
                     });
                 }
             }
