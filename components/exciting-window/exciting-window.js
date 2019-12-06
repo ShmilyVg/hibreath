@@ -34,6 +34,7 @@ Component({
             if(this.data.toastType === 'fatBurn'){
                 this.setData({
                     excitingTitleL:"燃脂情况",
+                    todayFirst:this.data.toastResult.taskInfo.fatBurn.todayFirst,
                     excitingTitleR:"·"+this.data.toastResult.taskInfo.fatBurn.desZh,
                     excitingContent:"",
                     excitingNumber:Math.abs(this.data.toastResult.taskInfo.fatBurn.thanValue),
@@ -64,6 +65,7 @@ Component({
             if(this.data.toastType === 'weight'){
                 this.setData({
                     excitingTitleL:"身体评估",
+                    todayFirst:this.data.toastResult.taskInfo.bodyIndex.todayFirst,
                     excitingTitleR:"·"+"体重"+this.data.toastResult.taskInfo.bodyIndex.weight+"kg",
                 })
                 if(this.data.toastResult.taskInfo.bodyIndex.thanValue>0){
