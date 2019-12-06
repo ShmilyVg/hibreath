@@ -431,6 +431,6 @@ export default class Protocol {
   }
   //圈子通知清除
   static postNoticeUpdate() {
-    return Network.request({ url: 'group/dynamic/notice/updateAll'})
+    return Network.request({ url: 'group/dynamic/notice/delAll'})
   }
 }
