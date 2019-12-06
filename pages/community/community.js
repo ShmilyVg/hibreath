@@ -332,10 +332,21 @@ Page({
         Toast.hiddenLoading();
     },
     onShareAppMessage: function () {
+        this.setData({
+            isSharecomponent:false
+        })
+        wx.showTabBar({
+            fail: function () {
+                setTimeout(function () {
+                    wx.showTabBar()
+                }, 500)
+            }
+
+        });
         return {
-            title: this.data.socialMemberInfo.memberName+'邀请你加入['+this.data.socialMemberInfo.name+']',
+            title: this.data.socialMemberInfo.memberName+'邀请你加入',
             path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.socialMemberInfo.sharedId,
-            //imageUrl:'https://backend.hipee.cn/hipee-resource/images/hibreath/20191104/95748a6a66c2aa77818764b93a693ea8.o6zajs-zth1ke_1mwkyso5jiadbc.plktmxj2ockf95748a6a66c2aa77818764b93a693ea8.png'
+            imageUrl:this.data.shareImg
         };
     },
     onPageScroll: function (e) {

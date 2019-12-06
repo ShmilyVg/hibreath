@@ -2,7 +2,7 @@
 <view class="exciting-window-container" catchtouchmove="ture">
     <view class="exciting-window-show {{toastResult.taskNum === toastResult.finishNum?'exciting-window-showImg2':'exciting-window-showImg1'}}" animation="{{animation}}">
         <view class="exciting-Title">{{excitingTitleL}}{{excitingTitleR}}</view>
-        <view class="exciting-Content"wx:if="{{toastType !=='food' && todayFirst}}">
+        <view class="exciting-Content"wx:if="{{toastType !=='food' && showDif}}">
             <text style="color: #333;">{{excitingContent}}</text>
             <text style="color: #ED6F69;">{{excitingNumber}}</text>
             <text wx:if="{{excitingReduce}}">,别灰心继续加油</text>
