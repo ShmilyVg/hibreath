@@ -27,6 +27,10 @@ Page({
             updateState: true
         })
     },
+    onUnload(){
+        //控制首页打卡情况更新
+        getApp().globalData.issueRefresh = true
+    },
 
     onLoad: function (data) {
         this.dataId = data.id;

@@ -23,7 +23,7 @@
             <text class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</text>
         </view>
         <view class="flex-row align-items-center">
-            <button class="community-Bg" catchtap="showSharedID" open-type="share">
+            <button class="community-Bg" catchtap="showShared">
                 <image src="../../images/community/wx.png"class="community-Wx"></image>
                 <view class="community-member-description">邀请好友</view>
             </button>
@@ -70,7 +70,7 @@
             <view class="community-rank-text">打卡榜</view>
         </view>-->
     </view>
-    
+
     <message-item
             id="messageItem"
             class="fill-width" style="padding-bottom: 30rpx"
@@ -103,3 +103,13 @@
 >
 </my-toast>
 
+<!--分享相关 position: fixed;left: 900rpx;-->
+
+<view wx:if="{{isSharecomponent}}" class="shareContainer">
+    <!-- <view class='shareRow'>{{title}}</view>-->
+    <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
+    <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
+
+</view>
+<view wx:if="{{isSharecomponent}}" class='shareMask' bindtap='cancel'></view>
+<canvas style="width:500rpx;height:400rpx;position: fixed;left: 800rpx" canvas-id="myCanvas"></canvas>

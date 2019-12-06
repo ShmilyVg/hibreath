@@ -110,8 +110,13 @@ Page({
     onHide() {
         //离开时 告知蓝牙标志位 0x3D   0X02
         if(app.getLatestBLEState().connectState ==='connected'){
-            app.bLEManager.sendISpage({isSuccess: false});
-            console.log('小程序告知设备 此时未在打卡页面  不可以上传离线数据')
+            var pages = getCurrentPages()    //获取加载的页面
+            var currentPage = pages[pages.length-1]    //获取当前页面的对象
+            if(currentPage.route ==='pages/set-info/set-info'){
+                app.bLEManager.sendISpage({isSuccess: false});
+                console.log('小程序告知设备 此时未在打卡页面  不可以上传离线数据')
+            }
+
         }
         console.log('breath_user_info_input onHide info====', this.data.info);
         if (this.data.info) {
@@ -340,8 +345,12 @@ Page({
                      },200);
                 }*/
                if(app.getLatestBLEState().connectState ==='connected'){
-                   app.bLEManager.sendISpage({isSuccess: true});
-                   console.log('小程序告知设备 此时在打卡页面 可以上传离线数据')
+                   var pages = getCurrentPages()    //获取加载的页面
+                   var currentPage = pages[pages.length-1]    //获取当前页面的对象
+                   if(currentPage.route ==='pages/set-info/set-info'){
+                       app.bLEManager.sendISpage({isSuccess: true});
+                       console.log('小程序告知设备 此时在打卡页面 可以上传离线数据')
+                   }
                }
             },
             receiveDataListener: ({finalResult, state}) => {

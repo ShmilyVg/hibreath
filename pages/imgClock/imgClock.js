@@ -42,10 +42,8 @@ Page({
         WXDialog.showDialog({title: '小贴士', content, confirmText: '我知道了'});
     },
     submit(){
-
         console.log("imgbox",this.data.imgbox)
         console.log("imageUrl",this.data.imageUrl)
-        console.log("132",this.data.desc)
         /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
               this.showDialog("请选择照片");
               return
@@ -58,7 +56,7 @@ Page({
             // });
             this.showPopup();
         }else {
-            console.log(this.groupId)
+            Toast.showLoading();
             Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }).then(data => {
                 wx.hideLoading();
                 app.globalData.isImgClock = true
