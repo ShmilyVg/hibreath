@@ -36,7 +36,7 @@
 
       <view class="punchList_NickName">{{nickname}}</view>
       <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
-        <view style="font-size: 24rpx;width: 100%;line-height:75rpx;">邀请伙伴围观</view>
+        <view style="font-size: 24rpx;width: 100%;line-height:70rpx;">邀请伙伴围观</view>
       </button>
     </view >
  <!--对 头像 -->

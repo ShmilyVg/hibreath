@@ -32,13 +32,13 @@ Page({
         addImg:'../../images/community/addc.png',//分享加号
         hbImg:'../../images/community/hd.png',//分享背景
     },
-
     async toMemberManagerPage() {
         HiNavigator.navigateToMemberManagement({dataId: (await judgeGroupEmpty()).groupId});
     },
     async updata(){
         await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
         this.forceUpdateAll();
+        this.NoticeList();
     },
     async onCommunitySettingClickEvent() {
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
@@ -162,6 +162,7 @@ Page({
                 image: '../../images/community/nike.png'
             })
         }
+      this.NoticeList();
     },
     async onShow() {
         if(app.globalData.isImgClock){
@@ -214,6 +215,7 @@ Page({
             }
         });*/
         // }
+      this.NoticeList();
     },
     async toImgClock(){
         HiNavigator.navigateToImgClockcommunity({id:(await judgeGroupEmpty()).groupId})
@@ -320,6 +322,7 @@ Page({
     async onPullDownRefresh() {
         await this.forceUpdateAll();
         wx.stopPullDownRefresh();
+        this.NoticeList();
     },
 
     async onReachBottom() {
@@ -355,7 +358,24 @@ Page({
         })
         //wx.setStorageSync('communityScrollTop', e.scrollTop);
     },
-
+   async NoticeList(){
+     let groupId = wx.getStorageSync('currentSocialGroupId');
+     console.log(groupId);
+     this.data.groupId = groupId
+     const { result: { notice: noticeList } } = await whenDismissGroup(Protocol.postGroupDynamicLatest({
+       groupId: this.data.groupId ,
+       page: 1
+     }));
+    
+     this.setData({
+       noticeList: noticeList
+     })
+     console.log("未读消息",this.data.noticeList)
+   },
+  toNoticeList:function(){
+    
+    HiNavigator.navigateToNoticeList({ groupId: this.data.groupId, total: this.data.noticeList.total});
+  }
 
 
 });

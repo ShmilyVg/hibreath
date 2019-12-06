@@ -7,28 +7,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    groupId: 203,
-    MessageDetailId:''
+    groupId: '',
+    MessageDetailId:'',
+    read: '#F8FAFC',
+    total:'',
+    pageIndex:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.postDynamicNotice();
-  },
-  
-  
-  async postDynamicNotice() {
-    const { result:{list:list} } = await Protocol.postDynamicNotice({ groupId: this.data.groupId });
-    console.log(list)
-    const dataList = list.map(item => {
-      return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
-    })
+    console.log(options)
     this.setData({
-      list: dataList
+      groupId: options.groupId,
+      total: options.total
+    })
+    this.postDynamicNotice();
+    Protocol.postNoticeUpdateAll();
+  },
+  async postDynamicNotice() {
+      const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId });
+      if (list.length) {
+        ++this.data.pageIndex;
+      }
+      console.log(list)
+      const dataList = list.map(item => {
+        return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
+      })
+    this.setData({
+      list:dataList
     })
   },
+
   toMessageDetail: function (e) {
     this.data.MessageDetailId = e.currentTarget.dataset.index;
     HiNavigator.navigateToMessageDetail({ messageId: this.data.MessageDetailId});
@@ -115,7 +126,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
   },
 
   /**

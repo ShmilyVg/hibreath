@@ -109,6 +109,7 @@ class GroupDynamicManager {
                 groupId,
                 page: this._pageIndex
             }));
+            
 
             if (dynamicList.length) {
                 this._pageIndex++;
