@@ -1,3 +1,4 @@
+<canvas style="width:500rpx;height:400rpx;" canvas-id="myCanvas"></canvas>
 <view wx:if="{{haveGroupId}}" class="relative fill-width flex-column box-sizing-border-box community-layout">
     <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
@@ -23,7 +24,7 @@
             <text class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</text>
         </view>
         <view class="flex-row align-items-center">
-            <button class="community-Bg" catchtap="showSharedID" open-type="share">
+            <button class="community-Bg" catchtap="showShared">
                 <image src="../../images/community/wx.png"class="community-Wx"></image>
                 <view class="community-member-description">邀请好友</view>
             </button>
@@ -103,3 +104,11 @@
 >
 </my-toast>
 
+<!--分享相关 position: fixed;left: 900rpx;-->
+
+<view wx:if="{{isSharecomponent}}" class="shareContainer">
+    <!-- <view class='shareRow'>{{title}}</view>-->
+    <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
+    <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
+</view>
+<view wx:if="{{isSharecomponent}}" class='shareMask' bindtap='cancel'></view>

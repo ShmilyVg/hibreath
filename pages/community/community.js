@@ -11,6 +11,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
 import Login from "../../modules/network/login";
+import * as Shared from "./shared.js";
 import UserInfo from "../../modules/network/userInfo";
 import {WXDialog} from "heheda-common-view";
 const app = getApp()
@@ -25,6 +26,11 @@ Page({
         dynamicList: [],
         haveGroupId:false,//有圈子
         noCommunity:false,
+        shareTaskListImg:[],
+        shareImg:"",
+        bgImg:"../../images/set-info/shareBg.png",//分享背景
+        addImg:'../../images/community/addc.png',//分享加号
+        hbImg:'../../images/community/hd.png',//分享背景
     },
 
     async toMemberManagerPage() {
@@ -122,9 +128,31 @@ Page({
             noUpdateAll:detail.noUpdateAll
         })
     },
-    showSharedID(){
-        console.log(this.data.socialMemberInfo.sharedId)
+
+    showShared(){
+        console.log('分享Id',this.data.socialMemberInfo.sharedId)
+        console.log('圈子名称',this.data.currentSocial.name)
+        console.log('成员数量',this.data.socialMemberInfo.memberCount)
+        console.log('圈子头像',this.data.currentSocial.imgUrl)
+        console.log('成员头像',this.data.socialMemberInfo.memberImgs)
+        Toast.showLoading()
+        Shared.getImageInfo(this)
+        Shared.screenWdith(this)
     },
+    cancel(){
+        this.setData({
+            isSharecomponent:false
+        })
+        wx.showTabBar({
+            fail: function () {
+                setTimeout(function () {
+                    wx.hideTabBar()
+                }, 500)
+            }
+
+        });
+    },
+
     onLoad(options) {
         console.log('firstEnter',getApp().globalData.firstEnter)
         if(!getApp().globalData.firstEnter&&getApp().globalData.isShareAddcommunity){
