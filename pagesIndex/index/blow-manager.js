@@ -13,7 +13,8 @@ export default class BlowManager {
         this._page = page;
         this.actionBlow = {};
         console.log("ProtocolState",ProtocolState)
-
+        console.log("this.actionBlow",this.actionBlow)
+        console.log('this.actionBlow[ProtocolState.BREATH_FINISH]',this.actionBlow[ProtocolState.BREATH_FINISH])
         this.actionBlow[ProtocolState.KEY_CONFIRM] = () => {
             this.connected();
             this.alertUpdata()

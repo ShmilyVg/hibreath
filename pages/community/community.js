@@ -154,6 +154,7 @@ Page({
     },
 
     onLoad(options) {
+        wx.hideShareMenu();
         console.log('firstEnter',getApp().globalData.firstEnter)
         if(!getApp().globalData.firstEnter&&getApp().globalData.isShareAddcommunity){
             wx.showToast({
@@ -175,7 +176,7 @@ Page({
                 this.setData({
                     showMytoast:false,
                 })
-            },1000)
+            },2000)
         }
         // if (this.isUpdateAllWhenLoad) {
         wx.getSetting({

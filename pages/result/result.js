@@ -72,7 +72,7 @@ Page({
                     this.setData({
                         showMytoast:false,
                     })
-                },1200)
+                },2000)
             }
 
         } else if (e.score) {
@@ -151,7 +151,7 @@ Page({
             })
           } else {
             --this.data.page;
-          }   
+          }
         }
         wx.stopPullDownRefresh();
         Toast.hiddenLoading();

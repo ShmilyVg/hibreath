@@ -134,7 +134,7 @@ Component({
                     this.setData({
                         showMytoast:false,
                     })
-                },1000)
+                },2000)
             }
             this.data.listArray = []
             this.undateName(result.praiseInfo.list)
@@ -211,7 +211,7 @@ Component({
                 this.setData({
                     showMytoast:false,
                 })
-            },1000)
+            },2000)
         },
         //完成回复
         async finCReply(){
@@ -225,7 +225,7 @@ Component({
                 this.setData({
                     showMytoast:false,
                 })
-            },1000)
+            },2000)
         },
         //多行输入
         textBindinput(e){

@@ -312,7 +312,7 @@ Page({
                             this.setData({
                                 showMytoast:false,
                             })
-                        },1000)
+                        },2000)
                     });
 
                     //TIMESTAMP 设备获取时间戳
