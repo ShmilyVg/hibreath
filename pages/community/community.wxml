@@ -70,7 +70,7 @@
             <view class="community-rank-text">打卡榜</view>
         </view>-->
     </view>
-    
+
     <message-item
             id="messageItem"
             class="fill-width" style="padding-bottom: 30rpx"
@@ -110,6 +110,7 @@
     <!-- <view class='shareRow'>{{title}}</view>-->
     <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
     <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
+
 </view>
 <view wx:if="{{isSharecomponent}}" class='shareMask' bindtap='cancel'></view>
 <canvas style="width:500rpx;height:400rpx;position: fixed;left: 800rpx" canvas-id="myCanvas"></canvas>

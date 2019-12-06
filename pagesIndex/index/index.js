@@ -96,7 +96,7 @@ Page({
         console.log('app.getLatestBLEState().connectState',app.getLatestBLEState().connectState)
         if(app.getLatestBLEState().connectState ==='connected'){
             app.bLEManager.sendISvalue({isSuccess: false});
-            console.log('小程序告知了设备不要上传在线监测数据')
+            console.log('小程序在燃脂页面点击返回的时候告知了设备不要上传在线监测数据')
         }
         if(this.data.isSuccessInfo === "true"){
             let pages = getCurrentPages();
