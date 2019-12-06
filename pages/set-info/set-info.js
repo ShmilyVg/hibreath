@@ -226,7 +226,7 @@ Page({
   async onLoad(e) {
     let that = this;
     console.log("on:", e);
-
+      wx.hideShareMenu();
     app.appLoginListener = function({ loginState }) {
       console.log("set-info", `appLoginListener-> ${loginState}`);
       if (loginState == this.NOT_REGISTER) {
