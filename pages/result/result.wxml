@@ -13,7 +13,7 @@
       <image class="result-img1" src="../../images/result/circle.png"></image>
       <text class="result-text1">最近一次</text>
     </view>
-    <!-- <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image> -->
+    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>
   </view>
   <view class='content' style="margin-left: {{canvasMargin}}rpx">
     <canvas canvas-id="bg" class='canvasII'></canvas>
