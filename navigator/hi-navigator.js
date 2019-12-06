@@ -210,5 +210,4 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToProgrammeDetails() {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
-
 }
