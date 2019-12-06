@@ -66,7 +66,7 @@ Page({
                     this.setData({
                         showMytoast:false,
                     })
-                },1000)
+                },2000)
             }
         }
     },
@@ -142,7 +142,7 @@ Page({
                 this.setData({
                     showMytoast:false,
                 })
-            },1000)
+            },2000)
         }
         this.data.listArray = []
         this.undateName(result.praiseInfo.list)
@@ -201,7 +201,7 @@ Page({
             this.setData({
                 showMytoast:false,
             })
-        },1000)
+        },2000)
     },
     //完成回复
     async finCReply(){
@@ -215,7 +215,7 @@ Page({
             this.setData({
                 showMytoast:false,
             })
-        },1000)
+        },2000)
     },
     //多行输入
     textBindinput(e){

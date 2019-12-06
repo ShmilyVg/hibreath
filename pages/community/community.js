@@ -174,7 +174,7 @@ Page({
                 this.setData({
                     showMytoast:false,
                 })
-            },1000)
+            },2000)
         }
         // if (this.isUpdateAllWhenLoad) {
         wx.getSetting({
