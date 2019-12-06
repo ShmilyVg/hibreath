@@ -76,7 +76,8 @@ Page({
         navBarColor:'',//导航字体颜色
         navBarIconTheme:'',//导航返回键颜色
         navBarBackground:'',//导航背景色
-        isHidden:false//从后台回到前台
+        isHidden:false,//从后台回到前台
+
     },
 
         historyUrl() {
@@ -125,19 +126,28 @@ Page({
     //离开页面时通知设备储存离线数据
     onHide() {
         if(app.getLatestBLEState().connectState ==='connected'){
-            this.setData({
-                isHidden:true
-            })
-            app.bLEManager.sendISvalue({isSuccess: false});
-            console.log('小程序 在index页面 前台进入后台 发送了40 02命令  告知了设备不要上传在线监测数据')
+            const pages = getCurrentPages()
+            const currentPage = pages[pages.length - 1]  // 当前页
+            if(currentPage.route ==='pagesIndex/index/index'){
+                this.setData({
+                    isHidden:true
+                })
+                app.bLEManager.sendISvalue({isSuccess: false});
+                console.log('小程序 在index页面 前台进入后台 发送了40 02命令  告知了设备不要上传在线监测数据')
+            }
+
         }
     },
     onLoad(e) {
         if(app.getLatestBLEState().connectState ==='connected'){
-            app.bLEManager.sendISvalue({isSuccess: true});
-            console.log('小程序在index页面发送40 01命令')
-            app.bLEManager.startData();
-            console.log('小程序在index页面发送了同步状态的指令')
+            const pages = getCurrentPages()
+            const currentPage = pages[pages.length - 1]  // 当前页
+            if(currentPage.route ==='pagesIndex/index/index'){
+                app.bLEManager.sendISvalue({isSuccess: true});
+                console.log('小程序在index页面发送40 01命令')
+                app.bLEManager.startData();
+                console.log('小程序在index页面发送了同步状态的指令')
+            }
         }
         console.log('isSuccessInfo',e)
         if(e.isSuccessInfo){
@@ -221,18 +231,21 @@ Page({
     },
 
     onShow(options) {
-       /* const pages = getCurrentPages()
-        const currPage = pages[pages.length - 1]  // 当前页
+       /*
         // 是否绑定成功
         this.setData({
             isBind: currPage.data.isBind
         })*/
         if(app.getLatestBLEState().connectState ==='connected' && this.data.isHidden){
-            this.setData({
-                isHidden:false
-            })
-            app.bLEManager.sendISvalue({isSuccess: true});
-            console.log('小程序 在index页面 后台进入前台后 发送了40 01命令')
+            const pages = getCurrentPages()
+            const currentPage = pages[pages.length - 1]  // 当前页
+            if(currentPage.route ==='pagesIndex/index/index'){
+                this.setData({
+                    isHidden:false
+                })
+                app.bLEManager.sendISvalue({isSuccess: true});
+                console.log('小程序 在index页面 后台进入前台后 发送了40 01命令')
+            }
         }
 
         console.log(this.blowPage._page.data.needCheckOTAUpdate,this.blowPage._page.data,'this.data.needCheckOTAUpdate')
@@ -256,9 +269,12 @@ Page({
                 console.log("connectState",connectState)
                 console.log("protocolState",protocolState)
                 if(connectState ==='connected'){
-
-                    app.bLEManager.sendISvalue({isSuccess: true});
-                    console.log('小程序在index发送40 01命令')
+                    const pages = getCurrentPages()
+                    const currentPage = pages[pages.length - 1]  // 当前页
+                    if(currentPage.route ==='pagesIndex/index/index'){
+                        app.bLEManager.sendISvalue({isSuccess: true});
+                        console.log('小程序在index发送40 01命令,可上传在线检测数据')
+                    }
                 }
                 !!action[connectState] && action[connectState]();
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
@@ -279,6 +295,8 @@ Page({
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
                     const toolfinalResult = tools.resultRe(tools.subStringNum(finalResult.result)/10)
+                    console.log('在线检测数值处理前',finalResult.result)
+                    console.log('在线检测数值处理后',toolfinalResult)
                     log.warn('在线检测数值处理前',finalResult.result)
                     log.warn('在线检测数值处理后',toolfinalResult)
                     Protocol.getBreathDataAdd({
@@ -317,7 +335,6 @@ Page({
 
         }
     },
-
 
 
     onGetUserInfoEvent(e) {
@@ -386,8 +403,13 @@ Page({
         console.log(this.data.isSuccessInfo,'this.data.isSuccessInfo')*/
 
         if(app.getLatestBLEState().connectState ==='connected'){
-            app.bLEManager.sendISvalue({isSuccess: false});
-            console.log('告知了设备不要上传在线监测数据')
+            var pages = getCurrentPages()    //获取加载的页面
+            var currentPage = pages[pages.length-1]    //获取当前页面的对象
+            console.log('当前页面是',currentPage.route)
+            if(currentPage.route ==='pagesIndex/index/index'){
+                app.bLEManager.sendISvalue({isSuccess: false});
+                console.log('页面卸载的时候 小程序告知了设备不要上传在线监测数据,需当做离线数据处理')
+            }
         }
     },
 
