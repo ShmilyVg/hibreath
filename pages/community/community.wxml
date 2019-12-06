@@ -70,6 +70,7 @@
             <view class="community-rank-text">打卡榜</view>
         </view>-->
     </view>
+    
     <message-item
             id="messageItem"
             class="fill-width" style="padding-bottom: 30rpx"
@@ -95,7 +96,7 @@
     </view>
     <button class="community-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">创建新圈子</button>
 </view>
-<view class="noDynamic" wx:if="{{dynamicList.length==0}}">暂无发表动态</view>
+<view class="noDynamic" wx:if="{{haveGroupId&&dynamicList.length==0}}">暂无发表动态</view>
 <!--打卡完成激励弹窗-->
 <my-toast
         wx:if="{{showMytoast}}"
