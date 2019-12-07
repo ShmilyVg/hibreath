@@ -231,7 +231,8 @@ Component({
         textBindinput(e){
             console.log('e',e.detail.value)
             this.setData({
-                commentContent:e.detail.value
+                commentContent:e.detail.value,
+                textareaValue:e.detail.value
             })
             console.log('commentContent',this.data.commentContent)
         },
