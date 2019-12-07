@@ -166,7 +166,9 @@ Page({
       /*  HiNavigator.navigateIndex();*/
         wx.openBluetoothAdapter({
             success (res) {
+                Toast.showLoading();
                 HiNavigator.navigateIndex();
+                Toast.hiddenLoading();
             },
             fail (res) {
                 if(res.errCode == 10001 ||res.errCode == 10000){
