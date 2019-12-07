@@ -105,12 +105,12 @@ class GroupDynamicManager {
     async getGroupDynamicList() {
         const {groupId} = socialGroupManager.currentSocial;
         if (groupId) {
-            const {result: {list: dynamicList}} = await whenDismissGroup(Protocol.postGroupDynamicLatest({
+            const {result: {list: dynamicList,notice: noticeList}} = await whenDismissGroup(Protocol.postGroupDynamicLatest({
                 groupId,
                 page: this._pageIndex
             }));
-            
-
+            wx.setStorageSync('noticeList', noticeList);
+           console.log('noticeList',noticeList,wx.getStorageSync('noticeList'))
             if (dynamicList.length) {
                 this._pageIndex++;
             }

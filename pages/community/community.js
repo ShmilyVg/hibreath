@@ -38,7 +38,7 @@ Page({
     async updata(){
         await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
         this.forceUpdateAll();
-        this.NoticeList();
+        //this.NoticeList();
     },
     async onCommunitySettingClickEvent() {
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
@@ -163,7 +163,7 @@ Page({
                 image: '../../images/community/nike.png'
             })
         }
-      this.NoticeList();
+      //this.NoticeList();
     },
     async onShow() {
         if(app.globalData.isImgClock){
@@ -225,7 +225,7 @@ Page({
             }
         });*/
         // }
-      this.NoticeList();
+      //this.NoticeList();
     },
     async toImgClock(){
         HiNavigator.navigateToImgClockcommunity({id:(await judgeGroupEmpty()).groupId})
@@ -302,8 +302,10 @@ Page({
                         const dynamicList = await getGroupDynamicManager.getGroupDynamicList();
                         this.setData({
                             dynamicList,
+                            noticeList:wx.getStorageSync('noticeList'),
                             canUpdate:true
                         }, resolve);
+                        wx.clearStorageSync('noticeList')
                         console.log('最新数组',this.data.dynamicList)
                     } catch (e) {
                         reject(e);
@@ -332,7 +334,7 @@ Page({
     async onPullDownRefresh() {
         await this.forceUpdateAll();
         wx.stopPullDownRefresh();
-        this.NoticeList();
+        //this.NoticeList();
     },
 
     async onReachBottom() {
@@ -368,7 +370,7 @@ Page({
         })
         //wx.setStorageSync('communityScrollTop', e.scrollTop);
     },
-   async NoticeList(){
+/*   async NoticeList(){
      let groupId = wx.getStorageSync('currentSocialGroupId');
      console.log(groupId);
      this.data.groupId = groupId
@@ -381,10 +383,11 @@ Page({
        noticeList: noticeList
      })
      console.log("未读消息",this.data.noticeList)
-   },
-  toNoticeList:function(){
+   },*/
+  async toNoticeList(){
+    /*HiNavigator.navigateToNoticeList({groupId:wx.getStorageSync('currentSocialGroupId'),total: this.data.noticeList.total});*/
+      HiNavigator.navigateToNoticeList({ groupId: (await judgeGroupEmpty()).groupId,total: this.data.noticeList.total});
 
-    HiNavigator.navigateToNoticeList({ groupId: this.data.groupId, total: this.data.noticeList.total});
   }
 
 
