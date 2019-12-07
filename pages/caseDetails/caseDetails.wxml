@@ -11,7 +11,7 @@
 </view>
 <view class="programme-body">
   <view class="day-list-content">
-    <view wx:for="{{dayList}}" class="day-list" wx:key="{{index}}">
+    <view wx:for="{{dayList}}" class="day-list" wx:key="index">
       <view class="day-list-header" style="background:#FFFFFF;">
         <view style="display:flex;  align-items: center;" data-index='{{item.executeOrder - 1}}' catchtap="ifShow">
           <view class="day-list-title" >
@@ -33,7 +33,7 @@
       <view wx:if="{{!item.isHide}}" hidden='{{!selectedFlag[index]}}'>
         <view class="day-list-body">
           <view class="foodlist-box-list">
-            <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="{{index}}">
+            <view class="foodlist-box" wx:for="{{item.foodTask.list}}" wx:key="index">
               <view class="day-body-foodlist">
                 <view class="foodlist-img" style="background:url({{item.imgUrl}}) no-repeat center/100% 100%;">
                   <view class="foodlist-tag">{{item.tag}}</view>

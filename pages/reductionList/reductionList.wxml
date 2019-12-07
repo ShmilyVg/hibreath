@@ -12,7 +12,7 @@
         <view wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</view>
         <text class="punchList_Day-Text4">今日减重</text>
     </view>
-    <!-- 左 -->   
+    <!-- 左 -->
     <!--头像-->
       <view class="headUrl-content" >
        <view class="headUrl-box backgroundImg-goldbig " wx:if="{{rankNum==1}}" >
@@ -52,7 +52,7 @@
 <view class="clear"></view>
 <view  style="padding: 30rpx 0;">
     <view wx:if="{{ranklist.length>0}}">
-        <view wx:for="{{ranklist}}" wx:key="{{index}}" class="cell {{'cellB'}}">
+        <view wx:for="{{ranklist}}" wx:key="index" class="cell {{'cellB'}}">
             <view class="flex-row" style="width:100%;justify-content: space-between;align-items: center">
                 <view style="width: 100%">
                     <view class="cell-rank {{index<3?'cell-rankR':'cell-rankB'}}">{{index+1}}</view>

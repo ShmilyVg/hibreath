@@ -1,6 +1,6 @@
 <!--pages/communityManagement/communityManagement.wxml-->
 <view>
-    <view wx:for="{{groupList}}" wx:key="{{index}}" bindtap="toCommunity" data-id="{{item.groupId}}" style="margin-bottom: 50rpx">
+    <view wx:for="{{groupList}}" wx:key="index" bindtap="toCommunity" data-id="{{item.groupId}}" style="margin-bottom: 50rpx">
         <view class="" style="float: left;width: 25%;height: 168rpx;align-content: center">
             <image class="community-HeadUrl" src="{{item.imgUrl}}"></image>
             <view class="{{item.isMajor?'community-Red':'community-Green'}}">{{item.isMajor?'我创建的':'我加入的'}}</view>

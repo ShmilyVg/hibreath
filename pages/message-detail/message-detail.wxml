@@ -26,7 +26,7 @@
         <view class="message-detail-heartCount">{{result.praiseInfo.totalCount}}</view>
     </view>
     <view>
-        <view wx:if="{{headUrlList.length>0}}"  wx:for="{{headUrlList}}" wx:key="{{index}}"  style="float: left">
+        <view wx:if="{{headUrlList.length>0}}"  wx:for="{{headUrlList}}" wx:key="index"  style="float: left">
             <image src="{{item}}" style="width:58rpx;height: 58rpx;border-radius: 50%;margin:0rpx 8rpx 16rpx 8rpx"></image>
         </view>
         <view wx:if="{{headUrlList.length == 0}}" class="message-detail-noheadUrl">还没有赞哦,快来抢坐沙发!</view>
@@ -39,7 +39,7 @@
         <view class="commentInfoList-top">
             <text style="margin-right: 10rpx">全部评论</text>{{commentInfoList.length}}
         </view>
-        <view wx:for="{{commentInfoList}}" wx:key="{{index}}" style="display: flex;margin-bottom: 20rpx">
+        <view wx:for="{{commentInfoList}}" wx:key="index" style="display: flex;margin-bottom: 20rpx">
             <view>
                 <image src="{{item.headUrl}}" style="width:58rpx;height: 58rpx;border-radius: 50%;margin:0rpx 25rpx 0rpx 0rpx"></image>
             </view>

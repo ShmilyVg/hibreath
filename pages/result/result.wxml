@@ -42,7 +42,7 @@
 
   <!--燃脂记录  -->
   <view wx:if="{{currenttab==='0'}}">
-      <view  wx:for="{{trendData}}" wx:key="{{index}}" class="flex-column cell" bindtap="deleteDataValue" data-index="{{item.id}}">
+      <view  wx:for="{{trendData}}" wx:key="index" class="flex-column cell" bindtap="deleteDataValue" data-index="{{item.id}}">
       <view class="flex-row" style="width:100%;justify-content: space-between">
         <view class="flex-column" style="align-items: start;height: 160rpx">
           <view class="cell-title">{{item.desZh}}</view>

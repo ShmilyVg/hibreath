@@ -37,7 +37,7 @@
 
 
             <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
-                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="{{index}}" bindtap="bindTapSex"
+                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="index" bindtap="bindTapSex"
                       data-index="{{index}}">
                     <image class="sex-image"
                            src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
@@ -79,7 +79,7 @@
                 <view wx:if="{{noMeasure}}" class="page4">
                     <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}"
                           bindtap="bindTapExactClick"
-                          wx:key="{{index}}"
+                          wx:key="index"
                           data-index="{{index}}">
                         <image src="http://img.hipee.cn/hibreath/man/{{info.sexStr}}-{{index+1}}.png"></image>
                       <!--  <view wx:if="{{choseIndex!=index}}" class="page4-cover"
@@ -102,7 +102,7 @@
             </block>
             <view wx:elif="{{page==6}}">
                 <view wx:for="{{meals}}"
-                      wx:key="{{index}}"
+                      wx:key="index"
                       class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
                       >
                     <view wx:if="{{index == meals.length-1}}" data-index="{{index}}" bindtap="bindTapMealsSecNone">{{item.name}}</view>

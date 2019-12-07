@@ -7,7 +7,7 @@
     </view>-->
    <!-- <button class="member-Right" data-id="shareBtn"  open-type="share">+邀请好友加入</button>-->
     <view class="clear"></view>
-    <view wx:for="{{memberList}}" wx:key="{{index}}">
+    <view wx:for="{{memberList}}" wx:key="index">
         <view class="member-isMajor" wx:if="{{item.isMajor}}">
             <image class="member-headUrl" src="{{item.imgUrl}}"></image>
             <view class="member-TitleTop">{{item.name}}</view>

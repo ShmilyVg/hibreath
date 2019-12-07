@@ -21,7 +21,7 @@
             <image class="HIITCardImgR"  wx:if="{{grayRight}}" hidden="{{hiddenImg}}" src="../../images/set-info/rightG.png"></image>
             <image class="HIITCardImgR" bindtap="imgToNext" wx:else  hidden="{{hiddenImg}}" src="../../images/set-info/rightB.png"></image>
             <swiper bindchange="swiperChange"  current="{{currentSwiper}}"  class="" style="width: 100%;height:{{aheight}}rpx;position: relative;top:-50rpx">
-                <block wx:for="{{sportExt.recommendList}}" wx:key="{{index}}" style="height: 500rpx">
+                <block wx:for="{{sportExt.recommendList}}" wx:key="index" style="height: 500rpx">
                     <swiper-item>
                         <view  class="swiperBigTitle" >{{item.title}}</view>
                         <view class="clear"></view>

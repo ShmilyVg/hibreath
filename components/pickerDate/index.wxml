@@ -15,13 +15,13 @@
 
       <picker-view indicator-style="height: 55px; border-top:1px solid red; border-bottom:1px solid red;" style="width: 80%; height: 540rpx;margin-left:10% " value="{{value}}" bindchange="bindChange">
     <picker-view-column >
-      <view wx:for="{{years}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}年</view>
+      <view wx:for="{{years}}" wx:key="index" class="pickerDateColumn-view" >{{item}}年</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:for="{{months}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}月</view>
+      <view wx:for="{{months}}" wx:key="index" class="pickerDateColumn-view" >{{item}}月</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:for="{{days}}" wx:key="{{index}}" class="pickerDateColumn-view" >{{item}}日</view>
+      <view wx:for="{{days}}" wx:key="index" class="pickerDateColumn-view" >{{item}}日</view>
     </picker-view-column>
   </picker-view>
 
