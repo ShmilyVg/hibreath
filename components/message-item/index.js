@@ -49,7 +49,6 @@ Component({
     pageLifetimes: {
         show() {
             setTimeout(()=>{
-                    console.log('我执行了更新点赞昵称2')
                     this.data.listArray = []
                     this.undateName(this.data.message.praiseInfo.list)
             },1000)

@@ -1266,6 +1266,9 @@ Page({
       that.data.loanTime = setInterval(function () {
           countDownNumHot--;
           console.log('this.data.sharedImg1',that.data.shareImg)
+          if(that.data.shareImg || that.data.shareImg !== ""){
+              clearInterval(that.data.loanTime);
+          }
           if(countDownNumHot<0){
               clearInterval(that.data.loanTime);
               if(!that.data.shareImg || that.data.shareImg == ""){
