@@ -10,7 +10,7 @@
         </view>
     </view>
     <view style="margin-left: 73rpx">
-        <input class="createCommunity-Input" placeholder-class="createCommunity-Inputpla" bindinput="createCommunityInput" maxlength="20"  placeholder="起个响亮的名字吧…" type="text"/>
+        <input class="createCommunity-Input" placeholder-class="createCommunity-Inputpla" bindinput="createCommunityInput" value="{{name}}" maxlength="20"  placeholder="起个响亮的名字吧…" type="text"/>
         <view class="createCommunity-Line"></view>
     </view>
     <button bindtap="createCommunityBtn" disabled="{{disable}}" class="createCommunity-Btn">创建新圈子</button>

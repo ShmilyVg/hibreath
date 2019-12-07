@@ -1,14 +1,14 @@
 // pages/set-up/rename/rename.js
 import HiNavigator from "../../../navigator/hi-navigator";
 import Protocol from "../../../modules/network/protocol";
+import * as tools from "../../../utils/tools";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
- 
+      disable:true,
   },
 
   /**
@@ -16,29 +16,19 @@ Page({
    */
   onLoad: function (options) {
       console.log(options)
-      this.setData({ 
+      this.setData({
         name: options.name
       })
   },
   bindInputName(e) {
-   
+     //wxml 需要设置value 不然不能过滤表情
     this.setData({
-      memberName: e.detail.value
+      memberName: tools.filterEmoji(e.detail.value)
     })
-    console.log('e.detail.value', e.detail.value)
-
-    if (this.data.memberName == "") {
-      //如果不为空，就返回true.
+    console.log('过滤表情value', e.detail.value)
       this.setData({
-        userIdCardNameif: false
-      });
-      
-    } else {
-      this.setData({
-        userIdCardNameif: true
-      });
-     
-    }
+          disable: !(this.data.memberName.match(/^\s*$/) == null)
+      })
 
   },
   materialsBtn:function(){
@@ -47,17 +37,17 @@ Page({
     this.setData({
       groupId: groupId
     })
-    
-    // if (this.data.name !== "") {     
+
+    // if (this.data.name !== "") {
     //   HiNavigator.switchToCommunity();
-     
-    // } 
+
+    // }
     console.log(this.data.memberName, this.data.name, this.data.groupId)
     Protocol.postUpdataMember({ name: this.data.memberName, groupId: this.data.groupId }).then(data => {
       HiNavigator.switchToCommunity();
 
     });
- 
+
   },
 
   /**
@@ -66,14 +56,14 @@ Page({
   onReady: function () {
 
   },
-  
+
 
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

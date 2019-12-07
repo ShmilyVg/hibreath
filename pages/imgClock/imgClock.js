@@ -128,11 +128,14 @@ Page({
                         wx.compressImage({
                             src: path, // 图片路径
                             quality: 60, // 压缩质量
+                            fail(res){
+                                console.log('调用压缩接口失败',res)
+                            },
                             success(res){
                                 that.setData({
                                     compressImg:res.tempFilePath
                                 })
-
+                                console.log('resresres',res)
                                 wx.getFileInfo({
                                     filePath:that.data.compressImg,
                                     success (res) {
