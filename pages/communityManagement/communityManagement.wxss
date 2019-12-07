@@ -27,7 +27,7 @@ page{
     margin-right: 30rpx;
 }
 .community-Name{
-    font-size:28prx;
+    font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(69,69,69,1);

@@ -100,7 +100,8 @@ Page({
     textBg: "../../images/set-info/textBg.png",
     //shareTextList:['分享给好友或群'],
     date: "2019-12-04",
-    startTime: ""
+    startTime: "",
+      loanTime:''//定时器
   },
   onFocus: function(e) {
     this.setData({
@@ -1244,25 +1245,51 @@ Page({
   },
   async listenerButton() {
     Toast.showLoading();
-    if (this.data.sharedId) {
+      let that = this
+    if (that.data.sharedId) {
       const { result } = await Protocol.postSharetask({
-        sharedId: this.data.sharedId
+        sharedId: that.data.sharedId
       });
       if (result.fatBurn) {
-        this.setData({
+          that.setData({
           shareFat: result.fatBurn,
           shareFatBurnDesc: result.fatBurnDesc
         });
       }
-      this.setData({
+        that.setData({
         shareTodayDif: result.todayDif,
         shareTotalDif: result.totalDif,
         shareTaskList: result.taskList
       });
     }
-
-    Shared.getImageInfo(this);
-    Shared.screenWdith(this);
+      let countDownNumHot =10
+      that.data.loanTime = setInterval(function () {
+          countDownNumHot--;
+          console.log('this.data.sharedImg1',that.data.shareImg)
+          if(countDownNumHot<0){
+              clearInterval(that.data.loanTime);
+              if(!that.data.shareImg || that.data.shareImg == ""){
+                  Toast.hiddenLoading()
+                  that.setData({
+                      isOpened: false
+                  });
+                  wx.showTabBar({
+                      fail: function() {
+                          setTimeout(function() {
+                              wx.showTabBar();
+                          }, 500);
+                      }
+                  });
+                  wx.showToast({
+                      title: '加载失败请重试',
+                      image: '/images/loading_fail.png',
+                      duration: 1500,
+                  })
+              }
+          }
+      }, 1000)
+    Shared.getImageInfo(that);
+    Shared.screenWdith(that);
   },
   listenerActionSheet: function() {
     this.setData({
