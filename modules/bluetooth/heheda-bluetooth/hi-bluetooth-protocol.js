@@ -189,7 +189,7 @@ export default class HiBlueToothProtocol {
 
     startData() {
         this.sendData({command: '0x05', data: [Math.round(new Date() / 1000)]});
-        console.log("执行重新获取状态,发送时间戳为：",Math.round(new Date() / 1000))
+        console.log("小程序发送了0X05,执行重新获取状态,发送时间戳为：",Math.round(new Date() / 1000))
     }
 
     getDeviceIsBind() {

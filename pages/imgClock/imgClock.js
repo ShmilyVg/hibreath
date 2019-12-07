@@ -116,7 +116,7 @@ Page({
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: function (res) {
-                console.log("res",res)
+                console.log("选中图片res",res)
                 // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
                 let tempFilePaths = res.tempFiles;
 
@@ -125,41 +125,60 @@ Page({
                         title: '上传中',
                     })
                     tempFilePaths.forEach(({path, size})=>{
-                        if(size > 5*1024*1024){// 小于5M
-                            wx.showToast({
-                                title: '原图不可超过5M',
-                                icon: 'none',
-                                duration: 2000
-                            })
-                            return;
-                        }
-                        wx.uploadFile({
-                            url: UploadUrl, // 接口地址
-                            filePath: path, // 上传文件的临时路径
-                            name: 'file',
-                            success(res) {
-                                // 采用选择几张就直接上传几张，最后拼接返回的url
-                                console.log('that.data.imageUrl11',that.data.imageUrl)
-                                imgbox.push(path)
-                                console.log('that.data.imageUrl22',that.data.imageUrl)
-                                wx.hideLoading()
-                                var obj = JSON.parse(res.data)
-                                console.log("obj",obj)
-                                var more = []
-                                more.push(obj.result.img_url)
-                                console.log(more,'more')
-                                var tem = that.data.imageUrl
+                        wx.compressImage({
+                            src: path, // 图片路径
+                            quality: 60, // 压缩质量
+                            success(res){
                                 that.setData({
-                                    imageUrl: tem.concat(more),
-                                    imgbox
+                                    compressImg:res.tempFilePath
                                 })
-                                console.log('照片',that.data.imageUrl)
-                                that.disBtn()
-                            },
-                            fail(err){
-                                console.log("uploadFile:", err)
+
+                                wx.getFileInfo({
+                                    filePath:that.data.compressImg,
+                                    success (res) {
+                                        console.log('压缩后的图片尺寸(M)',res.size/1024/1024)
+                                        if(res.size > 5*1024*1024){// 小于5M
+                                            wx.showToast({
+                                                title: '图片不可超过5M',
+                                                icon: 'none',
+                                                duration: 2000
+                                            })
+                                            return;
+                                        }
+                                        console.log('that.data.compressImg',that.data.compressImg)
+                                        wx.uploadFile({
+                                            url: UploadUrl, // 接口地址
+                                            filePath: that.data.compressImg, // 上传文件的临时路径
+                                            name: 'file',
+                                            success(res) {
+                                                // 采用选择几张就直接上传几张，最后拼接返回的url
+                                                imgbox.push(path)
+                                                that.setData({
+                                                    compressImg:''
+                                                })
+                                                wx.hideLoading()
+                                                var obj = JSON.parse(res.data)
+                                                console.log("obj",obj)
+                                                var more = []
+                                                more.push(obj.result.img_url)
+                                                console.log(more,'more')
+                                                var tem = that.data.imageUrl
+                                                that.setData({
+                                                    imageUrl: tem.concat(more),
+                                                    imgbox
+                                                })
+                                                console.log('照片',that.data.imageUrl)
+                                                that.disBtn()
+                                            },
+                                            fail(err){
+                                                console.log("uploadFile:", err)
+                                            }
+                                        })
+                                    }
+                                })
                             }
                         })
+
                     })
                 }
                 console.log("IMGBOX",that.data.imgbox)

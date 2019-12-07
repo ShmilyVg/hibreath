@@ -46,6 +46,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x3a': () => {
                 super.sendData({command: '0x3b'});
+                console.log('------------------------------------------------------------------小程序现在处于分析中状态')
                 return {state: ProtocolState.BREATH_FINISH};
             },
             '0x3c': ({dataArray}) => {
