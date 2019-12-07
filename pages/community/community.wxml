@@ -2,7 +2,7 @@
     <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
         <view class="flex-row align-items-center">
             <view class="relative">
-                <image mode="center" src="{{currentSocial.imgUrl}}" class="community-logo"></image>
+                <image mode="aspectFill" src="{{currentSocial.imgUrl}}" class="community-logo"></image>
                 <image src="{{socialMemberInfo.isMajor?'../../images/community/group.png':'../../images/community/green.png'}}" class="absolute community-switch-icon"></image>
             </view>
             <view class="community-name">{{currentSocial.name}}</view>

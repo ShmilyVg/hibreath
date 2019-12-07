@@ -12,7 +12,7 @@
             </view>
             <view class="img-list">
                 <view class="img-wrap foodimg-list" wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
-                    <image src="{{item}}" mode="widthFix"></image>
+                    <image src="{{item}}" mode="aspectFill"></image>
                 </view>
             </view>
         </view>
