@@ -178,6 +178,15 @@ Page({
                 })
             },2000)
         }
+        if(app.globalData.isScrollTopNum){
+            app.globalData.isScrollTopNum=false
+            setTimeout(()=>{
+                wx.pageScrollTo({
+                    scrollTop: 0,
+                    duration: 100,
+                })
+            },10)
+        }
         // if (this.isUpdateAllWhenLoad) {
         wx.getSetting({
             success: (res) => {
@@ -367,14 +376,14 @@ Page({
        groupId: this.data.groupId ,
        page: 1
      }));
-    
+
      this.setData({
        noticeList: noticeList
      })
      console.log("未读消息",this.data.noticeList)
    },
   toNoticeList:function(){
-    
+
     HiNavigator.navigateToNoticeList({ groupId: this.data.groupId, total: this.data.noticeList.total});
   }
 

@@ -75,7 +75,7 @@ Page({
             });
 
         }
-
+        app.globalData.isScrollTopNum=true
     },
     //控制完成按钮是否可以点击
     disBtn(){
