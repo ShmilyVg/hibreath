@@ -103,6 +103,7 @@ class GroupDynamicManager {
     }
 
     async getGroupDynamicList() {
+        console.log('当前圈子ID',socialGroupManager.currentSocial.groupId)
         const {groupId} = socialGroupManager.currentSocial;
         if (groupId) {
             const {result: {list: dynamicList,notice: noticeList}} = await whenDismissGroup(Protocol.postGroupDynamicLatest({

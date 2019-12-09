@@ -29,7 +29,8 @@
     "pages/caseDetailsInformation/caseDetailsInformation",
     "pages/programmeDetails/programmeDetails",
     "pages/pai-coin/pai-coin",
-    "pages/pai-coin-detail/pai-coin-detail"
+    "pages/pai-coin-detail/pai-coin-detail",
+    "pages/personalCenter/personalCenter"
   ],
   "subpackages": [
     {
@@ -66,6 +67,12 @@
         "text": "圈子",
         "iconPath": "images/tabBar/community.png",
         "selectedIconPath": "images/tabBar/communityR.png"
+      },
+      {
+        "pagePath": "pages/personalCenter/personalCenter",
+        "text": "我的",
+        "iconPath": "images/tabBar/my.png",
+        "selectedIconPath": "images/tabBar/sMy.png"
       }
     ]
   }

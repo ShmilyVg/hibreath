@@ -16,6 +16,7 @@ export default class BlowManager {
         console.log("this.actionBlow",this.actionBlow)
         console.log('this.actionBlow[ProtocolState.BREATH_FINISH]',this.actionBlow[ProtocolState.BREATH_FINISH])
         this.actionBlow[ProtocolState.KEY_CONFIRM] = () => {
+            console.log('我在执行按键检测')
             this.connected();
             this.alertUpdata()
         };

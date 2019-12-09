@@ -103,6 +103,7 @@ page{
     margin-top: 85rpx;
     line-height: 90rpx;
 }
+button::after{ border: none; }
 .result_tab{
     margin-top: 70rpx;
     height: 60rpx;

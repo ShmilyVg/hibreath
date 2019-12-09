@@ -8,7 +8,7 @@ import Protocol from "../../modules/network/protocol";
 /**
  * toastType
  * giveLike：点赞  fatBurn：燃脂检测完成   comment：评论完成 reComment:回复完成
- * imgClock：动态发表成功  share：分享成功  weight：体重信息更新  blood：血压更新  heart：心率
+ * imgClock：动态发表成功  share：分享成功  weight：体重信息更新  blood：血压更新  heart：心率  paiMoney 派币
  */
 
 
@@ -79,6 +79,12 @@ Component({
                 this.setData({
                     toastImg:'../../images/toast/heart.png',
                     toastText:'心率信息已记录啦！'
+                })
+            }
+            if(this.data.toastType =='paiMoney'){
+                this.setData({
+                    toastImg:'../../images/pai/pai.png',
+                    toastText:'恭喜获得派币！'
                 })
             }
         },

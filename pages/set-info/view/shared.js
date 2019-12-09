@@ -75,9 +75,6 @@ function getImageInfo(page) {
             },1000)
         }*/
     }
-
-
-
 }
 
 function createNewIm(page){
@@ -92,30 +89,29 @@ function createNewIm(page){
     if(that.data.shareTodayDif){
         if(that.data.shareTodayDif>=0){
             drawFont(ctx, 45,that.data.shareTodayDif,104,60);
-            const metrics = ctx.measureText(that.data.shareTodayDif).width
-            log.warn('metrics',metrics)
-            console.log('metrics',metrics)
-            if(that.data.shareTodayDif<10){
+            ctx.drawImage(that.data.shareDown, 150*rpx, 9, 9*rpx, 13*rpx);
+            //const metrics = ctx.measureText(that.data.shareTodayDif).width
+           /* if(that.data.shareTodayDif<10){
                 ctx.drawImage(that.data.shareDown, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
                 ctx.drawImage(that.data.shareDown, (75+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }
-
+*/
         }else{
             drawFont(ctx, 45,Math.abs(that.data.shareTodayDif),104,60);
-            const metrics = ctx.measureText(Math.abs(that.data.shareTodayDif)).width
-            log.warn('metrics',metrics)
+            ctx.drawImage(that.data.shareUp, 150*rpx, 9, 9*rpx, 13*rpx);
+       /*     const metrics = ctx.measureText(Math.abs(that.data.shareTodayDif)).width
             console.log('metrics',metrics)
             if(Math.abs(that.data.shareTodayDif)<10){
                 ctx.drawImage(that.data.shareUp, (90+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }else{
                 ctx.drawImage(that.data.shareUp, (75+metrics)*rpx, 30*rpx, 12.5*rpx, 18*rpx);
             }
-
+*/
         }
 
     }else{
-        ctx.drawImage(that.data.shareDown, 115*rpx, 30*rpx, 12.5*rpx, 18*rpx);
+        ctx.drawImage(that.data.shareDown, 150*rpx, 9, 9*rpx, 13*rpx);
         drawFont(ctx, 45,"0",104,60);
     }
   /*  if(that.data.shareTotalDif){
