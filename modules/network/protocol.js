@@ -437,4 +437,15 @@ export default class Protocol {
   static postNoticeUpdateAll() {
     return Network.request({ url: 'group/dynamic/notice/updateAll' })
   }
+
+    //成员新手任务列表
+    static postIntegralSingle() {
+        return Network.request({url: 'integral/single'});
+    }
+
+  //成员每日任务列表
+  static postIntegralDaily() {
+      return Network.request({url: 'integral/daily'});
+  }
+
 }

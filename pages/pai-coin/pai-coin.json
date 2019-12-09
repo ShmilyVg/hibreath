@@ -1,3 +1,6 @@
 {
+  "navigationBarTitleText": "派币",
+  "navigationBarTextStyle":"white",
+  "navigationBarBackgroundColor": "#171717",
   "usingComponents": {}
 }

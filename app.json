@@ -28,8 +28,9 @@
     "pages/fatBurningList/fatBurningList",
     "pages/caseDetailsInformation/caseDetailsInformation",
     "pages/programmeDetails/programmeDetails",
-    "pages/personalCenter/personalCenter",
-    "pages/pai-coin/pai-coin"
+    "pages/pai-coin/pai-coin",
+    "pages/pai-coin-detail/pai-coin-detail",
+    "pages/personalCenter/personalCenter"
   ],
   "subpackages": [
     {
