@@ -16,10 +16,6 @@ Component({
             type: Number,
             value:0
         },
-        canUpdate:{
-            type:Boolean,
-            value:false
-        }
     },
 
     data: {
@@ -52,14 +48,6 @@ Component({
                     this.data.listArray = []
                     this.undateName(this.data.message.praiseInfo.list)
             },1000)
-            /*console.log('canUpdate',this.data.canUpdate)
-                setTimeout(()=>{
-                    if(this.data.canUpdate){
-                    console.log('我执行了更新点赞昵称2')
-                    this.data.listArray = []
-                    this.undateName(this.data.message.praiseInfo.list)
-                    }
-                },100)*/
         },
         hide() {
 
@@ -341,7 +329,7 @@ Component({
                 if (code === 40011) {
                     WXDialog.showDialog({
                         title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
-                            wx.clearStorageSync('currentSocialGroupId')
+                            wx.removeStorageSync('currentSocialGroupId')
                             wx.switchTab({
                                 url: '../community/community',
                                 success: function (e) {
@@ -357,7 +345,7 @@ Component({
                 }else if (code === 40012) {
                     WXDialog.showDialog({
                         title: '', content: '抱歉\n该圈子已解散', confirmText: '我知道了', confirmEvent: () => {
-                            wx.clearStorageSync('currentSocialGroupId')
+                            wx.removeStorageSync('currentSocialGroupId')
                             wx.switchTab({
                                 url: '../community/community',
                                 success: function (e) {

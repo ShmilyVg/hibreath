@@ -89,7 +89,7 @@ Page({
               confirmText: "确定",
               cancelText: "取消",
              confirmEvent: async () => {
-                wx.clearStorageSync('currentSocialGroupId')
+                wx.removeStorageSync('currentSocialGroupId')
                await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
                 HiNavigator.switchToCommunity();
               },
@@ -106,7 +106,7 @@ Page({
                 confirmText: "确定",
                 cancelText: "取消",
                 confirmEvent: async () => {
-                 wx.clearStorageSync('currentSocialGroupId');
+                 wx.removeStorageSync('currentSocialGroupId');
                 await whenDismissGroup(Protocol.postMemberGroupExit({ ...(await judgeGroupEmpty()) }));
                 HiNavigator.switchToCommunity();
                 },
