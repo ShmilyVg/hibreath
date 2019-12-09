@@ -30,7 +30,8 @@
     "pages/programmeDetails/programmeDetails",
     "pages/pai-coin/pai-coin",
     "pages/pai-coin-detail/pai-coin-detail",
-    "pages/personalCenter/personalCenter"
+    "pages/personalCenter/personalCenter",
+    "pages/pai-coin-ruler/pai-coin-ruler"
   ],
   "subpackages": [
     {
