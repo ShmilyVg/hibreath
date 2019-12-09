@@ -75,9 +75,6 @@ function getImageInfo(page) {
             },1000)
         }*/
     }
-
-
-
 }
 
 function createNewIm(page){
