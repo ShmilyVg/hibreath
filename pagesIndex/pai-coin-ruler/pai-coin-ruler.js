@@ -1,7 +1,9 @@
 Page({
 
 
-    data: {},
+    data: {
+        ruler: []
+    },
 
 
     onLoad(options) {

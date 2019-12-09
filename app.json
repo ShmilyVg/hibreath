@@ -28,10 +28,7 @@
     "pages/fatBurningList/fatBurningList",
     "pages/caseDetailsInformation/caseDetailsInformation",
     "pages/programmeDetails/programmeDetails",
-    "pages/pai-coin/pai-coin",
-    "pages/pai-coin-detail/pai-coin-detail",
-    "pages/personalCenter/personalCenter",
-    "pages/pai-coin-ruler/pai-coin-ruler"
+    "pages/personalCenter/personalCenter"
   ],
   "subpackages": [
     {
@@ -40,7 +37,10 @@
         "index/index",
         "device-bind/device-bind",
         "foodVideoclock/foodVideoclock",
-        "noticeList/noticeList"
+        "noticeList/noticeList",
+        "pai-coin/pai-coin",
+        "pai-coin-ruler/pai-coin-ruler",
+        "pai-coin-detail/pai-coin-detail"
       ]
     }
   ],
