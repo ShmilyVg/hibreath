@@ -27,7 +27,8 @@
     "pages/set-up/rename/rename",
     "pages/fatBurningList/fatBurningList",
     "pages/caseDetailsInformation/caseDetailsInformation",
-    "pages/programmeDetails/programmeDetails"
+    "pages/programmeDetails/programmeDetails",
+    "pages/pai-coin/pai-coin"
   ],
   "subpackages": [
     {
