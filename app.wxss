@@ -157,6 +157,19 @@
   animation:mysecond 3s linear infinite alternate;
 }
 
+.common-empty-icon{
+  width: 345rpx;
+  height: 280rpx;
+}
+
+.common-empty-text{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(155,155,155,1);
+  line-height:42rpx;
+  margin-top: 42rpx;
+}
 @keyframes mysecond
 {
   0%   {opacity: 1;}

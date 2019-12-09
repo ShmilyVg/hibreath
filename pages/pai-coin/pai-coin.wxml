@@ -57,7 +57,9 @@
                                   border-radius="6rpx" stroke-width="10rpx" duration="5" activeColor="{{item.receive?'#B9B9B9':'#ED6F69'}}" backgroundColor="#E7E7E7"></progress>
                     </block>
                 </view>
-                <view class="flex-row align-items-center justify-center pai-coin-task-item-btn {{item.finished?(item.receive?'pai-coin-task-have-received-btn':'pai-coin-task-to-receive-btn'):'pai-coin-task-to-finished-btn'}}">{{item.finished?(item.receive?'已领取':'领取'):'去完成'}}</view>
+                <view wx:if="{{!item.finished}}" bindtap="toFinishedEvent" data-id="{{item.id}}" class="flex-row align-items-center justify-center pai-coin-task-item-btn pai-coin-task-to-finished-btn">去完成</view>
+                <view wx:elif="{{item.receive}}" class="flex-row align-items-center justify-center pai-coin-task-item-btn pai-coin-task-have-received-btn">已领取</view>
+                <view wx:else bindtap="toReceiveEvent" data-id="{{item.id}}" class="flex-row align-items-center justify-center pai-coin-task-item-btn pai-coin-task-to-receive-btn">领取</view>
             </view>
         </view>
 

@@ -57,7 +57,12 @@ Page({
         this.switchTasksShowEvent({currentTarget: {dataset: {index: 0}}});
     },
 
+    toFinishedEvent({currentTarget: {dataset: {id}}}) {
 
+    },
+    toReceiveEvent({currentTarget: {dataset: {id}}}) {
+
+    },
     async switchTasksShowEvent({currentTarget: {dataset: {index}}}) {
         const clickIndex = parseInt(index);
         if (clickIndex !== this.data.taskPageIndex) {
