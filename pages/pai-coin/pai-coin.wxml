@@ -1,0 +1,65 @@
+<view class="fill-width flex-column pai-coin-layout">
+    <view class="fill-width flex-row align-items-center space-between box-sizing-border-box pai-coin-left-right-padding" style="padding-top: 70rpx;">
+        <image src="../../images/pai-coin/logo.png" class="pai-coin-logo"></image>
+        <view class="pai-coin-top-remind">用派币可兑换奖品哦!</view>
+    </view>
+    <view class="fill-width flex-column box-sizing-border-box pai-coin-left-right-padding relative" style="margin-top: 20rpx;">
+        <image src="../../images/pai-coin/top-card-bg.png" class="absolute fill-width pai-coin-top-card-bg"></image>
+        <view class="fill-width flex-column pai-coin-top-card-layout relative">
+            <view class="pai-coin-my-coin">我的派币</view>
+            <view class="pai-coin-count">1,192</view>
+            <image src="../../images/pai-coin/top-slimple.png" class="pai-coin-top-slimple"></image>
+            <view class="fill-width flex-row align-items-center absolute" style="left: 0;bottom: 0;overflow: hidden;">
+                <view class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
+                    <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
+                    <view class="pai-coin-top-icon-text">派币规则</view>
+                </view>
+                <view class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
+                    <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
+                    <view class="pai-coin-top-icon-text">派币规则</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="fill-width flex-row box-sizing-border-box pai-coin-left-right-padding" style="margin-top: 60rpx;margin-bottom: 30rpx;">
+        <view bindtap="switchTasksShowEvent" data-index="0" class="flex-column align-items-center">
+            <view class="pai-coin-task-title {{taskPageIndex===0?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">新手任务</view>
+            <view class="pai-coin-choose-line pai-coin-choose-line-color" style="background-color: {{taskPageIndex===0?'rgba(185,185,185,1)':'transparent'}}"></view>
+        </view>
+        <view bindtap="switchTasksShowEvent" data-index="1" class="flex-column align-items-center" style="margin-left: 50rpx;">
+            <view class="pai-coin-task-title {{taskPageIndex===1?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">每日任务</view>
+            <view class="pai-coin-choose-line pai-coin-choose-line-color" style="background-color: {{taskPageIndex===1?'rgba(185,185,185,1)':'transparent'}}"></view>
+        </view>
+    </view>
+
+    <view class="fill-width flex-column box-sizing-border-box pai-coin-left-right-padding">
+        <view wx:for="{{tasks}}" wx:key="id" class="fill-width flex-row align-items-center pai-coin-item-layout relative">
+            <view class="flex-row align-items-center justify-center absolute pai-coin-item-icon-layout" style="z-index: 2;">
+                <image src="../../images/pai-coin/{{item.receive?'received':'receive'}}.png" class="pai-coin-item-icon absolute"></image>
+                <view class="pai-coin-task-icon-text">{{item.integral}}</view>
+                <image wx:if="{{item.finished&&!item.receive}}" src="../../images/pai-coin/reward.png" class="pai-coin-item-reward-icon absolute"></image>
+            </view>
+
+            <view class="fill-width fill-height flex-row space-between box-sizing-border-box pai-coin-item-right-layout {{item.receive?'pai-coin-item-right-layout-have-received':''}}">
+                <view class="flex-column" style="align-items: flex-start;">
+                    <block wx:if="{{taskPageIndex===0}}">
+                        <view class="pai-coin-item-task-progress-title">{{item.subTitle}}</view>
+                        <view class="pai-coin-item-task-title {{item.receive?'pai-coin-item-task-title-have-received':''}}">{{item.title}}</view>
+                    </block>
+                    <block wx:else>
+                        <view class="flex-row align-items-center space-between" style="width: 300rpx;margin-bottom: 14rpx;">
+                            <view>{{item.title}}</view>
+                            <view class="pai-coin-daily-progress">{{item.executeIndex}}/{{item.totalIndex}}</view>
+                        </view>
+
+                        <progress percent="{{item.executeIndex/item.totalIndex*100}}" style="width: 300rpx;"
+                                  border-radius="6rpx" stroke-width="10rpx" duration="5" activeColor="{{item.receive?'#B9B9B9':'#ED6F69'}}" backgroundColor="#E7E7E7"></progress>
+                    </block>
+                </view>
+                <view class="flex-row align-items-center justify-center pai-coin-task-item-btn {{item.finished?(item.receive?'pai-coin-task-have-received-btn':'pai-coin-task-to-receive-btn'):'pai-coin-task-to-finished-btn'}}">{{item.finished?(item.receive?'已领取':'领取'):'去完成'}}</view>
+            </view>
+        </view>
+
+    </view>
+</view>
