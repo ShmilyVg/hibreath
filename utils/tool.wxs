@@ -4,7 +4,6 @@ function my_slice(str,length){
     if(str.length<=length){
            return str;
        }
-       console.log('2222',str)
        str=str.slice(0,length)+'...';
          return str;
    }
@@ -36,9 +35,13 @@ function my_slice(str,length){
      var date = getDate(timestamp);
     return +getHourStr(date)+':'+getMinuteStr(date);
 };
-
+ function getEndTime(timestamp) {
+     var date = getDate(timestamp);
+    return date.getFullYear()+'年'+getMonthStr(date)+'月'+getDayStr(date)+'日';
+};
 module.exports = {
   my_slice:my_slice,
+  getEndTime:getEndTime,
   getDynamicCreateTime:getDynamicCreateTime,
   getCommentTime:getCommentTime
 };

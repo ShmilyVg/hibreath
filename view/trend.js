@@ -50,7 +50,7 @@ function normalTrend(widthRpx) {
         console.error(e);
     }
 
-    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit} = trendData;
+    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit,showLegend} = trendData;
     const series = [{
         name: dataListY1Name,
         data: dataListY,
@@ -75,7 +75,7 @@ function normalTrend(widthRpx) {
         lineStyle: 'curve',
         categories: dataListX,
         series,
-        legend: true,
+        legend: showLegend,
         yAxis: {
             format: function (val) {
                 return val;
