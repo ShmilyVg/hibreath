@@ -218,4 +218,11 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToNoticeList({ groupId, total}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
   }
+
+    /**
+     * 前往派币页面
+     */
+    static navigateToPaiCoinPage() {
+        this.navigateTo({ulr: '/pagesIndex/pai-coin/pain-coin'});
+    }
 }
