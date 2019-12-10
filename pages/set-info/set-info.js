@@ -446,8 +446,10 @@ Page({
     const { result } = await Protocol.postMembersTasks();
     this.setData({
       planId: result.planId,
+      planInfo:result.planInfo,
       sharedId: result.sharedId,
       caseOnReady: result.onReady,
+      caseonFinished: result.onFinished,
       indexDayDesc: result.dayDesc,
       indexfinishNum: result.finishNum,
       indexgoalDesc: result.goalDesc,
@@ -980,7 +982,10 @@ Page({
       videoUrl: e.currentTarget.dataset.videourl
     });
   },
-
+    //方案完成跳转荣誉报告
+   bindTapToPlanFinish(){
+       HiNavigator.navigateToPlanfinish({ planId: this.data.planId});
+   },
   async bindTapProject() {
     HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId });
   },
