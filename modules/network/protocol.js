@@ -451,5 +451,8 @@ export default class Protocol {
   static postIntegralDaily() {
       return Network.request({url: 'integral/daily'});
   }
-
+    //成员积分明细
+    static postIntegralDetail({type}) {
+        return Network.request({url: 'integral/detail', data: {page: 1, pageSize: 100, type}});
+    }
 }

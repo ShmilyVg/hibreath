@@ -56,7 +56,7 @@ page{
 }
 
 .pai-coin-count{
-    font-size:100rpx;
+    font-size:90rpx;
     /*font-family:DINCondensed-Bold,DINCondensed;*/
     font-weight:bold;
     color:rgba(255,255,255,1);
@@ -73,7 +73,7 @@ page{
     color:rgba(255,255,255,.61);
     line-height:37rpx;
     margin-left: 10rpx;
-    bottom: 15rpx;
+    bottom: 20rpx;
 }
 .pai-coin-top-slimple{
     width: 84rpx;
@@ -155,12 +155,13 @@ page{
 }
 
 .pai-coin-task-icon-text{
-    font-size:52rpx;
-    font-family:DINCondensed-Bold,DINCondensed;
+    font-size:42rpx;
+    /*font-family:DINCondensed-Bold,DINCondensed;*/
     font-weight:bold;
     color:rgba(255,255,255,1);
-    line-height:62rpx;
+    line-height:52rpx;
     z-index: 1;
+    margin-bottom: 20rpx;
 }
 
 .pai-coin-item-right-layout {

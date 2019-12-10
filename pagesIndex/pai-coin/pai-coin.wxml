@@ -7,7 +7,7 @@
         <image src="../../images/pai-coin/top-card-bg.png" class="absolute fill-width pai-coin-top-card-bg"></image>
         <view class="fill-width flex-column pai-coin-top-card-layout relative">
             <view class="pai-coin-my-coin">我的派币</view>
-            <view class="pai-coin-count">1,192</view>
+            <view class="pai-coin-count">{{integral}}</view>
             <image src="../../images/pai-coin/top-slimple.png" class="pai-coin-top-slimple"></image>
             <view class="fill-width flex-row align-items-center absolute" style="left: 0;bottom: 0;overflow: hidden;">
                 <view class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
@@ -37,7 +37,7 @@
         <view wx:for="{{tasks}}" wx:key="id" class="fill-width flex-row align-items-center pai-coin-item-layout relative">
             <view class="flex-row align-items-center justify-center absolute pai-coin-item-icon-layout" style="z-index: 2;">
                 <image src="../../images/pai-coin/{{item.receive?'received':'receive'}}.png" class="pai-coin-item-icon absolute"></image>
-                <view class="pai-coin-task-icon-text">{{item.integral}}</view>
+                <view class="pai-coin-task-icon-text">{{item.integral||0}}</view>
                 <image wx:if="{{item.finished&&!item.receive}}" src="../../images/pai-coin/reward.png" class="pai-coin-item-reward-icon absolute"></image>
             </view>
 
