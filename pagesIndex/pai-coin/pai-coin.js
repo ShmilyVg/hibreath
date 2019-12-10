@@ -1,5 +1,6 @@
 import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
@@ -14,8 +15,23 @@ Page({
         this.switchTasksShowEvent({currentTarget: {dataset: {index: 0}}});
     },
 
-    toFinishedEvent({currentTarget: {dataset: {id}}}) {
-        console.log('点击去完成 id:', id);
+    toFinishedEvent({currentTarget: {dataset: {id, type}}}) {
+        console.log('点击去完成 id:', id, 'type:', type);
+        switch (type) {
+            case 8:
+            case 11:
+                HiNavigator.switchToSetInfo();
+                break;
+            case 9:
+            case 10:
+            case 12:
+                HiNavigator.switchToCommunity();
+                break;
+            case 7:
+            default:
+                break;
+
+        }
     },
     async toReceiveEvent({currentTarget: {dataset: {id}}}) {
         console.log('点击领取 id:', id);
