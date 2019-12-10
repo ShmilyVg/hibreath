@@ -161,7 +161,7 @@ page{
     color:rgba(255,255,255,1);
     line-height:52rpx;
     z-index: 1;
-    margin-bottom: 20rpx;
+    margin-bottom: 30rpx;
 }
 
 .pai-coin-item-right-layout {

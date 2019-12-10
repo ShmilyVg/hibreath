@@ -7,7 +7,7 @@
         <image src="../../images/pai-coin/top-card-bg.png" class="absolute fill-width pai-coin-top-card-bg"></image>
         <view class="fill-width flex-column pai-coin-top-card-layout relative">
             <view class="pai-coin-my-coin">我的派币</view>
-            <view class="pai-coin-count">{{integralStr}}</view>
+            <view class="pai-coin-count">{{integralStr||0}}</view>
             <image src="../../images/pai-coin/top-slimple.png" class="pai-coin-top-slimple"></image>
             <view class="fill-width flex-row align-items-center absolute" style="left: 0;bottom: 0;overflow: hidden;">
                 <navigator url="../pai-coin-ruler/pai-coin-ruler" open-type="navigate" hover-class="none" class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">

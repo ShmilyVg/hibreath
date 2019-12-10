@@ -6,6 +6,7 @@ Page({
     data: {
         taskPageIndex: -1,
         integral: 0,//积分数量
+        integralStr: "0",
         tasks: []
     },
 
