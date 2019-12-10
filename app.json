@@ -41,7 +41,10 @@
         "planfinish/planfinish",
         "pai-coin/pai-coin",
         "pai-coin-ruler/pai-coin-ruler",
-        "pai-coin-detail/pai-coin-detail"
+        "pai-coin-detail/pai-coin-detail",
+        "user-info/user-info",
+        "food-habit/food-habit",
+        "target-weight/target-weight"
       ]
     }
   ],
