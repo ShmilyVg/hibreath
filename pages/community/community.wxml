@@ -50,7 +50,7 @@
         <view style="height:61rpx;background:#fff;opacity: 0.4;width: 1rpx"></view>
         <view class="" bindtap="toFatBurningList"  style="height: 100%;width: 54%;display: flex;align-items: center;justify-content: center;">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">减脂榜</view>
+            <view class="community-rank-text">燃脂榜</view>
         </view>
         <view style="height:61rpx;background:#fff;opacity: 0.4;width: 1rpx"></view>
         <view class="" bindtap="toPunchList"  style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-end">

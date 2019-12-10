@@ -1,0 +1,27 @@
+/* pagesIndex/commonProblem/commonProblem.wxss */
+.common-list{
+  padding:0 40rpx;
+  height:119rpx;
+  border-bottom:1px solid #F2F2F2;
+}
+.common-img{
+  width:14rpx;
+ height:25rpx;
+ vertical-align: middle;
+}
+.common-text{
+  display:inline-block;
+  height:80rpx; 
+  width:500rpx;
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:#545454;
+  line-height:40rpx;
+}
+.common-spot{
+  display: inline-block;
+  border: 2px solid #545454;      
+  border-radius: 50%;  
+  margin-right: 21rpx;   
+}
