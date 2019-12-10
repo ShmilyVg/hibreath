@@ -7,17 +7,17 @@
         <image src="../../images/pai-coin/top-card-bg.png" class="absolute fill-width pai-coin-top-card-bg"></image>
         <view class="fill-width flex-column pai-coin-top-card-layout relative">
             <view class="pai-coin-my-coin">我的派币</view>
-            <view class="pai-coin-count">{{integral}}</view>
+            <view class="pai-coin-count">{{integralStr}}</view>
             <image src="../../images/pai-coin/top-slimple.png" class="pai-coin-top-slimple"></image>
             <view class="fill-width flex-row align-items-center absolute" style="left: 0;bottom: 0;overflow: hidden;">
-                <view class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
+                <navigator url="../pai-coin-ruler/pai-coin-ruler" open-type="navigate" hover-class="none" class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
                     <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
                     <view class="pai-coin-top-icon-text">派币规则</view>
-                </view>
-                <view class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
+                </navigator>
+                <navigator url="../pai-coin-detail/pai-coin-detail" open-type="navigate" hover-class="none" class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
                     <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
-                    <view class="pai-coin-top-icon-text">派币规则</view>
-                </view>
+                    <view class="pai-coin-top-icon-text">派币详情</view>
+                </navigator>
             </view>
         </view>
     </view>
@@ -49,7 +49,7 @@
                     </block>
                     <block wx:else>
                         <view class="flex-row align-items-center space-between" style="width: 300rpx;margin-bottom: 14rpx;">
-                            <view>{{item.title}}</view>
+                            <view class="{{item.receive?'pai-coin-item-task-progress-title':'pai-coin-item-task-progress-title-not-receive'}}">{{item.title}}</view>
                             <view class="pai-coin-daily-progress">{{item.executeIndex}}/{{item.totalIndex}}</view>
                         </view>
 

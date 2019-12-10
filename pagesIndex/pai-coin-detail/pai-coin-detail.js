@@ -21,7 +21,7 @@ Page({
                 return {...item, selected: item.type === selectType}
             }),
             details: list.map(item => {
-                return {...item, sign, time: this.getTime(item.timestamp)};
+                return {...item, sign, time: this.getTime(item.createdTimestamp)};
             })
         });
     },

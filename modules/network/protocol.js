@@ -451,4 +451,9 @@ export default class Protocol {
     static postIntegralDetail({type}) {
         return Network.request({url: 'integral/detail', data: {page: 1, pageSize: 100, type}});
     }
+
+    //成员领取奖励
+    static postIntegralReceive({id}) {
+        return Network.request({url: 'integral/receive', data: {id}});
+    }
 }
