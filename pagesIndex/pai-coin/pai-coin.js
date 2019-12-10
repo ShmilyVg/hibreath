@@ -8,7 +8,8 @@ Page({
         taskPageIndex: -1,
         integral: 0,//积分数量
         integralStr: "0",
-        tasks: []
+        tasks: [],
+        receiveIntegral: '0'
     },
 
     async onLoad(options) {
@@ -30,7 +31,6 @@ Page({
             case 9:
             case 10:
             case 12:
-            case 13:
                 HiNavigator.switchToCommunity();
                 break;
             case 7:
@@ -39,15 +39,27 @@ Page({
 
         }
     },
+    toastTimeoutIndex: -1,
     async toReceiveEvent({currentTarget: {dataset: {id}}}) {
         console.log('点击领取 id:', id);
         await Protocol.postIntegralReceive({id});
         const {tasks, integral} = this.data;
         for (const [index, item] of tasks.entries()) {
             if (item.id === id) {
-                const obj = {integralStr: this.createIntegralStr((integral + parseInt(item.integral)).toString())};
+                const obj = {
+                    integralStr: this.createIntegralStr((integral + parseInt(item.integral)).toString()),
+                    receiveIntegral: item.integral,
+                    showToast: true
+                };
                 obj[`tasks[${index}].receive`] = true;
-                this.setData(obj);
+                this.setData(obj, () => {
+                    clearTimeout(this.toastTimeoutIndex);
+                    this.toastTimeoutIndex = setTimeout(() => {
+                        this.setData({
+                            showToast: false
+                        });
+                    }, 2000);
+                });
                 break;
             }
         }

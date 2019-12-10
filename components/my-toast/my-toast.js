@@ -21,6 +21,10 @@ Component({
         type:String,
         value:''
     },
+      toastText:{
+          type: String,
+          value: ''
+      },
   },
     lifetimes: {
          created() {
@@ -83,8 +87,7 @@ Component({
             }
             if(this.data.toastType =='paiMoney'){
                 this.setData({
-                    toastImg:'../../images/pai/pai.png',
-                    toastText:'恭喜获得派币！'
+                    toastImg:'../../images/toast/pai.png',
                 })
             }
         },

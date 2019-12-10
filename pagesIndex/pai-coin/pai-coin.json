@@ -2,5 +2,7 @@
   "navigationBarTitleText": "派币",
   "navigationBarTextStyle":"white",
   "navigationBarBackgroundColor": "#171717",
-  "usingComponents": {}
+  "usingComponents": {
+    "my-toast": "../../components/my-toast/my-toast"
+  }
 }

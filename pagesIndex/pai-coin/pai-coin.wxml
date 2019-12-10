@@ -65,3 +65,5 @@
 
     </view>
 </view>
+
+<my-toast wx:if="{{showToast}}" toast-type="paiMoney" toast-text="恭喜获得{{receiveIntegral}}枚派币!"></my-toast>
