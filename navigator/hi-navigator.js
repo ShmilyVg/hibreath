@@ -50,6 +50,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToFinishClock() {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }
+    //方案完成
+    static navigateToPlanfinish() {
+        this.navigateTo({url: '/pagesIndex/planfinish/planfinish'});
+    }
     //饮食打卡-发表动态
     static navigateToImgClock({id}) {
         this.navigateTo({url: '/pages/imgClock/imgClock?id=' + id});
@@ -214,6 +218,13 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToNoticeList({ groupId, total}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
   }
+
+    /**
+     * 前往派币页面
+     */
+    static navigateToPaiCoinPage() {
+        this.navigateTo({ulr: '/pagesIndex/pai-coin/pain-coin'});
+    }
 
   //减脂常见问题
   static navigateToCommonProblem() {

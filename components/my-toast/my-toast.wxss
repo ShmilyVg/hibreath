@@ -16,5 +16,6 @@
     position: fixed;
     max-width: 492rpx;
     left: 20%;
-    top:45%
+    top:45%;
+    z-index: 100;
 }

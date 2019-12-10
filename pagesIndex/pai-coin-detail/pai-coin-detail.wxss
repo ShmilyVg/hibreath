@@ -1,0 +1,50 @@
+.pai-coin-detail-title{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    line-height:69rpx;
+}
+
+.pai-coin-detail-title-line{
+    width:120rpx;
+    height:4rpx;
+    border-radius:2rpx;
+}
+
+.pai-coin-detail-item-layout {
+    padding: 34rpx 40rpx 50rpx;
+}
+
+.pai-coin-detail-item-line{
+    border-top: 1rpx solid rgba(242,242,242,1);
+    margin-top: 39rpx;
+    margin-bottom: 51rpx;
+}
+
+.pai-coin-detail-item-layout-02{
+    padding: 0 14rpx 0 12rpx;
+}
+
+.pai-coin-detail-item-title{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:28rpx;
+}
+
+.pai-coin-detail-item-time {
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+    line-height:28rpx;
+    margin-top: 17rpx;
+}
+
+.pai-coin-detail-item-coin-num {
+    font-size:60rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+}

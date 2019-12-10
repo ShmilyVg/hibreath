@@ -1,0 +1,7 @@
+<view class="fill-width flex-column">
+    <view class="pai-coin-ruler-title">派币规则</view>
+    <image src="./divide.png" class="pai-coin-ruler-divide-icon"></image>
+    <view wx:for="{{rulers}}" wx:key="index" class="fill-width flex-row box-sizing-border-box pai-coin-ruler-content">
+        {{index+1}}.{{item.content}}
+    </view>
+</view>

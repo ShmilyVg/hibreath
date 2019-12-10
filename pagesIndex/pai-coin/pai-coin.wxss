@@ -1,0 +1,245 @@
+page{
+    background:rgba(245,245,245,1);
+}
+.pai-coin-layout {
+}
+
+.pai-coin-layout:before {
+    content: '';
+    background: linear-gradient(180deg, rgba(23, 23, 23, 1) 0%, rgba(69, 69, 69, 1) 100%) center center;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 310rpx;
+}
+
+.pai-coin-left-right-padding{
+    padding-left: 40rpx;
+    padding-right: 40rpx;
+}
+
+
+.pai-coin-logo {
+    width: 147rpx;
+    height: 50rpx;
+}
+
+.pai-coin-top-remind{
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,.45);
+    line-height:37rpx;
+}
+.pai-coin-top-card-bg{
+    height: 300rpx;
+    left: 0;
+    top: -130rpx;
+}
+
+.pai-coin-top-card-layout {
+    z-index: 1;
+    height: 330rpx;
+    background: linear-gradient(155deg,rgba(247,168,162,1) 0%,rgba(237,111,105,1) 100%);
+    border-radius:20rpx;
+}
+
+.pai-coin-my-coin {
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:40rpx;
+    align-self: flex-start;
+    margin: 30rpx 42rpx 0;
+
+}
+
+.pai-coin-count{
+    font-size:90rpx;
+    /*font-family:DINCondensed-Bold,DINCondensed;*/
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:120rpx;
+    position: relative;
+}
+
+.pai-coin-count:after{
+    content: '枚';
+    position: absolute;
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,.61);
+    line-height:37rpx;
+    margin-left: 10rpx;
+    bottom: 20rpx;
+}
+.pai-coin-top-slimple{
+    width: 84rpx;
+    height: 84rpx;
+    margin-top: -5rpx;
+    z-index: 1;
+}
+
+.pai-coin-top-icon {
+    width: 38rpx;
+    height: 38rpx;
+    margin-right: 15rpx;
+}
+
+.pai-coin-top-icon-text {
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:37rpx;
+}
+
+.pai-coin-top-icon-layout{
+    padding: 33rpx 0 38rpx;
+    border-top: 1rpx solid #FF9590;
+}
+
+.pai-coin-top-icon-layout:first-child{
+    border-right: 1rpx solid #FF9590;
+}
+
+.pai-coin-task-title {
+
+    font-family:PingFang-SC-Medium,PingFang-SC;
+
+}
+
+.pai-coin-task-title-choose{
+    font-size:40rpx;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:56rpx;
+}
+
+.pai-coin-task-title-not-choose{
+    font-size:26rpx;
+    font-weight:400;
+    color:rgba(139,139,139,1);
+    line-height:37rpx;
+}
+
+.pai-coin-choose-line{
+    width:60rpx;
+    height:6rpx;
+    border-radius:4rpx;
+    margin-top: 5rpx;
+}
+
+.pai-coin-item-layout {
+    height: 170rpx;
+    margin-bottom: 20rpx;
+}
+
+.pai-coin-item-icon-layout{
+    width: 89rpx;
+    height: 120rpx;
+}
+
+.pai-coin-item-icon{
+    width: 89rpx;
+    height: 120rpx;
+}
+
+.pai-coin-item-reward-icon{
+    width: 44rpx;
+    height: 45rpx;
+    left: 0;
+    top: 0;
+}
+
+.pai-coin-task-icon-text{
+    font-size:42rpx;
+    /*font-family:DINCondensed-Bold,DINCondensed;*/
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:52rpx;
+    z-index: 1;
+    margin-bottom: 30rpx;
+}
+
+.pai-coin-item-right-layout {
+    z-index: 1;
+    background:rgba(255,255,255,1);
+    border-radius:20rpx;
+    margin-left: 45rpx;
+    padding-left: 90rpx;
+    padding-right: 30rpx;
+}
+
+.pai-coin-item-right-layout-have-received{
+    background:rgba(231,231,231,1);
+}
+
+.pai-coin-item-task-progress-title{
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(166,166,166,1);
+    line-height:37rpx;
+}
+
+.pai-coin-item-task-progress-title-not-receive{
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:37rpx;
+}
+
+.pai-coin-item-task-title{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+}
+
+.pai-coin-item-task-title-have-received{
+    font-size:32rpx;
+    color:rgba(166,166,166,1);
+    line-height:45rpx;
+}
+
+.pai-coin-task-item-btn{
+    width:150rpx;
+    height:60rpx;
+    border-radius:39rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    line-height:33rpx;
+    border: 1rpx solid transparent;
+}
+
+.pai-coin-task-to-finished-btn {
+    background:rgba(252,236,235,1);
+    border: 1rpx solid rgba(237,111,105,1);
+    color:rgba(237,111,105,1);
+}
+
+.pai-coin-task-to-receive-btn{
+    background:rgba(237,111,105,1);
+    color:rgba(255,255,255,1);
+}
+
+.pai-coin-task-have-received-btn{
+    background:rgba(185,185,185,1);
+    color:rgba(255,255,255,1);
+}
+
+.pai-coin-daily-progress {
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(166,166,166,1);
+    line-height:37rpx;
+}
+
+

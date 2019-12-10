@@ -1,0 +1,30 @@
+<view class="fill-width flex-column" style="align-items: flex-start;">
+    <view class="flex-row align-items-center" style="margin-left: 50rpx;margin-top: 47rpx;">
+        <view bindtap="switchTypeEvent" data-type="{{item.type}}" wx:for="{{titles}}" wx:key="title" class="flex-column">
+            <view class="pai-coin-detail-title" style="color: {{item.selected?'rgba(237,111,105,1)':'rgba(150,150,150,1)'}}">{{item.title}}</view>
+            <view class="pai-coin-detail-title-line" style="background-color: {{item.selected?'rgba(237,111,105,1)':'transparent'}}"></view>
+        </view>
+    </view>
+
+    <view wx:if="{{details.length}}" class="fill-width flex-column box-sizing-border-box pai-coin-detail-item-layout">
+        <view class="fill-width pai-coin-detail-item-line" style="margin-top: 0;"></view>
+        <block wx:for="{{details}}" wx:key="id">
+            <view class="fill-width flex-row align-items-center box-sizing-border-box space-between pai-coin-detail-item-layout-02">
+                <view class="flex-column" style="align-items: flex-start;">
+                    <view class="pai-coin-detail-item-title">{{item.title}}</view>
+                    <view class="pai-coin-detail-item-time">{{item.time}}</view>
+                </view>
+                <view class="flex-row align-items-center">
+                    <view class="pai-coin-detail-item-coin-num" style="font-size: 30rpx;margin-bottom: 5rpx;">{{item.sign}}</view>
+                    <view class="pai-coin-detail-item-coin-num">{{item.integral}}</view>
+                </view>
+            </view>
+            <view class="fill-width pai-coin-detail-item-line"></view>
+        </block>
+    </view>
+
+    <view wx:else class="fill-width flex-column">
+        <image src="../../images/empty.png" class="common-empty-icon" style="margin-top: 200rpx;"></image>
+        <view class="common-empty-text">暂无记录</view>
+    </view>
+</view>

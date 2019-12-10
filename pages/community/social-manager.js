@@ -103,6 +103,7 @@ class GroupDynamicManager {
     }
 
     async getGroupDynamicList() {
+        console.log('当前圈子ID',socialGroupManager.currentSocial.groupId)
         const {groupId} = socialGroupManager.currentSocial;
         if (groupId) {
             const {result: {list: dynamicList,notice: noticeList}} = await whenDismissGroup(Protocol.postGroupDynamicLatest({
@@ -168,7 +169,7 @@ export async function whenDismissGroup(protocol) {
         if (code === 40011) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
-                    wx.clearStorageSync('currentSocialGroupId')
+                    wx.removeStorageSync('currentSocialGroupId')
                     wx.switchTab({
                         url: '../community/community',
                         success: function (e) {
@@ -184,7 +185,7 @@ export async function whenDismissGroup(protocol) {
         }else if (code === 40012) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n该圈子已解散', confirmText: '我知道了', confirmEvent: () => {
-                    wx.clearStorageSync('currentSocialGroupId')
+                    wx.removeStorageSync('currentSocialGroupId')
                     wx.switchTab({
                         url: '../community/community',
                         success: function (e) {

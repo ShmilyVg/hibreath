@@ -28,8 +28,7 @@
     "pages/fatBurningList/fatBurningList",
     "pages/caseDetailsInformation/caseDetailsInformation",
     "pages/programmeDetails/programmeDetails",
-    "pages/personalCenter/personalCenter",
-    "pages/pai-coin/pai-coin"
+    "pages/personalCenter/personalCenter"
   ],
   "subpackages": [
     {
@@ -42,7 +41,11 @@
         "commonProblem/commonProblem",
         "substituteMeal/substituteMeal",
         "reaction/reaction",
-        "dredge/dredge"
+        "dredge/dredge",
+        "planfinish/planfinish",
+        "pai-coin/pai-coin",
+        "pai-coin-ruler/pai-coin-ruler",
+        "pai-coin-detail/pai-coin-detail"
       ]
     }
   ],

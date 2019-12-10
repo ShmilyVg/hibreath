@@ -83,7 +83,6 @@
             scrollTopNum="{{scrollTopNum}}"
             wx:for="{{dynamicList}}"
             wx:key="taskId"
-            canUpdate="{{canUpdate}}"
             message="{{item}}">
     </message-item>
 

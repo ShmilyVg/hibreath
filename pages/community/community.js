@@ -303,9 +303,11 @@ Page({
                         this.setData({
                             dynamicList,
                             noticeList:wx.getStorageSync('noticeList'),
-                            canUpdate:true
                         }, resolve);
-                        wx.clearStorageSync('noticeList')
+                        //wx.clearStorageSync('noticeList')
+                        try {
+                            wx.removeStorageSync('noticeList')
+                        } catch(e) {}
                         console.log('最新数组',this.data.dynamicList)
                     } catch (e) {
                         reject(e);
@@ -321,7 +323,6 @@ Page({
         }
 
         try {
-            console.log('getSocialGroupManager.currentSocialgetSocialGroupManager.currentSocial',getSocialGroupManager.currentSocial)
             await getSocialGroupManager.getSocialGroupList();
             getGroupDynamicManager.clear();
             await showData.call(this, {currentSocial: getSocialGroupManager.currentSocial});
@@ -332,6 +333,8 @@ Page({
     },
 
     async onPullDownRefresh() {
+        console.log('noticeListnoticeListnoticeList1',wx.getStorageSync('currentSocialGroupId'))
+        console.log('noticeListnoticeList2',wx.getStorageSync('noticeList'))
         await this.forceUpdateAll();
         wx.stopPullDownRefresh();
         //this.NoticeList();

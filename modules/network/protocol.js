@@ -167,6 +167,10 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
+    //方案完成荣誉报告
+    static postPlanFinish() {
+        return Network.request({url: 'members/plan/finishInfo'})
+    }
     //退出方案
     static postMembersExit({planId}) {
         return Network.request({url: 'members/plan/exit',data: {planId}})
@@ -437,4 +441,23 @@ export default class Protocol {
   static postNoticeUpdateAll() {
     return Network.request({ url: 'group/dynamic/notice/updateAll' })
   }
+
+    //成员新手任务列表
+    static postIntegralSingle() {
+        return Network.request({url: 'integral/single'});
+    }
+
+  //成员每日任务列表
+  static postIntegralDaily() {
+      return Network.request({url: 'integral/daily'});
+  }
+    //成员积分明细
+    static postIntegralDetail({type}) {
+        return Network.request({url: 'integral/detail', data: {page: 1, pageSize: 100, type}});
+    }
+
+    //成员领取奖励
+    static postIntegralReceive({id}) {
+        return Network.request({url: 'integral/receive', data: {id}});
+    }
 }
