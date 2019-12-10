@@ -123,15 +123,15 @@ Page({
                 value.date = `${year}/${month}/${day} ${time}`;
                 let image = '../../images/result/cell';
                 const dValue = value.dataValue;
-                if (dValue >= 0 && dValue < 0.6) {
+                if (dValue >= 0 && dValue <=2) {
                     image = image + '1';
-                } else if (dValue >= 0.6 && dValue < 1) {
+                } else if (dValue >= 3 && dValue <= 9) {
                     image = image + '2';
-                } else if (dValue >= 1 && dValue <2) {
+                } else if (dValue >= 10 && dValue <=19) {
                     image = image + '3';
-                } else if (dValue >= 2 && dValue <= 4) {
+                } else if (dValue >= 20 && dValue <= 39) {
                     image = image + '4';
-                } else if (dValue > 4) {
+                } else if (dValue >= 40) {
                     image = image + '5';
                 }
                 image = image + '.png';
