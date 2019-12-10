@@ -19,11 +19,11 @@ Page({
     toFinishedEvent({currentTarget: {dataset: {id, type}}}) {
         console.log('点击去完成 id:', id, 'type:', type);
         switch (type) {
-            case 1:
             case 2:
             case 3:
             case 4:
             case 5:
+            case 6:
             case 8:
             case 11:
                 HiNavigator.switchToSetInfo();
@@ -33,7 +33,6 @@ Page({
             case 12:
                 HiNavigator.switchToCommunity();
                 break;
-            case 7:
             default:
                 break;
 
