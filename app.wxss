@@ -54,6 +54,11 @@
   position: absolute;
 }
 
+.bottom{
+  left: 0;
+  bottom: 0;
+}
+
 .relative{
   position: relative;
 }
