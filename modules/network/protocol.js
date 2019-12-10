@@ -167,6 +167,10 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
+    //方案完成荣誉报告
+    static postPlanFinish() {
+        return Network.request({url: 'members/plan/finishInfo'})
+    }
     //退出方案
     static postMembersExit({planId}) {
         return Network.request({url: 'members/plan/exit',data: {planId}})

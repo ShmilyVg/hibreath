@@ -39,7 +39,8 @@
         "index/index",
         "device-bind/device-bind",
         "foodVideoclock/foodVideoclock",
-        "noticeList/noticeList"
+        "noticeList/noticeList",
+        "planfinish/planfinish"
       ]
     }
   ],
