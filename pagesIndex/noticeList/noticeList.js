@@ -1,6 +1,7 @@
 // pagesIndex/noticeList/noticeList.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+import { Toast as toast, WXDialog } from "heheda-common-view";
 Page({
 
   /**
@@ -11,7 +12,8 @@ Page({
     MessageDetailId:'',
     read: '#F8FAFC',
     total:'',
-    pageIndex:1
+    pageIndex:1,
+    isDelete:''
   },
 
   /**
@@ -27,22 +29,47 @@ Page({
     Protocol.postNoticeUpdateAll();
   },
   async postDynamicNotice() {
-      const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId });
-      if (list.length) {
-        ++this.data.pageIndex;
+    const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId });
+    if (list.length) {
+        this.data.pageIndex++;
       }
-      console.log(list)
-      const dataList = list.map(item => {
+    console.log(list )
+    const noticeList= list.map(item => {
         return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
       })
+    console.log(noticeList)
     this.setData({
-      list:dataList
+      noticeList: noticeList
     })
   },
 
   toMessageDetail: function (e) {
+    console.log("e",e)
     this.data.MessageDetailId = e.currentTarget.dataset.index;
-    HiNavigator.navigateToMessageDetail({ messageId: this.data.MessageDetailId});
+    this.data.isDelete = e.currentTarget.dataset.isdelete;
+    console.log(e.currentTarget.dataset.isdelete)
+    if (this.data.isDelete){
+      console.log(111)
+      wx.showModal({
+        title: '',
+        content: '该条动态已被删除',
+        showCancel:false,
+        confirmText:'我知道了',
+        success(res) {
+          if (res.confirm) {
+            //console.log('用户点击确定')
+          } else if (res.cancel) {
+            //console.log('用户点击取消')
+          }
+        }
+      })
+      //console.log(111)
+    }else{
+      //console.log(222)
+      HiNavigator.navigateToMessageDetail({ messageId: this.data.MessageDetailId });
+    }
+    
+    
   },
   getDateDiff:function(dateTime) {
     let diffValue = dateTime;
@@ -125,7 +152,16 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  async onReachBottom () {
+    const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId })
+    const dataList = list.map(item => {
+      return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
+    })
+    console.log(dataList)
+    if (dataList.length) {
+      this.setData({ noticeList: this.data.noticeList.concat(dataList) });
+    }
+
   },
 
   /**

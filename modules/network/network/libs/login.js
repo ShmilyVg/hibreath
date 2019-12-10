@@ -33,7 +33,7 @@ export default class Login {
     }
 
 
-}
+} 
 
 function wxReLogin(resolve, reject) {
     wx.login({
