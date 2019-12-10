@@ -1,0 +1,9 @@
+<!--pagesIndex/dredge/dredge.wxml-->
+<view class="common-list flex-row space-between" bindtap="toSubstituteMeal">
+  <view class="flex-row space-between">
+     <text class="common-spot"></text>
+     <text class="common-text">吃代餐后，肚子咕噜噜响，大便次数增加，里面会不会有泻药？</text>
+  </view>
+  <image class="common-img" src="../../images/personalCenter/gray.png"></image>
+</view>
+
