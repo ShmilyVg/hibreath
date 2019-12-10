@@ -2,6 +2,7 @@
 import { Toast } from "heheda-common-view";
 import Login from "../../modules/network/login";
 import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
 Page({
 
   /**
@@ -53,6 +54,10 @@ Page({
   toCommonProblem:function(){
     HiNavigator.navigateToCommonProblem();
   },
+  // toNoticeList:function(){
+  //   HiNavigator.navigateToNoticeList({groupId:});
+  // }
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -72,11 +77,7 @@ Page({
       try {
         await Login.doRegister({ userInfo, encryptedData, iv });
         Toast.hiddenLoading();
-        this.setData({
-          isLogin: true,
-          nickname: userInfo.nickName,
-          headUrl: userInfo.avatarUrl
-        })
+        this.getUserInfo();
         console.log(this.data.nickname, this.data.headUrl)
       } catch (e) {
         Toast.warn('获取信息失败');
@@ -87,6 +88,7 @@ Page({
       console.log("没有userInfo")
     }
   },
+
 
   /**
    * 生命周期函数--监听页面显示
@@ -104,13 +106,8 @@ Page({
           })
           console.log('isLogin: false',)
         }else{
-          const userInfo = (wx.getStorageSync('userInfo') || "");
-          this.setData({
-            isLogin: true,
-            nickname: userInfo.nickname,
-            headUrl: userInfo.headUrl
-          })
-          // console.log('isLogin: true') 
+         this.getUserInfo();
+          console.log('isLogin: true')
           // console.log(this.data.isLogin) 
           // console.log(111,this.data.nickname, this.data.headUrl)
         }
@@ -119,7 +116,18 @@ Page({
     });
     console.log(getApp().globalData.isLogin)
   },
-
+  async getUserInfo(){
+    const { result } = await Protocol.postMemberInfo();
+    console.log(result);
+    this.setData({
+      isLogin: true,
+      nickname: result.nickname,
+      headUrl: result.headUrl,
+      weightGoal:result.weightGoal,
+      amount:result.amount
+    })
+    console.log(this.data.nickname, this.data.headUrl)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

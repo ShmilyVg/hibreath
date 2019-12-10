@@ -1,6 +1,6 @@
 <!--pagesIndex/commonProblem/commonProblem.wxml-->
 <view class="common-list flex-row space-between" bindtap="toSubstituteMeal">
-  <text class="common-text">1.关于代餐</text>
+  <text class="common-text flex-row space-between">1.关于代餐</text>
   <image class="common-img" src="../../images/personalCenter/gray.png"></image>
 </view>
 <view class="common-list flex-row space-between" bindtap="toReaction">

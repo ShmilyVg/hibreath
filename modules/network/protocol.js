@@ -460,4 +460,8 @@ export default class Protocol {
     static postIntegralReceive({id}) {
         return Network.request({url: 'integral/receive', data: {id}});
     }
+    //个人中心
+    static postMemberInfo() {
+        return Network.request({url: 'members/info'});
+    }
 }

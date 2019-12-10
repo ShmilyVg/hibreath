@@ -215,7 +215,7 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
   //动态信息列表
-  static navigateToNoticeList({ groupId, total}) {
+  static navigateToNoticeList({ groupId, total = 0}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
   }
 

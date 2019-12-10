@@ -30,6 +30,9 @@ page {
   color:rgba(84,84,84,1);
   line-height:42rpx;
 }
+.per-nickName::after {
+  border: none;
+}
 .per-text{
   font-size:24rpx;
   font-family:PingFang-SC-Regular,PingFang-SC;
@@ -92,6 +95,7 @@ color: #DDDDDD ;
 .per-main-img{
   width:14rpx;
 height:25rpx;
+  margin-left:30rpx;
 }
 .per-main-text{
   font-size:28rpx;
