@@ -47,6 +47,4 @@
     font-family:DIN Condensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
-    line-height:28rpx;
-
 }

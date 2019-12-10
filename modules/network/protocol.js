@@ -430,7 +430,7 @@ export default class Protocol {
     return Network.request({ url: 'breathData/delete', data: { id } })
   }
   //圈子通知列表
-  static postDynamicNotice({ page = 1 , groupId, pageSize = 15 }) {
+  static postDynamicNotice({ page  , groupId, pageSize = 15 }) {
     return Network.request({ url: 'group/dynamic/notice', data: { page, groupId, pageSize } })
   }
   //圈子通知清除
@@ -454,5 +454,10 @@ export default class Protocol {
     //成员积分明细
     static postIntegralDetail({type}) {
         return Network.request({url: 'integral/detail', data: {page: 1, pageSize: 100, type}});
+    }
+
+    //成员领取奖励
+    static postIntegralReceive({id}) {
+        return Network.request({url: 'integral/receive', data: {id}});
     }
 }

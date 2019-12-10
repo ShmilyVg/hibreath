@@ -218,4 +218,28 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToNoticeList({ groupId, total}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
   }
+
+    /**
+     * 前往派币页面
+     */
+    static navigateToPaiCoinPage() {
+        this.navigateTo({ulr: '/pagesIndex/pai-coin/pain-coin'});
+    }
+
+  //减脂常见问题
+  static navigateToCommonProblem() {
+    this.navigateTo({ url: '/pagesIndex/commonProblem/commonProblem'});
+  }
+  //关于代餐
+  static navigateToSubstituteMeal() {
+    this.navigateTo({ url: '/pagesIndex/substituteMeal/substituteMeal' });
+  }
+  //食用代餐后的反应
+  static navigateToReaction() {
+    this.navigateTo({ url: '/pagesIndex/reaction/reaction' });
+  }
+  //减脂心里疏导
+  static navigateToDredge() {
+    this.navigateTo({ url: '/pagesIndex/dredge/dredge' });
+  }
 }

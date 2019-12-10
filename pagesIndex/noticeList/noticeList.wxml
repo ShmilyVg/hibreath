@@ -1,5 +1,5 @@
 <!--pagesIndex/noticeList/noticeList.wxml-->
-<view wx:if="{{!list.length==0}}" class="page-body">
+<view wx:if="{{!noticeList.length==0}}" class="page-body">
   <view class="flex-row noticeList-header space-between">
     <view>新消息 {{total}}</view>
     <view class="header-btn flex-row space-between" bindtap="deleteNotice">
@@ -8,7 +8,7 @@
     </view>
   </view>
   <view>
-      <view wx:for="{{list}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}" data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
+      <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}" data-isDelete="{{item.baseData.isDelete}}"  data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
         <view class="flex-row space-between notice-left">
           <image src="{{item.fromImg}}" class="notice-head-img"></image>
           <view class="notice-center">
@@ -27,7 +27,7 @@
   </view>
 </view>
 <view  wx:else>
-  <image  class="phone-img" src="../../images/community/phone.png"></image>
+  <image  class="phone-img" src="../../images/noticeList/empty.png"></image>
   <view class="empty-text">暂无记录</view>
 </view>
 

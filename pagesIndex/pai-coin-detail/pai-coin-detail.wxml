@@ -15,7 +15,7 @@
                     <view class="pai-coin-detail-item-time">{{item.time}}</view>
                 </view>
                 <view class="flex-row align-items-center">
-                    <view class="pai-coin-detail-item-coin-num" style="font-size: 30rpx;">{{item.sign}}</view>
+                    <view class="pai-coin-detail-item-coin-num" style="font-size: 30rpx;margin-bottom: 5rpx;">{{item.sign}}</view>
                     <view class="pai-coin-detail-item-coin-num">{{item.integral}}</view>
                 </view>
             </view>
@@ -23,7 +23,7 @@
         </block>
     </view>
 
-    <view class="fill-width flex-column">
+    <view wx:else class="fill-width flex-column">
         <image src="../../images/empty.png" class="common-empty-icon" style="margin-top: 200rpx;"></image>
         <view class="common-empty-text">暂无记录</view>
     </view>

@@ -1,1 +1,107 @@
 /* pages/personalCenter/personalCenter.wxss */
+page {
+    background-color:  #F5F5F5;
+}
+.per-page{
+  height:100%;
+  padding:0 40rpx;
+}
+.personal-header{
+  padding:75rpx 0 60rpx 0;
+}
+.per-header-img{
+  width:120rpx;
+  height:120rpx;
+  border-radius:45%;
+  border:4px solid rgba(255,255,255,1);
+  margin-right:35rpx;
+  overflow: hidden;
+}
+.per-img{
+  width:170rpx;
+  height:170rpx;
+  margin-left:-25rpx;
+   margin-top:-25rpx;
+}
+.per-nickName{
+  font-size:30rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(84,84,84,1);
+  line-height:42rpx;
+}
+.per-text{
+  font-size:24rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(164,164,164,1);
+  line-height:33rpx;
+}
+.gray-img{
+  width:14rpx;
+  height:25rpx;
+  vertical-align: middle;
+  margin-left:23rpx;
+}
+.per-nav{
+  height:140rpx;
+  background:#fff;
+  border-radius:20rpx;
+  justify-content: space-around;
+}
+.per-nav-list{
+ text-align:center;
+  width:222rpx;
+}
+.per-nav-border{
+ width:2rpx;
+height:53rpx;
+color: #DDDDDD ;
+}
+.per-nav-img{
+  width:40rpx;
+  height:40rpx;
+}
+.per-nav-text{
+  font-size:24rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(163,163,163,1);
+  line-height:33rpx;
+}
+.per-img-middle{
+  vertical-align: center;
+  margin-left:14rpx;
+}
+.per-main{
+  height:480rpx;
+  background:#fff;
+  border-radius:20rpx;
+  margin-top:20rpx;
+  padding:0 35rpx;
+}
+.per-main-list{
+  height:120rpx;
+  line-height:120rpx;
+}
+.per-main-image{
+  width:26rpx;
+  height:26rpx;
+  margin-right:32rpx;
+}
+.per-main-img{
+  width:14rpx;
+height:25rpx;
+}
+.per-main-text{
+  font-size:28rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(84,84,84,1);
+  line-height:40rpx;
+}
+.per-administration{
+  background:#fff;
+  margin-top:18rpx;
+  padding:0 35rpx;
+}
