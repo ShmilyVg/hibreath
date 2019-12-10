@@ -1,4 +1,5 @@
 import Protocol from "../../modules/network/protocol";
+import {Toast} from "heheda-common-view";
 
 Page({
 
@@ -8,22 +9,29 @@ Page({
             {title: '获取', selected: true, type: 0},
             {title: '消耗', selected: false, type: 1},
         ],
-        details: []
+        details: [{}]
     },
     async switchTypeEvent({currentTarget: {dataset: {type}}}) {
         const {titles} = this.data,
             selectType = parseInt(type);
-        const {result: {list}} = await Protocol.postIntegralDetail({type: selectType}),
-            sign = selectType === 0 ? '+' : '-';
+        try {
+            Toast.showLoading();
+            const {result: {list}} = await Protocol.postIntegralDetail({type: selectType}),
+                sign = selectType === 0 ? '+' : '-';
+            this.setData({
+                titles: titles.map(item => {
+                    return {...item, selected: item.type === selectType}
+                }),
+                details: list.map(item => {
+                    return {...item, sign, time: this.getTime(item.createdTimestamp)};
+                })
+            });
+        } catch (e) {
+            console.error(e);
+        } finally {
+            Toast.hiddenLoading();
+        }
 
-        this.setData({
-            titles: titles.map(item => {
-                return {...item, selected: item.type === selectType}
-            }),
-            details: list.map(item => {
-                return {...item, sign, time: this.getTime(item.createdTimestamp)};
-            })
-        });
     },
 
     getTime(timestamp) {
