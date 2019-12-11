@@ -26,7 +26,7 @@ Page({
   },
   onPersonalCenter:function(e){
     if (this.data.isLogin) {
-    console.log("个人中心")
+        HiNavigator.navigateToUserInfoPage()
     } else {
       console.log('e onPersonalCenter', e);
       const { detail: { userInfo, encryptedData, iv } } = e;
@@ -35,7 +35,7 @@ Page({
   },
   onTargetWeight:function(e){
     if (this.data.isLogin) {
-
+        HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
     } else {
       console.log('e onPersonalCenter', e);
       const { detail: { userInfo, encryptedData, iv } } = e;
