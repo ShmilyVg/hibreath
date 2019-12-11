@@ -1,3 +1,5 @@
+<wxs src="./user.wxs" module="tools" />
+
 <form bindsubmit="saveUserInfo" >
     <view class="fill-width flex-column box-sizing-border-box user-info-layout">
         <view class="user-info-title">基本资料</view>
@@ -5,8 +7,8 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">头像</view>
 
-            <view class="flex-row align-items-center">
-                <image src="http://img.hipee.cn/hibreath/default_avar.png" class="user-info-head"></image>
+            <view bindtap="uploadHeadEvent" class="flex-row align-items-center">
+                <image src="{{editUserInfo.portraitUrl||originUserInfo.portraitUrl||'http://img.hipee.cn/hibreath/default_avar.png'}}" class="user-info-head"></image>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
@@ -17,7 +19,7 @@
             <view class="user-info-item-common-title">昵称</view>
 
             <view class="flex-row align-items-center">
-                <input name="nick" value="{{nick}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
+                <input name="nickname" value="{{editUserInfo.nickname||originUserInfo.nickname}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
@@ -26,9 +28,9 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">性别</view>
 
-            <picker name="sex" value="0" range="{{['男','女']}}" >
+            <picker name="sex" bindchange="bindSexPickerChange" value="{{tools.getSexValue(originUserInfo,editUserInfo)}}" range="{{['女','男']}}" >
                 <view class="flex-row align-items-center">
-                    <view class="user-info-item-common-input user-info-item-common-input-placeholder">请输入</view>
+                    <view class="user-info-item-common-input {{tools.getSexValue(originUserInfo,editUserInfo)===-1?'user-info-item-common-input-placeholder':''}}">{{tools.getSexStr(originUserInfo,editUserInfo)}}</view>
                     <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
                 </view>
             </picker>
@@ -39,9 +41,9 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">出生日期</view>
 
-            <picker name="birthday" mode="date" value="0" start="1930-01-01" end="2020-01-01" >
+            <picker name="birthday" bindchange="bindBirthdayPickerChange" mode="date" value="{{editUserInfo.birthday||originUserInfo.birthday}}" start="1930-01-01" end="{{endYear}}" >
                 <view class="flex-row align-items-center">
-                    <view class="user-info-item-common-input user-info-item-common-input-placeholder">请输入</view>
+                    <view class="user-info-item-common-input {{(editUserInfo.birthday||originUserInfo.birthday)?'':'user-info-item-common-input-placeholder'}}">{{editUserInfo.birthday||originUserInfo.birthday||'请输入'}}</view>
                     <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
                 </view>
             </picker>
@@ -53,7 +55,7 @@
             <view class="user-info-item-common-title">身高</view>
 
             <view class="flex-row align-items-center">
-                <input name="height" value="{{nick}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
+                <input name="height" value="{{editUserInfo.height||originUserInfo.height}}" type="number" maxlength="3" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
@@ -63,7 +65,7 @@
             <view class="user-info-item-common-title">初始体重</view>
 
             <view class="flex-row align-items-center">
-                <input name="originWeight" value="{{originWeight}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
+                <input name="weight" value="{{editUserInfo.weight||originUserInfo.weight}}" placeholder="请输入" type="digit" maxlength="5" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
@@ -73,7 +75,7 @@
             <view class="user-info-item-common-title">初始体脂率</view>
 
             <view class="flex-row align-items-center">
-                <input name="originWeight" value="{{originWeight}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
+                <input name="bodyFatRate" value="{{editUserInfo.bodyFatRate||originUserInfo.bodyFatRate}}" placeholder="请输入" type="number" maxlength="2" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
@@ -86,7 +88,7 @@
             <view class="user-info-item-common-title">是否有条件自己做饭</view>
 
             <navigator url="../food-habit/food-habit" class="flex-row align-items-center" hover-class="none">
-                <view name="originWeight" class="user-info-item-common-input user-info-item-common-input-placeholder">请输入</view>
+                <view name="originWeight" class="user-info-item-common-input {{mealTypeString==='请输入'?'user-info-item-common-input-placeholder':''}}">{{mealTypeString}}</view>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </navigator>
         </view>

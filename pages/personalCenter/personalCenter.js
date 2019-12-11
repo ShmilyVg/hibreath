@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     this.setData({
       isLogin: this.data.isLogin
     })
@@ -44,7 +44,7 @@ Page({
   },
   onDeviceManagement:function(e){
     if (this.data.isLogin) {
-
+        HiNavigator.navigateToDeviceUnbind()
     } else {
       console.log('e onPersonalCenter', e);
       const { detail: { userInfo, encryptedData, iv } } = e;
@@ -63,15 +63,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
- 
+
   },
   async onGetUserInfoEvent(e) {
-    console.log('e', e)
     const { detail: { userInfo, encryptedData, iv } } = e;
-    console.log("userInfo", userInfo);
-    console.log("encryptedData", encryptedData);
-    console.log("iv", iv);
-    console.log(!!userInfo);
     if (!!userInfo) {
       Toast.showLoading();
       try {
@@ -88,7 +83,26 @@ Page({
       console.log("没有userInfo")
     }
   },
-
+    //
+    toDatalist(e) {
+        const {
+            currentTarget: {
+                dataset: { type }
+            }
+        } = e;
+        console.log(e);
+        switch (type) {
+            case "fatBurn":
+                HiNavigator.navigateToResultNOnum();
+                break;
+            case "bodyIndex":
+                HiNavigator.navigateTofood();
+                break;
+            case "paiMoney":
+                HiNavigator.navigateToPaiCoinPage();
+                break;
+        }
+    },
 
   /**
    * 生命周期函数--监听页面显示
@@ -108,7 +122,7 @@ Page({
         }else{
          this.getUserInfo();
           console.log('isLogin: true')
-          // console.log(this.data.isLogin) 
+          // console.log(this.data.isLogin)
           // console.log(111,this.data.nickname, this.data.headUrl)
         }
         console.log(this.data.isLogin)
@@ -134,7 +148,7 @@ Page({
   onHide: function () {
 
   },
- 
+
 
   /**
    * 生命周期函数--监听页面卸载

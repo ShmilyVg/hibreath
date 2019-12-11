@@ -481,4 +481,12 @@ export default class Protocol {
     static getSettingsHelp({id:pid}) {
         return Network.request({url: 'settings/help', data: {pid}});
     }
+    /**
+     * 个人信息更新
+     * @returns {*|Promise|Promise<unknown>}
+     */
+    static postMembersPutInfo(data) {
+        return Network.request({url: 'members/putInfo', data});
+    }
+
 }

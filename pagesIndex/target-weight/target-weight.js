@@ -1,4 +1,7 @@
 import * as tools from "../../utils/tools";
+import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
+import {Toast} from "heheda-common-view";
 
 Page({
 
@@ -9,7 +12,9 @@ Page({
 
 
     onLoad(options) {
-
+        this.setData({
+            targetWeightValue: options.targetWeight || 0
+        });
     },
 
     targetWeightBindInputEvent(e) {
@@ -20,14 +25,17 @@ Page({
         return value;
     },
 
-    saveTargetWeightEvent() {
+    async saveTargetWeightEvent() {
         let {targetWeightValue: value} = this.data;
         if (value) {
             if (value.indexOf('.') !== -1) {
                 value += '0';
             }
             console.log('tempValue.targetWeightValue', value);
-            getApp().globalData.tempValue.targetWeightValue = value;
+            await Protocol.postMembersPutInfo({weightGoal: value});
+            HiNavigator.navigateBack({delta: 1});
+        } else {
+            Toast.showText('请输入目标体重');
         }
     },
 

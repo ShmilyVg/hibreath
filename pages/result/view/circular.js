@@ -23,8 +23,8 @@ function run() {
 }
 
 function drewCircular() {
-    console.log("_page.data.score",_page)
-    const circleScore = _page.data.score * 10
+    console.log("_page.data.score",_page.data.score )
+    const circleScore = _page.data.score
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
     if (circleScore <= 20) {
@@ -96,7 +96,7 @@ function drewCircular() {
         ctx.setFontSize(23);
         ctx.setFillStyle("#292930");
         var offset = 140*_xWidth;
-        ctx.fillText(val / 10, offset, 105*_xWidth);
+        ctx.fillText(val, offset, 105*_xWidth);
         /* ctx.setFontSize(15);
          ctx.setFillStyle("#969696");
          ctx.fillText(10, offset, 105);*/
@@ -160,7 +160,7 @@ function drewCircular() {
         }
         transform(v)
     }
-    animation(_page.data.score * 10);
+    animation(_page.data.score);
     /* setInterval(() => {
        //var round = Math.round(100 * Math.random());
         var round =60;

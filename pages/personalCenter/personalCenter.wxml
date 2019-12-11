@@ -25,7 +25,7 @@
           <view class="per-nav-text">我的动态</view>
         </view>
         <view class="per-nav-border">|</view>
-        <view class="per-nav-list">
+        <view class="per-nav-list" data-type="paiMoney" bindtap="toDatalist">
           <view>
             <text wx:if="{{isLogin}}">{{amount}}</text>
             <text wx:else>0</text>
@@ -46,14 +46,14 @@
               <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
           </view>
          </button>
-         <view class="per-main-list flex-row space-between">
+         <view class="per-main-list flex-row space-between" data-type="fatBurn" bindtap="toDatalist">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/equipment.png"></image>
               <text class="per-main-text">燃脂检测记录</text>
           </view>
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
         </view>
-         <view class="per-main-list flex-row space-between">
+         <view class="per-main-list flex-row space-between" data-type="bodyIndex" bindtap="toDatalist">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/smallpeoper.png"></image>
               <text class="per-main-text">身体指标记录</text>

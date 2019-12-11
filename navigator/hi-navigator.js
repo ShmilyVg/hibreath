@@ -227,7 +227,7 @@ export default class HiNavigator extends CommonNavigator {
      * 前往派币页面
      */
     static navigateToPaiCoinPage() {
-        this.navigateTo({ulr: '/pagesIndex/pai-coin/pain-coin'});
+        this.navigateTo({ url: '/pagesIndex/pai-coin/pai-coin'});
     }
 
   //减脂常见问题
@@ -243,4 +243,17 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?reason='+reason+'&title='+title+'&solution='+solution});
     }
 
+    /**
+     * 进入个人信息页面
+     */
+    static navigateToUserInfoPage() {
+        this.navigateTo({url: '/pagesIndex/user-info/user-info'});
+    }
+
+    /**
+     * 进入目标体重页面
+     */
+    static navigateToTargetWeight({targetWeight}) {
+        this.navigateTo({url: '/pagesIndex/target-weight/target-weight?targetWeight=' + targetWeight});
+    }
 }

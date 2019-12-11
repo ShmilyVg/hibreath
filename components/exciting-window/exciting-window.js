@@ -119,6 +119,11 @@ Component({
   methods: {
       excitingKnow(){
           this.triggerEvent("getShowExcitation", {showExcitation:false} )
+      },
+      /*阻止滚动*/
+      stopScroll(){
+          console.log('阻止滚动')
+          return;
       }
   }
 })
