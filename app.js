@@ -207,7 +207,7 @@ App({
         isLogin:false,//登录状态标志位
         isImgClock:false,//发表成功toast
         isScrollTopNum:false,//发表动态 圈子回到顶部
-        tempValue:{targetWeightValue: ""}
+        tempValue:{targetWeightValue: "", foodHabitArray: []}
     },
     ...common
 });
