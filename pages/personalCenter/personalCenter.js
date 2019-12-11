@@ -54,12 +54,10 @@ Page({
   toCommonProblem:function(){
     HiNavigator.navigateToCommonProblem();
   },
-  // toNoticeList:function(){
-  //   HiNavigator.navigateToNoticeList({groupId:});
-  // }
-    toNoticeList:function(){
-        // HiNavigator.navigateToNoticeList();
-    },
+  toNoticeList:function(){
+    HiNavigator.navigateToMyNoticeList();
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

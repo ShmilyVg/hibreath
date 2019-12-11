@@ -433,6 +433,10 @@ export default class Protocol {
   static postDynamicNotice({ page  , groupId , pageSize = 15 }) {
     return Network.request({ url: 'group/dynamic/notice', data: { page, groupId, pageSize } })
   }
+  //我的 圈子通知列表
+  static postDynamicNoticeMembers({ page  , pageSize = 15 }) {
+    return Network.request({ url: 'members/dynamic/notice', data: { page,pageSize } })
+  }
   //圈子通知清除
   static postNoticeUpdate() {
     return Network.request({ url: 'group/dynamic/notice/delAll'})

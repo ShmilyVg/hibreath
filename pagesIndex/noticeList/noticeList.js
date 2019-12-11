@@ -20,16 +20,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options);
     this.setData({
-      groupId: options.groupId,
-      total: options.total
-    })
-    this.postDynamicNotice();
+      groupId: options.groupId
+    });
+    if(this.data.groupId){
+      this.postDynamicNotice();
+    }else{
+      console.log("消息");
+      this.postDynamicNoticeMembers();
+    }
     Protocol.postNoticeUpdateAll();
   },
+  async postDynamicNoticeMembers() {
+    const { result: { list: list,unreadNum:unreadNum } } = await Protocol.postDynamicNoticeMembers({ page: this.data.pageIndex });
+    if (list.length) {
+      this.data.pageIndex++;
+    }
+    console.log(list );
+    const noticeList= list.map(item => {
+      return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
+    });
+    console.log(noticeList);
+    this.setData({
+      noticeList: noticeList,
+      unreadNum:unreadNum
+    })
+  },
   async postDynamicNotice() {
-    const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId });
+    const { result: { list: list,unreadNum:unreadNum } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId });
     if (list.length) {
         this.data.pageIndex++;
       }
@@ -37,9 +56,10 @@ Page({
     const noticeList= list.map(item => {
         return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
       })
-    console.log(noticeList)
+    console.log(noticeList);
     this.setData({
-      noticeList: noticeList
+      noticeList: noticeList,
+      unreadNum:unreadNum
     })
   },
 
@@ -153,14 +173,26 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   async onReachBottom () {
-    const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId })
-    const dataList = list.map(item => {
-      return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
-    })
-    console.log(dataList)
-    if (dataList.length) {
-      this.setData({ noticeList: this.data.noticeList.concat(dataList) });
+    if(this.data.groupId){
+      const { result: { list: list } } = await Protocol.postDynamicNotice({ page: this.data.pageIndex, groupId: this.data.groupId })
+      const dataList = list.map(item => {
+        return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
+      });
+      console.log(dataList);
+      if (dataList.length) {
+        this.setData({ noticeList: this.data.noticeList.concat(dataList) });
+      }
+    }else{
+      const { result: { list: list } } = await Protocol.postDynamicNoticeMembers({ page: this.data.pageIndex});
+      const dataList = list.map(item => {
+        return { ...item, timeDiff: this.getDateDiff(item.timeDiff) };
+      });
+      console.log(dataList);
+      if (dataList.length) {
+        this.setData({ noticeList: this.data.noticeList.concat(dataList) });
+      }
     }
+
 
   },
 
