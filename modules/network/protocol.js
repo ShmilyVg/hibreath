@@ -460,4 +460,13 @@ export default class Protocol {
     static postIntegralReceive({id}) {
         return Network.request({url: 'integral/receive', data: {id}});
     }
+
+    /**
+     * 获取信息收集
+     * @returns {*|Promise|Promise<unknown>}
+     */
+    static getUserDetailInfo() {
+        return Network.request({url: 'members/infoDetail'});
+    }
+
 }
