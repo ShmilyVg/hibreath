@@ -1,66 +1,44 @@
-// pagesIndex/food-habit/food-habit.js
+import Protocol from "../../modules/network/protocol";
+import {Toast} from "heheda-common-view";
+
 Page({
+    data: {
+        habits: []
+    },
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+    async onLoad(options) {
+        const {result: {list: habits}} = await Protocol.postMealType();
+        this.setData({habits});
+    },
 
-  },
+    onSelectedFoodHabitItemEvent({currentTarget: {dataset: {id: key}}}) {
+        const {habits} = this.data;
+        if (key === 'none') {
+            habits.forEach(item => item.selected = item.key === 'none');
+            this.setData({habits});
+        } else {
+            for (const [index, item] of habits.entries()) {
+                if (item.key === key) {
+                    const objKey = `habits[${index}].selected`,
+                        noneItemIndex = habits.findIndex(item => item.key === 'none'),
+                        noneObjKey = `habits[${noneItemIndex}].selected`;
+                    this.setData({
+                        [objKey]: !item.selected,
+                        [noneObjKey]: false
+                    });
+                    break;
+                }
+            }
+        }
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+    },
+    saveFoodHabitEvent() {
+        const {habits} = this.data, selectedItems = habits.filter(item => item.selected).map(item => item.key);
+        if (selectedItems.length) {
+            getApp().globalData.tempValue.foodHabitArray = selectedItems;
+        } else {
+            Toast.showText('请至少选择一项');
+        }
+    }
+});

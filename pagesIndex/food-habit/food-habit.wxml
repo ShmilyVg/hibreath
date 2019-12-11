@@ -1,2 +1,10 @@
-<!--pagesIndex/food-habit/food-habit.wxml-->
-<text>pagesIndex/food-habit/food-habit.wxml</text>
+<view class="fill-width flex-column box-sizing-border-box food-habit-layout">
+    <view class="food-habit-title">是否有条件自己做饭</view>
+    <block wx:if="{{habits.length}}">
+        <view bindtap="onSelectedFoodHabitItemEvent" data-id="{{item.key}}" wx:for="{{habits}}" wx:key="key" class="fill-width flex-row align-items-center justify-center food-habit-item-common-layout {{item.selected?'food-habit-item-selected-layout':'food-habit-item-unselected-layout'}}">{{item.name}}</view>
+        <view class="fill-width flex-row justify-center">
+            <view bindtap="saveFoodHabitEvent" class="flex-row align-items-center justify-center common-btn" style="margin-top: 100rpx;">保存</view>
+        </view>
+    </block>
+
+</view>

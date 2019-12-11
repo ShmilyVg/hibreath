@@ -8,23 +8,18 @@
     margin-bottom: 229rpx;
 }
 .target-weight-input{
-    width: 210rpx;
+    width: 240rpx;
     height: 140rpx;
     text-align: center;
-    font-size:100rpx;
+    font-size:80rpx;
     font-weight:bold;
     color:rgba(69,69,69,1);
-    line-height:120rpx;
-    border-bottom: 2rpx solid rgba(237,111,105,1);
-}
-.target-weight-placeholder {
-    font-size:120rpx;
-    font-weight:bold;
-    color: rgb(210, 210, 210);
     line-height:120rpx;
 }
 
 .target-weight-line {
+    width: 200rpx;
+    border-bottom: 2rpx solid rgba(237,111,105,1);
 
 
 }
@@ -38,16 +33,3 @@
     margin-top: 70rpx;
 }
 
-
-.common-btn{
-    width:500rpx;
-    height:100rpx;
-    background:rgba(237,111,105,1);
-    border-radius:50rpx;
-    font-size:30rpx;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(255,255,255,1);
-    line-height:28rpx;
-    margin-bottom: 70rpx;
-}
