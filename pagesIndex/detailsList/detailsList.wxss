@@ -1,0 +1,29 @@
+/* pagesIndex/substituteMeal/substituteMeal.wxss */
+.detailsList{
+    padding:0 40rpx;
+}
+.detail-title{
+    font-size:36rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(84,84,84,1);
+    line-height:50rpx;
+    margin:80rpx 0 50rpx 0;
+}
+.detail-img{
+    height:120rpx;
+}
+.detail-list{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(118,118,118,1);
+    line-height:40rpx;
+}
+.detail-reason{
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:40rpx;
+}

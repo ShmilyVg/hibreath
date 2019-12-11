@@ -24,31 +24,31 @@ Page({
     })
     console.log(this.data.isLogin)
   },
-  onPersonalCenter:function(){
+  onPersonalCenter:function(e){
     if (this.data.isLogin) {
-
+    console.log("个人中心")
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
-  onTargetWeight:function(){
+  onTargetWeight:function(e){
     if (this.data.isLogin) {
 
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
-  onDeviceManagement:function(){
+  onDeviceManagement:function(e){
     if (this.data.isLogin) {
 
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
   toCommonProblem:function(){
@@ -57,7 +57,9 @@ Page({
   // toNoticeList:function(){
   //   HiNavigator.navigateToNoticeList({groupId:});
   // }
-
+    toNoticeList:function(){
+        // HiNavigator.navigateToNoticeList();
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -68,10 +70,10 @@ Page({
   async onGetUserInfoEvent(e) {
     console.log('e', e)
     const { detail: { userInfo, encryptedData, iv } } = e;
-    console.log("userInfo", userInfo)
-    console.log("encryptedData", encryptedData)
-    console.log("iv", iv)
-    console.log(!!userInfo)
+    console.log("userInfo", userInfo);
+    console.log("encryptedData", encryptedData);
+    console.log("iv", iv);
+    console.log(!!userInfo);
     if (!!userInfo) {
       Toast.showLoading();
       try {
@@ -94,12 +96,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('11', getApp().globalData.isLogin)
+    console.log('11', getApp().globalData.isLogin);
     wx.getSetting({
       success: (res) => {
         console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
         //console.log(!res.authSetting['scope.userInfo'] )
-        console.log(getApp().globalData.isLogin)
+        console.log(getApp().globalData.isLogin);
         if (!getApp().globalData.isLogin) {
           this.setData({
             isLogin: false,

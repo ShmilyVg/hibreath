@@ -1,0 +1,9 @@
+<!--pagesIndex/substituteMeal/substituteMeal.wxml-->
+<view class="detailsList">
+    <view class="detail-title">{{title}}</view>
+    <image mode="widthFix" class="detail-img" src="../images/logo.png"></image>
+    <view class="detail-reason">{{reason}}</view>
+    <text class="detail-list">{{solution}}</text>
+</view>
+
+

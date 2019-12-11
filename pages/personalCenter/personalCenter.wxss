@@ -29,8 +29,13 @@ page {
   font-weight:400;
   color:rgba(84,84,84,1);
   line-height:42rpx;
+  background-color: transparent;
+  outline: none;
 }
-.per-nickName::after {
+button{
+  padding:0 0;
+}
+button::after {
   border: none;
 }
 .per-text{
@@ -40,6 +45,21 @@ page {
   color:rgba(164,164,164,1);
   line-height:33rpx;
 }
+.per-text-btn{
+  font-size:24rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(164,164,164,1);
+  line-height:33rpx;
+  background-color: transparent;
+  outline: none;
+}
+
+.per-main-btn{
+  background-color: transparent;
+  outline: none;
+}
+
 .gray-img{
   width:14rpx;
   height:25rpx;
@@ -86,6 +106,8 @@ color: #DDDDDD ;
 .per-main-list{
   height:120rpx;
   line-height:120rpx;
+  background-color: transparent;
+  outline: none;
 }
 .per-main-image{
   width:26rpx;
