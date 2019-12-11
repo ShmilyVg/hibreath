@@ -274,6 +274,11 @@ Page({
         Trend.init(this);
         Trend.initTouchHandler();
     },
+    onHide() {
+        this.setData({
+            showExcitation: false,
+        });
+    },
     onUnload(){
         getApp().globalData.issueRefresh = true
         var pages = getCurrentPages()    //获取加载的页面

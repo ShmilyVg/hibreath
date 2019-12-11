@@ -78,6 +78,11 @@ Page({
     onReady() {
 
     },
+    onHide() {
+        this.setData({
+            showExcitation: false,
+        });
+    },
     onUnload(){
         //控制首页打卡情况更新
         getApp().globalData.issueRefresh = true

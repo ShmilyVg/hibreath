@@ -128,6 +128,9 @@ Page({
     }
     console.log("breath_user_info_input onHide info====", this.data.info);
     this.storeBreathUserInfoInput();
+      this.setData({
+          showExcitation: false,
+      });
   },
 
   // 持久化用户输入信息
