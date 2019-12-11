@@ -168,8 +168,8 @@ export default class Protocol {
         return Network.request({url: 'members/tasks'})
     }
     //方案完成荣誉报告
-    static postPlanFinish() {
-        return Network.request({url: 'members/plan/finishInfo'})
+    static postPlanFinish({planId,sharedId}) {
+        return Network.request({url: 'members/plan/finishInfo',data: {planId,sharedId}})
     }
     //退出方案
     static postMembersExit({planId}) {

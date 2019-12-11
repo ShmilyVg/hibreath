@@ -51,8 +51,8 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/finishClock/finishClock'});
     }
     //方案完成
-    static navigateToPlanfinish() {
-        this.navigateTo({url: '/pagesIndex/planfinish/planfinish'});
+    static navigateToPlanfinish({planId}) {
+        this.navigateTo({url: '/pagesIndex/planfinish/planfinish?planId=' + planId});
     }
     //饮食打卡-发表动态
     static navigateToImgClock({id}) {

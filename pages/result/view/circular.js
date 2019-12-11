@@ -27,16 +27,16 @@ function drewCircular() {
     const circleScore = _page.data.score * 10
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
     console.log('2', 20 < circleScore <= 40)
-    if (circleScore < 10) {
+    if (circleScore <= 20) {
         gradient.addColorStop("0", "#542EE3");
         gradient.addColorStop("0.2", "#250099");
-    } else if (10 <= circleScore && circleScore < 20) {
+    } else if (3 <= circleScore && circleScore <=9 ) {
         gradient.addColorStop("0", "#0026FE");
         gradient.addColorStop("0.4", "#00CFFF");
-    } else if (20 <= circleScore && circleScore < 40) {
+    } else if (10 <= circleScore && circleScore <= 19) {
         gradient.addColorStop("0", "#20D9D1");
         gradient.addColorStop("0.6", "#00B96C");
-    } else if (40 <= circleScore && circleScore < 60) {
+    } else if (20 <= circleScore && circleScore <= 39) {
         gradient.addColorStop("0", "#FFE300");
         gradient.addColorStop("0.8", "#FF9F00");
     } else if (circleScore == 100) {
@@ -169,31 +169,31 @@ function drewCircular() {
 }
 
 function showType() {
-    if (_page.data.score < 0.6) {
+    if (_page.data.score <=2 ) {
         _page.setData({
             fatType: "../../images/result/type1.png",
-            fatText: "未燃脂",
+            fatText: "即将燃脂",
             fatTextEn: "CHIN UP",
         })
-    } else if (_page.data.score < 1 && _page.data.score >= 0.6) {
+    } else if (_page.data.score <= 9 && _page.data.score >= 3) {
         _page.setData({
             fatType: "../../images/result/type2.png",
-            fatText: "缓慢燃脂",
+            fatText: "低速燃脂",
             fatTextEn: "SLOW",
         })
-    } else if (_page.data.score < 2 && _page.data.score >= 1) {
+    } else if (_page.data.score <= 19 && _page.data.score >= 10) {
         _page.setData({
             fatType: "../../images/result/type3.png",
             fatText: "状态极佳",
             fatTextEn: "PROPER",
         })
-    } else if (_page.data.score <= 4 && _page.data.score >= 2) {
+    } else if (_page.data.score <= 39 && _page.data.score >= 20) {
         _page.setData({
             fatType: "../../images/result/type4.png",
             fatText: "快速燃脂",
             fatTextEn: "FAST",
         })
-    } else if (_page.data.score < 11 && _page.data.score > 4) {
+    } else if (_page.data.score <= 99 && _page.data.score >= 40) {
         _page.setData({
             fatType: "../../images/result/type5.png",
             fatText: "过度燃脂",
