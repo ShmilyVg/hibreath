@@ -13,7 +13,7 @@
             </view>
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>
-
+        <image src="{{cover}}" class="" style="width: 610rpx;height: 320rpx;margin-top: 43rpx"></image>
         <view wx:if="{{finished}}"  style="margin-top: 50rpx;width: 100%">
 
 
