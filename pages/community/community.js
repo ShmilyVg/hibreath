@@ -389,7 +389,7 @@ Page({
    },*/
   async toNoticeList(){
     /*HiNavigator.navigateToNoticeList({groupId:wx.getStorageSync('currentSocialGroupId'),total: this.data.noticeList.total});*/
-      HiNavigator.navigateToNoticeList({ groupId: (await judgeGroupEmpty()).groupId,total: this.data.noticeList.total});
+      HiNavigator.navigateToNoticeList({ groupId: (await judgeGroupEmpty()).groupId});
 
   }
 

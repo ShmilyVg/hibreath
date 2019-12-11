@@ -14,8 +14,8 @@
         <image src="../../images/personalCenter/gray.png" class="gray-img"></image>
       </view>
      </view>
-     <view class="per-nav flex-row" bindtap="toNoticeList">
-        <view class="per-nav-list">
+     <view class="per-nav flex-row">
+        <view class="per-nav-list" bindtap="toNoticeList">
           <image class="per-nav-img" src="../../images/personalCenter/message.png"></image>
           <view class="per-nav-text">消息</view>
         </view>
