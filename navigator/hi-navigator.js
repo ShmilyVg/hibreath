@@ -215,7 +215,7 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
   //动态信息列表
-  static navigateToNoticeList({ groupId, total}) {
+  static navigateToNoticeList({ groupId, total = 0}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
   }
 
@@ -230,16 +230,13 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToCommonProblem() {
     this.navigateTo({ url: '/pagesIndex/commonProblem/commonProblem'});
   }
-  //关于代餐
-  static navigateToSubstituteMeal() {
-    this.navigateTo({ url: '/pagesIndex/substituteMeal/substituteMeal' });
+  //关于常见问题子页面subList
+  static navigateToSubList({id}) {
+    this.navigateTo({ url: '/pagesIndex/subList/subList?id='+id});
   }
-  //食用代餐后的反应
-  static navigateToReaction() {
-    this.navigateTo({ url: '/pagesIndex/reaction/reaction' });
-  }
-  //减脂心里疏导
-  static navigateToDredge() {
-    this.navigateTo({ url: '/pagesIndex/dredge/dredge' });
-  }
+    //关于常见问题子页面subList详情页
+    static navigateToDetailsList({reason,title,solution}) {
+        this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?reason='+reason+'&title='+title+'&solution='+solution});
+    }
+
 }

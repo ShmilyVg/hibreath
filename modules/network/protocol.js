@@ -430,7 +430,7 @@ export default class Protocol {
     return Network.request({ url: 'breathData/delete', data: { id } })
   }
   //圈子通知列表
-  static postDynamicNotice({ page  , groupId, pageSize = 15 }) {
+  static postDynamicNotice({ page  , groupId , pageSize = 15 }) {
     return Network.request({ url: 'group/dynamic/notice', data: { page, groupId, pageSize } })
   }
   //圈子通知清除
@@ -469,6 +469,14 @@ export default class Protocol {
         return Network.request({url: 'members/infoDetail'});
     }
 
+    //个人中心
+    static postMemberInfo() {
+        return Network.request({url: 'members/info'});
+    }
+    //个人中心常见问题
+    static getSettingsHelp({id:pid}) {
+        return Network.request({url: 'settings/help', data: {pid}});
+    }
     /**
      * 个人信息更新
      * @returns {*|Promise|Promise<unknown>}

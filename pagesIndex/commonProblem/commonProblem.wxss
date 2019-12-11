@@ -10,14 +10,16 @@
  vertical-align: middle;
 }
 .common-text{
-  display:inline-block;
-  height:80rpx; 
-  width:500rpx;
   font-size:28rpx;
   font-family:PingFang-SC-Medium,PingFang-SC;
   font-weight:500;
   color:#545454;
   line-height:40rpx;
+}
+.common-text1{
+  display:inline-block;
+  height:80rpx;
+  width:500rpx;
 }
 .common-spot{
   display: inline-block;

@@ -2,6 +2,7 @@
 import { Toast } from "heheda-common-view";
 import Login from "../../modules/network/login";
 import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
 Page({
 
   /**
@@ -23,36 +24,42 @@ Page({
     })
     console.log(this.data.isLogin)
   },
-  onPersonalCenter:function(){
+  onPersonalCenter:function(e){
     if (this.data.isLogin) {
-
+    console.log("个人中心")
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
-  onTargetWeight:function(){
+  onTargetWeight:function(e){
     if (this.data.isLogin) {
 
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
-  onDeviceManagement:function(){
+  onDeviceManagement:function(e){
     if (this.data.isLogin) {
 
     } else {
-      console.log(app)
-      app.doLogin();
-      console.log(888)
+      console.log('e onPersonalCenter', e);
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      this.onGetUserInfoEvent(e)
     }
   },
   toCommonProblem:function(){
     HiNavigator.navigateToCommonProblem();
   },
+  // toNoticeList:function(){
+  //   HiNavigator.navigateToNoticeList({groupId:});
+  // }
+    toNoticeList:function(){
+        // HiNavigator.navigateToNoticeList();
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -63,20 +70,16 @@ Page({
   async onGetUserInfoEvent(e) {
     console.log('e', e)
     const { detail: { userInfo, encryptedData, iv } } = e;
-    console.log("userInfo", userInfo)
-    console.log("encryptedData", encryptedData)
-    console.log("iv", iv)
-    console.log(!!userInfo)
+    console.log("userInfo", userInfo);
+    console.log("encryptedData", encryptedData);
+    console.log("iv", iv);
+    console.log(!!userInfo);
     if (!!userInfo) {
       Toast.showLoading();
       try {
         await Login.doRegister({ userInfo, encryptedData, iv });
         Toast.hiddenLoading();
-        this.setData({
-          isLogin: true,
-          nickname: userInfo.nickName,
-          headUrl: userInfo.avatarUrl
-        })
+        this.getUserInfo();
         console.log(this.data.nickname, this.data.headUrl)
       } catch (e) {
         Toast.warn('获取信息失败');
@@ -88,29 +91,25 @@ Page({
     }
   },
 
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('11', getApp().globalData.isLogin)
+    console.log('11', getApp().globalData.isLogin);
     wx.getSetting({
       success: (res) => {
         console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
         //console.log(!res.authSetting['scope.userInfo'] )
-        console.log(getApp().globalData.isLogin)
+        console.log(getApp().globalData.isLogin);
         if (!getApp().globalData.isLogin) {
           this.setData({
             isLogin: false,
           })
           console.log('isLogin: false',)
         }else{
-          const userInfo = (wx.getStorageSync('userInfo') || "");
-          this.setData({
-            isLogin: true,
-            nickname: userInfo.nickname,
-            headUrl: userInfo.headUrl
-          })
-          // console.log('isLogin: true') 
+         this.getUserInfo();
+          console.log('isLogin: true')
           // console.log(this.data.isLogin) 
           // console.log(111,this.data.nickname, this.data.headUrl)
         }
@@ -119,7 +118,18 @@ Page({
     });
     console.log(getApp().globalData.isLogin)
   },
-
+  async getUserInfo(){
+    const { result } = await Protocol.postMemberInfo();
+    console.log(result);
+    this.setData({
+      isLogin: true,
+      nickname: result.nickname,
+      headUrl: result.headUrl,
+      weightGoal:result.weightGoal,
+      amount:result.amount
+    })
+    console.log(this.data.nickname, this.data.headUrl)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

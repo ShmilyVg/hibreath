@@ -1,4 +1,6 @@
 // pagesIndex/substituteMeal/substituteMeal.js
+import Protocol from "../../modules/network/protocol";
+
 Page({
 
   /**
@@ -12,9 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      solution:options.solution,
+      title:options.title,
+      reason:options.reason
+    });
+    console.log(this.data.solution,this.data.title);
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

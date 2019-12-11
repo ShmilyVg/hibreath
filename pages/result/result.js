@@ -106,18 +106,19 @@ Page({
         Toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now()+25000,timeBegin:getLatestOneWeekTimestamp()});
         if (list.length) {
-            if(!this.e.id && !this.e.score){
-                this.setData({
-                    fatText:list[0].desZh,
-                    score:list[0].dataValue,
-                    fatTextEn:list[0].des.en,
-                    fatDes:list[0].visDes,
-                })
-                setTimeout(() => {
-                    console.log('绘制一次')
-                    Circular.run();
-                },500)
-            }
+            /*if(!this.e.id && !this.e.score){
+
+            }*/
+            this.setData({
+                fatText:list[0].desZh,
+                score:list[0].dataValue,
+                fatTextEn:list[0].des.en,
+                fatDes:list[0].visDes,
+            })
+            setTimeout(() => {
+                console.log('绘制一次')
+                Circular.run();
+            },500)
             list.map(value => {
                 const {time, day, month, year} = tools.createDateAndTime(value.time * 1000);
                 value.date = `${year}/${month}/${day} ${time}`;

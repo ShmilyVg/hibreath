@@ -9,11 +9,12 @@
           <view wx:if="{{isLogin}}" class="per-nickName">{{nickname}}</view>
           <button wx:else class="per-nickName"  open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即登入</button>
       </view>
-      <view class="per-text" bindtap="onPersonalCenter">个人中心
+      <view class="per-text flex-row space-between">
+        <button class="per-text-btn" open-type="getUserInfo" bindgetuserinfo="onPersonalCenter">个人中心</button>
         <image src="../../images/personalCenter/gray.png" class="gray-img"></image>
       </view>
      </view>
-     <view class="per-nav flex-row">
+     <view class="per-nav flex-row" bindtap="toNoticeList">
         <view class="per-nav-list">
           <image class="per-nav-img" src="../../images/personalCenter/message.png"></image>
           <view class="per-nav-text">消息</view>
@@ -26,7 +27,7 @@
         <view class="per-nav-border">|</view>
         <view class="per-nav-list">
           <view>
-            <text wx:if="isLogin">25</text>
+            <text wx:if="{{isLogin}}">{{amount}}</text>
             <text wx:else>0</text>
             <image class="per-nav-img per-img-middle" src="../../images/personalCenter/logosmall.png"></image>
           </view>
@@ -34,14 +35,17 @@
         </view>
      </view>
      <view class="per-main">
-        <view class="per-main-list flex-row space-between">
-          <view bindtap="onTargetWeight">
+         <button class="per-main-list flex-row space-between" open-type="getUserInfo"  bindgetuserinfo="onTargetWeight">
+          <view>
               <image class="per-main-image" src="../../images/personalCenter/weight.png"></image>
               <text class="per-main-text">目标体重</text>
               <text class="per-main-text"></text>
           </view>
-          <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-        </view>
+          <view>
+              <text wx:if="{{isLogin}}">{{weightGoal}}kg</text>
+              <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+          </view>
+         </button>
          <view class="per-main-list flex-row space-between">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/equipment.png"></image>
@@ -64,12 +68,12 @@
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
         </view>
      </view>
-     <view class="per-administration per-main-list flex-row space-between"bindtap="onDeviceManagement">
+     <button class="per-administration per-main-list flex-row space-between" open-type="getUserInfo"  bindgetuserinfo="onDeviceManagement">
          <view>
               <image class="per-main-image" src="../../images/personalCenter/warning.png"></image>
               <text class="per-main-text">设备管理</text>
           </view>
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-     </view>
+     </button>
 </view>
 
