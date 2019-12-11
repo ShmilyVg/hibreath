@@ -5,8 +5,8 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">头像</view>
 
-            <view class="flex-row align-items-center">
-                <image src="http://img.hipee.cn/hibreath/default_avar.png" class="user-info-head"></image>
+            <view bindtap="uploadHeadEvent" class="flex-row align-items-center">
+                <image src="{{portraitUrl||'http://img.hipee.cn/hibreath/default_avar.png'}}" class="user-info-head"></image>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
