@@ -1,8 +1,8 @@
 // components/pickerDate/index.js.js
-const date = new Date()
-const years = []
-const months = []
-const days = []
+const date = new Date();
+const years = [];
+const months = [];
+const days = [];
 const secYear = date.getFullYear();
 const secMopnth = date.getMonth() + 1;
 const secDay = date.getDate();
@@ -10,13 +10,13 @@ const secMopnthMax = secMopnth;
 const secDayMax = secDay+14;
 
 if (secDay + 14 > 31) {
-  secMopnthMax = secMopnth + 1,
-    secDayMax = secDay + 14 - 31,
+    secMopnthMax = secMopnth + 1;
+    secDayMax = secDay + 14 - 31;
     secDay = 1
 }
 if (secMopnthMax > 12) {
-  secMopnth = 1,
-  secYear = secYear + 1
+  secMopnth = 1;
+  secYear = secYear + 1;
 }
 for (let i = secYear; i <= secYear; i++) {
   years.push(i)
@@ -54,17 +54,14 @@ Component({
   lifetimes: {
     // 在组件实例进入页面节点树时执行
     attached: function () {
-      /*if(this.data.info.birthday)*/
-      console.log(years,months,days[0])
-      const date = new Date()
-      console.log('date.getYear()',date.getYear())
-        console.log('date.getYear()1',secYear)
-        console.log('date.getYear()2',secMopnth)
-        console.log('date.getYear()3',secDay)
-      this.data.value.push(secYear -1);
-      this.data.value.push(secMopnth - 2)
-      this.data.value.push(secDay -6)
-      console.log('d3e1233213', this.data.value)
+      console.log(years,months,days);
+      this.data.value.push(0);
+      this.data.value.push(0);
+      this.data.value.push(1);
+
+
+      console.log('d3e1233213', this.data.value);
+
       this.setData({
         value: this.data.value
       })

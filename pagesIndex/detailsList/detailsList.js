@@ -15,13 +15,21 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      solution:options.solution,
-      title:options.title,
-      reason:options.reason
+      detailsid:options.detailsid
     });
-    console.log(this.data.solution,this.data.title);
-
+    console.log(this.data.detailsid);
+    this.onSettingsHelp();
   },
+  async onSettingsHelp() {
+    console.log(this.data.detailsid)
+    const { result } = await Protocol.getSettingsHelpInfo({id:this.data.detailsid});
+    this.setData({
+      title:result.title,
+      list: result.list
+    })
+    console.log(this.data.list)
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

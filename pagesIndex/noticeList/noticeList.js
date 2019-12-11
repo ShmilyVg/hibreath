@@ -30,7 +30,7 @@ Page({
       console.log("消息");
       this.postDynamicNoticeMembers();
     }
-    Protocol.postNoticeUpdateAll();
+
   },
   async postDynamicNoticeMembers() {
     const { result: { list: list,unreadNum:unreadNum } } = await Protocol.postDynamicNoticeMembers({ page: this.data.pageIndex });
@@ -159,7 +159,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    Protocol.postNoticeUpdateAll();
   },
 
   /**

@@ -1,5 +1,5 @@
 <!--pagesIndex/substituteMeal/substituteMeal.wxml-->
-<view class="common-list flex-row space-between" wx:for="{{list}}" wx:key="{{index}}"  data-index="{{index}}"  bindtap="toDetailsList" >
+<view class="common-list flex-row space-between" wx:for="{{list}}" wx:key="{{index}}"  data-id="{{item.id}}"  bindtap="toDetailsList" >
   <view>
      <text class="common-spot"></text>
      <text class="common-text">{{item.title}}</text>

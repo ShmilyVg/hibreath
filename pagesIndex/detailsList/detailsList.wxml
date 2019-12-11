@@ -2,8 +2,11 @@
 <view class="detailsList">
     <view class="detail-title">{{title}}</view>
     <image mode="widthFix" class="detail-img" src="../images/logo.png"></image>
-    <view class="detail-reason">{{reason}}</view>
-    <text class="detail-list">{{solution}}</text>
+    <view wx:for="{{list}}">
+        <view class="detail-reason">{{item.title}}</view>
+        <text class="detail-list">{{item.content}}</text>
+    </view>
+
 </view>
 
 

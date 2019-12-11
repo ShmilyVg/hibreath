@@ -12,6 +12,7 @@ Page({
   toSubList:function(e){
     console.log(e)
     this.data.id = e.currentTarget.dataset.id;
+    console.log( this.data.id )
     HiNavigator.navigateToSubList({id:this.data.id});
   },
   /**

@@ -239,8 +239,8 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pagesIndex/subList/subList?id='+id});
   }
     //关于常见问题子页面subList详情页
-    static navigateToDetailsList({reason,title,solution}) {
-        this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?reason='+reason+'&title='+title+'&solution='+solution});
+    static navigateToDetailsList({detailsid}) {
+        this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?detailsid='+detailsid});
     }
 
     /**

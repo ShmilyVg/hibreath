@@ -1,4 +1,3 @@
-// pagesIndex/substituteMeal/substituteMeal.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 
@@ -16,14 +15,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      subId:options.id
     });
-    console.log(this.data.id);
+    console.log(this.data.subId);
     this.onSettingsHelp();
   },
   async onSettingsHelp() {
-    console.log(this.data.id)
-   const { result } = await Protocol.getSettingsHelp({id:this.data.id});
+    console.log(this.data.subId)
+    const { result } = await Protocol.getSettingsHelp({id:this.data.subId});
     this.setData({
       list: result.list
     })
@@ -31,8 +30,9 @@ Page({
   },
   toDetailsList:function(e){
     console.log(e);
-    this.data.index= e.currentTarget.dataset.index;
-    HiNavigator.navigateToDetailsList({reason:this.data.list[this.data.index].reason,title:this.data.list[this.data.index].title,solution:this.data.list[this.data.index].solution});
+
+
+    HiNavigator.navigateToDetailsList({detailsid:e.currentTarget.dataset.id});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
