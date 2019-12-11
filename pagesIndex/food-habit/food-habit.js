@@ -1,5 +1,6 @@
 import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
     data: {
@@ -7,8 +8,19 @@ Page({
     },
 
     async onLoad(options) {
+
         const {result: {list: habits}} = await Protocol.postMealType();
-        this.setData({habits});
+        const {foodHabitArray} = getApp().globalData.tempValue;
+        this.setData({
+            habits: habits.map(habit => {
+                for (const item of foodHabitArray) {
+                    if (habit.key === item) {
+                        return {...habit, selected: true}
+                    }
+                }
+                return habit;
+            })
+        });
     },
 
     onSelectedFoodHabitItemEvent({currentTarget: {dataset: {id: key}}}) {
@@ -37,6 +49,7 @@ Page({
         const {habits} = this.data, selectedItems = habits.filter(item => item.selected).map(item => item.key);
         if (selectedItems.length) {
             getApp().globalData.tempValue.foodHabitArray = selectedItems;
+            HiNavigator.navigateBack({delta: 1});
         } else {
             Toast.showText('请至少选择一项');
         }

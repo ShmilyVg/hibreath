@@ -55,6 +55,7 @@ function filterSpace(name){
     var str = name.replace(/\s+/g, '');
     return str;
 }
+
 module.exports = {
     createDateAndTime,
     deleteLineBreak,

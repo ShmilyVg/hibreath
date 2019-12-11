@@ -1,0 +1,21 @@
+function getSexValue(originUserInfo, editUserInfo) {
+    if (editUserInfo.sex === 0 || editUserInfo === 1) {
+        return editUserInfo.sex;
+    } else if (originUserInfo.sex === 0 || originUserInfo.sex === 1) {
+        return originUserInfo.sex;
+    }
+    return -1;
+}
+
+function getSexStr(originUserInfo, editUserInfo) {
+    var value = getSexValue(originUserInfo, editUserInfo);
+    if (value === 0) {
+        return '女';
+    } else if (value === 1) {
+        return '男'
+    }
+    return '请输入';
+}
+
+
+module.exports = {getSexStr: getSexStr, getSexValue: getSexValue};
