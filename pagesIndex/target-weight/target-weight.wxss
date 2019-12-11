@@ -33,16 +33,3 @@
     margin-top: 70rpx;
 }
 
-
-.common-btn{
-    width:500rpx;
-    height:100rpx;
-    background:rgba(237,111,105,1);
-    border-radius:50rpx;
-    font-size:30rpx;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(255,255,255,1);
-    line-height:28rpx;
-    margin-bottom: 70rpx;
-}

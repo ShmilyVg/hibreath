@@ -1,1 +1,35 @@
-/* pagesIndex/food-habit/food-habit.wxss */
+.food-habit-layout {
+    padding: 80rpx 50rpx 0;
+
+}
+.food-habit-title {
+    font-size:46rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    line-height:42rpx;
+    margin-bottom: 68rpx;
+    align-self: flex-start;
+}
+
+.food-habit-item-common-layout {
+    height:160rpx;
+    border-radius:20rpx;
+    font-size:34rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    line-height:42rpx;
+    margin-bottom: 20rpx;
+}
+
+.food-habit-item-selected-layout {
+    background: rgba(255,230,228,1);
+    border:1rpx solid rgba(237,111,105,1);
+    color:rgba(237,111,105,1);
+}
+
+.food-habit-item-unselected-layout {
+    background:rgba(255,255,255,1);
+    border:1rpx solid rgba(205,205,205,1);
+    color:rgba(69,69,69,1);
+}
