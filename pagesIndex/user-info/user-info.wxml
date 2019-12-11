@@ -41,7 +41,7 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">出生日期</view>
 
-            <picker name="birthday" bindchange="bindBirthdayPickerChange" mode="date" value="{{editUserInfo.birthday||originUserInfo.birthday}}" start="1930-01-01" end="2020-01-01" >
+            <picker name="birthday" bindchange="bindBirthdayPickerChange" mode="date" value="{{editUserInfo.birthday||originUserInfo.birthday}}" start="1930-01-01" end="{{endYear}}" >
                 <view class="flex-row align-items-center">
                     <view class="user-info-item-common-input {{(editUserInfo.birthday||originUserInfo.birthday)?'':'user-info-item-common-input-placeholder'}}">{{editUserInfo.birthday||originUserInfo.birthday||'请输入'}}</view>
                     <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
