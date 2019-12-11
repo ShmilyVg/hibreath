@@ -1,10 +1,10 @@
 <view class="fill-width flex-column align-items-center">
     <view class="target-weight-title">请输入目标体重</view>
-    <input class="target-weight-input" placeholder="0" placeholder-class="target-weight-placeholder"/>
-<!--    <view class="target-weight-line"></view>-->
+    <input class="target-weight-input" bindinput="targetWeightBindInputEvent" value="{{targetWeightValue}}" type="digit" maxlength="5" focus placeholder-class="target-weight-placeholder"/>
+    <view class="target-weight-line"></view>
     <view class="target-weight-unit">KG</view>
 
     <view class="fill-width flex-row justify-center absolute bottom">
-        <view class="flex-row align-items-center justify-center common-btn">保存</view>
+        <view bindtap="saveTargetWeightEvent" class="flex-row align-items-center justify-center common-btn">保存</view>
     </view>
 </view>
