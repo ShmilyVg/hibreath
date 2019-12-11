@@ -6,6 +6,7 @@ Page({
 
 
     data: {
+        endYear: '',
         originUserInfo: {
             nickname: '',
             portraitUrl: '',
@@ -24,8 +25,10 @@ Page({
     async onLoad(options) {
         const {result: {list: habits}} = await Protocol.postMealType();
         const {result: {nickname, portraitUrl, sex, height, weight, birthday, bodyFatRate, mealType}} = await Protocol.getUserDetailInfo();
+        const now = new Date();
         this.setData({
             habits,
+            endYear: [now.getFullYear(), now.getMonth() + 1, now.getDate()].map(item => item.toString().padStart(2, '0')).join('-'),
             originUserInfo: {
                 nickname,
                 portraitUrl,

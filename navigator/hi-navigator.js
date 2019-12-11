@@ -215,8 +215,12 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});
   }
   //动态信息列表
-  static navigateToNoticeList({ groupId, total = 0}) {
-    this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId + '&total=' + total } );
+  static navigateToNoticeList({ groupId}) {
+    this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId} );
+  }
+  //动态信息列表
+  static navigateToMyNoticeList() {
+        this.navigateTo({ url: '/pagesIndex/noticeList/noticeList'} );
   }
 
     /**
@@ -239,4 +243,17 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?reason='+reason+'&title='+title+'&solution='+solution});
     }
 
+    /**
+     * 进入个人信息页面
+     */
+    static navigateToUserInfoPage() {
+        this.navigateTo({url: '/pagesIndex/user-info/user-info'});
+    }
+
+    /**
+     * 进入目标体重页面
+     */
+    static navigateToTargetWeight({targetWeight}) {
+        this.navigateTo({url: '/pagesIndex/target-weight/target-weight?targetWeight=' + targetWeight});
+    }
 }

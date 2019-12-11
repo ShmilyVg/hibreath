@@ -37,8 +37,8 @@ Page({
     getTime(timestamp) {
         // 12/04 11:17
         const date = new Date(timestamp);
-        return (date.getMonth() + 1).toString().padStart(2, '0') + '/' + date.getDate().toString().padStart(2, '0') + ' '
-            + date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0');
+        return [date.getMonth() + 1, date.getDate()].map(item => item.toString().padStart(2, '0')).join('/') + ' '
+            + [date.getHours(), date.getMinutes()].map(item => item.toString().padStart(2, '0')).join(':');
     },
 
     onLoad(options) {
