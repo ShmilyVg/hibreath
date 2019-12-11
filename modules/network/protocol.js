@@ -469,4 +469,12 @@ export default class Protocol {
         return Network.request({url: 'members/infoDetail'});
     }
 
+    /**
+     * 个人信息更新
+     * @returns {*|Promise|Promise<unknown>}
+     */
+    static postMembersPutInfo(data) {
+        return Network.request({url: 'members/putInfo', data});
+    }
+
 }
