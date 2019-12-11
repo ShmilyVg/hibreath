@@ -239,4 +239,17 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?reason='+reason+'&title='+title+'&solution='+solution});
     }
 
+    /**
+     * 进入个人信息页面
+     */
+    static navigateToUserInfoPage() {
+        this.navigateTo({url: '/pagesIndex/user-info/user-info'});
+    }
+
+    /**
+     * 进入目标体重页面
+     */
+    static navigateToTargetWeight({targetWeight}) {
+        this.navigateTo({url: '/pagesIndex/target-weight/target-weight?targetWeight=' + targetWeight});
+    }
 }
