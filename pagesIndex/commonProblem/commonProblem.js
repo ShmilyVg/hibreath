@@ -1,5 +1,6 @@
 // pagesIndex/commonProblem/commonProblem.js
 import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
 Page({
 
   /**
@@ -8,21 +9,22 @@ Page({
   data: {
 
   },
-  toSubstituteMeal:function(){
-    HiNavigator.navigateToSubstituteMeal();
+  toSubList:function(e){
+    console.log(e)
+    this.data.id = e.currentTarget.dataset.id;
+    HiNavigator.navigateToSubList({id:this.data.id});
   },
-  toReaction: function () {
-    HiNavigator.navigateToReaction();
-  },
-  toDredge: function () {
-    HiNavigator.navigateToDredge();
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.onSettingsHelp()
+  },
+  async onSettingsHelp() {
+    const { result } = await Protocol.getSettingsHelp({id:''});
+    this.setData({
+      list: result.list
+    })
   },
 
   /**

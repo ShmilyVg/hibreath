@@ -1,4 +1,7 @@
-// pagesIndex/reaction/reaction.js
+// pagesIndex/substituteMeal/substituteMeal.js
+import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
+
 Page({
 
   /**
@@ -12,9 +15,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id:options.id
+    });
+    console.log(this.data.id);
+    this.onSettingsHelp();
   },
-
+  async onSettingsHelp() {
+    console.log(this.data.id)
+   const { result } = await Protocol.getSettingsHelp({id:this.data.id});
+    this.setData({
+      list: result.list
+    })
+    console.log(this.data.list)
+  },
+  toDetailsList:function(e){
+    console.log(e);
+    this.data.index= e.currentTarget.dataset.index;
+    HiNavigator.navigateToDetailsList({reason:this.data.list[this.data.index].reason,title:this.data.list[this.data.index].title,solution:this.data.list[this.data.index].solution});
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

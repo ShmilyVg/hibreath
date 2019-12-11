@@ -1,13 +1,6 @@
 <!--pagesIndex/commonProblem/commonProblem.wxml-->
-<view class="common-list flex-row space-between" bindtap="toSubstituteMeal">
-  <text class="common-text">1.关于代餐</text>
-  <image class="common-img" src="../../images/personalCenter/gray.png"></image>
-</view>
-<view class="common-list flex-row space-between" bindtap="toReaction">
-  <text class="common-text">2.食用代餐后的反应</text>
-  <image class="common-img" src="../../images/personalCenter/gray.png"></image>
-</view>
-<view class="common-list flex-row space-between" bindtap="toDredge">
-  <text class="common-text">3.减脂心里疏导</text>
-  <image class="common-img" src="../../images/personalCenter/gray.png"></image>
-</view>
+  <view  wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" class="common-list flex-row space-between" bindtap="toSubList">
+    <text class="common-text flex-row space-between">{{index+1}}.{{item.title}}</text>
+    <image class="common-img" src="../../images/personalCenter/gray.png"></image>
+  </view>
+
