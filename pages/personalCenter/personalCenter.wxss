@@ -77,9 +77,17 @@ button::after {
   width:222rpx;
 }
 .per-nav-border{
- width:2rpx;
-height:53rpx;
-color: #DDDDDD ;
+    width:0rpx;
+    height:53rpx;
+    color: #DDDDDD;
+    border: 1rpx solid #ddd;
+
+}
+.per-redC{
+    width:12rpx;
+    height:12rpx;
+    background:rgba(237,111,105,1);
+    border-radius: 50%;
 }
 .per-nav-img{
   width:40rpx;
@@ -90,7 +98,8 @@ color: #DDDDDD ;
   font-family:PingFang-SC-Regular,PingFang-SC;
   font-weight:400;
   color:rgba(163,163,163,1);
-  line-height:33rpx;
+  margin-top: 8rpx;
+
 }
 .per-img-middle{
   vertical-align: center;
@@ -110,9 +119,11 @@ color: #DDDDDD ;
   outline: none;
 }
 .per-main-image{
-  width:26rpx;
-  height:26rpx;
+  width:34rpx;
+  height:34rpx;
   margin-right:32rpx;
+    position: relative;
+    top: 7rpx;
 }
 .per-main-img{
   width:14rpx;
@@ -130,4 +141,5 @@ height:25rpx;
   background:#fff;
   margin-top:18rpx;
   padding:0 35rpx;
+  border-radius: 20rpx;
 }

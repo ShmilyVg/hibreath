@@ -140,7 +140,8 @@ Page({
       nickname: result.nickname,
       headUrl: result.headUrl,
       weightGoal:result.weightGoal,
-      amount:result.amount
+      amount:result.amount,
+      isHave:result.isHave,
     })
     console.log(this.data.nickname, this.data.headUrl)
   },
