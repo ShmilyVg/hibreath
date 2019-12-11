@@ -223,7 +223,7 @@ export default class HiNavigator extends CommonNavigator {
      * 前往派币页面
      */
     static navigateToPaiCoinPage() {
-        this.navigateTo({ulr: '/pagesIndex/pai-coin/pain-coin'});
+        this.navigateTo({ url: '/pagesIndex/pai-coin/pai-coin'});
     }
 
   //减脂常见问题
