@@ -21,6 +21,14 @@ import Protocol from "../../modules/network/protocol";
          console.log(options)
         this._fetchData(options.sharedId)
      },
+     // 点击预览大图
+     previewImage(e) {
+         var current = this.data.foodImglist[e.target.dataset.index]
+         wx.previewImage({
+             current: current, // 当前显示图片的http链接
+             urls: this.data.foodImglist // 需要预览的图片http链接列表
+         })
+     },
      _fetchData(sharedId){// 获取数据
         if(!sharedId){
             console.log("[taskShareInfo] not found sharedId");
@@ -37,6 +45,11 @@ import Protocol from "../../modules/network/protocol";
             });
             console.log('weight.todayDif',this.data.taskList)
             for(var i =0;i<this.data.taskList.length;i++){
+                if(this.data.taskList[i].type == "food"){
+                    this.setData({
+                        foodImglist:this.data.taskList[i].ext.imgUrls,
+                    })
+                }
                 if(this.data.taskList[i].type == "bodyIndex"){
                     var todayDif = this.data.taskList[i].ext.weight.todayDif
                     var totalDif = this.data.taskList[i].ext.weight.totalDif

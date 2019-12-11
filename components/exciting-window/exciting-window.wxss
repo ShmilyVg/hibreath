@@ -20,11 +20,10 @@
 .exciting-window-show{
     width: 750rpx;
     height: 966rpx;
-    margin: 0 auto;
+    margin: 128rpx auto 0rpx;
     background-size:100% 100%;
     text-align: center;
     background-repeat: no-repeat;
-    margin-top: 100rpx;
 }
 .exciting-window-showImg1{
     animation:myOne 1s  infinite alternate;
