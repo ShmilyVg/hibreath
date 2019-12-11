@@ -58,6 +58,9 @@ Component({
       console.log(years,months,days[0])
       const date = new Date()
       console.log('date.getYear()',date.getYear())
+        console.log('date.getYear()1',secYear)
+        console.log('date.getYear()2',secMopnth)
+        console.log('date.getYear()3',secDay)
       this.data.value.push(secYear -1);
       this.data.value.push(secMopnth - 2)
       this.data.value.push(secDay -6)

@@ -1,5 +1,5 @@
 <!--components/exciting-window/exciting-window.wxml-->
-<view class="exciting-window-container" catchtouchmove="ture">
+<view class="exciting-window-container" catchtouchmove="stopScroll">
     <view class="exciting-window-show {{toastResult.taskNum === toastResult.finishNum?'exciting-window-showImg2':'exciting-window-showImg1'}}" animation="{{animation}}">
         <view class="exciting-Title">{{excitingTitleL}}{{excitingTitleR}}</view>
         <view class="exciting-Content"wx:if="{{toastType !=='food' && showDif}}">
