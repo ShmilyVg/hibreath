@@ -274,8 +274,22 @@ Page({
         Trend.init(this);
         Trend.initTouchHandler();
     },
+    onHide() {
+        this.setData({
+            showExcitation: false,
+        });
+    },
     onUnload(){
         getApp().globalData.issueRefresh = true
+        var pages = getCurrentPages()    //获取加载的页面
+        var currentPage = pages[pages.length-2]    //获取上一页
+        console.log('getApp()',getApp().bLEManager,currentPage.route)
+        if(currentPage.route ==='pages/personalCenter/personalCenter'){
+            wx.navigateBack({
+                delta: 1
+            });
+            return
+        }
         HiNavigator.switchToSetInfo()
     },
     async updateTrendTime({frontTimestamp, endTimestamp}) {

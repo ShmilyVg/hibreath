@@ -19,17 +19,18 @@
           <image class="per-nav-img" src="../../images/personalCenter/message.png"></image>
           <view class="per-nav-text">消息</view>
         </view>
-        <view class="per-nav-border">|</view>
+        <view class="per-nav-border"></view>
         <view class="per-nav-list">
           <image class="per-nav-img" src="../../images/personalCenter/user.png"></image>
           <view class="per-nav-text">我的动态</view>
         </view>
-        <view class="per-nav-border">|</view>
+        <view class="per-nav-border"></view>
         <view class="per-nav-list" data-type="paiMoney" bindtap="toDatalist">
-          <view>
+          <view style="padding-left: 45rpx;display: flex;justify-content: center">
             <text wx:if="{{isLogin}}">{{amount}}</text>
             <text wx:else>0</text>
-            <image class="per-nav-img per-img-middle" src="../../images/personalCenter/logosmall.png"></image>
+            <image class="per-img-middle" src="../../images/personalCenter/logosmall.png" style="width: 30rpx;height: 30rpx"></image>
+              <view class="per-redC" wx:if="{{isHave}}"></view>
           </view>
           <view class="per-nav-text">我的派币</view>
         </view>
@@ -70,7 +71,7 @@
      </view>
      <button class="per-administration per-main-list flex-row space-between" open-type="getUserInfo"  bindgetuserinfo="onDeviceManagement">
          <view>
-              <image class="per-main-image" src="../../images/personalCenter/warning.png"></image>
+              <image class="per-main-image" src="../../images/personalCenter/device.png"></image>
               <text class="per-main-text">设备管理</text>
           </view>
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
