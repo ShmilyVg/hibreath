@@ -84,7 +84,7 @@ Component({
       if (idx){
         this.triggerEvent("success", { groupId: idx});
         let currentSocialGroupId = (wx.getStorageSync('currentSocialGroupId') || "");
-        currentSocialGroupId = this.data.idx
+        currentSocialGroupId = this.data.idx;
         wx.setStorageSync('currentSocialGroupId', currentSocialGroupId);
 
       }
@@ -92,9 +92,10 @@ Component({
      async WhenDismissGroup() {
       const { result : {list} } = await Protocol.postMemberGroupList();
       this.setData({
-        list:list
-      })
-    
+        list:list,
+        idx:list[0].groupId
+      });
+      console.log(this.data.idx)
     },
     isChose(e){
      

@@ -1,0 +1,15 @@
+<!--pagesIndex/myDynamicList/myDynamicList.wxml-->
+<view class="page" style="background: {{backColor}}">
+    <myMessagelist
+            wx:if="{{isShowlist}}"
+            class="fill-width" style="padding-bottom: 30rpx;"
+            bind:onMessageDeleteEvent="onDynamicItemDeleteEvent"
+            wx:for="{{list}}"
+            wx:key="index"
+            message="{{item}}">
+    </myMessagelist>
+    <view wx:if="{{!isShowlist}}">
+        <image  class="phone-img" src="../../images/noticeList/empty.png"></image>
+        <view class="empty-text">暂无动态</view>
+    </view>
+</view>

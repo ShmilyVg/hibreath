@@ -8,8 +8,7 @@
                     <view class="set-content-content">{{subTitle}}</view>
                 </view>
             </view>
-            <view wx:if="{{!finished}}" class="set-content-toFinish" data-type="{{type}}" data-dataId="{{id}}" data-videoUrl="{{ext.videoUrl}}"
-                  catchtap="bindTapToFinish">去学习
+            <view wx:if="{{!finished}}" class="set-content-toFinish" data-type="{{type}}" data-dataId="{{id}}" data-videoUrl="{{ext.videoUrl}}">去学习
             </view>
             <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
         </view>

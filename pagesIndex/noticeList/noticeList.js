@@ -14,7 +14,7 @@ Page({
     total:'',
     pageIndex:1,
     isDelete:''
-  },
+    },
 
   /**
    * 生命周期函数--监听页面加载
@@ -64,32 +64,33 @@ Page({
   },
 
   toMessageDetail: function (e) {
-    console.log("e",e)
-    this.data.MessageDetailId = e.currentTarget.dataset.index;
-    this.data.isDelete = e.currentTarget.dataset.isdelete;
-    console.log(e.currentTarget.dataset.isdelete)
-    if (this.data.isDelete){
-      console.log(111)
-      wx.showModal({
-        title: '',
-        content: '该条动态已被删除',
-        showCancel:false,
-        confirmText:'我知道了',
-        success(res) {
-          if (res.confirm) {
-            //console.log('用户点击确定')
-          } else if (res.cancel) {
-            //console.log('用户点击取消')
-          }
-        }
-      })
-      //console.log(111)
-    }else{
-      //console.log(222)
-      HiNavigator.navigateToMessageDetail({ messageId: this.data.MessageDetailId });
-    }
-    
-    
+      console.log("e",e)
+      this.data.MessageDetailId = e.currentTarget.dataset.index;
+      this.data.isDelete = e.currentTarget.dataset.isdelete;
+     this.data.noticeIsDelete = e.currentTarget.dataset.noticeIsDelete;
+      console.log(e.currentTarget.dataset.isdelete);
+    console.log(e.currentTarget.dataset.noticeIsDelete);
+      if (this.data.isDelete){
+          console.log(111)
+          wx.showModal({
+              title: '',
+              content: '该条动态已被删除',
+              showCancel:false,
+              confirmText:'我知道了',
+              success(res) {
+                  if (res.confirm) {
+                      //console.log('用户点击确定')
+                  } else if (res.cancel) {
+                      //console.log('用户点击取消')
+                  }
+              }
+          })
+          //console.log(111)
+      }else{
+          //console.log(222)
+          HiNavigator.navigateToMessageDetail({ messageId: this.data.MessageDetailId });
+      }
+
   },
   getDateDiff:function(dateTime) {
     let diffValue = dateTime;
@@ -129,6 +130,9 @@ Page({
     },
     deleteNotice:function(){
       Protocol.postNoticeUpdate().then(()=>{
+          this.setData({
+              pageIndex: 1
+          });
         this.postDynamicNotice();
       });
     },

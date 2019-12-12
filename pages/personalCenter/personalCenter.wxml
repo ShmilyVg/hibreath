@@ -3,14 +3,14 @@
     <view class="flex-row space-between personal-header">
       <view class="flex-row space-between">
           <view  class="per-header-img">
-            <image wx:if="{{isLogin}}" src="{{headUrl}}" class="per-img"></image>
+            <image wx:if="{{isShowlogin}}" src="{{headUrl}}" class="per-img"></image>
             <image wx:else src="../../images/personalCenter/people.png" class="per-img"></image>
           </view>
-          <view wx:if="{{isLogin}}" class="per-nickName">{{nickname}}</view>
+          <view wx:if="{{isShowlogin}}" class="per-nickName">{{nickname}}</view>
           <button wx:else class="per-nickName"  open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即登入</button>
       </view>
       <view class="per-text flex-row space-between">
-        <button class="per-text-btn" open-type="getUserInfo" bindgetuserinfo="onPersonalCenter">个人中心</button>
+        <button class="per-text-btn" open-type="getUserInfo" bindgetuserinfo="onPersonalCenter">个人信息</button>
         <image src="../../images/personalCenter/gray.png" class="gray-img"></image>
       </view>
      </view>
@@ -20,14 +20,14 @@
           <view class="per-nav-text">消息</view>
         </view>
         <view class="per-nav-border"></view>
-        <view class="per-nav-list">
+        <view class="per-nav-list" data-type="dynamic" bindtap="toDatalist">
           <image class="per-nav-img" src="../../images/personalCenter/user.png"></image>
           <view class="per-nav-text">我的动态</view>
         </view>
         <view class="per-nav-border"></view>
         <view class="per-nav-list" data-type="paiMoney" bindtap="toDatalist">
           <view style="padding-left: 45rpx;display: flex;justify-content: center">
-            <text wx:if="{{isLogin}}">{{amount}}</text>
+            <text wx:if="{{isShowlogin}}">{{amount}}</text>
             <text wx:else>0</text>
             <image class="per-img-middle" src="../../images/personalCenter/logosmall.png" style="width: 30rpx;height: 30rpx"></image>
               <view class="per-redC" wx:if="{{isHave}}"></view>
@@ -43,7 +43,7 @@
               <text class="per-main-text"></text>
           </view>
           <view>
-              <text wx:if="{{isLogin}}">{{weightGoal}}kg</text>
+              <text wx:if="{{isShowlogin}}">{{weightGoal}}kg</text>
               <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
           </view>
          </button>

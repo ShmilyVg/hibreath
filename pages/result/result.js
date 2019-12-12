@@ -283,14 +283,13 @@ Page({
         getApp().globalData.issueRefresh = true
         var pages = getCurrentPages()    //获取加载的页面
         var currentPage = pages[pages.length-2]    //获取上一页
-        console.log('getApp()',getApp().bLEManager,currentPage.route)
+        console.log('getApp()',currentPage.route)
         if(currentPage.route ==='pages/personalCenter/personalCenter'){
-            wx.navigateBack({
-                delta: 1
-            });
-            return
+            HiNavigator.switchToPersonalCenter()
+        }else{
+            HiNavigator.switchToSetInfo()
         }
-        HiNavigator.switchToSetInfo()
+
     },
     async updateTrendTime({frontTimestamp, endTimestamp}) {
         timeObj.frontTimestamp = frontTimestamp;
@@ -331,8 +330,17 @@ Page({
               console.log('燃脂')
               console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
+              console.log(this.data.breathid);
+              console.log(this.data.trendData);
+              const index = this.data.trendData.findIndex(item => item.id === this.data.breathid);
+              console.log(index !== -1,'index')
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
-                 this.cellDataHandle({});
+                  if(index !== -1){
+                      this.data.trendData.splice(index, 1);
+                      this.setData({
+                          trendData:this.data.trendData
+                      });
+                  }
               })
 
             },

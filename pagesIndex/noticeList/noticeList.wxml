@@ -8,7 +8,7 @@
     </view>
   </view>
   <view>
-      <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}" data-isDelete="{{item.baseData.isDelete}}"  data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
+      <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}"  data-isDelete="{{item.baseData.isDelete}}" data-noticeIsDelete="{{item.noticeIsDelete}}"  data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
         <view class="flex-row space-between notice-left">
           <image src="{{item.fromImg}}" class="notice-head-img"></image>
           <view class="notice-center">
@@ -17,7 +17,9 @@
               <image wx:if="{{!item.content}}" class="notice-solidHeart" src="../../images/community/solidHeart.png"></image>
               <text wx:if="{{!item.content}}" class="notice-thumbs-up">赞了你</text>
             </view>
-            <view wx:if="{{item.content}}" class="notice-comment">{{item.content}}</view>
+            <view wx:if="{{item.content&&!item.baseData.isDelete}}" class="notice-comment">{{item.content}}</view>
+            <view wx:if="{{item.baseData.isDelete}}" class="notice-delete">该条评论已被删除</view>
+            <view wx:if="{{item.noticeIsDelete}}" class="notice-delete">该条评论已被删除</view>
             <view class="notice-time" >{{item.timeDiff}}</view>
           </view>
         </view>

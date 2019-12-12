@@ -172,7 +172,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToMemberManagement({dataId}) {
         this.navigateTo({url: '/pages/memberManagement/memberManagement?dataId=' + dataId});
     }
-
+    static switchToPersonalCenter() {
+        this.switchTab({url: '/pages/personalCenter/personalCenter'});
+    }
     static switchToCommunity() {
         this.switchTab({url: '/pages/community/community'});
     }
@@ -221,6 +223,10 @@ export default class HiNavigator extends CommonNavigator {
   //动态信息列表
   static navigateToMyNoticeList() {
         this.navigateTo({ url: '/pagesIndex/noticeList/noticeList'} );
+  }
+  //个人中心-我的动态列表
+  static navigateToMyDynamicList() {
+    this.navigateTo({ url: '/pagesIndex/myDynamicList/myDynamicList'} );
   }
 
     /**

@@ -105,7 +105,8 @@
     position: relative;
     top: -90rpx;
     left: 250rpx;
-    max-width: 300rpx;
+    max-width: 340rpx;
+    word-break: break-all;
 }
 .planfinish-top-text{
     font-size:30rpx;
