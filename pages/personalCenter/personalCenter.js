@@ -101,6 +101,9 @@ Page({
             case "paiMoney":
                 HiNavigator.navigateToPaiCoinPage();
                 break;
+            case "dynamic":
+                HiNavigator.navigateToMyDynamicList();
+                break;
         }
     },
 

@@ -39,9 +39,14 @@ function my_slice(str,length){
      var date = getDate(timestamp);
     return date.getFullYear()+'年'+getMonthStr(date)+'月'+getDayStr(date)+'日';
 };
+ function getAllday(timestamp) {
+     var date = getDate(timestamp);
+    return date.getFullYear()+'/'+getMonthStr(date)+'/'+getDayStr(date)+'    '+getCommentTime(timestamp);
+};
 module.exports = {
   my_slice:my_slice,
   getEndTime:getEndTime,
   getDynamicCreateTime:getDynamicCreateTime,
-  getCommentTime:getCommentTime
+  getCommentTime:getCommentTime,
+  getAllday:getAllday
 };

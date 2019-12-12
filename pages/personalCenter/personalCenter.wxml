@@ -20,7 +20,7 @@
           <view class="per-nav-text">消息</view>
         </view>
         <view class="per-nav-border"></view>
-        <view class="per-nav-list">
+        <view class="per-nav-list" data-type="dynamic" bindtap="toDatalist">
           <image class="per-nav-img" src="../../images/personalCenter/user.png"></image>
           <view class="per-nav-text">我的动态</view>
         </view>

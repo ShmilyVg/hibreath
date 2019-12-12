@@ -1,0 +1,8 @@
+<!--pagesIndex/myDynamicList/myDynamicList.wxml-->
+<myMessagelist
+        class="fill-width" style="padding-bottom: 30rpx;"
+        bind:onMessageDeleteEvent="onDynamicItemDeleteEvent"
+        wx:for="{{list}}"
+        wx:key="index"
+        message="{{item}}">
+</myMessagelist>

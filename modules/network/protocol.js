@@ -485,6 +485,10 @@ export default class Protocol {
     static getSettingsHelpInfo({id}) {
         return Network.request({url: 'settings/helpInfo', data: {id}});
     }
+    //我的动态列表
+    static postMydynamicList({ page  , pageSize = 15 }) {
+        return Network.request({url: 'members/dynamicList',data: { page,pageSize}});
+    }
     /**
      * 个人信息更新
      * @returns {*|Promise|Promise<unknown>}

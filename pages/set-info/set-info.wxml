@@ -181,6 +181,7 @@
             <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
                 <template is="foodVideo" wx:if="{{item.type =='videoFood'}}"  data="{{...item}}"></template>
                 <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}"  data="{{...item}}"></template>
+                <template is="foodVideo" wx:if="{{item.type =='slimWithHeart'}}"  data="{{...item}}"></template>
             </view>
             <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
                 <template is="caseonFinished"   data="{{planInfo}}"></template>
