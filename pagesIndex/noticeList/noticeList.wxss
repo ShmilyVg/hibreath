@@ -8,6 +8,7 @@
   padding:0 43rpx;
   font-size:32rpx;
   margin-bottom:31rpx;
+  margin-top:40rpx;
 }
 .header-btn{
   width:126rpx;
