@@ -18,7 +18,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      if (!getApp().globalData.isLogin) {
+          this.setData({
+              isShowlogin: false,
+          })
+          console.log('暂未登陆',)
+      }else{
+          this.getUserInfo();
+          //getApp().globalData.isLogin=true
+          console.log('已经登录')
+      }
   },
   onPersonalCenter:function(e){
     if (this.data.isShowlogin) {
@@ -105,18 +114,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      setTimeout(()=>{
-          if (!getApp().globalData.isLogin) {
-              this.setData({
-                  isShowlogin: false,
-              })
-              console.log('暂未登陆',)
-          }else{
-              this.getUserInfo();
-              //getApp().globalData.isLogin=true
-              console.log('已经登录')
-          }
-      },100)
+      this.getUserInfo();
 
   },
   async getUserInfo(){
