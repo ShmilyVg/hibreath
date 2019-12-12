@@ -122,11 +122,11 @@ Page({
     console.log(result);
     if(result.weightGoal){
         this.setData({
-            weightGoal:result.weightGoal
+            weightGoal:result.weightGoal+'kg'
         })
     }else{
         this.setData({
-            weightGoal:0
+            weightGoal:"未填写"
         })
     }
     this.setData({

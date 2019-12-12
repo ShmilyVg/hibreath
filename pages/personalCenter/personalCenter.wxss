@@ -61,7 +61,17 @@ button::after {
   background-color: transparent;
   outline: none;
 }
-
+.weightGoalN{
+  font-size:38rpx;
+  font-family:DINCondensed-Bold,DINCondensed;
+  font-weight:bold;
+  color:rgba(84,84,84,1);
+}
+.weightGoalT{
+    font-size:28rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    color:rgba(163,163,163,1)
+}
 .gray-img{
   width:14rpx;
   height:25rpx;
