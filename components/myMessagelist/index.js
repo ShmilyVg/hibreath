@@ -52,7 +52,6 @@ Component({
         },
 
         async onImagePreview(e) {
-            this.triggerEvent('onNoupdate', {noUpdateAll: true});
             const {currentTarget: {dataset: {url: current}}} = e;
             await previewImage({current, urls: this.data.message.imgUrls});
         },

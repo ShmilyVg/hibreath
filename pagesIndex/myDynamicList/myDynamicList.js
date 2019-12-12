@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      pageIndex:1
+      pageIndex:1,
+      isShowlist:false,
+      backColor:''
   },
 
   /**
@@ -20,9 +22,20 @@ Page({
   },
    async getDynamicList(){
        const { result: { list: list } } = await Protocol.postMydynamicList({ page: this.data.pageIndex });
-       this.setData({
-           list:list
-       })
+       if(list.length>0){
+           this.setData({
+               list:list,
+               backColor:"#E7E7E7",
+               isShowlist:true
+           })
+       }else{
+           this.setData({
+               isShowlist:false,
+               backColor:"#FFFFFF",
+           })
+
+       }
+
     },
    async onDynamicItemDeleteEvent({detail}) {
        await Protocol.postDynamicDelete({id: detail.taskId})
