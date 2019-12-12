@@ -12,7 +12,10 @@
       <view class="planfinish-top-title">“ {{title}} ”</view>
       <view class="planfinish-top-text">累计减重</view>
       <view style="text-align: center">
-          <text class="planfinish-top-weight">{{weightDif}}</text>
+          <text class="planfinish-top-weight" wx:if="{{weightDif}}">
+              {{weightDif}}
+          </text>
+          <text class="planfinish-top-weight" wx:else>0</text>
           <text class="planfinish-top-kg">Kg</text>
       </view>
       <view class="planfinish-top-viewS"></view>
