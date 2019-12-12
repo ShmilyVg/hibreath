@@ -38,9 +38,16 @@ Page({
 
     },
    async onDynamicItemDeleteEvent({detail}) {
-       await Protocol.postDynamicDelete({id: detail.taskId})
-       this.getDynamicList()
-       toast.success('删除成功',800);
+       console.log(detail);
+       const {taskId} = detail, {list} = this.data;
+       console.log(list);
+       const index = list.findIndex(item => item.id === taskId);
+       if (index !== -1) {
+           await Protocol.postDynamicDelete({id: detail.taskId})
+           list.splice(index, 1);
+           this.setData({list});
+           toast.success('删除成功',800);
+       }
     },
   /**
    * 生命周期函数--监听页面初次渲染完成
