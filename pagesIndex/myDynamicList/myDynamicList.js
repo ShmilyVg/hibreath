@@ -88,11 +88,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   async onReachBottom() {
-      const { result: { list: list } } = await Protocol.postMydynamicList({ page: this.data.pageIndex });
-      const dataList = list
+      this.data.pageIndex++;
+      const {result} = await Protocol.postMydynamicList({ page: this.data.pageIndex });
+      const dataList = result.list;
+      console.log('dataList',dataList)
       if (this.data.list.length) {
-          this.data.pageIndex++;
-          this.setData({ list: this.data.list.concat(dataList) });
+          this.setData({ list: this.data.list.concat(dataList)});
       }
   },
 

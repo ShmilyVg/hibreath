@@ -29,23 +29,23 @@
     animation:myOne 1s  infinite alternate;
 }
 @keyframes myOne{
-    0% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
-    20% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
-    40% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
-    60% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
-    80% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
-    100% {background-image:url('http://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+    0% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    20% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+    40% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    60% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
+    80% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/566325fe-d08e-43cc-b5df-7191081b712e.png') }
+    100% {background-image:url('https://img.hipee.cn/hibreath/img/2019123/768aae29-e7a9-4c6b-81d8-1c5771bf5afa.png') }
 }
 .exciting-window-showImg2{
     animation:mySecond 2.5s  infinite alternate;
 }
 @keyframes mySecond{
-    0% {background-image:url('http://img.hipee.cn/hibreath/111.png') }
-    20% {background-image:url('http://img.hipee.cn/hibreath/222.png') }
-    40% {background-image:url('http://img.hipee.cn/hibreath/111.png') }
-    60% {background-image:url('http://img.hipee.cn/hibreath/222.png') }
-    80% {background-image:url('http://img.hipee.cn/hibreath/111.png') }
-    100% {background-image:url('http://img.hipee.cn/hibreath/222.png') }
+    0% {background-image:url('https://img.hipee.cn/hibreath/111.png') }
+    20% {background-image:url('https://img.hipee.cn/hibreath/222.png') }
+    40% {background-image:url('https://img.hipee.cn/hibreath/111.png') }
+    60% {background-image:url('https://img.hipee.cn/hibreath/222.png') }
+    80% {background-image:url('https://img.hipee.cn/hibreath/111.png') }
+    100% {background-image:url('https://img.hipee.cn/hibreath/222.png') }
 }
 .exciting-Title{
     font-size:44rpx;

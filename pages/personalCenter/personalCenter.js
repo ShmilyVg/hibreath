@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:'',
+    isShowlogin:'',
     nickname:'',
     headUrl:''
   },
@@ -18,14 +18,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    this.setData({
-      isLogin: this.data.isLogin
-    })
-    console.log(this.data.isLogin)
+      if (!getApp().globalData.isLogin) {
+          this.setData({
+              isShowlogin: false,
+          })
+          console.log('暂未登陆',)
+      }else{
+          this.getUserInfo();
+          //getApp().globalData.isLogin=true
+          console.log('已经登录')
+      }
   },
   onPersonalCenter:function(e){
-    if (this.data.isLogin) {
+    if (this.data.isShowlogin) {
         HiNavigator.navigateToUserInfoPage()
     } else {
       console.log('e onPersonalCenter', e);
@@ -34,7 +39,7 @@ Page({
     }
   },
   onTargetWeight:function(e){
-    if (this.data.isLogin) {
+    if (this.data.isShowlogin) {
         HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
     } else {
       console.log('e onPersonalCenter', e);
@@ -43,7 +48,7 @@ Page({
     }
   },
   onDeviceManagement:function(e){
-    if (this.data.isLogin) {
+    if (this.data.isShowlogin) {
         HiNavigator.navigateToDeviceUnbind()
     } else {
       console.log('e onPersonalCenter', e);
@@ -78,9 +83,7 @@ Page({
         Toast.warn('获取信息失败');
         console.log('获取信息失败')
       }
-      console.log("有userInfo")
     } else {
-      console.log("没有userInfo")
     }
   },
     //
@@ -111,36 +114,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('11', getApp().globalData.isLogin);
-    wx.getSetting({
-      success: (res) => {
-        console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
-        //console.log(!res.authSetting['scope.userInfo'] )
-        console.log(getApp().globalData.isLogin);
-        if (!getApp().globalData.isLogin) {
-          this.setData({
-            isLogin: false,
-          })
-          console.log('isLogin: false',)
-        }else{
-         this.getUserInfo();
-          console.log('isLogin: true')
-          // console.log(this.data.isLogin)
-          // console.log(111,this.data.nickname, this.data.headUrl)
-        }
-        console.log(this.data.isLogin)
-      }
-    });
-    console.log(getApp().globalData.isLogin)
+      this.getUserInfo();
+
   },
   async getUserInfo(){
     const { result } = await Protocol.postMemberInfo();
     console.log(result);
+    if(result.weightGoal){
+        this.setData({
+            weightGoal:result.weightGoal
+        })
+    }else{
+        this.setData({
+            weightGoal:0
+        })
+    }
     this.setData({
-      isLogin: true,
+      isShowlogin: true,
       nickname: result.nickname,
       headUrl: result.headUrl,
-      weightGoal:result.weightGoal,
       amount:result.amount,
       isHave:result.isHave,
     })
@@ -153,7 +145,6 @@ Page({
               index: 2,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
           })
       }
-    console.log(this.data.nickname, this.data.headUrl)
   },
   /**
    * 生命周期函数--监听页面隐藏
