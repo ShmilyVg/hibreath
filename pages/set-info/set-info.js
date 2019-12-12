@@ -1216,6 +1216,7 @@ Page({
   },
   hideModalConfirm() {
     const startTime = this.selectComponent("#pickerDateStart").getDateStart();
+    console.log(startTime);
     this.setData({
       startTime,
       showModalStatus: false
