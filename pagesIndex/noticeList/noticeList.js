@@ -129,6 +129,9 @@ Page({
     },
     deleteNotice:function(){
       Protocol.postNoticeUpdate().then(()=>{
+          this.setData({
+              pageIndex: 1
+          });
         this.postDynamicNotice();
       });
     },

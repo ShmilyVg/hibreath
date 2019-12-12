@@ -5,7 +5,7 @@
 .detail-title{
     font-size:36rpx;
     font-family:PingFang-SC-Medium,PingFang-SC;
-    font-weight:500;
+    font-weight:600;
     color: #545454 ;
     line-height:50rpx;
     margin:70rpx 0 62rpx 0;
@@ -24,7 +24,7 @@
 .detail-reason{
     font-size:28rpx;
     font-family:PingFang-SC-Medium,PingFang-SC;
-    font-weight:500;
+    font-weight:600;
     color: #454545 ;
     line-height:40rpx;
 }
