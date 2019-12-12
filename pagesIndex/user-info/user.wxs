@@ -1,14 +1,14 @@
-function getSexValue(originUserInfo, editUserInfo) {
-    if (editUserInfo.sex === 0 || editUserInfo === 1) {
-        return editUserInfo.sex;
-    } else if (originUserInfo.sex === 0 || originUserInfo.sex === 1) {
-        return originUserInfo.sex;
+function getSexValue(originUserInfoSex, editUserInfoSex) {
+    if (editUserInfoSex === 0 || editUserInfoSex === 1) {
+        return editUserInfoSex;
+    } else if (originUserInfoSex === 0 || originUserInfoSex === 1) {
+        return originUserInfoSex;
     }
     return -1;
 }
 
-function getSexStr(originUserInfo, editUserInfo) {
-    var value = getSexValue(originUserInfo, editUserInfo);
+function getSexStr(originUserInfoSex, editUserInfoSex) {
+    var value = getSexValue(originUserInfoSex, editUserInfoSex);
     if (value === 0) {
         return '女';
     } else if (value === 1) {

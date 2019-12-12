@@ -28,9 +28,9 @@
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">性别</view>
 
-            <picker name="sex" bindchange="bindSexPickerChange" value="{{tools.getSexValue(originUserInfo,editUserInfo)}}" range="{{['女','男']}}" >
+            <picker name="sex" bindchange="bindSexPickerChange" value="{{tools.getSexValue(originUserInfo.sex,editUserInfo.sex)}}" range="{{['女','男']}}" >
                 <view class="flex-row align-items-center">
-                    <view class="user-info-item-common-input {{tools.getSexValue(originUserInfo,editUserInfo)===-1?'user-info-item-common-input-placeholder':''}}">{{tools.getSexStr(originUserInfo,editUserInfo)}}</view>
+                    <view class="user-info-item-common-input {{tools.getSexValue(originUserInfo.sex,editUserInfo.sex)===-1?'user-info-item-common-input-placeholder':''}}">{{tools.getSexStr(originUserInfo.sex,editUserInfo.sex)}}</view>
                     <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
                 </view>
             </picker>
