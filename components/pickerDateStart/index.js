@@ -91,7 +91,7 @@ Component({
     months: months,
     month: months,
     days: days,
-    day: days[0],
+    day: days[1],
     value: [],
     secYear:''
   },
