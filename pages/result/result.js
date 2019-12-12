@@ -331,8 +331,17 @@ Page({
               console.log('燃脂')
               console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
+              console.log(this.data.breathid);
+              console.log(this.data.trendData);
+              const index = this.data.trendData.findIndex(item => item.id === this.data.breathid);
+              console.log(index !== -1,'index')
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
-                 this.cellDataHandle({});
+                  if(index !== -1){
+                      this.data.trendData.splice(index, 1);
+                      this.setData({
+                          trendData:this.data.trendData
+                      });
+                  }
               })
 
             },
