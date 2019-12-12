@@ -222,6 +222,10 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToMyNoticeList() {
         this.navigateTo({ url: '/pagesIndex/noticeList/noticeList'} );
   }
+  //个人中心-我的动态列表
+  static navigateToMyDynamicList() {
+    this.navigateTo({ url: '/pagesIndex/myDynamicList/myDynamicList'} );
+  }
 
     /**
      * 前往派币页面

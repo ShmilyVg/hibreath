@@ -101,6 +101,9 @@ Page({
             case "paiMoney":
                 HiNavigator.navigateToPaiCoinPage();
                 break;
+            case "dynamic":
+                HiNavigator.navigateToMyDynamicList();
+                break;
         }
     },
 
@@ -141,6 +144,15 @@ Page({
       amount:result.amount,
       isHave:result.isHave,
     })
+      if(this.data.isHave){
+          wx.showTabBarRedDot({
+              index: 2,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
+          })
+      }else{
+          wx.hideTabBarRedDot({
+              index: 2,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
+          })
+      }
     console.log(this.data.nickname, this.data.headUrl)
   },
   /**

@@ -72,6 +72,6 @@
           </view>
       </view>
   </view>
-    <button open-type='share' class="planfinish-share">晒一晒</button>
+    <button wx:="{{isShared}}" open-type='share' class="planfinish-share">晒一晒</button>
 </view>
 <!-- background='linear-gradient(to right, #EBE1D8, #B2A18B);'-->
