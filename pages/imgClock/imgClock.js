@@ -111,6 +111,7 @@ Page({
         this.setData({
             desc: tools.filterEmoji(e.detail.value)
         })
+        this.disBtn()
     },
   bindTextAreaBlur: function(e) {
     console.log("聚焦输入时打印", e.detail.value)
@@ -118,7 +119,7 @@ Page({
     /*this.setData({
       desc: tools.filterEmoji(e.detail.value)
     })*/
-    this.disBtn()
+
   },
   // 上传图片 &&&
   addPic1: function(e) {
