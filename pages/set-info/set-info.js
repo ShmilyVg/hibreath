@@ -976,6 +976,9 @@ Page({
           videoUrl: e.currentTarget.dataset.videourl
         });
         break;
+        case 'sport':
+            HiNavigator.navigateToFreeClock();
+            break
     }
   },
   //准备日 视频打卡完成后
