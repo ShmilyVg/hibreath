@@ -318,19 +318,26 @@ Page({
             confirmText: "确定",
             cancelText: "取消",
             confirmEvent: () => {
-              console.log('燃脂')
-              console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
-              console.log(this.data.breathid);
-              console.log(this.data.trendData);
               const index = this.data.trendData.findIndex(item => item.id === this.data.breathid);
-              console.log(index !== -1,'index')
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
                   if(index !== -1){
                       this.data.trendData.splice(index, 1);
                       this.setData({
                           trendData:this.data.trendData
                       });
+                      if(this.data.trendData.length>0){
+                          this.setData({
+                              fatText:this.data.trendData[0].desZh,
+                              score:this.data.trendData[0].dataValue,
+                              fatTextEn:this.data.trendData[0].des.en,
+                              fatDes:this.data.trendData[0].visDes,
+                          })
+                          setTimeout(() => {
+                              console.log('绘制一次')
+                              Circular.run();
+                          },500)
+                      }
                   }
               })
 
