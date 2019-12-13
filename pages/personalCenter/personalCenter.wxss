@@ -92,7 +92,7 @@ button::after {
     width:0rpx;
     height:53rpx;
     color: #DDDDDD;
-    border: 1rpx solid #ddd;
+    border: 0.5rpx solid #ddd;
 
 }
 .per-redC{

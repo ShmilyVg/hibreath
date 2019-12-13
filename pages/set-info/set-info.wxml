@@ -128,10 +128,10 @@
                         <image src="{{item.descUrl}}"></image>
                       </swiper-item>
                  </swiper>   -->
-                <swiper bindchange="swiperChangeCase" style="height:620rpx;margin-top:-20rpx;" next-margin="125rpx" previous-margin="125rpx">
+                <swiper bindchange="swiperChangeCase" style="height:670rpx;margin-top:0rpx;" next-margin="125rpx" previous-margin="125rpx">
                         <block wx:for="{{project}}" wx:key="index">
-                          <swiper-item style="width:100rpx;height:620rpx;" class="swiperLi">
-                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:415rpx;height:620rpx;margin-left:35rpx;"></image>
+                          <swiper-item style="width:100rpx;height:670rpx;" class="swiperLi">
+                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:420rpx;height:670rpx;margin-left:35rpx;"></image>
                           </swiper-item>
                         </block>
                       </swiper>
