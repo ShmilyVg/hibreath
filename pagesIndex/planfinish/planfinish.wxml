@@ -1,8 +1,8 @@
 <!--pagesIndex/planfinish/planfinish.wxml-->
 <wxs src="../../utils/tool.wxs" module="tools"></wxs>
 <view class="page">
-  <navBar wx:if="{{showBar}}" title='' color="{{}}" iconTheme="{{white}}" background="#e0d4c7"    back="{{true}}" bindback="handlerGobackClick">
-  </navBar>
+<!--  <navBar wx:if="{{showBar}}" title='' color="{{}}" iconTheme="{{white}}" background="#e0d4c7"    back="{{true}}" bindback="handlerGobackClick">
+  </navBar>-->
   <view class="planfinish-top" style="padding-top: 20rpx">
       <view class="planfinish-title" style="margin-left: 70rpx">荣誉证书</view>
       <view class="planfinish-subtitle" style="margin-left: 70rpx">CONGRATULATIONS</view>
