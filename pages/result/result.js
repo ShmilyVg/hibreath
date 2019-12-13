@@ -45,7 +45,7 @@ Page({
         this.cellDataHandle({});
         this.init();
         /*存在id 即为在线检测进入结果页面*/
-        if (e.id) {
+  /*      if (e.id) {
             this.dataId =e.id;
             const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: this.dataId});
             this.setData({
@@ -84,7 +84,7 @@ Page({
                 console.log('绘制一次')
                 Circular.run();
             },500)
-        }
+        }*/
     },
     getShowExcitation(e){
         console.log('e11',e)
