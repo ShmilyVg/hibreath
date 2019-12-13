@@ -27,6 +27,10 @@ Page({
         const {result: {list: habits}} = await Protocol.postMealType();
         const {result: {nickname, portraitUrl, sex, height, weight, birthday, bodyFatRate, mealType}} = await Protocol.getUserDetailInfo();
         const now = new Date();
+        let birthdayStr = "";
+        if(birthday){
+            birthdayStr = birthday.split('-').map(item => item.padStart(2, '0')).join('-')
+        }
         this.setData({
             habits,
             endYear: [now.getFullYear(), now.getMonth() + 1, now.getDate()].map(item => item.toString().padStart(2, '0')).join('-'),
@@ -36,7 +40,7 @@ Page({
                 sex,
                 height,
                 weight,
-                birthday: birthday.split('-').map(item => item.padStart(2, '0')).join('-'),
+                birthday: birthdayStr,
                 bodyFatRate,
                 mealType,
             }
