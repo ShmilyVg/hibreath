@@ -17,8 +17,7 @@
               <image wx:if="{{!item.content}}" class="notice-solidHeart" src="../../images/community/solidHeart.png"></image>
               <text wx:if="{{!item.content}}" class="notice-thumbs-up">赞了你</text>
             </view>
-            <view wx:if="{{item.content&&!item.baseData.isDelete}}" class="notice-comment">{{item.content}}</view>
-            <view wx:if="{{item.baseData.isDelete}}" class="notice-delete">该条评论已被删除</view>
+            <view wx:if="{{item.content&&!item.noticeIsDelete}}" class="notice-comment">{{item.content}}</view>
             <view wx:if="{{item.noticeIsDelete}}" class="notice-delete">该条评论已被删除</view>
             <view class="notice-time" >{{item.timeDiff}}</view>
           </view>
