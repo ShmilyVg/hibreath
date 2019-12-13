@@ -54,7 +54,7 @@ Page({
             let dataTrend = {
                 dataListX, dataListY, dataListY1Name: 'kg', yAxisSplit: 5,showLegend:false
             };
-            Trend.setData(dataTrend);
+            Trend.setData(dataTrend,650);
         }
     },
 
