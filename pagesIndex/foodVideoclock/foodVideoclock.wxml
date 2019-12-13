@@ -1,9 +1,10 @@
-<view class='process-container'>
+<!--<view class='process-container'>
     <progress  activeColor="#ED6F69" backgroundColor="#D2D2D2" percent="{{progressM}}" stroke-width="24" />
-</view>
+</view>-->
 <!--<view class="videoPro">{{listNow}}/{{listNumber}}</view>-->
+
 <view class="HIIT-headvideo">
-    <video id="videoplayer" class="HIITVideo" enable-progress-gesture="{{false}}"  bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"  bindtimeupdate="videoUpdate"></video>
+    <video id="videoplayer" class="HIITVideo" enable-progress-gesture="{{false}}" object-fit="fill"  bindended="bindended" autoplay="{{isAutoplay}}" src="{{videoUrl}}"  bindtimeupdate="videoUpdate"></video>
 </view>
 
 
