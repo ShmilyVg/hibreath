@@ -30,6 +30,7 @@ Page({
       }
   },
   onPersonalCenter:function(e){
+      Toast.showLoading();
     if (this.data.isShowlogin) {
         HiNavigator.navigateToUserInfoPage()
     } else {
@@ -37,8 +38,10 @@ Page({
       const { detail: { userInfo, encryptedData, iv } } = e;
       this.onGetUserInfoEvent(e)
     }
+      Toast.hiddenLoading();
   },
   onTargetWeight:function(e){
+      Toast.showLoading();
     if (this.data.isShowlogin) {
         HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
     } else {
@@ -46,8 +49,10 @@ Page({
       const { detail: { userInfo, encryptedData, iv } } = e;
       this.onGetUserInfoEvent(e)
     }
+      Toast.hiddenLoading();
   },
   onDeviceManagement:function(e){
+      Toast.showLoading();
     if (this.data.isShowlogin) {
         HiNavigator.navigateToDeviceUnbind()
     } else {
@@ -55,12 +60,17 @@ Page({
       const { detail: { userInfo, encryptedData, iv } } = e;
       this.onGetUserInfoEvent(e)
     }
+      Toast.hiddenLoading();
   },
   toCommonProblem:function(){
+      Toast.showLoading();
     HiNavigator.navigateToCommonProblem();
-  },
+      Toast.hiddenLoading();
+},
   toNoticeList:function(){
+    Toast.showLoading();
     HiNavigator.navigateToMyNoticeList();
+    Toast.hiddenLoading();
   },
 
 

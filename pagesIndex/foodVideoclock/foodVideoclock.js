@@ -62,7 +62,7 @@ Page({
                 duration: e.detail.duration
             })
         }
-        console.log('e.detail.currentTime',e.detail.currentTime,e.detail.duration)
+        //console.log('e.detail.currentTime',e.detail.currentTime,e.detail.duration)
 
     },
     sliderChanging(e) {
