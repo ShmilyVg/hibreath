@@ -96,6 +96,7 @@ Page({
         console.log('结束时间加几秒解决最新一条不显示的问题',Date.now())
         Toast.showLoading();
         let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now()+25000,timeBegin:getLatestOneWeekTimestamp()});
+
         if (list.length) {
             /*if(!this.e.id && !this.e.score){
 
@@ -326,7 +327,20 @@ Page({
                       this.setData({
                           trendData:this.data.trendData
                       });
-                      if(this.data.trendData.length>0){
+                      Protocol.getBreathDataList({page:1, pageSize: 20}).then((res) => {
+                          console.log(res,'resss')
+                          this.setData({
+                              fatText:res.result.list[0].desZh,
+                              score:res.result.list[0].dataValue,
+                              fatTextEn:res.result.list[0].des.en,
+                              fatDes:res.result.list[0].visDes,
+                          })
+                          setTimeout(() => {
+                              console.log('绘制一次')
+                              Circular.run();
+                          },500)
+                      })
+                      /*if(this.data.trendData.length>0){
                           this.setData({
                               fatText:this.data.trendData[0].desZh,
                               score:this.data.trendData[0].dataValue,
@@ -337,7 +351,7 @@ Page({
                               console.log('绘制一次')
                               Circular.run();
                           },500)
-                      }
+                      }*/
                   }
               })
 
