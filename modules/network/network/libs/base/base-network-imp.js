@@ -16,7 +16,7 @@ export default class BaseNetworkImp {
             const requestObj = {
                 url: NetworkConfig.getPostUrl() + url,
                 data,
-                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _token},
+                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _xtoken},
                 method: 'POST',
                 success: res => {
                     const {data} = res;
@@ -87,7 +87,7 @@ export default class BaseNetworkImp {
         for (let key in _queue) {
             if (_queue.hasOwnProperty(key)) {
                 requestObj = _queue[key];
-                requestObj.header = {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _token};
+                requestObj.header = {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _xtoken};
                 wx.request(requestObj);
             }
         }
