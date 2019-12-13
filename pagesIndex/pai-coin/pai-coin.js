@@ -45,8 +45,10 @@ Page({
         const {tasks, integral} = this.data;
         for (const [index, item] of tasks.entries()) {
             if (item.id === id) {
+                const total = parseInt(integral) + parseInt(item.integral);
                 const obj = {
-                    integralStr: this.createIntegralStr((integral + parseInt(item.integral)).toString()),
+                    integral: total,
+                    integralStr: this.createIntegralStr(total.toString()),
                     receiveIntegral: item.integral,
                     showToast: true
                 };
