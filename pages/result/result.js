@@ -46,15 +46,6 @@ Page({
         this.init();
         /*存在id 即为在线检测进入结果页面*/
         if (e.id) {
-            this.dataId =e.id;
-            const {result: {visDes: fatDes, score, des}} = await Protocol.postSetGradeInfo({id: this.dataId});
-            this.setData({
-                fatDes, score, fatText: des.zhCh, fatTextEn: des.en
-            });
-            setTimeout(() => {
-                console.log('绘制一次')
-                Circular.run();
-            },500)
             const {result} = await Protocol.postIncentive();
             if(result.taskInfo.fatBurn.todayFirst){
                 this.setData({
@@ -75,7 +66,7 @@ Page({
                 },2000)
             }
 
-        } else if (e.score) {
+        } /*else if (e.score) {
             const {fatText, fatTextEn, fatDes, score} = e;
             this.setData({
                 fatText, fatTextEn, fatDes, score
@@ -84,7 +75,7 @@ Page({
                 console.log('绘制一次')
                 Circular.run();
             },500)
-        }
+        }*/
     },
     getShowExcitation(e){
         console.log('e11',e)
@@ -327,19 +318,26 @@ Page({
             confirmText: "确定",
             cancelText: "取消",
             confirmEvent: () => {
-              console.log('燃脂')
-              console.log(e)
               this.data.breathid = e.currentTarget.dataset.index;
-              console.log(this.data.breathid);
-              console.log(this.data.trendData);
               const index = this.data.trendData.findIndex(item => item.id === this.data.breathid);
-              console.log(index !== -1,'index')
               Protocol.postDeleteBreathData({ id: this.data.breathid }).then(() => {
                   if(index !== -1){
                       this.data.trendData.splice(index, 1);
                       this.setData({
                           trendData:this.data.trendData
                       });
+                      if(this.data.trendData.length>0){
+                          this.setData({
+                              fatText:this.data.trendData[0].desZh,
+                              score:this.data.trendData[0].dataValue,
+                              fatTextEn:this.data.trendData[0].des.en,
+                              fatDes:this.data.trendData[0].visDes,
+                          })
+                          setTimeout(() => {
+                              console.log('绘制一次')
+                              Circular.run();
+                          },500)
+                      }
                   }
               })
 

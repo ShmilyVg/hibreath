@@ -9,7 +9,7 @@ function dealRequestFailed({url, data, requestWithoutLogin, showResendDialog, re
         console.log('请求失败', errorResult);
         const {data: resultData} = errorResult;
         if (!!resultData && resultData.code === 9) {
-            BaseNetworkImp.setToken({token: ''});
+            BaseNetworkImp.setToken({token: '', xtoken: null});
             if (reLoginIndex++ < count) {
                 return Login.doLogin().then(() => {
                     reLoginIndex = 0;

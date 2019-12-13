@@ -54,11 +54,15 @@ function wxLogin() {
     );
 }
 
-function setToken({data: {result: {jsessionid}}}) {
-    BaseNetworkImp.setToken({token: jsessionid});
+function setToken({data: {result: {jsessionid, token}}}) {
+    BaseNetworkImp.setToken({token: jsessionid, xtoken: token});
     wx.setStorage({
         key: 'token',
         data: jsessionid,
+    });
+    wx.setStorage({
+        key: 'xtoken',
+        data: token,
     });
 }
 
