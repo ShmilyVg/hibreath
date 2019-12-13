@@ -73,10 +73,11 @@
     float: left
 }
 .giveHeartImgView{
-    width: 50rpx;
-    height: 50rpx;
+    width: 70rpx;
+    height: 70rpx;
     padding-top: 8rpx;
     box-sizing: border-box;
+    line-height: 70rpx;
 }
 .giveHeartImg{
     width: 39rpx;
@@ -87,7 +88,7 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
-    margin-left: 10rpx;
+    margin-left: -10rpx;
 }
 .giveCommentNum{
     font-size:32rpx;
