@@ -136,12 +136,16 @@ Page({
         cancelText: "取消",
         confirmEvent: () => {
           try{
-             Protocol.postNoticeUpdate().then(()=>{
-                      this.setData({
-                          pageIndex: 1
-                      });
-                      this.postDynamicNotice();
-                 });
+              Protocol.postNoticeUpdate().then(()=>{
+                this.setData({
+                  pageIndex: 1
+                });
+                if(this.data.groupId){
+                  this.postDynamicNotice();
+                }else{
+                  this.postDynamicNoticeMembers();
+                }
+              });
             toast.success('删除成功',800);
           }catch (e) {
 
