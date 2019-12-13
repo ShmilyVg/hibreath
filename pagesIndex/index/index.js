@@ -280,7 +280,7 @@ Page({
                 !!actionBlow[protocolState] && actionBlow[protocolState]();
             },
             receiveDataListener: ({finalResult, state}) => {
-                console.log("查看电量333333",finalResult)
+                console.log("在线检测数值处理前",finalResult)
                 /*
                  PRE_HOT_START: 'pre_hot_start',//开始预热状态
                  PRE_HOT_FINISH_AND_START_BREATH: 'pre_hot_finish_and_start_breath',//预热完成开始吹气
@@ -289,9 +289,6 @@ Page({
                  BREATH_START: 'breath_start',//设备发出的开始吹气通知
                  BREATH_FINISH: 'breath_finish',//设备发出的吹气完成通知
                  */
-                console.log("查看数据1",state.protocolState)
-                console.log("查看数据2",ProtocolState.BREATH_RESULT)
-                console.log("查看数据3",ProtocolState.TIMESTAMP)
                 if (ProtocolState.BREATH_RESULT === state.protocolState) {
                     //上传PPM并跳转结果页
                   /*  const toolfinalResult = tools.resultRe(tools.subStringNum(finalResult.result))*/
