@@ -124,10 +124,6 @@ Page({
         this.setData({
             weightGoal:result.weightGoal
         })
-    }else{
-        this.setData({
-            weightGoal:0
-        })
     }
     this.setData({
       isShowlogin: true,
