@@ -11,7 +11,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-      showBar:true,
       trendDate: '',
   },
 
@@ -107,15 +106,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-      this.setData({
-          showBar:false
-      })
-      //分享没有回调 延迟显示tabar
-      setTimeout(()=>{
-          this.setData({
-              showBar:true
-          })
-      },1000)
       return {
           title: '我已完成'+this.data.title+'，快来围观!',
           path: '/pagesIndex/planfinish/planfinish?sharedId=' + this.data.sharedId
