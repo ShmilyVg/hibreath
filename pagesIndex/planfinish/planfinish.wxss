@@ -35,6 +35,7 @@
 .planfinish-bottom{
     padding: 0rpx 30rpx;
     box-sizing: border-box;
+    margin-bottom: 50rpx;
 }
 .planfinish-block{
     background: #fff;
@@ -86,7 +87,6 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(173,148,112,1);
-    margin-top: 47rpx;
     margin-bottom: 60rpx;
 }
 
@@ -136,6 +136,12 @@
     font-family:DIN Condensed;
     font-weight:bold;
     color:rgba(51,51,51,1);
+    line-height: 190rpx;
+}
+.canvas {
+    width: 650rpx;
+    height: 440rpx;
+    margin-top: 50rpx;
 }
 .planfinish-top-endDate{
     font-size:24rpx;
@@ -145,7 +151,7 @@
     text-align: right;
     margin-right: 65rpx;
     position: relative;
-    top: -30rpx;
+    top: -70rpx;
 }
 .planfinish-top-viewL{
     width:409rpx;
@@ -160,7 +166,7 @@
     margin-top: 140rpx;
     margin-bottom: 20rpx;
     position: relative;
-    top: -50rpx;
+    top: -90rpx;
     left: 600rpx;
 
 }
