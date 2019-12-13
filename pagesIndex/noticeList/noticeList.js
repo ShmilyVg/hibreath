@@ -129,12 +129,35 @@ Page({
     return result;
     },
     deleteNotice:function(){
-      Protocol.postNoticeUpdate().then(()=>{
-          this.setData({
-              pageIndex: 1
-          });
-        this.postDynamicNotice();
+      WXDialog.showDialog({
+        content: '确定要清空吗？\n' + '清空后无法找回',
+        showCancel: true,
+        confirmText: "确定",
+        cancelText: "取消",
+        confirmEvent: () => {
+          try{
+             Protocol.postNoticeUpdate().then(()=>{
+                      this.setData({
+                          pageIndex: 1
+                      });
+                      this.postDynamicNotice();
+                 });
+            toast.success('删除成功',800);
+          }catch (e) {
+
+          }
+
+        },
+        cancelEvent: () => {
+
+        }
       });
+        // Protocol.postNoticeUpdate().then(()=>{
+      //     this.setData({
+      //         pageIndex: 1
+      //     });
+      //   this.postDynamicNotice();
+      // });
     },
   
 

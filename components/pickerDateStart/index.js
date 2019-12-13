@@ -4,6 +4,7 @@ const years = [];
 const months = [];
 const days = [];
 const secYear = date.getFullYear();
+const secYearMax = date.getFullYear();
 const secMopnth = date.getMonth() + 1;
 const secDay = date.getDate();
 const secMopnthMax = secMopnth;
@@ -16,9 +17,9 @@ if (secDay + 14 > 31) {
 }
 if (secMopnthMax > 12) {
   secMopnth = 1;
-  secYear = secYear + 1;
+  secYearMax = secYear + 1;
 }
-for (let i = secYear; i <= secYear; i++) {
+for (let i = secYear; i <= secYearMax; i++) {
   years.push(i)
 }
 

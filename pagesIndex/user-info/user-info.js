@@ -36,7 +36,7 @@ Page({
                 sex,
                 height,
                 weight,
-                birthday,
+                birthday: birthday.split('-').map(item => item.padStart(2, '0')).join('-'),
                 bodyFatRate,
                 mealType,
             }
