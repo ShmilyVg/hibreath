@@ -193,7 +193,7 @@ page {
 .day-body-foodlist {
     width: 190rpx;
     margin-right: 20rpx;
-    height: 250rpx;
+    /*height: 250rpx;*/
     float: left;
 }
 
@@ -210,12 +210,12 @@ page {
     border-top: 1rpx dashed #DDDDDD;
     background: #fff;
     padding: 33rpx 44rpx 0 44rpx;
-    margin-top: 46rpx;
+    /*margin-top: 46rpx;*/
 }
 
 .foodlist-box {
     /* background:blue; */
-    height: 250rpx;
+    /*height: 250rpx;*/
     float: left;
 }
 
