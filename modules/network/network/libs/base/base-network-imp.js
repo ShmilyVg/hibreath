@@ -2,10 +2,13 @@ import {WXDialog} from "heheda-common-view";
 import {NetworkConfig} from "../config";
 
 let _token = '', _queue = {}, divideTimestamp = 0;
+let _xtoken = null;
+
 export default class BaseNetworkImp {
 
-    static setToken({token}) {
+    static setToken({token, xtoken}) {
         _token = token;
+        _xtoken = xtoken;
     }
 
     static request({url, data, requestWithoutLogin = false, showResendDialog}) {
@@ -13,7 +16,7 @@ export default class BaseNetworkImp {
             const requestObj = {
                 url: NetworkConfig.getPostUrl() + url,
                 data,
-                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`},
+                header: {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _token},
                 method: 'POST',
                 success: res => {
                     const {data} = res;
@@ -84,7 +87,7 @@ export default class BaseNetworkImp {
         for (let key in _queue) {
             if (_queue.hasOwnProperty(key)) {
                 requestObj = _queue[key];
-                requestObj.header = {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`};
+                requestObj.header = {Authorization: '+sblel%wdtkhjlu', "Cookie": `JSESSIONID=${_token}`, 'X-Token': _token};
                 wx.request(requestObj);
             }
         }
