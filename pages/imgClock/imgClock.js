@@ -101,18 +101,25 @@ Page({
       imgbox
     } = this.data;
     //console.log('test.match(/^[ ]*$/)',desc.match(/^\s*$/))
-    console.log('desc', this.data)
+    //console.log('desc', this.data)
     this.setData({
       disable: !(imgbox.length > 0 || desc.match(/^\s*$/) == null)
     })
   },
+    textBindblur(e){
+        console.log("失去焦点后打印", e.detail.value)
+        this.setData({
+            desc: tools.filterEmoji(e.detail.value)
+        })
+        this.disBtn()
+    },
   bindTextAreaBlur: function(e) {
-    console.log("e11", e.detail.value)
-    console.log("e2222", tools.filterEmoji(e.detail.value))
-    this.setData({
+    console.log("聚焦输入时打印", e.detail.value)
+    /*console.log("e2222", tools.filterEmoji(e.detail.value))*/
+    /*this.setData({
       desc: tools.filterEmoji(e.detail.value)
-    })
-    this.disBtn()
+    })*/
+
   },
   // 上传图片 &&&
   addPic1: function(e) {

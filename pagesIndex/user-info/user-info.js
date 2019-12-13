@@ -1,6 +1,7 @@
 import Protocol from "../../modules/network/protocol";
 import {chooseImage, entries, uploadFile} from "./manager";
 import {Toast} from "heheda-common-view";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
@@ -35,7 +36,7 @@ Page({
                 sex,
                 height,
                 weight,
-                birthday,
+                birthday: birthday.split('-').map(item => item.padStart(2, '0')).join('-'),
                 bodyFatRate,
                 mealType,
             }
@@ -84,6 +85,7 @@ Page({
         if (this.checkFill(finalUserInfoObj)) {
             await Protocol.postMembersPutInfo(finalEditUserInfoObj);
             Toast.success('保存成功');
+            HiNavigator.navigateBack({delta: 1});
         } else {
             Toast.showText('请完善所有信息');
         }

@@ -43,7 +43,10 @@
               <text class="per-main-text"></text>
           </view>
           <view>
-              <text wx:if="{{isShowlogin}}">{{weightGoal}}kg</text>
+              <text wx:if="{{isShowlogin}}">
+                  <text class="weightGoalN" wx:if="{{weightGoal}}">{{weightGoal}}kg</text>
+                  <text class="weightGoalT" wx:else>未填写</text>
+              </text>
               <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
           </view>
          </button>
