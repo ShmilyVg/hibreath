@@ -830,6 +830,9 @@ swiperLi1{
   font-weight:400;
   color:rgba(155,155,155,1);
   line-height:28rpx;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
 }
 .timeHeader-center{
   font-size:32rpx;
@@ -844,6 +847,9 @@ swiperLi1{
   font-weight:400;
   color:#ED6F69;
   line-height:28rpx;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
 }
 .caseonFinished{
     width:230rpx;

@@ -141,7 +141,7 @@ Component({
               })
           }else{
               this.setData({
-                  foodAheight: currentList.length * 110+205
+                  foodAheight: currentList.length * 110+225
               })
           }
           this.setData({

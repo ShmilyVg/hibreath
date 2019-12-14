@@ -443,9 +443,15 @@ Page({
             confirmText: "确定",
             cancelText: "取消",
             confirmEvent: () => {
-              Protocol.postMembersExit({ planId: this.data.planId }).then(() =>
-                this.handleBaseInfo(1)
-              );
+              Protocol.postMembersExit({ planId: this.data.planId }).then(() =>{
+                  this.handleBaseInfo(1)
+                  setTimeout(() => {
+                      wx.setNavigationBarColor({
+                          frontColor: "#171717",
+                          backgroundColor: "#ffffff"
+                      });
+                  });
+              });
             },
             cancelEvent: () => {}
           });
@@ -1232,25 +1238,25 @@ Page({
   },
     //选择方案开始日期确定按钮
   hideModalConfirm() {
-    const startTime = this.selectComponent("#pickerDateStart").getDateStart();
-    //滚动完成
-    const canSub = this.selectComponent("#pickerDateStart").bindpickend();
-    //数据渲染完成
-    const canSuC = this.selectComponent("#pickerDateStart").getCanSub();
-    console.log('startTime',startTime)
-    console.log('canSub',canSub)
-    if(canSub&&canSuC){
-        setTimeout(() => {
-            Toast.showLoading();
-            this.setData({
-                startTime,
-                showModalStatus: false
-            });
-            this.showBirthStart();
-            this.continue();
-            Toast.hiddenLoading();
-        },300)
-    }
+      Toast.showLoading();
+      setTimeout(() => {
+            const startTime = this.selectComponent("#pickerDateStart").getDateStart();
+            //滚动完成
+            const canSub = this.selectComponent("#pickerDateStart").bindpickend();
+            //数据渲染完成
+            const canSuC = this.selectComponent("#pickerDateStart").getCanSub();
+            console.log('startTime',startTime)
+            console.log('canSub',canSub)
+            if(canSub){
+                this.setData({
+                    startTime,
+                    showModalStatus: false
+                });
+                this.showBirthStart();
+                this.continue();
+            }
+    },1200)
+      Toast.hiddenLoading();
   },
   hideModalCancel() {
     this.setData({
