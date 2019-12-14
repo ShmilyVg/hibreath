@@ -144,7 +144,7 @@ function drewCircular() {
     }
     var animation = v => {
         var transform = val => {
-            percent += percent > v ? -1 : 1;
+            percent += percent > v ? -1 : 10;
             let ani = doAnimationFrame(() => {
                 transform(v);
             })
