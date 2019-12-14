@@ -94,7 +94,8 @@ Component({
     days: days,
     day: days[1],
     value: [],
-    secYear:''
+    secYear:'',
+    canSub:false
   },
 
   /**
@@ -106,17 +107,25 @@ Component({
       return year + '-' + month + '-' + day;
     },
     bindChange: function (e) {
-      console.log(e, 'eeee')
-      const val = e.detail.value
-      this.setData({
-        value:[val[0],val[1],val[2]],
-        year: this.data.years[val[0]],
-        month: this.data.months[val[1]],
-        day: this.data.days[val[2]],
-      })
-      console.log('99999', this.data.year + '-' + this.data.month + '-' + this.data.day)
-      this.triggerEvent("childSecDate", { date: this.data.year + '-' + this.data.month + '-' + this.data.day});
+      if(this.data.canSub){
+          console.log(e, 'eeee')
+          const val = e.detail.value
+          this.setData({
+              value:[val[0],val[1],val[2]],
+              year: this.data.years[val[0]],
+              month: this.data.months[val[1]],
+              day: this.data.days[val[2]],
+          })
+          console.log('99999', this.data.year + '-' + this.data.month + '-' + this.data.day)
+          this.triggerEvent("childSecDate", { date: this.data.year + '-' + this.data.month + '-' + this.data.day});
+      }
     },
+      bindpickend(){
+        console.log('滚动执行完毕')
+        this.setData({
+            canSub:true
+        })
+      },
     setTime:function(){
 
     }
