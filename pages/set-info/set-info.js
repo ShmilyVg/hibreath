@@ -238,6 +238,12 @@ Page({
           showNewInfo: true,
           showGuide: true //授权页面显示
         });
+          setTimeout(() => {
+              wx.setNavigationBarColor({
+                  frontColor: "#171717",
+                  backgroundColor: "#ffffff"
+              });
+          });
       }
     };
 
@@ -290,6 +296,12 @@ Page({
       this.setData({
         showNewInfo: true
       });
+        setTimeout(() => {
+            wx.setNavigationBarColor({
+                frontColor: "#171717",
+                backgroundColor: "#ffffff"
+            });
+        });
     }
     let info = {};
 
@@ -348,7 +360,6 @@ Page({
             result: { list }
           } = await Protocol.postSettingsLosefatSchema();
           project.push(...list);
-          console.log(456, project);
         }
       }
       setSexFun.call(this, info.sex);
@@ -715,7 +726,8 @@ Page({
           showNewInfo: false,
           page: 1
         });
-        this.storeBreathUserInfoInput();
+        //this.storeBreathUserInfoInput();
+        wx.removeStorageSync('breath_user_info_input');
         return;
     }
     if (this.data.page < 8) {
