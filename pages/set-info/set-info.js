@@ -1217,15 +1217,23 @@ Page({
     });
     this.handleTasks();
   },
+    //选择方案开始日期确定按钮
   hideModalConfirm() {
     const startTime = this.selectComponent("#pickerDateStart").getDateStart();
-    console.log(startTime);
-    this.setData({
-      startTime,
-      showModalStatus: false
-    });
-    this.showBirthStart();
-    this.continue();
+    const canSub = this.selectComponent("#pickerDateStart").bindpickend();
+    console.log('canSub',canSub)
+    if(canSub){
+        setTimeout(() => {
+            console.log('startTime',startTime);
+            this.setData({
+                startTime,
+                showModalStatus: false
+            });
+            this.showBirthStart();
+            this.continue();
+        },100)
+    }
+
   },
   hideModalCancel() {
     this.setData({
