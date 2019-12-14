@@ -1,5 +1,7 @@
 page{
     background:rgba(245,245,245,1);
+    box-sizing: border-box;
+    padding-bottom: 60rpx;
 }
 .pai-coin-layout {
 }
