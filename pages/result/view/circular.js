@@ -26,8 +26,7 @@ function drewCircular() {
     console.log("_page.data.score",_page.data.score )
     const circleScore = _page.data.score
     var gradient = ctx.createLinearGradient(0, 0, 125, 0);
-    console.log('2', 20 < circleScore <= 40)
-    if (circleScore <= 20) {
+    if (circleScore <= 2) {
         gradient.addColorStop("0", "#542EE3");
         gradient.addColorStop("0.2", "#250099");
     } else if (3 <= circleScore && circleScore <=9 ) {
@@ -39,9 +38,6 @@ function drewCircular() {
     } else if (20 <= circleScore && circleScore <= 39) {
         gradient.addColorStop("0", "#FFE300");
         gradient.addColorStop("0.8", "#FF9F00");
-    } else if (circleScore == 100) {
-        gradient.addColorStop("0", "#ED6F69");
-        gradient.addColorStop("1", "#ED6F69");
     }else {
         gradient.addColorStop("0", "#FF8F00");
         gradient.addColorStop("1", "#EF2511");
@@ -152,15 +148,16 @@ function drewCircular() {
             let ani = doAnimationFrame(() => {
                 transform(v);
             })
-            setPercent2(percent);
+            setPercent2(percent/10);
             if (percent === v) {
                 abortAnimationFrame(ani);
                 return;
             }
         }
         transform(v)
+        console.log('vvvvvvv',percent)
     }
-    animation(_page.data.score);
+    animation(_page.data.score*10);
     /* setInterval(() => {
        //var round = Math.round(100 * Math.random());
         var round =60;
