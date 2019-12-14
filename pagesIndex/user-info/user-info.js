@@ -62,16 +62,19 @@ Page({
     },
 
     showMealTypeStr({myMealType}) {
-        this.setData({
-            mealTypeString: this.data.habits.filter(habit => {
-                for (const item of myMealType) {
-                    if (habit.key === item) {
-                        return true;
+        if(this.data.habits){
+            this.setData({
+                mealTypeString: this.data.habits.filter(habit => {
+                    for (const item of myMealType) {
+                        if (habit.key === item) {
+                            return true;
+                        }
                     }
-                }
-                return false;
-            }).map(item => item.name).join(' ') || '请输入',
-        });
+                    return false;
+                }).map(item => item.name).join(' ') || '请输入',
+            });
+        }
+
     },
 
     async saveUserInfo({detail: {value: values}}) {
