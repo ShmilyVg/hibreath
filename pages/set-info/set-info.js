@@ -248,6 +248,19 @@ Page({
     this.connectionPage = new ConnectionManager(this);
     /* await that.handleGuide(that);*/
     this.handleBaseInfo();
+      const { result } = await Protocol.postMemberInfo();
+      that.setData({
+          isHave:result.isHave,
+      })
+      if(that.data.isHave){
+          wx.showTabBarRedDot({
+              index: 2,
+          })
+      }else{
+          wx.hideTabBarRedDot({
+              index: 2,
+          })
+      }
     /* const {result} = await Protocol.postIncentive();
         console.log('result11',result.taskInfo.bodyIndex.weight)*/
   },
