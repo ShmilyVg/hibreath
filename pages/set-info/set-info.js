@@ -1220,20 +1220,24 @@ Page({
     //选择方案开始日期确定按钮
   hideModalConfirm() {
     const startTime = this.selectComponent("#pickerDateStart").getDateStart();
+    //滚动完成
     const canSub = this.selectComponent("#pickerDateStart").bindpickend();
+    //数据渲染完成
+    const canSuC = this.selectComponent("#pickerDateStart").getCanSub();
+    console.log('startTime',startTime)
     console.log('canSub',canSub)
-    if(canSub){
+    if(canSub&&canSuC){
         setTimeout(() => {
-            console.log('startTime',startTime);
+            Toast.showLoading();
             this.setData({
                 startTime,
                 showModalStatus: false
             });
             this.showBirthStart();
             this.continue();
-        },100)
+            Toast.hiddenLoading();
+        },300)
     }
-
   },
   hideModalCancel() {
     this.setData({

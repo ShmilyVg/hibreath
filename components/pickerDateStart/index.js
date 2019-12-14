@@ -94,7 +94,8 @@ Component({
     days: days,
     day: days[1],
     value: [],
-    secYear:''
+    secYear:'',
+    canSubc:false
   },
 
   /**
@@ -105,6 +106,13 @@ Component({
       const { year, month, day } = this.data;
       return year + '-' + month + '-' + day;
     },
+      getCanSub(){
+          return this.data.canSubc
+      },
+      bindpickend(){
+          let canSub = true;
+          return canSub
+      },
     bindChange: function (e) {
       console.log(e, 'eeee')
       const val = e.detail.value
@@ -113,16 +121,11 @@ Component({
         year: this.data.years[val[0]],
         month: this.data.months[val[1]],
         day: this.data.days[val[2]],
+        canSubc:true
       })
       console.log('99999', this.data.year + '-' + this.data.month + '-' + this.data.day)
-      this.triggerEvent("childSecDate", { date: this.data.year + '-' + this.data.month + '-' + this.data.day});
+     /* this.triggerEvent("canSubc", { canSubC: true });*/
     },
-      bindpickend(){
-       let canSub = true;
-          return canSub
-      },
-    setTime:function(){
 
-    }
   }
 })
