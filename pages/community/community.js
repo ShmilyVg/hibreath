@@ -331,22 +331,25 @@ Page({
             console.error('community.js updateAll error', e);
         }
     },
-
+     sleep(ms){
+        return new Promise((resolve)=>setTimeout(resolve,ms));
+    },
+    //下拉刷新
     async onPullDownRefresh() {
-        console.log('noticeListnoticeListnoticeList1',wx.getStorageSync('currentSocialGroupId'))
-        console.log('noticeListnoticeList2',wx.getStorageSync('noticeList'))
-        await this.forceUpdateAll();
+        await this.sleep(100)
+        await this.forceUpdateAll()
         wx.stopPullDownRefresh();
         //this.NoticeList();
     },
-
+    //上拉加载
     async onReachBottom() {
         Toast.showLoading();
-        console.log('22')
+        await this.sleep(100)
         const list = await getGroupDynamicManager.getGroupDynamicList();
         if (list.length) {
             this.setData({dynamicList: this.data.dynamicList.concat(list)});
         }
+
         Toast.hiddenLoading();
     },
     onShareAppMessage: function () {

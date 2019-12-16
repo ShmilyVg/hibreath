@@ -128,6 +128,7 @@ Page({
     }
     console.log("breath_user_info_input onHide info====", this.data.info);
     this.storeBreathUserInfoInput();
+    console.log('onHide---getStorageSync', wx.getStorageSync("breath_user_info_input"))
       this.setData({
           showExcitation: false,
       });
