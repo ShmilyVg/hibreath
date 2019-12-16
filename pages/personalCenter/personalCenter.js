@@ -21,7 +21,7 @@ Page({
       setTimeout(() => {
           wx.setNavigationBarColor({
               frontColor: "#171717",
-              backgroundColor: "#F5F5F5"
+              backgroundColor: "#f5f5f5"
           });
       });
       if (!getApp().globalData.isLogin) {
