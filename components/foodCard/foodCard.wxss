@@ -99,7 +99,8 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
-    line-height:28rpx;
+    height: 50rpx;
+    line-height: 50rpx
 }
 
 .set-content-content {

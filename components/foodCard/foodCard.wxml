@@ -4,7 +4,7 @@
         <view class="flex-row">
             <image src="{{foodTask.iconUrl}}" class="set-content-icon"></image>
             <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                <view class="set-content-title" style="height: 50rpx;line-height: 50rpx">{{foodTask.title}}</view>
+                <view class="set-content-title">{{foodTask.title}}</view>
                 <view class="set-content-content">{{foodTask.subTitle}}</view>
             </view>
         </view>
