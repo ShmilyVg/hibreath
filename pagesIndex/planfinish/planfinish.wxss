@@ -105,7 +105,7 @@
     position: relative;
     top: -90rpx;
     left: 250rpx;
-    max-width: 340rpx;
+    max-width: 360rpx;
     word-break: break-all;
 }
 .planfinish-top-text{
