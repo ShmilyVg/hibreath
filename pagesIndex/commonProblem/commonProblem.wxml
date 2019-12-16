@@ -1,5 +1,5 @@
 <!--pagesIndex/commonProblem/commonProblem.wxml-->
-  <view  wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" class="common-list flex-row space-between" bindtap="toSubList">
+  <view  wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" data-title="{{item.title}}" class="common-list flex-row space-between" bindtap="toSubList">
     <text class="common-text flex-row space-between">{{index+1}}. {{item.title}}</text>
     <image class="common-img" src="../../images/personalCenter/gray.png"></image>
   </view>
