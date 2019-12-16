@@ -28,7 +28,8 @@ Page({
       }else{
           const {result} = await Protocol.postPlanFinish({planId:options.planId});
           this.setData({
-              ...result
+              ...result,
+              isShared:true
           })
       }
       this.init();
