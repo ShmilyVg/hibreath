@@ -848,6 +848,7 @@ Page({
   unique(arr) {
     return Array.from(new Set(arr));
   },
+  //三餐选择
   bindTapMeals(e) {
     for (var i = 0; i < this.data.meals.length; i++) {
       if (
