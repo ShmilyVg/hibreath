@@ -10,8 +10,9 @@
       <view class="planfinish-top-nikename">{{nickname}}</view>
       <view class="planfinish-top-text">恭喜你完成了</view>
       <view class="planfinish-top-title">“ {{title}} ”</view>
-      <view class="planfinish-top-text">累计减重</view>
-      <view style="text-align: center;display: flex;justify-content: center">
+      <view class="planfinish-top-text" wx:if="{{result.weightDif>0}}">累计增重</view>
+      <view class="planfinish-top-text" wx:else>累计减重</view>
+      <view style="text-align: center;display: flex;justify-content: center;">
           <view class="planfinish-top-weight" wx:if="{{weightDif}}">
               {{weightDif}}
           </view>

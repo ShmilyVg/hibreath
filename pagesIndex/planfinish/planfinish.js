@@ -23,6 +23,8 @@ Page({
         const {result} = await Protocol.postPlanFinish({sharedId:options.sharedId});
           this.setData({
               ...result,
+              result:result,
+              weightDif:Math.abs(result.weightDif),
               isShared:false
           })
       }else{
