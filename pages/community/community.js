@@ -331,12 +331,13 @@ Page({
             console.error('community.js updateAll error', e);
         }
     },
+    //sleep函数
      sleep(ms){
         return new Promise((resolve)=>setTimeout(resolve,ms));
     },
     //下拉刷新
     async onPullDownRefresh() {
-        await this.sleep(100)
+        await this.sleep(80)
         await this.forceUpdateAll()
         wx.stopPullDownRefresh();
         //this.NoticeList();
@@ -344,7 +345,7 @@ Page({
     //上拉加载
     async onReachBottom() {
         Toast.showLoading();
-        await this.sleep(100)
+        await this.sleep(80)
         const list = await getGroupDynamicManager.getGroupDynamicList();
         if (list.length) {
             this.setData({dynamicList: this.data.dynamicList.concat(list)});
