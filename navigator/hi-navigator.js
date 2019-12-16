@@ -241,12 +241,12 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pagesIndex/commonProblem/commonProblem'});
   }
   //关于常见问题子页面subList
-  static navigateToSubList({id}) {
-    this.navigateTo({ url: '/pagesIndex/subList/subList?id='+id});
+  static navigateToSubList({id,title}) {
+    this.navigateTo({ url: '/pagesIndex/subList/subList?id='+id+'&title='+title});
   }
     //关于常见问题子页面subList详情页
-    static navigateToDetailsList({detailsid}) {
-        this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?detailsid='+detailsid});
+    static navigateToDetailsList({detailsid,pageTitle}) {
+        this.navigateTo({ url: '/pagesIndex/detailsList/detailsList?detailsid='+detailsid+'&pageTitle='+pageTitle});
     }
 
     /**
