@@ -15,10 +15,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      detailsid:options.detailsid
+      detailsid:options.detailsid,
+      pageTitle:options.pageTitle
     });
     console.log(this.data.detailsid);
     this.onSettingsHelp();
+    wx.setNavigationBarTitle({
+      title: this.data.pageTitle
+    })
   },
   async onSettingsHelp() {
     console.log(this.data.detailsid)

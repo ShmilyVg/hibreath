@@ -15,10 +15,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      subId:options.id
+      subId:options.id,
+      title:options.title
     });
-    console.log(this.data.subId);
+    console.log(this.data.title);
     this.onSettingsHelp();
+    wx.setNavigationBarTitle({
+      title: this.data.title
+    })
   },
   async onSettingsHelp() {
     console.log(this.data.subId)
@@ -32,7 +36,7 @@ Page({
     console.log(e);
 
 
-    HiNavigator.navigateToDetailsList({detailsid:e.currentTarget.dataset.id});
+    HiNavigator.navigateToDetailsList({detailsid:e.currentTarget.dataset.id,pageTitle:this.data.title});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -13,7 +13,7 @@ Page({
     console.log(e)
     this.data.id = e.currentTarget.dataset.id;
     console.log( this.data.id )
-    HiNavigator.navigateToSubList({id:this.data.id});
+    HiNavigator.navigateToSubList({id:this.data.id,title:e.currentTarget.dataset.title});
   },
   /**
    * 生命周期函数--监听页面加载

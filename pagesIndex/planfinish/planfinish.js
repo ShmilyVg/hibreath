@@ -23,12 +23,17 @@ Page({
         const {result} = await Protocol.postPlanFinish({sharedId:options.sharedId});
           this.setData({
               ...result,
+              result:result,
+              weightDif:Math.abs(result.weightDif),
               isShared:false
           })
       }else{
           const {result} = await Protocol.postPlanFinish({planId:options.planId});
           this.setData({
-              ...result
+              ...result,
+              result:result,
+              weightDif:Math.abs(result.weightDif),
+              isShared:true
           })
       }
       this.init();
