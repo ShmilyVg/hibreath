@@ -17,7 +17,7 @@
   <view class="materials" bindtap="onRename">
     <view class=" materials-left">我在该圈子的昵称</view>
     <image src="../../images/set-up/right.png" class=" materials-right"></image>
-    <view class=" materials-text">{{socialMemberInfo.memberName}} </view>
+    <view class=" materials-text">{{memberName}} </view>
   </view>
   <view class="delete-circle" bindtap="signOut">退出该圈子</view>
 </view>
