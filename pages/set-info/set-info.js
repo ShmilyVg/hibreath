@@ -577,7 +577,7 @@ Page({
           });
         }
         if (foodExt.isMeal) {
-          if (foodExt.mealList[0].list.length == 1) {
+          if (foodExt.mealList[foodExt.mealIndex].list.length == 1) {
             this.setData({
               foodAheight: 230
             });
