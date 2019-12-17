@@ -10,7 +10,7 @@
   <view>
       <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}"  data-isDelete="{{item.baseData.isDelete}}" data-noticeIsDelete="{{item.noticeIsDelete}}"  data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
         <view class="flex-row space-between notice-left">
-          <image src="{{item.fromImg}}" class="notice-head-img"></image>
+          <image src="{{item.fromImg}}" mode="aspectFill" class="notice-head-img"></image>
           <view class="notice-center">
             <view>
               <text class="notice-nickname">{{item.fromName}}</text>
