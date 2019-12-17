@@ -22,7 +22,7 @@
             <view class="notice-time" >{{item.timeDiff}}</view>
           </view>
         </view>
-        <image wx:if="{{item.baseData.imgUrl}}" src="{{item.baseData.imgUrl}}" class="notice-img"></image>
+        <image mode="aspectFill" wx:if="{{item.baseData.imgUrl}}" src="{{item.baseData.imgUrl}}" class="notice-img"></image>
         <view wx:else class="notice-img">{{item.baseData.content}}</view>
       </view>
   </view>
