@@ -26,7 +26,7 @@ Page({
       const socialMemberInfo = JSON.parse(options.socialMemberInfo);
     this.setData({
       socialMemberInfo ,
-        memberName: socialMemberInfo.memberName.length ? socialMemberInfo.memberName.substr(0, 8) + '...' : socialMemberInfo.memberName,
+        memberName: socialMemberInfo.memberName.length > 8 ? socialMemberInfo.memberName.substr(0, 8) + '...' : socialMemberInfo.memberName,
       currentSocial: JSON.parse(options.currentSocial)
     })
     console.log("currentSocial", this.data.currentSocial)
