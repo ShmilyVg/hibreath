@@ -12,7 +12,7 @@ page {
 .per-header-img{
   width:120rpx;
   height:120rpx;
-  border-radius:45%;
+  border-radius:50%;
   border:4px solid rgba(255,255,255,1);
   margin-right:35rpx;
   overflow: hidden;
