@@ -496,5 +496,9 @@ export default class Protocol {
     static postMembersPutInfo(data) {
         return Network.request({url: 'members/putInfo', data});
     }
+    //食物详情
+    static postFoodFoodInfo({ id }) {
+        return Network.request({url: 'food/foodInfo',data: {id}});
+    }
 
 }

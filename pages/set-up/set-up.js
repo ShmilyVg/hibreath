@@ -23,8 +23,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      const socialMemberInfo = JSON.parse(options.socialMemberInfo);
     this.setData({
-      socialMemberInfo: JSON.parse(options.socialMemberInfo),
+      socialMemberInfo ,
+        memberName: socialMemberInfo.memberName.length > 8 ? socialMemberInfo.memberName.substr(0, 8) + '...' : socialMemberInfo.memberName,
       currentSocial: JSON.parse(options.currentSocial)
     })
     console.log("currentSocial", this.data.currentSocial)

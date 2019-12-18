@@ -1,7 +1,7 @@
 <!--pages/set-up/rename/rename.wxml-->
 <block>
     <view>
-      <input class="materials" value="{{memberName}}"  bindinput="bindInputName"  placeholder="请填写我在该圈子的昵称" type="text" />
+      <input maxlength="16" class="materials" value="{{memberName}}"  bindinput="bindInputName"  placeholder="请填写我在该圈子的昵称" type="text" />
     </view>
     <button class="materials-btn"  disabled="{{disable}}" bindtap="materialsBtn">保存</button>
 </block>
