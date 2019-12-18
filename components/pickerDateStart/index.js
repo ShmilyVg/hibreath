@@ -8,13 +8,13 @@ const secYearMax = date.getFullYear();
 const secMopnth = date.getMonth() + 1;
 const secDay = date.getDate();
 const secMopnthMax = secMopnth;
-const secDayMax = secDay+14;
+const secDayMax = 31;
 
-if (secDay + 14 > 31) {
+/*if (secDay + 14 > 31) {
     secMopnthMax = secMopnth + 1;
     secDayMax = secDay + 14 - 31;
     secDay = 1
-}
+}*/
 if (secMopnthMax > 12) {
   secMopnth = 1;
   secYearMax = secYear + 1;
