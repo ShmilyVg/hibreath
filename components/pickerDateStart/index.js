@@ -1,24 +1,32 @@
 // components/pickerDate/index.js.js
-const date = new Date();
-const years = [];
-const months = [];
-const days = [];
-const secYear = date.getFullYear();
-const secYearMax = date.getFullYear();
-const secMopnth = date.getMonth() + 1;
-const secDay = date.getDate();
-const secMopnthMax = secMopnth;
-const secDayMax = 31;
+let date = new Date();
+let years = [];
+let months = [];
+let days = [];
+let days1 = [];
+let secYear = date.getFullYear();
+let secYearMax = date.getFullYear();
+let secMopnth = date.getMonth() + 1;
+console.log(secMopnth);
+let secDay = date.getDate();
+let secDay1 = 1;
+let secMopnthMax = secMopnth;
+let secDayMax = secDay+14;
+let secDayMax1 = 31;
 
-/*if (secDay + 14 > 31) {
+
+if (secDay + 14 > 31) {
     secMopnthMax = secMopnth + 1;
-    secDayMax = secDay + 14 - 31;
-    secDay = 1
-}*/
-if (secMopnthMax > 12) {
-  secMopnth = 1;
-  secYearMax = secYear + 1;
+    secDayMax1 = secDay + 14 - 31;
+    secDay1 = 1;
+    secDayMax = 31;
 }
+if (secMopnthMax >= 13) {
+    //secMopnth = 1;
+    secYearMax = secYear + 1;
+    secMopnthMax = 12;
+}
+
 for (let i = secYear; i <= secYearMax; i++) {
   years.push(i)
 }
@@ -26,9 +34,11 @@ for (let i = secYear; i <= secYearMax; i++) {
 for (let i = secMopnth; i <= secMopnthMax; i++) {
   months.push(i)
 }
-
 for (let i = secDay; i <= secDayMax; i++) {
   days.push(i)
+}
+for (let i = secDay1; i <= secDayMax1; i++) {
+  days1.push(i)
 }
 Component({
   /**
@@ -114,8 +124,38 @@ Component({
           return canSub
       },
     bindChange: function (e) {
-      console.log(e, 'eeee')
-      const val = e.detail.value
+      console.log(e, 'eeee');
+      const val = e.detail.value;
+      console.log(val);
+      if(years.length===2){
+        console.log(this.data.value);
+        if (val[0] !== 0) {
+          months = [1];
+          this.setData({
+            months:[1],
+            days: days1,
+          })
+        }else{
+          this.setData({
+            days: days,
+            months:[12]
+          })
+        }
+
+      }
+      if(months.length===2){
+        if (val[1] !== 0){
+          this.setData({
+            days: days1
+          })
+        }else{
+          this.setData({
+            days: days
+          })
+        }
+      }
+
+
       this.setData({
         value:[val[0],val[1],val[2]],
         year: this.data.years[val[0]],

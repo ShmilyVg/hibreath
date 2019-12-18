@@ -7,14 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:1
+    foodId:10
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getFoodInfo()
   },
 
   /**
@@ -24,9 +24,16 @@ Page({
 
   },
   async getFoodInfo(){
-    const { result } = await Protocol.postFoodFoodInfo({ id: this.data.id });
+    const { result } = await Protocol.postFoodFoodInfo({ foodId: this.data.foodId });
     this.setData({
-
+      title:result.title,
+      imgUrl:result.imgUrl,
+      calorie:result.calorie,
+      carbohydrate:result.carbohydrate,
+      fat:result.fat,
+      protein:result.protein,
+      ingredient:result.ingredient,
+      formula:result.formula
     })
   },
 

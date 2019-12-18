@@ -268,10 +268,15 @@ page{
     color:rgba(84,84,84,1);
 }
 .cell-title{
+    width:320rpx;
     font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     float: left;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
 }
 .cell-titleR{
     color:rgba(237,111,105,1);
