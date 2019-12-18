@@ -1,6 +1,6 @@
 import {WXDialog} from "heheda-common-view";
 import {NetworkConfig} from "../config";
-
+const log = require('../../../../../log.js')
 let _token = '', _queue = {}, divideTimestamp = 0;
 let _xtoken = null;
 
@@ -25,11 +25,13 @@ export default class BaseNetworkImp {
                         resolve(data);
                     } else {
                         console.log('协议错误', url, res);
+                        log.warn('协议错误', url, res);
                         reject(res);
                     }
                 },
                 fail: (res) => {
                     console.log('协议错误', url, res);
+                    log.warn('协议错误', url, res);
                     const errMsg = res.errMsg;
                     if (showResendDialog && (errMsg.indexOf("No address associated") !== -1 || errMsg.indexOf('已断开与互联网') !== -1 || errMsg.indexOf('request:fail socket time out timeout') !== -1 || errMsg.indexOf('request:fail timeout') !== -1 || errMsg.indexOf('unknow host error') !== -1)) {
                         BaseNetworkImp.addProtocol({url, requestObj});
