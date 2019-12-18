@@ -585,7 +585,7 @@ Page({
           } else {
             this.setData({
               foodAheight:
-                foodExt.mealList[foodExt.mealIndex].list.length * 110 + 205
+                foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
             });
           }
           this.setData({

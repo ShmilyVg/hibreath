@@ -22,10 +22,11 @@ if (secDay + 14 > 31) {
     secDayMax = 31;
 }
 if (secMopnthMax >= 13) {
-  //secMopnth = 1;
-  secYearMax = secYear + 1;
-  secMopnthMax = 12;
+    //secMopnth = 1;
+    secYearMax = secYear + 1;
+    secMopnthMax = 12;
 }
+
 for (let i = secYear; i <= secYearMax; i++) {
   years.push(i)
 }

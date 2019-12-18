@@ -1,5 +1,6 @@
 // components/uploadImgCard/uploadImgCard.js
 import HiNavigator from "../../navigator/hi-navigator";
+import Protocol from "../../modules/network/protocol";
 
 Component({
   /**
@@ -65,7 +66,10 @@ Component({
                     })
                 }
             })
-
+            this.animation = wx.createAnimation({
+                duration: 1000,
+                timingFunction: 'ease'
+            })
         },
         moved: function () { },
         detached: function () { },
@@ -91,13 +95,26 @@ Component({
       calorie:0,//卡路里
       carbohydrate:0,//碳水化合物
       fat:0,//脂肪
-      protein:0 //蛋白质
+      protein:0, //蛋白质
+      num:1
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+      async foodChange(e){
+          console.log('groupId',)
+          this.animation.rotate(360*this.data.num).step();
+          this.setData({
+              num:this.data.num+1,
+              rotate3dA: this.animation.export()
+          })
+          const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid})
+          this.setData({
+              'foodExt.mealList[this.data.foodcurrentSwiper]':result.list
+          })
+      },
       bindTapSportType(e){
           HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
       },
@@ -141,7 +158,7 @@ Component({
               })
           }else{
               this.setData({
-                  foodAheight: currentList.length * 110+225
+                  foodAheight: currentList.length * 110+235
               })
           }
           this.setData({
@@ -171,6 +188,9 @@ Component({
           })
 
 
+      },
+      toDetails(){
+        HiNavigator.navigateTorecommendation()
       },
       //饮食打卡--左按钮
       imgToPre() {

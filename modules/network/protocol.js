@@ -500,5 +500,16 @@ export default class Protocol {
     static postFoodFoodInfo({ foodId }) {
         return Network.request({url: 'food/foodInfo',data: {foodId}});
     }
-
+    //减脂饮食推荐-内容
+    static postFoodItemInfo({ itemId }) {
+        return Network.request({url: 'food/itemInfo',data: {itemId}});
+    }
+    //减脂饮食推荐-日期
+    static postFoodDateInfo() {
+        return Network.request({url: 'food/dateInfo'});
+    }
+    //饮食打卡-换一换
+    static postFoodChange({groupId}) {
+        return Network.request({url: 'food/change',data: {groupId}});
+    }
 }
