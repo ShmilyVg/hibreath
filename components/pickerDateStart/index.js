@@ -1,5 +1,5 @@
 // components/pickerDate/index.js.js
-let date = new Date(2019,8,30);
+let date = new Date();
 let years = [];
 let months = [];
 let days = [];
