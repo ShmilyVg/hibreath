@@ -1,6 +1,6 @@
 /* pagesIndex/noticeList/noticeList.wxss */
 /* .page-body{
- 
+
 } */
 .noticeList-header{
   height:60rpx;

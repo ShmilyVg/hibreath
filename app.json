@@ -48,9 +48,7 @@
         "food-habit/food-habit",
         "target-weight/target-weight",
         "detailsList/detailsList",
-        "myDynamicList/myDynamicList",
-        "food-recommendation/food-recommendation",
-        "food-details/food-details"
+        "myDynamicList/myDynamicList"
       ]
     }
   ],
