@@ -1,1 +1,6 @@
 /* pagesIndex/food-recommendation/food-recommendation.wxss */
+page{
+    background-color: #FEF6F2;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+}

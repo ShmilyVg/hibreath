@@ -262,4 +262,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToTargetWeight({targetWeight}) {
         this.navigateTo({url: '/pagesIndex/target-weight/target-weight?targetWeight=' + targetWeight});
     }
+    /**
+     * 进入饮食推荐页面
+     */
+    static navigateTorecommendation() {
+        this.navigateTo({url: '/pagesIndex/food-recommendation/food-recommendation'});
+    }
 }

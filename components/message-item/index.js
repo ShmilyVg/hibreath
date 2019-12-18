@@ -109,6 +109,7 @@ Component({
                 'message.praiseInfo.list.':result.praiseInfo.list,
                 'message.action.liked':!this.data.message.action.liked,
             })
+            wx.vibrateShort()
             if(result.action.liked){
                 this.setData({
                     showMytoast:true,
