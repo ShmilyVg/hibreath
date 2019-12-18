@@ -18,19 +18,19 @@
     <view class="headUrl-content" >
         <view class="headUrl-box backgroundImg-goldbig " wx:if="{{rankNum==1}}" >
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
+          <view class="punchList_rank_img {{rankNum?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
          <view class="headUrl-box backgroundImg-silverbig" wx:elif="{{rankNum==2}}" >
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
+          <view class="punchList_rank_img {{rankNum?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
           <view class="headUrl-box backgroundImg-copperbig" wx:elif="{{rankNum==3}}">
           <image class="punchList_headUrl " src="{{headUrl}}" ></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
+          <view class="punchList_rank_img {{rankNum?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
           <view class="headUrl-box"  wx:else="{{rankNum>=4}}">
           <image class="punchList_headUrl" src="{{headUrl}}"></image>
-          <view class="punchList_rank_img {{addup?'greenImg':'greenNumImg'}}">{{rankNum?rankNum:''}}</view>
+          <view class="punchList_rank_img {{rankNum?'greenImg':'greenNumImg'}}">{{rankNum?rankNum:''}}</view>
        </view>
       <view class="punchList_NickName">{{nickname}}</view>
       <button class="punchList_share" open-type='share' wx:if="{{isShare}}">

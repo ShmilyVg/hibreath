@@ -38,6 +38,7 @@ page{
     font-weight:500;
     color:#9B9B9B;
     line-height:28rpx;
+    text-align:center;
 }
 .need-food{
     margin-top:20rpx;

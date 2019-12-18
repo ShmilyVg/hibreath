@@ -497,8 +497,8 @@ export default class Protocol {
         return Network.request({url: 'members/putInfo', data});
     }
     //食物详情
-    static postFoodFoodInfo({ id }) {
-        return Network.request({url: 'food/foodInfo',data: {id}});
+    static postFoodFoodInfo({ foodId }) {
+        return Network.request({url: 'food/foodInfo',data: {foodId}});
     }
 
 }

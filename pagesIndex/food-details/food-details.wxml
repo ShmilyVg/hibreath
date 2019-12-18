@@ -1,24 +1,24 @@
 <!--pagesIndex/food-details/food-details.wxml-->
 <view>
-    <image src="" class="food-image"></image>
+    <image src="{{imgUrl}}" class="food-image"></image>
 </view>
 <view class="food-main">
-    <view class="food-name">核桃益智粥</view>
+    <view class="food-name">{{title}}</view>
     <view class="flex-row space-between food-parameter">
         <view>
-            <view class="food-num">97.76</view>
+            <view class="food-num">{{calorie}}</view>
             <view class="food-text">千卡</view>
         </view>
         <view>
-            <view class="food-num">97.76</view>
+            <view class="food-num">{{carbohydrate}}</view>
             <view class="food-text">碳水</view>
         </view>
         <view>
-            <view class="food-num">97.76</view>
+            <view class="food-num">{{fat}}</view>
             <view class="food-text">脂肪</view>
         </view>
         <view>
-            <view class="food-num">97.76</view>
+            <view class="food-num">{{protein}}</view>
             <view class="food-text">蛋白质</view>
         </view>
     </view>
@@ -28,12 +28,12 @@
         <text class="need-title-red"></text>
         <text class="need-title-text">需要食材</text>
     </view>
-    <view class="need-text">核桃性温味甘、补血养肝，富含磷脂及不饱和脂肪酸，可促胆固醇代谢。</view>
+    <view class="need-text">{{ingredient}}</view>
 </view>
 <view class="need-food">
     <view class="need-title">
         <text class="need-title-red"></text>
         <text class="need-title-text">具体做法</text>
     </view>
-    <view class="need-text">每周2次。</view>
+    <view class="need-text">{{formula}}</view>
 </view>
