@@ -1,14 +1,14 @@
 // components/pickerDate/index.js.js
-const date = new Date();
-const years = [];
-const months = [];
-const days = [];
-const secYear = date.getFullYear();
-const secYearMax = date.getFullYear();
-const secMopnth = date.getMonth() + 1;
-const secDay = date.getDate();
-const secMopnthMax = secMopnth;
-const secDayMax = 31;
+let date = new Date();
+let years = [];
+let months = [];
+let days = [];
+let secYear = date.getFullYear();
+let secYearMax = date.getFullYear();
+let secMopnth = date.getMonth() + 1;
+let secDay = date.getDate();
+let secMopnthMax = secMopnth;
+let secDayMax = 31;
 
 // if (secDay + 14 > 31) {
 //     secMopnthMax = secMopnth + 1;
