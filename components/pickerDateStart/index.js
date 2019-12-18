@@ -2,13 +2,12 @@
 let date = new Date();
 let years = [];
 let months = [];
-let months1 = [];
 let days = [];
 let days1 = [];
 let secYear = date.getFullYear();
 let secYearMax = date.getFullYear();
 let secMopnth = date.getMonth() + 1;
-console.log(secMopnth)
+console.log(secMopnth);
 let secDay = date.getDate();
 let secDay1 = 1;
 let secMopnthMax = secMopnth;
@@ -34,11 +33,6 @@ for (let i = secYear; i <= secYearMax; i++) {
 for (let i = secMopnth; i <= secMopnthMax; i++) {
   months.push(i)
 }
-// for (let i = secMopnth; i <= secMopnthMax; i++) {
-//   months1.push(i)
-// }
-
-
 for (let i = secDay; i <= secDayMax; i++) {
   days.push(i)
 }
