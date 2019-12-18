@@ -213,13 +213,3 @@
     padding-bottom: 20rpx;
     height: 50rpx;
 }
-/*
-.rotateRight{
-    animation:myFive 0.5s linear;
-}
-@keyframes myFive{
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-}
-
-*/
