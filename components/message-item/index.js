@@ -2,7 +2,6 @@ import {Toast as toast, WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import {previewImage,showActionSheet} from "../../view/view";
 import HiNavigator from "../../navigator/hi-navigator";
-
 Component({
     options: {
         addGlobalClass: true,
@@ -355,6 +354,20 @@ Component({
                                     page.onShow();
                                 }
                             })
+                        }
+                    });
+                }else if (code === 40013) {
+                    wx.hideLoading();
+                    WXDialog.showDialog({
+                        title: '', content: '您上传的图片包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
+
+                        }
+                    });
+                }else if (code === 40014) {
+                    wx.hideLoading();
+                    WXDialog.showDialog({
+                        title: '', content: '您上传的文字包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
+
                         }
                     });
                 }

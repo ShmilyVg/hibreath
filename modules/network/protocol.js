@@ -501,8 +501,8 @@ export default class Protocol {
         return Network.request({url: 'food/foodInfo',data: {foodId}});
     }
     //减脂饮食推荐-内容
-    static postFoodItemInfo({ itemId }) {
-        return Network.request({url: 'food/itemInfo',data: {itemId}});
+    static postFoodItemInfo(data) {
+        return Network.request({url: 'food/plaItemInfo',data});
     }
     //减脂饮食推荐-日期
     static postFoodDateInfo() {

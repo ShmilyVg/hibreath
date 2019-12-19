@@ -8,6 +8,7 @@ import {
   Toast,
   WXDialog
 } from "heheda-common-view";
+import { whenDismissGroup } from "../community/social-manager";
 import Protocol from "../../modules/network/protocol";
 import {
   PostUrl,
@@ -54,7 +55,7 @@ Page({
       confirmText: '我知道了'
     });
   },
-  submit() {
+  async submit() {
     console.log("imgbox", this.data.imgbox)
     console.log("imageUrl", this.data.imageUrl)
     /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
@@ -70,27 +71,10 @@ Page({
       this.showPopup();
     } else {
       Toast.showLoading();
-      Protocol.postPublish({
-        groupId: this.data.groupId,
-        desc: this.data.desc,
-        imgUrls: this.data.imageUrl
-      }).then(data => {
-        wx.hideLoading();
-        app.globalData.isImgClock = true
-        HiNavigator.switchToCommunity();
-        /*    this.setData({
-                showMytoast:true,
-                toastType:'imgClock'
-            })
-            setTimeout(()=>{
-                this.setData({
-                    showMytoast:false,
-                })
-                HiNavigator.switchToCommunity();
-            },1000)*/
-
-      });
-
+      await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
+      wx.hideLoading();
+      app.globalData.isImgClock = true
+      HiNavigator.switchToCommunity();
     }
     app.globalData.isScrollTopNum = true
   },
@@ -264,7 +248,7 @@ Page({
     })
   },
   //确认事件
-  _success(e) {
+ async _success(e) {
     console.log('你点击了确定', e);
     const {
       detail: {
@@ -276,21 +260,15 @@ Page({
     })
     this.popup.hidePopup();
     Toast.showLoading();
-    Protocol.postFood({
-      groupId: this.data.groupId,
-      taskId: this.taskId,
-      desc: this.data.desc,
-      imgUrls: this.data.imageUrl
-    }).then(data => {
+     this.setData({
+         ifShow: !this.data.ifShow
+     })
+     const{result} = await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, taskId: this.taskId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
       Toast.showLoading();
       HiNavigator.redirectToMessageDetail({
-        messageId: data.result.id,
+        messageId: result.id,
         taskId: this.taskId
       });
-    });
-    this.setData({
-      ifShow: !this.data.ifShow
-    })
   }
 
 })

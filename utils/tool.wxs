@@ -43,10 +43,29 @@ function my_slice(str,length){
      var date = getDate(timestamp);
     return date.getFullYear()+'/'+getMonthStr(date)+'/'+getDayStr(date)+'    '+getCommentTime(timestamp);
 };
+ function getFoodday(timestamp) {
+    var date = getDate(timestamp);
+    str = ('0' + date.getDate()).slice(-2)
+    return str;
+};
+function getWeek(timestamp) {
+     var week;
+     var date = getDate(timestamp);
+     if(date.getDay() == 0) week = "周日"
+     if(date.getDay() == 1) week = "周一"
+     if(date.getDay() == 2) week = "周二"
+     if(date.getDay() == 3) week = "周三"
+     if(date.getDay() == 4) week = "周四"
+     if(date.getDay() == 5) week = "周五"
+     if(date.getDay() == 6) week = "周六"
+     return week;
+};
 module.exports = {
   my_slice:my_slice,
   getEndTime:getEndTime,
   getDynamicCreateTime:getDynamicCreateTime,
   getCommentTime:getCommentTime,
-  getAllday:getAllday
+  getAllday:getAllday,
+  getFoodday:getFoodday,
+  getWeek:getWeek
 };

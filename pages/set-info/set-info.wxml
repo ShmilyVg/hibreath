@@ -134,9 +134,7 @@
                              <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:420rpx;height:670rpx;margin-left:35rpx;"></image>
                           </swiper-item>
                         </block>
-                      </swiper>
-
-
+                  </swiper>
             </view>
             <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column {{page ==8?'bottom-btnN':''}} {{noMeasure?'page5position':''}}">
                 <block wx:if="{{page!=8}}">

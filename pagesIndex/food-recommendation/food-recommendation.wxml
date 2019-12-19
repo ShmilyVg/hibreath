@@ -1,4 +1,18 @@
 <!--pagesIndex/food-recommendation/food-recommendation.wxml-->
-<view class="recommendation-date">
-
+<wxs src="../../utils/tool.wxs" module="tools"></wxs>
+<view class="recommendation-top"></view>
+<view class="page">
+    <view class="recommendation-date">
+        <swiper bindchange="swiperChangeCase">
+            <block wx:for="{{dateResult.date}}" wx:key="index">
+                <swiper-item style="" class="recommendation-swiperItem">
+                    <view class="{{idx==item.item?'swiperItemR':'swiperItemW'}} swiperItem" wx:for="{{item}}" wx:key="index" bindtap="secDate" data-id="{{item.item}}">
+                        <text class="{{idx==item.item?'swiperItemNR':'swiperItemNW'}}">{{tools.getFoodday(item.time)}}</text>
+                        <view class="{{idx==item.item?'swiperItemTR':'swiperItemTW'}}">{{tools.getWeek(item.time)}}</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
 </view>
+
