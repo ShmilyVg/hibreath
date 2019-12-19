@@ -22,10 +22,56 @@ if (secDay + 14 > 31) {
     secDayMax = 31;
 }
 if (secMopnthMax >= 13) {
-    //secMopnth = 1;
     secYearMax = secYear + 1;
     secMopnthMax = 12;
 }
+ switch(secMopnth){
+   case 1:
+     secDayMax = 31;
+     break;
+   case 2:
+     if(secYear%4===0&&secYear%100!==0||secYear%400===0){
+       //console.log('闰年');
+       secDayMax = 29;
+     }else{
+       //console.log('平年');
+       secDayMax = 28;
+     }
+     break;
+   case 3:
+     secDayMax = 31;
+     break;
+   case 4:
+     secDayMax = 30;
+     break;
+   case 5:
+     secDayMax = 31;
+     break;
+   case 6:
+     secDayMax = 30;
+     break;
+   case 7:
+     secDayMax = 31;
+     break;
+   case 8:
+     secDayMax = 31;
+     break;
+   case 9:
+     secDayMax = 30;
+     break;
+   case 10:
+     secDayMax = 31;
+     break;
+   case 11:
+     secDayMax = 30;
+     break;
+   case 12:
+     secDayMax = 31;
+     break;
+ }
+
+
+
 
 for (let i = secYear; i <= secYearMax; i++) {
   years.push(i)
@@ -141,7 +187,6 @@ Component({
             months:[12]
           })
         }
-
       }
       if(months.length===2){
         if (val[1] !== 0){
