@@ -19,7 +19,7 @@
             <view class="user-info-item-common-title">昵称</view>
 
             <view class="flex-row align-items-center">
-                <input name="nickname" value="{{editUserInfo.nickname||originUserInfo.nickname}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
+                <input maxlength="12" name="nickname" value="{{editUserInfo.nickname||originUserInfo.nickname}}" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
         </view>
