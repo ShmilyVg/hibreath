@@ -3,10 +3,14 @@
 <view class="recommendation-top"></view>
 <view class="page">
     <view class="recommendation-date">
-        <swiper bindchange="swiperChangeCase">
+        <view class="recommendation-month">
+            <text style="font-family:DIN Condensed;font-size:36rpx;">{{monthStr}}</text>
+            <text style="font-size:32rpx;">月</text>
+        </view>
+        <swiper bindchange="swiperChangeCase" style="height: 170rpx">
             <block wx:for="{{dateResult.date}}" wx:key="index">
                 <swiper-item style="" class="recommendation-swiperItem">
-                    <view class="{{idx==item.item?'swiperItemR':'swiperItemW'}} swiperItem" wx:for="{{item}}" wx:key="index" bindtap="secDate" data-id="{{item.item}}">
+                    <view class="{{idx==item.item?'swiperItemR':'swiperItemW'}} swiperItem" wx:for="{{item}}" wx:key="index" bindtap="secDate" data-time="{{item.time}}"  data-id="{{item.item}}">
                         <text class="{{idx==item.item?'swiperItemNR':'swiperItemNW'}}">{{tools.getFoodday(item.time)}}</text>
                         <view class="{{idx==item.item?'swiperItemTR':'swiperItemTW'}}">{{tools.getWeek(item.time)}}</view>
                     </view>
@@ -14,5 +18,32 @@
             </block>
         </swiper>
     </view>
+    <view style="position: relative;top:-130rpx">
+        <view class="recommendation-tj" wx:if="{{contentResult.freedom.length>0}}" bindtap="toRule">
+            <view class="recommendation-tj-text1">推荐的都不喜欢？</view>
+            <view class="recommendation-tj-text2">学习自由餐饮食原则，自己也能变成减脂餐DIY达人</view>
+        </view>
+        <view wx:for="{{contentResult.meal}}" wx:key="index" class="recommendation-content">
+            <view class="recommendation-line"></view>
+            <view class=recommendation-swiperItem" style="margin-bottom: 60rpx">
+                <view style="width: 127rpx;height: 49rpx">
+                    <image wx:if="{{item.mealBox}}" src="../images/recommendation/dch.png" style="width: 100%;height: 100%"></image>
+                </view>
+                <view class="content-title">{{item.title}}</view>
+                <view class="content-kcal">总共{{item.total}}kcal</view>
+            </view>
+            <view class="recommendation-content-bottom recommendation-swiperItem" wx:for="{{item.list}}" wx:key="index">
+                <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx"></image>
+                <view>
+                    <view class="food-title">{{item.title}}</view>
+                    <view class="food-kcal">{{item.calorie}}kcal</view>
+                </view>
+                <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+            </view>
+
+        </view>
+    </view>
+
+
 </view>
 

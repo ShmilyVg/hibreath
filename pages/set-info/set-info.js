@@ -489,7 +489,7 @@ Page({
       indexgoalDesc: result.goalDesc,
       indextaskNum: result.taskNum,
       taskListAll: result.taskList,
-      bgColorSetInfoPage: "#FEF6F2"
+      bgColorSetInfoPage: "#f2f2f2"
     });
 
     const typesArr = result.taskList.map(d => d.type);
