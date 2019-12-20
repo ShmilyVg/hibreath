@@ -578,7 +578,7 @@ Page({
           });
         }
         if (foodExt.isMeal) {
-          if(foodExt.mealList[foodExt.mealIndex].list){
+          if(foodExt.mealList !==[]){
               if(foodExt.mealList[foodExt.mealIndex].list.length == 1) {
                   this.setData({
                       foodAheight: 230
@@ -592,22 +592,6 @@ Page({
           }
           this.setData({
             foodcurrentSwiper: foodExt.mealIndex,
-            calorie: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              1
-            ),
-            carbohydrate: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              2
-            ),
-            fat: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              3
-            ),
-            protein: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              4
-            )
           });
         }
         this.setData({
