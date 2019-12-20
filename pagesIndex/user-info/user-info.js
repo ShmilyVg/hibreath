@@ -2,6 +2,7 @@ import Protocol from "../../modules/network/protocol";
 import {chooseImage, entries, uploadFile} from "./manager";
 import {Toast} from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
+import {whenDismissGroup} from "../../pages/community/social-manager";
 
 Page({
 
@@ -90,7 +91,7 @@ Page({
 
         console.log('finalEditUserInfoObj', finalEditUserInfoObj, 'finalUserInfoObj', finalUserInfoObj);
         if (this.checkFill(finalUserInfoObj)) {
-            await Protocol.postMembersPutInfo(finalEditUserInfoObj);
+            await whenDismissGroup(Protocol.postMembersPutInfo(finalEditUserInfoObj));
             Toast.success('保存成功');
             HiNavigator.navigateBack({delta: 1});
         } else {
