@@ -87,42 +87,13 @@ function drewCircular() {
     var setPercent2 = val => {
         ctx.clearRect(0, 0, 250, 250);
         var pt = deal(val);
-
         fillGrid(ctx, pt, gradient, val);
         ctx.setFontSize(23);
         ctx.setFillStyle("#292930");
         var offset = 140*_xWidth;
         ctx.fillText(val, offset, 105*_xWidth);
-        /* ctx.setFontSize(15);
-         ctx.setFillStyle("#969696");
-         ctx.fillText(10, offset, 105);*/
-        /*  if (circleScore <= 20) {
-              ctx.fillText("继续努力", 70, 165);
-          } else if (20 < circleScore && circleScore <= 40) {
-              ctx.fillText("缓慢燃脂", 70, 165);
-          } else if (40 < circleScore && circleScore <= 60) {
-              ctx.fillText("状态极佳", 70, 165);
-          } else if (60 < circleScore && circleScore <= 80) {
-              ctx.fillText("快速燃脂", 70, 165);
-          } else {
-              ctx.fillText("过度燃脂", 70, 165);
-          }
-          ctx.setFontSize(12);
-          ctx.setFillStyle("#969696");
-          if (circleScore <= 20) {
-              ctx.fillText("KEEP ON", 70, 185);
-          } else if (20 < circleScore && circleScore <= 40) {
-              ctx.fillText("SLOW", 70, 185);
-          } else if (40 < circleScore && circleScore <= 60) {
-              ctx.fillText("PROPER", 70, 185);
-          } else if (60 < circleScore && circleScore <= 80) {
-              ctx.fillText("FAST", 70, 185);
-          } else {
-              ctx.fillText("UNDUE", 70, 185);
-          }*/
         ctx.draw();
     }
-
     fillGrid(bg, parts, '#DCDCDC', 100);
     bg.draw();
 
@@ -158,11 +129,6 @@ function drewCircular() {
         console.log('vvvvvvv',percent)
     }
     animation(_page.data.score*10);
-    /* setInterval(() => {
-       //var round = Math.round(100 * Math.random());
-        var round =60;
-       animation(round);
-     }, 2500);*/
 }
 
 function showType() {

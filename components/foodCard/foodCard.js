@@ -175,10 +175,6 @@ Component({
           }
           this.setData({
               foodcurrentSwiper: e.detail.current,
-              calorie:this.sum(currentList,1),
-              carbohydrate:this.sum(currentList,2),
-              fat:this.sum(currentList,3),
-              protein:this.sum(currentList,4)
           })
           if (e.detail.current === 0) {
               this.setData({
