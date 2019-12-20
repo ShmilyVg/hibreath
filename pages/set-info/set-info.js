@@ -578,15 +578,17 @@ Page({
           });
         }
         if (foodExt.isMeal) {
-          if (foodExt.mealList[foodExt.mealIndex].list.length == 1) {
-            this.setData({
-              foodAheight: 230
-            });
-          } else {
-            this.setData({
-              foodAheight:
-                foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
-            });
+          if(foodExt.mealList[foodExt.mealIndex].list){
+              if(foodExt.mealList[foodExt.mealIndex].list.length == 1) {
+                  this.setData({
+                      foodAheight: 230
+                  });
+              } else {
+                  this.setData({
+                      foodAheight:
+                          foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
+                  });
+              }
           }
           this.setData({
             foodcurrentSwiper: foodExt.mealIndex,

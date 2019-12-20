@@ -188,9 +188,9 @@ Page({
         if (list && list.length) {
             let dataListX = [], dataListY = [];
             list.sort(function (item1, item2) {
-                return item1.createdTimestamp - item2.createdTimestamp;
+                return item1.time*1000 - item2.time*1000;
             }).forEach((value) => {
-                const {month, day} = tools.createDateAndTime(value.createdTimestamp);
+                const {month, day} = tools.createDateAndTime(value.time*1000);
                 dataListX.push(month + '月' + day + '日');
                 dataListY.push(value.dataValue);
             });
