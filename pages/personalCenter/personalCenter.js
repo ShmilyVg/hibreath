@@ -19,12 +19,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      setTimeout(() => {
+      /*setTimeout(() => {
           wx.setNavigationBarColor({
               frontColor: "#171717",
               backgroundColor: "#f5f5f5"
           });
-      });
+      });*/
       if (!getApp().globalData.isLogin) {
           this.setData({
               isShowlogin: false,

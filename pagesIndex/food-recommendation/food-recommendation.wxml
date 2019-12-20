@@ -35,13 +35,16 @@
                     <!--<view style="max-width: 185rpx;height: 12rpx;background: rgba(254,236,235,1);position: relative;top:-10rpx"></view>-->
                 </view>
             </view>
-            <view class="recommendation-content-bottom recommendation-swiperItem" wx:for="{{item.list}}" wx:key="index">
-                <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx"></image>
-                <view style="position: relative;left: -30rpx">
-                    <view class="food-title">{{item.title}}</view>
-                    <view class="food-kcal">{{item.calorie}}kcal</view>
+            <view class="recommendation-content-bottom " wx:for="{{item.list}}" wx:key="index">
+                <view class="recommendation-swiperItem" data-foodId="{{item.foodId}}" bindtap="toDetails">
+                    <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx"></image>
+                    <view style="position: relative;left: -30rpx">
+                        <view class="food-title">{{item.title}}</view>
+                        <view class="food-kcal">{{item.calorie}}kcal</view>
+                    </view>
+                    <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
                 </view>
-                <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+
             </view>
         </view>
         <view wx:if="{{contentResult.freedom.length>0}}" class="recommendation-text">{{contentResult.des}}</view>

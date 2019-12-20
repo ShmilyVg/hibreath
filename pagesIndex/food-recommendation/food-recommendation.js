@@ -36,6 +36,11 @@ Page({
           contentResult:contentResult
       })
   },
+    toDetails(e){
+      if(e.currentTarget.dataset.foodid){
+          HiNavigator.navigateToFooddetails({foodId:e.currentTarget.dataset.foodid})
+      }
+    },
     toRule(){
         HiNavigator.navigateToFoodRuler()
     },

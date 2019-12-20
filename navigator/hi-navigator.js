@@ -268,4 +268,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateTorecommendation() {
         this.navigateTo({url: '/pagesIndex/food-recommendation/food-recommendation'});
     }
+    /**
+     * 进入饮食详情页面
+     */
+    static navigateToFooddetails({foodId}) {
+        this.navigateTo({url: '/pagesIndex/food-details/food-details?foodId='+ foodId});
+    }
 }
