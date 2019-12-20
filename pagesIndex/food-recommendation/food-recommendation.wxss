@@ -5,6 +5,7 @@
     padding: 0 40rpx;
     position: absolute;
     width: 100%;
+    min-height: 100%;
 }
 .recommendation-date{
     box-sizing: border-box;
@@ -111,8 +112,11 @@
     font-family:PingFang SC;
     font-weight:bold;
     color:rgba(51,51,51,1);
+    margin-left: 25rpx;
 }
 .content-kcal{
+    width: 185rpx;
+    text-align: center;
     font-size:24rpx;
     font-family:PingFang SC;
     font-weight:500;
@@ -124,6 +128,7 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
+    margin-bottom: 10rpx;
 }
 .food-kcal{
     font-size:24rpx;
@@ -149,4 +154,24 @@
     top: 75rpx;
     z-index: 0;
 
+}
+.swiperChange{
+    text-align: center;
+    padding-bottom: 20rpx;
+    height: 50rpx;
+}
+
+.swiperText{
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(237,111,105,1);
+}
+.recommendation-text{
+    text-align: center;
+    font-size:36prx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    margin: 40rpx 0rpx;
 }

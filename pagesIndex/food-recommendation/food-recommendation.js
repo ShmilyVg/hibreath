@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      idx:0
+      idx:0,
+      num:1
   },
 
   /**
@@ -93,6 +94,24 @@ Page({
         }
         this.setData({
             monthStr:str
+        })
+    },
+    async foodChange(e){
+        console.log('groupId',)
+        this.animation = wx.createAnimation({
+            duration: 1000,
+            timingFunction: 'ease'
+        })
+        this.animation.rotate(360*this.data.num).step();
+        this.setData({
+            num:this.data.num+1,
+            rotate3dA: this.animation.export()
+        })
+        const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid})
+        let index = e.currentTarget.dataset.index
+        this.setData({
+            [`contentResult.freedom[${index}].list`]:result.data.dataList,
+            [`contentResult.freedom[${index}].total`]:result.data.total,
         })
     },
   /**
