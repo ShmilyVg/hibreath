@@ -135,7 +135,7 @@ Page({
 
   },
   async getUserInfo(){
-    const { result } = await whenDismissGroup(Protocol.postMemberInfo());
+    const { result } = await Protocol.postMemberInfo();
     console.log(result);
     if(result.weightGoal){
         this.setData({
