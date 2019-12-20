@@ -3,6 +3,7 @@ import { Toast } from "heheda-common-view";
 import Login from "../../modules/network/login";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+import {whenDismissGroup} from "../community/social-manager";
 Page({
 
   /**
@@ -134,7 +135,7 @@ Page({
 
   },
   async getUserInfo(){
-    const { result } = await Protocol.postMemberInfo();
+    const { result } = await whenDismissGroup(Protocol.postMemberInfo());
     console.log(result);
     if(result.weightGoal){
         this.setData({
