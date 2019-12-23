@@ -178,6 +178,10 @@
     color:rgba(69,69,69,1);
     float: left;
     line-height: 108rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    max-width: 270rpx;
 }
 .swiperDes{
     font-size:24rpx;
