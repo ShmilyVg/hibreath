@@ -61,6 +61,7 @@
     "backgroundTextStyle": "dark",
     "navigationBarTitleText": "Slimple轻松派"
   },
+  "navigateToMiniProgramAppIdList": ["wxe5f52902cf4de896"],
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#BBBCCD",

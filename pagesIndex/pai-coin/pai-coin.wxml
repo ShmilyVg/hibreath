@@ -24,11 +24,11 @@
 
     <view class="fill-width flex-row box-sizing-border-box pai-coin-left-right-padding" style="margin-top: 60rpx;margin-bottom: 30rpx;">
         <view bindtap="switchTasksShowEvent" data-index="0" class="flex-column align-items-center">
-            <view class="pai-coin-task-title {{taskPageIndex===0?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">新手任务</view>
+            <view class="pai-coin-task-title {{taskPageIndex===0?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">每日任务</view>
             <view class="pai-coin-choose-line pai-coin-choose-line-color" style="background-color: {{taskPageIndex===0?'rgba(185,185,185,1)':'transparent'}}"></view>
         </view>
         <view bindtap="switchTasksShowEvent" data-index="1" class="flex-column align-items-center" style="margin-left: 50rpx;">
-            <view class="pai-coin-task-title {{taskPageIndex===1?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">每日任务</view>
+            <view class="pai-coin-task-title {{taskPageIndex===1?'pai-coin-task-title-choose':'pai-coin-task-title-not-choose'}}">新手任务</view>
             <view class="pai-coin-choose-line pai-coin-choose-line-color" style="background-color: {{taskPageIndex===1?'rgba(185,185,185,1)':'transparent'}}"></view>
         </view>
     </view>
@@ -43,7 +43,7 @@
 
             <view class="fill-width fill-height flex-row space-between box-sizing-border-box pai-coin-item-right-layout {{item.receive?'pai-coin-item-right-layout-have-received':''}}">
                 <view class="flex-column" style="align-items: flex-start;">
-                    <block wx:if="{{taskPageIndex===0}}">
+                    <block wx:if="{{taskPageIndex===1}}">
                         <view class="pai-coin-item-task-progress-title">{{item.subTitle}}</view>
                         <view class="pai-coin-item-task-title {{item.receive?'pai-coin-item-task-title-have-received':''}}">{{item.title}}</view>
                     </block>
@@ -64,6 +64,24 @@
         </view>
 
     </view>
+
+    <view class="fill-width flex-row align-items-center space-between box-sizing-border-box pai-coin-left-right-padding" style="padding-top: 70rpx;">
+        <view class="pai-coin-task-title pai-coin-task-title-choose">Slimple好物兑换</view>
+    </view>
+
+    <view class="fill-width box-sizing-border-box pai-coin-goods-layout">
+        <view class="fill-width flex-row align-items-center">
+            <view bindtap="onClickGoodsItemEvent" data-item="{{item}}" wx:for="{{6}}" wx:key="index" class="flex-column" style="align-items: flex-start;">
+                <image src="" class="pai-coin-goods-item-img"></image>
+                <view class="pai-coin-goods-item-title">坚果味能量棒</view>
+                <view class="flex-row align-items-center">
+                    <image src="../../images/pai-coin/goods_icon.png" class="pai-coin-goods-item-icon"></image>
+                    <view class="flex-row align-items-center pai-coin-goods-item-content">消耗<view style="color: #ED6F69">220派币</view></view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
 
 <my-toast wx:if="{{showToast}}" toast-type="paiMoney" toast-text="恭喜获得{{receiveIntegral}}枚派币!"></my-toast>
+
