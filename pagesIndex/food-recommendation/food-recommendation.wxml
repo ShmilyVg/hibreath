@@ -35,14 +35,15 @@
                     <!--<view style="max-width: 185rpx;height: 12rpx;background: rgba(254,236,235,1);position: relative;top:-10rpx"></view>-->
                 </view>
             </view>
-            <view class="recommendation-content-bottom " wx:for="{{item.list}}" wx:key="index">
-                <view class="recommendation-swiperItem" data-foodId="{{item.foodId}}" bindtap="toDetails">
-                    <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx"></image>
-                    <view style="position: relative;left: -30rpx">
+            <view class="recommendation-content-bottom" wx:for="{{item.list}}" wx:key="index">
+                <view data-foodId="{{item.foodId}}" bindtap="toDetails">
+                    <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx;float: left"></image>
+                    <view style="float: left;margin-left: 30rpx;line-height: 45rpx;padding-top: 10rpx;">
                         <view class="food-title">{{item.title}}</view>
                         <view class="food-kcal">{{item.calorie}}kcal</view>
                     </view>
                     <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+                    <view class="clear"></view>
                 </view>
 
             </view>
@@ -61,16 +62,19 @@
                 </view>
             </view>
             <view class="swiperChange" bindtap="foodChange" data-groupId="{{item.groupId}}" data-index="{{index}}">
-                <image  animation="{{rotate3dA}}"  src="../../images/set-info/change.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
+                <image  animation="{{rotate3dA[index]}}"  src="../../images/set-info/change.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
                 <text class="swiperText">点击换一换</text>
             </view>
-            <view class="recommendation-content-bottom recommendation-swiperItem" wx:for="{{item.list}}" wx:key="index">
-                <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx"></image>
-                <view style="position: relative;left: -30rpx">
-                    <view class="food-title">{{item.title}}</view>
-                    <view class="food-kcal">{{item.calorie}}kcal</view>
+            <view class="recommendation-content-bottom" wx:for="{{item.list}}" wx:key="index">
+                <view data-foodId="{{item.foodId}}" bindtap="toDetails">
+                    <image  src="{{item.imgUrl}}" style="width: 180rpx;height: 108rpx;float: left"></image>
+                    <view style="float: left;margin-left: 30rpx;line-height: 45rpx;padding-top: 10rpx;">
+                        <view class="food-title">{{item.title}}</view>
+                        <view class="food-kcal">{{item.calorie}}kcal</view>
+                    </view>
+                    <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+                    <view class="clear"></view>
                 </view>
-                <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
             </view>
         </view>
     </view>

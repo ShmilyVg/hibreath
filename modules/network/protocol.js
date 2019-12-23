@@ -509,7 +509,7 @@ export default class Protocol {
         return Network.request({url: 'food/dateInfo'});
     }
     //饮食打卡-换一换
-    static postFoodChange({groupId}) {
-        return Network.request({url: 'food/change',data: {groupId}});
+    static postFoodChange({groupId,itemId}) {
+        return Network.request({url: 'food/change',data: {groupId,itemId}});
     }
 }

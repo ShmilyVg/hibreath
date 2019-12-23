@@ -10,9 +10,10 @@ Page({
    */
   data: {
       idx:0,
-      num:1
+      num:[1,1,1,1,1,1,1,1],
+      rotate3dA:['rotate3dA0','rotate3dA1','rotate3dA2','rotate3dA3','rotate3dA4','rotate3dA5']
   },
-
+/*以上防止点击换一换 出现所有图片旋转的情况*/
   /**
    * 生命周期函数--监听页面加载
    */
@@ -102,18 +103,18 @@ Page({
         })
     },
     async foodChange(e){
-        console.log('groupId',)
         this.animation = wx.createAnimation({
             duration: 1000,
             timingFunction: 'ease'
         })
-        this.animation.rotate(360*this.data.num).step();
-        this.setData({
-            num:this.data.num+1,
-            rotate3dA: this.animation.export()
-        })
-        const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid})
         let index = e.currentTarget.dataset.index
+        this.animation.rotate(360*this.data.num[index]).step();
+        this.setData({
+            [`num[${index}]`]:this.data.num[index]+1,
+            [`rotate3dA[${index}]`]: this.animation.export()
+        })
+        const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid,itemId:this.data.idx})
+
         this.setData({
             [`contentResult.freedom[${index}].list`]:result.data.dataList,
             [`contentResult.freedom[${index}].total`]:result.data.total,
