@@ -96,7 +96,21 @@ Page({
 
         }
     },
-
+    onClickGoodsItemEvent({currentTarget: {dataset: {item}}}) {
+        console.log(item);
+        //TODO 跳转有赞小程序
+        wx.navigateToMiniProgram({
+            appId: '',
+            path: 'page/index/index?id=123',
+            extraData: {
+                foo: 'bar'
+            },
+            envVersion: 'develop',
+            success: (res) => {
+                // 打开成功
+            }
+        })
+    },
 
     createIntegralStr(integral) {
         return integral.length > 3 ? integral.slice(0, -3) + ',' + integral.slice(-3) : integral;
