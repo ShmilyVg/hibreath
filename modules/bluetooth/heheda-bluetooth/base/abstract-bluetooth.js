@@ -364,7 +364,7 @@ export default class AbstractBlueTooth {
                 clearTimeout(this._startDiscoveryTimeoutIndex);
                 this._startDiscoveryTimeoutIndex = setTimeout(() => {
                     !this._isConnected && this.stopBlueToothDevicesDiscovery().then(() => {
-                        const now = Date.now();
+                        const now = ``;
                         this._getEventAndTimestamp({event: 'startLinkTime', time: now});
                         this._getEventAndTimestamp({event: 'linkResultTime', status: 0, time: now});
                         reject(ErrorState.DISCOVER_TIMEOUT);

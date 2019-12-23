@@ -203,16 +203,16 @@ export default class Protocol {
         return Network.request({url: 'weightData/list', data: {page, pageSize}})
     }
 
-    static postWeightDataListAll({timeBegin, timeEnd}) {
-        return Network.request({url: 'weightData/listAll', data: arguments[0]});
+    static postWeightDataListAll(data) {
+        return Network.request({url: 'weightData/listAll',data});
     }
 
-    static postBloodPressureDataListAll({timeBegin, timeEnd}) {
-        return Network.request({url: 'bloodPressureData/listAll', data: arguments[0]});
+    static postBloodPressureDataListAll(data) {
+        return Network.request({url: 'bloodPressureData/listAll', data});
     }
 
-    static postHeartDataListAll({timeBegin, timeEnd}) {
-        return Network.request({url: 'heartData/listAll', data: arguments[0]});
+    static postHeartDataListAll(data) {
+        return Network.request({url: 'heartData/listAll', data});
     }
 
     static postTaskSportStyle({freestyleIds, duration, feelDesc, calorie, id = ''}) {

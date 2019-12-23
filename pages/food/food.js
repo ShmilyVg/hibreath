@@ -86,7 +86,9 @@ Page({
 
   async onReady() {
     Trend.initTouchHandler();
-    this.updateTrendTime({ frontTimestamp: getLatestOneWeekTimestamp(), endTimestamp: Date.now() });
+    let {result} = await Protocol.postWeightDataListAll();
+    console.log('result',result)
+    this.updateTrendTime({ frontTimestamp: result.startTime*1000, endTimestamp: result.endTime*1000 });
   },
 
   onShow() {
@@ -95,7 +97,7 @@ Page({
     if (trendTime) {
       const { startTimeValue: frontTimestamp, endTimeValue: endTimestamp } = trendTime;
       this.updateTrendTime({ frontTimestamp, endTimestamp });
-      getApp().globalData.trendTime = null;
+
     }
     var pages = getCurrentPages(); // 获取页面栈
     var currPage = pages[pages.length - 1]; // 当前页面
@@ -110,6 +112,7 @@ Page({
   },
   updateTrendTime({ frontTimestamp, endTimestamp }) {
     // const {timeObj} = this.data;
+      console.log('frontTimestamp',frontTimestamp,endTimestamp)
     timeObj.frontTimestamp = frontTimestamp;
     timeObj.endTimestamp = endTimestamp;
     this.setData({
@@ -120,34 +123,75 @@ Page({
     }, async () => {
       await this.handleListData({ isRefresh: true });
     });
+     /* timeObj.frontTimestamp = 0;
+      timeObj.endTimestamp = Date.now();*/
   },
 
   async handleListData({ isRefresh = false } = {}) {
-    const { currentIndex, topChose } = this.data, { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj,
+    const { currentIndex, topChose } = this.data,
       list = [];
     switch (currentIndex) {
       case 0: {
-        let { result: { list: weightDataList } } = await Protocol.postWeightDataListAll({
-          timeBegin,
-          timeEnd
-        });
-        list.push(...weightDataList);
+          if(getApp().globalData.trendTime){
+              const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj
+              let { result: { list: bloodPressureDataList} } = await Protocol.postWeightDataListAll({
+                  timeBegin,
+                  timeEnd
+              });
+              list.push(...bloodPressureDataList);
+              getApp().globalData.trendTime = null;
+          }else{
+              let { result: { list: bloodPressureDataList,startTime:startTime,endTime:endTime} } = await Protocol.postWeightDataListAll();
+              list.push(...bloodPressureDataList);
+              this.setData({
+                  dataTrendTime: getTimeString({
+                      frontTimestamp: startTime*1000,
+                      endTimestamp: endTime*1000
+                  })
+              })
+          }
       }
         break;
       case 1: {
-        let { result: { list: bloodPressureDataList } } = await Protocol.postBloodPressureDataListAll({
-          timeBegin,
-          timeEnd
-        });
-        list.push(...bloodPressureDataList);
+          if(getApp().globalData.trendTime){
+              const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj
+              let { result: { list: bloodPressureDataList } } = await Protocol.postBloodPressureDataListAll({
+                  timeBegin,
+                  timeEnd
+              });
+              list.push(...bloodPressureDataList);
+              getApp().globalData.trendTime = null;
+          }else{
+              let { result: { list: bloodPressureDataList,startTime:startTime,endTime:endTime } } = await Protocol.postBloodPressureDataListAll();
+              list.push(...bloodPressureDataList);
+              this.setData({
+                  dataTrendTime: getTimeString({
+                      frontTimestamp: startTime*1000,
+                      endTimestamp: endTime*1000
+                  })
+              })
+          }
       }
         break;
       case 2: {
-        let { result: { list: heartDataList } } = await Protocol.postHeartDataListAll({
-          timeBegin,
-          timeEnd
-        });
-        list.push(...heartDataList);
+          if(getApp().globalData.trendTime){
+              const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj
+              let { result: { list: bloodPressureDataList } } = await Protocol.postHeartDataListAll({
+                  timeBegin,
+                  timeEnd
+              });
+              list.push(...bloodPressureDataList);
+              getApp().globalData.trendTime = null;
+          }else{
+              let { result: { list: bloodPressureDataList,startTime:startTime,endTime:endTime } } = await Protocol.postHeartDataListAll();
+              list.push(...bloodPressureDataList);
+              this.setData({
+                  dataTrendTime: getTimeString({
+                      frontTimestamp: startTime*1000,
+                      endTimestamp: endTime*1000
+                  })
+              })
+          }
       }
         break;
       default:
