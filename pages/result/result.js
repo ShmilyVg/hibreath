@@ -86,7 +86,7 @@ Page({
     async cellDataHandle({page = 1, isRefresh = true}) {
         console.log('结束时间加几秒解决最新一条不显示的问题',Date.now())
         Toast.showLoading();
-        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now()+25000,timeBegin:getLatestOneWeekTimestamp()});
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
             if(page == 1){
                 this.setData({
