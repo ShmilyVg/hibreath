@@ -501,15 +501,15 @@ export default class Protocol {
         return Network.request({url: 'food/foodInfo',data: {foodId}});
     }
     //减脂饮食推荐-内容
-    static postFoodItemInfo({ itemId }) {
-        return Network.request({url: 'food/itemInfo',data: {itemId}});
+    static postFoodItemInfo(data) {
+        return Network.request({url: 'food/plaItemInfo',data});
     }
     //减脂饮食推荐-日期
     static postFoodDateInfo() {
         return Network.request({url: 'food/dateInfo'});
     }
     //饮食打卡-换一换
-    static postFoodChange({groupId}) {
-        return Network.request({url: 'food/change',data: {groupId}});
+    static postFoodChange({groupId,itemId}) {
+        return Network.request({url: 'food/change',data: {groupId,itemId}});
     }
 }

@@ -2,6 +2,7 @@ import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast} from "heheda-common-view";
+import {whenDismissGroup} from "../../pages/community/social-manager";
 
 Page({
 
@@ -32,7 +33,7 @@ Page({
                 value += '0';
             }
             console.log('tempValue.targetWeightValue', value);
-            await Protocol.postMembersPutInfo({weightGoal: value});
+            await whenDismissGroup(Protocol.postMembersPutInfo({weightGoal: value}));
             HiNavigator.navigateBack({delta: 1});
         } else {
             Toast.showText('请输入目标体重');

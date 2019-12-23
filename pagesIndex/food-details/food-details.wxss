@@ -48,6 +48,8 @@ page{
 }
 .need-title{
     margin-bottom:36rpx;
+    display: flex;
+    align-items: center;
 }
 .need-title-red{
     width:6rpx;

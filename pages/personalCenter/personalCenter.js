@@ -3,6 +3,7 @@ import { Toast } from "heheda-common-view";
 import Login from "../../modules/network/login";
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+import {whenDismissGroup} from "../community/social-manager";
 Page({
 
   /**
@@ -18,12 +19,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      setTimeout(() => {
+      /*setTimeout(() => {
           wx.setNavigationBarColor({
               frontColor: "#171717",
               backgroundColor: "#f5f5f5"
           });
-      });
+      });*/
       if (!getApp().globalData.isLogin) {
           this.setData({
               isShowlogin: false,

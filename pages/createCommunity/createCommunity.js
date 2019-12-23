@@ -9,7 +9,7 @@ import {UploadUrl} from "../../utils/config";
 // } from "./social-manager";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-import {getSocialGroupManager} from "../community/social-manager";
+import {getSocialGroupManager, whenDismissGroup} from "../community/social-manager";
 import {Toast} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 Page({
@@ -38,12 +38,9 @@ Page({
     console.log(this.data.name, this.data.imgUrl)
   },
 
-  changeCommunityBtn:function(){
-    Protocol.postChangeCommunity({ id: this.data.groupId, name: this.data.name, imgUrl: this.data.imgUrl}).then(data => {
+  async changeCommunityBtn(){
+      await whenDismissGroup(Protocol.postChangeCommunity({ id: this.data.groupId, name: this.data.name, imgUrl: this.data.imgUrl}))
       HiNavigator.switchToCommunity();
-      console.log(1111)
-    });
-    console.log(this.data.groupId, this.data.name, this.data.imgUrl)
   },
 
   /**
@@ -102,7 +99,7 @@ Page({
     },
     async createCommunityBtn(){
         Toast.showLoading();
-        const {result: {groupId}} = await Protocol.postgroup({name: this.data.name, imgUrl: this.data.imgUrl});
+        const {result: {groupId}} = await whenDismissGroup(Protocol.postgroup({name: this.data.name, imgUrl: this.data.imgUrl}));
         getSocialGroupManager.currentSocial = {groupId};
         Toast.hiddenLoading();
         HiNavigator.switchToCommunity();

@@ -41,15 +41,8 @@ export default class BlowManager {
         };
 
         this.actionBlow[ProtocolState.BREATH_FINISH] = () => {
-          /*  console.log('page.data.isShowBlow === true',this._page.data.isShowBlow === true)
-            if(this._page.data.isShowBlow === true){
-                this.blowed();
-            }*/
             setTimeout(() => { this.blowed();},1000)
         };
-      /*  this.actionBlow[ProtocolState.QUERY_DATA_START] =() => {
-            this.connected();
-        };*/
         this.actionBlow[ProtocolState.CONNECTED_AND_BIND] =
             this.actionBlow[ProtocolState.TIMESTAMP] =
                 this.actionBlow[ProtocolState.DORMANT] = () => {

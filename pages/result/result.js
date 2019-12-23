@@ -86,7 +86,7 @@ Page({
     async cellDataHandle({page = 1, isRefresh = true}) {
         console.log('结束时间加几秒解决最新一条不显示的问题',Date.now())
         Toast.showLoading();
-        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20,timeEnd:Date.now()+25000,timeBegin:getLatestOneWeekTimestamp()});
+        let {result: {list}} = await Protocol.getBreathDataList({page, pageSize: 20});
         if (list.length) {
             if(page == 1){
                 this.setData({
@@ -188,9 +188,9 @@ Page({
         if (list && list.length) {
             let dataListX = [], dataListY = [];
             list.sort(function (item1, item2) {
-                return item1.createdTimestamp - item2.createdTimestamp;
+                return item1.time*1000 - item2.time*1000;
             }).forEach((value) => {
-                const {month, day} = tools.createDateAndTime(value.createdTimestamp);
+                const {month, day} = tools.createDateAndTime(value.time*1000);
                 dataListX.push(month + '月' + day + '日');
                 dataListY.push(value.dataValue);
             });

@@ -489,7 +489,7 @@ Page({
       indexgoalDesc: result.goalDesc,
       indextaskNum: result.taskNum,
       taskListAll: result.taskList,
-      bgColorSetInfoPage: "#FEF6F2"
+      bgColorSetInfoPage: "#f2f2f2"
     });
 
     const typesArr = result.taskList.map(d => d.type);
@@ -578,34 +578,20 @@ Page({
           });
         }
         if (foodExt.isMeal) {
-          if (foodExt.mealList[foodExt.mealIndex].list.length == 1) {
-            this.setData({
-              foodAheight: 230
-            });
-          } else {
-            this.setData({
-              foodAheight:
-                foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
-            });
+          if(foodExt.mealList !==[]){
+              if(foodExt.mealList[foodExt.mealIndex].list.length == 1) {
+                  this.setData({
+                      foodAheight: 230
+                  });
+              } else {
+                  this.setData({
+                      foodAheight:
+                          foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
+                  });
+              }
           }
           this.setData({
             foodcurrentSwiper: foodExt.mealIndex,
-            calorie: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              1
-            ),
-            carbohydrate: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              2
-            ),
-            fat: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              3
-            ),
-            protein: this.data.component.sum(
-              foodExt.mealList[foodExt.mealIndex].list,
-              4
-            )
           });
         }
         this.setData({

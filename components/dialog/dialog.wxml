@@ -8,10 +8,10 @@
         </view>
         <image src="../../images/community/cancel.png"  class="btn-no cancel" bindtap='_error'></image>
     </view>
-    
-    
+
+
     <scroll-view class="wx-popup-con" scroll-y="true"  >
-        <view class="popup-list {{idx==item.groupId?'popup-list-hover':'popup-list'}}" data-id="{{item.groupId}}" data-isChose="{{isChose}}"  wx:for="{{list}}" wx:key="{{index}}"  bindtap="selectApply">
+        <view class="popup-list {{idx==item.groupId?'popup-list-hover':'popup-list'}}" data-id="{{item.groupId}}" data-isChose="{{isChose}}"  wx:for="{{list}}" wx:key="index"  bindtap="selectApply">
           <image  class="popup-list-img" src="{{item.imgUrl}}"></image>
           <text class="popup-list-text">{{item.name}}</text>
         </view>

@@ -1,7 +1,5 @@
 <!--pagesIndex/food-details/food-details.wxml-->
-<view>
     <image src="{{imgUrl}}" class="food-image"></image>
-</view>
 <view class="food-main">
     <view class="food-name">{{title}}</view>
     <view class="flex-row space-between food-parameter">
@@ -28,12 +26,12 @@
         <text class="need-title-red"></text>
         <text class="need-title-text">需要食材</text>
     </view>
-    <view class="need-text">{{ingredient}}</view>
+    <view wx:if="{{ingredient}}" class="need-text">{{ingredient}}</view>
 </view>
 <view class="need-food">
     <view class="need-title">
         <text class="need-title-red"></text>
         <text class="need-title-text">具体做法</text>
     </view>
-    <view class="need-text">{{formula}}</view>
+    <view wx:if="{{formula}}" class="need-text">{{formula}}</view>
 </view>

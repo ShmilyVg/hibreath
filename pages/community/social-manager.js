@@ -196,10 +196,23 @@ export async function whenDismissGroup(protocol) {
                     })
                 }
             });
+        }else if (code === 40013) {
+            Toast.hiddenLoading()
+            WXDialog.showDialog({
+                title: '', content: '您上传的图片包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
+
+                }
+            });
+        }else if (code === 40014) {
+            Toast.hiddenLoading()
+            WXDialog.showDialog({
+                title: '', content: '您上传的文字包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
+
+                }
+            });
         }
         return Promise.reject(e);
     }
 }
-
 export {socialGroupManager as getSocialGroupManager, groupDynamicManager as getGroupDynamicManager};
 

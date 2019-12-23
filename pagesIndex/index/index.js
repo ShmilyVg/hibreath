@@ -231,11 +231,6 @@ Page({
     },
 
     onShow(options) {
-       /*
-        // 是否绑定成功
-        this.setData({
-            isBind: currPage.data.isBind
-        })*/
         if(app.getLatestBLEState().connectState ==='connected' && this.data.isHidden){
             const pages = getCurrentPages()
             const currentPage = pages[pages.length - 1]  // 当前页
@@ -245,6 +240,9 @@ Page({
                 })
                 app.bLEManager.sendISvalue({isSuccess: true});
                 console.log('小程序 在index页面 后台进入前台后 发送了40 01命令')
+                setTimeout(()=>{
+                    app.bLEManager.startData();
+                },1000)
             }
         }
 
@@ -257,9 +255,8 @@ Page({
         if (ProtocolState.BREATH_RESULT === protocolState) {
             protocolState = ProtocolState.CONNECTED_AND_BIND;
         }
-        console.log('000',connectState)
-        console.log('1111',protocolState)
-        console.log("-----1212",)
+        console.log('index页面connectState打印',connectState)
+        console.log('index页面protocolState打印',protocolState)
         !!action[connectState] && action[connectState]();
         !!actionBlow[protocolState] && actionBlow[protocolState]();
         app.setBLEListener({

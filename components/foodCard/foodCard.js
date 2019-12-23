@@ -111,9 +111,21 @@ Component({
               rotate3dA: this.animation.export()
           })
           const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid})
+          let index = this.data.foodcurrentSwiper
           this.setData({
-              'foodExt.mealList[this.data.foodcurrentSwiper]':result.list
+              [`foodExt.mealList[${index}].list`]:result.data.dataList,
+
           })
+          if(result.data.dataList.length == 1){
+              this.setData({
+                  foodAheight: 230
+              })
+          }else{
+              this.setData({
+                  foodAheight: result.data.dataList.length * 110+235
+              })
+          }
+
       },
       bindTapSportType(e){
           HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
@@ -163,10 +175,6 @@ Component({
           }
           this.setData({
               foodcurrentSwiper: e.detail.current,
-              calorie:this.sum(currentList,1),
-              carbohydrate:this.sum(currentList,2),
-              fat:this.sum(currentList,3),
-              protein:this.sum(currentList,4)
           })
           if (e.detail.current === 0) {
               this.setData({

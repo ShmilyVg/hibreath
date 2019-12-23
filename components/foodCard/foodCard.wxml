@@ -22,9 +22,9 @@
         <swiper bindchange="swiperChange"  current="{{foodcurrentSwiper}}"  class="" style="width: 100%;height:{{foodAheight}}rpx;position: relative;{{foodHiddenImg?'top:0rpx':'top:-50rpx'}}">
             <block wx:for="{{foodExt.mealList}}" wx:key="index" style="height: 500rpx">
                 <swiper-item>
-                    <view  class="swiperBigTitle" style="margin-bottom: {{item.mealBox?'21rpx':'63rpx'}}">{{item.title}}</view>
+                    <view  class="swiperBigTitle" style="margin-bottom: {{item.mealBox?'63rpx':'21rpx'}}">{{item.title}}</view>
                     <view class="clear"></view>
-                    <view class="swiperChange" bindtap="foodChange" data-groupId="{{item.groupId}}">
+                    <view wx:if="{{!item.mealBox}}" class="swiperChange" bindtap="foodChange" data-groupId="{{item.groupId}}">
                         <image  animation="{{rotate3dA}}"  src="../../images/set-info/change.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
                         <text class="swiperText">点击换一换</text>
                     </view>

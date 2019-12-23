@@ -2,6 +2,7 @@
 import HiNavigator from "../../../navigator/hi-navigator";
 import Protocol from "../../../modules/network/protocol";
 import * as tools from "../../../utils/tools";
+import {whenDismissGroup} from "../../community/social-manager";
 Page({
 
   /**
@@ -31,23 +32,13 @@ Page({
       })
 
   },
-  materialsBtn:function(){
-    // console.log(this.data.name)
+  async materialsBtn(){
     let groupId = (wx.getStorageSync('currentSocialGroupId') || "");
     this.setData({
       groupId: groupId
     })
-
-    // if (this.data.name !== "") {
-    //   HiNavigator.switchToCommunity();
-
-    // }
-    console.log(this.data.memberName, this.data.name, this.data.groupId)
-    Protocol.postUpdataMember({ name: this.data.memberName, groupId: this.data.groupId }).then(data => {
-      HiNavigator.switchToCommunity();
-
-    });
-
+    await whenDismissGroup(Protocol.postUpdataMember({ name: this.data.memberName, groupId: this.data.groupId }));
+    HiNavigator.switchToCommunity();
   },
 
   /**
