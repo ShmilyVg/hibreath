@@ -167,7 +167,7 @@ Page({
         HiNavigator.switchToSetInfo()
     },
     //切换标签页
-    selectTab(e) {
+    async selectTab(e) {
         let newtab = e.currentTarget.dataset.tabid;
         if (this.data.currenttab !== newtab) {
             this.setData({
@@ -176,9 +176,10 @@ Page({
             if (newtab == 1) {
                 const {frontTimestamp, endTimestamp} = timeObj;
                 console.log('getLatestOneWeekTimestamp()',getLatestOneWeekTimestamp())
+                let {result} = await Protocol.postBreathDatalistAll();
                 this.updateTrendTime({
-                    frontTimestamp: frontTimestamp || getLatestOneWeekTimestamp(),
-                    endTimestamp: endTimestamp || Date.now()
+                    frontTimestamp: frontTimestamp || result.startTime*1000,
+                    endTimestamp: endTimestamp || result.endTime*1000
                 });
             }
         }
