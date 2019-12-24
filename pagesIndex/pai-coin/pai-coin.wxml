@@ -71,12 +71,12 @@
 
     <view class="fill-width box-sizing-border-box pai-coin-goods-layout">
         <view class="fill-width flex-row align-items-center">
-            <view bindtap="onClickGoodsItemEvent" data-item="{{item}}" wx:for="{{6}}" wx:key="index" class="flex-column" style="align-items: flex-start;">
-                <image src="" class="pai-coin-goods-item-img"></image>
-                <view class="pai-coin-goods-item-title">坚果味能量棒</view>
+            <view bindtap="onClickGoodsItemEvent" data-path="{{item.url}}" data-app-id="{{appId}}" wx:for="{{goods}}" wx:key="img" class="flex-column" style="align-items: flex-start;">
+                <image src="{{item.img}}" class="pai-coin-goods-item-img"></image>
+                <view class="pai-coin-goods-item-title">{{item.name}}</view>
                 <view class="flex-row align-items-center">
                     <image src="../../images/pai-coin/goods_icon.png" class="pai-coin-goods-item-icon"></image>
-                    <view class="flex-row align-items-center pai-coin-goods-item-content">消耗<view style="color: #ED6F69">220派币</view></view>
+                    <view class="flex-row align-items-center pai-coin-goods-item-content">消耗<view style="color: #ED6F69">{{item.integral}}派币</view></view>
                 </view>
             </view>
         </view>

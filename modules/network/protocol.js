@@ -512,4 +512,8 @@ export default class Protocol {
     static postFoodChange({groupId,itemId}) {
         return Network.request({url: 'food/change',data: {groupId,itemId}});
     }
+    //好物推荐
+    static postConversionInfo({page = 1, pageSize = 10} = {}) {
+        return Network.request({url: 'conversion/info', data: {page, pageSize}});
+    }
 }

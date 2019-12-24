@@ -9,11 +9,15 @@ Page({
         integral: 0,//积分数量
         integralStr: "0",
         tasks: [],
-        receiveIntegral: '0'
+        receiveIntegral: '0',
+        goods: [],
+        appId: ''
     },
 
     async onLoad(options) {
-        this.switchTasksShowEvent({currentTarget: {dataset: {index: 0}}});
+        await this.switchTasksShowEvent({currentTarget: {dataset: {index: 0}}});
+        const {result: {appId = '', list: goods = []}} = await Protocol.postConversionInfo();
+        this.setData({goods, appId});
     },
 
     toFinishedEvent({currentTarget: {dataset: {id, type}}}) {
@@ -96,18 +100,19 @@ Page({
 
         }
     },
-    onClickGoodsItemEvent({currentTarget: {dataset: {item}}}) {
-        console.log(item);
+    onClickGoodsItemEvent({currentTarget: {dataset: {path, appId = ''}}}) {
+        console.log(path, appId);
         //TODO 跳转有赞小程序
         wx.navigateToMiniProgram({
-            appId: '',
-            path: 'page/index/index?id=123',
+            appId,
+            path,
             extraData: {
-                foo: 'bar'
+                // foo: 'bar'
             },
             envVersion: 'develop',
             success: (res) => {
                 // 打开成功
+                console.log('打开有赞小程序成功', res);
             }
         })
     },
