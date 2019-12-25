@@ -482,6 +482,7 @@ Page({
       planId: result.planId,
       planInfo:result.planInfo,
       sharedId: result.sharedId,
+      isGroup:result.isGroup,
       caseOnReady: result.onReady,
       caseonFinished: result.onFinished,
       indexDayDesc: result.dayDesc,

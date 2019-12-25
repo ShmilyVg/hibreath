@@ -1,6 +1,8 @@
 // components/uploadImgCard/uploadImgCard.js
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+import {WXDialog} from "heheda-common-view";
+import * as Circular from "../../pages/result/view/circular";
 
 Component({
   /**
@@ -21,6 +23,10 @@ Component({
       },
 
       foodHiddenImg:{
+          type:Boolean,
+          value:false
+      },
+      isGroup:{
           type:Boolean,
           value:false
       },
@@ -128,7 +134,24 @@ Component({
 
       },
       bindTapSportType(e){
-          HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
+          if(this.data.isGroup){
+              HiNavigator.navigateToImgClock({id: e.currentTarget.dataset.finid});
+          }else{
+              WXDialog.showDialog({
+                  title: '',
+                  content: '请先创建/加入一个圈子后\n再进行打卡哦~',
+                  showCancel: true,
+                  confirmText: "立即前往",
+                  cancelText: "取消",
+                  confirmEvent: () => {
+                    HiNavigator.switchToCommunity()
+                  },
+                  cancelEvent: () => {
+
+                  }
+              });
+          }
+
       },
       toRules(){
           HiNavigator.navigateToFoodRuler();
