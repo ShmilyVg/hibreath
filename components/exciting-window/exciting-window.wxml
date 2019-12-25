@@ -1,17 +1,29 @@
 <!--components/exciting-window/exciting-window.wxml-->
 <view class="exciting-window-container" catchtouchmove="stopScroll">
-    <view class="exciting-window-show {{toastResult.taskNum === toastResult.finishNum?'exciting-window-showImg2':'exciting-window-showImg1'}}" animation="{{animation}}">
+    <view wx:if="{{!showModalStatus}}" class="exciting-window-show {{toastResult.taskNum === toastResult.finishNum?'exciting-window-showImg2':'exciting-window-showImg1'}}" animation="{{animation}}">
         <view class="exciting-Title">{{excitingTitleL}}{{excitingTitleR}}</view>
         <view class="exciting-Content"wx:if="{{toastType !=='food' && showDif}}">
             <text style="color: #333;">{{excitingContent}}</text>
             <text style="color: #ED6F69;">{{excitingNumber}}</text>
             <text wx:if="{{excitingReduce}}">,别灰心继续加油</text>
         </view>
-        <view style="display: flex;justify-content: center;margin-top: 60rpx;margin-bottom: 35rpx" >
+        <view style="display: flex;justify-content: center;margin-top: 60rpx;margin-bottom: 35rpx">
             <view wx:for="{{toastResult.incImgList}}"><image src="{{item}}" style="width: 70rpx;height: 70rpx;margin-right: 28rpx"></image></view>
         </view>
-        <view class="exciting-button" bindtap="excitingKnow">我知道了</view>
+        <view class="exciting-button" wx:if="{{toastType !=='food'}}" bindtap="excitingShare">立即分享</view>
+        <view class="exciting-button" wx:else bindtap="excitingKnow">我知道了</view>
         <view class="exciting-bottom" wx:if="{{toastResult.finishNum !== toastResult.taskNum}}">今日还剩{{toastResult.taskNum-toastResult.finishNum}}项任务未完成哦~</view>
         <view class="exciting-bottom" wx:else>所有任务都完成啦~</view>
     </view>
+    <view wx:if="{{toastType !=='food'}}" style="width: 100%;text-align: center">
+        <image bindtap="excitingKnow" src="../../images/close.png" style="width: 80rpx;height: 80rpx;"></image>
+    </view>
+
+ <!--   &lt;!&ndash;底部弹窗&ndash;&gt;
+    <view class="" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+        <view>分享给好友</view>
+        <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
+        <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
+    </view>-->
 </view>

@@ -1,0 +1,22 @@
+/* pagesIndex/shareDynamics/shareDynamics.wxss */
+.shareDynamics-img{
+    width:532rpx;
+    height:946rpx;
+    box-shadow:0rpx 10rpx 40rpx 0rpx rgba(0, 0, 0, 0.2);
+}
+.shareDynamics-btn{
+    width:204rpx;
+    height:68rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0rpx 4rpx 20rpx 0rpx rgba(0, 0, 0, 0.16);
+    opacity:0.8;
+    border-radius:34rpx;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:68rpx;
+    position: relative;
+    bottom: 330rpx;
+    margin: 0 auto;
+}

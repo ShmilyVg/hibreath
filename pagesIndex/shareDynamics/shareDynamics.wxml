@@ -1,0 +1,8 @@
+<!--pagesIndex/shareDynamics/shareDynamics.wxml-->
+<view style="text-align: center;padding-top: 70rpx">
+    <image src="{{imgUrl}}" show-menu-by-longpress class="shareDynamics-img" style="margin: 0 auto;width: 532rpx;height: 946rpx"></image>
+    <view class="shareDynamics-btn" bindtap="change">
+        <image animation="{{rotate3dA}}" src="../images/change.png" style="width: 18rpx;height: 20rpx"></image>
+        点击换一换
+    </view>
+</view>

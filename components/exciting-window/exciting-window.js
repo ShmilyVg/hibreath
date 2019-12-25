@@ -1,5 +1,6 @@
 // components/exciting-window/exciting-window.js
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 /**
  * @Date: 2019-12-04 10:13:05
  * @LastEditors: 张浩玉
@@ -66,8 +67,6 @@ Component({
                     })
 
                 }
-
-
             }
             if(this.data.toastType === 'weight'){
                 this.setData({
@@ -110,7 +109,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+      showModalStatus:false
   },
 
   /**
@@ -124,6 +123,50 @@ Component({
       stopScroll(){
           console.log('阻止滚动')
           return;
-      }
+      },
+      //立即分享
+      excitingShare(){
+          if(this.data.toastType == 'fatBurn'){
+            let type = "fatBurn"
+            HiNavigator.navigateToShareDynamics({type:type,orderNumber:0})
+          }else if(this.data.toastType == 'weight'){
+            let type = "bodyIndex"
+            HiNavigator.navigateToShareDynamics({type:type,orderNumber:0})
+          }
+
+      /*  this.setData({
+            showModalStatus:true
+        })
+       this.showModal()*/
+
+      },
+      showModal: function() {
+          // 显示遮罩层
+          var animation = wx.createAnimation({
+              duration: 200,
+              timingFunction: "ease-in-out",
+              delay: 0
+          });
+          this.animation = animation;
+          animation.translateY(500).step();
+          this.setData({
+              animationData: animation.export(),
+              showModalStatus: true
+          });
+          setTimeout(
+              function() {
+                  animation.translateY(0).step();
+                  this.setData({
+                      animationData: animation.export()
+                  });
+              }.bind(this),
+              200
+          );
+      },
+      hideModal: function() {
+          this.setData({
+              showModalStatus: false
+          });
+      },
   }
 })
