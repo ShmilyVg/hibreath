@@ -8,7 +8,9 @@ Page({
    */
   data: {
       imgUrl:'',
-      num:1
+      num:1,
+      noData:true,
+      dataTry:true
   },
 
   /**
@@ -20,11 +22,20 @@ Page({
           orderNumber:options.orderNumber,
           taskType:options.type
       })
-    const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
-    this.setData({
-        imgUrl:result.url,
-        orderNumber:result.orderNumber,
-    })
+      try{
+          const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
+          this.setData({
+              noData:false,
+              dataTry:true,
+              imgUrl:result.url,
+              orderNumber:result.orderNumber,
+          })
+      }catch(e){
+          this.setData({
+              dataTry:false,
+          })
+      }
+
       this.animation = wx.createAnimation({
           duration: 1000,
           timingFunction: 'ease'
@@ -33,14 +44,24 @@ Page({
     async change(){
         this.animation.rotate(360*this.data.num).step();
         this.setData({
+            noData:true,
             num:this.data.num+1,
             rotate3dA: this.animation.export()
         })
-      const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
-      this.setData({
-        imgUrl:result.url,
-        orderNumber:result.orderNumber,
-      })
+        try{
+            const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
+            this.setData({
+                noData:false,
+                dataTry:true,
+                imgUrl:result.url,
+                orderNumber:result.orderNumber,
+            })
+        }catch (e) {
+            this.setData({
+                dataTry:false,
+            })
+        }
+
     },
   /**
    * 生命周期函数--监听页面初次渲染完成

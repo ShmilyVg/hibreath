@@ -1,8 +1,14 @@
 <!--pagesIndex/shareDynamics/shareDynamics.wxml-->
 <view style="text-align: center;padding-top: 70rpx">
-    <image src="{{imgUrl}}" show-menu-by-longpress class="shareDynamics-img" style="margin: 0 auto;width: 532rpx;height: 946rpx"></image>
-    <view class="shareDynamics-btn" bindtap="change">
-        <image animation="{{rotate3dA}}" src="../images/change.png" style="width: 18rpx;height: 20rpx"></image>
-        点击换一换
+    <view wx:if="{{noData}}" style="margin-top: 400rpx;">
+        <view class="shareDynamics-text" wx:if="{{dataTry}}">海报生在生成,请稍后...</view>
+        <view class="shareDynamics-text" wx:else bindtap="change">生成失败,点击<text style="color: #ED6F69">重试</text></view>
+    </view>
+    <view wx:else>
+        <image src="{{imgUrl}}" show-menu-by-longpress class="shareDynamics-img" style="margin: 0 auto;width: 532rpx;height: 946rpx"></image>
+        <view class="shareDynamics-btn" bindtap="change">
+            <image animation="{{rotate3dA}}" src="../images/change.png" style="width: 18rpx;height: 20rpx"></image>
+            点击换一换
+        </view>
     </view>
 </view>
