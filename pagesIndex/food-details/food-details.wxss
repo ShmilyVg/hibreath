@@ -42,7 +42,6 @@ page{
 }
 .need-food{
     margin-top:20rpx;
-    height:146rpx;
     background:#fff;
     padding:63rpx 51rpx;
 }
@@ -72,4 +71,5 @@ page{
     font-weight:400;
     color:  #6B6B6B ;
     line-height:42rpx;
+    word-break: break-all;
 }
