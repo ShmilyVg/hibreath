@@ -18,12 +18,13 @@ Page({
    */
   async onLoad(options) {
     console.log('options',options)
+    const { orderNumber, type} = options;
       this.setData({
-          orderNumber:options.orderNumber,
-          taskType:options.type
+          orderNumber:orderNumber,
+          taskType:type
       })
       try{
-          const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
+          const{result} = await Protocol.postPostersChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
           this.setData({
               noData:false,
               dataTry:true,
@@ -46,6 +47,7 @@ Page({
         this.setData({
             noData:true,
             num:this.data.num+1,
+            imgUrl:'123',
             rotate3dA: this.animation.export()
         })
         try{
@@ -53,7 +55,7 @@ Page({
             this.setData({
                 noData:false,
                 dataTry:true,
-                imgUrl:result.url,
+                imgUrl:result.url+'?random='+Date.now(),
                 orderNumber:result.orderNumber,
             })
         }catch (e) {

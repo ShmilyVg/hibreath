@@ -34,7 +34,7 @@ page{
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
 }
 .punchList_tab_top{
     position: fixed;
@@ -268,7 +268,17 @@ page{
     color:rgba(84,84,84,1);
 }
 .cell-title{
-    width:320rpx;
+     width:320rpx;
+     font-size:28rpx;
+     font-family:PingFang-SC-Regular,PingFang-SC;
+     font-weight:400;
+     float: left;
+     overflow: hidden;
+     text-overflow:ellipsis;
+     white-space: nowrap;
+ }
+.cell-titleWeight{
+    width:290rpx;
     font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
@@ -276,7 +286,6 @@ page{
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
-
 }
 .cell-titleR{
     color:rgba(237,111,105,1);
@@ -330,13 +339,13 @@ page{
 }
 .cellColorGold{
   color:#FFB000;
-  
+
 }
 .cellColorSilver{
    color:#929FAE;
-   
+
 }
 .cellColorCopper{
   color:#C58D61;
- 
+
 }
