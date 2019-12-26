@@ -194,10 +194,7 @@
                            foodExt="{{foodExt}}"
                            foodAheight="{{foodAheight}}"
                            foodHiddenImg="{{foodHiddenImg}}"
-                           calorie="{{calorie}}"
-                           carbohydrate="{{carbohydrate}}"
-                           fat="{{fat}}"
-                           protein="{{protein}}"
+                           isGroup="{{isGroup}}"
                            foodcurrentSwiper="{{foodcurrentSwiper}}"
                 >
 

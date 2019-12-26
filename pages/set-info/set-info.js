@@ -482,6 +482,7 @@ Page({
       planId: result.planId,
       planInfo:result.planInfo,
       sharedId: result.sharedId,
+      isGroup:result.isGroup,
       caseOnReady: result.onReady,
       caseonFinished: result.onFinished,
       indexDayDesc: result.dayDesc,
@@ -1255,8 +1256,8 @@ Page({
                 this.showBirthStart();
                 this.continue();
             }
+          Toast.hiddenLoading();
     },1200)
-      Toast.hiddenLoading();
   },
   hideModalCancel() {
     this.setData({
@@ -1288,7 +1289,24 @@ Page({
   },
   async listenerButton() {
     Toast.showLoading();
-      let that = this
+    const {result} = await Protocol.postPosters()
+    this.setData({
+          shareImg:result.url
+    })
+      wx.hideTabBar({
+          fail: function () {
+              setTimeout(function () {
+                  wx.hideTabBar()
+              }, 500)
+          }
+
+      });
+      this.setData({
+          isOpened:true,
+          actionSheetHidden: !this.data.actionSheetHidden
+      })
+    Toast.hiddenLoading()
+   /*   let that = this
     if (that.data.sharedId) {
       const { result } = await Protocol.postSharetask({
         sharedId: that.data.sharedId
@@ -1335,7 +1353,7 @@ Page({
           }
       }, 1000)
     Shared.getImageInfo(that);
-    Shared.screenWdith(that);
+    Shared.screenWdith(that);*/
   },
   listenerActionSheet: function() {
     this.setData({

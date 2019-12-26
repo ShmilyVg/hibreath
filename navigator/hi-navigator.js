@@ -274,4 +274,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToFooddetails({foodId}) {
         this.navigateTo({url: '/pagesIndex/food-details/food-details?foodId='+ foodId});
     }
+    /**
+     * 分享动态
+     */
+    static navigateToShareDynamics({type,orderNumber}) {
+        this.navigateTo({url: '/pagesIndex/shareDynamics/shareDynamics?type='+ type+'&orderNumber='+orderNumber});
+    }
 }

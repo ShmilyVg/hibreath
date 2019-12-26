@@ -50,7 +50,8 @@
         "detailsList/detailsList",
         "myDynamicList/myDynamicList",
         "food-details/food-details",
-        "food-recommendation/food-recommendation"
+        "food-recommendation/food-recommendation",
+        "shareDynamics/shareDynamics"
       ]
     }
   ],

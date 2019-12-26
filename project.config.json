@@ -1,0 +1,219 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.4",
+	"appid": "wx3092c4629e38d21e",
+	"projectname": "%E7%87%83%E8%84%82%E6%96%B0%E7%89%88%E5%BC%80%E5%8F%91",
+	"cloudfunctionTemplateRoot": "",
+	"watchOptions": {
+		"ignore": []
+	},
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/community/community",
+					"pathName": "pages/community/community",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/communityManagement/communityManagement",
+					"pathName": "pages/communityManagement/communityManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/update",
+					"pathName": "pages/update/update",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/memberManagement/memberManagement",
+					"pathName": "pages/memberManagement/memberManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/punchList/punchList",
+					"pathName": "pages/punchList/punchList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/imgClock/imgClock",
+					"pathName": "pages/imgClock/imgClock",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/result/result",
+					"pathName": "pages/result/result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/successInfo/successInfo",
+					"pathName": "pages/successInfo/successInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/shareAddcommunity/shareAddcommunity",
+					"pathName": "pages/shareAddcommunity/shareAddcommunity",
+					"query": "sharedId=A3C65C2974270FD093EE8A9BF8AE7D0BAADE6AC93C2C895E054A91CE93781A51",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/createCommunity/createCommunity",
+					"pathName": "pages/createCommunity/createCommunity",
+					"query": "sharedId=66F041E16A60928B05A7E228A89C37992F5480DD15555D13F62497407261EB7C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/caseDetails/caseDetails",
+					"pathName": "pages/caseDetails/caseDetails",
+					"query": "sharedId=FBD7939D674997CDB4692D34DE8633C449FBFA6AE1EFAFB6EE09AA18730C4FC8",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "分享详情页",
+					"pathName": "pages/taskShareInfo/taskShareInfo",
+					"query": "sharedId=E3796AE838835DA0B6F6EA37BCF8BCB79BB3DF3C56D06B11BDD1CAE98858BECD",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/reductionList/reductionList",
+					"pathName": "pages/reductionList/reductionList",
+					"query": "sharedId=1C9AC0159C94D8D0CBEDC973445AF2DAA42C3ABB89D4D2FEEC1EF1176F0B7B24",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/communityManagement/communityManagement",
+					"pathName": "pages/communityManagement/communityManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message-detail/message-detail",
+					"pathName": "pages/message-detail/message-detail",
+					"query": "messageId=5dd7a58ae98d124c0f955b59",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "pagesIndex/planfinish/planfinish",
+					"pathName": "pagesIndex/planfinish/planfinish",
+					"query": "sharedId=C3992E9A68C5AE12BD18488BC579B30D40094C122238D7732EFB88303631F2ED",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personalCenter/personalCenter",
+					"pathName": "pages/personalCenter/personalCenter",
+					"query": "planId=546",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的动态列表",
+					"pathName": "pagesIndex/myDynamicList/myDynamicList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/food-recommendation/food-recommendation",
+					"pathName": "pagesIndex/food-recommendation/food-recommendation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/food/food",
+					"pathName": "pages/food/food",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/shareDynamics/shareDynamics",
+					"pathName": "pagesIndex/shareDynamics/shareDynamics",
+					"query": "type=bodyIndex&orderNumber=0",
+					"scene": null
+				}
+			]
+		}
+	}
+}

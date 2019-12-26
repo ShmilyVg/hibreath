@@ -136,6 +136,10 @@ export default class Protocol {
     static postSharetask(data) {
         return Network.request({url: 'members/share/task',data:data})
     }
+    // 获取首页分享封面图
+    static postPosters() {
+        return Network.request({url: 'poster/getNowLosefatDataPosters'})
+    }
     //饮食打卡心灵鸡汤
     static getSoul() {
         return Network.request({url: 'settings/soul'})
@@ -515,5 +519,9 @@ export default class Protocol {
     //好物推荐
     static postConversionInfo({page = 1, pageSize = 10} = {}) {
         return Network.request({url: 'conversion/info', data: {page, pageSize}});
+    }
+    //生成海报
+    static postPostersChange({orderNumber,taskType}) {
+        return Network.request({url: 'poster/getNowLosefatTaskTypeDataPosters',data: {orderNumber,taskType}});
     }
 }
