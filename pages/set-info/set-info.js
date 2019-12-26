@@ -1291,7 +1291,7 @@ Page({
     Toast.showLoading();
     const {result} = await Protocol.postPosters()
     this.setData({
-          shareImg:result.url
+          shareImg:result.url+'?random='+Date.now(),
     })
       wx.hideTabBar({
           fail: function () {

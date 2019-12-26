@@ -55,7 +55,7 @@ Page({
             this.setData({
                 noData:false,
                 dataTry:true,
-                imgUrl:result.url+'?random='+Date.now(),
+                imgUrl:result.url+'?random='+Date.now(), //图片缓存问题
                 orderNumber:result.orderNumber,
             })
         }catch (e) {
