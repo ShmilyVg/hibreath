@@ -40,10 +40,6 @@ export default class Protocol {
         return Network.request({url: 'device/unbind', data: {deviceId}});
     }
 
-    static postBreathDataSetSituation({id, situation}) {
-        return Network.request({url: 'breathData/setSituation', data: {id, situation}});
-    }
-
     //上传身体评估信息
     static postBreathPlanAnalysis(data) {
         return Network.request({url: 'breathPlan/analysis', data: data})
