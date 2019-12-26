@@ -521,7 +521,7 @@ export default class Protocol {
         return Network.request({url: 'conversion/info', data: {page, pageSize}});
     }
     //生成海报
-    static postFoodChange({orderNumber,taskType}) {
+    static postPostersChange({orderNumber,taskType}) {
         return Network.request({url: 'poster/getNowLosefatTaskTypeDataPosters',data: {orderNumber,taskType}});
     }
 }

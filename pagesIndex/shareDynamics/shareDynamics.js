@@ -49,7 +49,7 @@ Page({
             rotate3dA: this.animation.export()
         })
         try{
-            const{result} = await Protocol.postFoodChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
+            const{result} = await Protocol.postPostersChange({orderNumber:this.data.orderNumber,taskType:this.data.taskType})
             this.setData({
                 noData:false,
                 dataTry:true,
