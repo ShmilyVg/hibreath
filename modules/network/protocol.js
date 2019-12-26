@@ -14,21 +14,10 @@ export default class Protocol {
         return Network.request({url: 'account/info'});
     }
 
-    static getAnalysisSituation() {
-        return Network.request({url: 'analysis/situation'})
+    static getBreathDataAdd({dataValue}) {
+        return Network.request({url: 'breathData/add', data: {dataValue}});
     }
 
-    static getAnalysisFetch({dataValue, situation}) {
-        return Network.request({url: 'analysis/fetch', data: {dataValue, situation}})
-    }
-
-    static getBreathDataAdd({dataValue, situation}) {
-        return Network.request({url: 'breathData/add', data: {dataValue, situation}});
-    }
-
-    /* static getBreathDataAdd({dataValue}) {
-         return Network.request({url: 'breathData/add', data: {dataValue}});
-     }*/
     static getBreathDataList({page, pageSize = 15, timeBegin, timeEnd}) {
         return Network.request({url: 'breathData/list', data: {page, pageSize,timeBegin,timeEnd}})
     }
