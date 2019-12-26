@@ -63,9 +63,6 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/imgClock/imgClock?groupId=' + id});
     }
 
-/*    static navigateToHistory() {
-        this.navigateTo({url: '/pages/history/history'});
-    }*/
     //reLaunch 去除左上角返回
     static navigateToDeviceBind() {
         this.navigateTo({url: '/pagesIndex/device-bind/device-bind'});
@@ -99,10 +96,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateSuccessInfo() {
         this.navigateTo({url: '/pages/successInfo/successInfo'})
     }
-    static navigateToclickCheck() {
-        this.navigateTo({url: '/pages/history/history'})
-    }
-
     static navigateToPlan() {
         this.navigateTo({url: '/pages/plan/plan'})
     }

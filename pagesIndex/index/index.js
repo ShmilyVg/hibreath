@@ -79,11 +79,6 @@ Page({
         isHidden:false,//从后台回到前台
 
     },
-
-        historyUrl() {
-        HiNavigator.navigateToclickCheck();
-    },
-
     disconnectBtnClick() {
         if (this.data.stateBtnShow){
             app.getBLEManager().connect();
