@@ -63,6 +63,53 @@ Page({
         }
 
     },
+    saveImg(){
+        wx.downloadFile({
+            url:this.data.imgUrl,
+            success: function (res) {
+                wx.saveImageToPhotosAlbum({
+                    filePath: res.tempFilePath, // 图片路径
+                    success:function (res) {
+                        wx.showToast({
+                            title:'保存成功',
+                        })
+                    },
+                    fail:function (err) {
+                        wx.getSetting({
+                            success:function (res) {
+                                // 判断否有保存权限
+                                if (!res.authSetting['scope.writePhotosAlbum']) {
+                                    wx.showModal({
+                                        title:'提示',
+                                        content:'需要获取图片权限哦',
+                                        success:function (res) {
+                                            if (res.confirm) {
+                                                wx.openSetting({
+                                                    success(res) {
+                                                        console.log(res);
+                                                    },
+                                                    fail(res) {
+                                                        console.log(res);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    })
+                                };
+                            }
+                        });
+                    }
+                })
+            },
+            fail: res => {
+                console.log(res);
+                wx.showToast({
+                    title:'图片下载失败',
+                })
+            },
+        })
+
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
