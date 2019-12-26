@@ -122,6 +122,6 @@ Page({
     },
 
     getIntegralProtocol({taskPageIndex}) {
-        return taskPageIndex === 0 ? Protocol.postIntegralSingle() : Protocol.postIntegralDaily();
+        return taskPageIndex === 1 ? Protocol.postIntegralSingle() : Protocol.postIntegralDaily();
     },
 });
