@@ -1,7 +1,4 @@
 <!--pages/device-bind/device-bind.wxml-->
-<!--
-<template is="common" data="{{burnupShow,homeHeartBox,btnState,homeTitle,homeTitleText}"></template>
--->
 <view class="page" style="background-color:{{bgColor}}" >
     <!--未找到设备-->
     <view  wx:if="{{nofind}}"  style="padding: 0 50rpx;box-sizing:border-box;">
