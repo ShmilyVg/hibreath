@@ -68,43 +68,6 @@ export default class Protocol {
         return Network.request({url: 'settings/mealType'});
     }
 
-    //新加请求接口
-
-    //身体评估-获取上次身体评估记录用于默认
-    static postPhysical(data) {
-        return Network.request({url: 'breathData/sync', data: data});
-    }
-
-    //个人中心--体重体脂记录-修改
-    static postSetBMIInfo(data) {
-        return Network.request({url: 'breathData/sync', data: data});
-    }
-
-    //吹气完成进入结果页
-    static postSetGradeInfo(data) {
-        return Network.request({url: 'breathData/info', data: data});
-    }
-
-    //分享进入结果页面
-    static postshareInfo(data) {
-        return Network.request({url: '/breathData/shareInfo', data: data});
-    }
-
-    //添加减脂方案目标
-    static postSetTarget(data) {
-        return Network.request({url: 'breathData/sync', data: data});
-    }
-
-    //获取菜谱对应详细信息
-    static postCookInfo({Id}) {
-        return Network.request({url: 'breathData/sync', data: {Id}});
-    }
-
-    //今日身体情况记录--体重&体脂
-    static postTodayBMI(data) {
-        return Network.request({url: 'breathData/list', data: data})
-    }
-
     //视频打卡页数据
     static postHIIT(data) {
         return Network.request({url: 'sport/info', data: data})
