@@ -10,7 +10,7 @@ import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
 const log = require('../../../../log.js')
 /*暂作修改*/
-const INIT_TIMEOUT = 10;
+const INIT_TIMEOUT = 15;
 export default class AbstractBlueTooth {
     constructor() {
         this._isOpenAdapter = false;
@@ -27,7 +27,7 @@ export default class AbstractBlueTooth {
         this._isConnectBindDevice = false;
         this.hiServiceUUID = '';
         this._receiveDataOutsideistener = null;
-        this.connectionInfo = {timeout: INIT_TIMEOUT, count: 3, index: 1};
+        this.connectionInfo = {timeout: INIT_TIMEOUT, count: 4, index: 1};
         this._receiveDataInsideListener = ({receiveBuffer}) => {
             if (!!this._receiveDataListener) {
                 const {finalResult, state, filter} = this.dealReceiveData({receiveBuffer});
@@ -175,12 +175,12 @@ export default class AbstractBlueTooth {
                         //蓝牙连接问题暂时处理
                         //this._isConnected = true;
                         let connectionInfo = this.connectionInfo;
-                        console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's');
+                        console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's',connectionInfo);
                         console.log('deviceIddeviceIddeviceIddeviceId',deviceId)
                         wx.createBLEConnection({
                             // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
                             deviceId,
-                            timeout: connectionInfo.timeout * 1000,
+                            timeout: connectionInfo.timeout * 1500,
                             success: (res) => this._findThatCharacteristics({deviceId}).then(() => {
                                 // t连接成功
                                 this._getEventAndTimestamp({event: 'linkResultTime', status: 1});
@@ -215,7 +215,7 @@ export default class AbstractBlueTooth {
                                     if (++connectionInfo.index >= connectionInfo.count) {
                                         connectionInfo.index = connectionInfo.count;
                                     }
-                                    connectionInfo.timeout = (connectionInfo.index) * 10;
+                                    connectionInfo.timeout = (connectionInfo.index) * 15;
                                     console.log('下次蓝牙连接的超时时间', connectionInfo.timeout, connectionInfo.index);
                                 }
                                 reject(res);
