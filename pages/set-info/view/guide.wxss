@@ -11,7 +11,11 @@
     color:rgba(237,111,105,1);
     margin-top: 12rpx;
 }
-
+.guide-img{
+    width: 206rpx;
+    height: 271rpx;
+    margin: 255rpx auto 38rpx;
+}
 .guide-text1{
     width: 100%;
     font-size:46rpx;
@@ -79,8 +83,7 @@
     line-height:42rpx;
     text-align: center;
 }
-
-.guide-start{
+.guide-startBtn{
     width:500rpx;
     height:100rpx;
     background:rgba(237,111,105,1);
@@ -90,6 +93,33 @@
     font-weight:500;
     color:rgba(255,255,255,1);
     line-height:100rpx;
-    position: fixed;
-    bottom: 100rpx;
+    margin-top: 200rpx;
+}
+.showGoclockin-imgB{
+    width: 206rpx;
+    height: 271rpx;
+    margin: 255rpx auto 38rpx;
+}
+.showGoclockin-imgL{
+    width: 27rpx;
+    height: 26rpx;
+    margin-left: 12rpx;
+}
+.showGoclockin-text{
+    color:rgba(237,111,105,1);
+    font-size: 32rpx;
+}
+.showGoclockin-startView{
+    width:500rpx;
+    height:100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    margin: 170rpx auto 0rpx auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

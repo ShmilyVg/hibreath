@@ -1,0 +1,35 @@
+/* pages/goVerification/goVerification.wxss */
+page{
+    padding: 180rpx 60rpx 0rpx;
+    box-sizing: border-box;
+}
+.goVerification-view{
+    box-sizing: border-box;
+    padding-bottom: 15rpx;
+    border-bottom: 1rpx #D9D9D9 solid;
+    height: 60rpx;
+    margin-bottom: 80rpx;
+}
+.goVerification-input{
+    float: left;
+    padding-left: 20rpx;
+}
+.goVerification-lookNumber{
+    float: right;
+    width: 145rpx;
+    height: 43rpx;
+    background: #ED6F69;
+    line-height: 43rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 24rpx;
+    border-radius: 20rpx;
+}
+.goVerification-btn{
+    width: 487rpx;
+    height: 86rpx;
+    line-height: 86rpx;
+    color: #fff;
+    background: #ED6F69;
+    text-align: center;
+}

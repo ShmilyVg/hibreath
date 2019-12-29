@@ -212,6 +212,19 @@
 					"pathName": "pagesIndex/shareDynamics/shareDynamics",
 					"query": "type=bodyIndex&orderNumber=0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goRegister/goRegister",
+					"pathName": "pages/goRegister/goRegister",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goVerification/goVerification",
+					"pathName": "pages/goVerification/goVerification",
+					"scene": null
 				}
 			]
 		}

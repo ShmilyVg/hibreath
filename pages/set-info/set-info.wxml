@@ -1,30 +1,35 @@
 <!--pages/set-info/set-info.wxml-->
-<import src="./view/guide.wxml"></import>
+<!--<import src="./view/guide.wxml"></import>-->
 <import src="./view/fatBurnCard.wxml"></import>
 <import src="./view/bodyIndexCard.wxml"></import>
 <import src="./view/HIITCard.wxml"></import>
 <import src="./view/foodVideo.wxml"></import>
 <import src="./view/caseFinished.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
-    <block class="flex-column"  wx:if="{{showNewInfo}}">
-
-            <my-swiper wx:if="{{showGuide}}"></my-swiper>
-            <view class="middle-view" wx:if="{{showGuide}}">慢慢减脂路上·你是否也遇这些困扰</view>
-
-                <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
-                    <image class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
-                    <view class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
-                    <image class="page1-image1" src="../../images/set-info/page1-down.png"></image>
-                </view>
-            <button wx:if="{{showGuide}}"  class="guide-start" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即体验</button>
-        <view class="flex-column" wx:else>
+    <block  wx:if="{{showNewInfo}}">
+        <my-swiper wx:if="{{showGuide}}"></my-swiper>
+        <view wx:if="{{showGuide}}" class="middle-view">慢慢减脂路上·你是否也遇这些困扰</view>
+        <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
+            <image wx:if="{{showGuide}}" class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
+            <view wx:if="{{showGuide}}" class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
+            <image wx:if="{{showGuide}}" class="page1-image1" src="../../images/set-info/page1-down.png"></image>
+        </view>
+        <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
+        <view wx:if="{{showGoclockin}}" style="text-align: center">
+            <image class="showGoclockin-imgB" src="../../images/set-info/slimple.png"></image>
+            <view class="showGoclockin-text">暂未开启打卡...</view>
+            <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
+                开启打卡
+                <image class="showGoclockin-imgL" src="../../images/set-info/sj.png"></image>
+            </view>
+        </view>
+        <view class="flex-column" style="display: none">
             <view class="title">{{title[page-1]}}</view>
             <view class="num">{{page}}/8</view>
 
             <view class="flex-column" wx:if="{{page==1}}">
                 <view class="flex-row" style="height:340rpx;margin-top:-230rpx;">
                     <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
-
                     <my-swiper-target class="guide-target"></my-swiper-target>
                     <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
                 </view>

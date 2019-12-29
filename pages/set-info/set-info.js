@@ -23,10 +23,9 @@ Page({
   data: {
     isfatBurn: false, //燃脂卡片
     isbodyIndex: false, //记录身体指标卡片
-
-    showGuide: false, //立即体验 未注册状态
-    showNewInfo: false, //新手引导页
-
+    showNewInfo: false, //未授权或者未注册 状态都在此标志位下进行
+    showGuide: false, //未授权显示引导页
+    showGoclockin:false, //开启打卡状态
     noMeasure: false, //没有准确测过体脂率
     sexBox: [
       { image: "man", text: "男士", isChose: false, value: 1 },
@@ -47,12 +46,6 @@ Page({
     page4MenItem: ["4", "7", "10", "15", "20", "25", "30", "35", "40"],
     page4WomenItem: ["10", "15", "20", "25", "30", "35", "40", "45", "50"],
     birth: ["1980", "1", "1"],
-    /*  meals: [
-            {text: '外卖为主', isChose: false, en: 'waimai'},
-            {text: '外出就餐为主', isChose: false, en: 'waichu'},
-            {text: '单位食堂为主', isChose: false, en: 'shitang'},
-            {text: '居家制作为主', isChose: false, en: 'jujia'}
-        ],*/
     meals: [],
     secArray: [],
     bgColorSetInfoPage: "#ffffff",
@@ -115,7 +108,98 @@ Page({
       phValue: "写下你的减脂目标"
     });
   },
+  /**
+   * @desc 是否显示 个人中心 tab 红点
+   */
+  async getReddot(){
+    const { result } = await Protocol.postMemberInfo();//判定个人中心tab是否显示红点
+    if(result.isHave){
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }else{
+      wx.hideTabBarRedDot({
+        index: 2,
+      })
+    }
+  },
+  /**
+   * @desc 是否显示开屏页
+   */
+  getIsshowGuide(){
+    if(!wx.getStorageSync('showGuide')){
+      this.setData({
+        showNewInfo:true,
+        showGuide:true
+      })
+      wx.hideTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.hideTabBar()
+          }, 200)
+        }
+      });
+    }
 
+  },
+  /**
+   * @desc 跳转 立即注册 页面
+   */
+  goRegister(){
+    HiNavigator.navigateToGoRegister()
+  },
+  /**
+   * @desc 未登录状态处理
+   */
+  getRegister(){
+    var that =this;
+    app.appLoginListener = function({ loginState }) {
+      console.log("set-info", `appLoginListener-> ${loginState}`);
+      if(wx.getStorageSync('showGuide') !==''){
+        if (loginState == this.NOT_REGISTER){
+          that.setData({
+            showNewInfo: true,
+            showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
+          });
+          setTimeout(() => {
+            wx.setNavigationBarColor({
+              frontColor: "#ffffff",
+              backgroundColor: "#F55E6B"
+            });
+          });
+        }else{
+          that.setData({
+            showNewInfo: false,
+            showGoclockin: false,
+            showGuide:false
+          });
+        }
+      }
+    };
+  },
+  /**
+   * @desc 立即体验按钮
+   */
+  toSetInfo(){
+    wx.showTabBar({
+        fail: function() {
+            setTimeout(function() {
+                wx.showTabBar();
+            }, 200);
+        }
+    });
+    setTimeout(() => {
+      wx.setNavigationBarColor({
+        frontColor: "#ffffff",
+        backgroundColor: "#F55E6B"
+      });
+    });
+    this.setData({
+        showGuide:false,
+        showGoclockin:true
+    })
+    wx.setStorageSync('showGuide', 'hiddenGuide');
+  },
   onHide() {
     //离开时 告知蓝牙标志位 0x3D   0X02
     if (app.getLatestBLEState().connectState === "connected") {
@@ -126,38 +210,9 @@ Page({
         console.log("小程序告知设备 此时未在打卡页面  不可以上传离线数据");
       }
     }
-    console.log("breath_user_info_input onHide info====", this.data.info);
-    this.storeBreathUserInfoInput();
-    console.log('onHide---getStorageSync', wx.getStorageSync("breath_user_info_input"))
       this.setData({
           showExcitation: false,
       });
-  },
-
-  // 持久化用户输入信息
-  storeBreathUserInfoInput() {
-    if (this.data.info) {
-      let { info, page, scrollLeft, schemaId } = this.data,
-        obj = {};
-      for (let key in info) {
-        if (info.hasOwnProperty(key)) {
-          let item = info[key];
-          if (item) {
-            obj[key] = item;
-          }
-        }
-      }
-      if (info["sex"] === 0) {
-        obj["sex"] = 0;
-        obj["sexStr"] = "woman";
-      }
-      obj["page"] = page;
-      if (page >= 8) {
-        obj["scrollLeft"] = scrollLeft;
-        obj["schemaId"] = schemaId;
-      }
-      wx.setStorageSync("breath_user_info_input", obj);
-    }
   },
   //上传身体指标
   async formSubmit(e) {
@@ -167,7 +222,6 @@ Page({
       toast.warn("请填写体重");
       return;
     }
-
     const weightnum = finaValue.weight.split(".");
     if (weightnum.length > 1 && weightnum[1] >= 10) {
       this.showDialog("体重至多支持3位整数+1位小数");
@@ -229,176 +283,18 @@ Page({
   },
   //同步离线数据
   async onLoad(e) {
-    let that = this;
-    console.log("on:", e);
-      wx.hideShareMenu();
-    app.appLoginListener = function({ loginState }) {
-      console.log("set-info", `appLoginListener-> ${loginState}`);
-      if (loginState == this.NOT_REGISTER) {
-        that.setData({
-          showNewInfo: true,
-          showGuide: true //授权页面显示
-        });
-          setTimeout(() => {
-              wx.setNavigationBarColor({
-                  frontColor: "#171717",
-                  backgroundColor: "#ffffff"
-              });
-          });
-      }
-    };
-
-    if (!app.globalData.isLogin) {
-      app.doLogin();
-    }
-
+    wx.hideShareMenu();
+    this.getIsshowGuide();//是否显示开屏页
+    this.getRegister();//获取是否注册
+                       //获取是否填写完资料
+    this.getReddot();//获取是否显示红点
     this.connectionPage = new ConnectionManager(this);
-    /* await that.handleGuide(that);*/
-    this.handleBaseInfo();
-      const { result } = await Protocol.postMemberInfo();
-      that.setData({
-          isHave:result.isHave,
-      })
-      if(that.data.isHave){
-          wx.showTabBarRedDot({
-              index: 2,
-          })
-      }else{
-          wx.hideTabBarRedDot({
-              index: 2,
-          })
-      }
-    /* const {result} = await Protocol.postIncentive();
-        console.log('result11',result.taskInfo.bodyIndex.weight)*/
   },
-
-  async handleBaseInfo(resetPage) {
-    const { year, month, day } = tools.createDateAndTime(
-      Date.parse(new Date())
-    );
-    const currentDate = `${year}-${month}-${day}`;
-    //获取三餐选择方案
-    const {
-      result: { list }
-    } = await Protocol.postMealType();
-    this.setData({
-      meals: list
-    });
-    const {
-      result: { list: goals }
-    } = await Protocol.postSettingsGoals();
-    const { result: accountInfo } = await Protocol.getAccountInfo();
-    const finishedGuide = accountInfo.finishedGuide;
-
-    this.setData({
-      isfinishedGuide: finishedGuide
-    });
-    if (!finishedGuide) {
-      this.setData({
-        showNewInfo: true
-      });
-        setTimeout(() => {
-            wx.setNavigationBarColor({
-                frontColor: "#171717",
-                backgroundColor: "#ffffff"
-            });
-        });
-    }
-    let info = {};
-
-    function setSexFun(sexValue) {
-      if (sexValue !== 1) {
-        info.sex = 0;
-        info.sexStr = "woman";
-      } else {
-        info.sex = 1;
-        info.sexStr = "man";
-      }
-
-      for (let item of this.data.sexBox) {
-        item.isChose = item.value === sexValue;
-      }
-    }
-    if (finishedGuide) {
-      this.handleTasks();
-    } else {
-      info = {
-        goalDesc: "",
-        sex: 0,
-        sexStr: "woman",
-        birthday: "1980-1-1",
-        height: "",
-        weight: "",
-        bodyFatRate: "",
-        weightGoal: ""
-      };
-      accountInfo.detail &&
-        ({
-          detail: { sex: info.sex }
-        } = accountInfo);
-
-      const userInfoInput = wx.getStorageSync("breath_user_info_input");
-      console.log(
-        "breath_user_info_input handleBaseInfo() data====",
-        userInfoInput
-      );
-      let page = resetPage || 1,
-        project = [];
-      if (userInfoInput) {
-        info = Object.assign(info, userInfoInput, { goalDesc: "" });
-        page = resetPage || userInfoInput.page || 1;
-
-        const mealValue = info.mealType;
-        for (let item of this.data.meals) {
-          item.isChose = mealValue === item.en;
-        }
-        const { birthday } = info;
-        if (birthday) {
-          this.data.birth = birthday.split("-");
-        }
-        if (page >= 8) {
-          const {
-            result: { list }
-          } = await Protocol.postSettingsLosefatSchema();
-          project.push(...list);
-        }
-      }
-      setSexFun.call(this, info.sex);
-      let obj = {
-        currentDate,
-        goals,
-        info,
-        showNewInfo: true,
-        showGuide: false,
-        birth: this.data.birth,
-        meals: this.data.meals,
-        sexBox: this.data.sexBox,
-        bgColorSetInfoPage: "#ffffff",
-        page
-      };
-      if (project.length) {
-        obj["project"] = project;
-        obj["scrollLeft"] = info.scrollLeft;
-        obj["schemaId"] = info.schemaId;
-      }
-      this.setData(obj);
-      console.log("handleBaseInfo", this.data.showNewInfo);
-    }
-  },
-
   handleBle() {
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
       bleStateListener: () => {
         console.log("setPage-bleStateListener", app.getLatestBLEState());
-        /*
-                首页提示蓝牙未开启 暂做注释
-               if(app.getLatestBLEState().connectState =='unavailable'&&!this.data.showNewInfo&&!this.data.showGuide){
-                    console.log(this.data.showNewInfo,this.data.showGuide,'状态值！！！！！！！！！！！！！！！！')
-                    setTimeout(() => {
-                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-                     },200);
-                }*/
         if (app.getLatestBLEState().connectState === "connected") {
           var pages = getCurrentPages(); //获取加载的页面
           var currentPage = pages[pages.length - 1]; //获取当前页面的对象
@@ -430,10 +326,6 @@ Page({
         }
       }
     });
-    /*  const isBindDevice = wx.getStorageSync('isBindDevice');
-          if (isBindDevice) {
-              app.getBLEManager().connect();
-          }*/
   },
   async onCommunitySettingClickEvent() {
     try {
@@ -456,7 +348,6 @@ Page({
             cancelText: "取消",
             confirmEvent: () => {
               Protocol.postMembersExit({ planId: this.data.planId }).then(() =>{
-                  this.handleBaseInfo(1)
                   setTimeout(() => {
                       wx.setNavigationBarColor({
                           frontColor: "#171717",
@@ -494,7 +385,6 @@ Page({
     });
 
     const typesArr = result.taskList.map(d => d.type);
-    //console.log("123213", typesArr)
     for (var i = 0; i < typesArr.length; i++) {
       if (typesArr[i] === "fatBurn") {
         const fatBurnExt = result.taskList[i].ext;
@@ -610,14 +500,12 @@ Page({
         }
       }
     }
-
     setTimeout(() => {
       wx.setNavigationBarColor({
         frontColor: "#ffffff",
         backgroundColor: "#F55E6B"
       });
     });
-    //Toast.hiddenLoading()
   },
 
   async continue() {
@@ -714,7 +602,6 @@ Page({
           showNewInfo: false,
           page: 1
         });
-        //this.storeBreathUserInfoInput();
         wx.removeStorageSync('breath_user_info_input');
         return;
     }
@@ -723,10 +610,6 @@ Page({
         page: ++this.data.page
       });
     }
-
-    /* wx.setStorageSync({
-             currentPage: this.data.page,
-         });*/
   },
 
   objIsEmpty(obj) {
@@ -879,13 +762,13 @@ Page({
     this.setData({ noMeasure: !this.data.noMeasure });
   },
 
+/*
   async onGetUserInfoEvent(e) {
     console.log("eee", e);
     const {
       detail: { userInfo, encryptedData, iv }
     } = e;
     if (!!userInfo) {
-      console.log("111");
       if (this.data.isfinishedGuide) {
         this.setData({
           showNewInfo: false,
@@ -906,8 +789,8 @@ Page({
       }
       return;
     }
-    console.log("222");
   },
+*/
 
   onReady() {},
 
@@ -1330,54 +1213,6 @@ Page({
           actionSheetHidden: !this.data.actionSheetHidden
       })
     Toast.hiddenLoading()
-   /*   let that = this
-    if (that.data.sharedId) {
-      const { result } = await Protocol.postSharetask({
-        sharedId: that.data.sharedId
-      });
-      if (result.fatBurn) {
-          that.setData({
-          shareFat: result.fatBurn,
-          shareFatBurnDesc: result.fatBurnDesc
-        });
-      }
-        that.setData({
-        shareTodayDif: result.todayDif,
-        shareTotalDif: result.totalDif,
-        shareTaskList: result.taskList
-      });
-    }
-      let countDownNumHot =10
-      that.data.loanTime = setInterval(function () {
-          countDownNumHot--;
-          console.log('this.data.sharedImg1',that.data.shareImg)
-          if(that.data.shareImg || that.data.shareImg !== ""){
-              clearInterval(that.data.loanTime);
-          }
-          if(countDownNumHot<0){
-              clearInterval(that.data.loanTime);
-              if(!that.data.shareImg || that.data.shareImg == ""){
-                  Toast.hiddenLoading()
-                  that.setData({
-                      isOpened: false
-                  });
-                  wx.showTabBar({
-                      fail: function() {
-                          setTimeout(function() {
-                              wx.showTabBar();
-                          }, 500);
-                      }
-                  });
-                  wx.showToast({
-                      title: '加载失败请重试',
-                      image: '/images/loading_fail.png',
-                      duration: 1500,
-                  })
-              }
-          }
-      }, 1000)
-    Shared.getImageInfo(that);
-    Shared.screenWdith(that);*/
   },
   listenerActionSheet: function() {
     this.setData({

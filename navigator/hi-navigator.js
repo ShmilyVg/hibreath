@@ -15,7 +15,14 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToResultNOnum() {
         this.navigateTo({url: '/pages/result/result'});
     }
-
+    //注册页面
+    static navigateToGoRegister() {
+        this.navigateTo({url: '/pages/goRegister/goRegister'});
+    }
+    //验证手机号群号页面
+    static navigateToGoVerification() {
+        this.navigateTo({url: '/pages/goVerification/goVerification'});
+    }
     //准备日-视频打卡
     static navigateTofoodVideoclock({id,videoUrl}) {
         this.navigateTo({url: '/pagesIndex/foodVideoclock/foodVideoclock?id=' + id +'&videoUrl=' + videoUrl});

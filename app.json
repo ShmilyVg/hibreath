@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/set-info/set-info",
+    "pages/goRegister/goRegister",
+    "pages/goVerification/goVerification",
     "pages/community/community",
     "pages/result/result",
     "pages/update/update",

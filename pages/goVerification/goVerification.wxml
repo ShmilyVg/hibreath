@@ -1,0 +1,13 @@
+<!--pages/goVerification/goVerification.wxml-->
+<view class="goVerification-view">
+    <input class="goVerification-input" value="{{groupNumber}}" placeholder="请填写您的Slimple群号" maxlength="4" placeholder-class=""  bindinput="bindInputGoal" type="number"/>
+    <view class="goVerification-lookNumber">查看群号</view>
+    <view class="clear"></view>
+</view>
+<view class="goVerification-view">
+    <input class="goVerification-input" value="{{groupNumber}}" placeholder="请填写首次下单的收货手机号" maxlength="11" placeholder-class=""  bindinput="bindInputGoal" type="number"/>
+</view>
+<view class="goVerification-view">
+    <input class="goVerification-input" value="{{groupNumber}}" placeholder="请输入短信验证码" maxlength="4" placeholder-class=""  bindinput="bindInputGoal" type="number"/>
+</view>
+<view class="goVerification-btn">确定</view>

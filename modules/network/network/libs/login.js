@@ -1,6 +1,7 @@
 import BaseNetworkImp from "./base/base-network-imp";
 
 import {WXDialog} from "heheda-common-view";
+import HiNavigator from "../../../../navigator/hi-navigator";
 
 let _needRegister = false;
 export default class Login {
@@ -33,7 +34,7 @@ export default class Login {
     }
 
 
-} 
+}
 
 function wxReLogin(resolve, reject) {
     wx.login({
@@ -71,6 +72,7 @@ const loginFailObj = {
         console.log('未注册，请先注册');
         _needRegister = true;
         wx.removeStorageSync('currentSocialGroupId')
+        //HiNavigator.navigateToGoRegister()
        /* //圈子未注册用户显示
         getApp().globalData.isNoRegister = true
         console.log('isNoRegisterisNoRegister',getApp().globalData.isNoRegister)*/
