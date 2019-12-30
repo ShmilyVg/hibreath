@@ -224,6 +224,14 @@
 					"id": -1,
 					"name": "pages/goVerification/goVerification",
 					"pathName": "pages/goVerification/goVerification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "pages/guidance/guidance",
+					"pathName": "pages/guidance/guidance",
+					"query": "",
 					"scene": null
 				}
 			]
