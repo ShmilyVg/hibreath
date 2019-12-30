@@ -274,7 +274,7 @@ Page({
    * @desc 根据用户状态进行跳转 立即注册或填写资料
    */
   goRegister(){
-    if(this.data.isNophone){
+    if(!app.globalData.isLogin || this.data.isNophone){
       HiNavigator.navigateToGoRegister()
     }else{
       console.log('22')
