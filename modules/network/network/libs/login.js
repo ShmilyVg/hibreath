@@ -71,6 +71,7 @@ const loginFailObj = {
     2: () => {
         console.log('未注册，请先注册');
         _needRegister = true;
+        getApp().globalData.isLogin = false
         wx.removeStorageSync('currentSocialGroupId')
         //HiNavigator.navigateToGoRegister()
        /* //圈子未注册用户显示
