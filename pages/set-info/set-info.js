@@ -108,21 +108,7 @@ Page({
       phValue: "写下你的减脂目标"
     });
   },
-  /**
-   * @desc 是否显示 个人中心 tab 红点
-   */
-  async getReddot(){
-    const { result } = await Protocol.postMemberInfo();//判定个人中心tab是否显示红点
-    if(result.isHave){
-      wx.showTabBarRedDot({
-        index: 2,
-      })
-    }else{
-      wx.hideTabBarRedDot({
-        index: 2,
-      })
-    }
-  },
+
   /**
    * @desc 是否显示开屏页
    */
@@ -140,14 +126,8 @@ Page({
         }
       });
     }
+  },
 
-  },
-  /**
-   * @desc 跳转 立即注册 页面
-   */
-  goRegister(){
-    HiNavigator.navigateToGoRegister()
-  },
   /**
    * @desc 未登录状态处理
    */
@@ -155,7 +135,6 @@ Page({
     var that =this;
     app.appLoginListener = function({ loginState }) {
       console.log("set-info", `appLoginListener-> ${loginState}`);
-      if(wx.getStorageSync('showGuide') !==''){
         if (loginState == this.NOT_REGISTER){
           that.setData({
             showNewInfo: true,
@@ -174,7 +153,6 @@ Page({
             showGuide:false
           });
         }
-      }
     };
   },
   /**
@@ -284,11 +262,48 @@ Page({
   //同步离线数据
   async onLoad(e) {
     wx.hideShareMenu();
-    this.getIsshowGuide();//是否显示开屏页
-    this.getRegister();//获取是否注册
-                       //获取是否填写完资料
-    this.getReddot();//获取是否显示红点
     this.connectionPage = new ConnectionManager(this);
+    await this.getIsshowGuide();//是否显示开屏页
+    if(wx.getStorageSync('showGuide') !==''){
+      await this.getRegister();//获取是否注册
+    }
+    await this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
+  },
+  /**
+   * @desc 根据用户状态进行跳转 立即注册或填写资料
+   */
+  goRegister(){
+    if(this.data.isNophone){
+      HiNavigator.navigateToGoRegister()
+    }else{
+      HiNavigator.navigateToGuidance()
+    }
+  },
+  /**
+   * @desc 获取个人资料
+   */
+  async getPresonMsg(){
+    const {result} = await Protocol.getAccountInfo()
+    if(!result.finishedPhone){
+        this.setData({
+          isNophone:true
+        })
+      return
+    }
+    if(result.finishedGuide){
+      this.handleTasks()
+    }else{
+      this.setData({
+        showNewInfo: true,
+        showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
+      });
+      setTimeout(() => {
+        wx.setNavigationBarColor({
+          frontColor: "#ffffff",
+          backgroundColor: "#F55E6B"
+        });
+      });
+    }
   },
   handleBle() {
     this.indexCommonManager = new IndexCommonManager(this);
@@ -365,6 +380,9 @@ Page({
       console.warn(e);
     }
   },
+  /**
+   * @desc  获取任务列表
+   */
   async handleTasks() {
     console.log("getCurrentPages()", getCurrentPages());
     //Toast.showLoading();

@@ -26,10 +26,30 @@ page{
     border-radius: 20rpx;
 }
 .goVerification-btn{
-    width: 487rpx;
-    height: 86rpx;
-    line-height: 86rpx;
-    color: #fff;
+    width:500rpx;
+    height:100rpx;
+    margin-top: 100rpx;
+    background:rgba(237,111,105,1);
+    border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:100rpx;
+}
+.goVerification-getCode{
+    float: right;
+    width: 145rpx;
+    height: 43rpx;
     background: #ED6F69;
+    line-height: 43rpx;
+    color: #fff;
     text-align: center;
+    font-size: 24rpx;
+    border-radius: 20rpx;
+    padding: 0rpx;
+}
+
+button:after{
+    border: none;
 }

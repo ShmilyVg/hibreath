@@ -468,4 +468,12 @@ export default class Protocol {
     static postPostersChange({orderNumber,taskType}) {
         return Network.request({url: 'poster/getNowLosefatTaskTypeDataPosters',data: {orderNumber,taskType}});
     }
+    //获取手机验证码
+    static getSmsCode(data) {
+      return Network.request({url: 'account/getSmsCode',data});
+    }
+    //提交手机验证码&群号
+    static postPhone(data) {
+      return Network.request({url: 'account/confirmSmsCode',data});
+    }
 }

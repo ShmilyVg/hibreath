@@ -23,6 +23,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGoVerification() {
         this.navigateTo({url: '/pages/goVerification/goVerification'});
     }
+    //新手引导填写资料
+    static navigateToGuidance() {
+      this.navigateTo({url: '/pages/guidance/guidance'});
+    }
     //准备日-视频打卡
     static navigateTofoodVideoclock({id,videoUrl}) {
         this.navigateTo({url: '/pagesIndex/foodVideoclock/foodVideoclock?id=' + id +'&videoUrl=' + videoUrl});
