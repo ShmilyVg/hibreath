@@ -235,20 +235,12 @@ Page({
 
     },
     async onGetUserInfoEvent(e) {
-        console.log('e',e)
-        const {detail: {userInfo, encryptedData, iv}} = e;
-        if (!!userInfo) {
-            Toast.showLoading();
-            try {
-                await Login.doRegister({userInfo, encryptedData, iv});
-                Toast.hiddenLoading();
-                HiNavigator.navigateToCreateCommunity()
-            } catch (e) {
-                Toast.warn('获取信息失败');
-            }
-        }else{
-            //HiNavigator.navigateToCreateCommunity()
-        }
+      const { result } = await Protocol.postMemberInfo();
+      if(!getApp().globalData.isLogin || !result.finishedPhone){
+        HiNavigator.navigateToGoRegister()
+        return
+      }
+      HiNavigator.navigateToCreateCommunity()
     },
     async toReductionList(){
         HiNavigator.navigateToReductionList({groupId:(await judgeGroupEmpty()).groupId})

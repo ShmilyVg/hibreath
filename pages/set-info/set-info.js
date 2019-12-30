@@ -1212,7 +1212,6 @@ Page({
       path: "/pages/taskShareInfo/taskShareInfo?sharedId=" + this.data.sharedId,
       imageUrl: this.data.shareImg
     };
-    console.log("indexDayDesc", this.data.shareImg);
   },
   async listenerButton() {
     Toast.showLoading();
@@ -1255,13 +1254,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    Toast.showLoading();
-    if (!this.data.showNewInfo && !this.data.showGuide) {
+    if (!this.data.showNewInfo && !this.data.showGuide && !this.data.showGoclockin) {
+      Toast.showLoading();
       await this.handleTasks();
+      Toast.hiddenLoading();
     }
 
     wx.stopPullDownRefresh();
-    Toast.hiddenLoading();
+
   },
   bindDateChange: function(e) {
     this.setData({

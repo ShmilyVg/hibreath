@@ -22,26 +22,13 @@
             </view>
             <text class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</text>
         </view>
-        <view class="flex-row align-items-center">
+   <!--     <view class="flex-row align-items-center">
             <button class="community-Bg" catchtap="showShared">
                 <image src="../../images/community/wx.png"class="community-Wx"></image>
                 <view class="community-member-description">邀请好友</view>
             </button>
-
-        </view>
+        </view>-->
     </view>
-
-   <!-- <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
-        <view class="flex-row align-items-center" bindtap="toReductionList" style="height: 120rpx;width: 244rpx">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">减重榜</view>
-        </view>
-        <view class="fill-height" style="border-left: 2rpx solid white;margin-left: 40rpx;margin-right: 40rpx;"></view>
-        <view class="flex-row align-items-center" bindtap="toPunchList" style="height: 120rpx;width: 244rpx">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">打卡榜</view>
-        </view>
-    </view>-->
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
         <view class="" bindtap="toReductionList" style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-start">
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
@@ -57,18 +44,6 @@
             <image src="../../images/community/rank.png" class="community-rank-icon"></image>
             <view class="community-rank-text">打卡榜</view>
         </view>
-        <!--<view class="flex-row align-items-center box-sizing-border-box" bindtap="toReductionList" style="height: 100%;width: 50%;">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">减重榜</view>
-        </view>
-        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">减脂榜</view>
-        </view>
-        <view class="flex-row align-items-center box-sizing-border-box" bindtap="toPunchList"  style="height: 100%;width: 50%;">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
-            <view class="community-rank-text">打卡榜</view>
-        </view>-->
     </view>
     <!-- 未读状态 -->
     <view class="noticeList" wx:if="{{noticeList.imgUrl}}" bindtap="toNoticeList">
@@ -96,7 +71,7 @@
     <view class="community-text">
         <view style="top:700rpx;position: relative">您还未加入任何圈子</view>
     </view>
-    <button class="community-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">创建新圈子</button>
+    <button class="community-btn"  bindtap="onGetUserInfoEvent">创建新圈子</button>
 </view>
 <view class="noDynamic" wx:if="{{haveGroupId&&dynamicList.length==0}}">暂无发表动态</view>
 <!--打卡完成激励弹窗-->

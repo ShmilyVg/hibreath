@@ -19,55 +19,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      /*setTimeout(() => {
-          wx.setNavigationBarColor({
-              frontColor: "#171717",
-              backgroundColor: "#f5f5f5"
-          });
-      });*/
       if (!getApp().globalData.isLogin) {
           this.setData({
               isShowlogin: false,
           })
-          console.log('暂未登陆',)
       }else{
           this.getUserInfo();
-          //getApp().globalData.isLogin=true
-          console.log('已经登录')
       }
   },
   onPersonalCenter:function(e){
-      Toast.showLoading();
-    if (this.data.isShowlogin) {
-        HiNavigator.navigateToUserInfoPage()
-    } else {
-      console.log('e onPersonalCenter', e);
-      const { detail: { userInfo, encryptedData, iv } } = e;
-      this.onGetUserInfoEvent(e)
-    }
-      Toast.hiddenLoading();
+    this.goVerify();
+    HiNavigator.navigateToUserInfoPage()
   },
   onTargetWeight:function(e){
-      Toast.showLoading();
-    if (this.data.isShowlogin) {
-        HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
-    } else {
-      console.log('e onPersonalCenter', e);
-      const { detail: { userInfo, encryptedData, iv } } = e;
-      this.onGetUserInfoEvent(e)
-    }
-      Toast.hiddenLoading();
+    this.goVerify()
+    HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
   },
-  onDeviceManagement:function(e){
-      Toast.showLoading();
-    if (this.data.isShowlogin) {
-        HiNavigator.navigateToDeviceUnbind()
-    } else {
-      console.log('e onPersonalCenter', e);
-      const { detail: { userInfo, encryptedData, iv } } = e;
-      this.onGetUserInfoEvent(e)
-    }
-      Toast.hiddenLoading();
+  onDeviceManagement(){
+    this.goVerify()
+    HiNavigator.navigateToDeviceUnbind()
   },
   toCommonProblem:function(){
       Toast.showLoading();
@@ -87,44 +57,30 @@ Page({
   onReady: function () {
 
   },
-  async onGetUserInfoEvent(e) {
-    const { detail: { userInfo, encryptedData, iv } } = e;
-    if (!!userInfo) {
-      Toast.showLoading();
-      try {
-        await Login.doRegister({ userInfo, encryptedData, iv });
-        Toast.hiddenLoading();
-        this.getUserInfo();
-        console.log(this.data.nickname, this.data.headUrl)
-      } catch (e) {
-        Toast.warn('获取信息失败');
-        console.log('获取信息失败')
-      }
-    } else {
-    }
-  },
+
     //
     toDatalist(e) {
-        const {
-            currentTarget: {
-                dataset: { type }
-            }
-        } = e;
-        console.log(e);
-        switch (type) {
-            case "fatBurn":
-                HiNavigator.navigateToResultNOnum();
-                break;
-            case "bodyIndex":
-                HiNavigator.navigateTofood();
-                break;
-            case "paiMoney":
-                HiNavigator.navigateToPaiCoinPage();
-                break;
-            case "dynamic":
-                HiNavigator.navigateToMyDynamicList();
-                break;
-        }
+      const {
+          currentTarget: {
+              dataset: { type }
+          }
+      } = e;
+      console.log(e);
+      switch (type) {
+          case "fatBurn":
+              HiNavigator.navigateToResultNOnum();
+              break;
+          case "bodyIndex":
+              HiNavigator.navigateTofood();
+              break;
+          case "paiMoney":
+              this.goVerify();
+              HiNavigator.navigateToPaiCoinPage();
+              break;
+          case "dynamic":
+              HiNavigator.navigateToMyDynamicList();
+              break;
+      }
     },
 
   /**
@@ -134,9 +90,17 @@ Page({
       this.getUserInfo();
 
   },
+  /**
+   * @desc  是不是符合未登录或者未验证手机号
+   */
+  goVerify(){
+    if(!getApp().globalData.isLogin || !this.data.finishedPhone){
+      HiNavigator.navigateToGoRegister()
+      return
+    }
+  },
   async getUserInfo(){
     const { result } = await Protocol.postMemberInfo();
-    console.log(result);
     if(result.weightGoal){
         this.setData({
             weightGoal:result.weightGoal
@@ -148,6 +112,7 @@ Page({
       headUrl: result.headUrl,
       amount:result.amount,
       isHave:result.isHave,
+      finishedPhone:result.finishedPhone
     })
       if(this.data.isHave){
           wx.showTabBarRedDot({

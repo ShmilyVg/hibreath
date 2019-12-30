@@ -30,8 +30,6 @@ Page({
     },
 
     async addCommunityBtn(e) {
-        console.log('e',e.currentTarget.dataset.type)
-        console.log('this.data.isJoined',this.data.isJoined)
         const {sharedId,isExistPhone} = this.data;
         if (sharedId) {
             if(isExistPhone){

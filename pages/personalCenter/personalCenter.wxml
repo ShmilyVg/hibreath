@@ -7,10 +7,10 @@
             <image wx:else src="../../images/personalCenter/people.png" class="per-img"></image>
           </view>
           <view wx:if="{{isShowlogin}}" class="per-nickName">{{nickname}}</view>
-          <button wx:else class="per-nickName"  open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent">立即登入</button>
+          <button wx:else class="per-nickName"  bindtap="goVerify">立即登入</button>
       </view>
       <view class="per-text flex-row space-between">
-        <button class="per-text-btn" open-type="getUserInfo" bindgetuserinfo="onPersonalCenter">个人信息</button>
+        <button class="per-text-btn"  bindtap="onPersonalCenter">个人信息</button>
         <image src="../../images/personalCenter/gray.png" class="gray-img"></image>
       </view>
      </view>
@@ -36,7 +36,7 @@
         </view>
      </view>
      <view class="per-main">
-         <button class="per-main-list flex-row space-between" open-type="getUserInfo"  bindgetuserinfo="onTargetWeight">
+         <button class="per-main-list flex-row space-between"   bindtap="onTargetWeight">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/weight.png"></image>
               <text class="per-main-text">目标体重</text>
@@ -72,7 +72,7 @@
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
         </view>
      </view>
-     <button class="per-administration per-main-list flex-row space-between" open-type="getUserInfo"  bindgetuserinfo="onDeviceManagement">
+     <button class="per-administration per-main-list flex-row space-between"   bindtap="onDeviceManagement">
          <view>
               <image class="per-main-image" src="../../images/personalCenter/device.png"></image>
               <text class="per-main-text">设备管理</text>

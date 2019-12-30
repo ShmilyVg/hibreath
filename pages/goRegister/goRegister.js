@@ -2,7 +2,6 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast} from "heheda-common-view";
 import Login from "../../modules/network/login";
-const app = getApp()
 Page({
 
   /**
@@ -16,11 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.isLogin) {
-      this.setData({
-        nologin:false
-      })
-    }
+
   },
   /**
    * @desc 跳转验证手机号群号
@@ -67,7 +62,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(getApp().globalData.isLogin) {
+      this.setData({
+        nologin:false
+      })
+    }
   },
 
   /**
