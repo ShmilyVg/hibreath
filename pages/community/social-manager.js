@@ -200,16 +200,38 @@ export async function whenDismissGroup(protocol) {
             Toast.hiddenLoading()
             WXDialog.showDialog({
                 title: '', content: '您上传的图片包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
-
                 }
             });
         }else if (code === 40014) {
             Toast.hiddenLoading()
             WXDialog.showDialog({
                 title: '', content: '您上传的文字包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
-
                 }
             });
+        }else if (code === 40015) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: '验证码已失效，请重新验证', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
+        }else if (code === 40016) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: '验证码错误，请重新验证', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
+        }else if (code === 40017) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: 'Slimple群号错误，请重新填写', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
+        }else if (code === 40018) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: '验证码发送失败,请重试', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
         }
         return Promise.reject(e);
     }
