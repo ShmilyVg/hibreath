@@ -6,52 +6,50 @@
 <import src="./view/foodVideo.wxml"></import>
 <import src="./view/caseFinished.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
-    <block  wx:if="{{showNewInfo}}">
-        <my-swiper wx:if="{{showGuide}}"></my-swiper>
-        <view wx:if="{{showGuide}}" class="middle-view">慢慢减脂路上·你是否也遇这些困扰</view>
-        <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
-            <image wx:if="{{showGuide}}" class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
-            <view wx:if="{{showGuide}}" class="guide-text"><text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text></view>
-            <image wx:if="{{showGuide}}" class="page1-image1" src="../../images/set-info/page1-down.png"></image>
+  <block wx:if="{{showNewInfo}}">
+    <my-swiper wx:if="{{showGuide}}"></my-swiper>
+    <view wx:if="{{showGuide}}" class="middle-view">慢慢减脂路上·你是否也遇这些困扰</view>
+    <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
+      <image wx:if="{{showGuide}}" class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
+      <view wx:if="{{showGuide}}" class="guide-text">
+        <text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text>
+      </view>
+      <image wx:if="{{showGuide}}" class="page1-image1" src="../../images/set-info/page1-down.png"></image>
+    </view>
+    <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
+    <view wx:if="{{showGoclockin}}" style="text-align: center">
+      <image class="showGoclockin-imgB" src="../../images/set-info/slimple.png"></image>
+      <view class="showGoclockin-text">暂未开启打卡...</view>
+      <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
+        开启打卡
+        <image class="showGoclockin-imgL" src="../../images/set-info/sj.png"></image>
+      </view>
+    </view>
+    <view class="flex-column" style="display: none">
+      <view class="title">{{title[page-1]}}</view>
+      <view class="num">{{page}}/8</view>
+
+      <view class="flex-column" wx:if="{{page==1}}">
+        <view class="flex-row" style="height:340rpx;margin-top:-230rpx;">
+          <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
+          <my-swiper-target class="guide-target"></my-swiper-target>
+          <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
         </view>
-        <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
-        <view wx:if="{{showGoclockin}}" style="text-align: center">
-            <image class="showGoclockin-imgB" src="../../images/set-info/slimple.png"></image>
-            <view class="showGoclockin-text">暂未开启打卡...</view>
-            <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
-                开启打卡
-                <image class="showGoclockin-imgL" src="../../images/set-info/sj.png"></image>
-            </view>
+        <view class="page1-input-view flex-row">
+          <image class="page1-edit" src="../../images/set-info/page1-edit.png"></image>
+          <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下你的减脂宣言" maxlength="10" placeholder-class="placeholder-page1" bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur' />
         </view>
-        <view class="flex-column" style="display: none">
-            <view class="title">{{title[page-1]}}</view>
-            <view class="num">{{page}}/8</view>
-
-            <view class="flex-column" wx:if="{{page==1}}">
-                <view class="flex-row" style="height:340rpx;margin-top:-230rpx;">
-                    <image class="page1-image " src="../../images/set-info/page1-up.png"></image>
-                    <my-swiper-target class="guide-target"></my-swiper-target>
-                    <image class="page1-image" src="../../images/set-info/page1-down.png"></image>
-                </view>
-                <view class="page1-input-view flex-row" >
-                   <image class="page1-edit"
-                           src="../../images/set-info/page1-edit.png"></image>
-                    <input class="page1-input" value="{{info.goalDesc}}" placeholder="写下你的减脂宣言" maxlength="10"
-                           placeholder-class="placeholder-page1"  bindinput="bindInputGoal" bindfocus='onFocus' bindblur='onBlur'/>
-                </view>
-            </view>
+      </view>
 
 
-            <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
-                <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="index" bindtap="bindTapSex"
-                      data-index="{{index}}">
-                    <image class="sex-image"
-                           src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
-                    <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
-                </view>
-            </view>
-            <block wx:elif="{{page==3}}">
-               <!-- <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
+      <view wx:elif="{{page==2}}" class="flex-row space-between" style="width: 610rpx">
+        <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+          <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
+          <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+        </view>
+      </view>
+      <block wx:elif="{{page==3}}">
+        <!-- <picker mode="date" value="{{info.birthday}}" start="1890-01-01" end="{{currentDate}}"
                         bindchange="bindChangeBirth">
                     <view class="flex-row">
                         <view wx:for="{{birth}}" class="flex-column" style="width: 154rpx;margin: 0 33rpx">
@@ -61,225 +59,189 @@
                         </view>
                     </view>
                 </picker>-->
-                <pickerDate bind:childSecDate='showBirth'
-                            style="width: 100%;margin-top:-55rpx;"
-                            birth="{{birth}}"
-                            info="{{info}}"
-                ></pickerDate>
-            </block>
-            <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
-                <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
-                    <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3" type="number"
-                           placeholder="身高" placeholder-class="placeholder"/>
-                    <view class="page2-line"></view>
-                    <view class="page2-kg">CM</view>
-                </view>
-                <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
-                    <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit"
-                           placeholder="体重" placeholder-class="placeholder"/>
-                    <view class="page2-line"></view>
-                    <view class="page2-kg">KG</view>
-                </view>
-            </view>
-            <block wx:elif="{{page==5}}">
-                <view wx:if="{{noMeasure}}" class="page4">
-                    <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}"
-                          bindtap="bindTapExactClick"
-                          wx:key="index"
-                          data-index="{{index}}">
-                        <image src="http://img.hipee.cn/hibreath/man/{{info.sexStr}}-{{index+1}}.png"></image>
-                      <!--  <view wx:if="{{choseIndex!=index}}" class="page4-cover"
+        <pickerDate bind:childSecDate='showBirth' style="width: 100%;margin-top:-55rpx;" birth="{{birth}}" info="{{info}}"></pickerDate>
+      </block>
+      <view wx:elif="{{page==4}}" class="flex-row" style="width: 90%;margin-left: 10%">
+        <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num" value="{{info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
+          <view class="page2-line"></view>
+          <view class="page2-kg">CM</view>
+        </view>
+        <view class="flex-column" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num" value="{{info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+          <view class="page2-line"></view>
+          <view class="page2-kg">KG</view>
+        </view>
+      </view>
+      <block wx:elif="{{page==5}}">
+        <view wx:if="{{noMeasure}}" class="page4">
+          <view class="page4-item" wx:for="{{info.sex?page4MenItem:page4WomenItem}}" bindtap="bindTapExactClick" wx:key="index" data-index="{{index}}">
+            <image src="http://img.hipee.cn/hibreath/man/{{info.sexStr}}-{{index+1}}.png"></image>
+            <!--  <view wx:if="{{choseIndex!=index}}" class="page4-cover"
                               ></view>-->
-                        <view class="page4-text" style="background-color: {{choseIndex !== index?'#A9A9AC':'#ED6F69'}}">{{item}}%</view>
-                    </view>
-                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>
-                      <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
-                    我测过准确的体脂率</view>
-                </view>
-                <view wx:else class="flex-column">
-                    <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" type="digit"
-                           bindinput="bindInputExact" value="{{info.bodyFatRate}}"/>
-                    <view class="page2-line"></view>
-                    <view class="page2-kg">%</view>
-                    <view class="page6-small-text" bindtap='bindTapSwitchExact'>
-                      <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
-                    没测过体脂率</view>
-                </view>
-            </block>
-            <view wx:elif="{{page==6}}">
-                <view wx:for="{{meals}}"
-                      wx:key="index"
-                      class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}"
-                      >
-                    <view wx:if="{{index == meals.length-1}}" data-index="{{index}}" bindtap="bindTapMealsSecNone">{{item.name}}</view>
-                    <view wx:else data-index="{{index}}" bindtap="bindTapMeals">{{item.name}}</view>
-                </view>
-            </view>
-            <view wx:if="{{page==7}}" class="flex-column">
-                <view class="page2-title">也可以自定义您的目标体重</view>
-                <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}" type="digit" maxlength="5"/>
-                <view class="page2-line"></view>
-                <view class="page2-kg">KG</view>
-            </view>
-            <view wx:if="{{page==8}}" style="width: 750rpx;height:670rpx;margin-top:-51rpx;">
-                <!-- <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
+            <view class="page4-text" style="background-color: {{choseIndex !== index?'#A9A9AC':'#ED6F69'}}">{{item}}%</view>
+          </view>
+          <view class="page6-small-text" bindtap='bindTapSwitchExact'>
+            <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
+            我测过准确的体脂率</view>
+        </view>
+        <view wx:else class="flex-column">
+          <input class="page2-num" placeholder="体脂率" maxlength="4" placeholder-class="placeholder" type="digit" bindinput="bindInputExact" value="{{info.bodyFatRate}}" />
+          <view class="page2-line"></view>
+          <view class="page2-kg">%</view>
+          <view class="page6-small-text" bindtap='bindTapSwitchExact'>
+            <image class="page6-small-img" src="../../images/set-info/convert.png"></image>
+            没测过体脂率</view>
+        </view>
+      </block>
+      <view wx:elif="{{page==6}}">
+        <view wx:for="{{meals}}" wx:key="index" class="page7-box {{item.isChose?'page7-box-chose':'page7-box-nor'}}">
+          <view wx:if="{{index == meals.length-1}}" data-index="{{index}}" bindtap="bindTapMealsSecNone">{{item.name}}</view>
+          <view wx:else data-index="{{index}}" bindtap="bindTapMeals">{{item.name}}</view>
+        </view>
+      </view>
+      <view wx:if="{{page==7}}" class="flex-column">
+        <view class="page2-title">也可以自定义您的目标体重</view>
+        <input class="page2-num" bindinput="bindInputWeightGoal" value="{{info.weightGoal}}" type="digit" maxlength="5" />
+        <view class="page2-line"></view>
+        <view class="page2-kg">KG</view>
+      </view>
+      <view wx:if="{{page==8}}" style="width: 750rpx;height:670rpx;margin-top:-51rpx;">
+        <!-- <scroll-view class="scroll" scroll-x scroll-left="{{scrollLeft}}rpx" bindscroll="bindScrollView" scroll-with-animation="true">
                     <view style="width: 1480rpx;padding: 0 130rpx">
                         <image wx:for="{{project}}"  wx:key="{{index}}" src="{{item.descUrl}}" class="scroll-image" bindtap="bindTapProject"
                                data-index="{{index}}"></image>
                     </view>
                 </scroll-view> -->
-                 <!-- <swiper bindchange="swiperChangecase" circular="true" class="bindSuccess-swiper">
+        <!-- <swiper bindchange="swiperChangecase" circular="true" class="bindSuccess-swiper">
                       <swiper-item wx:for="{{project}}"  wx:key="{{index}}" data-index="{{index}}">
                         <image src="{{item.descUrl}}"></image>
                       </swiper-item>
                  </swiper>   -->
-                <swiper bindchange="swiperChangeCase" style="height:670rpx;margin-top:0rpx;" next-margin="125rpx" previous-margin="125rpx">
-                        <block wx:for="{{project}}" wx:key="index">
-                          <swiper-item style="width:100rpx;height:670rpx;" class="swiperLi">
-                             <image class="swiperLi1"  src="{{item.descUrl}}" bindtap="bindTapProject" style="width:420rpx;height:670rpx;margin-left:35rpx;"></image>
-                          </swiper-item>
-                        </block>
-                  </swiper>
-            </view>
-            <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column {{page ==8?'bottom-btnN':''}} {{noMeasure?'page5position':''}}">
-                <block wx:if="{{page!=8}}">
-                    <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
-                          hover-stay-time="50" bindtap="continue">下一步
-                    </view>
-                    <view class="bottom-btn-back" hidden="{{page == 1}}" hover-class="press-style"
-                          hover-stay-time="50" bindtap="back">返回
-                    </view>
-                     <view class="bottom-btn-back1" hidden="{{page !== 1}}" hover-class="press-style"
-                          hover-stay-time="50" bindtap="back">
-                    </view>
-                </block>
-                <block wx:else>
-                     <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style"
-                      hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
-                     </view>
-                </block>
-            </view>
-        </view>
-    </block>
-    <block wx:else>
-        <view class="set-top-view flex-row">
-            <view class="" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
-                <view class="set-top-title">{{indexgoalDesc}}</view>
-                <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>
-                <view wx:if="{{caseonFinished}}" class="set-top-content" style="float: left;width: 150rpx">总结日</view>
-                <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">{{indexDayDesc}}</view>
-                <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
-                <button wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-contentS" style="float: left" bindtap="listenerButton">
-                    <image class="shareImg" src="../../images/set-info/shared.png"></image>
-                    分享
-                </button>
-            </view>
-            <view class="flex-column" style="margin-right: 31rpx">
-               <!-- <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
+        <swiper bindchange="swiperChangeCase" style="height:670rpx;margin-top:0rpx;" next-margin="125rpx" previous-margin="125rpx">
+          <block wx:for="{{project}}" wx:key="index">
+            <swiper-item style="width:100rpx;height:670rpx;" class="swiperLi">
+              <image class="swiperLi1" src="{{item.descUrl}}" bindtap="bindTapProject" style="width:420rpx;height:670rpx;margin-left:35rpx;"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="{{page ==6?'btn-positionB':'btn-position'}} flex-column {{page ==8?'bottom-btnN':''}} {{noMeasure?'page5position':''}}">
+        <block wx:if="{{page!=8}}">
+          <view class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continue">下一步
+          </view>
+          <view class="bottom-btn-back" hidden="{{page == 1}}" hover-class="press-style" hover-stay-time="50" bindtap="back">返回
+          </view>
+          <view class="bottom-btn-back1" hidden="{{page !== 1}}" hover-class="press-style" hover-stay-time="50" bindtap="back">
+          </view>
+        </block>
+        <block wx:else>
+          <view class="bottom-btn bottom-page8" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="showModal">开启正式的减脂历程
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="set-top-view flex-row">
+      <view class="" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
+        <view class="set-top-title">{{indexgoalDesc}}</view>
+        <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>
+        <view wx:if="{{caseonFinished}}" class="set-top-content" style="float: left;width: 150rpx">总结日</view>
+        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">{{indexDayDesc}}</view>
+        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
+        <button wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-contentS" style="float: left" bindtap="listenerButton">
+          <image class="shareImg" src="../../images/set-info/shared.png"></image>
+          分享
+        </button>
+      </view>
+      <view class="flex-column" style="margin-right: 31rpx">
+        <!-- <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
                 <view class="set-top-today">今日任务</view>-->
-                <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
-            </view>
-        </view>
-        <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
-            <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
-                <template is="foodVideo" wx:if="{{item.type =='videoFood'}}"  data="{{...item}}"></template>
-                <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}"  data="{{...item}}"></template>
-                <template is="foodVideo" wx:if="{{item.type =='slimWithHeart'}}"  data="{{...item}}"></template>
-            </view>
-            <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
-                <template is="caseonFinished"   data="{{planInfo}}"></template>
-            </view>
-            <view wx:if="{{!caseOnReady && !caseonFinished}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
-                <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}"  data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
-                <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}"  data="{{bodyIndexTask,bodyIndexExt}}"></template>
-                <template is="HIITCard" wx:if="{{item.type =='sport'}}"  data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
-                <foodCard wx:if="{{item.type =='food'}}"
-                          class="countdown"
-                           foodTask="{{foodTask}}"
-                           foodExt="{{foodExt}}"
-                           foodAheight="{{foodAheight}}"
-                           foodHiddenImg="{{foodHiddenImg}}"
-                           isGroup="{{isGroup}}"
-                           foodcurrentSwiper="{{foodcurrentSwiper}}"
-                >
+        <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
+      </view>
+    </view>
+    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
+      <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
+        <template is="foodVideo" wx:if="{{item.type =='videoFood'}}" data="{{...item}}"></template>
+        <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}" data="{{...item}}"></template>
+        <template is="foodVideo" wx:if="{{item.type =='slimWithHeart'}}" data="{{...item}}"></template>
+      </view>
+      <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
+        <template is="caseonFinished" data="{{planInfo}}"></template>
+      </view>
+      <view wx:if="{{!caseOnReady && !caseonFinished}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
+        <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
+        <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
+        <template is="HIITCard" wx:if="{{item.type =='sport'}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
+        <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}">
 
-                </foodCard>
-            </view>
+        </foodCard>
+      </view>
 
-        </view>
-    </block>
-    <!--position: fixed;left: 900rpx;-->
-    <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>
+    </view>
+  </block>
+  <!--position: fixed;left: 900rpx;-->
+  <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>
 </view>
 
 <view wx:if="{{showBigTip}}" class="flex-column">
-    <view class="tip-full"></view>
-    <view class="tip-view flex-column">
-        <view class="tip-view-title">正在上传检测记录</view>
-        <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
-    </view>
+  <view class="tip-full"></view>
+  <view class="tip-view flex-column">
+    <view class="tip-view-title">正在上传检测记录</view>
+    <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
+  </view>
 </view>
 <!--非首次打卡完成toast弹窗-->
-<my-toast
-        wx:if="{{showMytoast}}"
-        toastType="{{toastType}}"
->
+<my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}">
 
 </my-toast>
 <!--首次打卡完成激励弹窗-->
-<exciting-window
-        wx:if="{{showExcitation}}"
-        bind:getShowExcitation="getShowExcitation"
-        toastType="{{toastType}}"
-        toastResult="{{toastResult}}"
->
+<exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
 </exciting-window>
 
 <!--底部弹窗-->
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-<!--<view class="commodity_screen" bindtap="hideModal"></view>
+  <!--<view class="commodity_screen" bindtap="hideModal"></view>
 <view animation="{{animationData}}" class="commodity_attr_box">-->
-    <view wx:if="{{page==8&&showNewInfo}}">
-        <view class="flex-row timeHeader" style="justify-content: space-between;">
-            <view class="timeHeader-left"  bindtap="hideModalCancel" >取消</view>
-            <view class="timeHeader-center">请选择开始时间</view>
-            <view class="timeHeader-right"  bindtap="hideModalConfirm">确定</view>
-        </view>
-        <view class="clear"></view>
-          <pickerDateStart id="pickerDateStart"
-                          style="width: 100%;margin-top:30rpx;"
-
-          ></pickerDateStart>
+  <view wx:if="{{page==8&&showNewInfo}}">
+    <view class="flex-row timeHeader" style="justify-content: space-between;">
+      <view class="timeHeader-left" bindtap="hideModalCancel">取消</view>
+      <view class="timeHeader-center">请选择开始时间</view>
+      <view class="timeHeader-right" bindtap="hideModalConfirm">确定</view>
     </view>
-    <form bindsubmit='formSubmit' wx:else>
-        <button  bindtap="hideModal" class="commodity_clear">取消</button>
-       <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
-        <button class="commodity_sub" form-type='submit'>提交</button>
-        <view class="clear"></view>
-        <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
-        <view style="margin-bottom: 40rpx">*尽量保持每天在同一时间、条件下测量</view>
-        <view class="commodity_part">
-            <view class="commodity_title">体重(kg)</view>
-            <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput"  maxlength="5"  name='weight' placeholder="请输入您的体重" type="digit"/>
-            <view class="clear"></view>
-        </view>
-        <view class="commodity_part" wx:if="">
-            <view class="commodity_title">高压(mmHg)</view>
-            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3"  name='bloodHeight' placeholder="请输入您的高压" type="number"/>
-            <view class="clear"></view>
-        </view>
-        <view class="commodity_part" wx:if="">
-            <view class="commodity_title">低压(mmHg)</view>
-            <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodLow' placeholder="请输入您的低压" type="number"/>
-            <view class="clear"></view>
-        </view>
-        <view>
-            <view class="commodity_title" wx:if="">心率(BPM)</view>
-            <input class="commodity_input" wx:if="" placeholder-class="commodity_inputpla" maxlength="3"  name='heart' placeholder="请输入您的心率" type="number"/>
-            <view class="clear"></view>
-        </view>
-    </form>
+    <view class="clear"></view>
+    <pickerDateStart id="pickerDateStart" style="width: 100%;margin-top:30rpx;"></pickerDateStart>
+  </view>
+  <form bindsubmit='formSubmit' wx:else>
+    <button bindtap="hideModal" class="commodity_clear">取消</button>
+    <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
+    <button class="commodity_sub" form-type='submit'>提交</button>
+    <view class="clear"></view>
+    <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
+    <view style="margin-bottom: 40rpx">*尽量保持每天在同一时间、条件下测量</view>
+    <view class="commodity_part">
+      <view class="commodity_title">体重(kg)</view>
+      <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput" maxlength="5" name='weight' placeholder="请输入您的体重" type="digit" />
+      <view class="clear"></view>
+    </view>
+    <view class="commodity_part" wx:if="">
+      <view class="commodity_title">高压(mmHg)</view>
+      <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodHeight' placeholder="请输入您的高压" type="number" />
+      <view class="clear"></view>
+    </view>
+    <view class="commodity_part" wx:if="">
+      <view class="commodity_title">低压(mmHg)</view>
+      <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodLow' placeholder="请输入您的低压" type="number" />
+      <view class="clear"></view>
+    </view>
+    <view>
+      <view class="commodity_title" wx:if="">心率(BPM)</view>
+      <input class="commodity_input" wx:if="" placeholder-class="commodity_inputpla" maxlength="3" name='heart' placeholder="请输入您的心率" type="number" />
+      <view class="clear"></view>
+    </view>
+  </form>
 
 </view>
 
@@ -294,8 +256,8 @@
 </action-sheet>
 -->
 <view class="shareContainer" wx:if='{{isOpened}}'>
-   <!-- <view class='shareRow'>{{title}}</view>-->
-    <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
-    <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
+  <!-- <view class='shareRow'>{{title}}</view>-->
+  <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
+  <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
 </view>
 <view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>

@@ -1,0 +1,14 @@
+<!--pages/guidance/guidance.wxml-->
+<view class="guidance">
+  <view class="firstPage" wx:if="{{page==1}}">
+    <view class="header_h3 text_left">Hi,欢迎来到Silmple</view>
+    <view class="header_text text_left">正式开始需要相互了解下您的情况~</view>
+    <view class="img_con">
+      <image class="showGoclockin-imgL" src="../../images/set-info/slimple2.png"></image>
+    </view>
+    <button class="showGoclockin-text" bindtap="goNextPage">好哒~</button>
+  </view>
+  <view class="secondPage" wx:if="{{page==2}}">
+
+  </view>
+</view>
