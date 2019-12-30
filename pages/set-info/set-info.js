@@ -94,7 +94,8 @@ Page({
     //shareTextList:['分享给好友或群'],
     date: "2019-12-04",
     startTime: "",
-      loanTime:''//定时器
+    loanTime:'',//定时器
+    isNophone:false
   },
   onFocus: function(e) {
     this.setData({
@@ -276,6 +277,7 @@ Page({
     if(this.data.isNophone){
       HiNavigator.navigateToGoRegister()
     }else{
+      console.log('22')
       HiNavigator.navigateToGuidance()
     }
   },
