@@ -15,9 +15,9 @@
         <view class="exciting-bottom" wx:if="{{toastResult.finishNum === toastResult.taskNum}}">所有任务都完成啦~</view>
         <view class="exciting-bottom" wx:else>完成所有任务即可解锁完整分析报告</view>
     </view>
-    <view wx:if="{{toastType !=='food'}}" style="width: 100%;text-align: center">
+ <!--   <view wx:if="{{toastType !=='food'}}" style="width: 100%;text-align: center">
         <image bindtap="excitingKnow" src="../../images/close.png" style="width: 80rpx;height: 80rpx;"></image>
-    </view>
+    </view>-->
 
  <!--   &lt;!&ndash;底部弹窗&ndash;&gt;
     <view class="" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>

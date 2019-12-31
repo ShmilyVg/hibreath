@@ -107,6 +107,7 @@ Component({
     },
     goTask(){
       HiNavigator.switchToSetInfo()
+      this.excitingKnow()
     },
       excitingKnow(){
           this.triggerEvent("getShowExcitation", {showExcitation:false} )
