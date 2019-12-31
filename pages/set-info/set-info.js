@@ -134,27 +134,25 @@ Page({
    */
   getRegister(){
     var that =this;
-    app.appLoginListener = function({ loginState }) {
-      console.log("set-info", `appLoginListener-> ${loginState}`);
-        if (loginState == this.NOT_REGISTER){
-          that.setData({
-            showNewInfo: true,
-            showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
-          });
-          setTimeout(() => {
-            wx.setNavigationBarColor({
-              frontColor: "#ffffff",
-              backgroundColor: "#F55E6B"
-            });
-          });
-        }else{
-          that.setData({
-            showNewInfo: false,
-            showGoclockin: false,
-            showGuide:false
-          });
-        }
-    };
+    //如果未注册
+    if (!getApp().globalData.isLogin){
+      that.setData({
+        showNewInfo: true,
+        showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
+      });
+      setTimeout(() => {
+        wx.setNavigationBarColor({
+          frontColor: "#ffffff",
+          backgroundColor: "#F55E6B"
+        });
+      });
+    }else{
+      that.setData({
+        showNewInfo: false,
+        showGoclockin: false,
+        showGuide:false
+      });
+    }
   },
   /**
    * @desc 立即体验按钮
@@ -264,11 +262,15 @@ Page({
   async onLoad(e) {
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
-    await this.getIsshowGuide();//是否显示开屏页
-    if(wx.getStorageSync('showGuide') !==''){
-      await this.getRegister();//获取是否注册
-    }
-    await this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
+    setTimeout(()=>{
+      this.getIsshowGuide();//是否显示开屏页
+      console.log('getStorageSync',wx.getStorageSync('showGuide'))
+      if(wx.getStorageSync('showGuide') !==''){
+        this.getRegister();//获取是否注册
+      }
+      this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
+    },500)
+
   },
   /**
    * @desc 根据用户状态进行跳转 立即注册或填写资料
@@ -290,11 +292,11 @@ Page({
         this.setData({
           isNophone:true
         })
-      return
     }
     if(result.finishedGuide){
       this.handleTasks()
     }else{
+      console.log('2444')
       this.setData({
         showNewInfo: true,
         showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
@@ -328,7 +330,6 @@ Page({
     Protocol.getDeviceBindInfo().then(data => {
       let deviceInfo = data.result;
       console.log("获取到的设备", data);
-
       if (!deviceInfo) {
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
@@ -1018,11 +1019,7 @@ Page({
       }
     };
 
-    if (
-      this.data.isfinishedGuide ||
-      this.data.isFood ||
-      getApp().globalData.issueRefresh
-    ) {
+    if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
       getApp().globalData.issueRefresh = false;
       that.handleTasks();
     }

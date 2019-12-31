@@ -5,7 +5,7 @@
     <view class="goRegister-img">1</view>
     <view class="goRegister-text"><text>我需要了解您的基本信息\n(昵称、头像等)</text></view>
     <view class="clear"></view>
-    <button wx:if="{{noRegister}}" class="goRegister-btn" hover-class="press-style"  bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">去完成</button>
+    <button wx:if="{{nologin}}" class="goRegister-btn" hover-class="press-style"  bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">去完成</button>
     <view wx:else class="goRegister-finView"><image src="../../images/goRegister/finish.png" style="width: 30rpx;height: 30rpx;margin-right: 10rpx"></image>已完成</view>
 </view>
 <view style="margin-top: 80rpx">

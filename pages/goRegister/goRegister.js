@@ -9,22 +9,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    noRegister:false
+    nologin:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that =this;
-    app.appLoginListener = function({ loginState }) {
-      console.log("set-info", `appLoginListener-> ${loginState}`);
-      if (loginState == this.NOT_REGISTER){
-        that.setData({
-          noRegister: true,
-        });
+    setTimeout(()=>{
+      if(getApp().globalData.isLogin) {
+        this.setData({
+          nologin:false
+        })
       }
-    };
+    },100)
+    console.log('nologin',getApp().globalData.isLogin)
   },
   /**
    * @desc 跳转验证手机号群号
@@ -53,6 +52,8 @@ Page({
       Toast.showLoading();
       try {
         await Login.doRegister({userInfo, encryptedData, iv});
+        Toast.hiddenLoading();
+        Toast.showText('注册成功')
         Toast.hiddenLoading();
       } catch (e) {
         Toast.warn('获取信息失败');
