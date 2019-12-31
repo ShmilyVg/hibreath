@@ -25,7 +25,7 @@
     <view class="text_center">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
-    <pickerDate bind:childSecDate='showBirth' style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
+    <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
   </view>
   <view class="otherPage " wx:if="{{guidance.page==3}}">
     <view class="header_h3 text_center">身高体重</view>
