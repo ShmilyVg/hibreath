@@ -393,7 +393,10 @@ export default class Protocol {
   static postNoticeUpdateAll() {
     return Network.request({ url: 'group/dynamic/notice/updateAll' })
   }
-
+  //新手引导
+    static postGuidance(data) {
+        return Network.request({url: 'members/put',data:data});
+    }
     //成员新手任务列表
     static postIntegralSingle() {
         return Network.request({url: 'integral/single'});
@@ -420,11 +423,12 @@ export default class Protocol {
     static getUserDetailInfo() {
         return Network.request({url: 'members/infoDetail'});
     }
-
     //个人中心
     static postMemberInfo() {
         return Network.request({url: 'members/info'});
     }
+
+    
     //个人中心常见问题
     static getSettingsHelp({id:pid}) {
         return Network.request({url: 'settings/help', data: {pid}});

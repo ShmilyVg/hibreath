@@ -1,14 +1,75 @@
 <!--pages/guidance/guidance.wxml-->
 <view class="guidance">
-  <view class="firstPage" wx:if="{{page==1}}">
-    <view class="header_h3 text_left">Hi,欢迎来到Silmple</view>
-    <view class="header_text text_left">正式开始需要相互了解下您的情况~</view>
-    <view class="img_con">
-      <image class="showGoclockin-imgL" src="../../images/set-info/slimple2.png"></image>
+  <view class="firstPage" wx:if="{{guidance.page==0}}">
+    <view class="portrait_con">
+    <image class="portrait" src="{{guidance.portraitUrl}}"></image>
     </view>
-    <button class="showGoclockin-text" bindtap="goNextPage">好哒~</button>
+    <view class="header_h2 text_left">Hi,欢迎来到Silmple</view>
+    <view class="header_text text_left">正式开始需要了解下您的情况~</view>
   </view>
-  <view class="secondPage" wx:if="{{page==2}}">
+  <view class="otherPage" wx:if="{{guidance.page==1}}">
+    <view class="header_h3 text_center">性别</view>
+    <view class="text_center">
+      <text class="curPage">{{guidance.page}}/4</text>
+    </view>
+    <view class="space-between clear">
+      <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+        <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
+        <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+      </view>
+    </view>
 
+  </view>
+  <view class="otherPage" wx:if="{{guidance.page==2}}">
+    <view class="header_h3 text_center">出生日期</view>
+    <view class="text_center">
+      <text class="curPage">{{guidance.page}}/4</text>
+    </view>
+    <pickerDate bind:childSecDate='showBirth' style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
+  </view>
+  <view class="otherPage " wx:if="{{guidance.page==3}}">
+    <view class="header_h3 text_center">身高体重</view>
+    <view class="text_center">
+      <text class="curPage">{{guidance.page}}/4</text>
+    </view>
+    <view class="space-between">
+      <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+        <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
+        <view class="page2-line"></view>
+        <view class="page2-kg">CM</view>
+      </view>
+      <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+        <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+        <view class="page2-line"></view>
+        <view class="page2-kg">KG</view>
+      </view>
+    </view>
+
+  </view>
+  <view class="otherPage illness" wx:if="{{guidance.page==4}}">
+    <view class="header_h3 text_center">您目前的身体状况</view>
+    <view class="text_center">
+      <text class="curPage">{{guidance.page}}/4</text>
+    </view>
+    <view class="disItem text_center {{item.isChose ? 'disItemActive':''}}"   wx:for="{{guidance.disease}}" wx:key="index" bindtap="bindTapHealth" data-index="{{index}}" >
+      {{item.text}}
+    </view>
+  </view>
+
+
+
+
+
+  <view class="btn_group text_center" wx:if="{{guidance.page <4}}">
+    <button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'下一步':'好哒'}}
+    </button>
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back"> {{guidance.page >0?'返回':'  　 '}}
+    </view>
+  </view>
+  <view class="btn_group text_center" wx:elif="{{guidance.page == 4}}">
+    <button class="bottom-page4 {{guidance.btnAble ? 'btnAble':'btnUnAble'}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">完成
+    </button>
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back">返回
+    </view>
   </view>
 </view>
