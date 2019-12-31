@@ -1,6 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "立即登录",
-  "navigationBarBackgroundColor": "#ED6F69",
-  "navigationBarTextStyle": "white"
+  "navigationBarTitleText": "我的减脂历程",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents":{
+    "pickerDate": "../../components/pickerDate/index"
+  }
 }

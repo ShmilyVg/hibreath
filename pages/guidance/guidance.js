@@ -1,87 +1,258 @@
 // pages/guidance/guidance.js
+import {
+  Toast as toast,
+  Toast,
+  WXDialog
+} from "heheda-common-view";
+import {
+  oneDigit
+} from "../food/manager";
+import Protocol from "../../modules/network/protocol";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    page:1,
-    tieleName:'立即登录'
-  },
-  goNextPage(){
-    this.setData({
-      page: ++this.data.page
-    });
-    this.setNavigatStyle()
-  },
-  //设置navigationBarTitle
-  setNavigatStyle(){
-    let page = this.data.page;
-    let name = '立即登录'
-    let frontColor = '#ffffff';
-    let backgroundColor ='#ED6F69'
-    if (page != 1){
-      name = 'HiPee健康燃脂';
-      wx.setNavigationBarColor({ frontColor: '#000000', backgroundColor: '#ffffff' });
+    guidance: {
+      page: 0,
+      portraitUrl: '',
+      info: {
+        height: 175,
+        weight: 80,
+        birthday: '1980-01-01',
+        sex: 0,
+        illnessType: ['none']
+      },
+      sexBox: [{
+          image: "man",
+          text: "男士",
+          isChose: false,
+          value: 1
+        },
+        {
+          image: "woman",
+          text: "女士",
+          isChose: true,
+          value: 0
+        }
+      ],
+      birth: ["1980", "1", "1"],
+      disease: [{
+          text: '三高（高血压、高血糖、高血脂）',
+          value: 'sangao',
+          isChose: false,
+        },
+        {
+          text: '胃病（慢性胃炎，胃溃疡）',
+          value: 'weibing',
+          isChose: false,
+        },
+        {
+          text: '消化、代谢病（痛风、胆囊炎、胆结石）',
+          value: 'daixie',
+          isChose: false,
+        },
+        {
+          text: '其他已确诊疾病',
+          value: 'all',
+          isChose: false,
+        },
+        {
+          text: '我很健康，以上都没有',
+          value: 'none',
+          isChose: true,
+        },
+      ],
+      btnAble: true
     }
-    wx.setNavigationBarTitle({
-      title: name
-    })
 
+  },
+  objIsEmpty(obj) {
+    return typeof obj === "undefined" || obj === "" || obj === null;
+  },
+  goNextPage() {
+    this.setData({
+      'guidance.page': ++this.data.guidance.page
+    });
+  },
+  //性别
+  bindTapSex(e) {
+    let choseIndex = e.currentTarget.dataset.index,
+      postSex = 0,
+      sexStr = "";
+    this.data.guidance.sexBox.map((value, index) => {
+      value.isChose = choseIndex == index;
+      if (value.isChose) {
+        postSex = value.value;
+        sexStr = value.image;
+      }
+    });
+    this.setData({
+      'guidance.sexBox': this.data.guidance.sexBox,
+      "guidance.info.sex": postSex,
+      "guidance.info.sexStr": sexStr
+    });
+  },
+  continueFun() {
+    const info = this.data.guidance.info;
+    switch (this.data.guidance.page) {
+      case 1:
+        if (this.objIsEmpty(info.sex)) {
+          toast.warn("请选择性别");
+          return;
+        }
+        break;
+      case 2:
+        break;
+      case 3:
+        if (this.objIsEmpty(info.height)) {
+          toast.warn("请填写身高");
+          return;
+        } else if (this.objIsEmpty(info.weight)) {
+          toast.warn("请填写体重");
+          return;
+        }
+        break;
+      case 4:
+        if (!this.data.guidance.btnAble) {
+          toast.warn("请至少选择一项");
+          return;
+        }
+        this.postGuidance();
+        return;
+    }
+    if (this.data.guidance.page < 4) {
+      this.goNextPage()
+    }
+  },
+  back() {
+    this.setData({
+      'guidance.page': --this.data.guidance.page
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this.getUserInfo()
   },
-
+  async getUserInfo() {
+    const {
+      result
+    } = await Protocol.getAccountInfo()
+    this.setData({
+      'guidance.portraitUrl': result.portraitUrl
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //出生日期
+  showBirth(e) {
+    this.setData({
+      "guidance.info.birthday": e.detail
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //身高
+  bindInputHeight(e) {
+    const height = e.detail.value;
+    let weightGoal = (height / 100) * (height / 100) * 21;
+    weightGoal = weightGoal.toFixed(1);
+    this.setData({
+      "guidance.info.height": Number(height),
+      "guidance.info.weightGoal": weightGoal
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //体重
+  bindInputWeight(e) {
+    this.setData({
+      "guidance.info.weight": Number(e.detail.value)
+    });
+    return oneDigit(e);
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //健康状况
+  bindTapHealth(e) {
+    let disease = this.data.guidance.disease;
+    let choseIndex = e.currentTarget.dataset['index'];
+    let isChose = disease[4].isChose;
+    if (choseIndex == 4) {
+      if (isChose) {
+        disease[4].isChose = false;
+      } else {
+        disease.map((value, index) => {
+          if (index != 4) {
+            value.isChose = false
+          } else {
+            value.isChose = true
+          }
+        });
+      }
+    } else {
+      disease[4].isChose = false;
+      disease.map((value, index) => {
+        if (index == choseIndex) {
+          value.isChose = !value.isChose
+        }
+      });
+    }
+    let illnessType = [];
+    for (let item of disease) {
+      if (item.isChose) {
+        illnessType.push(item.value)
+      }
+    }
+    this.setData({
+      'guidance.disease': disease,
+      'guidance.info.illnessType': illnessType
+    });
+    this.checkEmpty();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  //完成按钮是否可用
+  checkEmpty() {
+    let disease = this.data.guidance.disease;
+    let check = disease.filter(function(el) {
+      return el.isChose == true
+    })
+    this.setData({
+      'guidance.btnAble': !!check.length
+    });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //保存
+  async postGuidance() {
+    let data = this.data.guidance.info;
+    wx.showLoading({
+      title: '正在生成',
+    })
+    let result = await Protocol.postGuidance(data);
+    wx.hideLoading()
+    if (result.code) {
+      wx.showToast({
+        title: '生成成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+  },
+  onHide() {
+    let guidance = this.data.guidance
+    wx.setStorage({
+      key: "guidance",
+      data: guidance
+    })
+  },
+  getParams: function (a) {
+    return wx.getStorageSync(a)
+  },
+  onShow() {
+    let guidance = this.getParams('guidance');
+    if (guidance) {
+      this.setData({
+        guidance: guidance
+      });
+    }
   }
 })
