@@ -87,22 +87,38 @@ Component({
       days: days,
       day: 1,
       value:[90,0,0],
+    scrollTip:true
   },
-
+  
   /**
    * 组件的方法列表
    */
   methods: {
+    getDateStart() {
+      const { year, month, day } = this.data;
+
+      return year + '-' + month + '-' + day;
+    },
+    bindpickstart(){
+      this.setData({
+        scrollTip: false
+      })
+    },
+    bindpickend(){
+      this.setData({
+        scrollTip:true
+      })
+    },
       bindChange: function (e) {
-          console.log(e,'eeee')
+          // console.log(e,'eeee')
           const val = e.detail.value
           this.setData({
               year: this.data.years[val[0]],
               month: this.data.months[val[1]],
               day: this.data.days[val[2]]
           })
-          console.log('this.data.year+\'-\'+this.data.month+\'-\'+this.data.day',this.data.year+'-'+this.data.month+'-'+this.data.day)
           this.triggerEvent("childSecDate", this.data.year+'-'+this.data.month+'-'+this.data.day);
       }
   }
+
 })

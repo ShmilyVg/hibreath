@@ -9,10 +9,6 @@ import {
 } from "../food/manager";
 import Protocol from "../../modules/network/protocol";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     guidance: {
       page: 0,
@@ -94,9 +90,10 @@ Page({
       "guidance.info.sexStr": sexStr
     });
   },
-  continueFun() {
+  async continueFun() {
     const info = this.data.guidance.info;
-    switch (this.data.guidance.page) {
+    let page = this.data.guidance.page;
+    switch (page) {
       case 1:
         if (this.objIsEmpty(info.sex)) {
           toast.warn("请选择性别");
@@ -122,9 +119,29 @@ Page({
         this.postGuidance();
         return;
     }
-    if (this.data.guidance.page < 4) {
+    if (page != 2) {
       this.goNextPage()
+    } else {
+      Toast.showLoading();
+      this.markSurePicker();
     }
+  },
+  markSurePicker(){
+    setTimeout(() => {
+      let pickerObj = this.selectComponent("#pickerDate")
+      const startTime = pickerObj.getDateStart();
+      const scrollTip = pickerObj.data.scrollTip;
+      if (scrollTip) {
+        this.setData({
+          'guidance.info.birthday': startTime,
+          'guidance.birth': startTime.split('-'),
+        });
+        Toast.hiddenLoading();
+        this.goNextPage()
+      }else{
+        this.markSurePicker()
+      }
+    }, 200)
   },
   back() {
     this.setData({
@@ -224,17 +241,11 @@ Page({
   //保存
   async postGuidance() {
     let data = this.data.guidance.info;
-    wx.showLoading({
-      title: '正在生成',
-    })
+    Toast.showLoading('正在生成')
     let result = await Protocol.postGuidance(data);
-    wx.hideLoading()
+    Toast.hiddenLoading();
     if (result.code) {
-      wx.showToast({
-        title: '生成成功',
-        icon: 'success',
-        duration: 2000
-      })
+      Toast.success('生成成功')
     }
   },
   onHide() {
@@ -244,7 +255,7 @@ Page({
       data: guidance
     })
   },
-  getParams: function (a) {
+  getParams: function(a) {
     return wx.getStorageSync(a)
   },
   onShow() {

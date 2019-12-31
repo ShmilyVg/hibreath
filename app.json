@@ -31,7 +31,9 @@
     "pages/caseDetailsInformation/caseDetailsInformation",
     "pages/programmeDetails/programmeDetails",
     "pages/personalCenter/personalCenter",
-    "pages/guidance/guidance"
+    "pages/guidance/guidance",
+    "pages/recomTar/recomTar",
+    "pages/lowFatReport/lowFatReport"
   ],
   "subpackages": [
     {
