@@ -199,11 +199,12 @@ Page({
     },
     //完成评论
     async finComment(){
-        await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent}));
+        const {result} = await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent}));
         this.undateComment()
         this.setData({
             showMytoast:true,
-            toastType:'comment'
+            toastType:'comment',
+            ...result
         })
         setTimeout(()=>{
             this.setData({
@@ -213,11 +214,12 @@ Page({
     },
     //完成回复
     async finCReply(){
-        await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent,commentId:this.data.commentId}));
+      const {result} = await whenDismissGroup(Protocol.postAddComment({dynamicId:this.dataId,content:this.data.commentContent,commentId:this.data.commentId}));
         this.undateComment()
         this.setData({
             showMytoast:true,
-            toastType:'reComment'
+            toastType:'reComment',
+            ...result
         })
         setTimeout(()=>{
             this.setData({

@@ -71,9 +71,16 @@ Page({
       this.showPopup();
     } else {
       Toast.showLoading();
-      await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
+      const {result} = await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
       wx.hideLoading();
+      //任务信息全局储存 圈子页面使用
       app.globalData.isImgClock = true
+      app.globalData.publishObj.inTaskProgress = result.inTaskProgress
+      app.globalData.publishObj.integral = result.integral
+      app.globalData.publishObj.integralTaskTitle = result.integralTaskTitle
+    /*  app.globalData.dtinTaskProgress = result.inTaskProgress
+      app.globalData.integral = result.integral
+      app.globalData.integralTaskTitle = result.integralTaskTitle*/
       HiNavigator.switchToCommunity();
     }
     app.globalData.isScrollTopNum = true

@@ -294,15 +294,6 @@ Page({
                     }).then(data => {
                         console.log(data.result.id)
                         HiNavigator.redirectToBlowToResult({id: data.result.id});
-                        this.setData({
-                            showMytoast:true,
-                            toastType:'fatBurn'
-                        })
-                        setTimeout(()=>{
-                            this.setData({
-                                showMytoast:false,
-                            })
-                        },2000)
                     });
 
                     //TIMESTAMP 设备获取时间戳

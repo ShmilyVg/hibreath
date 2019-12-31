@@ -2,7 +2,7 @@
 <view class="exciting-window-container" catchtouchmove="stopScroll">
     <view wx:if="{{!showModalStatus}}" class="exciting-window-show {{toastResult.taskNum === toastResult.finishNum?'exciting-window-showImg2':'exciting-window-showImg1'}}" animation="{{animation}}">
         <view class="exciting-Title">{{excitingTitleL}}{{excitingTitleR}}</view>
-        <view class="exciting-Content"wx:if="{{toastType !=='food' && showDif}}">
+        <view class="exciting-Content"wx:if="{{showDif}}">
             <text style="color: #333;">{{excitingContent}}</text>
             <text style="color: #ED6F69;">{{excitingNumber}}</text>
             <text wx:if="{{excitingReduce}}">,别灰心继续加油</text>
@@ -10,10 +10,10 @@
         <view style="display: flex;justify-content: center;margin-top: 60rpx;margin-bottom: 35rpx">
             <view wx:for="{{toastResult.incImgList}}"><image src="{{item}}" style="width: 70rpx;height: 70rpx;margin-right: 28rpx"></image></view>
         </view>
-        <view class="exciting-button" wx:if="{{toastType !=='food'}}" bindtap="excitingShare">立即分享</view>
-        <view class="exciting-button" wx:else bindtap="excitingKnow">我知道了</view>
-        <view class="exciting-bottom" wx:if="{{toastResult.finishNum !== toastResult.taskNum}}">今日还剩{{toastResult.taskNum-toastResult.finishNum}}项任务未完成哦~</view>
-        <view class="exciting-bottom" wx:else>所有任务都完成啦~</view>
+        <view class="exciting-button" wx:if="{{toastResult.finishNum !== toastResult.taskNum}}" bindtap="goTask">{{btnText}}</view>
+        <view class="exciting-button" wx:else bindtap="goRecomTar">报告已生成,点击查看</view>
+        <view class="exciting-bottom" wx:if="{{toastResult.finishNum === toastResult.taskNum}}">所有任务都完成啦~</view>
+        <view class="exciting-bottom" wx:else>完成所有任务即可解锁完整分析报告</view>
     </view>
     <view wx:if="{{toastType !=='food'}}" style="width: 100%;text-align: center">
         <image bindtap="excitingKnow" src="../../images/close.png" style="width: 80rpx;height: 80rpx;"></image>

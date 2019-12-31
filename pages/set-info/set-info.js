@@ -126,6 +126,7 @@ Page({
           }, 200)
         }
       });
+      return
     }
   },
 
@@ -146,6 +147,7 @@ Page({
           backgroundColor: "#F55E6B"
         });
       });
+      return
     }else{
       that.setData({
         showNewInfo: false,
@@ -264,12 +266,11 @@ Page({
     this.connectionPage = new ConnectionManager(this);
     setTimeout(()=>{
       this.getIsshowGuide();//是否显示开屏页
-      console.log('getStorageSync',wx.getStorageSync('showGuide'))
       if(wx.getStorageSync('showGuide') !==''){
         this.getRegister();//获取是否注册
       }
       this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
-    },500)
+    },200)
 
   },
   /**
@@ -293,7 +294,12 @@ Page({
           isNophone:true
         })
     }
-    if(result.finishedGuide){
+    if(result.finishedGuide && result.finishedPhone){
+      this.setData({
+        showNewInfo: false,
+        showGoclockin: false,
+        showGuide:false
+      })
       this.handleTasks()
     }else{
       console.log('2444')
@@ -497,8 +503,7 @@ Page({
                   });
               } else {
                   this.setData({
-                      foodAheight:
-                          foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
+                      foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
                   });
               }
           }

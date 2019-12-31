@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "立即注册",
-  "usingComponents": {}
+  "usingComponents": {
+    "my-toast": "../../components/my-toast/my-toast"
+  }
 }

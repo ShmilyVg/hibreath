@@ -2,6 +2,7 @@
 import {Toast} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
@@ -9,7 +10,8 @@ Page({
    */
   data: {
     btntext:'获取验证码',
-    disabledBtn:true
+    disabledBtn:true,
+    showMytoast:false
   },
 
   /**
@@ -103,14 +105,27 @@ Page({
    */
   async submitMsg(){
     Toast.showLoading('登录中')
-    await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code,sharedId:this.data.sharedId}))
+    const {result} = await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code,sharedId:this.data.sharedId}))
     Toast.hiddenLoading()
-    wx.showToast({
+    if(result.inTaskProgress){
+      this.setData({
+        showMytoast:true,
+        ...result
+      })
+      setTimeout(()=>{
+        this.setData({
+          showMytoast:false,
+        })
+      },2000)
+    }
+
+   /* wx.showToast({
       title: '登录成功',
       icon: 'success',
       duration: 2000,
-    })
+    })*/
     Toast.hiddenLoading()
+    HiNavigator.navigateToGuidance()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -27,6 +27,14 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGuidance() {
       this.navigateTo({url: '/pages/guidance/guidance'});
     }
+    //燃脂历程
+    static navigateToRecomTar() {
+      this.navigateTo({url: '/pages/recomTar/recomTar'});
+    }
+    //进入减脂报告
+    static navigateToLowFatReport() {
+      this.navigateTo({url: '/pages/lowFatReport/lowFatReport'});
+    }
     //准备日-视频打卡
     static navigateTofoodVideoclock({id,videoUrl}) {
         this.navigateTo({url: '/pagesIndex/foodVideoclock/foodVideoclock?id=' + id +'&videoUrl=' + videoUrl});

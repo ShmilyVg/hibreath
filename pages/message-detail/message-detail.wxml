@@ -71,8 +71,8 @@
           wx:if="{{showMytoast}}"
           toastType="{{toastType}}"
           integral="{{integral}}"
+          inTaskProgress="{{inTaskProgress}}"
           integralTaskTitle="{{integralTaskTitle}}"
-          toastType="{{toastType}}"
 >
 
 </my-toast>

@@ -50,15 +50,13 @@ Page({
     const {detail: {userInfo, encryptedData, iv}} = e;
     if (!!userInfo) {
       Toast.showLoading();
-      try {
-        await Login.doRegister({userInfo, encryptedData, iv});
-        Toast.hiddenLoading();
-        Toast.showText('注册成功')
-        Toast.hiddenLoading();
-      } catch (e) {
-        Toast.warn('获取信息失败');
-      }
-    }else{
+      await Login.doRegister({userInfo, encryptedData, iv});
+      this.setData({
+        nologin:false
+      })
+      Toast.hiddenLoading();
+      Toast.showText('注册成功')
+      Toast.hiddenLoading();
     }
   },
   /**

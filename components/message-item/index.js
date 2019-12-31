@@ -187,12 +187,13 @@ Component({
         },
         //完成评论
         async finComment(){
-            await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent}));
+            const {result} = await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent}));
             this.undateComment()
             //toast.success('评论成功',800);
             this.setData({
                 showMytoast:true,
-                toastType:'comment'
+                toastType:'comment',
+                ...result
             })
             setTimeout(()=>{
                 this.setData({
@@ -202,11 +203,12 @@ Component({
         },
         //完成回复
         async finCReply(){
-            await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent,commentId:this.data.commentId}));
+            const {result} = await this.whenDismissGroup(Protocol.postAddComment({dynamicId:this.data.message.id,content:this.data.commentContent,commentId:this.data.commentId}));
             this.undateComment()
             this.setData({
                 showMytoast:true,
-                toastType:'reComment'
+                toastType:'reComment',
+                ...result
             })
             setTimeout(()=>{
                 this.setData({

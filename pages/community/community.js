@@ -167,10 +167,12 @@ Page({
     },
     async onShow() {
         if(app.globalData.isImgClock){
+          console.log('222222222',app.globalData.publishObj)
             app.globalData.isImgClock=false
             this.setData({
                 showMytoast:true,
-                toastType:'imgClock'
+                toastType:'imgClock',
+                ...app.globalData.publishObj
             })
             setTimeout(()=>{
                 this.setData({

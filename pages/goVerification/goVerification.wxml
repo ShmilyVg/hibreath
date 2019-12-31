@@ -13,3 +13,12 @@
     <view class="clear"></view>
 </view>
 <button class="goVerification-btn" disabled="{{disabledBtn}}" hover-class="press-style" bindtap="submitMsg">确定</button>
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
+        integral="{{integral}}"
+        inTaskProgress="{{inTaskProgress}}"
+        integralTaskTitle="{{integralTaskTitle}}"
+>
+
+</my-toast>

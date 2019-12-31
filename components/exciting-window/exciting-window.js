@@ -32,41 +32,26 @@ Component({
 */
         },
         attached() {
+            if(this.data.toastResult.finishNum !== this.data.toastResult.taskNum){
+              if(this.data.toastType == "fatBurn"){
+                this.setData({
+                  btnText:"去量体重"
+                })
+              }
+              if(this.data.toastType == "weight"){
+                this.setData({
+                  btnText:"去测燃脂速度"
+                })
+              }
+            }
             if(this.data.toastType === 'fatBurn'){
                 this.setData({
                     excitingTitleL:"燃脂情况",
                     excitingTitleR:"·"+this.data.toastResult.taskInfo.fatBurn.desZh,
-                    excitingContent:"",
-                    excitingNumber:Math.abs(this.data.toastResult.taskInfo.fatBurn.thanValue),
+                    excitingContent:"当前燃脂速度",
+                    excitingNumber:this.data.toastResult.taskInfo.fatBurn.thisValue,
+                    showDif:true,
                 })
-
-                if(this.data.toastResult.taskInfo.fatBurn.thanValue>0){
-                    this.setData({
-                        showDif:true,
-                        excitingContent:"恭喜！比上次结果多出",
-                        excitingReduce:false,
-                        excitingNumber:this.data.toastResult.taskInfo.fatBurn.thanValue
-                    })
-                }else if(this.data.toastResult.taskInfo.fatBurn.thanValue<0){
-                    this.setData({
-                        showDif:true,
-                        excitingContent:"比上次结果少了",
-                        excitingReduce:true,
-                        excitingNumber:Math.abs(this.data.toastResult.taskInfo.fatBurn.thanValue)
-                    })
-                }else if(this.data.toastResult.taskInfo.fatBurn.thanValue ==0){
-                    this.setData({
-                        showDif:true,
-                        excitingContent:"和上次结果一致",
-                        excitingReduce:false,
-                        excitingNumber:""
-                    })
-                }else{
-                    this.setData({
-                        showDif:false,
-                    })
-
-                }
             }
             if(this.data.toastType === 'weight'){
                 this.setData({
@@ -109,13 +94,20 @@ Component({
    * 组件的初始数据
    */
   data: {
-      showModalStatus:false
+      showModalStatus:false,
+      btnText:''
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    goRecomTar(){
+      HiNavigator.navigateToLowFatReport()
+    },
+    goTask(){
+      HiNavigator.switchToSetInfo()
+    },
       excitingKnow(){
           this.triggerEvent("getShowExcitation", {showExcitation:false} )
       },
