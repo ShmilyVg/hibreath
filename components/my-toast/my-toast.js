@@ -21,10 +21,22 @@ Component({
         type:String,
         value:''
     },
-      toastText:{
-          type: String,
-          value: ''
-      },
+    toastText:{
+        type: String,
+        value: ''
+    },
+    integralTaskTitle:{
+      type: String,
+      value: ''
+    },
+    integral:{
+      type: Number,
+      value: ''
+    },
+    inTaskProgress:{
+      type: Boolean,
+      value: ''
+    },
   },
     lifetimes: {
          created() {

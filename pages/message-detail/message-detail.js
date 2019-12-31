@@ -133,6 +133,9 @@ Page({
             await whenDismissGroup(Protocol.postNoHeart({dynamicId:this.dataId}));
         }else{
             await whenDismissGroup(Protocol.postGiveHeart({dynamicId:this.dataId}));
+          this.setData({
+            ...result  //是否完成了任务
+          })
         }
         const {result} = await whenDismissGroup(Protocol.postDynamicInfo({id: this.dataId}));
         this.setData({

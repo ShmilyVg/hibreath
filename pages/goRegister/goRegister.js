@@ -2,20 +2,29 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast} from "heheda-common-view";
 import Login from "../../modules/network/login";
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    noRegister:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that =this;
+    app.appLoginListener = function({ loginState }) {
+      console.log("set-info", `appLoginListener-> ${loginState}`);
+      if (loginState == this.NOT_REGISTER){
+        that.setData({
+          noRegister: true,
+        });
+      }
+    };
   },
   /**
    * @desc 跳转验证手机号群号
@@ -23,7 +32,7 @@ Page({
   goVerification(){
     wx.getSetting({
       success: (res) => {
-        if (!res.authSetting['scope.userInfo'] &&!app.globalData.isLogin) {
+        if (!res.authSetting['scope.userInfo'] &&!getApp().globalData.isLogin) {
           wx.showToast({
             title: '请先授权信息',
             duration: 1000,
@@ -62,11 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(getApp().globalData.isLogin) {
-      this.setData({
-        nologin:false
-      })
-    }
+
   },
 
   /**

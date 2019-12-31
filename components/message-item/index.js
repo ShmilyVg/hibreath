@@ -100,7 +100,10 @@ Component({
             if(this.data.message.action.liked){
                 await this.whenDismissGroup(Protocol.postNoHeart({dynamicId:this.data.message.id}));
             }else{
-                await this. whenDismissGroup(Protocol.postGiveHeart({dynamicId:this.data.message.id}));
+              const {result} = await this.whenDismissGroup(Protocol.postGiveHeart({dynamicId:this.data.message.id}));
+              this.setData({
+                ...result  //是否完成了任务
+              })
             }
             const {result} = await this.whenDismissGroup(Protocol.postDynamicInfo({id: this.data.message.id}));
             this.setData({

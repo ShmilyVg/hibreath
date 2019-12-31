@@ -493,7 +493,7 @@ Page({
         });
     },
     updateFailAction() {
-        this.data.isUpdate && this.backToIndexPage('升级失败，回退');
+        this.data.isUpdate && this.backToIndexPage('升级失败');
     },
     backToIndexPage(text) {
         Toast.showLoading(text);

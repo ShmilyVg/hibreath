@@ -63,6 +63,9 @@
 <!--打卡完成激励弹窗-->
 <my-toast
         wx:if="{{showMytoast}}"
+        inTaskProgress="{{inTaskProgress}}"
+        integral="{{integral}}"
+        integralTaskTitle="{{integralTaskTitle}}"
         toastType="{{toastType}}"
 >
 
