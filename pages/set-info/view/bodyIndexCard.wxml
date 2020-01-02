@@ -5,17 +5,30 @@
             <view class="flex-row">
                 <image src="{{bodyIndexTask.iconUrl}}" class="set-content-icon"></image>
                 <view class="flex-column" style="align-items: start;margin-left: 20rpx">
-                    <view class="set-content-title">记录身体指标</view>
-                    <view class="set-content-content">你知道什么是健康指标么？</view>
+                    <view class="set-content-title">{{bodyIndexTask.title}}</view>
+                    <view class="set-content-content">{{bodyIndexTask.subTitle}}</view>
                 </view>
             </view>
             <view wx:if="{{!bodyIndexTask.finished}}" class="set-content-toFinish" data-type="bodyIndex"
                   catchtap="bindTapToFinish">去完成
             </view>
-            <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
+            <view wx:else>
+                <view style="font-size:56rpx;font-family:DIN Condensed;font-weight:bold;color:rgba(69,69,69,1);text-align: right">{{bodyIndexExt.weight.thisValue}}</view>
+                <view wx:if="{{bodyIndexExt.weight.thanBefore}}" class="bodayIndex-viewRB">
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'hold'}}">
+                        和上次一致
+                    </view>
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'height'}}">
+                        比上一次 <image style="width: 14rpx;height: 20rpx"  src="../../images/set-info/up.png"></image>{{bodyIndexExt.weight.thanValue}}kg
+                    </view>
+                    <view wx:if="{{bodyIndexExt.weight.thanBefore === 'low'}}">
+                        比上一次 <image style="width: 14rpx;height: 20rpx" src="../../images/set-info/down.png"></image>{{bodyIndexExt.weight.thanValue}}kg
+                    </view>
+                </view>
+            </view>
         </view>
 
-        <view wx:if="{{bodyIndexTask.finished}}" class="contentCard" style="margin-top: 70rpx">
+  <!--      <view wx:if="{{bodyIndexTask.finished}}" class="contentCard" style="margin-top: 70rpx">
             <view>
                 <view class="bodayIndex-view" style="float: left">
                     <text class="bodayIndex-textB">体重</text>
@@ -23,7 +36,7 @@
                 </view>
                 <view class="bodayIndex-viewRT"  style="float: right">{{bodyIndexExt.weight.value}}</view>
                 <view class="clear"></view>
-               <!-- <view class="bodayIndex-viewRB" style="text-align: right">{{bodyIndexExt.weight.thanBefore}}</view>-->
+               &lt;!&ndash; <view class="bodayIndex-viewRB" style="text-align: right">{{bodyIndexExt.weight.thanBefore}}</view>&ndash;&gt;
                 <view wx:if="{{bodyIndexExt.weight.thanBefore}}" class="bodayIndex-viewRB">
                     <view wx:if="{{bodyIndexExt.weight.thanBefore === 'hold'}}">
                         和上次一致
@@ -58,6 +71,6 @@
                 <view class="clear"></view>
                 <view class="bodayIndex-viewRB" style="text-align: right">{{bodyIndexExt.heart.descZh}}</view>
             </view>
-        </view>
+        </view>-->
     </view>
 </template>

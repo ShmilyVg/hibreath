@@ -41,7 +41,6 @@ Page({
     },
     async onLoad(e) {
         console.log('eeeeeee', e)
-        this.e= e;
         this.cellDataHandle({});
         this.init();
         /*存在id 即为在线检测进入结果页面*/
@@ -54,18 +53,17 @@ Page({
                     toastResult:result,
                     canvasMargin:3000
                 })
-            }else{
-                this.setData({
-                    showMytoast:true,
-                    toastType:'fatBurn'
-                })
-                setTimeout(()=>{
-                    this.setData({
-                        showMytoast:false,
-                    })
-                },2000)
             }
-
+              this.setData({
+                  showMytoast:true,
+                  toastType:'fatBurn',
+                  ...e,
+              })
+              setTimeout(()=>{
+                  this.setData({
+                      showMytoast:false,
+                  })
+              },2000)
         }
     },
     getShowExcitation(e){

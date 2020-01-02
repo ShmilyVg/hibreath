@@ -17,7 +17,7 @@
     max-width: 492rpx;
     left: 20%;
     top:45%;
-    z-index: 100;
+    z-index: 1000;
 }
 .my-toast-Moneyview{
     max-height: 150rpx;
@@ -35,7 +35,7 @@
     left: 0;
     top: 45%;
     text-align: center;
-    z-index: 100;
+    z-index: 1000;
     margin: auto;
     right: 0;
 }

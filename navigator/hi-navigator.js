@@ -5,8 +5,8 @@
 import CommonNavigator from "heheda-navigator";
 
 export default class HiNavigator extends CommonNavigator {
-    static redirectToBlowToResult({id}) {
-        this.redirectTo({url: '/pages/result/result?id=' + id});
+    static redirectToBlowToResult({id,integral,inTaskProgress,integralTaskTitle}) {
+        this.redirectTo({url: '/pages/result/result?id=' + id+'&integral=' + integral+'&inTaskProgress=' + inTaskProgress+'&integralTaskTitle=' + integralTaskTitle});
     }
 
     static navigateToResult({fatText, fatTextEn, fatDes, score}) {
@@ -31,7 +31,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToRecomTar() {
       this.navigateTo({url: '/pages/recomTar/recomTar'});
     }
-    //进入减脂报告
+    //进入今日减脂报告
     static navigateToLowFatReport() {
       this.navigateTo({url: '/pages/lowFatReport/lowFatReport'});
     }
