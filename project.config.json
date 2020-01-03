@@ -236,16 +236,16 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/lowFatReport/lowFatReport",
-					"pathName": "pages/lowFatReport/lowFatReport",
+					"name": "pagesIndex/howEat/howEat",
+					"pathName": "pagesIndex/howEat/howEat",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/recomTar/recomTar",
-					"pathName": "pages/recomTar/recomTar",
-					"query": "",
+					"id": 26,
+					"name": "pagesIndex/slimpleBox/slimpleBox",
+					"pathName": "pagesIndex/slimpleBox/slimpleBox",
+					"query": "type=threeBox&foodId=5e0ebba7edb0c2b52e414083",
 					"scene": null
 				},
 				{

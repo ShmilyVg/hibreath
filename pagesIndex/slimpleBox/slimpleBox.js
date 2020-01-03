@@ -1,22 +1,24 @@
-// pages/programmeDetails/programmeDetails.js
+// pagesIndex/slimpleBox/slimpleBox.js
+import Protocol from "../../modules/network/protocol";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad(options) {
+    console.log('options',options)
+    const {result} = await Protocol.getMealInfo({foodId:options.foodId})
     this.setData({
-      url: 'https://backend.hipee.cn/html/hipee-hibreath/yuanze/index.html'
+      ...result,
+      pageType:options.type
     })
-    wx.setNavigationBarTitle({ title: '自由日饮食原则' });
-    wx.setNavigationBarColor({ frontColor: '#ffffff', backgroundColor: '#171717' });
+    console.log('dataList',this.data.mealInfo)
   },
 
   /**

@@ -58,7 +58,10 @@
         "food-recommendation/food-recommendation",
         "shareDynamics/shareDynamics",
         "burnFatSpirits/burnFatSpirits",
-        "dayReportConclude/dayReportConclude"
+        "dayReportConclude/dayReportConclude",
+        "howEat/howEat",
+        "slimpleBox/slimpleBox",
+        "takeOut/takeOut"
       ]
     }
   ],

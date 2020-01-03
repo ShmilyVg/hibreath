@@ -171,6 +171,18 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToChangeCommunity({ groupId, name, imgUrl}) {
     this.navigateTo({ url: '/pages/createCommunity/createCommunity?groupId=' + groupId + '&name=' + name + '&imgUrl=' + imgUrl });
   }
+  //减脂怎么吃
+  static navigateToHowEat() {
+    this.navigateTo({ url: '/pagesIndex/howEat/howEat'} );
+  }
+  //代餐盒子
+  static navigateToSlimpleBox({type,foodId}) {
+    this.navigateTo({ url: '/pagesIndex/slimpleBox/slimpleBox?type=' + type+ '&foodId=' + foodId });
+  }
+  //外卖怎么选
+  static navigateToTakeOut() {
+    this.navigateTo({ url: '/pagesIndex/takeOut/takeOut'} );
+  }
   //自由日饮食原则
   static navigateToProgrammeDetails() {
     this.navigateTo({ url: '/pages/programmeDetails/programmeDetails'});

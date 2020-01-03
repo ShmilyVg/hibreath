@@ -163,7 +163,7 @@
 
         </view>
     </view>
-    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
+    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 30rpx">
       <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
         <template is="foodVideo" wx:if="{{item.type =='videoFood'}}" data="{{...item}}"></template>
         <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}" data="{{...item}}"></template>
