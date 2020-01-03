@@ -397,6 +397,21 @@ export default class Protocol {
     static postGuidance(data) {
         return Network.request({url: 'members/put',data:data});
     }
+    //我的减脂历程目标
+    static getMyLossfatCourse() {
+        return Network.request({url: 'members/getMyLossfatCourse'});
+    }
+    //减脂报告
+    static getTodayLosefatReport() {
+        return new Promise((resolve, reject) =>{
+            return Network.request({url: '/members/getTodayLosefatReport'}).then(data => {
+                resolve(data);
+            }).catch(res => {
+                reject(res);
+            })
+        })
+        
+    }
     //成员新手任务列表
     static postIntegralSingle() {
         return Network.request({url: 'integral/single'});

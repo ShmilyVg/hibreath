@@ -24,8 +24,8 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pages/goVerification/goVerification'});
     }
     //新手引导填写资料
-    static navigateToGuidance() {
-      this.navigateTo({url: '/pages/guidance/guidance'});
+    static navigateToGuidance({reset}) {
+      this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}`});
     }
     //燃脂历程
     static navigateToRecomTar() {

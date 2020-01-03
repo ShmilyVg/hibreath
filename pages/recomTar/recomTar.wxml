@@ -1,2 +1,84 @@
 <!--pages/recomTar/recomTar.wxml-->
-<text>推荐目标体重</text>
+
+<view class="recomTar">
+  <image src="../../images/lowFatReport/bg.png" class="bg"></image>
+  <view class="header">
+    <view>
+      <text class="recom">推荐目标体重</text>
+      <text class="custom">支持自定义</text>
+    </view>
+    <view class="headerTit">
+      <text class="recomNum">{{targetDate.weightGoalt}}</text>
+      <text class="recomUnit">KG</text>
+    </view>
+  </view>
+  <view class="need">
+    <view class="bottom1"></view>
+    <view class="bottom2"></view>
+    <view class="bottom3">
+      <view class="title">
+        <text class="sign"></text>达到目标体重，你需要
+      </view>
+      <view class="matter">
+        <view class="matterItem">
+          <view class="matterItemTit">减重</view>
+          <view class="matterItemV">{{targetDate.weightLoss}}
+            <text>kg</text>
+          </view>
+        </view>
+        <view class="matterItem">
+          <view class="matterItemTit">历时</view>
+          <view class="matterItemV">{{targetDate.takeTime}}
+            <text>天</text>
+          </view>
+        </view>
+      </view>
+      <view class="eat">
+        <view class="eatTit">
+          在此期间，你大致需要吃
+        </view>
+        <view class="eatItem">
+          <view class="eatCon">3日全代餐盒子</view>
+          <view class="eatNum">X{{targetDate.fullMeal}}</view>
+        </view>
+        <view class="eatItem">
+          <view class="eatCon">3日代两餐盒子</view>
+          <view class="eatNum">X{{targetDate.twoMeal}}</view>
+        </view>
+        <view class="adjust">*您也可以根据自己需要进行调整</view>
+      </view>
+    </view>
+  </view>
+  <view class="ideas">
+    <view class="title">
+      <text class="sign"></text>在理想状态下，你会经历
+    </view>
+    <view class="ideasItem">
+      <view class="continued">{{targetDate.onePeriod}}<text>天</text> </view>
+      <view class="ideasItemTit"> <text>1</text> 启动适应期</view>
+      <view class="ideasItemCon">你开始减脂的第一阶段，身体要有个转变适应的过程</view>
+    </view>
+    <view class="ideasItem">
+      <view class="continued">{{targetDate.twoPeriod}}<text>天</text> </view>
+      <view class="ideasItemTit"> <text>2</text> 加速期</view>
+      <view class="ideasItemCon">身体开始适应减脂节奏，稳步燃脂</view>
+    </view>
+    <view class="ideasItem">
+      <view class="continued">{{targetDate.threePeriod}}<text>天</text> </view>
+      <view class="ideasItemTit"> <text>3</text> 巩固期</view>
+      <view class="ideasItemCon">达到理想体重，也不能贪嘴，要继续保持 一段时间哦</view>
+    </view>
+    <view class="ideasItem">
+      <view class="continued">{{targetDate.fourPeriod}}<text>天</text> </view>
+      <view class="ideasItemTit"> <text>4</text> 过度期</view>
+      <view class="ideasItemCon">你已经可以慢慢恢复原来的饮食，但是切 记还是不可暴饮暴食</view>
+    </view>
+    <view class="remark">*如果把控不严格，可能会进入"减脂平台期"和"减脂中断期"，在具体方案打卡执行中会有对应提示哦~</view>
+  </view>
+  <view class="btn_group">
+    <button class="btn_start" hover-class="press-style" hover-stay-time="50" bindtap="start">开始减脂历程
+    </button>
+    <view class="btn_afresh" hover-class="press-style" hover-stay-time="50" bindtap="reStart">重新生成
+    </view>
+  </view>
+</view>

@@ -8,6 +8,7 @@ import {
   oneDigit
 } from "../food/manager";
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
   data: {
     guidance: {
@@ -152,6 +153,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      reset: options.reset
+    })
     this.getUserInfo()
   },
   async getUserInfo() {
@@ -245,7 +249,8 @@ Page({
     let result = await Protocol.postGuidance(data);
     Toast.hiddenLoading();
     if (result.code) {
-      Toast.success('生成成功')
+      Toast.success('生成成功');
+      HiNavigator.navigateToRecomTar()
     }
   },
   onHide() {
@@ -261,6 +266,9 @@ Page({
   onShow() {
     let guidance = this.getParams('guidance');
     if (guidance) {
+      if (this.data.reset){
+        guidance.page =0
+      }
       this.setData({
         guidance: guidance
       });
