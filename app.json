@@ -57,6 +57,8 @@
         "food-details/food-details",
         "food-recommendation/food-recommendation",
         "shareDynamics/shareDynamics",
+        "burnFatSpirits/burnFatSpirits",
+        "dayReportConclude/dayReportConclude",
         "howEat/howEat",
         "slimpleBox/slimpleBox",
         "takeOut/takeOut"

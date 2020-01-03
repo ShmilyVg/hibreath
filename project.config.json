@@ -247,6 +247,20 @@
 					"pathName": "pagesIndex/slimpleBox/slimpleBox",
 					"query": "type=threeBox&foodId=5e0ebba7edb0c2b52e414083",
 					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "pagesIndex/burnFatSpirits/burnFatSpirits",
+					"pathName": "pagesIndex/burnFatSpirits/burnFatSpirits",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/dayReportConclude/dayReportConclude",
+					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
