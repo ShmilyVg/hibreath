@@ -1,66 +1,97 @@
 // pages/lowFatReport/lowFatReport.js
+import Protocol from "../../modules/network/protocol";
+import {
+  Toast as toast,
+  Toast,
+  WXDialog
+} from "heheda-common-view";
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    nickname:'',
+    portraitUrl:'',
+    curDate:'',
+    left:46,
+    report: {},
+    todayPer:0,
+    yesterdayPer: 0,
+    foodDescription:[],
+    sprotDescription:[],
+    weightToday:'',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    let now = new Date();
+    this.setData({
+      'curDate': now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
+    })
+    this.getReport();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-
+    
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  setweightChange(){
+    let report = this.data.report;
+    let todayNum = report.weightChange.weightToday , yesterdayNum = report.weightChange.lastTimeWeight
+    let todayPer, yesterdayPer;
+    if (todayNum > yesterdayNum){
+      todayPer = '510rpx'
+      yesterdayPer = '420rpx'
+    } else if (todayNum < yesterdayNum){
+      yesterdayPer = '510rpx'
+      todayPer = '420rpx'
+    }else{
+      yesterdayPer = '470rpx'
+      todayPer = '470rpx'
+    }
+    this.setData({
+      todayPer, yesterdayPer
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getDesArr(txt){
+    let len = txt.length/2-2;
+    let part1 = txt.slice(0,len);
+    let part2 = txt.slice(len);
+    return [part1, part2]
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  getlosefatSpeed(Speed){
+    let left , pice = 116;
+    if (Speed <= 2){
+      left = (pice * Speed/2) ;
+    } else if (Speed <= 9 && Speed >= 3){
+      left = (pice * (Speed-2) / 6) + pice;
+    } else if (Speed <= 19 && Speed >= 10) {
+      left = (pice * (Speed - 9) / 9) + pice*2;
+    } else if (Speed <= 39 && Speed >= 20) {
+      left = (pice * (Speed - 19) / 19) + pice * 3;
+    } else if (Speed <= 99 && Speed >= 40) {
+      left = (pice * (Speed - 39) / 59) + pice * 4;
+    }
+    return left - 12.5;;
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  async getReport(){
+    Toast.showLoading();
+    let data = await Protocol.getTodayLosefatReport();
+    Toast.hiddenLoading();
+    let left = this.getlosefatSpeed(data.result.losefatSpeed.dataValueToday) ;
+    let foodDesTxt = data.result.losefatGrams.foodDescription;
+    let sprotDesTxt = data.result.losefatGrams.sprotDescription;
+    let that = this;
+    this.setData({
+      sprotDescription: that.getDesArr(sprotDesTxt),
+      foodDescription: that.getDesArr(foodDesTxt),
+      report: data.result,
+      weightToday: data.result.weightChange.weightToday,
+      left: left
+    })
+    this.setweightChange()
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  onShareAppMessage(res){
+    console.log(res);
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  shareFr(){
+    toast.warn("敬请期待");
+    return;
   }
 })

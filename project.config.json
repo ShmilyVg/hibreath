@@ -233,6 +233,20 @@
 					"pathName": "pages/guidance/guidance",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lowFatReport/lowFatReport",
+					"pathName": "pages/lowFatReport/lowFatReport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recomTar/recomTar",
+					"pathName": "pages/recomTar/recomTar",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
