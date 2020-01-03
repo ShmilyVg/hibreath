@@ -51,14 +51,25 @@
                     </view>
                 </view>
             </view>
-            <view wx:if="{{pageType == 'threeBox'}}">
+            <view wx:if="{{pageType == 'threeBox'}}" style="margin-top: 80rpx">
                 <view style="display: flex;align-items: center">
                     <image style="width: 33rpx;height: 36rpx;margin-right: 15rpx" src="../images/deng.png"></image>
                     <text class="day-list-body-title">吃盒子期间饿了能吃什么？</text>
                 </view>
+                <view class="hungry-view">
+                    <view class="hungry-view-text" style="margin-bottom: 40rpx">饿了可以补充<text style="color:#ED6F69">300g左右</text>的蔬菜，还可以因个人情况添加<text style="color:#ED6F69">1~2个</text>水煮蛋。</view>
+                    <view class="hungry-view-text">推荐以下12种蔬菜，以生吃、水煮、清炒、白灼、炖、蒸为主，清炒时不要勾芡。</view>
+                    <image src='../images/icon/list.jpg' style="width: 670rpx;height: 542rpx;margin: 45rpx auto 0rpx auto"></image>
+                </view>
             </view>
-           <view wx:else>
-
+           <view wx:else style="margin-top: 80rpx">
+               <view style="display: flex;align-items: center;margin-bottom: 50rpx">
+                   <image style="width: 33rpx;height: 36rpx;margin-right: 15rpx" src="../images/deng.png"></image>
+                   <text class="day-list-body-title">剩余1餐怎么吃？</text>
+               </view>
+               <view style="font-size:28rpx;font-family:PingFang SC;font-weight:400;color:rgba(69,69,69,1);margin-bottom: 40rpx">建议自制午餐或晚餐，推荐自制午餐</view>
+               <image src="../images/icon/diy.png" style="width: 100%;height: 260rpx;margin-bottom: 20rpx" data-type="diy" bindtap="goNextpage"></image>
+               <image src="../images/icon/meau.png" style="width: 100%;height: 260rpx" data-type="meau" bindtap="goNextpage"></image>
            </view>
         </view>
     </view>

@@ -66,7 +66,6 @@ export default class ConnectionManager {
             navBarColor:'#FFFFFF',//导航字体颜色
             navBarIconTheme:'white',//导航返回键颜色
             navBarBackground:'#EE6F69',//导航背景色
-
             needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
             bgColor:"#EE6F69",//PAGE背景
@@ -79,7 +78,6 @@ export default class ConnectionManager {
             blowpicShow: false,
             homeTitle: false,
             homeOrangeBtn: false,
-   
         })
     }
 
@@ -88,12 +86,10 @@ export default class ConnectionManager {
             navBarColor:'#FFFFFF',//导航字体颜色
             navBarIconTheme:'white',//导航返回键颜色
             navBarBackground:'#EE6F69',//导航背景色
-
             tryAgain:true,//未找到设备标志位
             finding:false,//正在寻找设备标志位
             bgColor:"#EE6F69",
             needCheckOTAUpdate:false,
-
             readyimg:false,
             blowpicShow:false,
             textState:"",
@@ -105,40 +101,8 @@ export default class ConnectionManager {
             stateBtnShow: true,
             state: "未连接到设备",
             btnState: false,
-
-
             homeTitle: false,
             homeOrangeBtn: false,
-
-
-            // navBarColor:'#000000',//导航字体颜色
-            // navBarIconTheme:'black',//导航返回键颜色
-            // navBarBackground:'#FFFFFF',//导航背景色
-
-            // needCheckOTAUpdate:false,
-            // noBind:false,
-
-            // stateBtnShow: false,
-
-            // state: "设备已连接",
-
-
-            // btnState: false,
-
-            // bgColor:"#fff",
-            // beginFat:false,
-            // blowpicShow: false,//吹气图片
-            // readyimg:false,// 预热图片
-            // blowingImg:false,
-            // disblowImg:true,//吹气不足状态
-            // textState:'吹气不足',
-            // textStateEn:'NOT ENOUGH',
-            // homePointHot:false, //吹气时 隐藏预热过长文案
-            // process:false,//分析中
-
-
-            // homeTitle: false,
-            // homeOrangeBtn: false,
         });
     }
 

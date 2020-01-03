@@ -410,7 +410,7 @@ export default class Protocol {
                 reject(res);
             })
         })
-        
+
     }
     //成员新手任务列表
     static postIntegralSingle() {
@@ -476,8 +476,12 @@ export default class Protocol {
         return Network.request({url: 'food/dateInfo'});
     }
     //饮食打卡-换一换
-    static postFoodChange({groupId,itemId}) {
-        return Network.request({url: 'food/change',data: {groupId,itemId}});
+    static postFoodChange({id}) {
+        return Network.request({url: 'food/change',data: {id}});
+    }
+    //新版饮食推荐
+    static postMenuRecommend() {
+      return Network.request({url: 'food/menuRecommend'});
     }
     //好物推荐
     static postConversionInfo({page = 1, pageSize = 10} = {}) {
