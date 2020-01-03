@@ -1,0 +1,7 @@
+<!--pagesIndex/dayReportConclude/dayReportConclude.wxml-->
+<view class="dayReportConclude">
+<view class="dayConclude">
+  <image src=""></image>
+</view>
+
+</view>

@@ -1,0 +1,24 @@
+<!--pagesIndex/burnFatSpirits/burnFatSpirits.wxml-->
+<view class="burnFatSpirits">
+
+  <view class="tit_h2">燃脂精灵怎么用</view>
+  <view class="tit_h4">什么是智能燃脂检测仪？</view>
+  <view class="passages">Slimple智能燃脂检测仪是一款针对减脂人群设计的验证是否真正达到燃脂效果的检测仪器。</view>
+  <view class="passages">通过使用燃脂检测仪，减脂人群可以快速知道自己的燃脂状态，从而指导自己如何调整燃脂方案。</view>
+  <view class="line"></view>
+  <view class="tit_h4">智能燃脂检测仪测的是什么？</view>
+  <view class="passages">真正减脂后，脂肪燃烧，会产生脂肪的代谢产物。在单位时间内，产生速度越快，脂肪燃烧得越多。</view>
+  <view class="passages">检测仪测量的就是脂肪的燃烧速度的快慢。</view>
+  <view class="line"></view>
+  <view class="tit_h4">检测注意事项</view>
+  <view class="passages">在使用检测仪时，以下几种情况会影响到其结果准确度，如有下述行为，建议1小时后再进行测量。</view>
+  <view class='readyImg-bottom'>
+    <view class="readyImg-littleImg" wx:for="{{6}}">
+      <image class="readImgList" src="{{readImgList[index]}}"></image>
+      <view class="readImgHead">{{readImgHead[index]}}</view>
+    </view>
+    <view class="clear"></view>
+  </view>
+</view>
+<view class="btn_wait" wx:if="{{!!second}}" hover-class="press-style" hover-stay-time="50">请仔细阅读后点击完成 {{second}}s</view>
+<view class="btn_submit" wx:else bindtap="submitFun" hover-class="press-style" hover-stay-time="50">完成</view>

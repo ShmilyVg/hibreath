@@ -135,8 +135,7 @@
 
   <view class="reviewedTitle space-between">
     <text>专业点评</text>
-    <view>
-      <image src="../../images/lowFatReport/literature.png"></image>参考文献</view>
+    <!-- <view> <image src="../../images/lowFatReport/literature.png"></image>参考文献</view> -->
   </view>
   <view class="pageItem reviewed">
     <image src="../../images/lowFatReport/buttom.png" class="reviewedBg"></image>

@@ -247,6 +247,20 @@
 					"pathName": "pages/recomTar/recomTar",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "pagesIndex/burnFatSpirits/burnFatSpirits",
+					"pathName": "pagesIndex/burnFatSpirits/burnFatSpirits",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/dayReportConclude/dayReportConclude",
+					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

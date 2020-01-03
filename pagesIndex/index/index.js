@@ -59,14 +59,6 @@ Page({
             "涂抹口红",
             "喷香水"
         ],
-        readImgsub:[
-            "避免酒精类零食",
-            "30分钟内",
-            "避免气味干扰",
-            "30分钟内",
-            "30分钟内",
-            "30分钟内"
-        ],
         homeTitle: false,
 
         homeOrangeBtn: false,

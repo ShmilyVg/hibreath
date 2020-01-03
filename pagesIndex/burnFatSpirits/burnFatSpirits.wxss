@@ -1,0 +1,115 @@
+/* pagesIndex/burnFatSpirits/burnFatSpirits.wxss */
+
+.burnFatSpirits {
+  padding: 50rpx 45rpx 0 40rpx;
+  background-color: #fff;
+}
+
+.tit_h2 {
+  height: 84rpx;
+  font-size: 60rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(84, 84, 84, 1);
+  line-height: 84rpx;
+  margin-bottom: 67rpx;
+}
+
+.tit_h4 {
+  height: 50rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: rgba(84, 84, 84, 1);
+  line-height: 50rpx;
+  margin-bottom: 40rpx;
+}
+
+.passages {
+  margin-bottom: 50rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  color: rgba(118, 118, 118, 1);
+  line-height: 40rpx;
+}
+
+.line {
+  height: 1px;
+  background-color: #e4e4e4;
+  margin-bottom: 48rpx;
+}
+
+.readyImg-bottom {
+  padding: 0rpx 40rpx 0rpx 40rpx;
+  margin-bottom: 66rpx;
+  box-sizing: border-box;
+}
+
+.readyImg-littleImg {
+  width: 33.3%;
+  height: 196rpx;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 43rpx 0;
+}
+
+.readImgList {
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.readImgHead {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(69, 69, 69, 1);
+}
+
+.readyImg-littleImg:nth-child(1) {
+  border-right: 1px #f2f2f2 solid;
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(2) {
+  border-right: 1px #f2f2f2 solid;
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(3) {
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(4) {
+  border-right: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(5) {
+  border-right: 1px #f2f2f2 solid;
+}
+
+.readImgsub {
+  font-size: 20rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(155, 155, 155, 1);
+}
+
+.btn_wait {
+  width: 750rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #ed6f69;
+  background: rgba(255, 230, 228, 1);
+}
+
+.btn_submit {
+  width: 750rpx;
+  height: 100rpx;
+  background: rgba(237, 111, 105, 1);
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}

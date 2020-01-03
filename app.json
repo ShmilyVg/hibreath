@@ -56,7 +56,9 @@
         "myDynamicList/myDynamicList",
         "food-details/food-details",
         "food-recommendation/food-recommendation",
-        "shareDynamics/shareDynamics"
+        "shareDynamics/shareDynamics",
+        "burnFatSpirits/burnFatSpirits",
+        "dayReportConclude/dayReportConclude"
       ]
     }
   ],

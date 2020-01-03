@@ -404,7 +404,7 @@ export default class Protocol {
     //减脂报告
     static getTodayLosefatReport() {
         return new Promise((resolve, reject) =>{
-            return Network.request({url: '/members/getTodayLosefatReport'}).then(data => {
+            return Network.request({url: '/members/createTodayLosefatReport'}).then(data => {
                 resolve(data);
             }).catch(res => {
                 reject(res);
