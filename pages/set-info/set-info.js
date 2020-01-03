@@ -263,7 +263,7 @@ Page({
           this.setData({
             showMytoast:false,
           })
-        },2000)
+        },4000)
       }
     },200)
   },
@@ -401,7 +401,7 @@ Page({
    * @desc 自由饮食原则
    */
   toRuler(){
-    HiNavigator.navigateToFoodRuler();
+    HiNavigator.navigateToHowEat();
   },
   /**
    * @desc  获取任务列表

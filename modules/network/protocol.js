@@ -428,7 +428,7 @@ export default class Protocol {
         return Network.request({url: 'members/info'});
     }
 
-    
+
     //个人中心常见问题
     static getSettingsHelp({id:pid}) {
         return Network.request({url: 'settings/help', data: {pid}});
@@ -479,5 +479,13 @@ export default class Protocol {
     //提交手机验证码&群号
     static postPhone(data) {
       return Network.request({url: 'account/confirmSmsCode',data});
+    }
+    //减脂怎么吃
+    static getHowtoEat(data) {
+      return Network.request({url: 'food/howToEat',data});
+    }
+    //代餐详情
+    static getMealInfo(data) {
+      return Network.request({url: 'food/mealInfo',data});
     }
 }

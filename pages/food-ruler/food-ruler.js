@@ -13,7 +13,7 @@ Page({
         this.setData({
             url: 'https://backend.hipee.cn/html/hipee-hibreath/yuanze/index.html?' + Date.now()
         })
-        wx.setNavigationBarTitle({title: '自由日饮食原则'});
+        wx.setNavigationBarTitle({title: '减脂餐制作原则'});
         wx.setNavigationBarColor({frontColor:'#ffffff', backgroundColor: '#171717'});
     },
 

@@ -233,6 +233,20 @@
 					"pathName": "pages/guidance/guidance",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/howEat/howEat",
+					"pathName": "pagesIndex/howEat/howEat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "pagesIndex/slimpleBox/slimpleBox",
+					"pathName": "pagesIndex/slimpleBox/slimpleBox",
+					"query": "type=threeBox&foodId=5e0ebba7edb0c2b52e414083",
+					"scene": null
 				}
 			]
 		}
