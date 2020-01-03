@@ -193,15 +193,15 @@ Page({
           showExcitation: false,
       });
   },
-  //上传身体指标
-  async formSubmit(e) {
-    console.log(e.detail.value);
-    const finaValue = e.detail.value;
-    if (this.objIsEmpty(finaValue.weight)) {
+  /**
+   * @desc  保存体重信息
+   */
+  async saveWeight(){
+    if (this.objIsEmpty(this.data.weight)) {
       toast.warn("请填写体重");
       return;
     }
-    const weightnum = finaValue.weight.split(".");
+    const weightnum = this.data.weight.split(".");
     if (weightnum.length > 1 && weightnum[1] >= 10) {
       this.showDialog("体重至多支持3位整数+1位小数");
       return;
@@ -210,52 +210,33 @@ Page({
       this.showDialog("体重至多支持3位整数+1位小数");
       return;
     }
-    if (finaValue.heart) {
-      const heartnum = finaValue.heart.split(".");
-      if (heartnum.length > 1 || heartnum[0] >= 1000) {
-        this.showDialog("心率至多支持3位整数");
-        return;
-      }
-    }
-    if (finaValue.bloodHeight) {
-      const bloodHeightnum = finaValue.bloodHeight.split(".");
-      if (bloodHeightnum.length > 1 || bloodHeightnum[0] >= 1000) {
-        this.showDialog("高压至多支持3位整数");
-        return;
-      }
-    }
-    if (finaValue.bloodHeight && !finaValue.bloodLow) {
-      this.showDialog("请输入低压");
-      return;
-    }
-    if (finaValue.bloodLow && !finaValue.bloodHeight) {
-      this.showDialog("请输入高压");
-      return;
-    }
-    if (finaValue.bloodLow) {
-      const bloodLownum = finaValue.bloodLow.split(".");
-      if (bloodLownum.length > 1 || bloodLownum[0] >= 1000) {
-        this.showDialog("低压至多支持3位整数");
-        return;
-      }
-    }
-    finaValue["taskId"] = this.data.taskId;
-    await Protocol.setBodyIndex(finaValue);
+    const {result:bodyIndexResult} = await Protocol.setBodyIndex({weight:this.data.weight,taskId:this.data.taskId});
     this.handleTasks();
     this.setData({
       showModalStatus: false
     });
-    const { result } = await Protocol.postIncentive();
-    if (result.taskInfo.bodyIndex.todayFirst) {
+    const { result: incentiveList} = await Protocol.postIncentive();
+    console.log('incentiveList',incentiveList)
+    console.log('bodyIndexResult',bodyIndexResult)
+    if (incentiveList.taskInfo.bodyIndex.todayFirst) {
       this.setData({
         showExcitation: true,
         toastType: "weight",
-        toastResult: result
+        toastResult: incentiveList
       });
     }
+    this.setData({
+      ...bodyIndexResult,
+      showMytoast:true,
+      toastType: "weight"
+    })
+    setTimeout(()=>{
+      this.setData({
+        showMytoast:false,
+      })
+    },2000)
   },
   getShowExcitation(e) {
-    console.log("e11", e);
     this.setData({
       showExcitation: e.detail.showExcitation
     });
@@ -270,8 +251,21 @@ Page({
         this.getRegister();//获取是否注册
       }
       this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
+      console.log('app.globalData.isLogin',app.globalData.isLogin)
+      console.log('app.globalData.dayFirstLoginObj.inTaskProgress',app.globalData.dayFirstLoginObj.inTaskProgress)
+      //每天第一次登录积分奖励
+      if(app.globalData.isLogin && app.globalData.dayFirstLoginObj.inTaskProgress){
+        this.setData({
+          showMytoast:true,
+          ...app.globalData.dayFirstLoginObj
+        })
+        setTimeout(()=>{
+          this.setData({
+            showMytoast:false,
+          })
+        },2000)
+      }
     },200)
-
   },
   /**
    * @desc 根据用户状态进行跳转 立即注册或填写资料
@@ -333,6 +327,7 @@ Page({
         console.log("setPage-receiveDataListener", finalResult, state);
       }
     });
+
     Protocol.getDeviceBindInfo().then(data => {
       let deviceInfo = data.result;
       console.log("获取到的设备", data);
@@ -390,6 +385,25 @@ Page({
     }
   },
   /**
+   * @desc 跳转今日总结报告
+   */
+  goLowFatReport(){
+    if(this.data.indexfinishNum === this.data.indextaskNum){
+      HiNavigator.navigateToLowFatReport();
+      return
+    }
+    WXDialog.showDialog({
+      title: '', content: '你还未完成今日所有任务哦', confirmText: '我知道了', confirmEvent: () => {
+      }
+    });
+  },
+  /**
+   * @desc 自由饮食原则
+   */
+  toRuler(){
+    HiNavigator.navigateToFoodRuler();
+  },
+  /**
    * @desc  获取任务列表
    */
   async handleTasks() {
@@ -403,14 +417,38 @@ Page({
       isGroup:result.isGroup,
       caseOnReady: result.onReady,
       caseonFinished: result.onFinished,
-      indexDayDesc: result.dayDesc,
       indexfinishNum: result.finishNum,
-      indexgoalDesc: result.goalDesc,
       indextaskNum: result.taskNum,
       taskListAll: result.taskList,
-      bgColorSetInfoPage: "#f2f2f2"
+      bgColorSetInfoPage: "#f2f2f2",
+      days:result.days,
+      inTaskProgress:result.inTaskProgress
     });
-
+    //每天任务完成 积分奖励
+    if(result.inTaskProgress && wx.getStorageSync('today') !== new Date().getDay()){
+      this.setData({
+        integral:result.integral,
+        integralTaskTitle:result.inTaskProgress,
+        showMytoast:true,
+      })
+      setTimeout(()=>{
+        this.setData({
+          showMytoast:false,
+        })
+      },2000)
+      wx.setStorageSync('today',new Date().getDay())
+    }
+    if(this.data.indexfinishNum === this.data.indextaskNum){
+       this.setData({
+         taskToptext:'报告已解锁·点击查看',
+         taskTopimg:'../../images/set-info/open.png'
+       })
+    }else{
+      this.setData({
+        taskToptext:'今日报告总结',
+        taskTopimg:'../../images/set-info/close.png'
+      })
+    }
     const typesArr = result.taskList.map(d => d.type);
     for (var i = 0; i < typesArr.length; i++) {
       if (typesArr[i] === "fatBurn") {
@@ -422,7 +460,7 @@ Page({
             fatBurnTask: result.taskList[i],
             fatText: fatBurnExt.des.zhCh,
             fatTextEn: fatBurnExt.des.en,
-            score: fatBurnExt.dataValue,
+            score: fatBurnExt.thisValue,
             fatType: fatBurnExt.iconUrl,
             fatDes: fatBurnExt.visDes
           });
@@ -872,22 +910,6 @@ Page({
     console.log(e);
     switch (type) {
       case "fatBurn":
-      /*  wx.openBluetoothAdapter({
-          success(res) {
-            HiNavigator.navigateIndex();
-          },
-          fail(res) {
-            if (res.errCode == 10001 || res.errCode == 10000) {
-              setTimeout(() => {
-                WXDialog.showDialog({
-                  title: "TIPS",
-                  content: "您的手机蓝牙未开启\n请开启后重试",
-                  confirmText: "我知道了"
-                });
-              }, 200);
-            }
-          }
-        });*/
           wx.getSystemInfo({
               success (res) {
                   console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
@@ -1054,7 +1076,30 @@ Page({
       HiNavigator.navigateToResultNOnum();
       return;
     }
-    HiNavigator.navigateIndex();
+    wx.getSystemInfo({
+      success (res) {
+        console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
+        if(res.locationEnabled && res.bluetoothEnabled){
+          HiNavigator.navigateIndex();
+          return
+        }else if(!res.bluetoothEnabled){
+          setTimeout(() => {
+            WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+          },200);
+          return
+        }else if(!res.locationEnabled){
+          setTimeout(() => {
+            WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了'});
+          },200);
+          return
+        }else{
+          setTimeout(() => {
+            WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+          },200);
+          return
+        }
+      }
+    })
   },
   async bindTapToFood() {
     if (this.data.bodyIndexFin) {
@@ -1075,13 +1120,19 @@ Page({
   },
   bindWeightInput(e) {
     const weightNumber = e.detail.value.split(".");
-    console.log("eeeee", weightNumber[1]);
     if (weightNumber[1] > 9 || weightNumber[1] === "0") {
-      return tools.subStringNum(e.detail.value);
+      this.setData({
+        weight:tools.subStringNum(e.detail.value)
+      })
     }
     if (weightNumber.length > 2) {
-      return parseInt(e.detail.value);
+      this.setData({
+        weight:parseInt(e.detail.value)
+      })
     }
+    this.setData({
+      weight:e.detail.value
+    })
   },
   //选择方案轮播图
   swiperChangeCase(e) {
@@ -1159,10 +1210,24 @@ Page({
       }.bind(this),
       200
     );
+    wx.hideTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.hideTabBar()
+        }, 200)
+      }
+    });
   },
   hideModal: function() {
     this.setData({
       showModalStatus: false
+    });
+    wx.showTabBar({
+      fail: function() {
+        setTimeout(function() {
+          wx.showTabBar();
+        }, 200);
+      }
     });
     this.handleTasks();
   },
@@ -1182,6 +1247,13 @@ Page({
                     startTime,
                     showModalStatus: false
                 });
+              wx.showTabBar({
+                fail: function() {
+                  setTimeout(function() {
+                    wx.showTabBar();
+                  }, 200);
+                }
+              });
                 this.showBirthStart();
                 this.continue();
             }
@@ -1191,6 +1263,13 @@ Page({
   hideModalCancel() {
     this.setData({
       showModalStatus: false
+    });
+    wx.showTabBar({
+      fail: function() {
+        setTimeout(function() {
+          wx.showTabBar();
+        }, 200);
+      }
     });
   },
 
@@ -1210,7 +1289,7 @@ Page({
       }
     });
     return {
-      title: this.data.indexDayDesc,
+      title: '1',
       path: "/pages/taskShareInfo/taskShareInfo?sharedId=" + this.data.sharedId,
       imageUrl: this.data.shareImg
     };

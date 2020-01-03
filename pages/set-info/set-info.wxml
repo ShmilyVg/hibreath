@@ -143,23 +143,25 @@
     </view>
   </block>
   <block wx:else>
-    <view class="set-top-view flex-row">
-      <view class="" style="align-items: start;margin-left: 50rpx;margin-top: -30rpx">
-        <view class="set-top-title">{{indexgoalDesc}}</view>
+    <view class="set-top-view">
         <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>
-        <view wx:if="{{caseonFinished}}" class="set-top-content" style="float: left;width: 150rpx">总结日</view>
-        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">{{indexDayDesc}}</view>
-        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-content" style="float: left">今日任务{{indexfinishNum}}/{{indextaskNum}}</view>
-        <button wx:if="{{!caseOnReady && !caseonFinished}}" class="set-top-contentS" style="float: left" bindtap="listenerButton">
-          <image class="shareImg" src="../../images/set-info/shared.png"></image>
-          分享
-        </button>
-      </view>
-      <view class="flex-column" style="margin-right: 31rpx">
-        <!-- <view class="set-top-step">{{indexfinishNum}}/{{indextaskNum}}</view>
-                <view class="set-top-today">今日任务</view>-->
-        <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
-      </view>
+        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-top">
+            <view style="float: left">
+                <view class="set-info-top-text1">你已在此</view>
+                <view class="set-info-top-text2">坚持减脂打卡</view>
+            </view>
+            <view style="float: right">
+                <text class="set-info-top-text3">{{days}}</text>
+                <text class="set-info-top-text1">天</text>
+            </view>
+            <view class="clear" style="margin-bottom: 110rpx"></view>
+            <view class="set-info-top-text4">今日任务</view>
+            <view style="float: right" bindtap="goLowFatReport">
+                <image style="width: 26rpx;height: 24rpx;margin-right: 10rpx" src="{{taskTopimg}}"></image>
+                <text class="set-info-top-text5">{{taskToptext}}</text>
+            </view>
+
+        </view>
     </view>
     <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 40rpx">
       <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
@@ -174,11 +176,13 @@
         <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
         <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
         <template is="HIITCard" wx:if="{{item.type =='sport'}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
-        <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}">
-
-        </foodCard>
+        <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}"></foodCard>
       </view>
-
+      <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-content-text1">我来帮你</view>
+      <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-content-img" bindtap="toRuler">
+        <view class="set-info-content-text2">我要怎么吃？</view>
+        <view class="set-info-content-text3">代餐有哪些？外卖怎么选？如何自己做减脂餐？</view>
+      </view>
     </view>
   </block>
   <!--position: fixed;left: 900rpx;-->
@@ -193,7 +197,13 @@
   </view>
 </view>
 <!--非首次打卡完成toast弹窗-->
-<my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}">
+<my-toast
+        wx:if="{{showMytoast}}"
+        toastType="{{toastType}}"
+        integral="{{integral}}"
+        inTaskProgress="{{inTaskProgress}}"
+        integralTaskTitle="{{integralTaskTitle}}"
+>
 
 </my-toast>
 <!--首次打卡完成激励弹窗-->
@@ -205,44 +215,16 @@
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <!--<view class="commodity_screen" bindtap="hideModal"></view>
 <view animation="{{animationData}}" class="commodity_attr_box">-->
-  <view wx:if="{{page==8&&showNewInfo}}">
-    <view class="flex-row timeHeader" style="justify-content: space-between;">
-      <view class="timeHeader-left" bindtap="hideModalCancel">取消</view>
-      <view class="timeHeader-center">请选择开始时间</view>
-      <view class="timeHeader-right" bindtap="hideModalConfirm">确定</view>
-    </view>
+    <view class="commodity_title">请输入当前体重</view>
     <view class="clear"></view>
-    <pickerDateStart id="pickerDateStart" style="width: 100%;margin-top:30rpx;"></pickerDateStart>
-  </view>
-  <form bindsubmit='formSubmit' wx:else>
-    <button bindtap="hideModal" class="commodity_clear">取消</button>
-    <!-- <view class="commodity_sub" bindtap="hideModal">确定</view>-->
-    <button class="commodity_sub" form-type='submit'>提交</button>
-    <view class="clear"></view>
-    <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 35rpx"></view>
-    <view style="margin-bottom: 40rpx">*尽量保持每天在同一时间、条件下测量</view>
+    <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 98rpx"></view>
     <view class="commodity_part">
-      <view class="commodity_title">体重(kg)</view>
-      <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput" maxlength="5" name='weight' placeholder="请输入您的体重" type="digit" />
+      <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput" maxlength="5" name='weight' placeholder="请输入你的体重" type="digit" />
+        <view class="commodity_line"></view>
+        <view class="commodity_KG">KG</view>
+      <view class="commodity_save" bindtap="saveWeight">保存</view>
       <view class="clear"></view>
     </view>
-    <view class="commodity_part" wx:if="">
-      <view class="commodity_title">高压(mmHg)</view>
-      <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodHeight' placeholder="请输入您的高压" type="number" />
-      <view class="clear"></view>
-    </view>
-    <view class="commodity_part" wx:if="">
-      <view class="commodity_title">低压(mmHg)</view>
-      <input class="commodity_input" placeholder-class="commodity_inputpla" maxlength="3" name='bloodLow' placeholder="请输入您的低压" type="number" />
-      <view class="clear"></view>
-    </view>
-    <view>
-      <view class="commodity_title" wx:if="">心率(BPM)</view>
-      <input class="commodity_input" wx:if="" placeholder-class="commodity_inputpla" maxlength="3" name='heart' placeholder="请输入您的心率" type="number" />
-      <view class="clear"></view>
-    </view>
-  </form>
-
 </view>
 
 <!--底部弹窗-->

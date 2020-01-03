@@ -101,11 +101,11 @@ function login({resolve, reject}) {
         }
     ).then(data => {
         getApp().globalData.isLogin = true
+        getApp().globalData.dayFirstLoginObj.inTaskProgress = data.result.inTaskProgress
+        getApp().globalData.dayFirstLoginObj.integral = data.result.integral
+        getApp().globalData.dayFirstLoginObj.integralTaskTitle = data.result.integralTaskTitle
         setToken({data});
         console.log('登录成功，开始重发协议');
-     /*   wx.reLaunch({
-            url: '../../../../welcome/welcome',
-        })*/
         BaseNetworkImp.resendAll();
         resolve();
     }).catch(res => {

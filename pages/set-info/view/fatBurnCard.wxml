@@ -6,18 +6,21 @@
                 <image src="{{fatBurnTask.iconUrl}}" class="set-content-icon"></image>
                 <view class="flex-column" style="align-items: start;margin-left: 20rpx">
                     <view class="set-content-title">{{fatBurnTask.title}}</view>
-                    <view class="set-content-content">你知道怎样燃脂么？</view>
+                    <view class="set-content-content">{{fatBurnTask.subTitle}}</view>
                 </view>
             </view>
             <view wx:if="{{!fatBurnTask.finished}}" class="set-content-toFinish" data-type="fatBurn"
                   catchtap="bindTapToFinish">去完成
             </view>
-            <image src="../../images/set-info/finished.png" wx:else class="set-content-finished"></image>
+            <view wx:else>
+                <view style="font-size:56rpx;font-family:DIN Condensed;font-weight:bold;color:rgba(69,69,69,1);text-align: right">{{score}}</view>
+                <view class="bodayIndex-viewRB">{{fatText}}</view>
+    </view>
         </view>
 
-        <view wx:if="{{fatBurnTask.finished}}"  style="margin-top: 50rpx;width: 100%">
-               <!-- <canvas canvas-id="bg" class='canvasII'></canvas>
-                <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>-->
+  <!--      <view wx:if="{{fatBurnTask.finished}}"  style="margin-top: 50rpx;width: 100%">
+               &lt;!&ndash; <canvas canvas-id="bg" class='canvasII'></canvas>
+                <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>&ndash;&gt;
                 <image class="fatType1" src="{{fatType}}"></image>
             <view style="float: left;margin-left: 20rpx">
                 <view class="fatScore">{{score}}</view>
@@ -26,7 +29,7 @@
             <view class="clear"></view>
             <view wx:if="{{fatDes ==''}}" class="fatDes"></view>
             <view wx:else class="fatDes"style="  margin-top: 64rpx;margin-bottom: 26rpx;line-height: 45rpx;">{{fatDes}}</view>
-        </view>
+        </view>-->
     </view>
 
 </template>

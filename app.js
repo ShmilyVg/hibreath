@@ -198,6 +198,7 @@ App({
     globalData: {
         refreshIndexPage: false,
         publishObj: {inTaskProgress: false, integral: 0, integralTaskTitle: ''},
+        dayFirstLoginObj:{inTaskProgress: false, integral: 0, integralTaskTitle: ''},//每日第一次登录
         userInfo: {nickname: '', headUrl: '', id: 0},
         globalBattery: 1, //1为默认，2为低电量，3为高电量
         notRegister: false,
