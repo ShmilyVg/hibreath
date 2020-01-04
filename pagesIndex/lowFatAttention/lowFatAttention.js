@@ -1,4 +1,6 @@
 // pagesIndex/lowFatAttention/lowFatAttention.js
+import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
@@ -6,53 +8,41 @@ Page({
    */
   data: {
     second: 5,
-    unfoldTip:false
+    unfoldTip:false,
+    readImgList:[
+      '../images/icon/water.png',
+      '../images/icon/na.png',
+      '../images/icon/dapei.png',
+      '../images/icon/sport.png',
+      '../images/icon/fat.png',
+      '../images/icon/jianchi.png',
+    ],
+    readImgHead:[
+      '每天饮水2000ml',
+      '食物中补充适当的钾、镁',
+      '荤素搭配',
+      '不要过度运动',
+      '适当的补充脂肪摄入量',
+      '坚持就是胜利'
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getApp().globalData.issueRefresh = true
+    if (options) {
+      this.setData({
+        taskId: options.taskId,
+        isFinshed: options.isFinshed
+      })
+    }
   },
   unfold(){
     this.setData({
-      unfoldTip:true
+      unfoldTip: !this.data.unfoldTip
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
   },
 
   /**
@@ -74,10 +64,11 @@ Page({
       this.setCecond();
     }, 1000)
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  async submitFun(){
+    let data ={
+      taskId: this.data.taskId
+    }
+    await Protocol.postFoodvideo(data);
+    HiNavigator.switchToSetInfo()
   }
 })

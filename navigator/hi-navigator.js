@@ -181,7 +181,7 @@ export default class HiNavigator extends CommonNavigator {
   }
   //外卖怎么选
   static navigateToTakeOut() {
-    this.navigateTo({ url: '/pagesIndex/takeOut/takeOut'} );
+    this.navigateTo({ url: '/pagesIndex/takeOutSelect/takeOutSelect'} );
   }
   //自由日饮食原则
   static navigateToProgrammeDetails() {

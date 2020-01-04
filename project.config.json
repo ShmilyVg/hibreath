@@ -273,6 +273,13 @@
 					"id": -1,
 					"name": "pagesIndex/lowFatAttention/lowFatAttention",
 					"pathName": "pagesIndex/lowFatAttention/lowFatAttention",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/takeOutSelect/takeOutSelect",
+					"pathName": "pagesIndex/takeOutSelect/takeOutSelect",
 					"scene": null
 				}
 			]
