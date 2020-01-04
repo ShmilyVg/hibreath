@@ -70,3 +70,54 @@
   font-weight:500;
   color:rgba(237,111,105,1);
 }
+.imageCon{
+  text-align: center;
+}
+.readyImg-bottom {
+  margin-bottom: 66rpx;
+  box-sizing: border-box;
+}
+
+.readyImg-littleImg {
+  width: 33.3%;
+  height: 243rpx;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 43rpx 0;
+}
+
+.readImgList {
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.readImgHead {
+  font-size: 26rpx;
+  padding: 0 29rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(69, 69, 69, 1);
+}
+
+.readyImg-littleImg:nth-child(1) {
+  border-right: 1px #f2f2f2 solid;
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(2) {
+  border-right: 1px #f2f2f2 solid;
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(3) {
+  border-bottom: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(4) {
+  border-right: 1px #f2f2f2 solid;
+}
+
+.readyImg-littleImg:nth-child(5) {
+  border-right: 1px #f2f2f2 solid;
+}

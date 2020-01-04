@@ -90,12 +90,6 @@
   border-right: 1px #f2f2f2 solid;
 }
 
-.readImgsub {
-  font-size: 20rpx;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(155, 155, 155, 1);
-}
 
 .btn_wait {
   width: 750rpx;

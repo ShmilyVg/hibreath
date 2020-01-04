@@ -1,2 +1,12 @@
 <!--pagesIndex/takeOutSelect/takeOutSelect.wxml-->
-<text>pagesIndex/takeOutSelect/takeOutSelect.wxml</text>
+<view class="takeOutSelect">
+  <image src="../images/icon/takeOutBg.png" class="takeBg"></image>
+  <view class="title">
+    <view class="tit_h3">外卖怎么选</view>
+    <view class="tit_en">Dietary principle</view>
+  </view>
+  <view class="selectItem" wx:for="{{selectList}}">
+    <view class="itemTit"><image src="{{item.imgPath}}"></image> {{item.title}}</view>
+    <view class="itemDesc">{{item.Desc}}</view>
+  </view>
+</view>

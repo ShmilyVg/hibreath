@@ -11,6 +11,7 @@ Page({
     targetDate:{}
   },
   onLoad: function (options) {
+    getApp().globalData.issueRefresh = true;
     this.getMyLoss();
   },
   onReady: function () {
@@ -25,7 +26,8 @@ Page({
   reStart(){
     HiNavigator.navigateToGuidance({ reset:true});
   },
-  start(){
+  async start(){
+    await Protocol.postMembersJoinSchema({});
     HiNavigator.switchToSetInfo()
   }
 })
