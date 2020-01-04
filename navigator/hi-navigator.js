@@ -28,8 +28,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}`});
     }
     //燃脂历程
-    static navigateToRecomTar() {
-      this.navigateTo({url: '/pages/recomTar/recomTar'});
+    static navigateToRecomTar({personalCenter}) {
+      this.navigateTo({url: '/pages/recomTar/recomTar?personalCente='+personalCenter});
     }
     //进入今日减脂报告
     static navigateToLowFatReport() {

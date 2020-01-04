@@ -250,7 +250,7 @@ Page({
     Toast.hiddenLoading();
     if (result.code) {
       Toast.success('生成成功');
-      HiNavigator.navigateToRecomTar()
+      HiNavigator.navigateToRecomTar({personalCenter:false})
     }
   },
   onHide() {

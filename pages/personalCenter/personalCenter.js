@@ -39,7 +39,7 @@ Page({
       HiNavigator.navigateToGoRegister();
       return;
     }
-    HiNavigator.navigateToRecomTar({reset:false})
+    HiNavigator.navigateToRecomTar({personalCenter:true})
   },
   onDeviceManagement(){
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
