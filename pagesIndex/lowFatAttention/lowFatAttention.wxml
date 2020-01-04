@@ -31,5 +31,8 @@
     <view class="clear"></view>
   </view>
 </view>
+<view wx:if="{{!isFinshed}}">
 <view class="btn_wait" wx:if="{{!!second}}" hover-class="press-style" hover-stay-time="50">请仔细阅读后点击完成 {{second}}s</view>
 <view class="btn_submit" wx:else bindtap="submitFun" hover-class="press-style" hover-stay-time="50">完成</view>
+</view>
+

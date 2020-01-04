@@ -9,7 +9,8 @@ Page({
     getApp().globalData.issueRefresh = true
     if (options) {
       this.setData({
-        taskId: options.taskId
+        taskId: options.taskId,
+        isFinshed: options.isFinshed
       })
     }
   },
