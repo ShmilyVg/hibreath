@@ -1,5 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "我的减脂历程",
+  "navigationBarTextStyle": "white",
   "navigationBarBackgroundColor": "#ED6F69"
 }

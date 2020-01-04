@@ -123,8 +123,8 @@ export default class Protocol {
     static postMembersExit({planId}) {
         return Network.request({url: 'members/plan/exit',data: {planId}})
     }
-  static postMembersJoinSchema({ schemaId, startTime}) {
-    return Network.request({ url: 'members/joinSchema', data: { schemaId, startTime}})
+  static postMembersJoinSchema({ weightGoal}) {
+    return Network.request({ url: 'members/joinSchema', data: { weightGoal}})
     }
 
     static postSettingsLosefatSchema() {
@@ -398,8 +398,8 @@ export default class Protocol {
         return Network.request({url: 'members/put',data:data});
     }
     //我的减脂历程目标
-    static getMyLossfatCourse() {
-        return Network.request({url: 'members/getMyLossfatCourse'});
+    static getMyLossfatCourse(data) {
+        return Network.request({url: 'members/getMyLossfatCourse', data: data});
     }
     //减脂报告
     static getTodayLosefatReport() {

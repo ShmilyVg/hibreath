@@ -1,4 +1,4 @@
-<view class="fill-width flex-column box-sizing-border-box food-habit-layout">
+<!-- <view class="fill-width flex-column box-sizing-border-box food-habit-layout">
     <view class="food-habit-title">是否有条件自己做饭</view>
     <block wx:if="{{habits.length}}">
         <view bindtap="onSelectedFoodHabitItemEvent" data-id="{{item.key}}" wx:for="{{habits}}" wx:key="key" class="fill-width flex-row align-items-center justify-center food-habit-item-common-layout {{item.selected?'food-habit-item-selected-layout':'food-habit-item-unselected-layout'}}">{{item.name}}</view>
@@ -7,4 +7,13 @@
         </view>
     </block>
 
+</view> -->
+<view class="habits">
+  <view class="otherPage illness">
+    <view class="header_h3 text_center">您目前的身体状况</view>
+    <view class="disItem text_center {{item.isChose ? 'disItemActive':''}}" wx:for="{{disease}}" wx:key="index" bindtap="bindTapHealth" data-index="{{index}}">
+      {{item.text}}
+    </view>
+  </view>
 </view>
+<button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="saveHabitEvent">确定</button>

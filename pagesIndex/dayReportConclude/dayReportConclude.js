@@ -10,6 +10,7 @@ Page({
   data: {
     reportList: [],
     page:1,
+    limit:20,
     lastPage:false,
     imgCon: {
       '低速燃脂': '../images/dayReportConclude/level1.png',
@@ -26,20 +27,26 @@ Page({
 
   async getTodayLosefatReportListPage() {
     let data = {
-      page: 1,
-      limit: 20
+      page: this.data.page,
+      limit: this.data.limit
     }
     toast.showLoading('加载中.....');
     let res = await Protocol.getTodayLosefatReportListPage(data);
     toast.hiddenLoading();
-    let reportList = this.data.reportList;
+    let reportList = JSON.parse(JSON.stringify(this.data.reportList))  ;
     if (res.result.length > 0){
-      reportList.push(res.resul);
+      reportList = [...reportList,...res.result];
+      reportList.sort(function(a,b){
+        let aT = new Date(a.dateTime).getTime();
+        let bT = new Date(b.dateTime).getTime();
+        return bT - aT;
+      })
       this.setData({
         lastPage:false,
         reportList: reportList
       })
     }else{
+      // toast.success('已经加载所有数据')
       this.setData({
         lastPage: true
       })

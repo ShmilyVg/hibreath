@@ -1,35 +1,37 @@
-.food-habit-layout {
-    padding: 80rpx 50rpx 0;
-
-}
-.food-habit-title {
-    font-size:46rpx;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(69,69,69,1);
-    line-height:42rpx;
-    margin-bottom: 68rpx;
-    align-self: flex-start;
+.illness {
+  padding-bottom: 100rpx;
+  color: #454545;
 }
 
-.food-habit-item-common-layout {
-    height:160rpx;
-    border-radius:20rpx;
-    font-size:34rpx;
-    font-family:PingFang SC;
-    font-weight:400;
-    line-height:42rpx;
-    margin-bottom: 20rpx;
+.header_h3 {
+  padding-top: 13rpx;
+  font-size: 50rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  line-height: 70rpx;
 }
 
-.food-habit-item-selected-layout {
-    background: rgba(255,230,228,1);
-    border:1rpx solid rgba(237,111,105,1);
-    color:rgba(237,111,105,1);
+.text_center {
+  text-align: center;
+  margin-bottom: 79rpx;
 }
 
-.food-habit-item-unselected-layout {
-    background:rgba(255,255,255,1);
-    border:1rpx solid rgba(205,205,205,1);
-    color:rgba(69,69,69,1);
+.disItem {
+  border: 1rpx solid #cdcdcd;
+  height: 140rpx;
+  line-height: 140rpx;
+  font-size: 32rpx;
+  width: 650rpx;
+  margin: 20rpx auto;
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+}
+
+.disItemActive {
+  background-color: #ffe6e4;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  border: 1rpx solid #ed6f69;
+  color: rgba(237, 111, 105, 1);
 }

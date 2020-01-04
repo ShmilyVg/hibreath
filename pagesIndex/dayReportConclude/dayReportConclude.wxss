@@ -9,6 +9,7 @@ page {
 }
 
 .dayConclude {
+  margin-bottom: 20rpx;
   display: flex;
   background-color: #fff;
   justify-content: space-between;
