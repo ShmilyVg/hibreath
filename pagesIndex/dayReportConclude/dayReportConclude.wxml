@@ -15,7 +15,7 @@
       <view class="unit">ppm</view>
     </view>
   </view>
-  <view wx:if="{{lastPage && reportList.length }}" class="lastPage">已经没有数据了！</view>
+  <!-- <view wx:if="{{lastPage && reportList.length }}" class="lastPage">已经没有数据了！</view> -->
   <view wx:if="{{!reportList.length}}" class="noReport">
     <image src="../images/dayReportConclude/noReady.png"></image>
     <view>暂无总结报告</view>

@@ -36,6 +36,7 @@
 
 .text_center {
   text-align: center;
+  margin-bottom: 79rpx;
 }
 
 .img_con {
@@ -98,12 +99,14 @@
 .flex-column {
   width: 280rpx;
   height: 401rpx;
-  background: rgba(255, 230, 228, 1);
+  background: #ffffff;
   border-radius: 20rpx;
+  border:1px solid rgba(224,219,231,1);
 }
 
 .sex-text {
   margin-top: 50rpx;
+  color: #808080;
 }
 
 .sex-image {
@@ -111,7 +114,11 @@
   height: 176rpx;
   margin-top: 84rpx;
 }
-
+.sexChose {
+  color: #FF5E00;
+  background-color: #FFE6E4;
+  border-style: none;
+}
 .placeholder {
   font-size: 46rpx;
   font-family: PingFang-SC;
@@ -194,7 +201,8 @@
   padding: 87rpx 0 60rpx;
   position: fixed;
   color: #ed6f69;
-  bottom: 0rpx;
+  bottom: 0;
+  text-align: center;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 1) 100%);
 }
 

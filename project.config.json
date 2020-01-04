@@ -280,6 +280,34 @@
 					"id": -1,
 					"name": "pagesIndex/takeOutSelect/takeOutSelect",
 					"pathName": "pagesIndex/takeOutSelect/takeOutSelect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recomTar/recomTar",
+					"pathName": "pages/recomTar/recomTar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lowFatReport/lowFatReport",
+					"pathName": "pages/lowFatReport/lowFatReport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/food-habit/food-habit",
+					"pathName": "pages/food-habit/food-habit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/food-habit/food-habit",
+					"pathName": "pagesIndex/food-habit/food-habit",
 					"scene": null
 				}
 			]

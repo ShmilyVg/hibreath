@@ -83,9 +83,9 @@
         <view class="fill-width user-info-item-common-divide-line"></view>
 
 
-        <view class="user-info-title" style="margin-top: 50rpx;">饮食习惯</view>
+        <view class="user-info-title" style="margin-top: 50rpx;">身体状况</view>
         <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
-            <view class="user-info-item-common-title">是否有条件自己做饭</view>
+            <view class="user-info-item-common-title">您目前的身体状况</view>
 
             <navigator url="../food-habit/food-habit" class="flex-row align-items-center" hover-class="none">
                 <view name="originWeight" class="user-info-item-common-input {{mealTypeString==='请输入'?'user-info-item-common-input-placeholder':''}}">{{mealTypeString}}</view>

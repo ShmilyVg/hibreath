@@ -13,9 +13,9 @@
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
     <view class="space-between clear">
-      <view class="{{item.isChose?'card-chose':'card'}} flex-column" wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+      <view class="{{item.isChose?'card-chose':'card'}} flex-column {{item.isChose?'sexChose':''}}" wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
         <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
-        <view class="sex-text" style="color:{{item.isChose?'#FF5E00':'#808080'}}">{{item.text}}</view>
+        <view class="sex-text" >{{item.text}}</view>
       </view>
     </view>
 
@@ -60,13 +60,13 @@
 
 
 
-  <view class="btn_group text_center" wx:if="{{guidance.page <4}}">
+  <view class="btn_group" wx:if="{{guidance.page <4}}">
     <button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'下一步':'好哒'}}
     </button>
     <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back"> {{guidance.page >0?'返回':'  　 '}}
     </view>
   </view>
-  <view class="btn_group text_center" wx:elif="{{guidance.page == 4}}">
+  <view class="btn_group" wx:elif="{{guidance.page == 4}}">
     <button class="bottom-page4 {{guidance.btnAble ? 'btnAble':'btnUnAble'}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">完成
     </button>
     <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back">返回
