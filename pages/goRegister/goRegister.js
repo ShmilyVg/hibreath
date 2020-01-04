@@ -21,6 +21,10 @@ Page({
         this.setData({
           nologin:false
         })
+      }else{
+        this.setData({
+          nologin:true
+        })
       }
     },1000)
   },
