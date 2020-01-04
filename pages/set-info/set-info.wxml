@@ -143,9 +143,9 @@
     </view>
   </block>
   <block wx:else>
-    <view class="set-top-view">
-        <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>
-        <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-top">
+    <view class="set-top-view" wx:if="{{!caseOnReady && !caseonFinished}}" >
+       <!-- <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>-->
+        <view class="set-info-top">
             <view style="float: left">
                 <view class="set-info-top-text1">你已在此</view>
                 <view class="set-info-top-text2">坚持减脂打卡</view>
