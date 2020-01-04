@@ -86,7 +86,7 @@
     </view>
     <view class="remark">*如果把控不严格，可能会进入"减脂平台期"和"减脂中断期"，在具体方案打卡执行中会有对应提示哦~</view>
   </view>
-  <view class="btn_group" wx:if="{{!personalCenter}}">
+  <view class="btn_group" wx:if="{{!personalCente}}">
     <button class="btn_start" hover-class="press-style" hover-stay-time="50" bindtap="start">开始减脂历程
     </button>
     <view class="btn_afresh" hover-class="press-style" hover-stay-time="50" bindtap="reStart">重新生成

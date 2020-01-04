@@ -10,13 +10,14 @@ Page({
   data: {
     targetDate:{},
     weightGoal:'',
-    personalCenter:false,
+    personalCente:false,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},//
   },
   onLoad: function (options) {
+    console.log(options);
     this.setData({
-      personalCenter: options.personalCenter
+      personalCente: options.personalCente
     })
     this.getMyLoss();
   },

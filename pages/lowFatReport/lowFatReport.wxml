@@ -123,7 +123,7 @@
       </view>
       <view class="totleItem">
         <view class="totleItemTit"> 　 </view>
-        <view class="totledItemV"> - </view>
+        <view class="totledItemV"> = </view>
       </view>
       <view class="totleItem">
         <view class="totleItemTit">还差</view>
