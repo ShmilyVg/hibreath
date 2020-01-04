@@ -68,7 +68,7 @@
         <template is="HIITCard" wx:if="{{item.type =='sport'}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
         <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}"></foodCard>
       </view>
-      <view wx:if="{{caseonEveryday}}" class="set-info-content-text1">我来帮你</view>
+      <view wx:if="{{caseonEveryday}}" class="set-info-content-text1">减脂怎么吃</view>
       <view wx:if="{{caseonEveryday}}" class="set-info-content-img" bindtap="toRuler">
         <view class="set-info-content-text2">我要怎么吃？</view>
         <view class="set-info-content-text3">代餐有哪些？外卖怎么选？如何自己做减脂餐？</view>
