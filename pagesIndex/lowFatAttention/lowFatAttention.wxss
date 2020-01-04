@@ -78,6 +78,10 @@
 .imageCon{
   text-align: center;
 }
+.imageCon image{
+  width: 600rpx;
+  height: 484rpx;
+}
 .readyImg-bottom {
   margin-bottom: 66rpx;
   box-sizing: border-box;
