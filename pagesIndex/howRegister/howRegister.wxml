@@ -1,0 +1,13 @@
+<!--pagesIndex/howRegister/howRegister.wxml-->
+<view class="howRegister">
+  <view class="tit_h2">每天怎么打卡</view>
+  <view class="tit_h4">燃脂打卡</view>
+  <view class="passages">根据经验，在严格进行此饮食方案下，一般第2天就能够检测出脂肪燃烧，大部分人在第3~4天燃脂显著，建议从第2天开始用燃脂检测仪检测~</view>
+  <view class="line"></view>
+  <view class="tit_h4">体重打卡</view>
+  <view class="passages">1.每天固定时间段的体重才具有可比较性</view>
+  <view class="passages">2.建议每天早晨早餐前测量体重</view>
+
+</view>
+<view class="btn_wait" wx:if="{{!!second}}" hover-class="press-style" hover-stay-time="50">请仔细阅读后点击完成 {{second}}s</view>
+<view class="btn_submit" wx:else bindtap="submitFun" hover-class="press-style" hover-stay-time="50">完成</view>

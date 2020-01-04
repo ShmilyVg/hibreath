@@ -1,0 +1,68 @@
+/* pagesIndex/howRegister/howRegister.wxss */
+
+page{
+  height: 100%;
+}
+.howRegister {
+  padding: 50rpx 45rpx 0 40rpx;
+  background-color: #fff;
+}
+
+.tit_h2 {
+  height: 84rpx;
+  font-size: 60rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #545454;
+  line-height: 84rpx;
+  margin-bottom: 67rpx;
+}
+
+.tit_h4 {
+  height: 50rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium, PingFang-SC;
+  font-weight: 500;
+  color: #545454;
+  line-height: 50rpx;
+  margin-bottom: 40rpx;
+}
+
+.passages {
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  color: rgba(118, 118, 118, 1);
+  line-height: 40rpx;
+  text-align: justify;
+}
+
+.line {
+  height: 1px;
+  background-color: #e4e4e4;
+  margin-bottom: 48rpx;
+}
+
+
+.btn_wait {
+  width: 750rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #ed6f69;
+  background: rgba(255, 230, 228, 1);
+  position: fixed;
+  bottom: 0;
+}
+
+.btn_submit {
+  width: 750rpx;
+  height: 100rpx;
+  background: rgba(237, 111, 105, 1);
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+}

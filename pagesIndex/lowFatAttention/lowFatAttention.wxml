@@ -1,0 +1,24 @@
+<!--pagesIndex/lowFatAttention/lowFatAttention.wxml-->
+<view class="lowFatAttention">
+  <view class="tit_h2">减脂期间应注意什么</view>
+  <view class="tit_h4">饮食原则</view>
+  <view class="passages">1. 三天的燃脂餐要连续吃，不能颠倒顺序。</view>
+<view class="passages">2.每顿饭吃七八成饱，感觉不饿就可以</view>
+  <view class="passages">3.消化系统不强的人，如果觉得一餐的食物吃不完就有饱腹感，可以不吃，饿了再随时补充。</view>
+  <button hover-class="press-style" hover-stay-time="50" class="showMore" bindtap="unfold" >{{ unfoldTip?'收起':'展开'}} </button>
+  <view class="imageCon" wx:if="{{unfoldTip}}">
+    <image src=""></image>
+  </view>
+  <view class="line"></view>
+  <view class="tit_h4">饮水原则</view>
+  <view class="passages">1.每天喝水量至少达到2000毫升，每次喝200毫升左右,早起空腹一杯温水是必要的。</view>
+  <view class="passages">2.平时最好喝温开水，其次是少量的无糖淡花茶、淡柠檬水、淡茶水、淡黑咖啡</view>
+  <view class="line"></view>
+  <view class="tit_h4">低碳初学者还可以这样做</view>
+  <view class="passages">极少数人可能在断糖初期产生不适，是正常状况。我们内部测试时，有经历过此种症状，但是多喝水，吃点圣女果，都有不同程度的缓解~ </view>
+  <view class="passages">初学者尽量做到以下几点，应该能有效解决/缓解副作用:</view>
+  <view class="line"></view>
+
+</view>
+<view class="btn_wait" wx:if="{{!!second}}" hover-class="press-style" hover-stay-time="50">请仔细阅读后点击完成 {{second}}s</view>
+<view class="btn_submit" wx:else bindtap="submitFun" hover-class="press-style" hover-stay-time="50">完成</view>

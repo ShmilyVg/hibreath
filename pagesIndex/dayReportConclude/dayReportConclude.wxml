@@ -1,7 +1,24 @@
 <!--pagesIndex/dayReportConclude/dayReportConclude.wxml-->
 <view class="dayReportConclude">
-<view class="dayConclude">
-  <image src=""></image>
-</view>
+  <view class="dayConclude" wx:for="{{reportList}}">
+    <image src="{{imgCon[item.dataDesc]}}"></image>
+    <view class="Desc">
+      <view class="DescTit">{{item.dataDesc}}</view>
+      <view class="DescTime">{{item.dateTime}}</view>
+    </view>
+    <view class="weight">
+      <view class="value">{{item.dataValueToday}}</view>
+      <view class="unit">kg</view>
+    </view>
+    <view class="ppm">
+      <view class="value">{{item.weightToday}}</view>
+      <view class="unit">ppm</view>
+    </view>
+  </view>
+  <view wx:if="{{lastPage && reportList.length }}" class="lastPage">已经没有数据了！</view>
+  <view wx:if="{{!reportList.length}}" class="noReport">
+    <image src="../images/dayReportConclude/noReady.png"></image>
+    <view>暂无总结报告</view>
+  </view>
 
 </view>

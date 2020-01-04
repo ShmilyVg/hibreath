@@ -261,6 +261,19 @@
 					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/howRegister/howRegister",
+					"pathName": "pagesIndex/howRegister/howRegister",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/lowFatAttention/lowFatAttention",
+					"pathName": "pagesIndex/lowFatAttention/lowFatAttention",
+					"scene": null
 				}
 			]
 		}

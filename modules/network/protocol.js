@@ -412,6 +412,11 @@ export default class Protocol {
         })
 
     }
+    //个人中心-获取每日减脂报告分页列表
+    static getTodayLosefatReportListPage(data){
+        return Network.request({ url: '/members/getTodayLosefatReportListPage',data:data })
+    }
+
     //成员新手任务列表
     static postIntegralSingle() {
         return Network.request({url: 'integral/single'});
