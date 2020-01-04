@@ -120,7 +120,7 @@
     font-family:PingFang-SC;
     font-weight:500;
     color:rgba(255,255,255,1);
-    margin: 170rpx auto 0rpx auto;
+    margin: 270rpx auto 0rpx auto;
     display: flex;
     align-items: center;
     justify-content: center;

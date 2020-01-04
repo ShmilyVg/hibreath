@@ -48,6 +48,54 @@ Page({
     this.disBtn()
   },
   /**
+   * @desc 群号聚焦
+   */
+  sharedIdFocus(){
+    this.setData({
+      sharedIdFocus:true
+    })
+  },
+  /**
+   * @desc 群号失焦
+   */
+  sharedIdBlur(){
+    this.setData({
+      sharedIdFocus:false
+    })
+  },
+  /**
+   * @desc 手机号聚焦
+   */
+  phoneNumbersFocus(){
+    this.setData({
+      phoneNumbersFocus:true
+    })
+  },
+  /**
+   * @desc 手机号失焦
+   */
+  phoneNumbersBlur(){
+    this.setData({
+      phoneNumbersFocus:false
+    })
+  },
+  /**
+   * @desc 验证码聚焦
+   */
+  codeFocus(){
+    this.setData({
+      codeFocus:true
+    })
+  },
+  /**
+   * @desc 验证码去焦
+   */
+  codeBlur(){
+    this.setData({
+      codeFocus:false
+    })
+  },
+  /**
    * @desc 非空校验
    */
   disBtn(){

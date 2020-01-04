@@ -1,14 +1,14 @@
 <!--pages/goVerification/goVerification.wxml-->
-<view class="goVerification-view">
-    <input class="goVerification-input" value="{{sharedId}}" placeholder="请填写您的Slimple群号" maxlength="4" placeholder-class=""  bindinput="bindInputNumber" type="number"/>
+<view class="goVerification-view {{sharedIdFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}">
+    <input class="goVerification-input" bindfocus="sharedIdFocus" bindblur="sharedIdBlur" value="{{sharedId}}" placeholder="请填写您的Slimple群号" maxlength="4" placeholder-class="goVerification-placeholder"  bindinput="bindInputNumber" type="number"/>
     <!--<view class="goVerification-lookNumber" hover-class="press-style">查看群号</view>-->
     <view class="clear"></view>
 </view>
-<view class="goVerification-view" style="width: 100%">
-    <input class="goVerification-input" value="{{phoneNumbers}}" placeholder="请填写首次下单的收货手机号" maxlength="11" placeholder-class=""  bindinput="bindInputPhone" type="number"/>
+<view class="goVerification-view {{phoneNumbersFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}" style="width: 100%">
+    <input class="goVerification-input" bindfocus="phoneNumbersFocus" bindblur="phoneNumbersBlur" style="width: 100%" value="{{phoneNumbers}}" placeholder="请填写首次下单的收货手机号" maxlength="11" placeholder-class="goVerification-placeholder"  bindinput="bindInputPhone" type="number"/>
 </view>
-<view class="goVerification-view">
-    <input class="goVerification-input" value="{{code}}" placeholder="请输入短信验证码" maxlength="4" placeholder-class=""  bindinput="bindInputCode" type="number"/>
+<view class="goVerification-view {{codeFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}">
+    <input class="goVerification-input" bindfocus="codeFocus" bindblur="codeBlur" value="{{code}}" placeholder="请输入短信验证码" maxlength="4" placeholder-class="goVerification-placeholder"  bindinput="bindInputCode" type="number"/>
     <button class="goVerification-getCode" bindtap="getCode" hover-class="press-style" disabled="{{captchaDisabled}}"  disabled-class="disabled">{{btntext}}</button>
     <view class="clear"></view>
 </view>
