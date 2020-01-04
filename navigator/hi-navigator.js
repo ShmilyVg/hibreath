@@ -192,16 +192,16 @@ export default class HiNavigator extends CommonNavigator {
     this.navigateTo({ url: '/pagesIndex/dayReportConclude/dayReportConclude'});
   }
   //燃脂精灵怎么用
-  static navigateToSpirits({ taskId,isFinshed}) {
-    this.navigateTo({ url: '/pagesIndex/burnFatSpirits/burnFatSpirits?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  static navigateToSpirits({ taskId,isfinished}) {
+    this.navigateTo({ url: '/pagesIndex/burnFatSpirits/burnFatSpirits?taskId=' + taskId + '&isfinished=' +isfinished} );
   }
   //减肥期间应该注意什么
-  static navigateToAttention({ taskId,isFinshed}) {
-    this.navigateTo({ url: '/pagesIndex/lowFatAttention/lowFatAttention?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  static navigateToAttention({ taskId,isfinished}) {
+    this.navigateTo({ url: '/pagesIndex/lowFatAttention/lowFatAttention?taskId=' + taskId + '&isfinished=' +isfinished} );
   }
   //每天这么打卡？
-  static navigateToHowRegister({ taskId,isFinshed}) {
-    this.navigateTo({ url: '/pagesIndex/howRegister/howRegister?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  static navigateToHowRegister({ taskId,isfinished}) {
+    this.navigateTo({ url: '/pagesIndex/howRegister/howRegister?taskId=' + taskId + '&isfinished=' +isfinished} );
   }
   //动态信息列表
   static navigateToNoticeList({ groupId}) {
