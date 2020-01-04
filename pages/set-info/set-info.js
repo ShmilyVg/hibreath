@@ -275,7 +275,7 @@ Page({
       HiNavigator.navigateToGoRegister()
     }else{
       console.log('22')
-      HiNavigator.navigateToGuidance()
+      HiNavigator.navigateToGuidance({reset:false})
     }
   },
   /**
