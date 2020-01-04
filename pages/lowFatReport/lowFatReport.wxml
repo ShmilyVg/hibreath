@@ -76,8 +76,8 @@
     <view class="ItemTit">
       <image src="../../images/lowFatReport/weight.png"></image> 体重变化</view>
     <view class="weightChange">
-    <image src="../../images/lowFatReport/{{weightToday > 0?'up':'down'}}.png" wx:if="{{weightToday}}"></image>
-    {{ weightToday >= 0 ? weightToday : -weightToday}}kg
+    <image src="../../images/lowFatReport/{{subKGrams > 0?'up':'down'}}.png" wx:if="{{subKGrams}}"></image>
+    {{ subKGrams >0 ? subKGrams:-subKGrams}}kg
     </view>
     <view class="weightCon space-between">
       <view class="weightItem">
@@ -148,7 +148,7 @@
       {{report.dietitians.reviews}}
     </view>
   </view>
-  <view class="share">
+  <view class="share" wx:if="{{showShare}}">
     <view class="shareImgCon">
       <button class="shareBtn" open-type="share"></button>
       <image src="../../images/lowFatReport/wx.png"></image>

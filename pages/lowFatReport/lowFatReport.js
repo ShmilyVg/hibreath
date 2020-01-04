@@ -17,12 +17,14 @@ Page({
     yesterdayPer: 0,
     foodDescription:[],
     sprotDescription:[],
-    weightToday:'',
+    subKGrams:'',
+    showShare:true
   },
 
   onLoad: function (options) {
     let now = new Date();
     this.setData({
+      showShare: options.showShare,
       'curDate': now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
     })
     this.getReport();
@@ -50,23 +52,23 @@ Page({
     })
   },
   getDesArr(txt){
-    let len = txt.length/2-2;
+    let len = 3;
     let part1 = txt.slice(0,len);
     let part2 = txt.slice(len);
     return [part1, part2]
   },
   getlosefatSpeed(Speed){
-    let left , pice = 116;
+    let left , pice = 100,piceR = 116;
     if (Speed <= 2){
       left = (pice * Speed/2) ;
     } else if (Speed <= 9 && Speed >= 3){
-      left = (pice * (Speed-2) / 6) + pice;
+      left = (pice * (Speed - 2) / 6) + piceR;
     } else if (Speed <= 19 && Speed >= 10) {
-      left = (pice * (Speed - 9) / 9) + pice*2;
+      left = (pice * (Speed - 9) / 9) + piceR*2;
     } else if (Speed <= 39 && Speed >= 20) {
-      left = (pice * (Speed - 19) / 19) + pice * 3;
+      left = (pice * (Speed - 19) / 19) + piceR * 3;
     } else if (Speed <= 99 && Speed >= 40) {
-      left = (pice * (Speed - 39) / 59) + pice * 4;
+      left = (pice * (Speed - 39) / 59) + piceR * 4;
     }
     return left - 12.5;;
   },
@@ -82,13 +84,17 @@ Page({
       sprotDescription: that.getDesArr(sprotDesTxt),
       foodDescription: that.getDesArr(foodDesTxt),
       report: data.result,
-      weightToday: data.result.weightChange.weightToday,
+      subKGrams: data.result.weightChange.subKGrams,
       left: left
     })
     this.setweightChange()
   },
   onShareAppMessage(res){
     console.log(res);
+    return {
+      title: '我的今日减脂报告已生成，快来围观！',
+      path: '/pages/lowFatReport/lowFatReport?type=false'
+    }
   },
   shareFr(){
     toast.warn("敬请期待");
