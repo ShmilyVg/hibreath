@@ -378,6 +378,9 @@ Page({
     //Toast.showLoading();
     const { result } = await Protocol.postMembersTasks();
     this.setData({
+      showNewInfo: false,
+      showGoclockin: false,
+      showGuide:false,
       planId: result.planId,
       planInfo:result.planInfo,
       sharedId: result.sharedId,

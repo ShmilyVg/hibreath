@@ -125,7 +125,7 @@ Page({
     await whenDismissGroup(Protocol.getSmsCode({phoneNumbers:this.data.phoneNumbers}))
     Toast.hiddenLoading()
     wx.showToast({
-      title: '已成功,请查收',
+      title: '已发送,请查收',
       icon: 'success',
       duration: 2000,
     })
