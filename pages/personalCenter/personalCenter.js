@@ -7,7 +7,9 @@ import {whenDismissGroup} from "../community/social-manager";
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
+   * 3
+   * .
    */
   data: {
     isShowlogin:'',

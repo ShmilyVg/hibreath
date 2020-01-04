@@ -58,7 +58,12 @@ Page({
         nologin:false
       })
       Toast.hiddenLoading();
-      Toast.showText('注册成功')
+      setTimeout(() => {
+        wx.showToast({
+          title: '注册成功',
+          duration: 2000
+        });
+      });
       Toast.hiddenLoading();
     }
   },

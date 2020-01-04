@@ -160,6 +160,9 @@ Page({
         backgroundColor: "#F55E6B"
       });
     });
+    this.setData({
+      showGuide:false
+    })
     this.getPresonMsg();
     wx.setStorageSync('showGuide', 'hiddenGuide');
   },
