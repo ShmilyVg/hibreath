@@ -16,4 +16,4 @@
         <view class="clear"></view>
     </view>
 </view>
-<button bindtap="createCommunityBtn"  class="createCommunity-Btn">创建新圈子</button>
+<!--<button bindtap="createCommunityBtn"  class="createCommunity-Btn">创建新圈子</button>-->

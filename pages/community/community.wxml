@@ -72,7 +72,7 @@
     <view class="community-text">
         <view style="top:700rpx;position: relative">您还未加入任何圈子</view>
     </view>
-    <button class="community-btn"  bindtap="onGetUserInfoEvent">创建新圈子</button>
+   <!-- <button class="community-btn"  bindtap="onGetUserInfoEvent">创建新圈子</button>-->
 </view>
 <view class="noDynamic" wx:if="{{haveGroupId&&dynamicList.length==0}}">暂无发表动态</view>
 <!--打卡完成激励弹窗-->
