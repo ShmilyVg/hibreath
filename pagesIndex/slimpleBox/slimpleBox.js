@@ -1,5 +1,6 @@
 // pagesIndex/slimpleBox/slimpleBox.js
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
@@ -20,7 +21,17 @@ Page({
     })
     console.log('dataList',this.data.mealInfo)
   },
-
+  goNextpage(e){
+    const  tapIndex  = e.currentTarget.dataset.type;
+    switch (tapIndex) {
+      case 'diy':
+        HiNavigator.navigateTorecommendation();
+        break;
+      case 'meau':
+        HiNavigator.navigateToFoodRuler();
+        break;
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

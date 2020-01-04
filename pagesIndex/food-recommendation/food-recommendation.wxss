@@ -2,18 +2,10 @@
 .page{
     background-color: #f2f2f2;
     box-sizing: border-box;
-    padding: 0 40rpx;
+    padding: 30rpx;
     position: absolute;
     width: 100%;
     min-height: 100%;
-}
-.recommendation-date{
-    box-sizing: border-box;
-    padding: 20rpx;
-    background: #fff;
-    position: relative;
-    top: -150rpx;
-    border-radius:10px;
 }
 .recommendation-top{
     background: #ED6F69;
@@ -104,7 +96,7 @@
     font-size:22rpx;
     font-family:PingFang SC;
     font-weight:400;
-    margin-left: 134rpx;
+    margin-left: 245rpx;
     color:rgba(69,69,69,1);
 }
 .content-title{
@@ -119,7 +111,7 @@
 }
 .content-kcal{
     width: 205rpx;
-    text-align: center;
+    text-align: right;
     font-size:24rpx;
     font-family:PingFang SC;
     font-weight:500;

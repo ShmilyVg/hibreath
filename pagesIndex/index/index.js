@@ -52,12 +52,12 @@ Page({
             'http://img.hipee.cn/hibreath/img/2019116/ad0a5d4a-e6ad-41bc-b130-376ecc42d7ce.png'
         ],
         readImgHead:[
-            "零食干扰",
-            "刷牙",
+            "吃零食",
+            "刚刷完牙",
             "饮酒饮料",
             "抽烟",
             "涂抹口红",
-            "喷香水"
+            "喷洒香水"
         ],
         homeTitle: false,
 

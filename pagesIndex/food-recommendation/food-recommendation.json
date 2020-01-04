@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "减脂饮食推荐",
   "usingComponents": {},
-  "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#ed6f69"
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#fff"
 }

@@ -80,6 +80,9 @@ Page({
           case "dynamic":
               HiNavigator.navigateToMyDynamicList();
               break;
+          case "task":
+            HiNavigator.navigateToDayReportConclude();
+            break;
       }
     },
 

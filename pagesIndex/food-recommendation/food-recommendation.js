@@ -18,21 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-       const {result:dateResult} = await Protocol.postFoodDateInfo()
-       this.setData({
-           dateResult:dateResult
-       })
-      this.data.dateResult.date.map((value, index) => {
-          value.map((value, index) =>{
-              if(value.click){
-                  this.setData({
-                      idx:value.item
-                  })
-              }
-          })
-      });
-      this.getMonth(Date.parse(new Date()));
-      const {result: contentResult} = await Protocol.postFoodItemInfo()
+      const {result: contentResult} = await Protocol.postMenuRecommend()
       this.setData({
           contentResult:contentResult
       })
@@ -113,11 +99,10 @@ Page({
             [`num[${index}]`]:this.data.num[index]+1,
             [`rotate3dA[${index}]`]: this.animation.export()
         })
-        const{result}=await Protocol.postFoodChange({groupId:e.currentTarget.dataset.groupid,itemId:this.data.idx})
-
+        const{result}=await Protocol.postFoodChange({id:e.currentTarget.dataset.id})
         this.setData({
-            [`contentResult.freedom[${index}].list`]:result.data.dataList,
-            [`contentResult.freedom[${index}].total`]:result.data.total,
+            [`contentResult.dataList[${index}].list`]:result.data.list,
+            [`contentResult.dataList[${index}].total`]:result.data.total,
         })
     },
   /**

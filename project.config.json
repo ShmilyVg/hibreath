@@ -81,9 +81,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
+					"id": 3,
+					"name": "pagesIndex/index/index",
+					"pathName": "pagesIndex/index/index",
 					"query": "",
 					"scene": null
 				},
