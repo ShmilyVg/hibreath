@@ -41,7 +41,7 @@
     <view class="speedCon space-between">
       <view class="speedItem">
         <view class="speedItemTit">燃脂速度</view>
-        <view class="speedItemV">{{report.losefatSpeed.level}}</view>
+        <view class="speedItemV">{{report.losefatSpeed.dataValueToday}}</view>
       </view>
       <view class="speedItem">
         <view class="speedItemTit">预计今日总消耗脂肪</view>
