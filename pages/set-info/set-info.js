@@ -564,12 +564,21 @@ Page({
         }
       }
     }
-    setTimeout(() => {
-      wx.setNavigationBarColor({
-        frontColor: "#ffffff",
-        backgroundColor: "#F55E6B"
+    if(this.data.caseOnReady){
+      setTimeout(() => {
+        wx.setNavigationBarColor({
+          frontColor: "#000000",
+          backgroundColor: "#F2F2F2"
+        });
       });
-    });
+    }else{
+      setTimeout(() => {
+        wx.setNavigationBarColor({
+          frontColor: "#ffffff",
+          backgroundColor: "#F55E6B"
+        });
+      });
+    }
   },
 
   async continue() {
@@ -954,6 +963,22 @@ Page({
         case 'sport':
             HiNavigator.navigateToFreeClock();
             break
+    }
+  },
+  //新手任务跳转
+  bindTapToTask(e){
+    const {currentTarget: {dataset: { type,taskid,isfinished}}} = e;
+    console.log('type',type,taskid)
+    switch (type) {
+      case "howBreath":
+        HiNavigator.navigateToSpirits({taskId:taskid,isfinished:isfinished})
+      break;
+      case "whatNoteworthy":
+        HiNavigator.navigateToAttention({taskId:taskid,isfinished:isfinished})
+      break;
+      case "howClockIn":
+        HiNavigator.navigateToHowRegister({taskId:taskid,isfinished:isfinished})
+      break;
     }
   },
   //准备日 视频打卡完成后

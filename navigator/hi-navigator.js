@@ -191,6 +191,18 @@ export default class HiNavigator extends CommonNavigator {
   static navigateToDayReportConclude() {
     this.navigateTo({ url: '/pagesIndex/dayReportConclude/dayReportConclude'});
   }
+  //燃脂精灵怎么用
+  static navigateToSpirits({ taskId,isFinshed}) {
+    this.navigateTo({ url: '/pagesIndex/burnFatSpirits/burnFatSpirits?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  }
+  //减肥期间应该注意什么
+  static navigateToAttention({ taskId,isFinshed}) {
+    this.navigateTo({ url: '/pagesIndex/lowFatAttention/lowFatAttention?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  }
+  //每天这么打卡？
+  static navigateToHowRegister({ taskId,isFinshed}) {
+    this.navigateTo({ url: '/pagesIndex/howRegister/howRegister?taskId=' + taskId + '&isFinshed=' +isFinshed} );
+  }
   //动态信息列表
   static navigateToNoticeList({ groupId}) {
     this.navigateTo({ url: '/pagesIndex/noticeList/noticeList?groupId=' + groupId} );

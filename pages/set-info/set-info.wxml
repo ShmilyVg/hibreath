@@ -4,6 +4,7 @@
 <import src="./view/bodyIndexCard.wxml"></import>
 <import src="./view/HIITCard.wxml"></import>
 <import src="./view/foodVideo.wxml"></import>
+<import src="./view/readyTask.wxml"></import>
 <import src="./view/caseFinished.wxml"></import>
 <view class="page" style="background-color: {{bgColorSetInfoPage}}">
   <block wx:if="{{showNewInfo}}">
@@ -18,11 +19,10 @@
     </view>
     <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
     <view wx:if="{{showGoclockin}}" style="text-align: center">
-      <image class="showGoclockin-imgB" src="../../images/set-info/slimple.png"></image>
-      <view class="showGoclockin-text">暂未开启打卡...</view>
+      <image class="showGoclockin-imgB" src="../../images/food/empty.png"></image>
+      <view class="showGoclockin-text">暂未开启打卡</view>
       <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
         开启打卡
-        <image class="showGoclockin-imgL" src="../../images/set-info/sj.png"></image>
       </view>
     </view>
     <view class="flex-column" style="display: none">
@@ -163,12 +163,18 @@
 
         </view>
     </view>
-    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 30rpx">
-      <view wx:if="{{caseOnReady}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
-        <template is="foodVideo" wx:if="{{item.type =='videoFood'}}" data="{{...item}}"></template>
-        <template is="foodVideo" wx:if="{{item.type =='videoLosefat'}}" data="{{...item}}"></template>
-        <template is="foodVideo" wx:if="{{item.type =='slimWithHeart'}}" data="{{...item}}"></template>
+      <view wx:if="{{caseOnReady}}"style="width: 100%;box-sizing: border-box;padding: 110rpx 30rpx 0rpx 30rpx">
+          <view class="caseOnReady-title">新手任务</view>
+          <view class="caseOnReady-number">{{indexfinishNum}}/{{indextaskNum}}</view>
+          <view class="clear"></view>
+          <view class="caseOnReady-subtitle">在正式燃脂之前，你需要了解</view>
+          <view wx:for="{{taskListAll}}" wx:key="index" >
+              <template is="readyTask" wx:if="{{item.type =='howBreath'}}" data="{{...item}}"></template>
+              <template is="readyTask" wx:if="{{item.type =='whatNoteworthy'}}" data="{{...item}}"></template>
+              <template is="readyTask" wx:if="{{item.type =='howClockIn'}}" data="{{...item}}"></template>
+          </view>
       </view>
+    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 30rpx">
       <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
         <template is="caseonFinished" data="{{planInfo}}"></template>
       </view>

@@ -96,8 +96,8 @@
     margin-top: 200rpx;
 }
 .showGoclockin-imgB{
-    width: 206rpx;
-    height: 271rpx;
+    width: 370rpx;
+    height: 308rpx;
     margin: 255rpx auto 38rpx;
 }
 .showGoclockin-imgL{
@@ -106,8 +106,10 @@
     margin-left: 12rpx;
 }
 .showGoclockin-text{
-    color:rgba(237,111,105,1);
-    font-size: 32rpx;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(155,155,155,1);
 }
 .showGoclockin-startView{
     width:500rpx;
