@@ -27,7 +27,7 @@
     </view>
   </block>
   <block wx:else>
-    <view class="set-top-view" wx:if="{{!caseOnReady && !caseonFinished}}" >
+    <view class="set-top-view" wx:if="{{caseonEveryday}}" >
        <!-- <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>-->
         <view class="set-info-top">
             <view style="float: left">
@@ -62,14 +62,14 @@
       <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
         <template is="caseonFinished" data="{{planInfo}}"></template>
       </view>
-      <view wx:if="{{!caseOnReady && !caseonFinished}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
+      <view wx:if="{{caseonEveryday}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
         <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
         <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
         <template is="HIITCard" wx:if="{{item.type =='sport'}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
         <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}"></foodCard>
       </view>
-      <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-content-text1">我来帮你</view>
-      <view wx:if="{{!caseOnReady && !caseonFinished}}" class="set-info-content-img" bindtap="toRuler">
+      <view wx:if="{{caseonEveryday}}" class="set-info-content-text1">我来帮你</view>
+      <view wx:if="{{caseonEveryday}}" class="set-info-content-img" bindtap="toRuler">
         <view class="set-info-content-text2">我要怎么吃？</view>
         <view class="set-info-content-text3">代餐有哪些？外卖怎么选？如何自己做减脂餐？</view>
       </view>
@@ -103,8 +103,6 @@
 <!--底部弹窗-->
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-  <!--<view class="commodity_screen" bindtap="hideModal"></view>
-<view animation="{{animationData}}" class="commodity_attr_box">-->
     <view class="commodity_title">请输入当前体重</view>
     <view class="clear"></view>
     <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 98rpx"></view>
@@ -118,15 +116,6 @@
 </view>
 
 <!--底部弹窗-->
-<!--默认action-sheet为隐藏，由button触发-->
-<!--
-<action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
-       <action-sheet-item>
-             <button open-type="share">分享给好友或群</button>
-       </action-sheet-item>
-       <action-sheet-cancel>取消</action-sheet-cancel>
-</action-sheet>
--->
 <view class="shareContainer" wx:if='{{isOpened}}'>
   <!-- <view class='shareRow'>{{title}}</view>-->
   <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>

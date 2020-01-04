@@ -114,20 +114,7 @@ Page({
    * @desc 是否显示开屏页
    */
   getIsshowGuide(){
-    if(!wx.getStorageSync('showGuide')){
-      this.setData({
-        showNewInfo:true,
-        showGuide:true
-      })
-      wx.hideTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.hideTabBar()
-          }, 200)
-        }
-      });
-      return
-    }
+
   },
 
   /**
@@ -173,10 +160,7 @@ Page({
         backgroundColor: "#F55E6B"
       });
     });
-    this.setData({
-        showGuide:false,
-        showGoclockin:true
-    })
+    this.getPresonMsg();
     wx.setStorageSync('showGuide', 'hiddenGuide');
   },
   onHide() {
@@ -246,15 +230,32 @@ Page({
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     setTimeout(()=>{
-      this.getIsshowGuide();//是否显示开屏页
+      //是否显示开屏页
+      if(!wx.getStorageSync('showGuide')){
+        this.setData({
+          showNewInfo:true,
+          showGuide:true
+        })
+        wx.hideTabBar({
+          fail: function () {
+            setTimeout(function () {
+              wx.hideTabBar()
+            }, 200)
+          }
+        });
+        return
+      }
       if(wx.getStorageSync('showGuide') !==''){
         this.getRegister();//获取是否注册
       }
       this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
+    },800)
+    setTimeout(()=>{
       console.log('app.globalData.isLogin',app.globalData.isLogin)
       console.log('app.globalData.dayFirstLoginObj.inTaskProgress',app.globalData.dayFirstLoginObj.inTaskProgress)
       //每天第一次登录积分奖励
       if(app.globalData.isLogin && app.globalData.dayFirstLoginObj.inTaskProgress){
+        console.log('我执行了第一次登录的弹窗哦',app.globalData.dayFirstLoginObj)
         this.setData({
           showMytoast:true,
           ...app.globalData.dayFirstLoginObj
@@ -263,9 +264,9 @@ Page({
           this.setData({
             showMytoast:false,
           })
-        },4000)
+        },2000)
       }
-    },200)
+    },1200)
   },
   /**
    * @desc 根据用户状态进行跳转 立即注册或填写资料
@@ -346,44 +347,7 @@ Page({
       }
     });
   },
-  async onCommunitySettingClickEvent() {
-    try {
-      const { tapIndex } = await showActionSheet({
-        itemList: ["查看方案介绍", "退出当前方案"],
-        itemColor: "#ED6F69"
-      });
-      switch (tapIndex) {
-        case 0:
-          console.log(this.data.planId);
-          HiNavigator.navigateToCaseDetailsInformation({
-            planId: this.data.planId
-          });
-          break;
-        case 1:
-          WXDialog.showDialog({
-            content: "确定要退出该方案吗",
-            showCancel: true,
-            confirmText: "确定",
-            cancelText: "取消",
-            confirmEvent: () => {
-              Protocol.postMembersExit({ planId: this.data.planId }).then(() =>{
-                  setTimeout(() => {
-                      wx.setNavigationBarColor({
-                          frontColor: "#171717",
-                          backgroundColor: "#ffffff"
-                      });
-                  });
-              });
-            },
-            cancelEvent: () => {}
-          });
 
-          break;
-      }
-    } catch (e) {
-      console.warn(e);
-    }
-  },
   /**
    * @desc 跳转今日总结报告
    */
@@ -417,6 +381,7 @@ Page({
       isGroup:result.isGroup,
       caseOnReady: result.onReady,
       caseonFinished: result.onFinished,
+      caseonEveryday: result.onEveryday,
       indexfinishNum: result.finishNum,
       indextaskNum: result.taskNum,
       taskListAll: result.taskList,
@@ -598,109 +563,6 @@ Page({
     }
   },
 
-  async continue() {
-    const info = this.data.info;
-    console.log(info.goalDesc.length, "info.goalDesc");
-    switch (this.data.page) {
-      case 1:
-        if (this.objIsEmpty(info.goalDesc)) {
-          toast.warn("请填写目标");
-          return;
-        }
-        break;
-      case 2:
-        if (this.objIsEmpty(info.sex)) {
-          toast.warn("请选择性别");
-          return;
-        }
-        break;
-      case 3:
-        break;
-      case 4:
-        if (this.objIsEmpty(info.height)) {
-          toast.warn("请填写身高");
-          return;
-        } else if (this.objIsEmpty(info.weight)) {
-          toast.warn("请填写体重");
-          return;
-        }
-        break;
-      case 5:
-        if (this.data.noMeasure) {
-          if (this.objIsEmpty(this.data.choseIndex)) {
-            toast.warn("请选择图片");
-            return;
-          } else {
-            let list = this.data.page4MenItem;
-            if (this.data.info.sex === 0) {
-              list = this.data.page4WomenItem;
-            }
-            this.setData({
-              "info.bodyFatRate": list[this.data.choseIndex]
-            });
-          }
-        } else {
-          if (this.objIsEmpty(info.bodyFatRate)) {
-            toast.warn("请填写体脂率");
-            return;
-          } else if (parseInt(this.data.info.bodyFatRate) >= 100) {
-            this.showDialog("请输入正确的体脂率，体脂率范围1%-100%");
-            return;
-          } else {
-            const num = this.data.info.bodyFatRate.toString().split(".");
-            if (num.length > 1 && num[1] >= 10) {
-              this.showDialog("至多输入1位小数及两位整数");
-              return;
-            }
-          }
-        }
-        break;
-      case 6:
-        console.log("page6", this.data.meals);
-        let isChoseMeals = false;
-        this.data.meals.forEach(value => {
-          if (value.isChose) {
-            isChoseMeals = true;
-          }
-        });
-        if (!isChoseMeals) {
-          toast.warn("请选择三餐");
-          return;
-        }
-        break;
-      case 7:
-        if (this.objIsEmpty(info.weightGoal)) {
-          toast.warn("请填写目标体重");
-          return;
-        }
-        await Protocol.postMembersPut(this.data.info);
-        const {
-          result: { list: project }
-        } = await Protocol.postSettingsLosefatSchema();
-        this.setData({
-          project: project,
-          schemaId: project[0].id
-        });
-        break;
-      case 8:
-        await Protocol.postMembersJoinSchema({
-          schemaId: this.data.schemaId,
-          startTime: this.data.startTime
-        });
-        this.handleTasks();
-        this.setData({
-          showNewInfo: false,
-          page: 1
-        });
-        wx.removeStorageSync('breath_user_info_input');
-        return;
-    }
-    if (this.data.page < 8) {
-      this.setData({
-        page: ++this.data.page
-      });
-    }
-  },
 
   objIsEmpty(obj) {
     return typeof obj === "undefined" || obj === "" || obj === null;
@@ -709,47 +571,7 @@ Page({
   showDialog(content) {
     WXDialog.showDialog({ title: "小贴士", content, confirmText: "我知道了" });
   },
-  /*新手引导返回上一步*/
-  back() {
-    this.setData({
-      page: --this.data.page
-    });
-  },
 
-  //减脂目标
-  bindInputGoal(e) {
-    console.log("e.detail.value", e.detail.value);
-    this.setData({
-      "info.goalDesc": tools.filterEmoji(e.detail.value).trim()
-    });
-  },
-
-  bindTapSex(e) {
-    let choseIndex = e.currentTarget.dataset.index,
-      postSex = 0,
-      sexStr = "";
-    this.data.sexBox.map((value, index) => {
-      value.isChose = choseIndex == index;
-      if (value.isChose) {
-        postSex = value.value;
-        sexStr = value.image;
-      }
-    });
-    this.setData({
-      sexBox: this.data.sexBox,
-      "info.sex": postSex,
-      "info.sexStr": sexStr
-    });
-  },
-
-  bindChangeBirth(e) {
-    const value = e.detail.value;
-    const birthArr = value.split("-");
-    this.setData({
-      "info.birthday": value,
-      birth: birthArr
-    });
-  },
   showBirth(e) {
     console.log("dddddd", e.detail);
     this.setData({
@@ -1005,14 +827,12 @@ Page({
       videoUrl: e.currentTarget.dataset.videourl
     });
   },
-    //方案完成跳转荣誉报告
+   /**
+    * @desc  总结日--方案完成跳转荣誉报告
+    */
    bindTapToPlanFinish(){
        HiNavigator.navigateToPlanfinish({ planId: this.data.planId});
    },
-  async bindTapProject() {
-    HiNavigator.navigateToCaseDetails({ schemaId: this.data.schemaId });
-  },
-
   onShow() {
     this.handleBle();
     let that = this;
@@ -1027,7 +847,6 @@ Page({
             sync: that.data.sync,
             showBigTip: true
           });
-
           clearTimeout(that.data.sync.timer);
           that.data.sync.timer = "";
           that.data.sync.timer = setTimeout(function() {
@@ -1051,33 +870,6 @@ Page({
                 },
                 cancelEvent: () => {}
               });
-              /*    if(that.data.fatBurnTask.finished){
-                                WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果',
-                                    showCancel: true,
-                                    confirmText: "查看记录",
-                                    cancelText: "暂不查看",
-                                    confirmEvent: () => {
-                                        HiNavigator.navigateToResultNOnum();
-                                    },
-                                    cancelEvent: () => {
-
-                                    }
-                                });
-                            }else{
-                                WXDialog.showDialog({
-                                    content: '上传成功，本次共上传'+that.data.sync.num+'条结果，上传的结果暂无今日检测结果，燃脂打卡任务有待完成哦~',
-                                    showCancel: true,
-                                    confirmText: "查看记录",
-                                    cancelText: "暂不查看",
-                                    confirmEvent: () => {
-                                        HiNavigator.navigateToResultNOnum();
-                                    },
-                                    cancelEvent: () => {
-
-                                    }
-                                });
-                            }*/
             }
           }, 2000);
         }
@@ -1087,19 +879,15 @@ Page({
         });
       }
     };
-
+    //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
     if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
       getApp().globalData.issueRefresh = false;
       that.handleTasks();
     }
-    console.log(
-      "打卡页面更新了",
-      getApp().globalData.issueRefresh,
-      this.data.isfinishedGuide,
-      this.data.isFood
-    );
   },
-
+  /**
+   * @desc 进入燃脂记录或者燃脂流程页面
+   */
   async bindTapToResultPage() {
     if (this.data.fatBurnFin) {
       const { fatText, fatTextEn, fatDes, score } = this.data;
@@ -1143,6 +931,9 @@ Page({
       }
     })
   },
+  /**
+   * @desc 首页进入体重记录页面
+   */
   async bindTapToFood() {
     if (this.data.bodyIndexFin) {
       HiNavigator.navigateTofood();
@@ -1176,60 +967,7 @@ Page({
       weight:e.detail.value
     })
   },
-  //选择方案轮播图
-  swiperChangeCase(e) {
-    this.setData({
-      schemaId: this.data.project[e.detail.current].id
-    });
-  },
-  //运动打卡--轮播图当前
-  swiperChange: function(e) {
-    this.setData({
-      currentSwiper: e.detail.current
-    });
-    if (this.data.sportExt.recommendList[e.detail.current].list.length == 1) {
-      this.setData({
-        aheight: 230
-      });
-    } else {
-      this.setData({
-        aheight:
-          this.data.sportExt.recommendList[e.detail.current].list.length * 110 +
-          205
-      });
-    }
 
-    if (e.detail.current === 0) {
-      this.setData({
-        grayLeft: true,
-        grayRight: false
-      });
-      return;
-    }
-    if (e.detail.current === this.data.sportExt.recommendList.length - 1) {
-      this.setData({
-        grayLeft: false,
-        grayRight: true
-      });
-      return;
-    }
-    this.setData({
-      grayLeft: false,
-      grayRight: false
-    });
-  },
-  //运动打卡--左按钮
-  imgToPre() {
-    this.setData({
-      currentSwiper: this.data.currentSwiper - 1
-    });
-  },
-  //运动打卡--右按钮
-  imgToNext() {
-    this.setData({
-      currentSwiper: this.data.currentSwiper + 1
-    });
-  },
   showModal: function() {
     // 显示遮罩层
     var animation = wx.createAnimation({
@@ -1273,47 +1011,6 @@ Page({
     });
     this.handleTasks();
   },
-    //选择方案开始日期确定按钮
-  hideModalConfirm() {
-      Toast.showLoading();
-      setTimeout(() => {
-            const startTime = this.selectComponent("#pickerDateStart").getDateStart();
-            //滚动完成
-            const canSub = this.selectComponent("#pickerDateStart").bindpickend();
-            //数据渲染完成
-            const canSuC = this.selectComponent("#pickerDateStart").getCanSub();
-            console.log('startTime',startTime)
-            console.log('canSub',canSub)
-            if(canSub){
-                this.setData({
-                    startTime,
-                    showModalStatus: false
-                });
-              wx.showTabBar({
-                fail: function() {
-                  setTimeout(function() {
-                    wx.showTabBar();
-                  }, 200);
-                }
-              });
-                this.showBirthStart();
-                this.continue();
-            }
-          Toast.hiddenLoading();
-    },1200)
-  },
-  hideModalCancel() {
-    this.setData({
-      showModalStatus: false
-    });
-    wx.showTabBar({
-      fail: function() {
-        setTimeout(function() {
-          wx.showTabBar();
-        }, 200);
-      }
-    });
-  },
 
   /**
    * 用户点击右上角分享
@@ -1336,31 +1033,7 @@ Page({
       imageUrl: this.data.shareImg
     };
   },
-  async listenerButton() {
-    Toast.showLoading();
-    const {result} = await Protocol.postPosters()
-    this.setData({
-          shareImg:result.url+'?random='+Date.now(),
-    })
-      wx.hideTabBar({
-          fail: function () {
-              setTimeout(function () {
-                  wx.hideTabBar()
-              }, 500)
-          }
 
-      });
-      this.setData({
-          isOpened:true,
-          actionSheetHidden: !this.data.actionSheetHidden
-      })
-    Toast.hiddenLoading()
-  },
-  listenerActionSheet: function() {
-    this.setData({
-      actionSheetHidden: !this.data.actionSheetHidden
-    });
-  },
   cancel() {
     this.setData({
       isOpened: false
@@ -1382,20 +1055,6 @@ Page({
       await this.handleTasks();
       Toast.hiddenLoading();
     }
-
     wx.stopPullDownRefresh();
-
   },
-  bindDateChange: function(e) {
-    this.setData({
-      date: e.detail.value
-    });
-  },
-  async bindTimeChange() {
-    await Protocol.postMembersJoinSchema({ schemaId: this.data.schemaId });
-    this.handleTasks();
-    this.setData({
-      showNewInfo: false
-    });
-  }
 });
