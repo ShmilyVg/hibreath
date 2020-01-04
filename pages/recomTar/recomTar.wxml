@@ -100,7 +100,7 @@
       <input class="weightInput " value="{{weightGoalt}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
       <view class="page2-line"></view>
       <view class="unit">KG</view>
-      <view class="btn_start weightBtn" hover-class="press-style" hover-stay-time="50" bindlongtap="saveWeight">保存</view>
+      <view class="btn_start weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
       <view class="ps">*目标体重需小于当前体重</view>
     </view>
   </view>
