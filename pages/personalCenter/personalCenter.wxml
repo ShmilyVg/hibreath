@@ -39,14 +39,14 @@
          <button class="per-main-list flex-row space-between"   bindtap="onTargetWeight">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/weight.png"></image>
-              <text class="per-main-text">目标体重</text>
+              <text class="per-main-text">我的减脂历程</text>
               <text class="per-main-text"></text>
           </view>
           <view>
-              <text wx:if="{{isShowlogin}}">
+            <!--  <text wx:if="{{isShowlogin}}">
                   <text class="weightGoalN" wx:if="{{weightGoal}}">{{weightGoal}}kg</text>
                   <text class="weightGoalT" wx:else>未填写</text>
-              </text>
+              </text>-->
               <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
           </view>
          </button>

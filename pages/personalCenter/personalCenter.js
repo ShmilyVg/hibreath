@@ -28,15 +28,24 @@ Page({
       }
   },
   onPersonalCenter:function(e){
-    this.goVerify();
+    if(!getApp().globalData.isLogin || !this.data.finishedPhone){
+      HiNavigator.navigateToGoRegister();
+      return;
+    }
     HiNavigator.navigateToUserInfoPage()
   },
   onTargetWeight:function(e){
-    this.goVerify()
-    HiNavigator.navigateToTargetWeight({targetWeight:this.data.weightGoal})
+    if(!getApp().globalData.isLogin || !this.data.finishedPhone){
+      HiNavigator.navigateToGoRegister();
+      return;
+    }
+    HiNavigator.navigateToRecomTar({reset:false})
   },
   onDeviceManagement(){
-    this.goVerify()
+    if(!getApp().globalData.isLogin || !this.data.finishedPhone){
+      HiNavigator.navigateToGoRegister();
+      return;
+    }
     HiNavigator.navigateToDeviceUnbind()
   },
   toCommonProblem:function(){
@@ -74,7 +83,10 @@ Page({
               HiNavigator.navigateTofood();
               break;
           case "paiMoney":
-              this.goVerify();
+            if(!getApp().globalData.isLogin || !this.data.finishedPhone){
+              HiNavigator.navigateToGoRegister();
+              return;
+            }
               HiNavigator.navigateToPaiCoinPage();
               break;
           case "dynamic":
@@ -98,8 +110,8 @@ Page({
    */
   goVerify(){
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-      HiNavigator.navigateToGoRegister()
-      return
+      HiNavigator.navigateToGoRegister();
+      return;
     }
   },
   async getUserInfo(){

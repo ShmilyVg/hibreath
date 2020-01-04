@@ -95,7 +95,7 @@ Page({
     date: "2019-12-04",
     startTime: "",
     loanTime:'',//定时器
-    isNophone:false
+    isNophone:false,
   },
   onFocus: function(e) {
     this.setData({
@@ -563,6 +563,23 @@ Page({
           });
         }
       }
+    }
+    if(this.data.showGuide){
+      wx.hideTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.hideTabBar()
+          }, 200)
+        }
+      });
+    }else{
+      wx.showTabBar({
+        fail: function() {
+          setTimeout(function() {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
     }
     if(this.data.caseOnReady){
       setTimeout(() => {

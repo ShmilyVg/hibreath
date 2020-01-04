@@ -118,7 +118,6 @@ button::after {
   margin-left:14rpx;
 }
 .per-main{
-  height:480rpx;
   background:#fff;
   border-radius:20rpx;
   margin-top:20rpx;
@@ -154,4 +153,5 @@ height:25rpx;
   margin-top:18rpx;
   padding:0 35rpx;
   border-radius: 20rpx;
+  margin-bottom: 30rpx;
 }

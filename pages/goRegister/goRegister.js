@@ -22,8 +22,7 @@ Page({
           nologin:false
         })
       }
-    },100)
-    console.log('nologin',getApp().globalData.isLogin)
+    },1000)
   },
   /**
    * @desc 跳转验证手机号群号
