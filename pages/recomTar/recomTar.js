@@ -15,7 +15,6 @@ Page({
     animationData: {},//
   },
   onLoad: function (options) {
-    getApp().globalData.issueRefresh = true;
     this.setData({
       personalCenter: options.personalCenter
     })
@@ -23,6 +22,9 @@ Page({
   },
   onReady: function () {
     
+  },
+  onUnload(){
+    getApp().globalData.issueRefresh = true;
   },
   async getMyLoss(weightGoalt){
     let data = weightGoalt ? { weightGoalt:Number(weightGoalt)}:{};

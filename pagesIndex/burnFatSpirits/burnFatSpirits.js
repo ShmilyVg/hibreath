@@ -24,15 +24,16 @@ Page({
   },
 
   onLoad: function (options) {
-    getApp().globalData.issueRefresh = true;
     if (options) {
       this.setData({
         taskId: options.taskId,
-        isFinshed: options.isFinshed
+        isFinshed: options.isfinished
       })
     }
   },
-
+  onUnload(){
+    getApp().globalData.issueRefresh = true;
+  },
   async submitFun(){
     let data ={
       taskId: this.data.taskId
@@ -41,6 +42,9 @@ Page({
     HiNavigator.switchToSetInfo()
   },
   onReachBottom: function () {
+    
+  },
+  onShow: function () {
     this.setCecond()
   },
   setCecond() {

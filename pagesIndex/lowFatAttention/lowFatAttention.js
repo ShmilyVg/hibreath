@@ -31,13 +31,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getApp().globalData.issueRefresh = true
     if (options) {
       this.setData({
         taskId: options.taskId,
-        isFinshed: options.isFinshed
+        isFinshed: options.isfinished
       })
     }
+  },
+  onUnload(){
+    getApp().globalData.issueRefresh = true;
+  },
+  onShow: function () {
+    this.setCecond()
   },
   unfold(){
     this.setData({
@@ -49,7 +54,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setCecond();
   },
   setCecond() {
     let second = this.data.second

@@ -399,7 +399,7 @@
   line-height: 96rpx;
 }
 .weightBtn{
-  margin-top: 100rpx;
+  margin: 100rpx auto 0;
 }
 .ps{
   margin-top: 30rpx;

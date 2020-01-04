@@ -6,15 +6,16 @@ Page({
     second: 5,
   },
   onLoad: function (options) {
-    getApp().globalData.issueRefresh = true
     if (options) {
       this.setData({
         taskId: options.taskId,
-        isFinshed: options.isFinshed
+        isFinshed: options.isfinished
       })
     }
   },
-
+  onUnload(){
+    getApp().globalData.issueRefresh = true;
+  },
   setCecond() {
     let second = this.data.second
     if (second <= 0) {
