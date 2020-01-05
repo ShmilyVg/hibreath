@@ -81,7 +81,7 @@
     </view>
     <view class="weightCon space-between" wx:if="{{sharedId == null}}">
       <view class="weightItem">
-        <view class="weightItemTit">昨日</view>
+        <view class="weightItemTit">{{weightName}}</view>
         <view class="weightdItemV">{{report.weightChange.lastTimeWeight}}
           <text>kg</text>
         </view>
@@ -95,7 +95,7 @@
     </view>
     <view class="progressCon">
       <view class="yesterdaProgress progress" style="width:{{yesterdayPer}}">
-        昨日
+        {{weightName}}
       </view>
       <view class="progress todayProgress" style="width:{{todayPer}}">
         今日

@@ -8,8 +8,7 @@ import {
 Page({
 
   data: {
-    nickname:'',
-    portraitUrl:'',
+    weightName:'',
     curDate:'',
     left:46,
     report: {},
@@ -78,14 +77,17 @@ Page({
   async getReport(sharedId){
     Toast.showLoading();
     let reportId = Number(this.data.reportId);
-    console.log(sharedId, reportId)
+    
     let data = await Protocol.getTodayLosefatReport({ sharedId, reportId});
     Toast.hiddenLoading();
     let left = this.getlosefatSpeed(data.result.losefatSpeed.dataValueToday) ;
     let foodDesTxt = data.result.losefatGrams.foodDescription;
     let sprotDesTxt = data.result.losefatGrams.sprotDescription;
+    let day = data.result.weightChange.days;
+    let weightName = !day ? '初始' : (day == 1) ? '昨日' : day + '天前'
     let that = this;
     this.setData({
+      weightName: weightName ,
       sprotDescription: that.getDesArr(sprotDesTxt),
       foodDescription: that.getDesArr(foodDesTxt),
       report: data.result,
