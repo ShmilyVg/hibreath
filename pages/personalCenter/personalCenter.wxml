@@ -53,7 +53,7 @@
          <view class="per-main-list flex-row space-between" data-type="task" bindtap="toDatalist">
              <view>
                  <image class="per-main-image" src="../../images/personalCenter/task.png"></image>
-                 <text class="per-main-text">今日总结报告</text>
+                 <text class="per-main-text">每日总结报告</text>
              </view>
              <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
          </view>

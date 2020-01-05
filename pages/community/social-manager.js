@@ -211,7 +211,7 @@ export async function whenDismissGroup(protocol) {
         }else if (code === 40015) {
           Toast.hiddenLoading()
           WXDialog.showDialog({
-            title: '', content: '验证码已失效，请重新验证', confirmText: '我知道了', confirmEvent: () => {
+            title: '', content: '验证码错误', confirmText: '我知道了', confirmEvent: () => {
             }
           });
         }else if (code === 40016) {
