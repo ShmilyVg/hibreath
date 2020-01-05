@@ -110,7 +110,12 @@ Component({
       this.excitingKnow()
     },
       excitingKnow(){
-          this.triggerEvent("getShowExcitation", {showExcitation:false} )
+          if(this.data.toastType == "fatBurn"){
+            this.triggerEvent("getShowExcitation", {showExcitation:false,showWeight:true} )
+          }else{
+            this.triggerEvent("getShowExcitation", {showExcitation:false} )
+          }
+
       },
       /*阻止滚动*/
       stopScroll(){

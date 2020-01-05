@@ -234,6 +234,9 @@ Page({
     this.setData({
       showExcitation: e.detail.showExcitation
     });
+    if(e.detail.showWeight){
+      this.showModal()
+    }
   },
   //同步离线数据
   async onLoad(e) {
