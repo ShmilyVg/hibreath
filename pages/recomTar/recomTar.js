@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     console.log(options);
     this.setData({
-      personalCente: options.personalCente
+      personalCente: options.personalCente === true || options.personalCente ==='true' 
     })
     this.getMyLoss();
   },
