@@ -7,36 +7,44 @@ import HiNavigator from "../../navigator/hi-navigator";
 Page({
   data: {
     disease: [{
-        text: '三高（高血压、高血糖、高血脂）',
-        value: 'sangao',
-        isChose: false,
-      },
-      {
-        text: '胃病（慢性胃炎，胃溃疡）',
-        value: 'weibing',
-        isChose: false,
-      },
-      {
-        text: '消化、代谢病（痛风、胆囊炎、胆结石）',
-        value: 'daixie',
-        isChose: false,
-      },
-      {
-        text: '其他已确诊疾病',
-        value: 'all',
-        isChose: false,
-      },
-      {
-        text: '我很健康，以上都没有',
-        value: 'none',
-        isChose: true,
-      },
+      text: '三高（高血压、高血糖、高血脂）',
+      value: 'sangao',
+      isChose: false,
+    },
+    {
+      text: '胃病（慢性胃炎，胃溃疡）',
+      value: 'weibing',
+      isChose: false,
+    },
+    {
+      text: '消化、代谢病（痛风、胆囊炎、胆结石）',
+      value: 'daixie',
+      isChose: false,
+    },
+    {
+      text: '其他已确诊疾病',
+      value: 'all',
+      isChose: false,
+    },
+    {
+      text: '我很健康，以上都没有',
+      value: 'none',
+      isChose: true,
+    },
     ],
-    btnAble:true
+    btnAble: true
   },
 
   async onLoad(options) {
-    console.log(options);
+    let isChoseArr = getApp().globalData.tempValue.foodHabitArray;
+    this.data.disease.map(item => { 
+      if (isChoseArr.indexOf(item.value) > -1) { 
+        item.isChose = true 
+        } else { 
+          item.isChose = false 
+        }; 
+    })
+    this.setData({ disease: this.data.disease })
 
   },
   bindTapHealth(e) {
@@ -76,7 +84,7 @@ Page({
   },
   checkEmpty() {
     let disease = this.data.disease;
-    let check = disease.filter(function(el) {
+    let check = disease.filter(function (el) {
       return el.isChose == true
     })
     this.setData({

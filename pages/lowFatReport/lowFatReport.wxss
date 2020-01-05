@@ -331,6 +331,7 @@
 
 .progress {
   height: 30rpx;
+  line-height: 30rpx;
   padding-left: 27rpx;
   font-size: 22rpx;
   font-family: PingFang SC;
