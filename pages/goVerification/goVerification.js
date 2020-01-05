@@ -164,6 +164,8 @@ Page({
         this.setData({
           showMytoast:false,
         })
+        Toast.hiddenLoading()
+        HiNavigator.navigateToGuidance({reset:false})
       },3000)
     }
 
@@ -172,8 +174,7 @@ Page({
       icon: 'success',
       duration: 2000,
     })*/
-    Toast.hiddenLoading()
-    HiNavigator.navigateToGuidance({reset:false})
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
