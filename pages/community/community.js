@@ -189,45 +189,20 @@ Page({
                 })
             },10)
         }
-        // if (this.isUpdateAllWhenLoad) {
-        wx.getSetting({
-            success: (res) => {
-                console.log('圈子打印是否授权', res.authSetting['scope.userInfo']);
-                if (!res.authSetting['scope.userInfo'] &&!getApp().globalData.isLogin) {
-                    wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
-                    wx.setBackgroundColor({
-                        backgroundColor: '#ffffff', // 窗口的背景色为白色
-                    });
-                    this.setData({
-                        haveGroupId:false,
-                        noCommunity:true
-                    })
-                }
-            }
-        });
-       /* if(getApp().globalData.isNoRegister){
-            console.log('isNoRegisterisNoRegister',getApp().globalData.isNoRegister)
-            getApp().globalData.isNoRegister=false
-            console.log('getApp().globalData.isNoRegister',getApp().globalData.isNoRegister)
+        setTimeout(()=>{
+          if (!getApp().globalData.isLogin) {
             wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
             wx.setBackgroundColor({
-                backgroundColor: '#ffffff', // 窗口的背景色为白色
+              backgroundColor: '#ffffff', // 窗口的背景色为白色
             });
             this.setData({
-                haveGroupId:false,
-                noCommunity:true
+              haveGroupId:false,
+              noCommunity:true
             })
-            return
-        }*/
+          }
+        },500)
+
         this.forceUpdateAll();
-       /* this.messageItem = this.selectComponent("#messageItem");
-        this.data.dynamicList.map((value, index) => {
-            if(value){
-                this.messageItem.undateName(value.praiseInfo.list)
-            }
-        });*/
-        // }
-      //this.NoticeList();
     },
     async toImgClock(){
         HiNavigator.navigateToImgClockcommunity({id:(await judgeGroupEmpty()).groupId})

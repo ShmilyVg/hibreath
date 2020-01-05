@@ -163,6 +163,13 @@ Page({
     this.setData({
       showGuide:false
     })
+    if(!app.globalData.isLogin){
+      this.setData({
+        showNewInfo:true,
+        showGoclockin:true
+      })
+    }
+    //点击立即体验后 分三种情况---未开启打卡  新手任务  打卡任务
     this.getPresonMsg();
     wx.setStorageSync('showGuide', 'hiddenGuide');
   },
@@ -300,7 +307,6 @@ Page({
       })
       this.handleTasks()
     }else{
-      console.log('2444')
       this.setData({
         showNewInfo: true,
         showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
@@ -1056,6 +1062,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
+    console.log(this.data.showNewInfo,this.data.showGuide,this.data.showGoclockin,'======')
     if (!this.data.showNewInfo && !this.data.showGuide && !this.data.showGoclockin) {
       Toast.showLoading();
       await this.handleTasks();
