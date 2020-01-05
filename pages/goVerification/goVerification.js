@@ -164,7 +164,7 @@ Page({
         this.setData({
           showMytoast:false,
         })
-      },3500)
+      },3000)
     }
 
    /* wx.showToast({

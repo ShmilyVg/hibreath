@@ -228,7 +228,7 @@ Page({
       this.setData({
         showMytoast:false,
       })
-    },3500)
+    },3000)
   },
   getShowExcitation(e) {
     this.setData({
@@ -274,7 +274,7 @@ Page({
           this.setData({
             showMytoast:false,
           })
-        },3500)
+        },3000)
       }
     },1200)
   },
@@ -412,7 +412,7 @@ Page({
         this.setData({
           showMytoast:false,
         })
-      },3500)
+      },3000)
       wx.setStorageSync('today',new Date().getDay())
     }
     if(this.data.indexfinishNum === this.data.indextaskNum){
