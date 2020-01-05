@@ -27,6 +27,7 @@ Page({
       weight: 0,
       birthday: '',
       bodyFatRate: null,
+      
     },
     illness: [{
         text: '三高（高血压、高血糖、高血脂）',
@@ -55,7 +56,17 @@ Page({
       },
     ],
     editUserInfo: {},
-    mealTypeString: '请输入'
+    mealTypeString: '请输入',
+    showToastTxt:{
+      nickname:'昵称',
+      portraitUrl:'头像',
+      sex: '性别',
+      height: '身高',
+      weight: '体重',
+      birthday: '生日',
+      illnessType: '身体状况'
+    },
+    replenish:''
   },
 
 
@@ -144,7 +155,6 @@ Page({
       finalUserInfoObj = { ...this.data.originUserInfo,
         ...finalEditUserInfoObj
       };
-
     // console.log('finalEditUserInfoObj', finalEditUserInfoObj, 'finalUserInfoObj', finalUserInfoObj);
     if (this.checkFill(finalUserInfoObj)) {
       await whenDismissGroup(Protocol.postMembersPutInfo(finalEditUserInfoObj));
@@ -153,27 +163,38 @@ Page({
         delta: 1
       });
     } else {
+      let showToastTxt = this.data.showToastTxt;
       wx.showToast({
-        title: '请完善所有信息',
+        title: `请填写${showToastTxt[this.data.replenish]}信息` ,
         icon: 'none',
         duration: 2000
       });
       // toast.showText('请完善所有信息');
     }
   },
-
+  setReplenish(key){
+    this.setData({
+      replenish:key
+    })
+  },
   checkFill(finalUserInfoObj) {
     for (const [key, value] of entries(finalUserInfoObj)) {
       if (!value) {
         if (key !== 'sex') {
+          this.setReplenish(key)
           return false;
-        } else return value !== null;
+        } else if (value == null){
+          this.setReplenish(key)
+          return false;
+        } 
       } else {
-        if (Array.isArray(value)) {
-          return !!value.length;
+        if (Array.isArray(value) && !value.length) {
+          this.setReplenish(key)
+          return false;
         }
       }
     }
+    return true;
   },
   async uploadHeadEvent() {
     const filePath = await chooseImage(),
