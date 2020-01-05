@@ -18,14 +18,16 @@ Page({
     foodDescription:[],
     sprotDescription:[],
     subKGrams:'',
-    showShare:true
+    reportId:'',
+    sharedId:null
   },
 
   onLoad: function (options) {
     console.log('onLoad oprtions->', options)
     let now = new Date();
     this.setData({
-      showShare: options.showShare,
+      reportId: options.reportId,
+      sharedId: options.sharedId,
       'curDate': now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
     })
     this.getReport(options.sharedId);
@@ -75,7 +77,9 @@ Page({
   },
   async getReport(sharedId){
     Toast.showLoading();
-    let data = await Protocol.getTodayLosefatReport({sharedId});
+    let reportId = Number(this.data.reportId);
+    console.log(sharedId, reportId)
+    let data = await Protocol.getTodayLosefatReport({ sharedId, reportId});
     Toast.hiddenLoading();
     let left = this.getlosefatSpeed(data.result.losefatSpeed.dataValueToday) ;
     let foodDesTxt = data.result.losefatGrams.foodDescription;
@@ -91,10 +95,10 @@ Page({
     this.setweightChange()
   },
   onShareAppMessage(res){
-    console.log(res);
+    let reportId = this.data.reportId;
     return {
       title: '我的今日减脂报告已生成，快来围观！',
-      path: `/pages/lowFatReport/lowFatReport?type=false&sharedId=${this.data.report.sharedId}`
+      path: `/pages/lowFatReport/lowFatReport?sharedId=${this.data.report.sharedId}&reportId=${reportId}`
     }
   },
   shareFr(){

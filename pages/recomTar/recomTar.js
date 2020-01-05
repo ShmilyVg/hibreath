@@ -46,11 +46,18 @@ Page({
   weightGoalChange(e){
     let targetDate = this.data.targetDate
     let nowW = targetDate.weightLoss + targetDate.weightGoalt;
-    if (nowW < e.detail.value){
+    let weightGoalt = e.detail.value;
+    if (nowW < weightGoalt){
       toast.warn('目标体重过大')
     }
+    let str = (weightGoalt +'').split('.')[1];
+    
+    if (str.length>1){
+      toast.warn('只能一位小数')
+      weightGoalt = Number(weightGoalt).toFixed(1);
+    }
     this.setData({
-      weightGoalt: e.detail.value
+      weightGoalt: weightGoalt
     })
   },
   saveWeight(){

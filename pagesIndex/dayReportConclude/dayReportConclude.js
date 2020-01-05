@@ -13,7 +13,7 @@ Page({
     limit:20,
     lastPage:false,
     imgCon: {
-      '低速燃脂': '../images/dayReportConclude/level1.png',
+      '即将燃脂': '../images/dayReportConclude/level1.png',
       '低速燃脂': '../images/dayReportConclude/level2.png',
       '状态极佳': '../images/dayReportConclude/level3.png',
       '快速燃脂': '../images/dayReportConclude/level4.png',
@@ -53,6 +53,11 @@ Page({
       return;
     }
     
+  },
+  goReport(e){
+    let index = e.currentTarget.dataset['index'];
+    let reportId = this.data.reportList[index].reportId;
+    HiNavigator.navigateToLowFatReport(reportId);
   },
   onReachBottom: function () {
     let page = this.data.page;

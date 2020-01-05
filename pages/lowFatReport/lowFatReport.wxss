@@ -38,7 +38,7 @@
 
 .pageItem {
   margin-top: 20rpx;
-  background: rgba(255, 255, 255, 1);
+  background: #f4f2ee;
   border-radius: 20rpx;
   position: relative;
   color: #454545;
@@ -407,7 +407,7 @@
 }
 
 .reviewedCon {
-  margin-top: 36rpx;
+  margin-top: 46rpx;
   padding: 46rpx 30rpx 47rpx;
   font-size: 26rpx;
   font-family: PingFang SC;
@@ -436,7 +436,7 @@
   border-right: 30rpx solid transparent;
   border-bottom: 40rpx solid #f7ebdc;
   position: absolute;
-  top: -30rpx;
+  top: -20rpx;
   left: 37rpx;
 }
 

@@ -1,6 +1,6 @@
 <!--pages/lowFatReport/lowFatReport.wxml-->
 <view class="lowFat">
-  <view class="header">今日减脂报告</view>
+  <view class="header">{{report.title}}</view>
   <view class="header_counts">打卡第 {{report.clockinAddup | 0}} 天</view>
   <image src="../../images/lowFatReport/bg.png" class="bg"></image>
   <view class="pageItem readyLow">
@@ -79,7 +79,7 @@
     <image src="../../images/lowFatReport/{{subKGrams > 0?'up':'down'}}.png" wx:if="{{subKGrams}}"></image>
     {{ subKGrams >0 ? subKGrams:-subKGrams}}kg
     </view>
-    <view class="weightCon space-between">
+    <view class="weightCon space-between" wx:if="{{sharedId == null}}">
       <view class="weightItem">
         <view class="weightItemTit">昨日</view>
         <view class="weightdItemV">{{report.weightChange.lastTimeWeight}}
@@ -106,7 +106,7 @@
     <view class="ItemTit">
       <image src="../../images/lowFatReport/totle.png"></image>累积减重</view>
     <view class="totleChange">{{report.weightAccumulate.downAccumulateKGrams}}kg</view>
-    <view class="totleCon space-between">
+    <view class="totleCon space-between" wx:if="{{sharedId == null}}">
       <view class="totleItem">
         <view class="totleItemTit">当前</view>
         <view class="totledItemV">{{report.weightAccumulate.weightToday}}
@@ -148,7 +148,7 @@
       {{report.dietitians.reviews}}
     </view>
   </view>
-  <view class="share" wx:if="{{showShare}}">
+  <view class="share" wx:if="{{sharedId == null}}">
     <view class="shareImgCon">
       <button class="shareBtn" open-type="share"></button>
       <image src="../../images/lowFatReport/wx.png"></image>

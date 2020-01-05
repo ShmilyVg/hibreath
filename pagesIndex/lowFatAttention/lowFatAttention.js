@@ -34,7 +34,7 @@ Page({
     if (options) {
       this.setData({
         taskId: options.taskId,
-        isFinshed: options.isfinished == 'true'
+        isFinshed: options.isfinished == 'true' || options.isfinished == true
       })
     }
   },

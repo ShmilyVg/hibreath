@@ -402,9 +402,9 @@ export default class Protocol {
         return Network.request({url: 'members/getMyLossfatCourse', data: data});
     }
     //减脂报告
-    static getTodayLosefatReport({sharedId}) {
+    static getTodayLosefatReport({sharedId,reportId}) {
         return new Promise((resolve, reject) =>{
-            return Network.request({url: '/members/createTodayLosefatReport', data:{sharedId}}).then(data => {
+            return Network.request({url: '/members/createTodayLosefatReport', data:{sharedId,reportId}}).then(data => {
                 resolve(data);
             }).catch(res => {
                 reject(res);

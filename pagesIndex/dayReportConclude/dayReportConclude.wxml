@@ -1,6 +1,6 @@
 <!--pagesIndex/dayReportConclude/dayReportConclude.wxml-->
 <view class="dayReportConclude">
-  <view class="dayConclude" wx:for="{{reportList}}">
+  <view class="dayConclude" wx:for="{{reportList}}" bindtap="goReport" data-index="{{index}}">
     <image src="{{imgCon[item.dataDesc]}}"></image>
     <view class="Desc">
       <view class="DescTit">{{item.dataDesc}}</view>
