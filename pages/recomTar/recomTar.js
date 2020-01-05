@@ -52,7 +52,7 @@ Page({
     }
     let str = (weightGoalt +'').split('.')[1];
     
-    if (str.length>1){
+    if (str && str.length>1){
       toast.warn('只能一位小数')
       weightGoalt = Number(weightGoalt).toFixed(1);
     }

@@ -36,7 +36,7 @@ Page({
   },
 
   async onLoad(options) {
-
+    console.log(options);
 
   },
   bindTapHealth(e) {

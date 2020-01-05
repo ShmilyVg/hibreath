@@ -153,7 +153,7 @@ Page({
       wx.showToast({
         title: '请完善所有信息',
         icon: 'none',
-        duration: duration ? duration : 2000
+        duration: 2000
       });
       // toast.showText('请完善所有信息');
     }
