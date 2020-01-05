@@ -22,12 +22,13 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('onLoad oprtions->', options)
     let now = new Date();
     this.setData({
       showShare: options.showShare,
       'curDate': now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
     })
-    this.getReport();
+    this.getReport(options.sharedId);
   },
 
   onReady: function () {
@@ -72,9 +73,9 @@ Page({
     }
     return left - 12.5;;
   },
-  async getReport(){
+  async getReport(sharedId){
     Toast.showLoading();
-    let data = await Protocol.getTodayLosefatReport();
+    let data = await Protocol.getTodayLosefatReport({sharedId});
     Toast.hiddenLoading();
     let left = this.getlosefatSpeed(data.result.losefatSpeed.dataValueToday) ;
     let foodDesTxt = data.result.losefatGrams.foodDescription;
@@ -93,7 +94,7 @@ Page({
     console.log(res);
     return {
       title: '我的今日减脂报告已生成，快来围观！',
-      path: '/pages/lowFatReport/lowFatReport?type=false'
+      path: `/pages/lowFatReport/lowFatReport?type=false&sharedId=${this.data.report.sharedId}`
     }
   },
   shareFr(){
