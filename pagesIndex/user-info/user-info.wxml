@@ -71,14 +71,14 @@
         </view>
 
         <view class="fill-width user-info-item-common-divide-line"></view>
-        <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
+        <!-- <view class="fill-width flex-row align-items-center space-between box-sizing-border-box user-info-item-common-layout">
             <view class="user-info-item-common-title">初始体脂率</view>
 
             <view class="flex-row align-items-center">
                 <input name="bodyFatRate" value="{{editUserInfo.bodyFatRate||originUserInfo.bodyFatRate}}" placeholder="请输入" type="number" maxlength="2" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder"/>
                 <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
             </view>
-        </view>
+        </view> -->
 
         <view class="fill-width user-info-item-common-divide-line"></view>
 
