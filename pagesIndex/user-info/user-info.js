@@ -69,7 +69,7 @@ Page({
         height,
         weight,
         birthday,
-        bodyFatRate,
+        // bodyFatRate,
         illnessType
       }
     } = await Protocol.getUserDetailInfo();
@@ -87,7 +87,7 @@ Page({
         height,
         weight,
         birthday: birthdayStr,
-        bodyFatRate,
+        // bodyFatRate,
         illnessType,
       }
     }, () => {
@@ -95,6 +95,9 @@ Page({
       this.setData({
         illnessType
       })
+      this.setData({
+        'editUserInfo.illnessType': illnessType,
+      });
       this.showMealType(illnessType);
     });
   },
