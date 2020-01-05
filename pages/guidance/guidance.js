@@ -110,6 +110,9 @@ Page({
         } else if (this.objIsEmpty(info.weight)) {
           toast.warn("请填写体重");
           return;
+        } else if (info.weight < 40){
+          toast.warn("体重不小于40KG");
+          return;
         }
         break;
       case 4:
@@ -190,8 +193,9 @@ Page({
   },
   //体重
   bindInputWeight(e) {
+    let weight = Number(e.detail.value);
     this.setData({
-      "guidance.info.weight": Number(e.detail.value)
+      "guidance.info.weight": weight
     });
     return oneDigit(e);
   },
