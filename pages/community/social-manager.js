@@ -211,7 +211,7 @@ export async function whenDismissGroup(protocol) {
         }else if (code === 40015) {
           Toast.hiddenLoading()
           WXDialog.showDialog({
-            title: '', content: '验证码已失效，请重新验证', confirmText: '我知道了', confirmEvent: () => {
+            title: '', content: '验证码错误', confirmText: '我知道了', confirmEvent: () => {
             }
           });
         }else if (code === 40016) {
@@ -230,6 +230,12 @@ export async function whenDismissGroup(protocol) {
           Toast.hiddenLoading()
           WXDialog.showDialog({
             title: '', content: '验证码发送失败,请重试', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
+        }else if (code === 40019) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: '验证码失效请重试', confirmText: '我知道了', confirmEvent: () => {
             }
           });
         }
