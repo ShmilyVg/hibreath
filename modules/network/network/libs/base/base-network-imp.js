@@ -48,7 +48,7 @@ export default class BaseNetworkImp {
                 var pages = getCurrentPages()    //获取加载的页面
                 var currentPage = pages[pages.length-1]    //获取当前页面的对象
                 var isSharepage = false
-                var sharePage = ['pages/taskShareInfo/taskShareInfo','pages/shareAddcommunity/shareAddcommunity','pages/reductionList/reductionList','pages/punchList/punchList','pagesIndex/planfinish/planfinish']
+                var sharePage = ['pages/lowFatReport/lowFatReport','pages/taskShareInfo/taskShareInfo','pages/shareAddcommunity/shareAddcommunity','pages/reductionList/reductionList','pages/punchList/punchList','pagesIndex/planfinish/planfinish']
                 if(currentPage){
                     for(var i =0;i<sharePage.length;i++){
                         if(currentPage !==[]){
