@@ -32,7 +32,7 @@
             <image class="per-img-middle" src="../../images/personalCenter/logosmall.png" style="width: 30rpx;height: 30rpx"></image>
               <view class="per-redC" wx:if="{{isHave}}"></view>
           </view>
-          <view class="per-nav-text">我的派币</view>
+          <view class="per-nav-text">我的积分</view>
         </view>
      </view>
      <view class="per-main">
