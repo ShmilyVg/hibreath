@@ -232,6 +232,12 @@ export async function whenDismissGroup(protocol) {
             title: '', content: '验证码发送失败,请重试', confirmText: '我知道了', confirmEvent: () => {
             }
           });
+        }else if (code === 40019) {
+          Toast.hiddenLoading()
+          WXDialog.showDialog({
+            title: '', content: '验证码失效请重试', confirmText: '我知道了', confirmEvent: () => {
+            }
+          });
         }
         return Promise.reject(e);
     }
