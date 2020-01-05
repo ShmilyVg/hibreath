@@ -1,12 +1,12 @@
 <!--components/my-toast/my-toast.wxml-->
-<view class="my-toast-Moneyview" wx:if="{{inTaskProgress}}">
+<view class="my-toast-Moneyview" wx:if="{{inTaskProgress || inTaskProgress ==='true'}}">
     <view class="moneyview-title">{{integralTaskTitle}}</view>
     <view class="moneyview-content" wx:if="{{integral>0}}">
         <image class="moneyview-img" src="../../images/personalCenter/logosmall.png"></image>
         获得<text style="color:#FF958A">{{integral}}积分</text>
     </view>
 </view>
-<view wx:else class="my-toast-view">
+<view wx:if="{{!inTaskProgress || inTaskProgress ==='false'}}" class="my-toast-view">
     <image src="{{toastImg}}" style="width: 103rpx;height: 79rpx"></image>
     <view>{{toastText}}</view>
 </view>

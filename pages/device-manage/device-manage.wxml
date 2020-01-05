@@ -9,5 +9,5 @@
     <text class="device-name">燃脂检测仪</text>
     <view class="againImg"></view>
    <!-- <view class="bindSj"></view>-->
-    <view class="home-orangebtn" hover-class="press-style" bindtap="toBind" hover-stay-time="50" >绑定设备</view>
+    <view class="home-orangebtn" hover-class="press-style" bindtap="toBind" >绑定设备</view>
 </view>

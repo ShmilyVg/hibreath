@@ -1,22 +1,22 @@
 <view class="fill-width flex-column pai-coin-layout">
     <view class="fill-width flex-row align-items-center space-between box-sizing-border-box pai-coin-left-right-padding" style="padding-top: 70rpx;">
         <image src="../../images/pai-coin/logo.png" class="pai-coin-logo"></image>
-        <view class="pai-coin-top-remind">用派币可兑换奖品哦!</view>
+        <view class="pai-coin-top-remind">用积分可兑换奖品哦!</view>
     </view>
     <view class="fill-width flex-column box-sizing-border-box pai-coin-left-right-padding relative" style="margin-top: 20rpx;">
         <image src="../../images/pai-coin/top-card-bg.png" class="absolute fill-width pai-coin-top-card-bg"></image>
         <view class="fill-width flex-column pai-coin-top-card-layout relative">
-            <view class="pai-coin-my-coin">我的派币</view>
+            <view class="pai-coin-my-coin">我的积分</view>
             <view class="pai-coin-count">{{integralStr||0}}</view>
             <image src="../../images/pai-coin/top-slimple.png" class="pai-coin-top-slimple"></image>
             <view class="fill-width flex-row align-items-center absolute" style="left: 0;bottom: 0;overflow: hidden;">
                 <navigator url="../pai-coin-ruler/pai-coin-ruler" open-type="navigate" hover-class="none" class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
                     <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
-                    <view class="pai-coin-top-icon-text">派币规则</view>
+                    <view class="pai-coin-top-icon-text">积分规则</view>
                 </navigator>
                 <navigator url="../pai-coin-detail/pai-coin-detail" open-type="navigate" hover-class="none" class="flex-row align-items-center justify-center flex-sub pai-coin-top-icon-layout">
                     <image src="../../images/pai-coin/ruler.png" class="pai-coin-top-icon"></image>
-                    <view class="pai-coin-top-icon-text">派币详情</view>
+                    <view class="pai-coin-top-icon-text">积分详情</view>
                 </navigator>
             </view>
         </view>
@@ -65,7 +65,7 @@
 
     </view>
 
-    <view wx:if="{{goods.length}}" class="fill-width flex-row align-items-center space-between box-sizing-border-box pai-coin-left-right-padding" style="padding-top: 70rpx;">
+<!--    <view wx:if="{{goods.length}}" class="fill-width flex-row align-items-center space-between box-sizing-border-box pai-coin-left-right-padding" style="padding-top: 70rpx;">
         <view class="pai-coin-task-title pai-coin-task-title-choose">Slimple好物兑换</view>
     </view>
 
@@ -76,12 +76,12 @@
                 <view class="pai-coin-goods-item-title">{{item.name}}</view>
                 <view class="flex-row align-items-center">
                     <image src="../../images/pai-coin/goods_icon.png" class="pai-coin-goods-item-icon"></image>
-                    <view class="flex-row align-items-center pai-coin-goods-item-content">消耗<view style="color: #ED6F69">{{item.integral}}派币</view></view>
+                    <view class="flex-row align-items-center pai-coin-goods-item-content">消耗<view style="color: #ED6F69">{{item.integral}}积分</view></view>
                 </view>
             </view>
         </view>
-    </view>
+    </view>-->
 </view>
 
-<my-toast wx:if="{{showToast}}" toast-type="paiMoney" toast-text="恭喜获得{{receiveIntegral}}枚派币!"></my-toast>
+<my-toast wx:if="{{showToast}}" toast-type="paiMoney" toast-text="恭喜获得{{receiveIntegral}}积分!"></my-toast>
 

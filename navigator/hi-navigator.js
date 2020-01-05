@@ -217,7 +217,7 @@ export default class HiNavigator extends CommonNavigator {
   }
 
     /**
-     * 前往派币页面
+     * 前往积分页面
      */
     static navigateToPaiCoinPage() {
         this.navigateTo({ url: '/pagesIndex/pai-coin/pai-coin'});

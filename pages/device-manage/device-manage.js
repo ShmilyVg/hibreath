@@ -1,7 +1,7 @@
 // pages/device-manage/device-manage.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-import {Toast} from "heheda-common-view";
+import {Toast, WXDialog} from "heheda-common-view";
 
 Page({
     data: {
@@ -42,6 +42,29 @@ Page({
         }).finally(() => Toast.hiddenLoading());
     },
     toBind(){
-        HiNavigator.navigateToDeviceBind()
+      wx.getSystemInfo({
+        success (res) {
+          console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
+          if(res.locationEnabled && res.bluetoothEnabled){
+            HiNavigator.navigateToDeviceBind()
+            return
+          }else if(!res.bluetoothEnabled){
+            setTimeout(() => {
+              WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+            },200);
+            return
+          }else if(!res.locationEnabled){
+            setTimeout(() => {
+              WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了'});
+            },200);
+            return
+          }else{
+            setTimeout(() => {
+              WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+            },200);
+            return
+          }
+        }
+      })
     }
 })
