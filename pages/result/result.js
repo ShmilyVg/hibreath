@@ -63,7 +63,7 @@ Page({
                   this.setData({
                       showMytoast:false,
                   })
-              },2000)
+              },3500)
         }
     },
     getShowExcitation(e){

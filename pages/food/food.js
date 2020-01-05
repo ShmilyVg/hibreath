@@ -284,7 +284,7 @@ Page({
                   this.setData({
                       showMytoast:false,
                   })
-              },2000)
+              },3500)
             break;
           case 1:
             await Protocol.postBloodPressureDataAdd(value);
@@ -296,7 +296,7 @@ Page({
                   this.setData({
                       showMytoast:false,
                   })
-              },2000)
+              },3500)
             break;
           case 2:
             await Protocol.postHeartDataAdd(value);
@@ -308,7 +308,7 @@ Page({
                   this.setData({
                       showMytoast:false,
                   })
-              },2000)
+              },3500)
             break;
           default:
             break;
