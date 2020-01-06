@@ -23,6 +23,7 @@ export default class Login {
                 })
             }).then(data => {
                 setToken({data});
+                getApp().globalData.isLogin = true
                 BaseNetworkImp.resendAll();
                 resolve();
             }).catch(res => {

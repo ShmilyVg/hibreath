@@ -7,12 +7,12 @@ import {whenDismissGroup} from "../community/social-manager";
 Page({
 
   /**
-   * 页面的初始数据 
+   * 页面的初始数据
    * 3
    * .
    */
   data: {
-    isShowlogin:'',
+    isShowlogin:false,
     nickname:'',
     headUrl:''
   },
@@ -37,6 +37,7 @@ Page({
     HiNavigator.navigateToUserInfoPage()
   },
   onTargetWeight:function(e){
+    console.log('个人中心',getApp().globalData.isLogin,this.data.finishedPhone)
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
       HiNavigator.navigateToGoRegister();
       return;

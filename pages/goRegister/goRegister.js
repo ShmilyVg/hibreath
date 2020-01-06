@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-/*    setTimeout(()=>{
+    setTimeout(()=>{
       if(getApp().globalData.isLogin) {
         this.setData({
           nologin:false
@@ -26,7 +26,7 @@ Page({
           nologin:true
         })
       }
-    },800)*/
+    },800)
   },
   /**
    * @desc 跳转验证手机号群号
@@ -78,17 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    setTimeout(()=>{
-      if(getApp().globalData.isLogin) {
-        this.setData({
-          nologin:false
-        })
-      }else{
-        this.setData({
-          nologin:true
-        })
-      }
-    },600)
+
   },
 
   /**
