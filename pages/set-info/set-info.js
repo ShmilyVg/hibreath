@@ -234,9 +234,6 @@ Page({
     this.setData({
       showExcitation: e.detail.showExcitation
     });
-    if(e.detail.showWeight){
-      this.showModal()
-    }
   },
   //同步离线数据
   async onLoad(e) {
@@ -264,8 +261,6 @@ Page({
       this.getPresonMsg();//获取是否完成手机号验证、新手引导是否完成
     },800)
     setTimeout(()=>{
-      console.log('app.globalData.isLogin',app.globalData.isLogin)
-      console.log('app.globalData.dayFirstLoginObj.inTaskProgress',app.globalData.dayFirstLoginObj.inTaskProgress)
       //每天第一次登录积分奖励
       if(app.globalData.isLogin && app.globalData.dayFirstLoginObj.inTaskProgress){
         console.log('我执行了第一次登录的弹窗哦',app.globalData.dayFirstLoginObj)
@@ -280,6 +275,7 @@ Page({
         },3000)
       }
     },1200)
+
   },
   /**
    * @desc 根据用户状态进行跳转 立即注册或填写资料
@@ -899,6 +895,10 @@ Page({
       getApp().globalData.issueRefresh = false;
       that.handleTasks();
     }
+    if(wx.getStorageSync('showWeight')){
+      this.showModal();
+      wx.setStorageSync('showWeight', false)
+    }
   },
   /**
    * @desc 进入燃脂记录或者燃脂流程页面
@@ -984,6 +984,7 @@ Page({
   },
 
   showModal: function() {
+    console.log('我被动效执行了')
     // 显示遮罩层
     var animation = wx.createAnimation({
       duration: 200,

@@ -103,20 +103,24 @@ Component({
    */
   methods: {
     goRecomTar(){
+/*      if(this.data.toastType == "fatBurn"){
+        this.triggerEvent("getShowExcitation", {showExcitation:false,showWeight:true} )
+      }else{
+        this.triggerEvent("getShowExcitation", {showExcitation:false} )
+      }
+      HiNavigator.switchToSetInfo()*/
       HiNavigator.navigateToLowFatReport()
     },
     goTask(){
-      HiNavigator.switchToSetInfo()
       this.excitingKnow()
+      if(this.data.toastType == "fatBurn"){
+        wx.setStorageSync('showWeight', true);
+      }
+      HiNavigator.switchToSetInfo()
     },
-      excitingKnow(){
-          if(this.data.toastType == "fatBurn"){
-            this.triggerEvent("getShowExcitation", {showExcitation:false,showWeight:true} )
-          }else{
-            this.triggerEvent("getShowExcitation", {showExcitation:false} )
-          }
-
-      },
+    excitingKnow(){
+      this.triggerEvent("getShowExcitation", {showExcitation:false})
+    },
       /*阻止滚动*/
       stopScroll(){
           console.log('阻止滚动')
