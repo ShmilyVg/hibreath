@@ -58,13 +58,13 @@ Page({
     editUserInfo: {},
     mealTypeString: '请输入',
     showToastTxt:{
-      nickname:'昵称',
-      portraitUrl:'头像',
-      sex: '性别',
-      height: '身高',
-      weight: '体重',
-      birthday: '生日',
-      illnessType: '身体状况'
+      nickname:'请填写昵称',
+      portraitUrl:'请填写头像信息',
+      sex: '请填写性别信息',
+      height: '请填写身高',
+      weight: '体重必填且不小于40KG',
+      birthday: '请填写生日信息',
+      illnessType: '请填写身体状况信息'
     },
     replenish:''
   },
@@ -165,7 +165,7 @@ Page({
     } else {
       let showToastTxt = this.data.showToastTxt;
       wx.showToast({
-        title: `请填写${showToastTxt[this.data.replenish]}信息` ,
+        title: showToastTxt[this.data.replenish] ,
         icon: 'none',
         duration: 2000
       });
@@ -187,7 +187,10 @@ Page({
           this.setReplenish(key)
           return false;
         } 
-      } else {
+      } else if (key == 'weight' && value < 40) {
+        this.setReplenish(key)
+        return false;
+      }else{
         if (Array.isArray(value) && !value.length) {
           this.setReplenish(key)
           return false;
