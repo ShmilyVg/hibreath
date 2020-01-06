@@ -2,7 +2,9 @@
   "navigationBarTitleText": "我的减脂历程",
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
   "usingComponents":{
-    "pickerDate": "../../components/pickerDate/index"
+    "pickerDate": "../../components/pickerDate/index",
+    "navBar": "/components/navBar/navBar"
   }
 }

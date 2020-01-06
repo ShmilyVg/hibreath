@@ -1,8 +1,11 @@
 <!--pages/guidance/guidance.wxml-->
+<navBar title='我的减脂历程' color="black" iconTheme="black" background='#ffffff' back="{{true}}" bindback="handlerGobackClick">
+
+</navBar>
 <view class="guidance">
   <view class="firstPage" wx:if="{{guidance.page==0}}">
     <view class="portrait_con">
-    <image class="portrait" src="{{guidance.portraitUrl}}"></image>
+      <image class="portrait" src="{{guidance.portraitUrl}}"></image>
     </view>
     <view class="header_h2 text_left">Hi,欢迎来到Silmple</view>
     <view class="header_text text_left">正式开始需要了解下您的情况~</view>
@@ -15,14 +18,14 @@
     <view class="space-between clear">
       <view class="{{item.isChose?'card-chose':'card'}} flex-column {{item.isChose?'sexChose':''}}" wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
         <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
-        <view class="sex-text" >{{item.text}}</view>
+        <view class="sex-text">{{item.text}}</view>
       </view>
     </view>
 
   </view>
   <view class="otherPage" wx:if="{{guidance.page==2}}">
     <view class="header_h3 text_center">出生日期</view>
-    <view class="text_center">
+    <view class="text_center" style="margin-bottom: 79rpx;">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
     <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
@@ -51,7 +54,7 @@
     <view class="text_center">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
-    <view class="disItem text_center {{item.isChose ? 'disItemActive':''}}"   wx:for="{{guidance.disease}}" wx:key="index" bindtap="bindTapHealth" data-index="{{index}}" >
+    <view class="disItem text_center {{item.isChose ? 'disItemActive':''}}" wx:for="{{guidance.disease}}" wx:key="index" bindtap="bindTapHealth" data-index="{{index}}">
       {{item.text}}
     </view>
   </view>
@@ -63,7 +66,7 @@
   <view class="btn_group" wx:if="{{guidance.page <4}}">
     <button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'下一步':'好哒'}}
     </button>
-    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back"> {{guidance.page >0?'返回':'  　 '}}
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back"> {{guidance.page >0?'返回':' 　 '}}
     </view>
   </view>
   <view class="btn_group" wx:elif="{{guidance.page == 4}}">
