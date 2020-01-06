@@ -73,6 +73,7 @@ Page({
       taskId: this.data.taskId
     }
     await Protocol.postFoodvideo(data);
+    getApp().globalData.issueRefresh = true;
     HiNavigator.switchToSetInfo()
   }
 })
