@@ -19,7 +19,7 @@
     </view>
     <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
     <view wx:if="{{showGoclockin}}" style="text-align: center">
-      <image class="showGoclockin-imgB" src="../../images/food/empty.png"></image>
+      <image class="showGoclockin-imgB" src="../../images/set-info/empty.png"></image>
       <view class="showGoclockin-text">暂未开启打卡</view>
       <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
         开启打卡

@@ -107,6 +107,6 @@
   </view>-->
 </view>
 <view  wx:else >
-  <image  class="phone-img" src="../../images/result/empty.png"></image>
+  <image  class="phone-img" src="../../images/set-info/empty.png"></image>
   <view class="empty-text">暂无记录</view>
 </view>
