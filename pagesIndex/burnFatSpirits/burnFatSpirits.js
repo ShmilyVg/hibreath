@@ -6,7 +6,7 @@ Page({
     second: 5,
     setCecondFun:false,
     readImgList: [
-      'http://img.hipee.cn/hibreath/img/2019116/0c2e0bf0-8bd6-4af3-92ac-c662e6578b19.png',
+      'http://img.hipee.cn/hibreath/dangao.png',
       'http://img.hipee.cn/hibreath/img/2019116/9741e6e3-74cc-4824-9341-23bae9c1d9a9.png',
       'http://img.hipee.cn/hibreath/img/2019116/edeba388-e332-4412-ab08-0ac2e84eba97.png',
       'http://img.hipee.cn/hibreath/img/2019116/863c07b1-bdd2-4b07-90e7-888c3d0d2e6e.png',
@@ -43,7 +43,7 @@ Page({
     HiNavigator.switchToSetInfo()
   },
   onReachBottom: function () {
-    
+
   },
   onShow: function () {
     this.setCecond()
