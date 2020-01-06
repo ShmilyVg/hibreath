@@ -35,11 +35,12 @@
 <view class="clear"></view>
 <view class="extraBottomview" wx:if="{{message.praiseInfo.list.length>0 || message.commentInfo.list.length>0}}">
     <view class="giveHeartList"  wx:if="{{message.praiseInfo.list.length>0}}">
-        <view class="giveHeartlistImg">
+        <!-- <view class="giveHeartlistImg" style="padding-top: 5rpx;">
             <image src="../../images/community/heart.png" style="height: 21rpx;width: 24rpx;margin-right: 17rpx"></image>
-        </view>
+        </view> -->
         <view class="giveHeartlistView">
-            {{nickNameList}}
+             <image src="../../images/community/heart.png" style="height: 21rpx;width: 24rpx;margin-right: 17rpx"></image>
+             {{nickNameList}}
         </view>
     </view>
     <view wx:if="{{message.praiseInfo.list.length>0 && message.commentInfo.list.length>0}}" class="message-item-line"></view>
