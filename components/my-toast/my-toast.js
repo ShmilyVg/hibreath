@@ -35,7 +35,7 @@ Component({
     },
     inTaskProgress:{
       type: Boolean,
-      value: ''
+      value: false
     },
   },
     lifetimes: {

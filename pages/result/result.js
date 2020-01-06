@@ -57,8 +57,11 @@ Page({
               this.setData({
                   showMytoast:true,
                   toastType:'fatBurn',
-                  ...e,
+                  inTaskProgress:JSON.parse(e.inTaskProgress),
+                  integral:e.integral,
+                  integralTaskTitle:e.integralTaskTitle,
               })
+              console.log('inTaskProgressinTaskProgress',this.data.inTaskProgress)
               setTimeout(()=>{
                   this.setData({
                       showMytoast:false,
