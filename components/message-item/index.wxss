@@ -144,6 +144,8 @@
     align-items: center;
     display: flex;
     height: 30rpx;
+    line-height: 30rpx;
+    padding-top: 5rpx;
 }
 
 .giveHeartlistView{
