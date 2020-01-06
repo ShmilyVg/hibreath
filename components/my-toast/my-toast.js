@@ -43,6 +43,8 @@ Component({
 
         },
         attached() {
+           console.log('toastType',this.data.toastType)
+          console.log('inTaskProgress',this.data.inTaskProgress)
             if(this.data.toastType =='giveLike'){
                 this.setData({
                     toastImg:'../../images/toast/giveLike.png',

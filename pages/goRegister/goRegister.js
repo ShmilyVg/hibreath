@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    setTimeout(()=>{
+/*    setTimeout(()=>{
       if(getApp().globalData.isLogin) {
         this.setData({
           nologin:false
@@ -26,7 +26,7 @@ Page({
           nologin:true
         })
       }
-    },800)
+    },800)*/
   },
   /**
    * @desc 跳转验证手机号群号
@@ -40,11 +40,11 @@ Page({
             duration: 1000,
             image: '../../images/loading_fail.png'
           })
-          return
+        }else{
+          HiNavigator.navigateToGoVerification()
         }
       }
     });
-    HiNavigator.navigateToGoVerification()
   },
   /**
    * @desc 注册
@@ -88,7 +88,7 @@ Page({
           nologin:true
         })
       }
-    },800)
+    },600)
   },
 
   /**

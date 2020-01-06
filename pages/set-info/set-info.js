@@ -408,8 +408,8 @@ Page({
     if(result.inTaskProgress && wx.getStorageSync('today') !== new Date().getDay()){
       this.setData({
         integral:result.integral,
-        integralTaskTitle:result.inTaskProgress,
-        showMytoast:true,
+        integralTaskTitle:result.integralTaskTitle,
+        inTaskProgress:true,
       })
       setTimeout(()=>{
         this.setData({
