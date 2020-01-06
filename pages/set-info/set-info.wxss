@@ -844,6 +844,7 @@ button::after{ border: none; }
     font-family:DIN Condensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
+    text-align: center;
 }
 .commodity_line{
     width:180rpx;
