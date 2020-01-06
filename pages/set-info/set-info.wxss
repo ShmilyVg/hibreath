@@ -881,8 +881,8 @@ button::after{ border: none; }
 .commodity_inputpla{
     font-family: PingFang-SC;
     color: #B0B0B0;
-    font-size: 32rpx;
-
+    font-size: 120rpx;
+    text-align: center
 }
 .commodity_part{
     margin-bottom: 70rpx;
