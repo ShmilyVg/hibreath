@@ -163,6 +163,19 @@ Page({
                 image: '../../images/community/nike.png'
             })
         }
+      setTimeout(()=>{
+        console.log('圈子登录',getApp().globalData.isLogin)
+        if (!getApp().globalData.isLogin) {
+          wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
+          wx.setBackgroundColor({
+            backgroundColor: '#ffffff', // 窗口的背景色为白色
+          });
+          this.setData({
+            haveGroupId:false,
+            noCommunity:true
+          })
+        }
+      },800)
       //this.NoticeList();
     },
     async onShow() {
@@ -189,19 +202,6 @@ Page({
                 })
             },10)
         }
-        setTimeout(()=>{
-          if (!getApp().globalData.isLogin) {
-            wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
-            wx.setBackgroundColor({
-              backgroundColor: '#ffffff', // 窗口的背景色为白色
-            });
-            this.setData({
-              haveGroupId:false,
-              noCommunity:true
-            })
-          }
-        },500)
-
         this.forceUpdateAll();
     },
     async toImgClock(){
