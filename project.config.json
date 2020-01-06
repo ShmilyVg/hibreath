@@ -308,6 +308,13 @@
 					"id": -1,
 					"name": "pagesIndex/food-habit/food-habit",
 					"pathName": "pagesIndex/food-habit/food-habit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/device-bind/device-bind",
+					"pathName": "pagesIndex/device-bind/device-bind",
 					"scene": null
 				}
 			]
