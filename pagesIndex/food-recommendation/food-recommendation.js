@@ -103,6 +103,7 @@ Page({
         this.setData({
             [`contentResult.dataList[${index}].list`]:result.data.list,
             [`contentResult.dataList[${index}].total`]:result.data.total,
+            [`contentResult.dataList[${index}].id`]:result.data.id,
         })
     },
   /**
