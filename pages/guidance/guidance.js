@@ -277,5 +277,9 @@ Page({
         guidance: guidance
       });
     }
+  },
+  handlerGobackClick(){
+    getApp().globalData.issueRefresh = true;
+    HiNavigator.switchToSetInfo()
   }
 })

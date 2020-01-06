@@ -167,6 +167,8 @@ Page({
         Toast.hiddenLoading()
         HiNavigator.navigateToGuidance({reset:false})
       },3000)
+    }else{
+      HiNavigator.navigateToGuidance({ reset: false })
     }
 
    /* wx.showToast({
