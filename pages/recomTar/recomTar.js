@@ -35,6 +35,14 @@ Page({
       targetDate: res.result
     })
   },
+  async initMyLoss(weightGoalt) {
+    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+    let res = await Protocol.initMyLossfatCourse(data);
+    this.setData({
+      weightGoalt: res.result.weightGoalt,
+      targetDate: res.result
+    })
+  },
   reStart(){
     HiNavigator.navigateToGuidance({ reset:true});
   },
@@ -61,7 +69,7 @@ Page({
     })
   },
   saveWeight(){
-    this.getMyLoss(this.data.weightGoalt);
+    this.initMyLoss(this.data.weightGoalt);
     this.hideModal();
   },
   // 显示遮罩层

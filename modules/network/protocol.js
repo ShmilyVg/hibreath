@@ -401,6 +401,10 @@ export default class Protocol {
     static getMyLossfatCourse(data) {
         return Network.request({url: 'members/getMyLossfatCourse', data: data});
     }
+    //重新生成我的减脂历程目标
+    static initMyLossfatCourse(data) {
+        return Network.request({url: 'members/initMyLossfatCourse', data: data});
+    }
     //减脂报告
     static getTodayLosefatReport({sharedId,reportId}) {
         return new Promise((resolve, reject) =>{
