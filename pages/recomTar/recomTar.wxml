@@ -5,8 +5,11 @@
   <view class="header">
     <view bindtap="showModal">
       <view>
-        <text class="recom">推荐目标体重</text>
-        <text class="custom">支持自定义</text>
+        <view class="recom">
+        推荐目标体重
+        <image src="../../images/edit.png"></image>
+        </view>
+        <!-- <text class="custom">支持自定义</text> -->
       </view>
       <view class="headerTit">
         <text class="recomNum">{{targetDate.weightGoalt}}</text>

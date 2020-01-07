@@ -28,7 +28,11 @@
   line-height: 40rpx;
   margin-left: 76rpx;
 }
-
+.recom image{
+  width: 28rpx;
+  height: 26rpx;
+  margin-left: 19rpx;
+}
 .custom {
   height: 24rpx;
   font-size: 24rpx;
