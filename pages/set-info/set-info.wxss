@@ -16,12 +16,12 @@
 }
 .bg{
   position: absolute;
-  top: 158rpx;
+  top: 128rpx;
   right: 40rpx;
   width: 284rpx;
   height: 359rpx;
   background-size: 100% 100%;
-  z-index: -10;
+  z-index: 0;
 }
 .num{
     width:98rpx;
@@ -367,7 +367,7 @@
 }
 .set-top-view{
     height: 450rpx;
-    position: relative;
+    /* position: relative; */
     width: 100%;
     background:linear-gradient(rgba(245,94,107,1),rgba(244,121,112,1));
     justify-content: space-between;
