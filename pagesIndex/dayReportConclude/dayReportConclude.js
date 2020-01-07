@@ -53,7 +53,6 @@ Page({
       this.setData({
         lastPage: true
       })
-      return;
     }
     wx.stopPullDownRefresh();
   },
