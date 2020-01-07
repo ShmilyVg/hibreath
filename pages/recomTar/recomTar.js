@@ -29,15 +29,12 @@ Page({
   },
   async getMyLoss(weightGoalt){
     let data = weightGoalt ? { weightGoalt:Number(weightGoalt)}:{};
-    let res = await Protocol.getMyLossfatCourse(data);
-    this.setData({
-      weightGoalt: res.result.weightGoalt,
-      targetDate: res.result
-    })
-  },
-  async initMyLoss(weightGoalt) {
-    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    let res = await Protocol.initMyLossfatCourse(data);
+    let res;
+    if (this.data.personalCente){
+      res = await Protocol.getMyLossfatCourse(data);
+    }else{
+      res = await Protocol.initMyLossfatCourse(data);
+    }
     this.setData({
       weightGoalt: res.result.weightGoalt,
       targetDate: res.result
@@ -69,7 +66,7 @@ Page({
     })
   },
   saveWeight(){
-    this.initMyLoss(this.data.weightGoalt);
+    this.getMyLoss(this.data.weightGoalt);
     this.hideModal();
   },
   // 显示遮罩层
