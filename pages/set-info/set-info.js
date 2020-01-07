@@ -674,91 +674,6 @@ Page({
     console.log("最终结果2", this.unique(this.data.secArray));
   },
 
-  bindTapExactClick(e) {
-    let index = e.currentTarget.dataset.index;
-    this.setData({
-      choseIndex: index
-    });
-  },
-
-  bindTapSwitchExact() {
-    this.setData({ noMeasure: !this.data.noMeasure });
-  },
-
-/*
-  async onGetUserInfoEvent(e) {
-    console.log("eee", e);
-    const {
-      detail: { userInfo, encryptedData, iv }
-    } = e;
-    if (!!userInfo) {
-      if (this.data.isfinishedGuide) {
-        this.setData({
-          showNewInfo: false,
-          showGuide: false,
-          page:1
-        });
-        return;
-      }
-      try {
-        Toast.showLoading();
-        await Login.doRegister({ userInfo, encryptedData, iv });
-        const userInfo = await UserInfo.get();
-        console.log("userInfo", userInfo);
-        this.setData({ userInfo, showGuide: false });
-        Toast.hiddenLoading();
-      } catch (e) {
-        Toast.warn("获取信息失败");
-      }
-      return;
-    }
-  },
-*/
-
-  onReady() {},
-
-  bindScrollView(e) {
-    console.log(e.detail.scrollLeft);
-    clearTimeout(this.data.timer);
-    this.data.timer = "";
-    const scrollLeft = e.detail.scrollLeft;
-    let that = this;
-    let project = this.data.project;
-    if (scrollLeft < 130) {
-      this.data.timer = setTimeout(function() {
-        that.setData({
-          scrollLeft: 0,
-          schemaId: project[0].id
-        });
-      }, 300);
-    } else if (scrollLeft >= 130 && scrollLeft < 340) {
-      this.data.timer = setTimeout(function() {
-        that.setData({
-          scrollLeft: 490,
-          schemaId: project[1].id
-        });
-      }, 300);
-    } else {
-      this.data.timer = setTimeout(function() {
-        that.setData({
-          scrollLeft: 1400,
-          schemaId: project[2].id
-        });
-      }, 300);
-    }
-  },
-  //视频打卡
-  toVideoClock(e) {
-    console.log("toVideoClock", e.currentTarget);
-    if (e.currentTarget.dataset.finid) {
-      HiNavigator.navigateToFinishCheck({
-        dataId: e.currentTarget.dataset.finid,
-        clockWay: "video"
-      });
-      return;
-    }
-    HiNavigator.navigateToVideoClock({ id: e.currentTarget.dataset.id });
-  },
   //去完成按钮
   bindTapToFinish(e) {
     const {
@@ -772,7 +687,7 @@ Page({
           wx.getSystemInfo({
               success (res) {
                   console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
-                  if(res.locationEnabled && res.bluetoothEnabled){
+                  if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){
                       HiNavigator.navigateIndex();
                       return
                   }else if(!res.bluetoothEnabled){
@@ -785,9 +700,16 @@ Page({
                           WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了'});
                       },200);
                       return
-                  }else{
+                  }else if(!res.locationAuthorized){
                       setTimeout(() => {
-                          WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+                        wx.showModal({
+                          title: '小贴士',
+                          content: '前往手机【设置】->找到【微信】应用\n' +
+                            '\n' +
+                            '打开【微信定位/位置权限】',
+                          showCancel: false,
+                          confirmText: '我知道了',
+                        })
                       },200);
                       return
                   }
@@ -924,7 +846,7 @@ Page({
     wx.getSystemInfo({
       success (res) {
         console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
-        if(res.locationEnabled && res.bluetoothEnabled){
+        if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){
           HiNavigator.navigateIndex();
           return
         }else if(!res.bluetoothEnabled){
@@ -937,9 +859,16 @@ Page({
             WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了'});
           },200);
           return
-        }else{
+        }else if(!res.locationAuthorized){
           setTimeout(() => {
-            WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+            wx.showModal({
+              title: '小贴士',
+              content: '前往手机【设置】->找到【微信】应用\n' +
+                '\n' +
+                '打开【微信定位/位置权限】',
+              showCancel: false,
+              confirmText: '我知道了',
+            })
           },200);
           return
         }
