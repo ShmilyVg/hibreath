@@ -77,7 +77,7 @@
     </view>
   </block>
   <!--position: fixed;left: 900rpx;-->
-  <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>
+<!--  <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>-->
 </view>
 
 <view wx:if="{{showBigTip}}" class="flex-column">

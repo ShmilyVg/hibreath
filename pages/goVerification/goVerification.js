@@ -166,7 +166,7 @@ Page({
         })
         Toast.hiddenLoading()
         HiNavigator.navigateToGuidance({reset:false})
-      },3000)
+      },2000)
     }else{
       HiNavigator.navigateToGuidance({ reset: false })
     }

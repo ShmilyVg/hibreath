@@ -59,7 +59,7 @@
                 <view class="hungry-view">
                     <view class="hungry-view-text" style="margin-bottom: 40rpx">饿了可以补充<text style="color:#ED6F69">300g左右</text>的蔬菜，还可以因个人情况添加<text style="color:#ED6F69">1~2个</text>水煮蛋。</view>
                     <view class="hungry-view-text">推荐以下12种蔬菜，以生吃、水煮、清炒、白灼、炖、蒸为主，清炒时不要勾芡。</view>
-                    <image src='../images/icon/list.jpg' style="width: 670rpx;height: 542rpx;margin: 45rpx auto 0rpx auto"></image>
+                    <image src='../images/icon/list1.jpg' style="width: 670rpx;height: 542rpx;margin: 45rpx auto 0rpx auto"></image>
                 </view>
             </view>
            <view wx:else style="margin-top: 80rpx">

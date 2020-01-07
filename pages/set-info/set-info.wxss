@@ -433,8 +433,8 @@
     font-weight:bold;
     color:rgba(69,69,69,1);
     margin-top: 40rpx;
-    width: 100%;
-    margin-left: 60rpx;
+    position: relative;
+    right: 240rpx;
     margin-bottom: 30rpx;
 }
 .set-info-content-text2{

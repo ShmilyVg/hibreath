@@ -62,7 +62,6 @@ page{
     width: 500rpx;
     border-radius:10rpx;
     background-repeat:no-repeat;
-    padding-top: 110rpx;
     align-items: center;
 }
 .swiper-view-span{
@@ -75,6 +74,7 @@ page{
     font-weight:500;
     color:rgba(255,255,255,1);
     margin-left: 20rpx;
+    margin-top: 230rpx;
     text-align: center;
 }
 .swiper-view-title{
@@ -83,4 +83,5 @@ page{
     font-weight:500;
     color:rgba(255,255,255,1);
     margin-left: 30rpx;
+    margin-top: 230rpx;
 }
