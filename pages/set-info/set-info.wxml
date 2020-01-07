@@ -59,7 +59,7 @@
               <template is="readyTask" wx:if="{{item.type =='howClockIn'}}" data="{{...item}}"></template>
           </view>
       </view>
-    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 30rpx">
+    <view class="flex-column" style="margin-top: -65rpx;padding: 0rpx 30rpx;position: relative;z-index: 50;">
       <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
         <template is="caseonFinished" data="{{planInfo}}"></template>
       </view>
