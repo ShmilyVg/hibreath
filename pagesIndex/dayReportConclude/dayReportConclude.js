@@ -25,7 +25,7 @@ Page({
     this.getTodayLosefatReportListPage()
   },
 
-  async getTodayLosefatReportListPage() {
+  async getTodayLosefatReportListPage(type) {
     let data = {
       page: this.data.page,
       limit: this.data.limit
@@ -34,6 +34,9 @@ Page({
     let res = await Protocol.getTodayLosefatReportListPage(data);
     toast.hiddenLoading();
     let reportList = JSON.parse(JSON.stringify(this.data.reportList))  ;
+    if (type == 'Down'){
+      reportList =[];
+    }
     if (res.result.length > 0){
       reportList = [...reportList,...res.result];
       reportList.sort(function(a,b){
@@ -52,7 +55,7 @@ Page({
       })
       return;
     }
-    
+    wx.stopPullDownRefresh();
   },
   goReport(e){
     let index = e.currentTarget.dataset['index'];
@@ -69,8 +72,7 @@ Page({
   onPullDownRefresh: function () {
     this.setData({
       page:1,
-      reportList: []
     })
-    this.getTodayLosefatReportListPage();
+    this.getTodayLosefatReportListPage('Down');
   },
 })
