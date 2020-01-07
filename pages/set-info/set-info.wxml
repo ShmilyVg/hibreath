@@ -28,6 +28,7 @@
   </block>
   <block wx:else>
     <view class="set-top-view" wx:if="{{caseonEveryday}}" >
+    <image src="../../images/lowFatReport/bg.png" class="bg"></image>
        <!-- <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>-->
         <view class="set-info-top">
             <view style="float: left">

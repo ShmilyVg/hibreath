@@ -14,7 +14,15 @@
     line-height:70rpx;
     margin-top: 60rpx;
 }
-
+.bg{
+  position: absolute;
+  top: 158rpx;
+  right: 40rpx;
+  width: 284rpx;
+  height: 359rpx;
+  background-size: 100% 100%;
+  z-index: -10;
+}
 .num{
     width:98rpx;
     height:50rpx;
@@ -359,9 +367,11 @@
 }
 .set-top-view{
     height: 450rpx;
+    position: relative;
     width: 100%;
     background:linear-gradient(rgba(245,94,107,1),rgba(244,121,112,1));
     justify-content: space-between;
+    z-index: 50;
 }
 
 .set-top-title{
