@@ -72,7 +72,9 @@ Page({
     } else {
       Toast.showLoading();
       const {result} = await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
-      wx.hideLoading();
+      setTimeout(()=>{
+        wx.hideLoading();
+      },500)
       //任务信息全局储存 圈子页面使用
       app.globalData.isImgClock = true
       app.globalData.publishObj.inTaskProgress = result.inTaskProgress
@@ -170,7 +172,9 @@ Page({
                     that.setData({
                       compressImg: ''
                     })
-                    wx.hideLoading()
+                    setTimeout(()=>{
+                      wx.hideLoading();
+                    },500)
                     var obj = JSON.parse(res.data)
                     console.log("obj", obj)
                     var more = []

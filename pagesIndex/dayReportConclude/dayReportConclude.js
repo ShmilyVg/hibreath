@@ -30,8 +30,11 @@ Page({
       page: this.data.page,
       limit: this.data.limit
     }
-    toast.showLoading('加载中.....');
+    toast.showLoading();
     let res = await Protocol.getTodayLosefatReportListPage(data);
+  /*  setTimeout(()=>{
+      wx.hideLoading();
+    },500)*/
     toast.hiddenLoading();
     let reportList = JSON.parse(JSON.stringify(this.data.reportList))  ;
     if (type == 'Down'){

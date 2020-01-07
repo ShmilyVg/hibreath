@@ -77,7 +77,9 @@ if (!exports.__esModule) Object.defineProperty(exports, "__esModule", { value: t
     }
 
     static hiddenLoading() {
-        wx.hideLoading();
+        setTimeout(()=>{
+          wx.hideLoading();
+        },500)
     }
 
     static hiddenToast() {

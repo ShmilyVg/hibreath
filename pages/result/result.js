@@ -147,21 +147,6 @@ Page({
 
     toIndex() {
         //检测蓝牙状态
-      /*  HiNavigator.navigateIndex();*/
-      /*  wx.openBluetoothAdapter({
-            success (res) {
-                Toast.showLoading();
-                HiNavigator.navigateIndex();
-                Toast.hiddenLoading();
-            },
-            fail (res) {
-                if(res.errCode == 10001 ||res.errCode == 10000){
-                    setTimeout(() => {
-                        WXDialog.showDialog({title: 'TIPS', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
-                    },200);
-                }
-            }
-        })*/
         wx.getSystemInfo({
             success (res) {
                 console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)

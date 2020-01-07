@@ -134,7 +134,9 @@ Page({
                         filePath: res.tempFilePaths[0],
                         name: res.tempFilePaths[0],
                         success(res) {
-                            wx.hideLoading()
+                          setTimeout(()=>{
+                            wx.hideLoading();
+                          },500)
                             var obj = JSON.parse(res.data)
                             console.log("res",obj)
                             that.setData({

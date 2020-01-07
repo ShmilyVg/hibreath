@@ -362,14 +362,18 @@ Component({
                         }
                     });
                 }else if (code === 40013) {
+                  setTimeout(()=>{
                     wx.hideLoading();
+                  },500)
                     WXDialog.showDialog({
                         title: '', content: '您上传的图片包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
 
                         }
                     });
                 }else if (code === 40014) {
+                  setTimeout(()=>{
                     wx.hideLoading();
+                  },500)
                     WXDialog.showDialog({
                         title: '', content: '您上传的文字包含违规违法内容，\n请修改后重新上传', confirmText: '我知道了', confirmEvent: () => {
 

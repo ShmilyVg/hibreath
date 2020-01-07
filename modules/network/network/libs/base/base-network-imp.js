@@ -61,7 +61,9 @@ export default class BaseNetworkImp {
                     if (!!_token || requestWithoutLogin || isSharepage) {
                         wx.request(requestObj);
                     } else {
+                      setTimeout(()=>{
                         wx.hideLoading();
+                      },500)
                         BaseNetworkImp.addProtocol({url, requestObj});
                     }
                 }else{
