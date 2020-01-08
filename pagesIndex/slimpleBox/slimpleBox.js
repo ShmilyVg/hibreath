@@ -25,10 +25,10 @@ Page({
     const  tapIndex  = e.currentTarget.dataset.type;
     switch (tapIndex) {
       case 'diy':
-        HiNavigator.navigateTorecommendation();
+        HiNavigator.navigateToFoodRuler();
         break;
       case 'meau':
-        HiNavigator.navigateToFoodRuler();
+        HiNavigator.navigateTorecommendation();
         break;
     }
   },
