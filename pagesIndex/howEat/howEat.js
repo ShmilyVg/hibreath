@@ -38,10 +38,10 @@ Page({
         HiNavigator.navigateToTakeOut();
         break;
       case 'diy':
-        HiNavigator.navigateTorecommendation();
+        HiNavigator.navigateToFoodRuler();
         break;
       case 'menu':
-        HiNavigator.navigateToFoodRuler();
+        HiNavigator.navigateTorecommendation();
         break;
     }
   },
