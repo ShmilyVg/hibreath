@@ -9,6 +9,7 @@ import CommonProtocol from "./modules/network/network/libs/protocol";
 import {initAnalysisOnApp} from "./modules/analysis/mta";
 import HiNavigator from "./navigator/hi-navigator";
 const log = require('./log.js')
+var mta= require('./utils//mta_analysis.js')
 App({
 
     onDeviceBindInfoListener: null,
@@ -17,6 +18,13 @@ App({
     isOTAUpdate: false,
     otaUrl: {},
     onLaunch(options) {
+        //腾讯移动分析
+        mta.App.init({
+          "appID":"500708295",
+          "autoReport": true,
+          "statParam": true,
+          "ignoreParams": [],
+        });
         let records = [], count = 0;
         let currentIndex = 0;
         this.otaVersion = -1;
