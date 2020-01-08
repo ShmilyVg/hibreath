@@ -97,6 +97,7 @@ Page({
     startTime: "",
     loanTime:'',//定时器
     isNophone:false,
+    answer:true
   },
   onFocus: function(e) {
     this.setData({
@@ -416,12 +417,12 @@ Page({
     if(this.data.indexfinishNum === this.data.indextaskNum){
        this.setData({
          taskToptext:'报告已解锁·点击查看',
-         taskTopimg:'../../images/set-info/open.png'
+         taskTopimg:'../../images/set-info/open_b.png'
        })
     }else{
       this.setData({
         taskToptext:'今日报告总结',
-        taskTopimg:'../../images/set-info/close.png'
+        taskTopimg:'../../images/set-info/close_b.png'
       })
     }
     const typesArr = result.taskList.map(d => d.type);
