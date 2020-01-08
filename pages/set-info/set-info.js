@@ -684,7 +684,8 @@ Page({
     console.log(e);
     switch (type) {
       case "fatBurn":
-          mta.Event.stat('zhulujing',{'enternewbietask':'true'})
+          mta.Event.stat('zhulujing',{'clickfatburningtest':'true'})
+          mta.Event.stat('ranzhijiance',{'clickfatburningtest':'true'})
           wx.getSystemInfo({
               success (res) {
                   console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
@@ -846,6 +847,7 @@ Page({
       return;
     }
     mta.Event.stat('zhulujing',{'clickfatburningtest':'true'})
+    mta.Event.stat('ranzhijiance',{'clickfatburningtest':'true'})
     wx.getSystemInfo({
       success (res) {
         console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)

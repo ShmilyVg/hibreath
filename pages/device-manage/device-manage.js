@@ -2,7 +2,7 @@
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import {Toast, WXDialog} from "heheda-common-view";
-
+var mta= require('../../utils//mta_analysis.js')
 Page({
     data: {
         deviceId: '',
@@ -42,6 +42,7 @@ Page({
         }).finally(() => Toast.hiddenLoading());
     },
     toBind(){
+      mta.Event.stat('ranzhijiance',{'clickbinddevice':'true'})
       wx.getSystemInfo({
         success (res) {
           console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)

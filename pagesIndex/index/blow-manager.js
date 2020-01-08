@@ -6,7 +6,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import {ProtocolState} from "../../modules/bluetooth/bluetooth-state";
 import CommonProtocol from "../../modules/network/network/libs/protocol";
 import {WXDialog} from "heheda-common-view";
-
+var mta= require('../../utils//mta_analysis.js')
 
 export default class BlowManager {
     constructor(page) {
@@ -145,6 +145,7 @@ export default class BlowManager {
     }
 
     connected() {
+      mta.Event.stat('ranzhijiance',{'starttest':'true'})
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
@@ -181,6 +182,7 @@ export default class BlowManager {
     }
 
     ready() {
+      mta.Event.stat('ranzhijiance',{'preheating':'true'})
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
@@ -209,6 +211,7 @@ export default class BlowManager {
     }
 
     blow() {
+      mta.Event.stat('ranzhijiance',{'blowup':'true'})
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
@@ -270,6 +273,7 @@ export default class BlowManager {
     }
 
     blowing() {
+      mta.Event.stat('ranzhijiance',{'blowing':'true'})
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
@@ -298,6 +302,7 @@ export default class BlowManager {
     }
 
     blowed() {
+      mta.Event.stat('ranzhijiance',{'processing':'true'})
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色

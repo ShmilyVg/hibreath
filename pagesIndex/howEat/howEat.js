@@ -2,6 +2,7 @@
 import HiNavigator from "../../navigator/hi-navigator";
 import {WXDialog} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
+var mta= require('../../utils//mta_analysis.js')
 import {showActionSheet} from "../../view/view";
 Page({
 
@@ -62,6 +63,7 @@ Page({
  * @desc 去检测
   */
   goIndex(){
+   mta.Event.stat('ranzhijiance',{'clickfatburningtest':'true'})
    wx.getSystemInfo({
      success (res) {
        if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){

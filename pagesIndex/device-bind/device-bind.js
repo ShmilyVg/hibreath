@@ -8,7 +8,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 import IndexCommonManager from "../index/view/indexCommon";
 import {Toast, WXDialog} from "heheda-common-view";
 const app = getApp();
-
+var mta= require('../../utils//mta_analysis.js')
 Page({
 
     /**
@@ -70,6 +70,7 @@ Page({
                 break;
             default:
                 this.indexCommonManager.setSearchedState();
+                mta.Event.stat('ranzhijiance',{'finddevice':'true'})
                 this.setData({
                     bgColor:"#fff",
                     finding:false,
@@ -166,6 +167,7 @@ Page({
                     //绑定后 跳转绑定成功页面  点击按钮再进入index页面
                     this.isBind = true;
                     setTimeout(() => HiNavigator.navigateSuccessInfo());
+                    mta.Event.stat('ranzhijiance',{'bindsuccess':'true'})
                     /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
                     console.log('diao')

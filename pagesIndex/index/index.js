@@ -17,6 +17,7 @@ import CommonProtocol from "../../modules/network/network/libs/protocol";
 import {WXDialog} from "heheda-common-view"; //页面标志位使用
 const app = getApp();
 const log = require('../../log.js')
+var mta= require('../../utils//mta_analysis.js')
 Page({
     data: {
         userInfo: {},
@@ -36,7 +37,6 @@ Page({
         isShowBlow:true,
         needCheckOTAUpdate:false,
         noUpdata:false,//如果点击OTA升级 则跳转时不执行 onUnload 中的跳转 正常跳转到升级页面
-        //isSuccessInfo:false,//是否绑定完成页进入标志
         homeP:[
             "1. 请勿将设备远离手机",
             "2. 请勿关闭小程序",
@@ -60,9 +60,7 @@ Page({
             "喷洒香水"
         ],
         homeTitle: false,
-
         homeOrangeBtn: false,
-
         resultDelta:1,
         electricitypicShow: false,
         navBarColor:'',//导航字体颜色
@@ -311,17 +309,9 @@ Page({
 
 
     onGetUserInfoEvent(e) {
-      /*  wx.openBluetoothAdapter({
-            success (res) {
-                console.log(res,'resresres')
-            },
-            fail (res) {
-                console.log(res,'failfailfail')
-            }
-        })*/
+        mta.Event.stat('ranzhijiance',{'clickbinddevice':'true'})
         wx.getSystemInfo({
             success (res) {
-                console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
                 if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){
                     HiNavigator.navigateToDeviceBind()
                     return
