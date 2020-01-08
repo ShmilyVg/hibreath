@@ -95,7 +95,7 @@ function normalTrend(widthRpx) {
         dataLabel: false,
         haveNum: true,
         yAxisSplit: yAxisSplit - 1,
-        animation: false
+        animation: true
     });
 }
 

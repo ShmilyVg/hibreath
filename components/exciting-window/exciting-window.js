@@ -1,6 +1,7 @@
 // components/exciting-window/exciting-window.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+var mta= require('../../utils//mta_analysis.js')
 /**
  * @Date: 2019-12-04 10:13:05
  * @LastEditors: 张浩玉
@@ -110,13 +111,18 @@ Component({
       }
       HiNavigator.switchToSetInfo()*/
       HiNavigator.navigateToLowFatReport()
+      mta.Event.stat('zhulujing',{'clicktodaysummaryreport':'true'})
     },
     goTask(){
       this.excitingKnow()
       if(this.data.toastType == "fatBurn"){
         wx.setStorageSync('showWeight', true);
+        mta.Event.stat('zhulujing',{'clickrecordweight':'true'})
+      }else{
+        mta.Event.stat('zhulujing',{'clickfatburningtest':'true'})
       }
       HiNavigator.switchToSetInfo()
+
     },
     excitingKnow(){
       this.triggerEvent("getShowExcitation", {showExcitation:false})

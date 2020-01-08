@@ -19,6 +19,7 @@ import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
 import * as Shared from "./view/shared.js";
 import { UploadUrl } from "../../utils/config";
 const app = getApp();
+var mta= require('../../utils//mta_analysis.js')
 Page({
   data: {
     isfatBurn: false, //燃脂卡片
@@ -110,12 +111,6 @@ Page({
     });
   },
 
-  /**
-   * @desc 是否显示开屏页
-   */
-  getIsshowGuide(){
-
-  },
 
   /**
    * @desc 未登录状态处理
@@ -362,6 +357,7 @@ Page({
   goLowFatReport(){
     if(this.data.indexfinishNum === this.data.indextaskNum){
       HiNavigator.navigateToLowFatReport();
+      mta.Event.stat('zhulujing',{'clicktodaysummaryreport':'true'})
       return
     }
     WXDialog.showDialog({
@@ -382,6 +378,9 @@ Page({
     console.log("getCurrentPages()", getCurrentPages());
     //Toast.showLoading();
     const { result } = await Protocol.postMembersTasks();
+    if(result.isFirstEveryday){
+      mta.Event.stat('zhulujing',{'enternewbietask':'true'})
+    }
     this.setData({
       showNewInfo: false,
       showGoclockin: false,
@@ -684,6 +683,7 @@ Page({
     console.log(e);
     switch (type) {
       case "fatBurn":
+          mta.Event.stat('zhulujing',{'enternewbietask':'true'})
           wx.getSystemInfo({
               success (res) {
                   console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)
@@ -717,6 +717,7 @@ Page({
           })
         break;
       case "bodyIndex":
+        mta.Event.stat('zhulujing',{'clickrecordweight':'true'})
         this.showModal();
         /* HiNavigator.navigateToDeviceUnbind();*/
         break;
@@ -843,6 +844,7 @@ Page({
       HiNavigator.navigateToResultNOnum();
       return;
     }
+    mta.Event.stat('zhulujing',{'clickfatburningtest':'true'})
     wx.getSystemInfo({
       success (res) {
         console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)

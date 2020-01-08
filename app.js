@@ -21,9 +21,13 @@ App({
         //腾讯移动分析
         mta.App.init({
           "appID":"500708295",
+          "eventID":"500708491",
           "autoReport": true,
           "statParam": true,
           "ignoreParams": [],
+          "statPullDownFresh":true,
+          "statShareApp":true,
+          "statReachBottom":true
         });
         let records = [], count = 0;
         let currentIndex = 0;

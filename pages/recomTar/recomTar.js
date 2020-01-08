@@ -6,6 +6,7 @@ import {
   WXDialog
 } from "heheda-common-view";
 import HiNavigator from "../../navigator/hi-navigator";
+var mta= require('../../utils//mta_analysis.js')
 Page({
   data: {
     targetDate:{},
@@ -17,12 +18,12 @@ Page({
   onLoad: function (options) {
     console.log(options);
     this.setData({
-      personalCente: options.personalCente === true || options.personalCente ==='true' 
+      personalCente: options.personalCente === true || options.personalCente ==='true'
     })
     this.getMyLoss();
   },
   onReady: function () {
-    
+
   },
   onUnload(){
     getApp().globalData.issueRefresh = true;
@@ -47,6 +48,7 @@ Page({
     let weightGoal = this.data.targetDate.weightGoalt;
     await Protocol.postMembersJoinSchema({weightGoal});
     HiNavigator.switchToSetInfo()
+    mta.Event.stat('zhulujing',{'enternewbietask':'true'})
   },
   weightGoalChange(e){
     let targetDate = this.data.targetDate
@@ -56,7 +58,7 @@ Page({
       toast.warn('目标体重过大')
     }
     let str = (weightGoalt +'').split('.')[1];
-    
+
     if (str && str.length>1){
       toast.warn('只能一位小数')
       weightGoalt = Number(weightGoalt).toFixed(1);
@@ -93,7 +95,7 @@ Page({
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
-    that.fadeDown();//调用隐藏动画   
+    that.fadeDown();//调用隐藏动画
     setTimeout(function () {
       that.setData({
         hideModal: true
@@ -114,5 +116,5 @@ Page({
     this.setData({
       animationData: this.animation.export(),
     })
-  }, 
+  },
 })

@@ -5,6 +5,7 @@ import {
   Toast,
   WXDialog
 } from "heheda-common-view";
+var mta= require('../../utils//mta_analysis.js')
 Page({
 
   data: {
@@ -33,7 +34,7 @@ Page({
   },
 
   onReady: function () {
-    
+
   },
   setweightChange(){
     let report = this.data.report;
@@ -77,7 +78,7 @@ Page({
   async getReport(sharedId){
     Toast.showLoading();
     let reportId = Number(this.data.reportId);
-    
+
     let data = await Protocol.getTodayLosefatReport({ sharedId, reportId});
     Toast.hiddenLoading();
     let left = this.getlosefatSpeed(data.result.losefatSpeed.dataValueToday) ;
@@ -97,6 +98,7 @@ Page({
     this.setweightChange()
   },
   onShareAppMessage(res){
+    mta.Event.stat('zhulujing',{'clicksharefriends':'true'})
     let reportId = this.data.reportId;
     return {
       title: '我的今日减脂报告已生成，快来围观！',
@@ -104,6 +106,7 @@ Page({
     }
   },
   shareFr(){
+    mta.Event.stat('zhulujing',{'clicksharefriendscircle':'true'})
     toast.warn("敬请期待");
     return;
   }
