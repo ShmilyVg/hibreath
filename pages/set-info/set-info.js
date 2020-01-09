@@ -97,7 +97,12 @@ Page({
     startTime: "",
     loanTime:'',//定时器
     isNophone:false,
-    answer:true
+    answerBtns:[
+      { text: 'Yes', imgSrc:'../../images/set-info/yes.png'},
+      { text: 'No', imgSrc: '../../images/set-info/no.png' }
+    ],
+    answer:true,
+    answerData:{}
   },
   onFocus: function(e) {
     this.setData({
@@ -771,6 +776,7 @@ Page({
    },
   onShow() {
     this.handleBle();
+    this.getAnswer()
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
     app.onDataSyncListener = ({ num, countNum }) => {
@@ -1007,5 +1013,30 @@ Page({
       Toast.hiddenLoading();
     }
     wx.stopPullDownRefresh();
+  },
+  async getAnswer(){
+    let data = await Protocol.getAnswer();
+    this.setData({
+      answerData: data.result
+    })
+  },
+  async answerFinish(e){
+    let index = e.currentTarget.dataset['index'];
+    let chooseAnswer = index>0 ?0:1;
+    let answerId = this.data.answerData.answerDatabaseBean.id;
+    let data ={
+      answerId: answerId,
+      chooseAnswer: chooseAnswer
+    }
+    let res = await Protocol.answerFinish(data);
+    let rightTxt = res.result.taskType == 'single'?'首次答对减脂大实话获得10积分':'完成每日答对减脂大实话获得1积分';
+    if (res.result.isCorrect ==1){
+      wx.showToast({
+        title: rightTxt,
+        icon: 'none',
+        duration: 2000
+      })
+    }
+    this.getAnswer()
   },
 });

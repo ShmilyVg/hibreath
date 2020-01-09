@@ -516,4 +516,12 @@ export default class Protocol {
     static getMealInfo(data) {
       return Network.request({url: 'food/mealInfo',data});
     }
+    //获取答题题目数据
+    static getAnswer() {
+        return Network.request({url: 'answerData/getAnswer'});
+    }
+    //完成答题打卡
+    static answerFinish(data) {
+        return Network.request({url: 'answerData/answerFinish',data});
+    }
 }

@@ -61,29 +61,25 @@
           <text>#减脂大实话#</text>
           <image src="../../images/set-info/rjjx.png" class="rjjx"></image>
         </view>
-        <view class="bigTruthCon">晚上不吃饭既能减肥，还能排毒？</view>
-        <view class="btnCon" wx:if="{{!answer}}">
-          <view>
-            <image src="../../images/set-info/yes.png"></image>
-            <text>Yes</text>
-          </view>
-          <view>
-            <image src="../../images/set-info/no.png"></image>
-            <text>No</text>
+        <view class="bigTruthCon">{{answerData.answerDatabaseBean.tips}}</view>
+        <view class="btnCon" wx:if="{{answerData.isAnswer == 0}}">
+          <view bindtap="answerFinish" wx:for="{{answerBtns}}" data-index="{{index}}">
+            <image src='{{item.imgSrc}}'></image>
+            <text>{{item.text}}</text>
           </view>
         </view>
         <view class="answerCon" wx:else>
-          <view class="answerTit answerRight">
+          <view class="answerTit answerRight" wx:if="{{answerData.isCorrect == 1}}">
             <image class="answerImg" src="../../images/set-info/right.png"></image><text>答对啦！</text>
           </view>
-          <!-- <view class="answerTit answerError">
+          <view class="answerTit answerError" wx:else>
             <image class="answerImg " src="../../images/set-info/error.png"></image><text>答错啦...</text>
-          </view> -->
-          <view class="answerDetails">
-            <view class="answerResult">正确答案：NO</view>
-            <view>不吃晚饭伤身，最容易伤害肠胃功能，影响内分泌，根本不利于减肥</view>
           </view>
-          <view class="answerRecord">已答对1题 · 答题正确率 <text>100%</text></view>
+          <view class="answerDetails">
+            <view class="answerResult">正确答案：{{answerData.answerDatabaseBeanstandardAnswer?'Yes':'NO'}}</view>
+            <view>{{answerData.answerDatabaseBean.explanation}}</view>
+          </view>
+          <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率 <text>{{answerData.correctRate}}%</text></view>
         </view>
       </view>
       <view class="flex-column-item">

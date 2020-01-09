@@ -402,6 +402,7 @@
   font-family: PingFang SC;
   font-weight: 800;
   color: rgba(255, 255, 255, 1);
+  overflow: hidden;
 }
 
 .btnCon image {
@@ -409,7 +410,7 @@
   height: 110rpx;
   position: absolute;
   left: -16rpx;
-  top: -14rpx;
+  top: -12rpx;
   z-index: -10;
 }
 .answerCon{
