@@ -174,6 +174,7 @@ Page({
     wx.setStorageSync('showGuide', 'hiddenGuide');
   },
   onHide() {
+    
     //离开时 告知蓝牙标志位 0x3D   0X02
     if (app.getLatestBLEState().connectState === "connected") {
       var pages = getCurrentPages(); //获取加载的页面
@@ -186,6 +187,8 @@ Page({
       this.setData({
           showExcitation: false,
       });
+
+      
   },
   /**
    * @desc  保存体重信息
@@ -268,6 +271,7 @@ Page({
           showMytoast:true,
           ...app.globalData.dayFirstLoginObj
         })
+        getApp().globalData.dayFirstLoginObj.inTaskProgress = false;
         setTimeout(()=>{
           this.setData({
             showMytoast:false,
