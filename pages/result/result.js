@@ -279,6 +279,7 @@ Page({
     onHide() {
         this.setData({
             showExcitation: false,
+            canvasMargin: 0
         });
     },
     onUnload(){
