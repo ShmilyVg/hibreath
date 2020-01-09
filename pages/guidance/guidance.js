@@ -193,7 +193,7 @@ Page({
   },
   //体重
   bindInputWeight(e) {
-    let weight = Number(e.detail.value);
+    let weight = e.detail.value;
     this.setData({
       "guidance.info.weight": weight
     });
