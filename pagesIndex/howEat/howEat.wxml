@@ -12,8 +12,12 @@
     <swiper wx:if="{{item.isSlideshow}}" style="width: 100%;height: 300rpx;" next-margin="180rpx">
         <swiper-item style="margin-right: 20rpx" wx:for="{{item.dataList}}" wx:key="index" data-type="{{item.type}}" data-foodId="{{item.foodId}}" bindtap="toNextpage">
             <view class="swiper-view" style="background: url('{{item.foodImg}}');background-size: 500rpx 300rpx;">
-                <view class="swiper-view-span" wx:if="{{item.popularity}}">人气</view>
-                <view class="swiper-view-title">{{item.title}}</view>
+                <view class="swiper-bgview"></view>
+                <view style="display: flex;align-items: center">
+                    <view class="swiper-view-span" wx:if="{{item.popularity}}">人气</view>
+                    <view class="swiper-view-title">{{item.title}}</view>
+                </view>
+
             </view>
         </swiper-item>
     </swiper>
