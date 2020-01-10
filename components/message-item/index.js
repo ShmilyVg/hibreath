@@ -9,17 +9,19 @@ Component({
   properties: {
     message: {
       type: Object,
-      value: { taskId: "", imgUrls: ['', '', '',], desc: '', messageCreateTime: '', headUrl: '', nickname: '' },
-      observer(newVal, oldVal) {
-        this.initUndateName(newVal.praiseInfo.list)
-      }
+      value: { taskId: "", imgUrls: ['', '', '',], desc: '', messageCreateTime: '', headUrl: '', nickname: '' }
     },
     scrollTopNum: {
       type: Number,
       value: 0
     },
   },
-
+  observers: {
+    'message'() {
+      this.data.listArray = []
+      this.undateName(this.data.message.praiseInfo.list)
+    }
+  },
   data: {
     isgiveHeart: false,
     giveHeartNum: 0,
@@ -40,7 +42,7 @@ Component({
     attached() {
       setTimeout(() => {
         this.data.listArray = []
-        this.initUndateName(this.data.message.praiseInfo.list)
+        this.undateName(this.data.message.praiseInfo.list)
       }, 100)
     },
   },
@@ -48,7 +50,7 @@ Component({
     show() {
       setTimeout(() => {
         this.data.listArray = []
-        this.initUndateName(this.data.message.praiseInfo.list)
+        this.undateName(this.data.message.praiseInfo.list)
       }, 1000)
     },
     hide() {
@@ -66,22 +68,6 @@ Component({
           this.triggerEvent('onMessageDeleteEvent', { taskId: this.data.message.id });
         }
       });
-    },
-    initUndateName() {
-      if (arr.length > 0) {
-        arr.map((value, index) => {
-          if (value) {
-            this.setData({
-              nickNameList: this.data.listArray.join(',')
-            })
-          }
-        });
-
-      } else {
-        this.setData({
-          nickNameList: []
-        })
-      }
     },
     //更新点赞 昵称
     undateName(arr) {
