@@ -117,6 +117,12 @@
   border-radius: 50%;
   left: 190rpx;
   top: 133rpx;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(69,69,69,1);
+  word-break: keep-all;
+  overflow-x: visible;
 }
 .imageConZ {
   margin-top: 38rpx;
