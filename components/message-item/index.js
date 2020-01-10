@@ -16,7 +16,12 @@ Component({
       value: 0
     },
   },
-
+  observers: {
+    'message'() {
+      this.data.listArray = []
+      this.undateName(this.data.message.praiseInfo.list)
+    }
+  },
   data: {
     isgiveHeart: false,
     giveHeartNum: 0,
