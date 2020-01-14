@@ -1050,8 +1050,6 @@ Page({
         duration: 2000
       })
     }
-    setTimeout(()=>{
-      this.getAnswer()
-    },500)
+    this.getAnswer()
   },
 });

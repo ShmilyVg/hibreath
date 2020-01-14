@@ -379,7 +379,7 @@
 }
 
 .bigTruthCon {
-  padding: 42rpx 0 62rpx;
+  padding: 42rpx 20rpx 62rpx;
   font-size: 40rpx;
   font-family: PingFang SC;
   font-weight: bold;
