@@ -102,7 +102,8 @@ Page({
       { text: 'No', imgSrc: '../../images/set-info/no.png' }
     ],
     answer:true,
-    answerData:{}
+    answerData:{},
+    answerBtnReady:false
   },
   onFocus: function(e) {
     this.setData({
@@ -1018,13 +1019,17 @@ Page({
     }
     wx.stopPullDownRefresh();
   },
-  async getAnswer(){
+  async getAnswer(txt){
     let data = await Protocol.getAnswer();
     this.setData({
+      answerBtnReady:false,
       answerData: data.result
     })
   },
   async answerFinish(e){
+    if (this.data.answerBtnReady){
+      return;
+    }
     let index = e.currentTarget.dataset['index'];
     let chooseAnswer = index>0 ?0:1;
     let answerId = this.data.answerData.answerDatabaseBean.id;
@@ -1032,7 +1037,11 @@ Page({
       answerId: answerId,
       chooseAnswer: chooseAnswer
     }
+    this.setData({
+      answerBtnReady:true
+    })
     let res = await Protocol.answerFinish(data);
+    
     let rightTxt = res.result.taskType == 'single'?'首次答对减脂大实话获得10积分':'完成每日答对减脂大实话获得1积分';
     if (res.result.isCorrect ==1){
       wx.showToast({
