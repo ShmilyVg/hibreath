@@ -8,9 +8,8 @@
 import {ErrorState} from "../utils/error-state";
 import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
-const log = require('../../../../log.js')
 /*暂作修改*/
-const INIT_TIMEOUT = 15;
+const INIT_TIMEOUT = 10;
 export default class AbstractBlueTooth {
     constructor() {
         this._isOpenAdapter = false;
@@ -18,7 +17,7 @@ export default class AbstractBlueTooth {
         this._isActiveCloseBLE = false;
         this._isActiveCloseDiscovery = false;
         this._isConnected = false;
-        this._deviceId = '';
+        this._deviceId = '  ';
         this._serviceId = '';
         this._characteristicId = '';
         this._receiveDataListener = null;
@@ -27,7 +26,7 @@ export default class AbstractBlueTooth {
         this._isConnectBindDevice = false;
         this.hiServiceUUID = '';
         this._receiveDataOutsideistener = null;
-        this.connectionInfo = {timeout: INIT_TIMEOUT, count: 4, index: 1};
+        this.connectionInfo = {timeout: INIT_TIMEOUT, count: 3, index: 1};
         this._receiveDataInsideListener = ({receiveBuffer}) => {
             if (!!this._receiveDataListener) {
                 const {finalResult, state, filter} = this.dealReceiveData({receiveBuffer});
@@ -94,7 +93,6 @@ export default class AbstractBlueTooth {
                                 // });
                             }, fail: (res) => {
                                 console.log('打开蓝牙Adapter失败', res);
-                                log.warn('打开蓝牙Adapter失败', res)
                                 this._isOpenAdapter = false;
                                 reject(res);
                             }
@@ -116,6 +114,7 @@ export default class AbstractBlueTooth {
         this._isConnectBindDevice = false;
         return new Promise((resolve, reject) => {
             if (this._isOpenAdapter) {
+                console.log('蓝牙适配器不可用的时候，停止了搜索')
                 this.stopBlueToothDevicesDiscovery().finally(() =>
                     this.closeBLEConnection().finally(() => {
                         wx.closeBluetoothAdapter({
@@ -126,7 +125,6 @@ export default class AbstractBlueTooth {
                                 resolve({isOpenAdapter: this._isOpenAdapter});
                             }, fail: function (res) {
                                 console.log('断开蓝牙Adapter失败', res);
-                                log.warn('断开蓝牙Adapter失败', res)
                                 this._isConnected = false;
                                 reject(res);
                             }
@@ -177,50 +175,51 @@ export default class AbstractBlueTooth {
                         let connectionInfo = this.connectionInfo;
                         console.warn('本次连接时设置的超时时间是', connectionInfo.timeout + 's',connectionInfo);
                         console.log('deviceIddeviceIddeviceIddeviceId',deviceId)
-                        wx.createBLEConnection({
+                        setTimeout(()=>{
+                          wx.createBLEConnection({
                             // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
                             deviceId,
-                            timeout: connectionInfo.timeout * 1500,
+                            timeout: connectionInfo.timeout * 1000,
                             success: (res) => this._findThatCharacteristics({deviceId}).then(() => {
-                                // t连接成功
-                                this._getEventAndTimestamp({event: 'linkResultTime', status: 1});
-                                console.log('蓝牙连接成功', res);
-                                var pages = getCurrentPages()    //获取加载的页面
-                                var currentPage = pages[pages.length-1]    //获取当前页面的对象
-                                console.log('getApp()',getApp().bLEManager,currentPage.route)
-                                if(currentPage.route ==='pagesIndex/index/index'){
-                                    getApp().bLEManager.startData();
-                                    getApp().bLEManager.sendISvalue({isSuccess: true});
-                                    console.log('小程序发送了同步状态的指令 和 40-01指令 允许上传在线检测数据')
-                                }
+                              // t连接成功
+                              this._getEventAndTimestamp({event: 'linkResultTime', status: 1});
+                              console.log('蓝牙连接成功', res);
+                              var pages = getCurrentPages()    //获取加载的页面
+                              var currentPage = pages[pages.length-1]    //获取当前页面的对象
+                              console.log('getApp()',getApp().bLEManager,currentPage.route)
+                              if(currentPage.route ==='pagesIndex/index/index'){
+                                getApp().bLEManager.startData();
+                                getApp().bLEManager.sendISvalue({isSuccess: true});
+                                console.log('小程序发送了同步状态的指令 和 40-01指令 允许上传在线检测数据')
+                              }
 
-                                this._deviceId = deviceId;
-                                this._isConnected = true;
-                                this.resetConnectTimeout();
-                                resolve({isConnected: this._isConnected});
+                              this._deviceId = deviceId;
+                              this._isConnected = true;
+                              this.resetConnectTimeout();
+                              resolve({isConnected: this._isConnected});
                             }).catch((res) => {
-                                console.log('createBLEConnection-catch',res)
-                                this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
-                                this._isConnected = false;
-                                reject(res);
+                              console.log('createBLEConnection-catch',res)
+                              this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
+                              this._isConnected = false;
+                              reject(res);
                             }),
                             fail: res => {
-                                // t连接失败
-                                this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
-                                console.log('蓝牙连接失败', res);
-                                log.warn('蓝牙连接失败', res)
-                                this._isConnected = false;
-                                const errCode = res.errCode;
-                                if (errCode === 10003 || errCode === 10012) {
-                                    if (++connectionInfo.index >= connectionInfo.count) {
-                                        connectionInfo.index = connectionInfo.count;
-                                    }
-                                    connectionInfo.timeout = (connectionInfo.index) * 15;
-                                    console.log('下次蓝牙连接的超时时间', connectionInfo.timeout, connectionInfo.index);
+                              // t连接失败
+                              this._getEventAndTimestamp({event: 'linkResultTime', status: 0});
+                              console.warn('蓝牙相关log——————————蓝牙连接失败', res);
+                              this._isConnected = false;
+                              const errCode = res.errCode;
+                              if (errCode === 10003 || errCode === 10012) {
+                                if (++connectionInfo.index >= connectionInfo.count) {
+                                  connectionInfo.index = connectionInfo.count;
                                 }
-                                reject(res);
+                                connectionInfo.timeout = (connectionInfo.index) * 15;
+                                console.warn('下次蓝牙连接的超时时间', connectionInfo.timeout, connectionInfo.index);
+                              }
+                              reject(res);
                             }
-                        });
+                          });
+                        },500)
                     } else {
                         console.log('createBLEConnection already create!!!');
                         resolve();
@@ -244,32 +243,30 @@ export default class AbstractBlueTooth {
         return new Promise((resolve, reject) => {
                 // this.stopBlueToothDevicesDiscovery().finally(() => {
                 this._isActiveCloseBLE = true;
-                if (this._isConnected && this._deviceId) {
-                    this._isConnected = false;
+                this._isConnected = false;
+                if (this._deviceId) {
+                  setTimeout(()=>{
                     wx.closeBLEConnection({
-                        deviceId: this._deviceId,
-                        success: res => {
-                            console.log('断开连接成功', res);
-                            this.resetConnectTimeout();
-                            resolve();
-                        }, fail: res => {
-                            console.log('断开连接失败', res);
-                            log.warn('断开连接失败', res)
-                            const errCode = res.errCode;
-                            if (errCode === 10000 || errCode === 10001) {
-                                resolve();
-                            } else {
-                                reject(res);
-                            }
-
+                      deviceId: this._deviceId,
+                      success: res => {
+                        console.log('蓝牙相关log—————断开与低功耗蓝牙设备的连接并success', res);
+                        this.resetConnectTimeout();
+                        resolve();
+                      }, fail: res => {
+                        console.log('蓝牙相关log—————断开与低功耗蓝牙设备的连接并fail', res);
+                        const errCode = res.errCode;
+                        if (errCode === 10000 || errCode === 10001) {
+                          resolve();
+                        } else {
+                          reject(res);
                         }
+                      }
                     });
-                } else {
-                    this._isConnected = false;
-                    console.log('closeBLEConnection already close!!!');
-                    resolve();
+                  },500)
+                }else{
+                  console.log('closeBLEConnection already close!!!');
+                  resolve();
                 }
-                // });
 
             }
         )
@@ -318,12 +315,14 @@ export default class AbstractBlueTooth {
         this._isActiveCloseDiscovery = true;
         return new Promise((resolve, reject) => {
             if (this._isStartDiscovery) {
+              setTimeout(()=>{
                 wx.stopBluetoothDevicesDiscovery({
-                    success: () => {
-                        this._isStartDiscovery = false;
-                        resolve({isStartDiscovery: this._isStartDiscovery});
-                    }, fail: reject
+                  success: () => {
+                    this._isStartDiscovery = false;
+                    resolve({isStartDiscovery: this._isStartDiscovery});
+                  }, fail: reject
                 });
+              },500)
             } else {
                 resolve({isStartDiscovery: this._isStartDiscovery});
             }
@@ -342,6 +341,7 @@ export default class AbstractBlueTooth {
             if (!this._isStartDiscovery) {
                 // t开始扫描
                 this._getEventAndTimestamp({event: 'startScanTime'});
+                console.log('蓝牙相关log————开始搜寻附近的蓝牙外围设备,uuid 列表为',this.UUIDs)
                 wx.startBluetoothDevicesDiscovery({
                     services: this.UUIDs,
                     allowDuplicatesKey: true,
@@ -380,7 +380,11 @@ export default class AbstractBlueTooth {
      */
     getBlueToothDevices() {
         return new Promise(((resolve, reject) => wx.getBluetoothDevices({
-            success: resolve, fail: reject
+            success: (res) => {
+              console.log('获取在蓝牙模块生效期间所有已发现的蓝牙设备',res)
+              resolve()
+            },
+            fail: reject
         })));
     }
 
@@ -409,6 +413,7 @@ export default class AbstractBlueTooth {
                     console.log('自己的服务', serverItem);
                     // 操作之前先监听，保证第一时间获取数据
                     wx.onBLECharacteristicValueChange((res) => {
+                        console.log('蓝牙相关log——onBLECharacteristicValueChange回调',res)
                         if (!this._receiveDataOutsideistener) {
                             this._receiveDataInsideListener({receiveBuffer: res.value});
                         } else {
