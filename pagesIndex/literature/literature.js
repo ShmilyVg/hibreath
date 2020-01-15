@@ -82,7 +82,7 @@ Page({
         time: '1977',
         platform: 'NCBI'
       }, {
-        title: 's BMR repeatable in deer mice? Organ mass correlates and the effects of cold acclimation and natal altitude',
+        title: 'is BMR repeatable in deer mice? Organ mass correlates and the effects of cold acclimation and natal altitude',
         author: 'G. A. Russell， M. A. Chappell',
         time: '2007',
         platform: 'Springer'
