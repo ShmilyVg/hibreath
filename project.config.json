@@ -319,6 +319,13 @@
 					"scene": null
 				},
 				{
+
+					"id": -1,
+					"name": "pagesIndex/literature/literature",
+					"pathName": "pagesIndex/literature/literature",
+					"query": "",
+          "scene": null
+        },{
 					"id": 37,
 					"name": "pagesIndex/slimpleBox/slimpleBox",
 					"pathName": "pagesIndex/slimpleBox/slimpleBox",

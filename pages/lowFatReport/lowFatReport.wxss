@@ -88,6 +88,8 @@
 
 .imageItem {
   position: relative;
+  width: 260rpx;
+  text-align: center;
 }
 
 .imageItem image {
@@ -115,7 +117,7 @@
   background: rgba(223, 215, 204, 1);
   border: 4rpx solid rgba(255, 255, 255, 1);
   border-radius: 50%;
-  left: 190rpx;
+  left: 210rpx;
   top: 133rpx;
   font-size:22rpx;
   font-family:PingFang SC;

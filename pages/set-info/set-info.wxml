@@ -34,6 +34,10 @@
         <view style="float: left">
           <view class="set-info-top-text1">你已在此</view>
           <view class="set-info-top-text2">坚持减脂打卡</view>
+          <view class="set-info-top-text6 " style="padding-left: {{(checkin.headImgs.length-1) *25 + 50}}rpx;">
+          <image src="{{item}}" wx:for="{{checkin.headImgs}}"></image>
+          今日{{checkin.size}}人已打卡
+          </view>
         </view>
         <view style="float: right">
           <text class="set-info-top-text3">{{days}}</text>
@@ -55,7 +59,7 @@
         <template is="readyTask" wx:if="{{item.type =='howClockIn'}}" data="{{...item}}"></template>
       </view>
     </view>
-    <view class="flex-column" style="margin-top: -210rpx;padding: 0rpx 30rpx;position: relative;z-index: 50;">
+    <view class="flex-column" style="margin-top: -120rpx;padding: 0rpx 30rpx;position: relative;z-index: 50;">
       <view class="bigTruth" wx:if="{{caseonEveryday}}">
         <view class="bigTruthTit">
           <text>#减脂大实话#</text>
