@@ -1,0 +1,17 @@
+/* pages/groupNumber/groupNumber.wxss */
+@import "../goVerification/goVerification.wxss";
+.groupNumber-title{
+    font-size:36rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(84,84,84,1);
+    text-align: center;
+}
+.groupNumber-bottom{
+    text-align: center;
+    margin-top: 30rpx;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(118,118,118,1);
+}

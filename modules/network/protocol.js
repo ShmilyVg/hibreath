@@ -504,9 +504,13 @@ export default class Protocol {
     static getSmsCode(data) {
       return Network.request({url: 'account/getSmsCode',data});
     }
-    //提交手机验证码&群号
+    //提交手机验证码
     static postPhone(data) {
       return Network.request({url: 'account/confirmSmsCode',data});
+    }
+    //加入燃脂圈
+    static postJoinGroup(data) {
+      return Network.request({url: 'group/joinGroup',data});
     }
     //减脂怎么吃
     static getHowtoEat(data) {

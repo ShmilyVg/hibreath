@@ -216,6 +216,9 @@ Page({
       if(!getApp().globalData.isLogin || !result.finishedPhone){
         HiNavigator.navigateToGoRegister()
         return
+      }else{
+        getApp().globalData.isGroupjoin = true //是圈子进入 加入 燃脂页面的标志位
+        HiNavigator.reLaunchToGroupNumber()
       }
       HiNavigator.navigateToCreateCommunity()
     },

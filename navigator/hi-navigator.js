@@ -19,9 +19,13 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGoRegister() {
         this.navigateTo({url: '/pages/goRegister/goRegister'});
     }
-    //验证手机号群号页面
+    //验证手机号页面
     static navigateToGoVerification() {
         this.navigateTo({url: '/pages/goVerification/goVerification'});
+    }
+    //验证群号
+    static reLaunchToGroupNumber() {
+      this.reLaunch({url: '/pages/groupNumber/groupNumber'});
     }
     //新手引导填写资料
     static navigateToGuidance({reset}) {
@@ -209,7 +213,7 @@ export default class HiNavigator extends CommonNavigator {
   }
   //动态信息列表
   static navigateToMyNoticeList() {
-        this.navigateTo({ url: '/pagesIndex/noticeList/noticeList'} );
+    this.navigateTo({ url: '/pagesIndex/noticeList/noticeList'} );
   }
   //个人中心-我的动态列表
   static navigateToMyDynamicList() {
