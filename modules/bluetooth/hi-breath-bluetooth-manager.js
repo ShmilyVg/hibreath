@@ -69,7 +69,7 @@ export default class HiBreathBlueToothManager extends HiBlueToothManager {
                 cb && cb();
             } catch (e) {
                 cb && cb();
-                console.error(e);
+                console.error('错误',e);
             }
         })();
     }

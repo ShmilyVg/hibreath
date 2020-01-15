@@ -247,6 +247,7 @@ page {
     color: rgba(69, 69, 69, 1);
     line-height: 32rpx;
     overflow: hidden;
+    margin-bottom: 10rpx;
 }
 
 .day-list-body-footer {

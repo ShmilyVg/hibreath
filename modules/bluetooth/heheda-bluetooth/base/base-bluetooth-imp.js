@@ -107,7 +107,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         * 蓝牙适配器是否处于搜索状态   discovering
         * */
         wx.onBluetoothAdapterStateChange((res) => {
-            console.log('适配器状态changed, now is', res, '是否处于升级状态', getApp().isOTAUpdate);
+            console.log('蓝牙适配器是否可用', res.available,'蓝牙适配器是否处于搜索状态', res.discovering,'是否处于升级状态', getApp().isOTAUpdate);
             const {available, discovering} = res;
             this._isOpenAdapter = available;
             this._isStartDiscovery = discovering;
@@ -150,6 +150,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
             }
         });
         wx.onBluetoothDeviceFound((res) => {
+          console.log('我调用了onBluetoothDeviceFound',res)
             this.baseDeviceFindAction(res);
         });
     }

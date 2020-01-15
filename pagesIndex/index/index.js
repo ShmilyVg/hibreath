@@ -70,9 +70,39 @@ Page({
 
     },
     disconnectBtnClick() {
-        if (this.data.stateBtnShow){
-            app.getBLEManager().connect();
+      let that = this;
+      wx.getSystemInfo({
+        success (res) {
+          if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){
+            if (that.data.stateBtnShow){
+              app.getBLEManager().connect();
+            }
+            return
+          }else if(!res.bluetoothEnabled){
+            setTimeout(() => {
+              WXDialog.showDialog({title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了'});
+            },200);
+            return
+          }else if(!res.locationEnabled){
+            setTimeout(() => {
+              WXDialog.showDialog({title: '小贴士', content: '请开启手机GPS', confirmText: '我知道了'});
+            },200);
+            return
+          }else if(!res.locationAuthorized){
+            setTimeout(() => {
+              wx.showModal({
+                title: '小贴士',
+                content: '前往手机【设置】->找到【微信】应用\n' +
+                  '\n' +
+                  '打开【微信定位/位置权限】',
+                showCancel: false,
+                confirmText: '我知道了',
+              })
+            },200);
+            return
+          }
         }
+      })
     },
 
     setBtnClick() {
