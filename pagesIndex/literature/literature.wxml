@@ -1,0 +1,12 @@
+<!--pagesIndex/literature/literature.wxml-->
+<view class="literature" >
+  <view class="literatureItem" wx:for="{{literatures}}" wx:if="{{index < 5 || allTip}}"  bindlongtap="copyText"  data-item="{{item}}" >
+    <view class="serial"><view></view>{{index+1}}.</view>
+    <view class="title">{{item.title}} 
+      <block wx:if="{{item.author}}">;{{item.author}}</block>
+      <block class="time" wx:if="{{item.time}}">;{{item.time}}</block>
+      <block class="platform" wx:if="{{item.platform}}">;{{item.platform}}</block>
+    </view>
+  </view>
+  <view class="btn" bindtap="changeTip">{{allTip?'收起':'展开'}}</view>
+</view>

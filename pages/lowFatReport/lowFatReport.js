@@ -1,5 +1,6 @@
 // pages/lowFatReport/lowFatReport.js
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 import {
   Toast as toast,
   Toast,
@@ -109,5 +110,8 @@ Page({
     mta.Event.stat('zhulujing',{'clicksharefriendscircle':'true'})
     toast.warn("敬请期待");
     return;
+  },
+  literature(){
+    HiNavigator.navigateToLiterature();
   }
 })

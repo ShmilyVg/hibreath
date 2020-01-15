@@ -1,0 +1,51 @@
+/* pagesIndex/literature/literature.wxss */
+
+.literature {
+  padding: 51rpx 71rpx;
+}
+
+.literatureItem {
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #726c6c;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+.literatureItem view {
+  display: inline;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(69, 69, 69, 1);
+}
+
+.serial {
+  position: relative;
+  margin-right: 10rpx;
+}
+
+.serial view {
+  position: absolute;
+  left: -21rpx;
+  top: 19rpx;
+  display: block;
+  width: 12rpx;
+  height: 12rpx;
+  background: rgba(240, 145, 126, 1);
+  border-radius: 50%;
+}
+
+.btn {
+  width: 260rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  background: rgba(255, 247, 245, 1);
+  border-radius: 38rpx;
+  margin: 50rpx auto 100rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(237,111,105,1);
+  text-align: center;
+}

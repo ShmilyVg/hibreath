@@ -31,9 +31,13 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToRecomTar({personalCenter}) {
       this.navigateTo({url: '/pages/recomTar/recomTar?personalCente='+personalCenter});
     }
-    //进入今日减脂报告
+    //进入减脂报告
     static navigateToLowFatReport(reportId) {
       this.navigateTo({url: `/pages/lowFatReport/lowFatReport?reportId=${reportId}`});
+    }
+    //参考文献
+    static navigateToLiterature() {
+      this.navigateTo({url: `/pagesIndex/literature/literature`});
     }
     //准备日-视频打卡
     static navigateTofoodVideoclock({id,videoUrl}) {

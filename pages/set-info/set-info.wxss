@@ -338,12 +338,40 @@
   color: rgba(255, 255, 255, 1);
   margin-bottom: 25rpx;
 }
-
+.set-info-top-text6 {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 25rpx;
+  position: relative;
+  
+  box-sizing: border-box;
+}
+.set-info-top-text6 image{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  position: absolute;
+}
+.set-info-top-text6 image:nth-of-type(1){
+  left: 0;
+  top: 0;
+}
+.set-info-top-text6 image:nth-of-type(2){
+  left: 25rpx;
+  top: 0;
+}
+.set-info-top-text6 image:nth-of-type(3){
+  left: 50rpx;
+  top: 0;
+}
 .set-info-top-text2 {
   font-size: 44rpx;
   font-family: PingFang SC;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
+  
 }
 
 .bigTruth {

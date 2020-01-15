@@ -408,6 +408,7 @@ Page({
       taskListAll: result.taskList,
       bgColorSetInfoPage: "#f2f2f2",
       days:result.days,
+      checkin: result.checkin,
       inTaskProgress:result.inTaskProgress
     });
     //每天任务完成 积分奖励

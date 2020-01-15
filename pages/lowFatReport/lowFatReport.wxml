@@ -4,7 +4,7 @@
   <view class="header_counts">打卡第 {{report.clockinAddup | 0}} 天</view>
   <image src="../../images/lowFatReport/bg.png" class="bg"></image>
   <view class="pageItem readyLow">
-    <view class="ItemTit">今日已减脂克数</view>
+    <view class="ItemTit">今日已减掉脂肪约</view>
     <view class="readyNum">
       {{report.losefatGrams.grams }}
       <text class="readyUnit">g</text>
@@ -18,6 +18,7 @@
       </view>
       <view class="imageItem">
         <image src="{{report.losefatGrams.sprotIconUrl}}"></image>
+        <view class="foodNum">X {{report.losefatGrams.sprotQuantity}}</view>
         <view>{{sprotDescription[0]}}</view>
         <view>{{sprotDescription[1]}}</view>
       </view>
@@ -44,7 +45,7 @@
         <view class="speedItemV">{{report.losefatSpeed.dataValueToday}}</view>
       </view>
       <view class="speedItem">
-        <view class="speedItemTit">预计今日总消耗脂肪</view>
+        <view class="speedItemTit">预计今日总消耗脂肪约</view>
         <view class="speedItemV">{{report.losefatSpeed.grams}}
           <text>g</text>
         </view>
@@ -135,7 +136,7 @@
 
   <view class="reviewedTitle space-between">
     <text>专业点评</text>
-    <!-- <view> <image src="../../images/lowFatReport/literature.png"></image>参考文献</view> -->
+    <view bindtap="literature"> <image src="../../images/lowFatReport/literature.png"></image>参考文献</view>
   </view>
   <view class="pageItem reviewed">
     <image src="../../images/lowFatReport/buttom.png" class="reviewedBg"></image>

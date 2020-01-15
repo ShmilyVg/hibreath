@@ -245,7 +245,7 @@
 					"id": 26,
 					"name": "pagesIndex/slimpleBox/slimpleBox",
 					"pathName": "pagesIndex/slimpleBox/slimpleBox",
-					"query": "type=threeBox&foodId=5e0ebba7edb0c2b52e414083",
+					"query": "type=twoBox&foodId=5e0ebbd9edb0c2b52e41409e",
 					"scene": null
 				},
 				{
@@ -315,6 +315,14 @@
 					"id": -1,
 					"name": "pagesIndex/device-bind/device-bind",
 					"pathName": "pagesIndex/device-bind/device-bind",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/literature/literature",
+					"pathName": "pagesIndex/literature/literature",
+					"query": "type=twoBox&foodId=5e0ebbd9edb0c2b52e41409e",
 					"scene": null
 				}
 			]

@@ -232,6 +232,7 @@ page {
     font-size:24rpx;
     font-family:PingFang SC;
     font-weight:400;
+    margin-right: 6rpx;
     color:rgba(69,69,69,1);
 }
 .day-body-foodlist {
