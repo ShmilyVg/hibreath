@@ -229,6 +229,11 @@ Page({
       showMytoast:true,
       toastType: "weight"
     })
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
     setTimeout(()=>{
       this.setData({
         showMytoast:false,
