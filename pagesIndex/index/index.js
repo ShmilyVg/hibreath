@@ -184,13 +184,12 @@ Page({
         app.onGetUserInfo = ({userInfo}) => this.setData({userInfo});
         let info = app.globalData.userInfo;
         console.log(app.globalData,"globalData")
-        if (info) {
+        if(info) {
             this.setData({
                 userInfo: info
             })
         }
-        if
-        (this.data.firstInto) {
+        if(this.data.firstInto) {
             Protocol.getAnalysisNotes().then(data => {
                 let noteList = data.result.list;
 

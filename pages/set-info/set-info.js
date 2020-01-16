@@ -81,7 +81,7 @@ Page({
     fatTextEn: "",
     fatType: "",
     fatDes: "",
-
+    inTaskProgress:false,
     shareDown: "../../images/set-info/shareDown.png",
     shareUp: "../../images/set-info/shareUp.png",
     shareTotalDif: "",
@@ -176,7 +176,7 @@ Page({
     wx.setStorageSync('showGuide', 'hiddenGuide');
   },
   onHide() {
-    
+
     //离开时 告知蓝牙标志位 0x3D   0X02
     if (app.getLatestBLEState().connectState === "connected") {
       var pages = getCurrentPages(); //获取加载的页面
@@ -190,7 +190,7 @@ Page({
           showExcitation: false,
       });
 
-      
+
   },
   /**
    * @desc  保存体重信息
@@ -1042,7 +1042,7 @@ Page({
       answerBtnReady:true
     })
     let res = await Protocol.answerFinish(data);
-    
+
     let rightTxt = res.result.taskType == 'single'?'首次答对减脂大实话获得10积分':'完成每日答对减脂大实话获得1积分';
     if (res.result.isCorrect ==1){
       wx.showToast({

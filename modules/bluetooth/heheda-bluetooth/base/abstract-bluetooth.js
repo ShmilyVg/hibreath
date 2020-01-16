@@ -243,9 +243,9 @@ export default class AbstractBlueTooth {
         return new Promise((resolve, reject) => {
                 // this.stopBlueToothDevicesDiscovery().finally(() => {
                 this._isActiveCloseBLE = true;
-                this._isConnected = false;
-                if (this._deviceId) {
-                  setTimeout(()=>{
+          if (this._isConnected && this._deviceId) {
+            this._isConnected = false;
+            setTimeout(()=>{
                     wx.closeBLEConnection({
                       deviceId: this._deviceId,
                       success: res => {
@@ -264,6 +264,7 @@ export default class AbstractBlueTooth {
                     });
                   },500)
                 }else{
+                  this._isConnected = false;
                   console.log('closeBLEConnection already close!!!');
                   resolve();
                 }
