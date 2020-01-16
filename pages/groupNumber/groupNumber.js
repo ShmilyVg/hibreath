@@ -17,16 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    const { result } = await Protocol.postMemberInfo();
-    if(result.finishedPhone){
-      this.setData({
-        isShow:false
-      })
-    }else{
-      this.setData({
-        isShow:true
-      })
-    }
+
   },
   /**
    * @desc 输入群号
@@ -116,8 +107,18 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+ async onShow () {
+    const { result } = await Protocol.getAccountInfo();
+    console.log('result',result)
+    if(result.finishedGuide){
+      this.setData({
+        isShow:false
+      })
+    }else{
+      this.setData({
+        isShow:true
+      })
+    }
   },
 
   /**
