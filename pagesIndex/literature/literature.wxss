@@ -12,12 +12,13 @@
   flex-wrap: wrap; */
 }
 
-.literatureItem view {
+.literatureItem text {
   display: inline;
   font-size: 28rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: rgba(69, 69, 69, 1);
+  line-height: 40rpx;
 }
 
 .serial {
@@ -25,7 +26,7 @@
   margin-right: 10rpx;
 }
 
-.serial view {
+.serial text {
   position: absolute;
   left: -21rpx;
   top: 19rpx;

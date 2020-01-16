@@ -93,6 +93,7 @@ Page({
         platform: 'Comparative Biochemistry and Physiology'
       }
     ],
+    showList:[],
     allTip:false
   },
 
@@ -101,8 +102,16 @@ Page({
       allTip: !this.data.allTip
     })
   },
-  copyText(e){
-    let item = e.currentTarget.dataset.item
+  onLoad(){
+    let showList = this.data.literatures.map((item)=>{
+      console.log(item)
+      return this.showText(item);
+    });
+    this.setData({
+      showList
+    })
+  },
+  showText(item){
     let arr = ['title', 'author', 'time','platform'];
     let txt ='';
     for (let key of arr){
@@ -110,18 +119,6 @@ Page({
         txt += item[key]+';'
       }
     }
-    console.log(txt)
-    wx.setClipboardData({
-      data: txt,
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({
-              title: '复制成功'
-            })
-          }
-        })
-      }
-    })
+    return txt;
   }
 })
