@@ -220,7 +220,7 @@ Page({
         getApp().globalData.isGroupjoin = true //是圈子进入 加入 燃脂页面的标志位
         HiNavigator.reLaunchToGroupNumber()
       }
-      HiNavigator.navigateToCreateCommunity()
+      //HiNavigator.navigateToCreateCommunity()
     },
     async toReductionList(){
         HiNavigator.navigateToReductionList({groupId:(await judgeGroupEmpty()).groupId})
