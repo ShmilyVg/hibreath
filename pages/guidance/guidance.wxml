@@ -66,8 +66,8 @@
   <view class="btn_group" wx:if="{{guidance.page <4}}">
     <button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'下一步':'好哒'}}
     </button>
-    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back"> {{guidance.page >0?'返回':' 　 '}}
-    </view>
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back" wx:if="{{guidance.page >0}}">返回</view>
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" wx:if="{{guidance.page == 0}}">  　 </view>
   </view>
   <view class="btn_group" wx:elif="{{guidance.page == 4}}">
     <button class="bottom-page4 {{guidance.btnAble ? 'btnAble':'btnUnAble'}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">完成
