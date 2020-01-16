@@ -3,7 +3,7 @@
 <view style="margin-bottom: 150rpx" class="groupNumber-title">与群内伙伴一起减脂</view>
 <view class="goVerification-view {{sharedIdFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}">
     <input class="goVerification-input" bindfocus="sharedIdFocus" bindblur="sharedIdBlur" value="{{sharedId}}" placeholder="请填写您的Slimple群号" maxlength="4" placeholder-class="goVerification-placeholder"  bindinput="bindInputNumber" type="number"/>
-    <view class="goVerification-lookNumber" hover-class="press-style" style="height: 48rpx;line-height: 48rpx">查看群号</view>
+    <view class="goVerification-lookNumber" bindtap="showNumber" hover-class="press-style" style="height: 48rpx;line-height: 48rpx">查看群号</view>
     <view class="clear"></view>
 </view>
 <button class="goVerification-btn" disabled="{{disabledBtn}}" hover-class="press-style" bindtap="submitMsg">确定</button>

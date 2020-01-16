@@ -1,16 +1,16 @@
 // pages/groupNumber/groupNumber.js
-import {Toast} from "heheda-common-view";
+import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
 import {whenDismissGroup} from "../community/social-manager";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    disabledBtn:true
+    disabledBtn:true,
+    isShow:true
   },
 
   /**
@@ -96,6 +96,15 @@ Page({
   },
   goGuidance(){
     HiNavigator.navigateToGuidance({ reset: false })
+  },
+  showNumber(){
+    setTimeout(() => {
+      wx.showToast({
+        title: '购买代餐即可进入减脂群哦',
+        icon: 'none',
+        duration: 2000
+      });
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
