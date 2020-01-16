@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "加入减脂圈",
+  "usingComponents": {
+    "my-toast": "../../components/my-toast/my-toast"
+  }
+}

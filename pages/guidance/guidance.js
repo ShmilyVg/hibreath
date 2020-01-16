@@ -278,6 +278,9 @@ Page({
       });
     }
   },
+  onUnload: function () {
+    HiNavigator.switchToSetInfo()
+  },
   handlerGobackClick(){
     getApp().globalData.issueRefresh = true;
     HiNavigator.switchToSetInfo()

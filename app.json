@@ -33,7 +33,8 @@
     "pages/personalCenter/personalCenter",
     "pages/guidance/guidance",
     "pages/recomTar/recomTar",
-    "pages/lowFatReport/lowFatReport"
+    "pages/lowFatReport/lowFatReport",
+    "pages/groupNumber/groupNumber"
   ],
   "subpackages": [
     {

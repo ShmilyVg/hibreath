@@ -47,22 +47,7 @@ Page({
     })
     this.disBtn()
   },
-  /**
-   * @desc 群号聚焦
-   */
-  sharedIdFocus(){
-    this.setData({
-      sharedIdFocus:true
-    })
-  },
-  /**
-   * @desc 群号失焦
-   */
-  sharedIdBlur(){
-    this.setData({
-      sharedIdFocus:false
-    })
-  },
+
   /**
    * @desc 手机号聚焦
    */
@@ -99,7 +84,7 @@ Page({
    * @desc 非空校验
    */
   disBtn(){
-    if(this.data.phoneNumbers&&this.data.code&&this.data.sharedId){
+    if(this.data.phoneNumbers&&this.data.code){
       this.setData({
         disabledBtn:false
       })
@@ -115,7 +100,7 @@ Page({
   async getCode(){
     if(!this.data.phoneNumbers || !/^1\d{10}$/.test(this.data.phoneNumbers)){
       wx.showToast({
-        title: '请输入手机号',
+        title: '请输入正确的手机号',
         duration: 1000,
         image: '../../images/loading_fail.png'
       })
@@ -153,7 +138,7 @@ Page({
    */
   async submitMsg(){
     Toast.showLoading('登录中')
-    const {result} = await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code,sharedId:this.data.sharedId}))
+    const {result} = await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code}))
     Toast.hiddenLoading()
     if(result.inTaskProgress){
       this.setData({
@@ -165,10 +150,12 @@ Page({
           showMytoast:false,
         })
         Toast.hiddenLoading()
-        HiNavigator.navigateToGuidance({reset:false})
+        HiNavigator.reLaunchToGroupNumber()
+        //HiNavigator.navigateToGuidance({reset:false})
       },2000)
     }else{
-      HiNavigator.navigateToGuidance({ reset: false })
+      HiNavigator.reLaunchToGroupNumber()
+      //HiNavigator.navigateToGuidance({ reset: false })
     }
 
    /* wx.showToast({
