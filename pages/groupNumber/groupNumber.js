@@ -16,8 +16,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  async onLoad(options) {
+    const { result } = await Protocol.postMemberInfo();
+    if(result.finishedPhone){
+      this.setData({
+        isShow:false
+      })
+    }else{
+      this.setData({
+        isShow:true
+      })
+    }
   },
   /**
    * @desc 输入群号
