@@ -861,8 +861,10 @@ button::after {
 }
 
 .commodity_input {
-  height: 120rpx;
+  height: 160rpx;
+  line-height: 120rpx;
   font-size: 120rpx;
+  padding-bottom: 40rpx;
   font-family: DIN Condensed;
   font-weight: bold;
   color: rgba(69, 69, 69, 1);
@@ -872,7 +874,7 @@ button::after {
 .commodity_line {
   width: 180rpx;
   height: 2rpx;
-  margin: 40rpx auto;
+  margin: 0rpx auto 40rpx;
   background: rgba(237, 111, 105, 1);
 }
 
