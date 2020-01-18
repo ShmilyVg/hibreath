@@ -1,4 +1,13 @@
 <!--pages/groupNumber/groupNumber.wxml-->
+<navBar
+        title='加入减脂圈'
+        color="#000000"
+        iconTheme="black"
+        background='#FFFFFF'
+        back="{{true}}"
+        bindback="handlerGobackClick">
+
+</navBar>
 <view style="margin-bottom: 30rpx" class="groupNumber-title">填写您所加入的Slimple群号</view>
 <view style="margin-bottom: 150rpx" class="groupNumber-title">与群内伙伴一起减脂</view>
 <view class="goVerification-view {{sharedIdFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}">

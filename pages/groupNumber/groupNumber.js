@@ -127,17 +127,19 @@ Page({
   onHide: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  handlerGobackClick(){
     if(getApp().globalData.isGroupjoin){
       getApp().globalData.isGroupjoin =false
       HiNavigator.switchToCommunity()
     }else{
       HiNavigator.switchToSetInfo()
     }
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
   },
 
   /**
