@@ -1046,14 +1046,11 @@ Page({
     this.setData({
       answerBtnReady:true
     })
-    let res = await Protocol.answerFinish(data);
-
-    let rightTxt = res.result.taskType == 'single'?'首次答对减脂大实话获得10积分':'完成每日答对减脂大实话获得1积分';
-    if (res.result.isCorrect ==1){
-      wx.showToast({
-        title: rightTxt,
-        icon: 'none',
-        duration: 2000
+    const { result: bodyIndexResult } = await Protocol.answerFinish(data);
+    if (bodyIndexResult.isCorrect ==1){
+      this.setData({
+        ...bodyIndexResult,
+        showMytoast: true,
       })
     }
     this.getAnswer()
