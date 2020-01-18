@@ -108,6 +108,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
  async onShow () {
+    Toast.showLoading()
     const { result } = await Protocol.getAccountInfo();
     console.log('result',result)
     if(result.finishedGuide){
@@ -119,6 +120,9 @@ Page({
         isShow:true
       })
     }
+    setTimeout(()=>{
+      Toast.hiddenLoading()
+    },500)
   },
 
   /**
