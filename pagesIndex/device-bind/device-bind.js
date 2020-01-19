@@ -150,43 +150,18 @@ Page({
        this.indexCommonManager = new IndexCommonManager(this);
         app.setBLEListener({
             bleStateListener: ({state}) => {
-              /*  if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
-                    this.setData({
-                        bindSuccess:true,
-                        finding:false,
-                        finded:false,
-                        nofind:false,
-
-                    })
-
-                }else{
-                    this.showResult({state: state.connectState});
-                }*/
                 if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
-
                     //绑定后 跳转绑定成功页面  点击按钮再进入index页面
                     this.isBind = true;
                     setTimeout(() => HiNavigator.navigateSuccessInfo());
                     mta.Event.stat('ranzhijiance',{'bindsuccess':'true'})
                     /* setTimeout(() => HiNavigator.navigateBack({delta: 1}));*/
                 }else{
-                    console.log('diao')
                     this.showResult({state: state.connectState});
                 }
             },
             receiveDataListener: ({finalResult, state}) => {
-                // if (ProtocolState.GET_CONNECTED_RESULT_SUCCESS === state.protocolState) {
-                //     this.isBind = true;
-                //     const {isConnected} = finalResult;
-                //     const bleManager = app.getBLEManager();
-                //     bleManager.updateBLEStateImmediately(
-                //         bleManager.getState({
-                //             connectState: ConnectState.CONNECTED,
-                //             protocolState: ProtocolState.CONNECTED_AND_BIND
-                //         })
-                //     );
-                //     isConnected && HiNavigator.navigateBack({delta: 1});
-                // }
+
             }
         });
         //是否需要升级 标志位

@@ -10,7 +10,7 @@ Page({
    */
   data: {
     disabledBtn:true,
-    isShow:true
+    isShow:false
   },
 
   /**
