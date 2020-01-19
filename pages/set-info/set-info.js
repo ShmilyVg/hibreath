@@ -1052,6 +1052,11 @@ Page({
         ...bodyIndexResult,
         showMytoast: true,
       })
+      setTimeout(() => {
+        this.setData({
+          showMytoast: false,
+        })
+      }, 3000)
     }
     this.getAnswer()
   },
