@@ -394,28 +394,29 @@ Page({
     console.log("getCurrentPages()", getCurrentPages());
     //Toast.showLoading();
     const { result } = await Protocol.postMembersTasks();
-    if(result.isFirstEveryday){
-      mta.Event.stat('zhulujing',{'enternewbietask':'true'})
-    }
-    this.setData({
-      showNewInfo: false,
-      showGoclockin: false,
-      showGuide:false,
-      planId: result.planId,
-      planInfo:result.planInfo,
-      sharedId: result.sharedId,
-      isGroup:result.isGroup,
-      caseOnReady: result.onReady,
-      caseonFinished: result.onFinished,
-      caseonEveryday: result.onEveryday,
-      indexfinishNum: result.finishNum,
-      indextaskNum: result.taskNum,
-      taskListAll: result.taskList,
-      bgColorSetInfoPage: "#f2f2f2",
-      days:result.days,
-      checkin: result.checkin,
-      inTaskProgress:result.inTaskProgress
-    });
+    if(result){
+      if(result.isFirstEveryday){
+        mta.Event.stat('zhulujing',{'enternewbietask':'true'})
+      }
+      this.setData({
+        showNewInfo: false,
+        showGoclockin: false,
+        showGuide:false,
+        planId: result.planId,
+        planInfo:result.planInfo,
+        sharedId: result.sharedId,
+        isGroup:result.isGroup,
+        caseOnReady: result.onReady,
+        caseonFinished: result.onFinished,
+        caseonEveryday: result.onEveryday,
+        indexfinishNum: result.finishNum,
+        indextaskNum: result.taskNum,
+        taskListAll: result.taskList,
+        bgColorSetInfoPage: "#f2f2f2",
+        days:result.days,
+        checkin: result.checkin,
+        inTaskProgress:result.inTaskProgress
+      });
     //每天任务完成 积分奖励
     if(result.inTaskProgress && wx.getStorageSync('today') !== new Date().getDay()){
       this.setData({
@@ -430,6 +431,7 @@ Page({
       },3000)
       wx.setStorageSync('today',new Date().getDay())
     }
+
     if(this.data.indexfinishNum === this.data.indextaskNum){
        this.setData({
          taskToptext:'报告已解锁·点击查看',
@@ -483,78 +485,7 @@ Page({
           });
         }
       }
-      if (typesArr[i] === "sport") {
-        const sportExt = result.taskList[i].ext;
-        if (result.taskList[i].finished) {
-          this.setData({
-            sportFin: true
-          });
-        }
-        if (sportExt.recommendList[0].list.length == 1) {
-          this.setData({
-            aheight: 230
-          });
-        } else {
-          this.setData({
-            aheight: sportExt.recommendList[0].list.length * 110 + 205
-          });
-        }
-        this.setData({
-          currentSwiper: 0,
-          sportTask: result.taskList[i],
-          sportExt: sportExt
-        });
-        if (sportExt.recommendList.length < 2) {
-          this.setData({
-            hiddenImg: true
-          });
-        } else {
-          this.setData({
-            hiddenImg: false
-          });
-        }
-      }
-      if (typesArr[i] === "food") {
-        this.component = this.selectComponent(".countdown");
-        this.setData({
-          component: this.component
-        });
-        const foodExt = result.taskList[i].ext;
-        if (result.taskList[i].finished) {
-          this.setData({
-            foodFin: true
-          });
-        }
-        if (foodExt.isMeal) {
-          if(foodExt.mealList !==[]){
-              if(foodExt.mealList[foodExt.mealIndex].list.length == 1) {
-                  this.setData({
-                      foodAheight: 230
-                  });
-              } else {
-                  this.setData({
-                      foodAheight: foodExt.mealList[foodExt.mealIndex].list.length * 110 + 235
-                  });
-              }
-          }
-          this.setData({
-            foodcurrentSwiper: foodExt.mealIndex,
-          });
-        }
-        this.setData({
-          foodExt: foodExt,
-          foodTask: result.taskList[i]
-        });
-        if (foodExt.mealList.length < 2) {
-          this.setData({
-            foodHiddenImg: true
-          });
-        } else {
-          this.setData({
-            foodHiddenImg: false
-          });
-        }
-      }
+    }
     }
     if(this.data.showGuide){
       wx.hideTabBar({
