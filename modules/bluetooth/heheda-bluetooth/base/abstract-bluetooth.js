@@ -10,6 +10,7 @@ import * as mta from "../../../analysis/mta";
 import CommonProtocol from "../../../network/network/libs/protocol";
 /*暂作修改*/
 const INIT_TIMEOUT = 10;
+const timeOut = 500;
 export default class AbstractBlueTooth {
     constructor() {
         this._isOpenAdapter = false;
@@ -97,7 +98,7 @@ export default class AbstractBlueTooth {
                                 reject(res);
                             }
                         });
-                    }, isBugPhone ? 150 : 0);
+                    }, timeOut);
 
                 })
             } else {
@@ -117,18 +118,20 @@ export default class AbstractBlueTooth {
                 console.log('蓝牙适配器不可用的时候，停止了搜索')
                 this.stopBlueToothDevicesDiscovery().finally(() =>
                     this.closeBLEConnection().finally(() => {
-                        wx.closeBluetoothAdapter({
+                        setTimeout(()=>{
+                          wx.closeBluetoothAdapter({
                             success: (res) => {
-                                console.log('断开蓝牙Adapter成功', res);
-                                this._resetInitData();
-                                this._isConnected = false;
-                                resolve({isOpenAdapter: this._isOpenAdapter});
+                              console.log('断开蓝牙Adapter成功', res);
+                              this._resetInitData();
+                              this._isConnected = false;
+                              resolve({isOpenAdapter: this._isOpenAdapter});
                             }, fail: function (res) {
-                                console.log('断开蓝牙Adapter失败', res);
-                                this._isConnected = false;
-                                reject(res);
+                              console.log('断开蓝牙Adapter失败', res);
+                              this._isConnected = false;
+                              reject(res);
                             }
-                        })
+                          })
+                        },timeOut)
                     })
                 );
             } else {
@@ -343,16 +346,18 @@ export default class AbstractBlueTooth {
                 // t开始扫描
                 this._getEventAndTimestamp({event: 'startScanTime'});
                 console.log('蓝牙相关log————开始搜寻附近的蓝牙外围设备,uuid 列表为',this.UUIDs)
+              setTimeout(()=>{
                 wx.startBluetoothDevicesDiscovery({
-                    services: this.UUIDs,
-                    allowDuplicatesKey: true,
-                    interval: 10,
-                    success: () => {
-                        console.log('开始扫描蓝牙设备');
-                        this._isStartDiscovery = true;
-                        resolve({isStartDiscovery: this._isStartDiscovery});
-                    }, fail: reject
+                  services: this.UUIDs,
+                  allowDuplicatesKey: true,
+                  interval: 10,
+                  success: () => {
+                    console.log('开始扫描蓝牙设备');
+                    this._isStartDiscovery = true;
+                    resolve({isStartDiscovery: this._isStartDiscovery});
+                  }, fail: reject
                 });
+              },timeOut)
             } else {
                 resolve({isStartDiscovery: this._isStartDiscovery});
             }
