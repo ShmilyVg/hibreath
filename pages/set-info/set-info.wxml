@@ -80,7 +80,7 @@
             <image class="answerImg " src="../../images/set-info/error.png"></image><text>答错啦...</text>
           </view>
           <view class="answerDetails">
-            <view class="answerResult">正确答案：{{answerData.answerDatabaseBeanstandardAnswer?'Yes':'NO'}}</view>
+            <view class="answerResult">正确答案：{{answerData.answerDatabaseBean.standardAnswer?'Yes':'NO'}}</view>
             <view>{{answerData.answerDatabaseBean.explanation}}</view>
           </view>
           <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率 <text>{{answerData.correctRate}}%</text></view>
