@@ -153,6 +153,9 @@ Page({
               quality: 60, // 压缩质量
               fail(res) {
                 console.log('调用压缩接口失败', res)
+                that.setData({
+                  compressImg: path
+                })
               },
               success(res) {
                 that.setData({
@@ -161,38 +164,9 @@ Page({
                 console.log('压缩成功后的返回', res)
 
                 console.log('that.data.compressImg', that.data.compressImg)
-                wx.uploadFile({
-                  url: UploadUrl, // 接口地址
-                  filePath: that.data.compressImg, // 上传文件的临时路径
-                  name: 'file',
-                  success(res) {
-                    console.log('uploadFile调用成功后的返回', res)
-                    // 采用选择几张就直接上传几张，最后拼接返回的url
-                    imgbox.push(path)
-                    that.setData({
-                      compressImg: ''
-                    })
-                    setTimeout(()=>{
-                      wx.hideLoading();
-                    },500)
-                    var obj = JSON.parse(res.data)
-                    console.log("obj", obj)
-                    var more = []
-                    more.push(obj.result.img_url)
-                    console.log(more, 'more')
-                    var tem = that.data.imageUrl
-                    that.setData({
-                      imageUrl: tem.concat(more),
-                      imgbox
-                    })
-                    console.log('照片imageUrl', that.data.imageUrl)
-                    console.log('照片imgbox', that.data.imgbox)
-                    that.disBtn()
-                  },
-                  fail(err) {
-                    console.log("uploadFile:", err)
-                  }
-                })
+              },
+              complete(){
+                that.uploadFileFun(imgbox, path); 
               }
             })
 
@@ -215,6 +189,42 @@ Page({
     })
 
 
+  },
+
+  uploadFileFun(imgbox, path){
+    var that = this;
+    wx.uploadFile({
+      url: UploadUrl, // 接口地址
+      filePath: that.data.compressImg, // 上传文件的临时路径
+      name: 'file',
+      success(res) {
+        console.log('uploadFile调用成功后的返回', res)
+        // 采用选择几张就直接上传几张，最后拼接返回的url
+        imgbox.push(path)
+        that.setData({
+          compressImg: ''
+        })
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 500)
+        var obj = JSON.parse(res.data)
+        console.log("obj", obj)
+        var more = []
+        more.push(obj.result.img_url)
+        console.log(more, 'more')
+        var tem = that.data.imageUrl
+        that.setData({
+          imageUrl: tem.concat(more),
+          imgbox
+        })
+        console.log('照片imageUrl', that.data.imageUrl)
+        console.log('照片imgbox', that.data.imgbox)
+        that.disBtn()
+      },
+      fail(err) {
+        console.log("uploadFile:", err)
+      }
+    })
   },
   // 点击预览大图
   previewImage(e) {
