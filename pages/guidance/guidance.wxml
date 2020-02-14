@@ -1,9 +1,8 @@
 <!--pages/guidance/guidance.wxml-->
-<navBar title='我的减脂历程' color="black" iconTheme="black" background='#ffffff' back="{{true}}" bindback="handlerGobackClick">
-
-</navBar>
+<navBar title='Slimple轻松派' color="{{guidance.page > 0?'black':'white'}}" iconTheme="{{guidance.page > 0?'black':'white'}}" background="{{guidance.page > 0?'#ffffff':'#7BC877'}}" back="{{true}}" bindback="handlerGobackClick"></navBar>
 <view class="guidance">
   <view class="firstPage" wx:if="{{guidance.page==0}}">
+  <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
     <view class="portrait_con">
       <image class="portrait" src="{{guidance.portraitUrl}}"></image>
     </view>
@@ -15,8 +14,8 @@
     <view class="text_center">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
-    <view class="space-between clear">
-      <view class="{{item.isChose?'card-chose':'card'}} flex-column {{item.isChose?'sexChose':''}}" wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+    <view class="sexCon clear">
+      <view class="{{item.isChose?'card-chose':'card'}} sexItem " wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
         <image class="sex-image" src="../../images/set-info/{{item.image}}{{item.isChose?'-select':''}}.png"></image>
         <view class="sex-text">{{item.text}}</view>
       </view>
@@ -28,22 +27,20 @@
     <view class="text_center" style="margin-bottom: 79rpx;">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
-    <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
+    <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}" ></pickerDate>
   </view>
   <view class="otherPage " wx:if="{{guidance.page==3}}">
-    <view class="header_h3 text_center">当前身高体重</view>
+    <view class="header_h3 text_center">身高体重</view>
     <view class="text_center">
       <text class="curPage">{{guidance.page}}/4</text>
     </view>
     <view class="space-between">
       <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
         <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
-        <view class="page2-line"></view>
         <view class="page2-kg">CM</view>
       </view>
       <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
         <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
-        <view class="page2-line"></view>
         <view class="page2-kg">KG</view>
       </view>
     </view>
@@ -63,16 +60,16 @@
 
 
 
-  <view class="btn_group" wx:if="{{guidance.page <4}}">
-    <button class="bottom-btn" style="background-color: #ED6F69;color: #ffffff;" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'下一步':'好哒'}}
+  <view class="btn_group">
+    <button class="bottom-btn {{guidance.page > 0? 'greenBtn':'whiteBtn'}}"  hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page > 0?'完成':'好哒'}}
     </button>
     <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back" wx:if="{{guidance.page >0}}">返回</view>
-    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" wx:if="{{guidance.page == 0}}">  　 </view>
+    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" wx:if="{{guidance.page == 0}}"> 　 </view>
   </view>
-  <view class="btn_group" wx:elif="{{guidance.page == 4}}">
+  <!-- <view class="btn_group" wx:elif="{{guidance.page == 4}}">
     <button class="bottom-page4 {{guidance.btnAble ? 'btnAble':'btnUnAble'}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">完成
     </button>
     <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back">返回
     </view>
-  </view>
+  </view> -->
 </view>

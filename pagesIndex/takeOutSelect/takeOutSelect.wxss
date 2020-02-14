@@ -1,17 +1,25 @@
 /* pagesIndex/takeOutSelect/takeOutSelect.wxss */
 
 page {
-  background-color: #fff;
+  background-color: #7BC877;
+  height: 100%;
 }
-
+view{
+  box-sizing: border-box;
+}
 .takeOutSelect {
   position: relative;
+  height: 100%;
 }
-
-.takeBg {
-  width: 100%;
-  height: 232rpx;
-  margin-bottom: 68rpx;
+.rzbg{
+  position: absolute;
+  width: 283rpx;
+  height: 359rpx;
+  right: 40rpx;
+  top: 57rpx;
+}
+.headTake{
+  height: 210rpx;
 }
 
 .title {
@@ -39,7 +47,12 @@ page {
   color: rgba(255, 201, 187, 1);
   line-height: 25rpx;
 }
-
+.itemCon{
+  background-color: #fff;
+  height: calc(100% - 210rpx);
+  padding-top:83rpx; 
+  border-top-left-radius: 100rpx;
+}
 .selectItem {
   padding: 0 41rpx;
   margin-bottom: 90rpx;

@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "我的减脂历程",
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "Slimple轻松派",
+  "navigationBarBackgroundColor": "#7BC877",
+  "navigationBarTextStyle": "white",
   "navigationStyle": "custom",
   "usingComponents":{
     "pickerDate": "../../components/pickerDate/index",
