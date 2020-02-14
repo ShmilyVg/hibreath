@@ -1,5 +1,5 @@
 <!--pagesIndex/food-details/food-details.wxml-->
-    <image src="{{imgUrl}}" class="food-image"></image>
+<!-- <image src="{{imgUrl}}" class="food-image"></image>
 <view class="food-main">
     <view class="food-name">{{title}}</view>
     <view class="flex-row space-between food-parameter">
@@ -31,6 +31,43 @@
 <view class="need-food">
     <view class="need-title">
         <text class="need-title-red"></text>
+        <text class="need-title-text">具体做法</text>
+    </view>
+    <view wx:if="{{formula}}" class="need-text">{{formula}}</view>
+</view> -->
+
+<view class="titleCon">
+  <view class="title">{{title}}</view>
+  <image src="{{imgUrl}}" class="food-image" mode="aspectFill"></image>
+  <view class="contain" style="margin-bottom:30rpx;">
+    <view>
+      <view class="food-num">{{calorie}}</view>
+      <view class="food-text">千卡</view>
+    </view>
+    <view>
+      <view class="food-num">{{carbohydrate}}</view>
+      <view class="food-text">碳水</view>
+    </view>
+  </view>
+  <view class="contain">
+    <view>
+      <view class="food-num">{{fat}}</view>
+      <view class="food-text">脂肪</view>
+    </view>
+    <view>
+      <view class="food-num">{{protein}}</view>
+      <view class="food-text">蛋白质</view>
+    </view>
+  </view>
+</view>
+<view class="ingredient">
+  <view class="need-title">
+    <text class="need-title-text">需要食材</text>
+  </view>
+  <view wx:if="{{ingredient}}" class="need-text">{{ingredient}}</view>
+</view>
+<view class="practice">
+  <view class="need-title">
         <text class="need-title-text">具体做法</text>
     </view>
     <view wx:if="{{formula}}" class="need-text">{{formula}}</view>

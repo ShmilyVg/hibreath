@@ -59,6 +59,11 @@ Component({
       value: 1
     }
   },
+  observers:{
+    'background, iconTheme':function(){
+      this.setStyle();
+    }
+  },
   created: function() {
     this.getSystemInfo();
   },

@@ -30,6 +30,7 @@ Page({
             case 6:
             case 8:
             case 11:
+            case 13:
                 HiNavigator.switchToSetInfo();
                 break;
             case 9:

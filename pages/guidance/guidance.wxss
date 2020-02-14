@@ -1,6 +1,23 @@
-
+page{
+  height: 100%;
+}
+.guidance{
+  height: calc(100% - 68px);
+}
+.firstPage{
+  padding-top: 170rpx;
+  background-color: #7BC877;
+  height: 100%;
+  position: relative;
+}
+.guidanceBg{
+  position: absolute;
+  width: 371rpx;
+  height: 928rpx;
+  right: 0;
+  bottom: 0;
+}
 .portrait_con {
-  margin-top: 170rpx;
   padding-left: 62rpx;
 }
 
@@ -16,17 +33,17 @@
   font-size: 60rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
-  color: rgba(84, 84, 84, 1);
+  color: #fff;
   line-height: 84rpx;
   padding-left: 62rpx;
 }
 
 .header_text {
   height: 50rpx;
-  font-size: 36rpx;
+  font-size: 28rpx;
   font-family: PingFang-SC-Regular, PingFang-SC;
   font-weight: 400;
-  color: rgba(84, 84, 84, 1);
+  color: #fff;
   line-height: 50rpx;
   padding-left: 62rpx;
 }
@@ -86,9 +103,9 @@
   font-size: 28rpx;
   font-family: PingFang-SC-Regular, PingFang-SC;
   font-weight: 400;
-  color: rgba(239, 122, 115, 1);
+  color: #4FBB49;
   border-radius: 25rpx;
-  border: 1rpx solid rgba(237, 111, 105, 1);
+  background-color: #ECF8EB;
 }
 
 .space-between {
@@ -104,22 +121,29 @@
   border-radius: 20rpx;
   border:1px solid rgba(224,219,231,1);
 }
-
-.sex-text {
+.sexCon{
   margin-top: 50rpx;
+  text-align: center;
+}
+.sexItem{
+  width: 210rpx;
+  margin: 0 auto 50rpx;
+}
+.sex-text {
+  margin-top: 30rpx;
   color: #808080;
 }
 
 .sex-image {
-  width: 70rpx;
-  height: 176rpx;
-  margin-top: 84rpx;
+  width: 210rpx;
+  height: 210rpx;
+  /* margin-top: 84rpx; */
 }
-.sexChose {
+/* .sexChose {
   color: #FF5E00;
   background-color: #FFE6E4;
   border-style: none;
-}
+} */
 .placeholder {
   font-size: 46rpx;
   font-family: PingFang-SC;
@@ -127,31 +151,33 @@
   color: #b0b0b0;
 }
 
-.page2-line {
-  width: 154rpx;
-  height: 2rpx;
-  background-color: #ed6f69;
-  margin: 20rpx auto;
-}
 
 .page2-num {
-  height: 120rpx;
-  font-size: 120rpx;
+  height: 180rpx;
+  line-height: 180rpx;
+  font-size: 100rpx;
   font-weight: bold;
-  color: rgba(69, 69, 69, 1);
+  background-color: #ECF8EB;
+  color: #4FBB49;
+  width: 80%;
+  border-radius: 20rpx;
+  margin: 0 auto;
   font-family: DINCondensed-Bold, DINCondensed;
 }
 
 .hei_wei {
   width: 280rpx;
   height: 401rpx;
+  text-align: center;
 }
 
 .page2-kg {
+  height: 120rpx;
   font-size: 80rpx;
   font-weight: bold;
   color: rgba(69, 69, 69, 1);
-  line-height: 96rpx;
+  line-height: 120rpx;
+  font-family: DINCondensed-Bold, DINCondensed;
 }
 
 .bottom-page4 {
@@ -188,25 +214,32 @@
 }
 
 .disItemActive {
-  background-color: #ffe6e4;
   font-size: 32rpx;
   font-family: PingFang-SC-Regular, PingFang-SC;
   font-weight: 400;
-  border: 1rpx solid #ed6f69;
-  color: rgba(237, 111, 105, 1);
+  color: #4FBB49;
+  background-color: #ECF8EB;
+  border-style: none;
 }
 
 .btn_group {
   width: 100%;
   box-sizing: border-box;
-  padding: 87rpx 0 60rpx;
+  padding-bottom:60rpx;
   position: fixed;
-  color: #ed6f69;
   bottom: 0;
   text-align: center;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .bottom-btn-back {
   padding-top: 35rpx;
+  color: #999999;
+}
+.greenBtn{
+  background-color: #4FBB49;
+  color: #fff;
+}
+.whtieBtn{
+  background-color: #7BC877;
+  color: #ffffff;
 }
