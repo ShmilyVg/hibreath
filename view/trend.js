@@ -54,7 +54,7 @@ function normalTrend(widthRpx) {
     const series = [{
         name: dataListY1Name,
         data: dataListY,
-        color: '#ED6F69',
+        color: '#ffb185',
         format: function (val) {
             return val;
         }

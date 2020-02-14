@@ -81,9 +81,9 @@ page{
 }
 .result-btn{
     color: #fff;
-    background:#ED6F69 ;
+    background:#7BC877 ;
     border-radius: 45rpx;
-    border: 1rpx #ED6F69 solid;
+    border: 1rpx #7BC877 solid;
     width: 220rpx;
     height: 90rpx;
     font-family: PingFang-SC;
@@ -93,9 +93,9 @@ page{
 }
 .result-btn2{
     color: #fff;
-    background:#ED6F69 ;
+    background:#7BC877 ;
     border-radius: 45rpx;
-    border: 1rpx #ED6F69 solid;
+    border: 1rpx #7BC877 solid;
     width: 220rpx;
     height: 90rpx;
     font-family: PingFang-SC;
@@ -124,11 +124,17 @@ button::after{ border: none; }
 .tab_item_active{
     font-family: PingFang-SC;
     font-size: 30rpx;
-    color: #ED6F69;
-    border-bottom: 2rpx #ED6F69 solid;
+    color: #454545;
     float: left;
     height: 55rpx;
     width: 120rpx;
+}
+.active_line{
+    margin: 22rpx auto 0 auto;
+    width:70rpx;
+    height:6rpx;
+    background:rgba(123,200,119,1);
+    border-radius:2rpx;
 }
 .tab_item{
     font-family: PingFang-SC;

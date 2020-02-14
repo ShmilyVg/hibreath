@@ -28,8 +28,14 @@
   <button wx:if="{{fatDes !==''}}" class="result-btn" bindtap="toIndex">吹一吹</button>
   <button wx:else class="result-btn2" bindtap="toIndex">吹一吹</button>
   <view wx:if="{{tabIsShow}}" class="result_tab">
-    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>
+    燃脂记录
+      <view class="active_line" wx:if="{{currenttab==='0'}}"></view>
+    </view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>
+      燃脂趋势
+      <view class="active_line" wx:if="{{currenttab==='1'}}"></view>
+    </view>
     <view class="clear"></view>
   </view>
   <view wx:else class="result_tab" style="opacity: 0"></view>
