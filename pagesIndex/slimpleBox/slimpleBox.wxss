@@ -182,7 +182,7 @@ page {
 
 .day-list-body {
     background: #fff;
-    padding: 94rpx 0rpx 40rpx 0rpx;
+    padding: 94rpx 0rpx 55rpx 0rpx;
 }
 .day-list-body-title{
     font-size:36rpx;
@@ -212,7 +212,7 @@ page {
 }
 .hungry-view{
     width:100%;
-    height:888rpx;
+    height:1200rpx;
     padding: 47rpx 0rpx 0rpx 0rpx;
     box-sizing: border-box;
     background:rgba(255,255,255,1);
@@ -367,4 +367,30 @@ page {
     color: #9B9B9B ;
     line-height:34rpx;
 
+}
+.hungry-view-text1{
+    font-size:28rpx;
+    font-weight:400;
+    color: #454545;
+    font-family: PingFang-SC-Medium;
+}
+.hungry-view-text2{
+     font-size:24rpx;
+     font-weight:400;
+     color: #999999;
+     font-family: PingFang-SC-Regular;
+ }
+.hungry-image-text1{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    margin-top: 26rpx;
+}
+.hungry-image-text2{
+    font-size:24rpx;
+    margin: 15rpx 0 77rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
 }
