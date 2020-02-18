@@ -2,7 +2,7 @@
 .page{
     background-color: #f2f2f2;
     box-sizing: border-box;
-    padding: 30rpx;
+
     position: absolute;
     width: 100%;
     min-height: 100%;
@@ -68,10 +68,8 @@
 .recommendation-content{
     width: 100%;
     box-sizing: border-box;
-    padding: 50rpx 30rpx 30rpx;
+    padding: 50rpx 70rpx 30rpx 30rpx;
     background: #fff;
-    border-radius:10px;
-    margin-bottom: 20rpx;
     position: relative;
 }
 .recommendation-tj{
@@ -104,19 +102,24 @@
     font-family:PingFang SC;
     font-weight:bold;
     color:rgba(51,51,51,1);
-    margin-left: 45rpx;
+    margin-left: 12rpx;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
 }
 .content-kcal{
-    width: 205rpx;
-    text-align: right;
-    font-size:24rpx;
+    width: 159rpx;
+    height:44rpcx;
+    font-size:22rpx;
     font-family:PingFang SC;
     font-weight:500;
-    color:rgba(69,69,69,1);
+    color:#4FBB49;
+    line-height:44rpx;
+    text-align:center;
     z-index: 90;
+    background:rgba(236,248,235,1);
+    border-radius:18px 4px 18px 4px;
+    margin-right: 200rpx;
 }
 .food-title{
     font-size:30rpx;
@@ -141,7 +144,7 @@
     font-weight:400;
     float: right;
     color:rgba(160,160,160,1);
-    line-height: 95rpx;
+    line-height: 144rpx;
 }
 .recommendation-content-bottom{
     margin-bottom: 40rpx;
@@ -157,15 +160,13 @@
 }
 .swiperChange{
     text-align: center;
-    padding-bottom: 20rpx;
-    height: 50rpx;
 }
 
 .swiperText{
     font-size:22rpx;
     font-family:PingFang SC;
     font-weight:400;
-    color:rgba(237,111,105,1);
+    color:#4FBB49;
 }
 .recommendation-text{
     text-align: center;
