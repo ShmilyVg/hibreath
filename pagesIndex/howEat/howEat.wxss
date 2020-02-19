@@ -71,7 +71,7 @@ page{
     border-radius:20rpx ;
     align-items: center;
     position: relative;
-    top:300rpx
+    top:270rpx
 }
 .swiper-view-span{
     width:59rpx;
@@ -83,16 +83,18 @@ page{
     font-weight:500;
     color:rgba(255,255,255,1);
     margin-left: 20rpx;
-    margin-top: 245rpx;
+    margin-top: 210rpx;
+    z-index: 900;
     text-align: center;
 }
 .swiper-view-title{
+    z-index: 900;
     font-size:28rpx;
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(255,255,255,1);
     margin-left: 30rpx;
-    margin-top: 245rpx;
+    margin-top: 210rpx;
 }
 .replacement{
   width: 690rpx;
