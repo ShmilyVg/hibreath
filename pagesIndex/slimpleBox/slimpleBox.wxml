@@ -41,9 +41,9 @@
           </view>
         </view>
         <view style="width: 100%;height:0.5rpx;border-top:0.5rpx dashed rgba(221,221,221,1);margin-top: 35rpx;margin-bottom: 28rpx"></view>
-        
+
         <view style="display: flex; flex-wrap: wrap;">
-        <view style="font-size:24rpx;font-family:PingFang SC;font-weight:500;color:rgba(69,69,69,1);width:750rpx">可选加餐：</view>
+          <view style="font-size:24rpx;font-family:PingFang SC;font-weight:500;color:rgba(69,69,69,1);width:750rpx">可选加餐：</view>
           <view wx:for="{{item.meal}}">
             <view class="meal-title">
               <text>{{item.title}}</text>

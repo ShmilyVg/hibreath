@@ -398,6 +398,8 @@ Page({
       if(result.isFirstEveryday){
         mta.Event.stat('zhulujing',{'enternewbietask':'true'})
       }
+      let checkin = result.checkin;
+      checkin.headImgs = checkin.headImgs.reverse();
       this.setData({
         showNewInfo: false,
         showGoclockin: false,
@@ -406,6 +408,7 @@ Page({
         planInfo:result.planInfo,
         sharedId: result.sharedId,
         isGroup:result.isGroup,
+        checkin: checkin,
         caseOnReady: result.onReady,
         caseonFinished: result.onFinished,
         caseonEveryday: result.onEveryday,
@@ -414,7 +417,6 @@ Page({
         taskListAll: result.taskList,
         bgColorSetInfoPage: "#f2f2f2",
         days:result.days,
-        checkin: result.checkin,
         inTaskProgress:result.inTaskProgress
       });
     //每天任务完成 积分奖励
