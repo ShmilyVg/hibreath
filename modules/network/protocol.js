@@ -528,4 +528,8 @@ export default class Protocol {
     static answerFinish(data) {
         return Network.request({url: 'answerData/answerFinish',data});
     }
+    // 额外补充食物
+    static extraData(data) {
+        return Network.request({url: 'food/extraData',data});
+    }
 }

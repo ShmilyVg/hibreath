@@ -19,6 +19,11 @@ Page({
       ...result,
       pageType:options.type
     })
+    const {result:extraResult} = await  Protocol.extraData()
+    this.setData({
+      ...extraResult.data
+    })
+    console.log('extraResult',this.data.eggs)
     console.log('dataList',this.data.mealInfo)
   },
   goNextpage(e){

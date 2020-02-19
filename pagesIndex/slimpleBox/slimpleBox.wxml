@@ -58,26 +58,29 @@
           <text class="day-list-body-title">吃盒子期间饿了能吃什么？</text>
         </view>
         <view class="hungry-view">
-          <!-- <view class="hungry-view-text" style="margin-bottom: 40rpx">饿了可以补充
-            <text style="color:#ED6F69">300g左右</text>的蔬菜，还可以因个人情况添加
-            <text style="color:#ED6F69">1~2个</text>水煮蛋。</view>
-          <view class="hungry-view-text">推荐以下12种蔬菜，以生吃、水煮、清炒、白灼、炖、蒸为主，清炒时不要勾芡。</view> -->
-          <view class="hungry-view-text">每日可额外补充
-            <text>（*数量根据您的体重计算得出）</text>
+      <!--    <view class="hungry-view-text" style="margin-bottom: 40rpx">饿了可以补充
+          <text style="color:#ED6F69">300g左右</text>的蔬菜，还可以因个人情况添加
+            <text style="color:#ED6F69">1~2个</text>水煮蛋。
+          </view>-->
+          <view style="margin-bottom: 48rpx;margin-left: 44rpx">
+            <text class="hungry-view-text1">每日可额外补充</text>
+            <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
           </view>
-          <view class="replenish">
-          <view class="replenish_add">+</view>
-            <view class="replenishItem">
-              <image src="../images/recommendation/vegetables.jpg"></image>
-              <view class="replenishItemTit">新鲜蔬菜</view>
-              <view class="replenishItemNum">200克以内·约两捧</view>
+          <view style="display: flex;text-align: center;margin-left: 97rpx">
+            <view>
+              <image style="width: 190rpx;height: 150rpx" src="{{vegetablesIconUrl}}"></image>
+              <view class="hungry-image-text1">新鲜蔬菜</view>
+              <view class="hungry-image-text2">{{vegetablesWeight}}</view>
             </view>
-            <view class="replenishItem">
-              <image src="../images/recommendation/egg.jpg"></image>
-              <view class="replenishItemTit">水煮鸡蛋</view>
-              <view class="replenishItemNum">1个</view>
+            <view style="margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
+              +
             </view>
-            <view style="clear:both;"></view>
+
+            <view>
+              <image style="width: 190rpx;height: 150rpx" src="{{eggsIconUrl}}"></image>
+              <view class="hungry-image-text1">水煮鸡蛋</view>
+              <view class="hungry-image-text2">{{eggs}}</view>
+            </view>
           </view>
           <view class="hungry-view-text">以下12种蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
           <image src='../images/icon/list1.jpg' style="width: 670rpx;height: 542rpx;margin: 45rpx auto 0rpx auto"></image>
