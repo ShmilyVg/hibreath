@@ -228,6 +228,41 @@ page {
     box-sizing: border-box;
     color:rgba(69,69,69,1);
 }
+.hungry-view-text text{
+  color:#999999;
+  font-size: 24rpx;
+}
+.replenish{
+  /* display: flex;
+  justify-content: space-around; */
+  margin-bottom: 70rpx;
+  position: relative;
+}
+.replenish_add{
+  position: absolute;
+  left: 331rpx;
+  top: 104rpx;
+}
+.replenishItem{
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+  margin-top: 48rpx;
+  text-align: center;
+}
+.replenishItem image{
+  width: 190rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.replenishItemTit{
+  margin-top: 26rpx;
+  color: #454545;
+}
+.replenishItemNum{
+  margin-top: 14rpx;
+  color: #999999;
+}
 .meal-title{
     font-size:24rpx;
     font-family:PingFang SC;

@@ -93,3 +93,31 @@ page{
     margin-left: 30rpx;
     margin-top: 140rpx;
 }
+.replacement{
+  width: 690rpx;
+  height: 400rpx;
+  border-radius: 20rpx;
+  position: relative;
+}
+.replacementTip{
+  position: absolute;
+  bottom: 24rpx;
+  left: 24rpx;
+
+}
+.replacementRq{
+  font-size: 20rpx;
+  padding: 0 10rpx;
+  float: left;
+  line-height: 36rpx;
+  height: 36rpx;
+  background-color: #F26F5E;
+  border-radius: 2rpx;
+  color: #fff;
+}
+.replacementTitle{
+  font-size: 28rpx;
+  padding-left: 16rpx;
+  float: left;
+  color: #fff;
+}

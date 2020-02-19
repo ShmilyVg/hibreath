@@ -311,7 +311,7 @@
 }
 
 .set-top-view {
-  height: 450rpx;
+  height: 400rpx;
   /* position: relative; */
   width: 100%;
   background: linear-gradient(rgba(245, 94, 107, 1), rgba(244, 121, 112, 1));
@@ -332,38 +332,55 @@
 }
 
 .set-info-top-text1 {
-  font-size: 36rpx;
+  font-size: 48rpx;
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: bold;
   color: rgba(255, 255, 255, 1);
   margin-bottom: 25rpx;
 }
+
+.set-info-top-text1-num{
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 10rpx;
+  text-align: center;
+  height: 48rpx;
+  line-height: 48rpx;
+  color: #F5676D;
+  border-radius: 8rpx;
+}
+
 .set-info-top-text6 {
-  font-size: 36rpx;
+  font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   margin-top: 25rpx;
   position: relative;
-  
+  height: 46rpx;
+  line-height: 46rpx;
   box-sizing: border-box;
+}
+.set-info-top-text6 text{
+  margin-left: 10rpx;
 }
 .set-info-top-text6 image{
   width: 40rpx;
   height: 40rpx;
   border-radius: 50%;
   position: absolute;
+  border: 4rpx solid #fff;
 }
 .set-info-top-text6 image:nth-of-type(1){
   left: 0;
   top: 0;
 }
 .set-info-top-text6 image:nth-of-type(2){
-  left: 25rpx;
+  left: 30rpx;
   top: 0;
 }
 .set-info-top-text6 image:nth-of-type(3){
-  left: 50rpx;
+  left: 70rpx;
   top: 0;
 }
 .set-info-top-text2 {
@@ -442,7 +459,7 @@
   z-index: -10;
 }
 .answerCon{
-  padding-bottom: 38rpx; 
+  padding-bottom: 34rpx; 
 }
 .answerTit{
   margin-bottom: 34rpx;
@@ -487,6 +504,22 @@
 .answerRecord text{
   color: #0AC1A1;
 }
+
+.bigTruthTip{
+  text-align: center;
+  color: #9B9B9B;
+  font-size: 24rpx;
+  margin-bottom: 39rpx;
+}
+.bigTruthTip image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right:10rpx; 
+}
+.bigTruthTip text{
+  color: #ED6F69;
+}
+
 .set-info-top-text3 {
   font-size: 120rpx;
   font-family: DIN Condensed;

@@ -1,28 +1,39 @@
 <!--pagesIndex/howEat/howEat.wxml-->
 <view class="howEatV" bindtap="goIndex">
-    <view style="float: left">
-        <view class="howEatT">吃的对不对？脂肪少没少？</view>
-        <view class="howEatB">用燃脂检测黑科技吹一吹就知道</view>
-    </view>
-    <view class="howEatBtn">立即检测</view>
+  <view style="float: left">
+    <view class="howEatT">吃的对不对？脂肪少没少？</view>
+    <view class="howEatB">用燃脂检测黑科技吹一吹就知道</view>
+  </view>
+  <view class="howEatBtn">立即检测</view>
 </view>
 <view wx:for="{{result.dataList}}" wx:key="index">
-    <view class="howEat-title">{{item.title}}</view>
-    <view class="howEat-subtitle">{{item.subtitle}}</view>
-    <swiper wx:if="{{item.isSlideshow}}" style="width: 100%;height: 300rpx;" next-margin="180rpx">
-        <swiper-item style="margin-right: 20rpx" wx:for="{{item.dataList}}" wx:key="index" data-type="{{item.type}}" data-foodId="{{item.foodId}}" bindtap="toNextpage">
-            <view class="swiper-view" style="background: url('{{item.foodImg}}');background-size: 500rpx 300rpx;">
-                <view class="swiper-bgview"></view>
-                <view style="display: flex;align-items: center">
-                    <view class="swiper-view-span" wx:if="{{item.popularity}}">人气</view>
-                    <view class="swiper-view-title">{{item.title}}</view>
-                </view>
+  <view class="howEat-title">{{item.title}}</view>
+  <view class="howEat-subtitle">{{item.subtitle}}</view>
+  <!-- <swiper wx:if="{{item.isSlideshow}}" style="width: 100%;height: 300rpx;" next-margin="180rpx">
+    <swiper-item style="margin-right: 20rpx" wx:for="{{item.dataList}}" wx:key="index" data-type="{{item.type}}" data-foodId="{{item.foodId}}" bindtap="toNextpage">
+      <view class="swiper-view" style="background: url('{{item.foodImg}}');background-size: 500rpx 300rpx;">
+        <view class="swiper-bgview"></view>
+        <view style="display: flex;align-items: center">
+          <view class="swiper-view-span" wx:if="{{item.popularity}}">人气</view>
+          <view class="swiper-view-title">{{item.title}}</view>
+        </view>
 
-            </view>
-        </swiper-item>
-    </swiper>
-    <view  wx:else>
-        <image  wx:for="{{item.dataList}}" wx:key='index' src="{{item.img}}" data-type="{{item.type}}" bindtap="toNextpage" style="width: 100%;height: 260rpx;margin-bottom: 20rpx"></image>
+      </view>
+    </swiper-item>
+  </swiper> -->
+  <view wx:if="{{item.isSlideshow}}">
+    <view wx:for="{{item.dataList}}" wx:key="index" data-type="{{item.type}}" data-foodId="{{item.foodId}}" wx:if="{{item.type == 'threeBox'}}" bindtap="toNextpage">
+      <view class="replacement" style="background: url('{{item.foodImg}}');background-size: 690rpx 400rpx;">
+        <view class="replacementTip">
+          <view class="replacementRq">人气</view>
+          <view class="replacementTitle">{{item.title}}</view>
+        </view>
+
+      </view>
     </view>
+  </view>
+  <view wx:else>
+    <image wx:for="{{item.dataList}}" wx:key='index' src="{{item.img}}" data-type="{{item.type}}" bindtap="toNextpage" style="width: 100%;height: 260rpx;margin-bottom: 20rpx"></image>
+  </view>
 
 </view>
