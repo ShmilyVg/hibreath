@@ -338,6 +338,12 @@
 					"pathName": "pages/groupNumber/groupNumber",
 					"query": "type=threeBox&foodId=5e0ebba7edb0c2b52e414083",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/gdDay/gdDay",
+					"pathName": "pagesIndex/gdDay/gdDay",
+					"scene": null
 				}
 			]
 		}

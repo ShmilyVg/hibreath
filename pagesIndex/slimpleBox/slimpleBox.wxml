@@ -5,7 +5,7 @@
     <view style="display: flex;align-items: center">
       <view class="slimpleBox-popularity" wx:if="{{mealInfo.popularity}}">人气</view>
       <view class="slimpleBox-title">{{mealInfo.title}}</view>
-      <view class="slimpleBox-buyNumber">已购人数： {{mealInfo.buyNumber}}</view>
+    <!--  <view class="slimpleBox-buyNumber">已购人数： {{mealInfo.buyNumber}}</view>-->
     </view>
     <view class="day-list-body">
       <view style="display: flex;align-items: center">
