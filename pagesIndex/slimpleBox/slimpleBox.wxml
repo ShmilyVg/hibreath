@@ -66,7 +66,7 @@
             <text class="hungry-view-text1">每日可额外补充</text>
             <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
           </view>
-          <view style="display: flex;text-align: center;margin-left: 97rpx">
+          <view wx:if="{{eggs}}" style="display: flex;text-align: center;margin-left: 97rpx">
             <view>
               <image style="width: 190rpx;height: 150rpx" src="{{vegetablesIconUrl}}"></image>
               <view class="hungry-image-text1">新鲜蔬菜</view>
@@ -75,11 +75,17 @@
             <view style="margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
               +
             </view>
-
             <view>
               <image style="width: 190rpx;height: 150rpx" src="{{eggsIconUrl}}"></image>
               <view class="hungry-image-text1">水煮鸡蛋</view>
               <view class="hungry-image-text2">{{eggs}}</view>
+            </view>
+          </view>
+          <view wx:else>
+            <view style="text-align: center">
+              <image style="width: 190rpx;height: 150rpx" src="{{vegetablesIconUrl}}"></image>
+              <view class="hungry-image-text1">新鲜蔬菜</view>
+              <view class="hungry-image-text2">{{vegetablesWeight}}</view>
             </view>
           </view>
           <view class="hungry-view-text">以下12种蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
