@@ -89,8 +89,24 @@ Page({
       Toast.hiddenLoading();
     }
   },
-  moveTouch(e){
-    console.log(e.target)
+  handEnd(e){
+    let touchend = e.changedTouches[0].clientX;
+    let touchstart = this.data.touchstart;
+    if (this.data.curDot){
+      if (touchend < touchstart){
+        this.changeCur()
+      }
+    }else{
+      if (touchend > touchstart) {
+        this.changeCur()
+      }
+    }
+    
+  },
+  handStart(e){
+    this.setData({
+      touchstart: e.changedTouches[0].clientX
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
