@@ -1,73 +1,129 @@
 /* pages/goRegister/goRegister.wxss */
 page{
     box-sizing: border-box;
-    padding: 110rpx 40rpx 40rpx 40rpx;
-    background:#f2f2f2;
+    background:#7BC877;
+    height: 100%;
+}
+.goRegister{
+  position: relative;
+  height: 100%;
+  color: #fff;
+}
+.line{
+  height: 1rpx;
+}
+.goRegisterBg{
+  position: absolute;
+  width: 371rpx;
+  height: 928rpx;
+  right: 0;
+  bottom: 0;
 }
 .goRegister-title{
-    font-size:60rpx;
-    font-family:PingFang SC;
-    font-weight:bold;
-    color:rgba(69,69,69,1);
-    margin-bottom: 20rpx;
+  font-size: 60rpx;
+  margin-top: 228rpx;
+  margin-left: 63rpx;
 }
 .goRegister-subTitle{
-    font-size:32rpx;
-    font-family:PingFang SC;
-    font-weight:400;
-    color:rgba(69,69,69,1);
-    margin-bottom: 88rpx;
+  margin-top: 26rpx;
+  font-size: 32rpx;
+  margin-left: 60rpx;
+  opacity: 0.7;
 }
-.goRegister-img{
-    width:70rpx;
-    height:70rpx;
-    background:rgba(246,152,152,1);
-    border-radius:50%;
-    font-size:32rpx;
-    text-align: center;
-    line-height: 70rpx;
-    font-family:PingFang SC;
-    font-weight:bold;
-    color:rgba(255,255,255,1);
-    margin-right: 25rpx;
+.swiperCon{
+  margin-top:70rpx;
+}
+.dots{
+  margin-bottom:88rpx; 
+  padding-left: 74rpx;
+}
+.dot{
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #fff;
+  float: left;
+  margin-right: 24rpx;
+}
+.curDot{
+  opacity: 0.5;
+}
+
+.swiper-item{
+  width:530rpx;
 }
 .goRegister-view{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height:200rpx;
-    background:rgba(255,255,255,1);
-    border-radius:20rpx;
-    margin-bottom: 20rpx;
-    box-sizing: border-box;
-    padding: 60rpx 40rpx;
+  width: 530rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  color: #666;
+  margin: 0 auto;
+}
+.goRegister-header{
+  padding: 48rpx 42rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.goRegister-img{
+  font-size: 160rpx;
+  font-weight: bold;
+  height: 160rpx;
+  line-height: 160rpx;
 }
 .goRegister-text{
-    font-size:32rpx;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(69,69,69,1);
+  width: 300rpx;
+  font-size: 34rpx;
+  color: #454545;
+  text-align: center;
+}
+.goRegister-text view{
+  text-align: right;
+  padding-right: 10rpx;
+}
+.goRegister-text text{
+  font-size: 28rpx;
+  text-align: justify;
+  color: #666666;
 }
 .goRegister-btn{
-    width:128rpx;
-    height:54rpx;
-    background:rgba(255,239,238,1);
-    border-radius:27rpx;
-    font-size:24rpx;
-    text-align: center;
-    line-height: 54rpx;
-    font-family:PingFang SC;
-    font-weight:500;
-    margin: 0!important;
-    color:rgba(237,111,105,1);
+  height: 70rpx;
+  width: 100%;
+  color: #4FBB49;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 70rpx;
+  background: #ECF8EB;
+  border-radius: 0rpx 0rpx 20rpx 20rpx;
+  position: relative;
 }
-button:after{
-    border: none;
+.goRegister-btn::after{
+  border-radius:0; 
 }
-.goRegister-finView{
-    display: flex;
-    align-items: center;
-    margin-left: 100rpx;
-    margin-top: 55rpx;
-    color: #fff;
+.goRight{
+  width: 26rpx;
+  height: 19rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 26rpx;
+}
+
+
+
+.animationCon{
+  height: 300rpx;
+  position: relative;
+  overflow: hidden
+}
+
+.goRegister-view{
+position: absolute;
+}
+.shrink{
+  left: 50rpx;
+  top: 0;
+}
+.magnify{
+  left: 630rpx;
+  top: 0;
 }

@@ -9,9 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nologin:true
+    nologin:true,
+    curDot:0,
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,6 +47,27 @@ Page({
       }
     });
   },
+
+  changeCur(){
+    let curDot = this.data.curDot;
+    if (curDot){
+      this.setData({
+        curDot: 0
+      })
+      this.shrink.scale(0.9).opacity(0.8).left('-410rpx').step()
+      this.magnify.scale(1).opacity(1).left('170rpx').step()
+    }else{
+      this.setData({
+        curDot: 1
+      })
+      this.shrink.scale(1).opacity(1).left('50rpx').step()
+      this.magnify.scale(0.9).opacity(0.8).left('630rpx').step()
+    }
+    this.setData({
+      shrink: this.shrink.export(),
+      magnify: this.magnify.export()
+    })
+  },
   /**
    * @desc 注册
    */
@@ -67,18 +89,22 @@ Page({
       Toast.hiddenLoading();
     }
   },
+  moveTouch(e){
+    console.log(e.target)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.shrink = wx.createAnimation();
+    this.magnify = wx.createAnimation()
+    this.changeCur()
   },
 
   /**

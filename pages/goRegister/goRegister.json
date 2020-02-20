@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "立即注册",
+  "navigationBarBackgroundColor": "#7BC877",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "my-toast": "../../components/my-toast/my-toast"
   }

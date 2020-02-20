@@ -1,5 +1,5 @@
 <!--pages/goRegister/goRegister.wxml-->
-<view class="goRegister-title">Hi,欢迎来到Slimple</view>
+<!-- <view class="goRegister-title">Hi,欢迎来到Slimple</view>
 <view class="goRegister-subTitle">登录以便获取完成减脂服务</view>
 <view class="goRegister-view">
     <view style="display: flex;">
@@ -15,5 +15,46 @@
         <view class="goRegister-text" style="line-height: 80rpx">验证您的手机号</view>
     </view>
     <button class="goRegister-btn" hover-class="press-style">去完成</button>
-</view>
+</view> -->
 <!--<image srx="../../images/goRegister/goRegister.png"></image>-->
+<view class="goRegister">
+  <view class="line"></view>
+  <image src="../../images/guidance/rztb.png" class="goRegisterBg"></image>
+  <view class="goRegister-title">Hi,欢迎来到Slimple</view>
+  <view class="goRegister-subTitle">登录以便获取完成减脂服务</view>
+  <view class="swiperCon">
+    <view class="dots">
+      <view class="dot {{curDot?'curDot':''}}"></view>
+      <view class="dot {{curDot?'':'curDot'}}"></view>
+      <view style="clear:both;"></view>
+    </view>
+    <view class="animationCon">
+      <view class="goRegister-view shrink" animation="{{shrink}}">
+        <view class="goRegister-header" bindtap="changeCur">
+          <view class="goRegister-img">1</view>
+          <view class="goRegister-text">
+            <view>Basic info</view>
+            <text>我需要了解您的基本信息(昵称、头像等)</text>
+          </view>
+        </view>
+        <button wx:if="{{nologin}}" class="goRegister-btn" hover-class="press-style" bindgetuserinfo="onGetUserInfoEvent" open-type="getUserInfo">去完成
+          <image src="../../images/set-info/goRight.png" class="goRight"></image>
+        </button>
+        <image wx:else src="../../images/set-info/finished.png" style="width: 86rpx;height: 74rpx;margin-right: 10rpx"></image>
+      </view>
+      <view class="goRegister-view magnify" animation="{{magnify}}" bindtouchmove="moveTouch">
+        <view class="goRegister-header" bindtap="changeCur">
+          <view class="goRegister-img">2</view>
+          <view class="goRegister-text" style="padding-top:40rpx;">
+            <text>验证您的手机号</text>
+          </view>
+        </view>
+        <button wx:if="{{nologin}}" class="goRegister-btn" hover-class="press-style" bindtap="goVerification">去完成 </button>
+        <image wx:else src="../../images/set-info/finished.png" style="width: 86rpx;height: 74rpx;margin-right: 10rpx"></image>
+      </view>
+    </view>
+
+  </view>
+
+
+</view>
