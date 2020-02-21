@@ -26,7 +26,7 @@ Page({
     desc: ''
   },
 
-  onLoad: function(e) {
+  onLoad: function (e) {
     console.log(e, 'e')
     if (e.id) {
       this.taskId = e.id
@@ -36,7 +36,6 @@ Page({
     this.setData({
       groupId: this.groupId
     })
-
   },
   async onShow() {
     getApp().globalData.issueRefresh = true
@@ -56,6 +55,9 @@ Page({
     });
   },
   async submit() {
+    this.setData({
+      disable: false
+    })
     console.log("imgbox", this.data.imgbox)
     console.log("imageUrl", this.data.imageUrl)
     /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
@@ -69,20 +71,26 @@ Page({
       //     HiNavigator.redirectToMessageDetail({messageId: data.result.id});
       // });
       this.showPopup();
+      this.setData({
+        disable: true
+      })
     } else {
       Toast.showLoading();
-      const {result} = await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
-      setTimeout(()=>{
+      const { result } = await whenDismissGroup(Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }))
+      this.setData({
+        disable: true
+      })
+      setTimeout(() => {
         wx.hideLoading();
-      },500)
+      }, 500)
       //任务信息全局储存 圈子页面使用
       app.globalData.isImgClock = true
       app.globalData.publishObj.inTaskProgress = result.inTaskProgress
       app.globalData.publishObj.integral = result.integral
       app.globalData.publishObj.integralTaskTitle = result.integralTaskTitle
-    /*  app.globalData.dtinTaskProgress = result.inTaskProgress
-      app.globalData.integral = result.integral
-      app.globalData.integralTaskTitle = result.integralTaskTitle*/
+      /*  app.globalData.dtinTaskProgress = result.inTaskProgress
+        app.globalData.integral = result.integral
+        app.globalData.integralTaskTitle = result.integralTaskTitle*/
       HiNavigator.switchToCommunity();
     }
     app.globalData.isScrollTopNum = true
@@ -99,14 +107,14 @@ Page({
       disable: !(imgbox.length > 0 || desc.match(/^\s*$/) == null)
     })
   },
-    textBindblur(e){
-        console.log("失去焦点后打印", e.detail.value)
-        this.setData({
-            desc: tools.filterEmoji(e.detail.value)
-        })
-        this.disBtn()
-    },
-  bindTextAreaBlur: function(e) {
+  textBindblur(e) {
+    console.log("失去焦点后打印", e.detail.value)
+    this.setData({
+      desc: tools.filterEmoji(e.detail.value)
+    })
+    this.disBtn()
+  },
+  bindTextAreaBlur: function (e) {
     console.log("聚焦输入时打印", e.detail.value)
     /*console.log("e2222", tools.filterEmoji(e.detail.value))*/
     /*this.setData({
@@ -115,7 +123,7 @@ Page({
 
   },
   // 上传图片 &&&
-  addPic1: function(e) {
+  addPic1: function (e) {
     var imgbox = this.data.imgbox;
     var that = this;
     var n = 9;
@@ -134,7 +142,7 @@ Page({
       count: n, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
+      success: function (res) {
         console.log("选中图片res", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFiles;
@@ -142,6 +150,7 @@ Page({
         if (tempFilePaths) {
           wx.showLoading({ // 添加loading状态
             title: '上传中',
+            mask: true
           })
           tempFilePaths.forEach(({
             path,
@@ -165,8 +174,8 @@ Page({
 
                 console.log('that.data.compressImg', that.data.compressImg)
               },
-              complete(){
-                that.uploadFileFun(imgbox, path); 
+              complete() {
+                that.uploadFileFun(imgbox, path);
               }
             })
 
@@ -191,7 +200,7 @@ Page({
 
   },
 
-  uploadFileFun(imgbox, path){
+  uploadFileFun(imgbox, path) {
     var that = this;
     wx.uploadFile({
       url: UploadUrl, // 接口地址
@@ -235,7 +244,7 @@ Page({
     })
   },
   //删除图片
-  imgDelete: function(e) {
+  imgDelete: function (e) {
     console.log(e.currentTarget.dataset.deindex, 'e')
     console.log(this.data.imgbox, 'eeee')
     this.data.imageUrl.splice(e.currentTarget.dataset.deindex, 1)
@@ -246,7 +255,7 @@ Page({
   },
 
 
-  onReady: function() {
+  onReady: function () {
     //获得popup组件
     this.popup = this.selectComponent("#popup");
   },
@@ -269,7 +278,7 @@ Page({
     })
   },
   //确认事件
- async _success(e) {
+  async _success(e) {
     console.log('你点击了确定', e);
     const {
       detail: {
@@ -281,15 +290,15 @@ Page({
     })
     this.popup.hidePopup();
     Toast.showLoading();
-     this.setData({
-         ifShow: !this.data.ifShow
-     })
-     const{result} = await whenDismissGroup(Protocol.postPublish({groupId: this.data.groupId, taskId: this.taskId, desc: this.data.desc, imgUrls: this.data.imageUrl}))
-      Toast.showLoading();
-      HiNavigator.redirectToMessageDetail({
-        messageId: result.id,
-        taskId: this.taskId
-      });
+    this.setData({
+      ifShow: !this.data.ifShow
+    })
+    const { result } = await whenDismissGroup(Protocol.postPublish({ groupId: this.data.groupId, taskId: this.taskId, desc: this.data.desc, imgUrls: this.data.imageUrl }))
+    Toast.showLoading();
+    HiNavigator.redirectToMessageDetail({
+      messageId: result.id,
+      taskId: this.taskId
+    });
   }
 
 })
