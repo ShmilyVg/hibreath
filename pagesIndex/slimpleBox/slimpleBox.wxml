@@ -22,7 +22,7 @@
           <text class="executeOrder-text2">第二天</text>
         </view>
         <view wx:if="{{item.executeOrder === 3}}">
-          <text class="executeOrder-text1">DAY2</text>
+          <text class="executeOrder-text1">DAY3</text>
           <text class="executeOrder-text2">第三天</text>
         </view>
         <view style="display: flex;justify-content: space-around;margin-top: 40rpx">
