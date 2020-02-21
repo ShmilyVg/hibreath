@@ -1,6 +1,8 @@
 {
   "component": true,
   "navigationBarTitleText": "发表动态",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#7BC877",
   "usingComponents": {
     "my-toast": "../../components/my-toast/my-toast",
     "popup": "../../components/dialog/dialog"
