@@ -55,9 +55,10 @@ Page({
     });
   },
   async submit() {
-    this.setData({
-      disable: false
-    })
+    if (this.submitBtn){
+      return;
+    }
+    this.submitBtn = true;
     console.log("imgbox", this.data.imgbox)
     console.log("imageUrl", this.data.imageUrl)
     /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
@@ -71,15 +72,14 @@ Page({
       //     HiNavigator.redirectToMessageDetail({messageId: data.result.id});
       // });
       this.showPopup();
-      this.setData({
-        disable: true
-      })
+      this.submitBtn = false;
     } else {
-      Toast.showLoading();
-      const { result } = await whenDismissGroup(Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }))
-      this.setData({
-        disable: true
+      wx.showLoading({ // 添加loading状态
+        title: '请稍后......',
+        mask: true
       })
+      const { result } = await whenDismissGroup(Protocol.postPublish({ groupId: this.data.groupId, desc: this.data.desc, imgUrls: this.data.imageUrl }))
+      this.submitBtn = false;
       setTimeout(() => {
         wx.hideLoading();
       }, 500)
