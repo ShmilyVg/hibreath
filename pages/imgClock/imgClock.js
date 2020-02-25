@@ -28,6 +28,7 @@ Page({
 
   onLoad: function (e) {
     console.log(e, 'e')
+    this.imgNum = 0;
     if (e.id) {
       this.taskId = e.id
     } else {
@@ -38,8 +39,6 @@ Page({
     })
   },
   async onShow() {
-    console.log(888888888)
-    this.imgNum = 0;
     getApp().globalData.issueRefresh = true
     const {
       result
@@ -223,11 +222,13 @@ Page({
         console.log("uploadFile:", err)
       },
       complete() {
+        console.log(that.imgNum)
         if (++that.imgNum == that.data.imgbox.length) {
           setTimeout(() => {
             wx.hideLoading();
           }, 1000)
         }
+        console.log('that.imgNum',that.imgNum)
       }
     })
   },
@@ -244,6 +245,7 @@ Page({
     console.log(e.currentTarget.dataset.deindex, 'e')
     console.log(this.data.imgbox, 'eeee')
     this.data.imageUrl.splice(e.currentTarget.dataset.deindex, 1)
+    this.imgNum--;
     this.setData({
       imgbox: [].concat(this.data.imageUrl),
     });
