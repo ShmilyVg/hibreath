@@ -38,6 +38,8 @@ Page({
     })
   },
   async onShow() {
+    console.log(888888888)
+    this.imgNum = 0;
     getApp().globalData.issueRefresh = true
     const {
       result
@@ -126,7 +128,7 @@ Page({
   addPic1: function (e) {
     var imgbox = this.data.imgbox;
     var that = this;
-    this.imgNum = 0;
+    
     var n = 9;
     var urlList = []
     if (9 > imgbox.length > 0) {
@@ -222,7 +224,7 @@ Page({
       },
       complete() {
         if (++that.imgNum == that.data.imgbox.length) {
-          that.timeOut = setTimeout(() => {
+          setTimeout(() => {
             wx.hideLoading();
           }, 1000)
         }
