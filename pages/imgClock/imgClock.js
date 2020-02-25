@@ -126,6 +126,7 @@ Page({
   addPic1: function (e) {
     var imgbox = this.data.imgbox;
     var that = this;
+    this.imgNum = 0;
     var n = 9;
     var urlList = []
     if (9 > imgbox.length > 0) {
@@ -152,6 +153,7 @@ Page({
             title: '上传中',
             mask: true
           })
+          
           tempFilePaths.forEach(({
             path,
             size
@@ -181,18 +183,6 @@ Page({
 
           })
         }
-        /*   wx.getFileInfo({
-                filePath:that.data.compressImg,
-                success (res) {
-                    console.log('压缩后的图片尺寸(M)',res.size/1024/1024,res)
-                    if(res.size > 5*1024*1024){// 小于5M
-                        wx.showToast({
-                            title: '图片不可超过5M',
-                            icon: 'none',
-                            duration: 2000
-                        })
-                        return;
-                    }*/
         console.log("IMGBOX", that.data.imgbox)
       },
     })
@@ -213,9 +203,6 @@ Page({
         that.setData({
           compressImg: ''
         })
-        setTimeout(() => {
-          wx.hideLoading();
-        }, 500)
         var obj = JSON.parse(res.data)
         console.log("obj", obj)
         var more = []
@@ -232,6 +219,13 @@ Page({
       },
       fail(err) {
         console.log("uploadFile:", err)
+      },
+      complete() {
+        if (++that.imgNum == that.data.imgbox.length) {
+          that.timeOut = setTimeout(() => {
+            wx.hideLoading();
+          }, 1000)
+        }
       }
     })
   },
