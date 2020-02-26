@@ -139,7 +139,6 @@ Page({
     if (n <= 0) {
       return;
     }
-
     wx.chooseImage({
       count: n, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -178,7 +177,7 @@ Page({
                 console.log('that.data.compressImg', that.data.compressImg)
               },
               complete() {
-                that.uploadFileFun(imgbox, path);
+                that.uploadFileFun( path);
               }
             })
 
@@ -191,13 +190,15 @@ Page({
 
   },
 
-  uploadFileFun(imgbox, path) {
+  uploadFileFun(path) {
+    
     var that = this;
     wx.uploadFile({
       url: UploadUrl, // 接口地址
       filePath: that.data.compressImg, // 上传文件的临时路径
       name: 'file',
       success(res) {
+        var imgbox = that.data.imgbox;
         console.log('uploadFile调用成功后的返回', res)
         // 采用选择几张就直接上传几张，最后拼接返回的url
         imgbox.push(path)
@@ -222,13 +223,15 @@ Page({
         console.log("uploadFile:", err)
       },
       complete() {
-        console.log(that.imgNum)
+        console.log(that.imgNum,)
         if (++that.imgNum == that.data.imgbox.length) {
           setTimeout(() => {
             wx.hideLoading();
           }, 1000)
         }
-        console.log('that.imgNum',that.imgNum)
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 5000)
       }
     })
   },
