@@ -28,7 +28,6 @@ Page({
 
   onLoad: function (e) {
     console.log(e, 'e')
-    this.imgNum = 0;
     if (e.id) {
       this.taskId = e.id
     } else {
@@ -124,10 +123,12 @@ Page({
 
   },
   // 上传图片 &&&
-  addPic1: function (e) {
+
+ 
+  addPic1(e){
     var imgbox = this.data.imgbox;
     var that = this;
-    
+
     var n = 9;
     var urlList = []
     if (9 > imgbox.length > 0) {
@@ -135,10 +136,10 @@ Page({
     } else if (imgbox.length == 9) {
       n = 1;
     }
-
     if (n <= 0) {
       return;
     }
+    console.log('修改完成版本',n)
     wx.chooseImage({
       count: n, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -153,88 +154,76 @@ Page({
             title: '上传中',
             mask: true
           })
-          
-          tempFilePaths.forEach(({
-            path,
-            size
-          }) => {
-            console.log('forEach', path)
-            wx.compressImage({
-              src: path, // 图片路径
-              quality: 60, // 压缩质量
-              fail(res) {
-                console.log('调用压缩接口失败', res)
-                that.setData({
-                  compressImg: path
-                })
-              },
-              success(res) {
-                that.setData({
-                  compressImg: res.tempFilePath
-                })
-                console.log('压缩成功后的返回', res)
+          let arr = [];
+          for (let item of tempFilePaths){
+            let path = item.path;
+            arr.push(new Promise(function (resolve, reject){
+              wx.compressImage({
+                src: path, // 图片路径
+                quality: 60, // 压缩质量
+                fail(res) {
+                  console.log('调用压缩接口失败', res)
+                },
+                success(res) {
+                  path = res.tempFilePath
+                  console.log('压缩成功后的返回', res)
 
-                console.log('that.data.compressImg', that.data.compressImg)
-              },
-              complete() {
-                that.uploadFileFun( path);
-              }
-            })
+                  console.log('that.data.compressImg', that.data.compressImg)
+                },
+                complete() {
+                  wx.uploadFile({
+                    url: UploadUrl, // 接口地址
+                    filePath: path, // 上传文件的临时路径
+                    name: 'file',
+                    success(res) {
+                      var imgbox = that.data.imgbox;
+                      console.log('uploadFile调用成功后的返回', res)
+                      // 采用选择几张就直接上传几张，最后拼接返回的url
+                      imgbox.push(path)
+                      var obj = JSON.parse(res.data)
+                      console.log("obj", obj)
+                      var more = []
+                      more.push(obj.result.img_url)
+                      console.log(more, 'more')
+                      var tem = that.data.imageUrl
+                      that.setData({
+                        imageUrl: tem.concat(more),
+                        imgbox
+                      })
+                      console.log('照片imageUrl', that.data.imageUrl)
+                      console.log('照片imgbox', that.data.imgbox)
+                      that.disBtn()
+                    },
+                    fail(err) {
+                      console.log("uploadFile:", err)
+                    },
+                    complete(){
+                      
+                      resolve()
+                    }
+                  })
+                  // that.uploadFileFun(path);
+                }
+              })
+            }))
 
+            
+          }
+          Promise.all(arr).then(res=>{
+            setTimeout(() => {
+              wx.hideLoading();
+            }, 500)
           })
+         
         }
-        console.log("IMGBOX", that.data.imgbox)
       },
     })
 
 
+
   },
 
-  uploadFileFun(path) {
-    
-    var that = this;
-    wx.uploadFile({
-      url: UploadUrl, // 接口地址
-      filePath: that.data.compressImg, // 上传文件的临时路径
-      name: 'file',
-      success(res) {
-        var imgbox = that.data.imgbox;
-        console.log('uploadFile调用成功后的返回', res)
-        // 采用选择几张就直接上传几张，最后拼接返回的url
-        imgbox.push(path)
-        that.setData({
-          compressImg: ''
-        })
-        var obj = JSON.parse(res.data)
-        console.log("obj", obj)
-        var more = []
-        more.push(obj.result.img_url)
-        console.log(more, 'more')
-        var tem = that.data.imageUrl
-        that.setData({
-          imageUrl: tem.concat(more),
-          imgbox
-        })
-        console.log('照片imageUrl', that.data.imageUrl)
-        console.log('照片imgbox', that.data.imgbox)
-        that.disBtn()
-      },
-      fail(err) {
-        console.log("uploadFile:", err)
-      },
-      complete() {
-        console.log(that.imgNum,)
-        if (++that.imgNum == that.data.imgbox.length) {
-          setTimeout(() => {
-            wx.hideLoading();
-          }, 1000)
-        }
-        setTimeout(() => {
-          wx.hideLoading();
-        }, 5000)
-      }
-    })
-  },
+
   // 点击预览大图
   previewImage(e) {
     var current = this.data.imgbox[e.target.dataset.index]
@@ -248,7 +237,6 @@ Page({
     console.log(e.currentTarget.dataset.deindex, 'e')
     console.log(this.data.imgbox, 'eeee')
     this.data.imageUrl.splice(e.currentTarget.dataset.deindex, 1)
-    this.imgNum--;
     this.setData({
       imgbox: [].concat(this.data.imageUrl),
     });
