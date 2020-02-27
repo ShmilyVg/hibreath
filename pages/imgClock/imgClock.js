@@ -143,8 +143,14 @@ Page({
           })
           let arr = [];
           let pathArr = [];
+          console.log('tempFilePaths', tempFilePaths)
           for (let item of tempFilePaths){
             let path = item.path;
+            if (item.size > 3912600){
+              console.log('图片大小', item.size)
+              continue;
+            }
+
             arr.push(new Promise(function (resolve, reject){
               wx.uploadFile({
                 url: UploadUrl, // 接口地址
@@ -154,10 +160,10 @@ Page({
                   var imgbox = that.data.imgbox;
                   console.log('uploadFile调用成功后的返回', res, res.data)
                   // 采用选择几张就直接上传几张，最后拼接返回的url
-                  if (res.data) {
-                    imgbox.push(path)
+                  try{
                     var obj = JSON.parse(res.data)
                     // console.log("obj", obj)
+                    imgbox.push(path)
                     var more = []
                     more.push(obj.result.img_url)
                     // console.log(more, 'more')
@@ -167,7 +173,7 @@ Page({
                       imgbox
                     })
                     that.disBtn()
-                  } else {
+                  }catch(e){
                     console.log('uploadFile调用成功后的返回但是没有data', res)
                   }
                 },
