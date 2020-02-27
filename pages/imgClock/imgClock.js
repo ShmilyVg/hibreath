@@ -179,6 +179,7 @@ Page({
                       var imgbox = that.data.imgbox;
                       console.log('uploadFile调用成功后的返回', res)
                       // 采用选择几张就直接上传几张，最后拼接返回的url
+                      if (!res.data) return;
                       imgbox.push(path)
                       var obj = JSON.parse(res.data)
                       console.log("obj", obj)
