@@ -27,7 +27,6 @@ Page({
   },
 
   onLoad: function (e) {
-    console.log(e, 'e')
     if (e.id) {
       this.taskId = e.id
     } else {
@@ -59,7 +58,6 @@ Page({
       return;
     }
     this.submitBtn = true;
-    console.log("imgbox", this.data.imgbox)
     console.log("imageUrl", this.data.imageUrl)
     /*  if(this.data.imgbox.length == 0 && this.data.imgbox.desc == undefined){
           this.showDialog("请选择照片");
@@ -101,25 +99,17 @@ Page({
       desc,
       imgbox
     } = this.data;
-    //console.log('test.match(/^[ ]*$/)',desc.match(/^\s*$/))
-    //console.log('desc', this.data)
     this.setData({
       disable: !(imgbox.length > 0 || desc.match(/^\s*$/) == null)
     })
   },
   textBindblur(e) {
-    console.log("失去焦点后打印", e.detail.value)
     this.setData({
       desc: tools.filterEmoji(e.detail.value)
     })
     this.disBtn()
   },
   bindTextAreaBlur: function (e) {
-    console.log("聚焦输入时打印", e.detail.value)
-    /*console.log("e2222", tools.filterEmoji(e.detail.value))*/
-    /*this.setData({
-      desc: tools.filterEmoji(e.detail.value)
-    })*/
 
   },
   // 上传图片 &&&
@@ -139,22 +129,20 @@ Page({
     if (n <= 0) {
       return;
     }
-    console.log('修改完成版本',n)
     wx.chooseImage({
       count: n, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        console.log("选中图片res", res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFiles;
-
         if (tempFilePaths) {
           wx.showLoading({ // 添加loading状态
             title: '上传中',
             mask: true
           })
           let arr = [];
+          let pathArr = [];
           for (let item of tempFilePaths){
             let path = item.path;
             arr.push(new Promise(function (resolve, reject){
@@ -162,13 +150,13 @@ Page({
                 src: path, // 图片路径
                 quality: 60, // 压缩质量
                 fail(res) {
-                  console.log('调用压缩接口失败', res)
+                  pathArr.push([path, path,'fail'])
+                  // console.log('调用压缩接口失败', res)
                 },
                 success(res) {
+                  pathArr.push([path, res.tempFilePath, 'success'])
                   path = res.tempFilePath
-                  console.log('压缩成功后的返回', res)
-
-                  console.log('that.data.compressImg', that.data.compressImg)
+                  // console.log('压缩成功后的返回', res)
                 },
                 complete() {
                   wx.uploadFile({
@@ -177,26 +165,27 @@ Page({
                     name: 'file',
                     success(res) {
                       var imgbox = that.data.imgbox;
-                      console.log('uploadFile调用成功后的返回', res)
+                      // console.log('uploadFile调用成功后的返回', res)
                       // 采用选择几张就直接上传几张，最后拼接返回的url
-                      if (!res.data) return;
-                      imgbox.push(path)
-                      var obj = JSON.parse(res.data)
-                      console.log("obj", obj)
-                      var more = []
-                      more.push(obj.result.img_url)
-                      console.log(more, 'more')
-                      var tem = that.data.imageUrl
-                      that.setData({
-                        imageUrl: tem.concat(more),
-                        imgbox
-                      })
-                      console.log('照片imageUrl', that.data.imageUrl)
-                      console.log('照片imgbox', that.data.imgbox)
-                      that.disBtn()
+                      if (res.data){
+                        imgbox.push(path)
+                        var obj = JSON.parse(res.data)
+                        // console.log("obj", obj)
+                        var more = []
+                        more.push(obj.result.img_url)
+                        // console.log(more, 'more')
+                        var tem = that.data.imageUrl
+                        that.setData({
+                          imageUrl: tem.concat(more),
+                          imgbox
+                        })
+                        that.disBtn()
+                      }else{
+                        console.log('uploadFile调用成功后的返回但是没有data',res)
+                      }
                     },
                     fail(err) {
-                      console.log("uploadFile:", err)
+                      // console.log("uploadFile:", err)
                     },
                     complete(){
                       
@@ -207,10 +196,10 @@ Page({
                 }
               })
             }))
-
-            
           }
+          
           Promise.all(arr).then(res=>{
+            console.log('路径数组',pathArr);
             setTimeout(() => {
               wx.hideLoading();
             }, 500)
@@ -219,12 +208,7 @@ Page({
         }
       },
     })
-
-
-
   },
-
-
   // 点击预览大图
   previewImage(e) {
     var current = this.data.imgbox[e.target.dataset.index]
@@ -235,8 +219,6 @@ Page({
   },
   //删除图片
   imgDelete: function (e) {
-    console.log(e.currentTarget.dataset.deindex, 'e')
-    console.log(this.data.imgbox, 'eeee')
     this.data.imageUrl.splice(e.currentTarget.dataset.deindex, 1)
     this.setData({
       imgbox: [].concat(this.data.imageUrl),
@@ -251,8 +233,6 @@ Page({
   },
 
   showPopup(e) {
-
-    console.log(e)
     this.popup.showPopup();
     this.setData({
       ifShow: !this.data.ifShow
@@ -261,7 +241,6 @@ Page({
 
   //取消事件
   _error() {
-    console.log('你点击了取消');
     this.popup.hidePopup();
     this.setData({
       ifShow: !this.data.ifShow
@@ -269,7 +248,6 @@ Page({
   },
   //确认事件
   async _success(e) {
-    console.log('你点击了确定', e);
     const {
       detail: {
         groupId
