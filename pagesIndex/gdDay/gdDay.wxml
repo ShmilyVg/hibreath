@@ -1,0 +1,17 @@
+<!--pagesIndex/gdDay/gdDay.wxml-->
+<view class="page" style="background-color:{{bgColor}}">
+    <navBar
+            title=''
+            color="{{navBarColor}}"
+            iconTheme="white"
+            background='linear-gradient(90deg,rgba(244,121,112,1),rgba(245,94,107,1));'
+            back="{{true}}"
+            bindback="handlerGobackClick">
+
+    </navBar>
+</view>
+<image src="http://img.hipee.cn/gd11" style="width: 100%;height: 469rpx;"></image>
+<image src="http://img.hipee.cn/gd2" style="width: 100%;height: 1476rpx;"></image>
+<image src="http://img.hipee.cn/gd3" style="width: 100%;height: 430rpx;"></image>
+<image src="http://img.hipee.cn/gd4" style="width: 100%;height: 980rpx;"></image>
+<image src="http://img.hipee.cn/gd5" style="width: 100%;height: 733rpx;"></image>

@@ -32,17 +32,17 @@
       <!-- <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>-->
       <view class="set-info-top">
         <view style="float: left">
-          <view class="set-info-top-text1">你已在此</view>
-          <view class="set-info-top-text2">坚持减脂打卡</view>
+          <view class="set-info-top-text1">你已坚持减脂打卡 <view class="set-info-top-text1-num">{{days}}</view> 天</view>
+          <!-- <view class="set-info-top-text2">坚持减脂打卡</view> -->
           <view class="set-info-top-text6 " style="padding-left: {{(checkin.headImgs.length-1) *25 + 50}}rpx;">
-          <image src="{{item}}" wx:for="{{checkin.headImgs}}"></image>
-          今日{{checkin.size}}人已打卡
+          <image src="{{item}}" style="z-index:{{1000-index}}" wx:key='item' wx:for="{{checkin.headImgs}}"></image>
+          <text>今日{{checkin.size}}人已打卡</text> 
           </view>
         </view>
-        <view style="float: right">
+        <!-- <view style="float: right">
           <text class="set-info-top-text3">{{days}}</text>
           <text class="set-info-top-text1">天</text>
-        </view>
+        </view> -->
         <!--  -->
 
 
@@ -67,7 +67,7 @@
         </view>
         <view class="bigTruthCon">{{answerData.answerDatabaseBean.tips}}</view>
         <view class="btnCon" wx:if="{{answerData.isAnswer == 0}}">
-          <view bindtap="answerFinish" wx:for="{{answerBtns}}" data-index="{{index}}">
+          <view bindtap="answerFinish" wx:for="{{answerBtns}}" wx:key='imgSrc' data-index="{{index}}">
             <image src='{{item.imgSrc}}'></image>
             <text>{{item.text}}</text>
           </view>
@@ -85,6 +85,7 @@
           </view>
           <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率 <text>{{answerData.correctRate}}%</text></view>
         </view>
+        <view class="bigTruthTip" wx:if="{{!answerData.isAnswer}}"><image src="../../images/pai-coin/goods_icon.png"></image>答对可获得<text>{{answerData.integral}}积分</text>哦~</view>
       </view>
       <view class="flex-column-item" wx:if="{{caseonEveryday}}">
         <view class="set-info-top-text4">今日任务</view>

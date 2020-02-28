@@ -290,3 +290,10 @@ page{
     line-height:33rpx;
     margin-left: 10rpx;
 }
+.integralStore{
+  margin-top: 50rpx;
+}
+.integralStore image{
+  width: 690rpx;
+  height: 260rpx;
+}
