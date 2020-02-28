@@ -23,7 +23,9 @@ Page({
     imageUrl: [],
     disable: true,
     ifShow: true,
-    desc: ''
+    desc: '',
+    imgOverSize:[],
+    imgTypeErr:[]
   },
 
   onLoad: function (e) {
@@ -54,7 +56,7 @@ Page({
     });
   },
   async submit() {
-    if (this.submitBtn){
+    if (this.submitBtn) {
       return;
     }
     this.submitBtn = true;
@@ -114,8 +116,8 @@ Page({
   },
   // 上传图片 &&&
 
- 
-  addPic1(e){
+
+  async addPic1(e) {
     var imgbox = this.data.imgbox;
     var that = this;
 
@@ -141,17 +143,31 @@ Page({
             title: '上传中',
             mask: true
           })
-          let arr = [];
-          let pathArr = [];
+          let arr = [], pathArr = [], imgOverSize = [], imgTypeErr = [];
+          let typeImgs = ['png', 'jpeg', 'gif', 'jpg']
           console.log('tempFilePaths', tempFilePaths)
-          for (let item of tempFilePaths){
+          for (let i = 0; i < tempFilePaths.length; i++) {
+            let item = tempFilePaths[i];
             let path = item.path;
-            if (item.size > 3912600){
-              console.log('图片大小', item.size)
+
+            let typeArr = path.split('.');
+            let typeImg = typeArr[typeArr.length - 1];
+            if (item.size > 3912600) {
+              imgOverSize.push(i + 1)
+              console.log('图片信息', item.size, path)
+              that.setData({
+                imgOverSize
+              })
+              continue;
+            } else if (typeImgs.indexOf(typeImg) == -1) {
+              imgTypeErr.push(i + 1)
+              that.setData({
+                imgTypeErr
+              })
               continue;
             }
 
-            arr.push(new Promise(function (resolve, reject){
+            arr.push(new Promise(function (resolve, reject) {
               wx.uploadFile({
                 url: UploadUrl, // 接口地址
                 filePath: path, // 上传文件的临时路径
@@ -160,7 +176,7 @@ Page({
                   var imgbox = that.data.imgbox;
                   console.log('uploadFile调用成功后的返回', res, res.data)
                   // 采用选择几张就直接上传几张，最后拼接返回的url
-                  try{
+                  try {
                     var obj = JSON.parse(res.data)
                     // console.log("obj", obj)
                     imgbox.push(path)
@@ -173,7 +189,7 @@ Page({
                       imgbox
                     })
                     that.disBtn()
-                  }catch(e){
+                  } catch (e) {
                     console.log('uploadFile调用成功后的返回但是没有data', res)
                   }
                 },
@@ -197,22 +213,60 @@ Page({
               //     // console.log('压缩成功后的返回', res)
               //   },
               //   complete() {
-                  
+
               //     // that.uploadFileFun(path);
               //   }
               // })
             }))
           }
-          
-          Promise.all(arr).then(res=>{
-            console.log('路径数组',pathArr);
+
+          Promise.all(arr).then(res => {
+            console.log('路径数组', pathArr);
             setTimeout(() => {
               wx.hideLoading();
+              that.imgTypeErrFun()
+              return true
             }, 500)
           })
-         
+
         }
       },
+    })
+  },
+  imgTypeErrFun() {
+    let that = this;
+    let imgTypeErr = this.data.imgTypeErr;
+    if (!imgTypeErr.length) {
+      this.imgOverSizeFun();
+      return true;
+    }
+    let str = imgTypeErr.join('、');
+    wx.showModal({
+      title:'提示',
+      content: `您上传的第${str}张格式不支持，仅支持PNG、JPEG、JPG、GIF格式的图片`,
+      showCancel: false,
+      success(res) {
+        that.setData({
+          imgTypeErr: []
+        })
+        that.imgOverSizeFun()
+      }
+    })
+  },
+  imgOverSizeFun() {
+    let that = this;
+    let imgOverSize = this.data.imgOverSize;
+    if (!imgOverSize.length) return true;
+    let str = imgOverSize.join('、');
+    wx.showModal({
+      title: '提示',
+      content: `您上传的第${str}张图片太大,请重新上传或直接发表剩余图片`,
+      showCancel: false,
+      success(res) {
+        that.setData({
+          imgOverSize: []
+        })
+      }
     })
   },
   // 点击预览大图
