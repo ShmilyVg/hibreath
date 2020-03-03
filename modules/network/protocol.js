@@ -343,6 +343,26 @@ export default class Protocol {
             })
         )
     }
+
+    //保存电话号码
+    static putPhoneNum({encryptedData, iv}) {
+        return new Promise((resolve, reject) =>
+            this.wxLogin().then(res => {
+                const {code} = res;
+                return BaseNetworkImp.request({
+                    url: 'members/putPhoneNum',
+                    data: {code, encrypted_data: encryptedData, iv},
+                    requestWithoutLogin: true
+                })
+            }).then(data => {
+                resolve(data);
+            }).catch(res => {
+                console.log('getPhoneNum failed:', res);
+                reject(res);
+            })
+        )
+    }
+
     static wxReLogin(resolve, reject) {
         wx.login({
             success: resolve, fail: res => {

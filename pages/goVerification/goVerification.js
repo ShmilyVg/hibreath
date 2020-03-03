@@ -150,12 +150,12 @@ Page({
           showMytoast:false,
         })
         Toast.hiddenLoading()
-        HiNavigator.reLaunchToGroupNumber()
-        //HiNavigator.navigateToGuidance({reset:false})
+        // HiNavigator.reLaunchToGroupNumber()
+        HiNavigator.navigateToGuidance({reset:2})
       },2000)
     }else{
-      HiNavigator.reLaunchToGroupNumber()
-      //HiNavigator.navigateToGuidance({ reset: false })
+      // HiNavigator.reLaunchToGroupNumber()
+      HiNavigator.navigateToGuidance({ reset: false })
     }
 
    /* wx.showToast({

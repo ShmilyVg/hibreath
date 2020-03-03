@@ -1,129 +1,66 @@
-/* pages/goRegister/goRegister.wxss */
+/* pages/guidanceStart/guidanceStart.wxss */
 page{
-    box-sizing: border-box;
-    background:#7BC877;
-    height: 100%;
-}
-.goRegister{
-  position: relative;
   height: 100%;
-  color: #fff;
+  box-sizing: border-box;
 }
-.line{
-  height: 1rpx;
+.guidance{
+  height: 100%;
+  background-color: #7BC877;
 }
-.goRegisterBg{
+.firstPage{
+  box-sizing: border-box;
+  padding-top: 288rpx;
+  position: relative;
+}
+.guidanceBg{
   position: absolute;
   width: 371rpx;
   height: 928rpx;
   right: 0;
   bottom: 0;
 }
-.goRegister-title{
+
+.header_h2 {
+  margin-top: 39rpx;
+  height: 84rpx;
   font-size: 60rpx;
-  margin-top: 228rpx;
-  margin-left: 63rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #fff;
+  line-height: 84rpx;
+  padding-left: 62rpx;
 }
-.goRegister-subTitle{
-  margin-top: 26rpx;
+
+.header_text {
+  height: 50rpx;
   font-size: 32rpx;
-  margin-left: 60rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  color: #fff;
+  line-height: 50rpx;
+  padding-left: 62rpx;
   opacity: 0.7;
 }
-.swiperCon{
-  margin-top:70rpx;
-}
-.dots{
-  margin-bottom:88rpx; 
-  padding-left: 74rpx;
-}
-.dot{
-  width: 18rpx;
-  height: 18rpx;
-  border-radius: 50%;
-  background: #fff;
-  float: left;
-  margin-right: 24rpx;
-}
-.curDot{
-  opacity: 0.5;
+
+.text_left {
+  text-align: left;
 }
 
-.swiper-item{
-  width:530rpx;
-}
-.goRegister-view{
-  width: 530rpx;
-  background-color: #fff;
-  border-radius: 20rpx;
-  color: #666;
-  margin: 0 auto;
-}
-.goRegister-header{
-  padding: 48rpx 42rpx 20rpx;
-  display: flex;
-  justify-content: space-between;
-  
-}
-.goRegister-img{
-  font-size: 160rpx;
-  font-weight: bold;
-  height: 160rpx;
-  line-height: 160rpx;
-}
-.goRegister-text{
-  width: 300rpx;
-  font-size: 34rpx;
-  color: #454545;
+.text_center {
   text-align: center;
+
 }
-.goRegister-text view{
-  text-align: right;
-  padding-right: 10rpx;
-}
-.goRegister-text text{
-  font-size: 28rpx;
-  text-align: justify;
-  color: #666666;
-}
-.goRegister-btn{
-  height: 70rpx;
+
+.btn_group {
   width: 100%;
-  color: #4FBB49;
-  font-size: 24rpx;
+  box-sizing: border-box;
+  padding-bottom:70rpx;
+  position: fixed;
+  bottom: 0;
   text-align: center;
-  line-height: 70rpx;
-  background: #ECF8EB;
-  border-radius: 0rpx 0rpx 20rpx 20rpx;
-  position: relative;
-}
-.goRegister-btn::after{
-  border-radius:0; 
-}
-.goRight{
-  width: 26rpx;
-  height: 19rpx;
-  position: absolute;
-  right: 40rpx;
-  top: 26rpx;
 }
 
-
-
-.animationCon{
-  height: 300rpx;
-  position: relative;
-  overflow: hidden
-}
-
-.goRegister-view{
-position: absolute;
-}
-.shrink{
-  left: 50rpx;
-  top: 0;
-}
-.magnify{
-  left: 630rpx;
-  top: 0;
+.btn_group .whiteBtn{
+  background-color: #fff;
+  color: #4FBB49;
 }
