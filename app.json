@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/set-info/set-info",
+    "pages/low-carbon/low-carbon",
     "pages/goRegister/goRegister",
     "pages/goVerification/goVerification",
     "pages/community/community",
@@ -85,9 +86,15 @@
     "selectedColor": "#EE6F69",
     "backgroundColor": "#fff",
     "list": [
-      {
+       {
         "pagePath": "pages/set-info/set-info",
         "text": "打卡",
+        "iconPath": "images/tabBar/clock.png",
+        "selectedIconPath": "images/tabBar/clockR.png"
+      },
+      {
+        "pagePath": "pages/low-carbon/low-carbon",
+        "text": "低碳饮食",
         "iconPath": "images/tabBar/clock.png",
         "selectedIconPath": "images/tabBar/clockR.png"
       },

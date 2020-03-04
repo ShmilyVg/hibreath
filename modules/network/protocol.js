@@ -283,7 +283,14 @@ export default class Protocol {
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
     }
 
-
+    //获取我的减脂历程
+    static getMyLossfatCourse({weightGoalt}) {
+        return Network.request({url: 'members/getMyLossfatCourse',data:{weightGoalt}})
+    }
+    //低碳饮食-减脂历程
+    static getLossfatCourse() {
+        return Network.request({url: 'lowCarbonMeal/getLossfatCourse'})
+    }
     //七日减脂方案
     static fatReducingScheme({ schemaId }) {
      return Network.request({ url: 'losefatSchema/info', data: {schemaId}});

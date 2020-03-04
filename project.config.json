@@ -348,8 +348,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/set-info-new/set-info-new",
-					"pathName": "pages/set-info-new/set-info-new",
+					"name": "pages/low-carbon/low-carbon",
+					"pathName": "pages/low-carbon/low-carbon",
 					"scene": null
 				}
 			]
