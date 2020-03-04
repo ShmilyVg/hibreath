@@ -1,8 +1,7 @@
 {
-  "navigationBarTitleText": "Slimple轻松派",
-  "navigationBarBackgroundColor": "#7BC877",
-  "navigationBarTextStyle": "white",
-  "navigationStyle": "custom",
+  "navigationBarTitleText": "完善资料",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
   "usingComponents":{
     "pickerDate": "../../components/pickerDate/index",
     "navBar": "/components/navBar/navBar"

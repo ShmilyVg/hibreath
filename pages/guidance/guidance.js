@@ -12,7 +12,7 @@ import HiNavigator from "../../navigator/hi-navigator";
 Page({
   data: {
     guidance: {
-      page: 0,
+      page: 1,
       portraitUrl: '',
       info: {
         height: 175,
@@ -91,19 +91,40 @@ Page({
       "guidance.info.sexStr": sexStr
     });
   },
+  async getPhoneNumber(e) {
+    const { detail: { encryptedData, iv, errMsg } } = e;
+    if (errMsg === 'getPhoneNumber:ok') {
+      try {
+        await Protocol.putPhoneNum({ encryptedData, iv });
+        this.goNextPage();
+      } catch (e) {
+        console.error(e);
+        wx.showToast({
+          title: '授权手机号失败，请重试',
+          icon: 'none',
+          duration: 1000,
+        })
+      } 
+    } else {
+
+    }
+  },
   async continueFun() {
     const info = this.data.guidance.info;
     let page = this.data.guidance.page;
     switch (page) {
       case 1:
+        HiNavigator.navigateToGoVerification()
+        return;
+      case 2:
         if (this.objIsEmpty(info.sex)) {
           toast.warn("请选择性别");
           return;
         }
         break;
-      case 2:
-        break;
       case 3:
+        break;
+      case 4:
         if (this.objIsEmpty(info.height)) {
           toast.warn("请填写身高");
           return;
@@ -114,16 +135,10 @@ Page({
           toast.warn("体重不小于40KG");
           return;
         }
-        break;
-      case 4:
-        if (!this.data.guidance.btnAble) {
-          toast.warn("请至少选择一项");
-          return;
-        }
         this.postGuidance();
         return;
     }
-    if (page != 2) {
+    if (page != 3) {
       this.goNextPage()
     } else {
       Toast.showLoading();
@@ -270,8 +285,10 @@ Page({
   onShow() {
     let guidance = this.getParams('guidance');
     if (guidance) {
-      if (this.data.reset){
-        guidance.page =0
+      if (this.data.reset == 2){
+        guidance.page = 2
+      }else if (this.data.reset){
+        guidance.page =1
       }
       this.setData({
         guidance: guidance
