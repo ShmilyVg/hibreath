@@ -343,6 +343,13 @@
 					"id": -1,
 					"name": "pagesIndex/food-recommendation/food-recommendation",
 					"pathName": "pagesIndex/food-recommendation/food-recommendation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/low-carbon/low-carbon",
+					"pathName": "pages/low-carbon/low-carbon",
 					"scene": null
 				}
 			]
