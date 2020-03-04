@@ -1,105 +1,159 @@
 <!--pages/recomTar/recomTar.wxml-->
 
 <view class="recomTar">
-  <image src="../../images/lowFatReport/bg.png" class="bg"></image>
+  <image src="../../images/lowFatReport/newBg.png" class="bg"></image>
   <view class="header">
     <view bindtap="showModal">
       <view>
         <view class="recom">
-        推荐目标体重
-        <image src="../../images/edit.png"></image>
+          推荐目标体重
         </view>
         <!-- <text class="custom">支持自定义</text> -->
       </view>
       <view class="headerTit">
         <text class="recomNum">{{targetDate.weightGoalt}}</text>
         <text class="recomUnit">KG</text>
+        <image src="../../images/edit.png"></image>
       </view>
+      <view class="remarkTip">*根据您个人情况计算出的标准体重</view>
     </view>
 
   </view>
-  <view class="need">
-    <view class="bottom1"></view>
-    <view class="bottom2"></view>
-    <view class="bottom3">
-      <view class="title">
-        <text class="sign"></text>达到目标体重，你需要
+
+  <view class="contain">
+    <view class="tit-h2">我的减脂历程</view>
+    <view class="steps" wx:if="{{targetDate.weight}}">
+      <view class="step_title ready_step inline_block">
+        现在的我
+        <image src="../../images/lowFatReport/ready.png"></image>
       </view>
-      <view class="matter">
-        <view class="matterItem">
-          <view class="matterItemTit">减重</view>
-          <view class="matterItemV">{{targetDate.weightLoss}}
+      <view class="now">
+        <view class="now_item weigth">
+          <view class="now_w">体重</view>
+          <view class="now_num">{{targetDate.weight}}
             <text>kg</text>
           </view>
         </view>
-        <view class="matterItem">
-          <view class="matterItemTit">历时</view>
-          <view class="matterItemV">{{targetDate.takeTime}}
-            <text>天</text>
+        <view class="now_item">
+          <view class="now_w">需要减掉</view>
+          <view class="now_num">{{targetDate.weightLoss}}
+            <text>kg</text>
           </view>
         </view>
       </view>
-      <view class="eat">
-        <view class="eatTit">
-          在此期间，你大致需要吃
+      <view class="step_title ready_step inline_block">
+        经历低碳适应期
+        <image src="../../images/lowFatReport/ready.png"></image>
+      </view>
+      <view class="stepLast">{{targetDate.adaptPeriod.value}}
+        <text>{{targetDate.adaptPeriod.unit}}</text>
+      </view>
+      <view class="experience space-between" wx:for="{{targetDate.adaptPeriod.images}}" wx:key="executeOrder">
+        <block wx:for="{{item.foodList}}" wx:key="img">
+          <view class="box_con ">
+            <view class="box">
+              <image src="{{item.img}}" mode='aspectFill'></image>
+            </view>
+            <view wx:for="{{item.subList}}" wx:key="title">{{item.title}} {{item.quantityDesc}}</view>
+          </view>
+          <view class="tip_con ">
+            <image src="../../images/lowFatReport/sjx.png"></image>
+          </view>
+          <view class="target">
+            <view class="target_tit">目标</view>
+            <view class="targetItem" wx:for="{{item.goalList}}" wx:key="title">
+              <view>{{index+1}}</view> {{item.title}}
+            </view>
+          </view>
+        </block>
+
+      </view>
+      <view class="clearFix"></view>
+      <view class="step_title inline_block">
+        经历减脂期
+        <image src="../../images/lowFatReport/willbe.png"></image>
+      </view>
+      <view class="stepLast">{{targetDate.reduceFatPeriod.value}}
+        <text>{{targetDate.reduceFatPeriod.unit}}</text>
+      </view>
+      <view class="reduce">
+        <block wx:for="{{targetDate.reduceFatPeriod.images}}" wx:key="executeOrder">
+          <view class="reduce_tit">{{item.tag}}</view>
+          <view class="experience space-between">
+            <block wx:for="{{item.foodList}}" wx:key="img" wx:for-item="food">
+              <view class="box_con">
+                <view class="box">
+                  <image src="{{food.img}}" mode='aspectFill'></image>
+                </view>
+                <view wx:for="{{food.subList}}" wx:key="img" wx:for-item="foodItem">{{foodItem.title}} {{foodItem.quantityDesc}}</view>
+              </view>
+              <view class="tip_con" wx:if="{{index < item.foodList.length-1}}">
+                +
+              </view>
+            </block>
+
+          </view>
+          <view class="clearFix"></view>
+        </block>
+
+        <view class="cyclic">*预计需要循环1次</view>
+      </view>
+      <view class="step_title inline_block">
+        经历巩固期
+        <image src="../../images/lowFatReport/willbe.png"></image>
+      </view>
+      <view class="stepLast">{{targetDate.consolidatePeriod.value}}
+        <text>{{targetDate.consolidatePeriod.unit}}</text>
+      </view>
+      <view class="consolidate">
+        <block wx:for="{{targetDate.consolidatePeriod.images}}" wx:key="executeOrder">
+          <view class="reduce_tit">{{item.tag}}</view>
+          <view class="experience space-between">
+            <block wx:for="{{item.foodList}}" wx:key="img" wx:for-item="food">
+              <view class="box_con">
+                <view class="box">
+                  <image src="{{food.img}}" mode='aspectFill'></image>
+                </view>
+                <view wx:for="{{food.subList}}" wx:key="img">{{item.title}} {{food.quantityDesc}}</view>
+              </view>
+              <view class="tip_con" wx:if="{{index < item.foodList.length-1}}">
+                +
+              </view>
+            </block>
+          </view>
+          <view class="clearFix"></view>
+        </block>
+
+      </view>
+      <view class="step_title ready_step inline_block">
+        之后的我
+        <image src="../../images/lowFatReport/willbe.png"></image>
+      </view>
+      <view class="ultimately">
+        <view class="now_item weigth">
+          <view class="now_w">体重减到</view>
+          <view class="now_num">{{targetDate.weightGoalt}}
+            <text>kg</text>
+          </view>
         </view>
-        <view class="eatItem">
-          <view class="eatCon">3日全代餐盒子</view>
-          <view class="eatNum">X{{targetDate.fullMeal}}</view>
+        <view class="now_item">
+          <image src="../../images/lowFatReport/success.png"></image>
         </view>
-        <view class="eatItem">
-          <view class="eatCon">3日代两餐盒子</view>
-          <view class="eatNum">X{{targetDate.twoMeal}}</view>
-        </view>
-        <view class="adjust">*您也可以根据自己需要进行调整</view>
       </view>
     </view>
+    <image src="../../images/lowFatReport/bgBottom.png" class="bgBottom"></image>
   </view>
-  <view class="ideas">
-    <view class="title">
-      <text class="sign"></text>在理想状态下，你会经历
-    </view>
-    <view class="ideasItem">
-      <view class="continued">{{targetDate.onePeriod}}
-        <text>天</text> </view>
-      <view class="ideasItemTit">
-        <text>1</text> 启动适应期</view>
-      <view class="ideasItemCon">你开始减脂的第一阶段，身体要有个转变适应的过程</view>
-    </view>
-    <view class="ideasItem">
-      <view class="continued">{{targetDate.twoPeriod}}
-        <text>天</text> </view>
-      <view class="ideasItemTit">
-        <text>2</text> 加速期</view>
-      <view class="ideasItemCon">身体开始适应减脂节奏，稳步燃脂</view>
-    </view>
-    <view class="ideasItem">
-      <view class="continued">{{targetDate.threePeriod}}
-        <text>天</text> </view>
-      <view class="ideasItemTit">
-        <text>3</text> 巩固期</view>
-      <view class="ideasItemCon">达到理想体重，也不能贪嘴，要继续保持 一段时间哦</view>
-    </view>
-    <view class="ideasItem">
-      <view class="continued">{{targetDate.fourPeriod}}
-        <text>天</text> </view>
-      <view class="ideasItemTit">
-        <text>4</text> 过度期</view>
-      <view class="ideasItemCon">你已经可以慢慢恢复原来的饮食，但是切 记还是不可暴饮暴食</view>
-    </view>
-    <view class="remark">*如果把控不严格，可能会进入"减脂平台期"和"减脂中断期"，在具体方案打卡执行中会有对应提示哦~</view>
-  </view>
-  <view class="btn_group" wx:if="{{!personalCente}}">
-    <button class="btn_start" hover-class="press-style" hover-stay-time="50" bindtap="start">开始减脂历程
-    </button>
-    <view class="btn_afresh" hover-class="press-style" hover-stay-time="50" bindtap="reStart">重新生成
-    </view>
-  </view>
+
+
+
+
+
+
+
   <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
     <view class="modals-cancel" bindtap="hideModal"></view>
     <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
       <view>请输入目标体重</view>
-      
       <input class="weightInput " value="{{weightGoalt}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
       <view class="page2-line"></view>
       <view class="unit">KG</view>
