@@ -28,10 +28,6 @@ Page({
     showGuide: false, //未授权显示引导页
     showGoclockin:false, //开启打卡状态
     noMeasure: false, //没有准确测过体脂率
-    sexBox: [
-      { image: "man", text: "男士", isChose: false, value: 1 },
-      { image: "woman", text: "女士", isChose: true, value: 0 }
-    ],
     currentDate: "2018-12-19",
     page: 1,
     title: [
@@ -44,9 +40,6 @@ Page({
       "推荐目标体重",
       "选择一套方案"
     ],
-    page4MenItem: ["4", "7", "10", "15", "20", "25", "30", "35", "40"],
-    page4WomenItem: ["10", "15", "20", "25", "30", "35", "40", "45", "50"],
-    birth: ["1980", "1", "1"],
     meals: [],
     secArray: [],
     bgColorSetInfoPage: "#ffffff",
@@ -130,12 +123,6 @@ Page({
         showNewInfo: true,
         showGoclockin: true //暂未开启打开状态显示(此时为未注册或者未填写资料状态)
       });
-      setTimeout(() => {
-        wx.setNavigationBarColor({
-          frontColor: "#ffffff",
-          backgroundColor: "#F55E6B"
-        });
-      });
       return
     }else{
       that.setData({
@@ -155,12 +142,6 @@ Page({
                 wx.showTabBar();
             }, 200);
         }
-    });
-    setTimeout(() => {
-      wx.setNavigationBarColor({
-        frontColor: "#ffffff",
-        backgroundColor: "#F55E6B"
-      });
     });
     this.setData({
       showGuide:false
@@ -504,21 +485,6 @@ Page({
             wx.showTabBar();
           }, 200);
         }
-      });
-    }
-    if(this.data.caseOnReady){
-      setTimeout(() => {
-        wx.setNavigationBarColor({
-          frontColor: "#000000",
-          backgroundColor: "#F2F2F2"
-        });
-      });
-    }else{
-      setTimeout(() => {
-        wx.setNavigationBarColor({
-          frontColor: "#ffffff",
-          backgroundColor: "#F55E6B"
-        });
       });
     }
   },

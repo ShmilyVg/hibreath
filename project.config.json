@@ -343,6 +343,13 @@
 					"id": -1,
 					"name": "pagesIndex/food-recommendation/food-recommendation",
 					"pathName": "pagesIndex/food-recommendation/food-recommendation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/set-info-new/set-info-new",
+					"pathName": "pages/set-info-new/set-info-new",
 					"scene": null
 				}
 			]

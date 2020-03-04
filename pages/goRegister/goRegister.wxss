@@ -10,7 +10,6 @@ page{
 .firstPage{
   box-sizing: border-box;
   padding-top: 288rpx;
-  position: relative;
 }
 .guidanceBg{
   position: absolute;
