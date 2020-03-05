@@ -1,7 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "我的减脂历程",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh":false,
-  "navigationBarBackgroundColor": "#ED6F69"
+  "navigationBarBackgroundColor": "#7BC877"
 }

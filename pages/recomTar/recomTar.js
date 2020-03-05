@@ -11,15 +11,10 @@ Page({
   data: {
     targetDate:{},
     weightGoal:'',
-    personalCente:false,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},//
   },
   onLoad: function (options) {
-    console.log(options);
-    this.setData({
-      personalCente: options.personalCente === true || options.personalCente ==='true'
-    })
     this.getMyLoss();
   },
   onReady: function () {
@@ -29,26 +24,14 @@ Page({
     getApp().globalData.issueRefresh = true;
   },
   async getMyLoss(weightGoalt){
+    Toast.showLoading()
     let data = weightGoalt ? { weightGoalt:Number(weightGoalt)}:{};
-    let res;
-    if (this.data.personalCente){
-      res = await Protocol.getMyLossfatCourse(data);
-    }else{
-      res = await Protocol.initMyLossfatCourse(data);
-    }
+    let res = await Protocol.getMyLossfatCourse(data);
     this.setData({
       weightGoalt: res.result.weightGoalt,
       targetDate: res.result
     })
-  },
-  reStart(){
-    HiNavigator.navigateToGuidance({ reset:true});
-  },
-  async start(){
-    let weightGoal = this.data.targetDate.weightGoalt;
-    await Protocol.postMembersJoinSchema({weightGoal});
-    HiNavigator.switchToSetInfo()
-    mta.Event.stat('zhulujing',{'enternewbietask':'true'})
+    Toast.hiddenLoading()
   },
   weightGoalChange(e){
     let targetDate = this.data.targetDate

@@ -28,25 +28,28 @@
   </block>
   <block wx:else>
     <view class="set-top-view" wx:if="{{caseonEveryday}}">
-      <image src="../../images/lowFatReport/bg.png" class="bg"></image>
-      <!-- <view wx:if="{{caseOnReady}}" class="set-top-content" style="float: left;width: 150rpx">准备日</view>-->
-      <view class="set-info-top">
+      <view class="set-info-top">天天燃脂有好礼</view>
+      <view class="tasks">
+        <view class="task {{index<= days?'readyClock':'' }}" wx:for="{{7}}">
+        <image src="../../images/set-info/ready.png" mode="aspectFill" wx:if="{{index <= days }}"></image>
+        <image src="../../images/set-info/task.png" mode="aspectFill" wx:elif="{{index != 2 && index != 6 && index >= days}}"></image>
+        <image src="../../images/set-info/gift.png" mode="aspectFill" wx:else></image>
+        
+        <view>{{index+1}}天</view>
+        </view>
+      </view>
+
+      <!-- <view class="set-info-top">
         <view style="float: left">
-          <view class="set-info-top-text1">你已坚持减脂打卡 <view class="set-info-top-text1-num">{{days}}</view> 天</view>
-          <!-- <view class="set-info-top-text2">坚持减脂打卡</view> -->
+          <view class="set-info-top-text1">你已坚持减脂打卡
+            <view class="set-info-top-text1-num">{{days}}</view> 天</view>
           <view class="set-info-top-text6 " style="padding-left: {{(checkin.headImgs.length-1) *25 + 50}}rpx;">
-          <image src="{{item}}" style="z-index:{{1000-index}}" wx:key='item' wx:for="{{checkin.headImgs}}"></image>
-          <text>今日{{checkin.size}}人已打卡</text> 
+            <image src="{{item}}" style="z-index:{{1000-index}}" wx:key='item' wx:for="{{checkin.headImgs}}"></image>
+            <text>今日{{checkin.size}}人已打卡</text>
           </view>
         </view>
-        <!-- <view style="float: right">
-          <text class="set-info-top-text3">{{days}}</text>
-          <text class="set-info-top-text1">天</text>
-        </view> -->
-        <!--  -->
 
-
-      </view>
+      </view> -->
     </view>
     <view wx:if="{{caseOnReady}}" style="width: 100%;box-sizing: border-box;padding: 110rpx 30rpx 0rpx 30rpx">
       <view class="caseOnReady-title">新手任务</view>
@@ -74,18 +77,24 @@
         </view>
         <view class="answerCon" wx:else>
           <view class="answerTit answerRight" wx:if="{{answerData.isCorrect == 1}}">
-            <image class="answerImg" src="../../images/set-info/right.png"></image><text>答对啦！</text>
+            <image class="answerImg" src="../../images/set-info/right.png"></image>
+            <text>答对啦！</text>
           </view>
           <view class="answerTit answerError" wx:else>
-            <image class="answerImg " src="../../images/set-info/error.png"></image><text>答错啦...</text>
+            <image class="answerImg " src="../../images/set-info/error.png"></image>
+            <text>答错啦...</text>
           </view>
           <view class="answerDetails">
             <view class="answerResult">正确答案：{{answerData.answerDatabaseBean.standardAnswer?'Yes':'NO'}}</view>
             <view>{{answerData.answerDatabaseBean.explanation}}</view>
           </view>
-          <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率 <text>{{answerData.correctRate}}%</text></view>
+          <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率
+            <text>{{answerData.correctRate}}%</text>
+          </view>
         </view>
-        <view class="bigTruthTip" wx:if="{{!answerData.isAnswer}}"><image src="../../images/pai-coin/goods_icon.png"></image>答对可获得<text>{{answerData.integral}}积分</text>哦~</view>
+        <view class="bigTruthTip" wx:if="{{!answerData.isAnswer}}">
+          <image src="../../images/pai-coin/goods_icon.png"></image>答对可获得
+          <text>{{answerData.integral}}积分</text>哦~</view>
       </view>
       <view class="flex-column-item" wx:if="{{caseonEveryday}}">
         <view class="set-info-top-text4">今日任务</view>
