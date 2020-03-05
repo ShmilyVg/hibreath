@@ -83,7 +83,7 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#BBBCCD",
-    "selectedColor": "#EE6F69",
+    "selectedColor": "#5a5a5b",
     "backgroundColor": "#fff",
     "list": [
        {
@@ -95,8 +95,8 @@
       {
         "pagePath": "pages/low-carbon/low-carbon",
         "text": "低碳饮食",
-        "iconPath": "images/tabBar/clock.png",
-        "selectedIconPath": "images/tabBar/clockR.png"
+        "iconPath": "images/tabBar/low-carbon.png",
+        "selectedIconPath": "images/tabBar/low-carbonR.png"
       },
       {
         "pagePath": "pages/community/community",

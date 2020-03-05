@@ -1,6 +1,7 @@
 // pages/low-carbon/low-carbon.js
 import {getLatestOneWeekTimestamp} from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
@@ -21,7 +22,9 @@ Page({
       console.log('currenttab',this.data.currenttab)
     }
   },
-
+  toRecomTarNew(){
+    HiNavigator.navigateToRecomTarNew()
+  },
   /**
    * 生命周期函数--监听页面加载
    */

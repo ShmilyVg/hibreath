@@ -1,7 +1,7 @@
 <!--pages/low-carbon/low-carbon.wxml-->
 <view class="low-carbon-topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
     <view class="low-carbon-topView-view1">我的减脂历程</view>
-    <view class="low-carbon-topView-view2">查看完整历程</view>
+    <view class="low-carbon-topView-view2" bindtap="toRecomTarNew">查看完整历程</view>
     <view class="clear"></view>
     <view class="low-carbon-topView-view3">{{result.title}}</view>
     <view class="low-carbon-topView-view4">{{result.duration}}<text class="low-carbon-topView-text1">日</text></view>
