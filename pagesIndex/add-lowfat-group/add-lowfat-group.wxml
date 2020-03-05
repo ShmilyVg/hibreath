@@ -1,0 +1,13 @@
+<!--pagesIndex/add-lowfat-group/add-lowfat-group.wxml-->
+<view class="add-view1">减脂过程中有困惑？</view>
+<view class="add-view2">点击加入Slimple减脂群，在线营养师专业解答</view>
+<view style="display: flex">
+    <view class="add-view3">方式1</view>
+    <view class="add-view4">点击加入Slimple减脂群，在线营养师专业解答</view>
+</view>
+<view class="add-view5">点击复制</view>
+<view>
+    <view class="add-view3">方式2</view>
+    <view class="add-view4">保存二维码，使用微信扫一扫添加</view>
+</view>
+<view class="add-view5">保存至相册</view>

@@ -25,6 +25,9 @@ Page({
   toRecomTarNew(){
     HiNavigator.navigateToRecomTarNew()
   },
+  toSetInfo(){
+    HiNavigator.switchToSetInfo()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -33,7 +36,7 @@ Page({
     this.setData({
       result:result
     })
-    console.log('result',result)
+    console.log('result',this.data.result.howEatAdditionaObj[0].foodList)
   },
 
   /**
