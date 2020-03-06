@@ -366,6 +366,12 @@
 					"pathName": "pagesIndex/getGift/getGift",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/taskShareInfo/taskShareInfo",
+					"pathName": "pages/taskShareInfo/taskShareInfo",
+					"scene": null
 				}
 			]
 		}
