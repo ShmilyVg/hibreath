@@ -31,6 +31,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGuidance({reset}) {
       this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}`});
     }
+    //新手引导填写资料
+    static switchToLowCarbon() {
+      this.switchTab({url: `/pages/low-carbon/low-carbon`});
+    }
     //燃脂历程
     static navigateToRecomTar({personalCenter}) {
       this.navigateTo({url: '/pages/recomTar/recomTar?personalCente='+personalCenter});

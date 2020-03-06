@@ -26,7 +26,9 @@ Page({
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
+    animationTop:'',
     breathSign: {},//签到数据
+    burnReadyLeft:130,
     hideModal: true,
     topTaskTip: false,
     weight: '',
@@ -94,10 +96,80 @@ Page({
     }, 1200)
   },
   onShow() {
-    //this.handleBle();
+    this.handleBle();
     this.getAnswer();
     this.getBreathSignInInfo();
-
+    let that = this;
+    //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
+    app.onDataSyncListener = ({ num, countNum }) => {
+      console.log("同步离线数据：", num, countNum);
+      if (num > 0 && countNum > 0) {
+        that.data.sync.num = num;
+        that.data.sync.countNum = countNum;
+        if (that.data.sync.countNum >= that.data.sync.num) {
+          that.setData({
+            sync: that.data.sync,
+            showBigTip: true
+          });
+          clearTimeout(that.data.sync.timer);
+          that.data.sync.timer = "";
+          that.data.sync.timer = setTimeout(function () {
+            that.getTaskInfo();
+            that.setData({
+              showBigTip: false
+            });
+            console.log(
+              "今日燃脂任务是否完成标志位",
+              that.data.fatBurnTask,
+              that.data.fatBurnTask.finished
+            );
+            if (that.data.showBigTip == false) {
+              WXDialog.showDialog({
+                content: "上传成功，本次共上传" + that.data.sync.num + "条结果",
+                showCancel: true,
+                confirmText: "查看记录",
+                cancelText: "暂不查看",
+                confirmEvent: () => {
+                  HiNavigator.navigateToResultNOnum();
+                },
+                cancelEvent: () => { }
+              });
+            }
+          }, 2000);
+        }
+      } else {
+        that.setData({
+          showBigTip: false
+        });
+      }
+    };
+    //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
+    if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
+      getApp().globalData.issueRefresh = false;
+      that.getTaskInfo();
+    }
+    if (wx.getStorageSync('showWeight')) {
+      this.showModal();
+      wx.setStorageSync('showWeight', false)
+    }
+  },
+  onShareAppMessage() {
+    console.log("sharedId", this.data.shareImg);
+    this.setData({
+      isOpened: false
+    });
+    wx.showTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.showTabBar();
+        }, 500);
+      }
+    });
+    return {
+      title: '1',
+      path: "/pages/taskShareInfo/taskShareInfo?sharedId=" + this.data.sharedId,
+      imageUrl: this.data.shareImg
+    };
   },
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
@@ -108,12 +180,11 @@ Page({
       })
       wx.setStorageSync('finishedGuide', true);
       this.getTaskInfo()
-      // this.handleTasks()
+      // this.getTaskInfo()
     } else {
       this.setData({
         finishedGuide: false
       })
-      HiNavigator.navigateToGoRegister()
     }
   },
   async getBreathSignInInfo() {
@@ -127,6 +198,12 @@ Page({
     this.setData({
       ...result
     })
+    let imgUrlsLength = result.otherUsers.imgUrls.length;
+    let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2)?'97':'130';
+    this.setData({
+      burnReadyLeft
+    })
+    
   },
   async fatTaskToFinish() {
     wx.getSystemInfo({
@@ -219,17 +296,16 @@ Page({
   async onGetUserInfoEvent(e) {
     const { detail: { userInfo, encryptedData, iv } } = e;
     if (!!userInfo) {
-      Toast.showLoading();
       await Login.doRegister({ userInfo, encryptedData, iv });
       //此处需要处理不授权的情况
-      Toast.hiddenLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '注册成功',
-          duration: 2000
-        });
+      wx.showToast({
+        title: '授权成功',
+        duration: 500
       });
-      Toast.hiddenLoading();
+      setTimeout(() => {
+        HiNavigator.navigateToGuidance({})
+      },500);
+      
     }
   },
 
@@ -275,6 +351,23 @@ Page({
     this.setData({
       topTaskTip: !topTaskTip
     })
+    if (topTaskTip){
+      this.topFadeIn()
+    }else{
+      this.topFadeDown()
+    }
+  },
+  cancel() {
+    this.setData({
+      isOpened: false
+    });
+    wx.showTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.showTabBar();
+        }, 500);
+      }
+    });
   },
   //减脂大实话
   async getAnswer(txt) {
@@ -360,4 +453,29 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  topFadeIn(){
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.animation.height(0).step()
+    that.setData({
+      animationTop: that.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
+    })
+  },
+  topFadeDown(){
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.animation.height("240rpx").step()
+    that.setData({
+      animationTop: that.animation.export(),
+    })
+  }
+
 });

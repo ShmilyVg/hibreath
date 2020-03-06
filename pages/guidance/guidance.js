@@ -269,7 +269,14 @@ Page({
     Toast.hiddenLoading();
     if (result.code) {
       Toast.success('生成成功');
-      HiNavigator.navigateToRecomTar({personalCenter:false})
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 500);
+        }
+      });
+      HiNavigator.switchToLowCarbon()
     }
   },
   onHide() {
@@ -294,12 +301,5 @@ Page({
         guidance: guidance
       });
     }
-  },
-  onUnload: function () {
-    HiNavigator.switchToSetInfo()
-  },
-  handlerGobackClick(){
-    getApp().globalData.issueRefresh = true;
-    HiNavigator.switchToSetInfo()
   }
 })

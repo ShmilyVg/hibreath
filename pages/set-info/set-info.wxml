@@ -1,4 +1,3 @@
-
 <view class="guidance" wx:if="{{!finishedGuide}}">
   <view class="firstPage">
     <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
@@ -20,20 +19,23 @@
         <view>{{index+1}}天</view>
       </view>
     </view>
-    <view class="clock-tip" wx:if="{{topTaskTip}}">
-      <view class="clock-day" wx:if="{{days}}">Day{{days}}
-        <text>·已打卡</text> </view>
-      <view class="clock-text">连续7日打卡，可领取
-        <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
-    </view>
-    <view class="clockBtn" wx:if="{{topTaskTip}}">
-      <view class="replenish">
-        <image src="../../images/set-info/gift.png" class="gift"></image>
-        开始燃脂打卡
-        <image src="../../images/set-info/goRight.png" class="goNext"></image>
+    <view  animation="{{animationTop}}" class="clock-con">
+      <view class="clock-tip">
+        <view class="clock-day" wx:if="{{days}}">Day{{days}}
+          <text>·已打卡</text> </view>
+        <view class="clock-text">连续7日打卡，可领取
+          <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
       </view>
-      <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
+      <view class="clockBtn">
+        <view class="replenish">
+          <image src="../../images/set-info/gift.png" class="gift"></image>
+          开始燃脂打卡
+          <image src="../../images/set-info/goRight.png" class="goNext"></image>
+        </view>
+        <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
+      </view>
     </view>
+
   </view>
 
   <view class="contain">
@@ -42,9 +44,9 @@
       <view class="contain-title">你已坚持低碳燃脂{{dayNum}}天</view>
       <view class="burn-ready">
         <block wx:for="{{otherUsers.imgUrls}}" wx:key='item'>
-          <image src="{{item}}" style="z-index:{{100-index}}" ></image>
+          <image src="{{item}}" style="z-index:{{100-index}}"></image>
         </block>
-        <text>今日{{otherUsers.dayNum}}人·正在燃脂</text>
+        <text style="margin-left: {{burnReadyLeft}}rpx;">今日{{otherUsers.dayNum}}人·正在燃脂</text>
       </view>
       <view class="burn-about">
         <view class="stage">Day4
@@ -64,7 +66,7 @@
         <view class="speed-now" bindtap="fatTaskToFinish">
           <view class="item-tip">
             <image src="../../images/set-info/speed-tip.png" class="speed-tip"></image>
-          </view> 
+          </view>
           <image src="../../images/set-info/speed-bg.png" class="item"></image>
           <view class="item-contain">
             <view class="item-contain-tit">当前燃脂速度</view>
@@ -154,3 +156,10 @@
     <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
   </view>
 </view>
+
+<!--底部弹窗-->
+<view class="shareContainer" wx:if='{{isOpened}}'>
+  <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
+  <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
+</view>
+<view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>
