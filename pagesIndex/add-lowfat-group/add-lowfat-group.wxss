@@ -1,7 +1,7 @@
 /* pagesIndex/add-lowfat-group/add-lowfat-group.wxss */
 page{
     box-sizing: border-box;
-    padding: 96rpx 0rpx 0rpx 66rpx;
+    padding: 96rpx 66rpx 0rpx 66rpx;
 }
 .add-view1{
     font-size:48rpx;
@@ -11,11 +11,17 @@ page{
 }
 .add-view2{
     font-size:30rpx;
+    margin: 30rpx 0rpx 104rpx 0rpx;
     font-family:PingFang SC;
     font-weight:400;
     color:rgba(102,102,102,1);
 }
 .add-view3{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    margin-right: 13rpx;
+    font-weight:500;
+    color:rgba(255,255,255,1);
     width:100rpx;
     height:38rpx;
     line-height: 38rpx;
@@ -36,4 +42,8 @@ page{
     height:100rpx;
     background:rgba(123,200,119,1);
     border-radius:50rpx;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
 }

@@ -43,6 +43,22 @@
                 <view class="clear"></view>
             <view class="low-carbon-topView-view5" wx:if="{{index === 1}}">*预计需要循环1次</view>
         </view>
+        <view  wx:if="{{result.stage == 3}}">
+            <view class="reduce_tit">{{item.tag}}</view>
+            <view class="experience">
+                <block wx:for="{{item.foodList}}" wx:key="index">
+                    <view class="box_con">
+                        <view class="box">
+                            <image src="{{item.img}}" mode='aspectFill'></image>
+                        </view>
+                        <view class="quantityDesc" wx:for="{{item.subList}}" wx:key="img">{{item.title}} {{item.quantityDesc}}</view>
+                    </view>
+                    <view class="tip_con" wx:if="{{index<2}}">
+                        +
+                    </view>
+                </block>
+            </view>
+        </view>
     </view>
 </view>
 <view class="low-carbon-howEat">

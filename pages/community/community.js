@@ -28,7 +28,6 @@ Page({
         noCommunity:false,
         shareTaskListImg:[],
         shareImg:"",
-        bgImg:"../../images/set-info/shareBg.png",//分享背景
         addImg:'../../images/community/addc.png',//分享加号
         hbImg:'../../images/community/hd.png',//分享背景
     },

@@ -297,7 +297,10 @@ export default class Protocol {
     static postTaskSharedInfo({sharedId}){
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
     }
-
+    //优惠礼包
+    static getGift({couponId}) {
+        return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
+    }
     //获取我的减脂历程
     static getMyLossfatCourse({weightGoalt}) {
         return Network.request({url: 'members/getMyLossfatCourse',data:{weightGoalt}})
@@ -305,6 +308,14 @@ export default class Protocol {
     //低碳饮食-减脂历程
     static getLossfatCourse() {
         return Network.request({url: 'lowCarbonMeal/getLossfatCourse'})
+    }
+    //微信客服信息
+    static getSupportStaff() {
+        return Network.request({url: 'supportStaff/get'})
+    }
+    //刷新获取客服信息
+    static getSupportStaffR({id}) {
+        return Network.request({url: 'supportStaff/refresh', data: {id}})
     }
     //七日减脂方案
     static fatReducingScheme({ schemaId }) {

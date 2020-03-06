@@ -350,6 +350,27 @@
 					"id": -1,
 					"name": "pages/low-carbon/low-carbon",
 					"pathName": "pages/low-carbon/low-carbon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 42,
+					"name": "pagesIndex/add-lowfat-group/add-lowfat-group",
+					"pathName": "pagesIndex/add-lowfat-group/add-lowfat-group",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/getGift/getGift",
+					"pathName": "pagesIndex/getGift/getGift",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/taskShareInfo/taskShareInfo",
+					"pathName": "pages/taskShareInfo/taskShareInfo",
 					"scene": null
 				}
 			]

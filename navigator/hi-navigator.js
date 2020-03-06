@@ -51,22 +51,7 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToLiterature() {
       this.navigateTo({url: `/pagesIndex/literature/literature`});
     }
-    //准备日-视频打卡
-    static navigateTofoodVideoclock({id,videoUrl}) {
-        this.navigateTo({url: '/pagesIndex/foodVideoclock/foodVideoclock?id=' + id +'&videoUrl=' + videoUrl});
-    }
-    //运动-自由打卡
-    static navigateToFreeClock() {
-        this.navigateTo({url: '/pages/freeClock/freeClock'});
-    }
-    //运动-视频打卡
-    static navigateToVideoClock({id}) {
-        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id});
-    }
-    //查看课程
-    static navigateToOnlyRaed({id}) {
-        this.navigateTo({url: '/pages/videoClock/videoClock?id=' + id + '&isOnlyread=true'});
-    }
+
     //方案完成
     static navigateToPlanfinish({planId}) {
         this.navigateTo({url: '/pagesIndex/planfinish/planfinish?planId=' + planId});
@@ -116,18 +101,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToCalendar({type}) {
         this.navigateTo({url: '/pages/calendar/calendar?type=' + type});
     }
-
-    static redirectToFinishCheck({dataId, clockWay}) {
-        this.redirectTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
-    }
-    static navigateToFinishCheck({dataId, clockWay}) {
-        this.navigateTo({url: '/pages/finishClock/finishClock?dataId=' + dataId + '&clockWay=' + clockWay});
-    }
-
-    static redirectToFreeCheck({dataId}) {
-        this.redirectTo({url: '/pages/freeClock/freeClock?dataId=' + dataId});
-    }
-
     static navigateToMessageDetail({messageId}) {
         this.navigateTo({url: '/pages/message-detail/message-detail?messageId=' + messageId});
     }
@@ -167,14 +140,7 @@ export default class HiNavigator extends CommonNavigator {
    static navigateToFatBurningList({ groupId }) {
      this.navigateTo({ url: '/pages/fatBurningList/fatBurningList?groupId=' + groupId });
     }
-    //七日减脂方案
-   static navigateToCaseDetails({ schemaId }) {
-     this.navigateTo({ url: '/pages/caseDetails/caseDetails?schemaId=' + schemaId });
-    }
-    //七日减脂方案详情
-  static navigateToCaseDetailsInformation({ planId }) {
-    this.navigateTo({ url: '/pages/caseDetailsInformation/caseDetailsInformation?planId=' + planId });
-    }
+
   static navigateToSetup({ socialMemberInfo, currentSocial}) {
     this.navigateTo({ url: '/pages/set-up/set-up?socialMemberInfo=' + socialMemberInfo + '&currentSocial=' + currentSocial} );
     }
