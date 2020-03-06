@@ -1,163 +1,156 @@
-<!--pages/set-info/set-info.wxml-->
-<!--<import src="./view/guide.wxml"></import>-->
-<import src="./view/fatBurnCard.wxml"></import>
-<import src="./view/bodyIndexCard.wxml"></import>
-<import src="./view/HIITCard.wxml"></import>
-<import src="./view/foodVideo.wxml"></import>
-<import src="./view/readyTask.wxml"></import>
-<import src="./view/caseFinished.wxml"></import>
-<view class="page" style="background-color: {{bgColorSetInfoPage}}">
-  <block wx:if="{{showNewInfo}}">
-    <my-swiper wx:if="{{showGuide}}"></my-swiper>
-    <view wx:if="{{showGuide}}" class="middle-view">慢慢减脂路上·你是否也遇这些困扰</view>
-    <view wx:if="{{showGuide}}" class="flex-row" style="margin-top: 50rpx;margin-left:90rpx;align-items: self-start">
-      <image wx:if="{{showGuide}}" class="page1-image1 " src="../../images/set-info/page1-up.png"></image>
-      <view wx:if="{{showGuide}}" class="guide-text">
-        <text>只要有正确的思维方式\n任何合理的饮食和运动方式都可以\n让你减脂</text>
-      </view>
-      <image wx:if="{{showGuide}}" class="page1-image1" src="../../images/set-info/page1-down.png"></image>
-    </view>
-    <button wx:if="{{showGuide}}" class="guide-startBtn" hover-class="press-style" bindtap="toSetInfo">立即体验</button>
-    <view wx:if="{{showGoclockin}}" style="text-align: center">
-      <image class="showGoclockin-imgB" src="../../images/set-info/empty.png"></image>
-      <view class="showGoclockin-text">暂未开启打卡</view>
-      <view class="showGoclockin-startView" hover-class="press-style" bindtap="goRegister">
-        开启打卡
-      </view>
-    </view>
-  </block>
-  <block wx:else>
-    <view class="set-top-view" wx:if="{{caseonEveryday}}">
-      <view class="set-info-top">天天燃脂有好礼</view>
-      <view class="tasks">
-        <view class="task {{index<= days?'readyClock':'' }}" wx:for="{{7}}">
-        <image src="../../images/set-info/ready.png" mode="aspectFill" wx:if="{{index <= days }}"></image>
-        <image src="../../images/set-info/task.png" mode="aspectFill" wx:elif="{{index != 2 && index != 6 && index >= days}}"></image>
-        <image src="../../images/set-info/gift.png" mode="aspectFill" wx:else></image>
-        
-        <view>{{index+1}}天</view>
-        </view>
-      </view>
 
-      <!-- <view class="set-info-top">
-        <view style="float: left">
-          <view class="set-info-top-text1">你已坚持减脂打卡
-            <view class="set-info-top-text1-num">{{days}}</view> 天</view>
-          <view class="set-info-top-text6 " style="padding-left: {{(checkin.headImgs.length-1) *25 + 50}}rpx;">
-            <image src="{{item}}" style="z-index:{{1000-index}}" wx:key='item' wx:for="{{checkin.headImgs}}"></image>
-            <text>今日{{checkin.size}}人已打卡</text>
-          </view>
-        </view>
-
-      </view> -->
-    </view>
-    <view wx:if="{{caseOnReady}}" style="width: 100%;box-sizing: border-box;padding: 110rpx 30rpx 0rpx 30rpx">
-      <view class="caseOnReady-title">新手任务</view>
-      <view class="caseOnReady-number">{{indexfinishNum}}/{{indextaskNum}}</view>
-      <view class="clear"></view>
-      <view class="caseOnReady-subtitle">在正式燃脂之前，你需要了解</view>
-      <view wx:for="{{taskListAll}}" wx:key="index">
-        <template is="readyTask" wx:if="{{item.type =='howBreath'}}" data="{{...item}}"></template>
-        <template is="readyTask" wx:if="{{item.type =='whatNoteworthy'}}" data="{{...item}}"></template>
-        <template is="readyTask" wx:if="{{item.type =='howClockIn'}}" data="{{...item}}"></template>
-      </view>
-    </view>
-    <view class="flex-column" style="margin-top: -120rpx;padding: 0rpx 30rpx;position: relative;z-index: 50;">
-      <view class="bigTruth" wx:if="{{caseonEveryday}}">
-        <view class="bigTruthTit">
-          <text>#减脂大实话#</text>
-          <image src="../../images/set-info/rjjx.png" class="rjjx"></image>
-        </view>
-        <view class="bigTruthCon">{{answerData.answerDatabaseBean.tips}}</view>
-        <view class="btnCon" wx:if="{{answerData.isAnswer == 0}}">
-          <view bindtap="answerFinish" wx:for="{{answerBtns}}" wx:key='imgSrc' data-index="{{index}}">
-            <image src='{{item.imgSrc}}'></image>
-            <text>{{item.text}}</text>
-          </view>
-        </view>
-        <view class="answerCon" wx:else>
-          <view class="answerTit answerRight" wx:if="{{answerData.isCorrect == 1}}">
-            <image class="answerImg" src="../../images/set-info/right.png"></image>
-            <text>答对啦！</text>
-          </view>
-          <view class="answerTit answerError" wx:else>
-            <image class="answerImg " src="../../images/set-info/error.png"></image>
-            <text>答错啦...</text>
-          </view>
-          <view class="answerDetails">
-            <view class="answerResult">正确答案：{{answerData.answerDatabaseBean.standardAnswer?'Yes':'NO'}}</view>
-            <view>{{answerData.answerDatabaseBean.explanation}}</view>
-          </view>
-          <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率
-            <text>{{answerData.correctRate}}%</text>
-          </view>
-        </view>
-        <view class="bigTruthTip" wx:if="{{!answerData.isAnswer}}">
-          <image src="../../images/pai-coin/goods_icon.png"></image>答对可获得
-          <text>{{answerData.integral}}积分</text>哦~</view>
-      </view>
-      <view class="flex-column-item" wx:if="{{caseonEveryday}}">
-        <view class="set-info-top-text4">今日任务</view>
-        <view class="todayReport" style="position: relative;z-index: 50;" bindtap="goLowFatReport">
-          <image style="width: 26rpx;height: 24rpx;margin-right: 10rpx" src="{{taskTopimg}}"></image>
-          <text class="set-info-top-text5">{{taskToptext}}</text>
-        </view>
-      </view>
-      <view class="clear" style="margin-bottom: 28rpx"></view>
-      <view wx:if="{{caseonFinished}}" style="width: 100%;" class="caseonFinished-view">
-        <template is="caseonFinished" data="{{planInfo}}"></template>
-      </view>
-      <view wx:if="{{caseonEveryday}}" wx:for="{{taskListAll}}" wx:key="index" style="width: 100%">
-        <template is="fatBurnCard" wx:if="{{item.type =='fatBurn'}}" data="{{hiddenFat,fatBurnTask,fatText,fatTextEn,score,fatDes,bgColorSetInfoPage,fatType}}"></template>
-        <template is="bodyIndexCard" wx:if="{{item.type =='bodyIndex'}}" data="{{bodyIndexTask,bodyIndexExt}}"></template>
-        <template is="HIITCard" wx:if="{{item.type =='sport'}}" data="{{sportTask,sportExt,aheight,currentSwiper,hiddenImg,grayLeft,grayRight}}"></template>
-        <foodCard wx:if="{{item.type =='food'}}" class="countdown" foodTask="{{foodTask}}" foodExt="{{foodExt}}" foodAheight="{{foodAheight}}" foodHiddenImg="{{foodHiddenImg}}" isGroup="{{isGroup}}" foodcurrentSwiper="{{foodcurrentSwiper}}"></foodCard>
-      </view>
-      <view wx:if="{{caseonEveryday}}" class="set-info-content-text1">减脂怎么吃</view>
-      <view wx:if="{{caseonEveryday}}" class="set-info-content-img" bindtap="toRuler">
-        <view class="set-info-content-text2">我要怎么吃？</view>
-        <view class="set-info-content-text3">代餐有哪些？外卖怎么选？如何自己做减脂餐？</view>
-      </view>
-    </view>
-  </block>
-  <!--position: fixed;left: 900rpx;-->
-  <!--  <canvas style="width:{{windowWidth}}rpx;height:{{canvasHeight}}rpx;position: fixed;left: 900rpx;" canvas-id="myCanvas"></canvas>-->
-</view>
-
-<view wx:if="{{showBigTip}}" class="flex-column">
-  <view class="tip-full"></view>
-  <view class="tip-view flex-column">
-    <view class="tip-view-title">正在上传检测记录</view>
-    <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
+<view class="guidance" wx:if="{{!finishedGuide}}">
+  <view class="firstPage">
+    <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
+    <view class="header_h2 text_left">Hi,欢迎来到Silmple</view>
+    <view class="header_text text_left">接下来花点时间，为您定制专属的减脂方案</view>
+  </view>
+  <view class="btn_group">
+    <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">定制专属减脂方案 </button>
   </view>
 </view>
+<view class="set-info" wx:if="{{finishedGuide}}">
+  <view class="set-top-view">
+    <view class="set-info-top">天天燃脂有好礼</view>
+    <view class="tasks">
+      <view class="task {{index<= days?'readyClock':'' }}" wx:for="{{breathSign.data}}">
+        <image src="../../images/set-info/ready.png" mode="aspectFill" wx:if="{{item.isFinished }}"></image>
+        <image src="../../images/set-info/task.png" mode="aspectFill" wx:elif="{{index != 2 && index != 6 && !item.isFinished}}"></image>
+        <image src="../../images/set-info/gift.png" mode="aspectFill" wx:else></image>
+        <view>{{index+1}}天</view>
+      </view>
+    </view>
+    <view class="clock-tip" wx:if="{{topTaskTip}}">
+      <view class="clock-day" wx:if="{{days}}">Day{{days}}
+        <text>·已打卡</text> </view>
+      <view class="clock-text">连续7日打卡，可领取
+        <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
+    </view>
+    <view class="clockBtn" wx:if="{{topTaskTip}}">
+      <view class="replenish">
+        <image src="../../images/set-info/gift.png" class="gift"></image>
+        开始燃脂打卡
+        <image src="../../images/set-info/goRight.png" class="goNext"></image>
+      </view>
+      <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
+    </view>
+  </view>
+
+  <view class="contain">
+    <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image>
+    <view class="contain-top">
+      <view class="contain-title">你已坚持低碳燃脂{{dayNum}}天</view>
+      <view class="burn-ready">
+        <block wx:for="{{otherUsers.imgUrls}}" wx:key='item'>
+          <image src="{{item}}" style="z-index:{{100-index}}" ></image>
+        </block>
+        <text>今日{{otherUsers.dayNum}}人·正在燃脂</text>
+      </view>
+      <view class="burn-about">
+        <view class="stage">Day4
+          <text>· 低碳适应期</text> </view>
+        <view class="speed">18
+          <text>· 快速燃脂</text> </view>
+      </view>
+    </view>
+    <view class="puzzled">
+      <text class="puzzled-title">减脂过程中有困惑？</text>
+      <text class="puzzled-text">点击加入Slimple减脂群，在线营养师专业解答</text>
+      <image src="../../images/set-info/puzzled.png"></image>
+    </view>
+    <view class="task-day">
+      <view class="task-day-title">今日任务</view>
+      <view class="task-card ">
+        <view class="speed-now" bindtap="fatTaskToFinish">
+          <view class="item-tip">
+            <image src="../../images/set-info/speed-tip.png" class="speed-tip"></image>
+          </view> 
+          <image src="../../images/set-info/speed-bg.png" class="item"></image>
+          <view class="item-contain">
+            <view class="item-contain-tit">当前燃脂速度</view>
+            <view class="item-contain-tit-en">Fat burning speed</view>
+            <view class="item-contain-r" wx:if="{{fatTask.finished}}">{{dataValue}}
+              <view> {{dataDesc}}</view>
+            </view>
+            <view class="item-contain-n" wx:if="{{!fatTask.finished}}">
+              <view>去完成</view>
+            </view>
+          </view>
+        </view>
+        <view class="weigth-now" bindtap="bindTapToFood">
+          <view class="item-tip">
+            <image src="../../images/set-info/weight-tip1.png" class="weigth-tip"></image>
+          </view>
+          <image src="../../images/set-info/weight-bg.png" class="item"></image>
+          <view class="item-contain">
+            <view class="item-contain-tit">当前体重(kg)</view>
+            <view class="item-contain-tit-en">Measure weight</view>
+            <view class="item-contain-r" wx:if="{{weightTask.finished}}">{{weightTask.dataValue}}
+              <view>
+                比上一次
+                <image src="../../images/set-info/{{weightTask.thanValue >0?'shareDown':'shareUp'}}.png"></image>
+                {{weightTask.thanValue}}kg
+              </view>
+            </view>
+            <view class="item-contain-n" catchtap="showModal" wx:if="{{!weightTask.finished}}">
+              <view class="item-contain-n-weight">去完成</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="today-result">
+      <image src="../../images/set-info/today-result.png"></image>
+      <text class="today-result-tit">今日减脂效果如何？</text>
+      <text class="today-result-text">报告已解锁·点击查看</text>
+    </view>
+    <view class="bigTruth">
+      <view class="bigTruthTit">
+        <text>#减脂大实话#</text>
+        <image src="../../images/set-info/rjjx.png" class="rjjx"></image>
+      </view>
+      <view class="bigTruthCon">{{answerData.answerDatabaseBean.tips}}</view>
+      <view class="btnCon" wx:if="{{answerData.isAnswer == 0}}">
+        <view bindtap="answerFinish" wx:for="{{answerBtns}}" wx:key='imgSrc' data-index="{{index}}">
+          <image src='{{item.imgSrc}}'></image>
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+      <view class="answerCon" wx:else>
+        <view class="answerTit answerRight" wx:if="{{answerData.isCorrect == 1}}">
+          <image class="answerImg" src="../../images/set-info/right.png"></image>
+          <text>答对啦！</text>
+        </view>
+        <view class="answerTit answerError" wx:else>
+          <image class="answerImg " src="../../images/set-info/error.png"></image>
+          <text>答错啦...</text>
+        </view>
+        <view class="answerDetails">
+          <view class="answerResult">正确答案：{{answerData.answerDatabaseBean.standardAnswer?'Yes':'NO'}}</view>
+          <view>{{answerData.answerDatabaseBean.explanation}}</view>
+        </view>
+        <view class="answerRecord">已答对{{answerData.correctCount}}题 · 答题正确率
+          <text>{{answerData.correctRate}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
 <!--非首次打卡完成toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" integral="{{integral}}" inTaskProgress="{{inTaskProgress}}" integralTaskTitle="{{integralTaskTitle}}">
 
 </my-toast>
-<!--首次打卡完成激励弹窗-->
-<exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
-</exciting-window>
 
-<!--底部弹窗-->
-<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-  <view class="commodity_title">请输入当前体重</view>
-  <view class="clear"></view>
-  <view style="height: 20rpx;width:100%;border-bottom: 1px #F2F2F2 solid;margin-bottom: 98rpx"></view>
-  <view class="commodity_part">
-    <input class="commodity_input" placeholder-class="commodity_inputpla" bindinput="bindWeightInput" maxlength="5" name='weight' placeholder="" type="digit" />
-    <view class="commodity_line"></view>
-    <view class="commodity_KG">KG</view>
-    <view class="commodity_save" bindtap="saveWeight">保存</view>
-    <view class="clear"></view>
+
+<!--体重底部弹窗-->
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+  <view class="modals-cancel" bindtap="hideModal"></view>
+  <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+    <view>请输入目标体重</view>
+    <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+    <view class="page2-line"></view>
+    <view class="unit">KG</view>
+    <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
   </view>
 </view>
-
-<!--底部弹窗-->
-<view class="shareContainer" wx:if='{{isOpened}}'>
-  <!-- <view class='shareRow'>{{title}}</view>-->
-  <button class='shareRow' open-type='share' wx:key data-idx='{{index}}' bindtap='handClick'>分享给好友或群</button>
-  <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
-</view>
-<view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>

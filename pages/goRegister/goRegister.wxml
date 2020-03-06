@@ -1,4 +1,4 @@
-<!--pages/guidanceStart/guidanceStart.wxml-->
+<!--pages/goRegister/goRegister.wxml-->
 <view class="guidance">
   <view class="firstPage">
     <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
