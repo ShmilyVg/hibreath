@@ -1,4 +1,4 @@
-/* pages/guidanceStart/guidanceStart.wxss */
+/* pages/goRegister/goRegister.wxss */
 page{
   height: 100%;
   box-sizing: border-box;

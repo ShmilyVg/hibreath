@@ -115,6 +115,21 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
+
+    //首页-天天燃脂签到
+    static getBreathSignInInfo() {
+        return Network.request({url: 'members/getBreathSignInInfo'})
+    }
+
+    //首页-天天燃脂签到-补签
+    static putBreathSign(data) {
+        return Network.request({url: 'members/putBreathSignInByHelpMember',data})
+    }
+
+    //获取首页任务
+    static getTaskInfo() {
+        return Network.request({url: 'index/taskInfo'})
+    }
     //方案完成荣誉报告
     static postPlanFinish({planId,sharedId}) {
         return Network.request({url: 'members/plan/finishInfo',data: {planId,sharedId}})
