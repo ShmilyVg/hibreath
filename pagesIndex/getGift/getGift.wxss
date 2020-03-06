@@ -1,0 +1,20 @@
+/* pagesIndex/getGift/getGift.wxss */
+page{
+    background: #f8f4f0;
+}
+.getGift-top{
+    text-align: center;
+    background: url("http://img.hipee.cn/giftBg");
+    width: 100%;
+    height: 522rpx;
+    background-size: 100% 100%;
+}
+.getGift-text{
+    padding-top: 82rpx;
+    font-size:66rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    line-height:69rpx;
+    text-shadow:0rpx 8rpx 20rpx rgba(105,184,101,1);
+}

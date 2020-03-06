@@ -1,0 +1,6 @@
+<!--pagesIndex/getGift/getGift.wxml-->
+<view class="getGift-top">
+    <view class="getGift-text">免费领取专属礼包</view>
+</view>
+
+
