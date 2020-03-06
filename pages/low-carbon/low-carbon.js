@@ -1,6 +1,7 @@
 // pages/low-carbon/low-carbon.js
 import {getLatestOneWeekTimestamp} from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
 
@@ -21,7 +22,12 @@ Page({
       console.log('currenttab',this.data.currenttab)
     }
   },
-
+  toRecomTarNew(){
+    HiNavigator.navigateToRecomTarNew()
+  },
+  toSetInfo(){
+    HiNavigator.switchToSetInfo()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,7 +36,7 @@ Page({
     this.setData({
       result:result
     })
-    console.log('result',result)
+    console.log('result',this.data.result.howEatAdditionaObj[0].foodList)
   },
 
   /**
