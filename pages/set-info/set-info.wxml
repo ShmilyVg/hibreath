@@ -142,8 +142,10 @@
 
 <!--非首次打卡完成toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" integral="{{integral}}" inTaskProgress="{{inTaskProgress}}" integralTaskTitle="{{integralTaskTitle}}">
-
 </my-toast>
+<!--首次打卡完成激励弹窗-->
+<exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
+</exciting-window>
 
 
 <!--体重底部弹窗-->

@@ -53,6 +53,9 @@ Page({
         console.log("小程序告知设备 此时未在打卡页面  不可以上传离线数据");
       }
     }
+    this.setData({
+      showExcitation: false,
+    });
   },
 
   async onLoad(e) {
@@ -309,7 +312,6 @@ Page({
     this.getTaskInfo();
     this.hideModal();
     const { result: incentiveList } = await Protocol.postIncentive();
-
     if (incentiveList.taskInfo.bodyIndex && incentiveList.taskInfo.bodyIndex.todayFirst) {
       this.setData({
         showExcitation: true,
@@ -317,14 +319,27 @@ Page({
         toastResult: incentiveList
       });
     }
+    this.setData({
+      ...bodyIndexResult,
+      showMytoast: true,
+      toastType: "weight"
+    })
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
       })
     }
     setTimeout(() => {
-      this.hideModal()
+      this.setData({
+        showMytoast: false,
+      })
     }, 3000)
+  },
+  //体重弹框
+  getShowExcitation(e) {
+    this.setData({
+      showExcitation: e.detail.showExcitation
+    });
   },
   //引导页授权
   async onGetUserInfoEvent(e) {

@@ -338,7 +338,7 @@ view{
   left: 0;
   right: 0;
   padding: 30rpx;
-  height: 700rpx;
+  height: 760rpx;
   background-color: #fff;
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;

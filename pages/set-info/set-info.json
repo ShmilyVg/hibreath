@@ -4,10 +4,6 @@
   "enablePullDownRefresh": true,
   "backgroundColor": "#ffffff",
   "usingComponents": {
-    "foodCard": "../../components/foodCard/foodCard",
-    "setting": "../../components/setting/index",
-    "pickerDate":"../../components/pickerDate/index",
-    "my-swiper":"../../components/my-swiper/index",
     "my-toast": "../../components/my-toast/my-toast",
     "exciting-window":"../../components/exciting-window/exciting-window"
 
