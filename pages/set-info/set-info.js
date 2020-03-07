@@ -577,7 +577,11 @@ Page({
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
-    that.animation.height("240rpx").step()
+    let height = '310rpx'
+    if (!this.data.breathSign.days){
+      height = '240rpx'
+    }
+    that.animation.height(height).step()
     that.setData({
       animationTop: that.animation.export(),
     })

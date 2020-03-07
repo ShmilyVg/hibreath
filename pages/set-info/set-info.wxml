@@ -12,15 +12,15 @@
   <view class="set-top-view">
     <view class="set-info-top">天天燃脂有好礼</view>
     <view class="tasks">
-      <view class="task {{index<= days?'readyClock':'' }}" wx:for="{{breathSign.data}}">
-        <image src="../../images/set-info/ready.png" mode="aspectFill" wx:if="{{item.isFinished }}"></image>
+      <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}">
+        <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished }}"></image>
         <image src="../../images/set-info/{{item.isCoupon?'gift':'task'}}.png" mode="aspectFill" wx:else></image>
         <view>{{item.executeOrder}}天</view>
       </view>
     </view>
     <view  animation="{{animationTop}}" class="clock-con">
       <view class="clock-tip">
-        <view class="clock-day" wx:if="{{days}}">Day{{days}}
+        <view class="clock-day" wx:if="{{breathSign.days}}">Day{{breathSign.days}}
           <text>·已打卡</text> </view>
         <view class="clock-text">连续7日打卡，可领取
           <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
@@ -65,7 +65,7 @@
       <view class="task-card ">
         <view class="speed-now" bindtap="goToFatResultPage" >
           <view class="item-tip">
-            <image src="../../images/set-info/speed-tip.png" class="speed-tip"></image>
+            <image src="../../images/set-info/{{taskInfo.fatTask.finished?'speed-tip1':'speed-tip'}}.png" class="speed-tip"></image>
           </view>
           <image src="../../images/set-info/speed-bg.png" class="item"></image>
           <view class="item-contain">
@@ -81,7 +81,7 @@
         </view>
         <view class="weigth-now" bindtap="bindTapToFood">
           <view class="item-tip">
-            <image src="../../images/set-info/weight-tip1.png" class="weigth-tip"></image>
+            <image src="../../images/set-info/{{taskInfo.weightTask.finished?'weight-tip1':'weight-tip'}}.png" class="weigth-tip"></image>
           </view>
           <image src="../../images/set-info/weight-bg.png" class="item"></image>
           <view class="item-contain">
