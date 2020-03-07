@@ -99,6 +99,7 @@ Page({
     }, 1200)
   },
   onShow() {
+    this.getPresonMsg();
     this.handleBle();
     this.getAnswer();
     this.getBreathSignInInfo();

@@ -266,7 +266,7 @@ Page({
     let data = this.data.guidance.info;
     Toast.showLoading('正在生成')
     let result = await Protocol.postGuidance(data);
-    await Protocol.finishedGuide();
+    await Protocol.getMyLossfatCourse();
     Toast.hiddenLoading();
     if (result.code) {
       Toast.success('生成成功');
