@@ -41,7 +41,7 @@
     <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image>
     <view class="contain-top">
       <view class="contain-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
-      <view class="contain-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅天</view>
+      <view class="contain-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅</view>
       <view class="burn-ready">
         <block wx:for="{{taskInfo.otherUsers.imgUrls}}" wx:key='item'>
           <image src="{{item}}" style="z-index:{{100-index}}"></image>
