@@ -110,9 +110,13 @@ function login({resolve, reject}) {
         BaseNetworkImp.resendAll();
         resolve();
     }).catch(res => {
+        
         console.log('login failed', res);
         if (res.data) {
             const {data: {code}} = res;
+            if(code == 2){
+                wx.setStorageSync('finishedGuide', false);
+            }
             const obj = loginFailObj[code];
             obj && obj({resolve, reject});
             reject(res);
