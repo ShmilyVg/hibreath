@@ -450,6 +450,10 @@ export default class Protocol {
     static postGuidance(data) {
         return Network.request({url: 'members/put',data:data});
     }
+    //完成新手引导
+    static finishedGuide() {
+        return Network.request({url: 'members/finishedGuide'});
+    }
     //我的减脂历程目标
     static getMyLossfatCourse(data) {
         return Network.request({url: 'members/getMyLossfatCourse', data: data});
