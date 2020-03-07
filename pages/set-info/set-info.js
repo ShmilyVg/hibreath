@@ -26,9 +26,9 @@ Page({
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
-    animationTop:'',
+    animationTop: '',
     breathSign: {},//签到数据
-    burnReadyLeft:130,
+    burnReadyLeft: 130,
     hideModal: true,
     topTaskTip: false,
     weight: '',
@@ -153,6 +153,18 @@ Page({
       wx.setStorageSync('showWeight', false)
     }
   },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  async onPullDownRefresh() {
+    console.log(this.data.showNewInfo, this.data.showGuide, this.data.showGoclockin, '======')
+    if (!this.data.showNewInfo && !this.data.showGuide && !this.data.showGoclockin) {
+      Toast.showLoading();
+      await this.getTaskInfo();
+      Toast.hiddenLoading();
+    }
+    wx.stopPullDownRefresh();
+  },
   onShareAppMessage() {
     console.log("sharedId", this.data.shareImg);
     this.setData({
@@ -171,40 +183,57 @@ Page({
       imageUrl: this.data.shareImg
     };
   },
+  //获取个人信息
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
-    console.log(result);
     if (result.finishedGuide) {
       this.setData({
         finishedGuide: true
       })
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
       wx.setStorageSync('finishedGuide', true);
       this.getTaskInfo()
       // this.getTaskInfo()
     } else {
+      wx.hideTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.hideTabBar()
+          }, 200)
+        }
+      });
       this.setData({
         finishedGuide: false
       })
     }
   },
+  //获取打卡信息
   async getBreathSignInInfo() {
     const { result } = await Protocol.getBreathSignInInfo();
     this.setData({
       breathSign: result
     })
   },
+  //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
     this.setData({
-      ...result
+      taskInfo: result
     })
     let imgUrlsLength = result.otherUsers.imgUrls.length;
-    let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2)?'97':'130';
+    let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
     this.setData({
       burnReadyLeft
     })
-    
+
   },
+  //燃脂
   async fatTaskToFinish() {
     wx.getSystemInfo({
       success(res) {
@@ -258,6 +287,10 @@ Page({
   objIsEmpty(obj) {
     return typeof obj === "undefined" || obj === "" || obj === null;
   },
+  showDialog(content) {
+    WXDialog.showDialog({ title: "小贴士", content, confirmText: "我知道了" });
+  },
+  //保存体重
   async saveWeight() {
     if (this.objIsEmpty(this.data.weight)) {
       toast.warn("请填写体重");
@@ -293,6 +326,7 @@ Page({
       this.hideModal()
     }, 3000)
   },
+  //引导页授权
   async onGetUserInfoEvent(e) {
     const { detail: { userInfo, encryptedData, iv } } = e;
     if (!!userInfo) {
@@ -304,11 +338,82 @@ Page({
       });
       setTimeout(() => {
         HiNavigator.navigateToGuidance({})
-      },500);
-      
+      }, 500);
+
     }
   },
+  //去燃脂列表页
+  async goToFatResultPage(){
+    if (this.data.taskInfo.fatTask.finished) {
+      HiNavigator.navigateToResultNOnum();
+      return;
+    }
+    let {
+      result: { list: breathList }
+    } = await Protocol.postBreathDatalistAll({
+      timeBegin: 1510468206000,
+      timeEnd: Date.now()
+    });
+    if (breathList.length > 0) {
+      HiNavigator.navigateToResultNOnum();
+      return;
+    }
+    wx.getSystemInfo({
+      success(res) {
+        if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
+          HiNavigator.navigateIndex();
+          return
+        } else if (!res.bluetoothEnabled) {
+          setTimeout(() => {
+            WXDialog.showDialog({ title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了' });
+          }, 200);
+          return
+        } else if (!res.locationEnabled) {
+          setTimeout(() => {
+            WXDialog.showDialog({ title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了' });
+          }, 200);
+          return
+        } else if (!res.locationAuthorized) {
+          setTimeout(() => {
+            wx.showModal({
+              title: '小贴士',
+              content: '前往手机【设置】->找到【微信】应用\n' +
+                '\n' +
+                '打开【微信定位/位置权限】',
+              showCancel: false,
+              confirmText: '我知道了',
+            })
+          }, 200);
+          return
+        }
+      }
+    })
 
+
+    mta.Event.stat('zhulujing', { 'clickfatburningtest': 'true' })
+    mta.Event.stat('ranzhijiance', { 'clickfatburningtest': 'true' })
+  },
+  //加群页
+  goToAddLowfat() {
+    HiNavigator.navigateToAddLowfatGroup();
+  },
+  //减脂效果页
+  goToLowFatReport() {
+    let taskInfo = this.data.taskInfo;
+    if (taskInfo.fatTask.finished && taskInfo.weightTask.finished) {
+      HiNavigator.navigateToLowFatReport();
+      return;
+    }
+    WXDialog.showDialog({
+      title: '', content: '你还未完成今日所有任务哦', confirmText: '我知道了', confirmEvent: () => {
+      }
+    });
+
+  },
+  //体重列表
+  bindTapToFood(){
+    HiNavigator.navigateTofood()
+  },
   handleBle() {
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
@@ -351,9 +456,9 @@ Page({
     this.setData({
       topTaskTip: !topTaskTip
     })
-    if (topTaskTip){
+    if (topTaskTip) {
       this.topFadeIn()
-    }else{
+    } else {
       this.topFadeDown()
     }
   },
@@ -453,7 +558,7 @@ Page({
       animationData: this.animation.export(),
     })
   },
-  topFadeIn(){
+  topFadeIn() {
     var that = this;
     var animation = wx.createAnimation({
       duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -465,7 +570,7 @@ Page({
       animationTop: that.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
     })
   },
-  topFadeDown(){
+  topFadeDown() {
     var that = this;
     var animation = wx.createAnimation({
       duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快

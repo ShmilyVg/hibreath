@@ -14,9 +14,8 @@
     <view class="tasks">
       <view class="task {{index<= days?'readyClock':'' }}" wx:for="{{breathSign.data}}">
         <image src="../../images/set-info/ready.png" mode="aspectFill" wx:if="{{item.isFinished }}"></image>
-        <image src="../../images/set-info/task.png" mode="aspectFill" wx:elif="{{index != 2 && index != 6 && !item.isFinished}}"></image>
-        <image src="../../images/set-info/gift.png" mode="aspectFill" wx:else></image>
-        <view>{{index+1}}天</view>
+        <image src="../../images/set-info/{{item.isCoupon?'gift':'task'}}.png" mode="aspectFill" wx:else></image>
+        <view>{{item.executeOrder}}天</view>
       </view>
     </view>
     <view  animation="{{animationTop}}" class="clock-con">
@@ -41,21 +40,22 @@
   <view class="contain">
     <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image>
     <view class="contain-top">
-      <view class="contain-title">你已坚持低碳燃脂{{dayNum}}天</view>
+      <view class="contain-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
+      <view class="contain-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅天</view>
       <view class="burn-ready">
-        <block wx:for="{{otherUsers.imgUrls}}" wx:key='item'>
+        <block wx:for="{{taskInfo.otherUsers.imgUrls}}" wx:key='item'>
           <image src="{{item}}" style="z-index:{{100-index}}"></image>
         </block>
-        <text style="margin-left: {{burnReadyLeft}}rpx;">今日{{otherUsers.dayNum}}人·正在燃脂</text>
+        <text style="margin-left: {{burnReadyLeft}}rpx;">今日{{taskInfo.otherUsers.dayNum}}人·正在燃脂</text>
       </view>
-      <view class="burn-about">
-        <view class="stage">Day4
-          <text>· 低碳适应期</text> </view>
-        <view class="speed">18
-          <text>· 快速燃脂</text> </view>
+      <view class="burn-about" wx:if="{{taskInfo.dayNum}}">
+        <view class="stage">{{taskInfo.stateDay}}
+          <text>· {{taskInfo.stateTitle}}</text> </view>
+        <view class="speed" wx:if="{{taskInfo.fatTask.dataValue}}">{{taskInfo.fatTask.dataValue}}
+          <text>· {{taskInfo.fatTask.dataDesc}}</text> </view>
       </view>
     </view>
-    <view class="puzzled">
+    <view class="puzzled" bindtap="goToAddLowfat">
       <text class="puzzled-title">减脂过程中有困惑？</text>
       <text class="puzzled-text">点击加入Slimple减脂群，在线营养师专业解答</text>
       <image src="../../images/set-info/puzzled.png"></image>
@@ -63,7 +63,7 @@
     <view class="task-day">
       <view class="task-day-title">今日任务</view>
       <view class="task-card ">
-        <view class="speed-now" bindtap="fatTaskToFinish">
+        <view class="speed-now" bindtap="goToFatResultPage" >
           <view class="item-tip">
             <image src="../../images/set-info/speed-tip.png" class="speed-tip"></image>
           </view>
@@ -71,10 +71,10 @@
           <view class="item-contain">
             <view class="item-contain-tit">当前燃脂速度</view>
             <view class="item-contain-tit-en">Fat burning speed</view>
-            <view class="item-contain-r" wx:if="{{fatTask.finished}}">{{dataValue}}
-              <view> {{dataDesc}}</view>
+            <view class="item-contain-r" wx:if="{{taskInfo.fatTask.finished}}">{{taskInfo.fatTask.dataValue}}
+              <view> {{taskInfo.fatTask.dataDesc}}</view>
             </view>
-            <view class="item-contain-n" wx:if="{{!fatTask.finished}}">
+            <view class="item-contain-n" wx:if="{{!taskInfo.fatTask.finished}}" catchtap="fatTaskToFinish" >
               <view>去完成</view>
             </view>
           </view>
@@ -87,24 +87,25 @@
           <view class="item-contain">
             <view class="item-contain-tit">当前体重(kg)</view>
             <view class="item-contain-tit-en">Measure weight</view>
-            <view class="item-contain-r" wx:if="{{weightTask.finished}}">{{weightTask.dataValue}}
-              <view>
+            <view class="item-contain-r" wx:if="{{taskInfo.weightTask.finished}}">{{taskInfo.weightTask.dataValue}}
+              <view wx:if="{{taskInfo.weightTask.thanValue}}">
                 比上一次
-                <image src="../../images/set-info/{{weightTask.thanValue >0?'shareDown':'shareUp'}}.png"></image>
-                {{weightTask.thanValue}}kg
-              </view>
+                <image src="../../images/set-info/{{taskInfo.weightTask.thanValue >0?'shareDown':'shareUp'}}.png"></image>
+                {{taskInfo.weightTask.thanValue}}
+              </view><view>kg</view>
             </view>
-            <view class="item-contain-n" catchtap="showModal" wx:if="{{!weightTask.finished}}">
+            <view class="item-contain-n" catchtap="showModal" wx:if="{{!taskInfo.weightTask.finished}}">
               <view class="item-contain-n-weight">去完成</view>
             </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="today-result">
+    <view class="today-result" bindtap="goToLowFatReport">
       <image src="../../images/set-info/today-result.png"></image>
-      <text class="today-result-tit">今日减脂效果如何？</text>
-      <text class="today-result-text">报告已解锁·点击查看</text>
+      <view class="today-result-tit">今日减脂效果如何？</view>
+      <view class="today-result-text" wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}">报告已解锁·点击查看</view>
+      <view class="today-result-text" wx:else>完成今日任务·解锁总结报告</view>
     </view>
     <view class="bigTruth">
       <view class="bigTruthTit">
@@ -149,7 +150,7 @@
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-    <view>请输入目标体重</view>
+    <view>请输入当前体重</view>
     <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <view class="page2-line"></view>
     <view class="unit">KG</view>

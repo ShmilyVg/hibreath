@@ -288,7 +288,7 @@ view{
   color: #FF7F3A;
 }
 .puzzled{
-  margin-top: 67rpx;
+  margin-top: 47rpx;
   text-align: center;
   position: relative;
 }
@@ -429,6 +429,7 @@ view{
   position: absolute;
   left: 214rpx;
   top: 30rpx;
+  
 }
 .today-result-text{
   font-size:24rpx;
@@ -436,9 +437,11 @@ view{
   font-weight:400;
   color:rgba(255,255,255,1);
   position: absolute;
-  left: 262rpx;
-  top: 90rpx;
+  left: 0rpx;
+  top: 86rpx;
   opacity: 0.8;
+  width: 100%;
+  text-align: center;
 }
 
 
