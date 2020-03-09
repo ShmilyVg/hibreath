@@ -28,8 +28,8 @@ export default class HiNavigator extends CommonNavigator {
       this.reLaunch({url: '/pages/groupNumber/groupNumber'});
     }
     //新手引导填写资料
-    static navigateToGuidance({reset}) {
-      this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}`});
+    static navigateToGuidance({reset,sharedId}) {
+      this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}&sharedId=${sharedId}`});
     }
     //低碳饮食
     static switchToLowCarbon() {
@@ -83,8 +83,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToDeviceUnbind() {
         this.navigateTo({url: '/pages/device-manage/device-manage'});
     }
-    static switchToSetInfo() {
-        this.switchTab({url: '/pages/set-info/set-info'});
+    static switchToSetInfo(sharedId) {
+        this.switchTab({url: `/pages/set-info/set-info?sharedId=${sharedId}`});
     }
 
     static navigateTofood() {

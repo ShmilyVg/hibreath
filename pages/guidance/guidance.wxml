@@ -1,60 +1,101 @@
 <!--pages/guidance/guidance.wxml-->
 <view class="guidance">
-  <view class="otherPage" wx:if="{{guidance.page==1}}">
-    <view class="header_h3 text_center">验证您的手机号</view>
-    <view class="text_center">
-      <text class="curPage">{{guidance.page}}/4</text>
-    </view>
-    <view class="psdBg">
-      <image src="../../images/guidance/psdBg.png"></image>
-      <view class="psdTit">定制减脂服务需您确保</view>
-      <view class="psdTxt">验证的手机号为首次下单购买的收货手机号</view>
-    </view>
-  </view>
-  <view class="otherPage" wx:if="{{guidance.page==2}}">
-    <view class="header_h3 text_center">性别</view>
-    <view class="text_center">
-      <text class="curPage">{{guidance.page}}/4</text>
-    </view>
-    <view class="sexCon clear">
-      <view class="sexItem " wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
-        <image class="sex-image {{item.isChose?'sexChose':''}}" src="../../images/set-info/{{item.image}}.png"></image>
-        <view class="sex-text">{{item.text}}</view>
+  <block wx:if="{{!sharedId}}">
+    <view class="otherPage" wx:if="{{guidance.page==1 }}">
+      <view class="header_h3 text_center">验证您的手机号</view>
+      <view class="text_center">
+        <text class="curPage">{{guidance.page}}/{{totNum}}</text>
+      </view>
+      <view class="psdBg">
+        <image src="../../images/guidance/psdBg.png"></image>
+        <view class="psdTit">定制减脂服务需您确保</view>
+        <view class="psdTxt">验证的手机号为首次下单购买的收货手机号</view>
       </view>
     </view>
-
-  </view>
-  <view class="otherPage" wx:if="{{guidance.page==3}}">
-    <view class="header_h3 text_center">出生日期</view>
-    <view class="text_center" style="margin-bottom: 79rpx;">
-      <text class="curPage">{{guidance.page}}/4</text>
-    </view>
-    <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
-  </view>
-  <view class="otherPage " wx:if="{{guidance.page==4}}">
-    <view class="header_h3 text_center">身高体重</view>
-    <view class="text_center">
-      <text class="curPage">{{guidance.page}}/4</text>
-    </view>
-    <view class="space-between">
-      <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
-        <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
-        <view class="page2-kg">CM</view>
+    <view class="otherPage" wx:if="{{guidance.page==2}}">
+      <view class="header_h3 text_center">性别</view>
+      <view class="text_center">
+        <text class="curPage">{{guidance.page}}/{{totNum}}</text>
       </view>
-      <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
-        <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
-        <view class="page2-kg">KG</view>
+      <view class="sexCon clear">
+        <view class="sexItem " wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+          <image class="sex-image {{item.isChose?'sexChose':''}}" src="../../images/set-info/{{item.image}}.png"></image>
+          <view class="sex-text">{{item.text}}</view>
+        </view>
       </view>
+
     </view>
+    <view class="otherPage" wx:if="{{guidance.page==3}}">
+      <view class="header_h3 text_center">出生日期</view>
+      <view class="text_center" style="margin-bottom: 79rpx;">
+        <text class="curPage">{{guidance.page}}/{{totNum}}</text>
+      </view>
+      <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
+    </view>
+    <view class="otherPage " wx:if="{{guidance.page==4}}">
+      <view class="header_h3 text_center">身高体重</view>
+      <view class="text_center">
+        <text class="curPage">{{guidance.page}}/{{totNum}}</text>
+      </view>
+      <view class="space-between">
+        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
+          <view class="page2-kg">CM</view>
+        </view>
+        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+          <view class="page2-kg">KG</view>
+        </view>
+      </view>
 
-  </view>
+    </view>
+  </block>
+  <block wx:if="{{sharedId}}">
+    <view class="otherPage" wx:if="{{guidance.page==2}}">
+      <view class="header_h3 text_center">性别</view>
+      <view class="text_center">
+        <text class="curPage">{{guidance.page-1}}/{{totNum}}</text>
+      </view>
+      <view class="sexCon clear">
+        <view class="sexItem " wx:for="{{guidance.sexBox}}" wx:key="index" bindtap="bindTapSex" data-index="{{index}}">
+          <image class="sex-image {{item.isChose?'sexChose':''}}" src="../../images/set-info/{{item.image}}.png"></image>
+          <view class="sex-text">{{item.text}}</view>
+        </view>
+      </view>
 
+    </view>
+    <view class="otherPage" wx:if="{{guidance.page==3}}">
+      <view class="header_h3 text_center">出生日期</view>
+      <view class="text_center" style="margin-bottom: 79rpx;">
+        <text class="curPage">{{guidance.page-1}}/{{totNum}}</text>
+      </view>
+      <pickerDate bind:childSecDate='showBirth' id="pickerDate" style="width: 100%;margin-top:-55rpx;" birth="{{guidance.birth}}" info="{{guidance.info}}"></pickerDate>
+    </view>
+    <view class="otherPage " wx:if="{{guidance.page==4}}">
+      <view class="header_h3 text_center">身高体重</view>
+      <view class="text_center">
+        <text class="curPage">{{guidance.page-1}}/{{totNum}}</text>
+      </view>
+      <view class="space-between">
+        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
+          <view class="page2-kg">CM</view>
+        </view>
+        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+          <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+          <view class="page2-kg">KG</view>
+        </view>
+      </view>
+
+    </view>
+  </block>
   <view class="btn_group">
     <button class="bottom-btn greenBtn" wx:if="{{guidance.page == 1}}" hover-class="press-style" hover-stay-time="50" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键授权验证
     </button>
-    <button class="bottom-btn greenBtn" wx:if="{{guidance.page > 1}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page <4?'下一步':'完成'}}
-    </button>
-    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back" wx:if="{{guidance.page >1}}">返回</view>
-    <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="continueFun" wx:if="{{guidance.page == 1}}">短信验证码验证</view>
+    <button class="bottom-btn greenBtn" wx:if="{{guidance.page > 1}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page
+      <4? '下一步': '完成'}} </button>
+        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back" wx:if="{{guidance.page >2 || (!sharedId && guidance.page == 2)}}">返回</view>
+        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50"  wx:if="{{sharedId && guidance.page == 2}}"><text decode="{{true}}"> &emsp;</text></view>
+        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="continueFun" wx:if="{{guidance.page == 1}}">短信验证码验证</view>
   </view>
 </view>

@@ -70,32 +70,7 @@ Page({
     })
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
-    if (!wx.getStorageSync('finishedGuide')) {
-      //获取是否完成手机号验证、新手引导是否完成
-      wx.hideTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.hideTabBar()
-          }, 200)
-        }
-      });
-      
-    } else {
-      this.setData({
-        finishedGuide: true
-      })
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
-      //判断是否是从补签页面导入
-      if (!!options.sharedId) {
-        this.putBreathSign();
-      }
-    }
+    this.getFinishedGuide()
     this.getPresonMsg();
     setTimeout(() => {
       //每天第一次登录积分奖励
@@ -114,7 +89,7 @@ Page({
     }, 1200)
   },
   onShow() {
-    this.getPresonMsg();
+    this.getFinishedGuide()
     this.handleBle();
     this.getAnswer();
     this.getBreathSignInInfo();
@@ -125,9 +100,7 @@ Page({
       if (num > 0 && countNum > 0) {
         that.data.sync.num = num;
         that.data.sync.countNum = countNum;
-        console.log(99999999999999999999999999999999, that.data.sync.countNum >= that.data.sync.num)
         if (that.data.sync.countNum >= that.data.sync.num) {
-          console.log(99999999999999999999999999999999)
           that.setData({
             sync: that.data.sync,
             showBigTip: true
@@ -194,9 +167,38 @@ Page({
     });
     return {
       title: '1',
-      path: `/pages/taskShareInfo/taskShareInfo?sharedId=${this.data.taskInfo.sharedId}`,
+      path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.taskInfo.sharedId}`,
       imageUrl: this.data.shareImg
     };
+  },
+  //是否完成新手引导
+  getFinishedGuide(){
+    if (!wx.getStorageSync('finishedGuide')) {
+      //获取是否完成手机号验证、新手引导是否完成
+      wx.hideTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.hideTabBar()
+          }, 200)
+        }
+      });
+
+    } else {
+      this.setData({
+        finishedGuide: true
+      })
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
+      //判断是否是从补签页面导入
+      if (!!this.data.options.sharedId) {
+        this.putBreathSign();
+      }
+    }
   },
   //补签请求接口
   async putBreathSign(){
@@ -204,12 +206,15 @@ Page({
     let postData = {
       "sharedId": options.sharedId //分享用户编号
     }
-    let res = await Protocol.putBreathSign();
-    wx.showToast({
-      title: '补签成功',
-      icon:none,
-      duration: 3000
-    });
+    let { result } = await Protocol.putBreathSign();
+    if (result.code == 1){
+      wx.showToast({
+        title: '补签成功',
+        icon: none,
+        duration: 3000
+      });
+    }
+    
   },
   //获取个人信息
   async getPresonMsg() {
@@ -383,14 +388,27 @@ Page({
     const { detail: { userInfo, encryptedData, iv } } = e;
     if (!!userInfo) {
       await Login.doRegister({ userInfo, encryptedData, iv });
+      let sharedId = this.data.options.sharedId
       //此处需要处理不授权的情况
-      wx.showToast({
-        title: '授权成功',
-        duration: 500
-      });
-      setTimeout(() => {
-        HiNavigator.navigateToGuidance({})
-      }, 500);
+      if (sharedId){
+        await Protocol.putBreathSign();
+        wx.showToast({
+          title: '帮好友补签成功',
+          duration: 500
+        });
+        setTimeout(() => {
+          HiNavigator.navigateToGuidance({sharedId})
+        }, 500);
+      }else{
+        wx.showToast({
+          title: '授权成功',
+          duration: 500
+        });
+        setTimeout(() => {
+          HiNavigator.navigateToGuidance({})
+        }, 500);
+      }
+      
 
     }
   },

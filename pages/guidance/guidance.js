@@ -11,6 +11,7 @@ import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 Page({
   data: {
+    totNum:4,
     guidance: {
       page: 1,
       portraitUrl: '',
@@ -171,9 +172,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let totNum = 4, page= 1;
+    if (options.sharedId) {
+      totNum =3;
+      page =2
+    }
     this.setData({
-      reset: options.reset
+      reset: options.reset,
+      sharedId: options.sharedId,
+      totNum: totNum,
+      'guidance.page': page
     })
+    
     this.getUserInfo()
   },
   async getUserInfo() {

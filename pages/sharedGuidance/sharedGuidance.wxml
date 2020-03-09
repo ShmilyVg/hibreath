@@ -1,0 +1,6 @@
+<!--pages/sharedGuidance/sharedGuidance.wxml-->
+<view class="sharedGuidance">
+
+
+  <button bindtap="goNextPage"> 马上拥有自己的Simple</button>
+</view>

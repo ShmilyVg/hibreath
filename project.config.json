@@ -371,6 +371,14 @@
 					"id": -1,
 					"name": "pages/taskShareInfo/taskShareInfo",
 					"pathName": "pages/taskShareInfo/taskShareInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 45,
+					"name": "pages/sharedGuidance/sharedGuidance",
+					"pathName": "pages/sharedGuidance/sharedGuidance",
+					"query": "",
 					"scene": null
 				}
 			]
