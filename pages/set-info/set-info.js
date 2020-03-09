@@ -22,15 +22,21 @@ const app = getApp();
 var mta = require('../../utils//mta_analysis.js')
 Page({
   data: {
-    finishedGuide: false,
+    finishedGuide: false,//新手引导是否完成编制
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
     animationTop: '',
     breathSign: {},//签到数据
+    sync:{
+      num: 0,
+      countNum: 0, //需要同步的总数
+      timer: ""
+    },
     burnReadyLeft: 130,
     hideModal: true,
-    topTaskTip: false,
+    topTaskTip: false,//头部显隐标志
+    showBigTip:false,//离线上传数据弹框
     weight: '',
     answerBtns: [
       { text: 'Yes', imgSrc: '../../images/set-info/yes.png' },
@@ -62,6 +68,7 @@ Page({
     this.setData({
       options
     })
+    wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     if (!wx.getStorageSync('finishedGuide')) {
       //获取是否完成手机号验证、新手引导是否完成
@@ -84,7 +91,8 @@ Page({
           }, 200);
         }
       });
-      if (!!options.executeOrder) {
+      //判断是否是从补签页面导入
+      if (!!options.sharedId) {
         this.putBreathSign();
       }
     }
@@ -117,7 +125,9 @@ Page({
       if (num > 0 && countNum > 0) {
         that.data.sync.num = num;
         that.data.sync.countNum = countNum;
+        console.log(99999999999999999999999999999999, that.data.sync.countNum >= that.data.sync.num)
         if (that.data.sync.countNum >= that.data.sync.num) {
+          console.log(99999999999999999999999999999999)
           that.setData({
             sync: that.data.sync,
             showBigTip: true
@@ -129,11 +139,6 @@ Page({
             that.setData({
               showBigTip: false
             });
-            console.log(
-              "今日燃脂任务是否完成标志位",
-              that.data.fatBurnTask,
-              that.data.fatBurnTask.finished
-            );
             if (that.data.showBigTip == false) {
               WXDialog.showDialog({
                 content: "上传成功，本次共上传" + that.data.sync.num + "条结果",
@@ -189,7 +194,7 @@ Page({
     });
     return {
       title: '1',
-      path: `/pages/taskShareInfo/taskShareInfo?sharedId=${this.data.sharedId}&executeOrder=&${this.data.executeOrder}`,
+      path: `/pages/taskShareInfo/taskShareInfo?sharedId=${this.data.taskInfo.sharedId}`,
       imageUrl: this.data.shareImg
     };
   },
@@ -197,13 +202,13 @@ Page({
   async putBreathSign(){
     let options = this.data.options;
     let postData = {
-      "executeOrder": options.executeOrder, //序号
       "sharedId": options.sharedId //分享用户编号
     }
     let res = await Protocol.putBreathSign();
     wx.showToast({
       title: '补签成功',
-      duration: 1000
+      icon:none,
+      duration: 3000
     });
   },
   //获取个人信息
@@ -222,7 +227,8 @@ Page({
       });
       wx.setStorageSync('finishedGuide', true);
       this.getTaskInfo()
-      if (!!this.data.options.executeOrder) {
+      //判断是否是从补签页面导入
+      if (!!this.data.options.sharedId) {
         this.putBreathSign();
       }
     } else {
@@ -240,22 +246,16 @@ Page({
   },
   //获取打卡信息
   async getBreathSignInInfo() {
-    let executeOrder ;
     const { result } = await Protocol.getBreathSignInInfo();
     if (result.isFinished){
       let data = result.data;
       for (let item of data) {
         if (item.executeOrder < result.days && !item.isFinished){
           result.replenish = true;
-          if (executeOrder){
-            continue;
-          }
-          executeOrder = item.executeOrde;
         }
       }
     }
     this.setData({
-      executeOrder,
       breathSign: result
     })
   },
@@ -622,7 +622,7 @@ Page({
   fadeIn: function () {
     this.animation.translateY(0).step()
     this.setData({
-      animationData: this.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
+      animationData: this.animation.export()
     })
   },
   fadeDown: function () {

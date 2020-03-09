@@ -64,7 +64,8 @@
         "slimpleBox/slimpleBox",
         "literature/literature",
         "takeOut/takeOut",
-        "gdDay/gdDay"
+        "gdDay/gdDay",
+        "sharedGuidance/sharedGuidance"
       ]
     }
   ],

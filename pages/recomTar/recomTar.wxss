@@ -370,8 +370,8 @@ view{
 
 .page2-line {
   width: 154rpx;
-  height: 2rpx;
-  background-color: #ed6f69;
+  height: 4rpx;
+  background-color: #7BC877;
   margin: 20rpx auto;
 }
 

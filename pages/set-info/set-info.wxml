@@ -12,8 +12,8 @@
   <view class="set-top-view">
     <view class="set-info-top">天天燃脂有好礼</view>
     <view class="tasks">
-      <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}">
-        <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished }}"></image>
+      <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}" wx:key='executeOrder'>
+        <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished && !item.isCoupon}}"></image>
         <image src="../../images/set-info/{{item.isCoupon?'gift':'task'}}.png" mode="aspectFill" wx:else></image>
         <view>{{item.executeOrder}}天</view>
       </view>
@@ -61,8 +61,8 @@
         <text style="margin-left: {{burnReadyLeft}}rpx;">今日{{taskInfo.otherUsers.dayNum}}人·正在燃脂</text>
       </view>
       <view class="burn-about" wx:if="{{taskInfo.dayNum}}">
-        <view class="stage">{{taskInfo.stateDay}}
-          <text>· {{taskInfo.stateTitle}}</text> </view>
+        <!-- <view class="stage">{{taskInfo.stateDay}}
+          <text>· {{taskInfo.stateTitle}}</text> </view> -->
         <view class="speed" wx:if="{{taskInfo.fatTask.dataValue}}">{{taskInfo.fatTask.dataValue}}
           <text>· {{taskInfo.fatTask.dataDesc}}</text> </view>
       </view>
@@ -170,6 +170,14 @@
     <view class="page2-line"></view>
     <view class="unit">KG</view>
     <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
+  </view>
+</view>
+
+<view wx:if="{{showBigTip}}" class="flex-column">
+  <view class="tip-full"></view>
+  <view class="tip-view flex-column">
+    <view class="tip-view-title">正在上传检测记录</view>
+    <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
   </view>
 </view>
 
