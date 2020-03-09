@@ -35,7 +35,10 @@ export default class HiNavigator extends CommonNavigator {
     static switchToLowCarbon() {
       this.switchTab({url: `/pages/low-carbon/low-carbon`});
     }
-
+    //领取优惠券
+    static navigateToGetGift() {
+      this.navigateTo({url: '/pagesIndex/getGift/getGift'});
+    }
      //引导加入减脂群
      static navigateToAddLowfatGroup() {
       this.navigateTo({url: `/pagesIndex/add-lowfat-group/add-lowfat-group`});

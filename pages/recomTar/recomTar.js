@@ -37,7 +37,7 @@ Page({
     let targetDate = this.data.targetDate
     let nowW = targetDate.weightLoss + targetDate.weightGoalt;
     let weightGoalt = e.detail.value;
-    if (nowW < weightGoalt){
+    if (nowW <= weightGoalt){
       toast.warn('目标体重过大')
     }
     let str = (weightGoalt +'').split('.')[1];

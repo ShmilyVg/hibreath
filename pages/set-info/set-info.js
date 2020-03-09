@@ -58,7 +58,10 @@ Page({
     });
   },
 
-  async onLoad(e) {
+  async onLoad(options) {
+    this.setData({
+      options
+    })
     this.connectionPage = new ConnectionManager(this);
     if (!wx.getStorageSync('finishedGuide')) {
       //获取是否完成手机号验证、新手引导是否完成
@@ -69,6 +72,7 @@ Page({
           }, 200)
         }
       });
+      
     } else {
       this.setData({
         finishedGuide: true
@@ -80,6 +84,9 @@ Page({
           }, 200);
         }
       });
+      if (!!options.executeOrder) {
+        this.putBreathSign();
+      }
     }
     this.getPresonMsg();
     setTimeout(() => {
@@ -170,7 +177,6 @@ Page({
     wx.stopPullDownRefresh();
   },
   onShareAppMessage() {
-    console.log("sharedId", this.data.shareImg);
     this.setData({
       isOpened: false
     });
@@ -183,9 +189,22 @@ Page({
     });
     return {
       title: '1',
-      path: "/pages/taskShareInfo/taskShareInfo?sharedId=" + this.data.sharedId,
+      path: `/pages/taskShareInfo/taskShareInfo?sharedId=${this.data.sharedId}&executeOrder=&${this.data.executeOrder}`,
       imageUrl: this.data.shareImg
     };
+  },
+  //补签请求接口
+  async putBreathSign(){
+    let options = this.data.options;
+    let postData = {
+      "executeOrder": options.executeOrder, //序号
+      "sharedId": options.sharedId //分享用户编号
+    }
+    let res = await Protocol.putBreathSign();
+    wx.showToast({
+      title: '补签成功',
+      duration: 1000
+    });
   },
   //获取个人信息
   async getPresonMsg() {
@@ -203,7 +222,9 @@ Page({
       });
       wx.setStorageSync('finishedGuide', true);
       this.getTaskInfo()
-      // this.getTaskInfo()
+      if (!!this.data.options.executeOrder) {
+        this.putBreathSign();
+      }
     } else {
       wx.hideTabBar({
         fail: function () {
@@ -219,8 +240,22 @@ Page({
   },
   //获取打卡信息
   async getBreathSignInInfo() {
+    let executeOrder ;
     const { result } = await Protocol.getBreathSignInInfo();
+    if (result.isFinished){
+      let data = result.data;
+      for (let item of data) {
+        if (item.executeOrder < result.days && !item.isFinished){
+          result.replenish = true;
+          if (executeOrder){
+            continue;
+          }
+          executeOrder = item.executeOrde;
+        }
+      }
+    }
     this.setData({
+      executeOrder,
       breathSign: result
     })
   },
@@ -275,6 +310,7 @@ Page({
     mta.Event.stat('zhulujing', { 'clickfatburningtest': 'true' })
     mta.Event.stat('ranzhijiance', { 'clickfatburningtest': 'true' })
   },
+  //修改体重
   weightGoalChange(e) {
     let weight = e.detail.value;
 
@@ -426,10 +462,29 @@ Page({
     });
 
   },
-  //体重列表
-  bindTapToFood(){
-    HiNavigator.navigateTofood()
+  goToGetGift(){
+    HiNavigator.navigateToGetGift()
   },
+  //体重列表
+  async bindTapToFood(){
+    if (this.data.taskInfo.weightTask.finished){
+      HiNavigator.navigateTofood();
+      return;
+    }
+    let {
+      result: { list: weightList }
+    } = await Protocol.postWeightDataListAll({
+      timeBegin: 1510468206000,
+      timeEnd: Date.now()
+    });
+    if (weightList.length > 0) {
+      HiNavigator.navigateTofood();
+      return;
+    }
+    this.showModal();
+    
+  },
+  //蓝牙
   handleBle() {
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
@@ -467,6 +522,7 @@ Page({
       }
     });
   },
+  //展示页面头部
   showTopTask() {
     let topTaskTip = this.data.topTaskTip;
     this.setData({
@@ -532,6 +588,7 @@ Page({
   showModal: function () {
     var that = this;
     that.setData({
+      weight: '',
       hideModal: false
     })
     var animation = wx.createAnimation({

@@ -8,6 +8,13 @@ function my_slice(str,length){
          return str;
    }
 };
+
+function toUpperCase(str){
+  if(str){
+    return str.toUpperCase();
+  }
+}
+
  function getMonthStr(date) {
     str = ('0' + (date.getMonth() + 1)).slice(-2)
     return str;
@@ -61,6 +68,7 @@ function getWeek(timestamp) {
      return week;
 };
 module.exports = {
+  toUpperCase: toUpperCase,
   my_slice:my_slice,
   getEndTime:getEndTime,
   getDynamicCreateTime:getDynamicCreateTime,

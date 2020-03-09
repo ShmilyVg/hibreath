@@ -96,7 +96,7 @@
           <view class="clearFix"></view>
         </block>
 
-        <view class="cyclic">*预计需要循环1次</view>
+        <view class="cyclic">*预计需要循环{{targetDate.reduceFatPeriod.cycles}}次</view>
       </view>
       <view class="step_title inline_block">
         经历巩固期
