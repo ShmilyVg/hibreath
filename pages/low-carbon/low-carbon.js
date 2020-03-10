@@ -31,15 +31,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options) {
+  onLoad(options) {
+    this.getResult();
     
-    const {result} = await Protocol.getLossfatCourse()
-    this.setData({
-      result:result
-    })
-    console.log('result',this.data.result.howEatAdditionaObj[0].foodList)
   },
 
+  async getResult(){
+    try {
+      const { result } = await Protocol.getLossfatCourse()
+      this.setData({
+        result: result
+      })
+      console.log('result', this.data.result.howEatAdditionaObj[0].foodList)
+    } catch (error) { }
+  
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -51,7 +57,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if (!this.data.result){
+      this.getResult();
+    }
   },
 
   /**
