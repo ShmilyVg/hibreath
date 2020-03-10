@@ -31,7 +31,7 @@
           领取<text wx:if='{{breathSign.days == 3}}'>首次</text>大礼
           <image src="../../images/set-info/goRight.png" class="goNext"></image>
         </view>
-        <button wx:elif="{{breathSign.replenish}}" open-type='share'>
+        <button wx:elif="{{breathSign.isFinished && breathSign.replenish}}" open-type='share'>
           补签得好礼
           <image src="../../images/set-info/right-3.png" class="goNext"></image>
         </button>
