@@ -283,13 +283,6 @@ Page({
     if (result.code) {
       Toast.success('生成成功');
       wx.setStorageSync('finishedGuide', true);
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 500);
-        }
-      });
       setTimeout(()=>{
         HiNavigator.switchToLowCarbon()
       },2000)

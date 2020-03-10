@@ -32,6 +32,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.showTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.showTabBar();
+        }, 500);
+      }
+    });
     this.getResult();
     
   },
