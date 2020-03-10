@@ -168,7 +168,7 @@ Page({
       }
     });
     return {
-      title: '1',
+      title: '我正在低碳燃脂，快来一起加入！',
       path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.taskInfo.sharedId}`,
       imageUrl: this.data.shareImg
     };
