@@ -389,6 +389,7 @@ Page({
   //引导页授权
   async onGetUserInfoEvent(e) {
     const { detail: { userInfo, encryptedData, iv } } = e;
+    console.log(userInfo)
     if (!!userInfo) {
       await Login.doRegister({ userInfo, encryptedData, iv });
       let sharedId = this.data.sharedId
@@ -416,12 +417,21 @@ Page({
       }
       
 
+    }else{
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
     }
   },
   //去燃脂列表页
   async goToFatResultPage(){
     if (this.data.taskInfo.fatTask.finished) {
       HiNavigator.navigateToResultNOnum();
+      mta.Event.stat('zhulujing', { 'clicktodaysummaryreport': 'true' })
       return;
     }
     let {

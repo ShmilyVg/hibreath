@@ -280,6 +280,7 @@ Page({
     Toast.hiddenLoading();
     if (result.code) {
       Toast.success('生成成功');
+      wx.setStorageSync('finishedGuide', true);
       wx.showTabBar({
         fail: function () {
           setTimeout(function () {
