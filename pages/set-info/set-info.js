@@ -65,9 +65,12 @@ Page({
   },
 
   async onLoad(options) {
+    let sharedId =  wx.getStorageSync('sharedId')
     this.setData({
-      options
+      sharedId
     })
+    console.log('sharedIdsharedIdsharedIdsharedId', sharedId)
+    // wx.removeStorage('sharedId')
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide()
@@ -195,16 +198,16 @@ Page({
         }
       });
       //判断是否是从补签页面导入
-      if (!!this.data.options.sharedId) {
+      if (!!this.data.sharedId) {
         this.putBreathSign();
       }
     }
   },
   //补签请求接口
   async putBreathSign(){
-    let options = this.data.options;
+    let sharedId = this.data.sharedId;
     let postData = {
-      "sharedId": options.sharedId //分享用户编号
+      "sharedId": sharedId //分享用户编号
     }
     let { result } = await Protocol.putBreathSign();
     if (result.code == 1){
@@ -233,7 +236,7 @@ Page({
       wx.setStorageSync('finishedGuide', true);
       this.getTaskInfo()
       //判断是否是从补签页面导入
-      if (!!this.data.options.sharedId) {
+      if (!!this.data.sharedId) {
         this.putBreathSign();
       }
     } else {
@@ -388,7 +391,7 @@ Page({
     const { detail: { userInfo, encryptedData, iv } } = e;
     if (!!userInfo) {
       await Login.doRegister({ userInfo, encryptedData, iv });
-      let sharedId = this.data.options.sharedId
+      let sharedId = this.data.sharedId
       //此处需要处理不授权的情况
       if (sharedId){
         await Protocol.putBreathSign();
@@ -669,7 +672,7 @@ Page({
     })
     this.animation = animation
     let height = '310rpx'
-    if (!this.data.breathSign.days){
+    if (this.data.breathSign.days == 1 && !breathSign.isFinished){
       height = '240rpx'
     }
     that.animation.height(height).step()

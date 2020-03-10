@@ -8,9 +8,8 @@ Page({
   },
 
   onLoad: function (options) {
-    this.setData({
-      options
-    })
+    let sharedId = options.sharedId;
+    wx.setStorageSync('sharedId', sharedId);
   },
 
   onShow: function () {
@@ -23,8 +22,8 @@ Page({
     }else{
       console.log('新用户')
     }
-    let sharedId = this.data.options.sharedId
-    HiNavigator.switchToSetInfo(sharedId);
+    
+    HiNavigator.switchToSetInfo();
   }
   
 })

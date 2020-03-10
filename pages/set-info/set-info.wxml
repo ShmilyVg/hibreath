@@ -20,7 +20,7 @@
     </view>
     <view animation="{{animationTop}}" class="clock-con">
       <view class="clock-tip">
-        <view class="clock-day" wx:if="{{breathSign.days}}">Day{{breathSign.days}}
+        <view class="clock-day" wx:if="{{breathSign.days != 1 && !breathSign.isFinished}}">Day{{breathSign.days}}
           <text>·{{breathSign.isFinished?'已打卡':'未完成'}}</text> </view>
         <view class="clock-text">连续7日打卡，可领取
           <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
