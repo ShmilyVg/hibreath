@@ -173,13 +173,15 @@ Page({
    */
   onLoad: function(options) {
     let totNum = 4, page= 1;
-    if (options.sharedId) {
+    let sharedId = null;
+    if (options.sharedId != "undefined") {
       totNum =3;
-      page =2
+      page =2;
+      sharedId = options.sharedId;
     }
     this.setData({
       reset: options.reset,
-      sharedId: options.sharedId,
+      sharedId: sharedId,
       totNum: totNum,
       'guidance.page': page
     })
@@ -281,16 +283,9 @@ Page({
     if (result.code) {
       Toast.success('生成成功');
       wx.setStorageSync('finishedGuide', true);
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 500);
-        }
-      });
       setTimeout(()=>{
         HiNavigator.switchToLowCarbon()
-      },1000)
+      },2000)
       
     }
   },

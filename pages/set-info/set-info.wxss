@@ -631,14 +631,25 @@ view{
   font-weight: 400;
   color: #b0b0b0;
 }
-
+.weight-title{
+  color: #333333;
+  font-size: 32rpx;
+}
+.weight-title view{
+  float: left;
+  color: #999999;
+  font-size: 30rpx;
+}
 .weightInput {
-  margin-top: 120rpx;
+  margin: 120rpx auto 0;
   height: 120rpx;
-  font-size: 120rpx;
+  width: 300rpx;
+  background: #ECF8EB;
+  border-radius: 20rpx;
+  font-size: 100rpx;
   font-weight: bold;
-  color: rgba(69, 69, 69, 1);
-  font-family: DIN Condensed;
+  color: #4FBB49;
+  font-family: DINCondensed-Bold;
 }
 
 .page2-line {
@@ -649,10 +660,11 @@ view{
 }
 
 .unit {
-  font-size: 80rpx;
+  margin-top: 37rpx;
+  font-size: 60rpx;
   font-weight: bold;
-  color: rgba(69, 69, 69, 1);
-  line-height: 96rpx;
+  color: #444444;
+  font-family: DINCondensed-Bold;
 }
 
 .weightBtn{
