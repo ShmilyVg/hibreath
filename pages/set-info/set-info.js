@@ -675,7 +675,7 @@ Page({
     })
     this.animation = animation
     let height = '310rpx'
-    if (this.data.breathSign.days == 1 && !breathSign.isFinished){
+    if (this.data.breathSign.days == 1 && !this.data.breathSign.isFinished){
       height = '240rpx'
     }
     that.animation.height(height).step()
