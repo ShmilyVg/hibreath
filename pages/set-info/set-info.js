@@ -208,7 +208,8 @@ Page({
     let postData = {
       "sharedId": sharedId //分享用户编号
     }
-    let { result } = await Protocol.putBreathSign();
+    console.log('postData', postData)
+    let { result } = await Protocol.putBreathSign(postData);
     if (result.code == 1){
       wx.showToast({
         title: '补签成功',
@@ -393,7 +394,10 @@ Page({
       let sharedId = this.data.sharedId
       //此处需要处理不授权的情况
       if (sharedId){
-        await Protocol.putBreathSign();
+        let postData = {
+          "sharedId": sharedId //分享用户编号
+        }
+        await Protocol.putBreathSign(postData);
         wx.showToast({
           title: '帮好友补签成功',
           duration: 500
