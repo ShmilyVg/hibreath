@@ -41,8 +41,7 @@
         </view>
         <view class="replenish" catchtap="goToGetGift" wx:elif="{{breathSign.isFinished && breathSign.isCoupon&& !breathSign.replenish}}">
           <image src="../../images/set-info/gift.png" class="gift"></image>
-          领取
-          <text wx:if='{{breathSign.days == 3}}'>首次</text>大礼
+          领取{{breathSign.days == 3?'首次':''}}大礼
           <image src="../../images/set-info/goRight.png" class="goNext"></image>
         </view>
         <text class="clockBtnTip" wx:if='{{!breathSign.isFinished}}'>使用燃脂精灵并上传燃脂数据即可签到成功</text>
