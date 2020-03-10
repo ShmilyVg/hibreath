@@ -16,7 +16,6 @@ import { oneDigit } from "../food/manager";
 import { ConnectState } from "../../modules/bluetooth/bluetooth-state";
 import { showActionSheet } from "../../view/view";
 import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
-import * as Shared from "./view/shared.js";
 import { UploadUrl } from "../../utils/config";
 const app = getApp();
 var mta = require('../../utils//mta_analysis.js')
@@ -135,11 +134,12 @@ Page({
         });
       }
     };
-    //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
+    that.getTaskInfo();
+  /*  //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
     if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
       getApp().globalData.issueRefresh = false;
       that.getTaskInfo();
-    }
+    }*/
     if (wx.getStorageSync('showWeight')) {
       this.showModal();
       wx.setStorageSync('showWeight', false)
@@ -149,12 +149,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    console.log(this.data.showNewInfo, this.data.showGuide, this.data.showGoclockin, '======')
+   /* console.log(this.data.showNewInfo, this.data.showGuide, this.data.showGoclockin, '======')
     if (!this.data.showNewInfo && !this.data.showGuide && !this.data.showGoclockin) {
       Toast.showLoading();
       await this.getTaskInfo();
       Toast.hiddenLoading();
-    }
+    }*/
+    Toast.showLoading();
+    await this.getTaskInfo();
+    await this.getBreathSignInInfo();
+    Toast.hiddenLoading();
     wx.stopPullDownRefresh();
   },
   onShareAppMessage() {
@@ -280,6 +284,11 @@ Page({
     this.setData({
       taskInfo: result
     })
+    if(this.data.taskInfo.modalList.length>0){
+      this.setData({
+        showWindows:true
+      })
+    }
     let imgUrlsLength = result.otherUsers.imgUrls.length;
     let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
     this.setData({

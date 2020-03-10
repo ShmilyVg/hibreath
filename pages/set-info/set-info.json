@@ -5,7 +5,8 @@
   "backgroundColor": "#ffffff",
   "usingComponents": {
     "my-toast": "../../components/my-toast/my-toast",
-    "exciting-window":"../../components/exciting-window/exciting-window"
+    "fat-window":"../../components/fat-window/fat-window",
+    "weight-window":"../../components/weight-window/weight-window"
 
   }
 }

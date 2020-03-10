@@ -154,7 +154,10 @@
     </view>
   </view>
 </view>
+<!--燃脂&体重情况弹窗-->
+<fat-window wx:if="{{showWindows}}" modalList="{{taskInfo.modalList}}">
 
+</fat-window>
 <!--非首次打卡完成toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" integral="{{integral}}" inTaskProgress="{{inTaskProgress}}" integralTaskTitle="{{integralTaskTitle}}">
 </my-toast>
@@ -168,7 +171,7 @@
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
     <view>请输入当前体重</view>
-    <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+    <input class="weightInput" value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <view class="page2-line"></view>
     <view class="unit">KG</view>
     <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
@@ -189,3 +192,9 @@
   <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
 </view>
 <view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>
+
+<!--体重达到目标弹窗-->
+<!--
+<weight-window wx:if="{{showWeight}}">
+
+</weight-window>-->

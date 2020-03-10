@@ -1,0 +1,37 @@
+<!--components/fat-window/fat-window.wxml-->
+<!--燃脂目标达成-->
+<view catchtouchmove="stopScroll" wx:if="{{firstArr.modalType == 'goalFinish'}}">
+    1
+</view>
+<!--进阶-->
+<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatForward'}}">
+    <view>
+        <view class="fat-window-title">{{firstArr.title}}</view>
+        <view class="fat-window-subTitle">{{firstArr.subTitle}}</view>
+        <view class="fat-window-fatValue">{{firstArr.ext.fatValue}}</view>
+        <view class="fat-window-fatDesc">{{firstArr.ext.fatDesc}}</view>
+    </view>
+
+    <view class="fat-window-textContent">{{firstArr.textContent}}</view>
+
+</view>
+<!--退阶-->
+<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatBackward'}}">
+    <view class="fat-window-title">{{firstArr.title}}</view>
+    <view class="fat-window-subTitle">{{firstArr.subTitle}}</view>
+    <view class="fat-window-fatValue">{{firstArr.ext.fatValue}}</view>
+    <view class="fat-window-fatDesc">{{firstArr.ext.fatDesc}}</view>
+    <view class="fat-window-textContent">{{firstArr.textContent}}</view>
+</view>
+<!--燃脂爆发-->
+<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatOutburst'}}">
+    4
+</view>
+<!--没有进入燃脂阶段-->
+<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatHard'}}">
+    5
+</view>
+<view bindtap="closeW">
+    XXXX
+</view>
+

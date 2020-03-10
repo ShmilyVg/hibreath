@@ -23,12 +23,7 @@
 
         </view>
         <view class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</view>
-   <!--     <view class="flex-row align-items-center">
-            <button class="community-Bg" catchtap="showShared">
-                <image src="../../images/community/wx.png"class="community-Wx"></image>
-                <view class="community-member-description">邀请好友</view>
-            </button>
-        </view>-->
+
     </view>
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
         <view class="" bindtap="toReductionList" style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-start">

@@ -128,16 +128,7 @@ Page({
         })
     },
 
-    showShared(){
-        console.log('分享Id',this.data.socialMemberInfo.sharedId)
-        console.log('圈子名称',this.data.currentSocial.name)
-        console.log('成员数量',this.data.socialMemberInfo.memberCount)
-        console.log('圈子头像',this.data.currentSocial.imgUrl)
-        console.log('成员头像',this.data.socialMemberInfo.memberImgs)
-        Toast.showLoading()
-        Shared.getImageInfo(this)
-        Shared.screenWdith(this)
-    },
+
     cancel(){
         this.setData({
             isSharecomponent:false
