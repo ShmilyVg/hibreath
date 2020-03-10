@@ -23,6 +23,7 @@ var mta = require('../../utils//mta_analysis.js')
 Page({
   data: {
     finishedGuide: false,//新手引导是否完成编制
+    deny:false,
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
@@ -177,6 +178,9 @@ Page({
   getFinishedGuide(){
     if (!wx.getStorageSync('finishedGuide')) {
       //获取是否完成手机号验证、新手引导是否完成
+      if (this.data.deny) {
+        return;
+      }
       wx.hideTabBar({
         fail: function () {
           setTimeout(function () {
@@ -240,6 +244,9 @@ Page({
         this.putBreathSign();
       }
     } else {
+      if (this.data.deny){
+        return;
+      }
       wx.hideTabBar({
         fail: function () {
           setTimeout(function () {
@@ -394,6 +401,9 @@ Page({
       await Login.doRegister({ userInfo, encryptedData, iv });
       let sharedId = this.data.sharedId
       //此处需要处理不授权的情况
+      this.setData({
+        deny: false
+      })
       if (sharedId){
         let postData = {
           "sharedId": sharedId //分享用户编号
@@ -418,6 +428,9 @@ Page({
       
 
     }else{
+      this.setData({
+        deny:true
+      })
       wx.showTabBar({
         fail: function () {
           setTimeout(function () {

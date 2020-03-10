@@ -288,7 +288,10 @@ Page({
           }, 500);
         }
       });
-      HiNavigator.switchToLowCarbon()
+      setTimeout(()=>{
+        HiNavigator.switchToLowCarbon()
+      },1000)
+      
     }
   },
   onHide() {
