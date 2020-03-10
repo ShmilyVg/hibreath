@@ -20,28 +20,30 @@
     </view>
     <view animation="{{animationTop}}" class="clock-con">
       <view class="clock-tip">
-        <view class="clock-day" wx:if="{{breathSign.days != 1 && !breathSign.isFinished}}">Day{{breathSign.days}}
+        <view wx:if="{{breathSign.days == 1 && !breathSign.isFinished}}"></view>
+        <view class="clock-day" wx:else="{{breathSign.days}}">Day{{breathSign.days}}
           <text>·{{breathSign.isFinished?'已打卡':'未完成'}}</text> </view>
         <view class="clock-text">连续7日打卡，可领取
           <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
       </view>
       <view class="clockBtn">
-        <view class="replenish" catchtap="goToGetGift" wx:if="{{breathSign.isFinished && breathSign.isCoupon&& !breathSign.replenish}}">
-          <image src="../../images/set-info/gift.png" class="gift"></image>
-          领取<text wx:if='{{breathSign.days == 3}}'>首次</text>大礼
-          <image src="../../images/set-info/goRight.png" class="goNext"></image>
+        <view wx:if="{{!breathSign.isFinished}}" catchtap="fatTaskToFinish">
+          开始燃脂打卡
+          <image src="../../images/set-info/right-3.png" class="goNext"></image>
         </view>
         <button wx:elif="{{breathSign.isFinished && breathSign.replenish}}" open-type='share'>
           补签得好礼
           <image src="../../images/set-info/right-3.png" class="goNext"></image>
         </button>
-        <view wx:elif="{{!breathSign.days}}" catchtap="fatTaskToFinish">
-          开始燃脂打卡
-          <image src="../../images/set-info/right-3.png" class="goNext"></image>
-        </view>
-        <view wx:elif="{{breathSign.days && !breathSign.isFinished}}" catchtap="fatTaskToFinish">
+        <view wx:elif="{{breathSign.days && !breathSign.replenish && !breathSign.isCoupon}}" catchtap="fatTaskToFinish">
           继续燃脂打卡
           <image src="../../images/set-info/right-3.png" class="goNext"></image>
+        </view>
+        <view class="replenish" catchtap="goToGetGift" wx:elif="{{breathSign.isFinished && breathSign.isCoupon&& !breathSign.replenish}}">
+          <image src="../../images/set-info/gift.png" class="gift"></image>
+          领取
+          <text wx:if='{{breathSign.days == 3}}'>首次</text>大礼
+          <image src="../../images/set-info/goRight.png" class="goNext"></image>
         </view>
         <text class="clockBtnTip" wx:if='{{!breathSign.isFinished}}'>使用燃脂精灵并上传燃脂数据即可签到成功</text>
       </view>
