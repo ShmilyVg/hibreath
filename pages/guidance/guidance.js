@@ -290,7 +290,7 @@ Page({
       });
       setTimeout(()=>{
         HiNavigator.switchToLowCarbon()
-      },1000)
+      },2000)
       
     }
   },
