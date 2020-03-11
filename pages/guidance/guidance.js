@@ -304,12 +304,14 @@ Page({
     if (guidance) {
       if (this.data.reset == 2){
         guidance.page = 2
-      }else if (this.data.reset){
+      } else if (this.data.reset && this.data.sharedId == 'undefined'){
         guidance.page =1
-      }
+      } 
       this.setData({
         guidance: guidance
       });
+      wx.removeStorage({ key: 'guidance' })
     }
+    
   }
 })
