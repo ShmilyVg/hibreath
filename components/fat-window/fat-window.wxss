@@ -1,4 +1,167 @@
 /* components/fat-window/fat-window.wxss */
+.fat-window-container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 350%;
+    background: rgba(0, 0, 0, .85);
+    z-index: 995;
+}
+.clear{
+    clear: both;
+}
+.fatForward-c{
+    width: 158rpx;
+    height: 141rpx;
+    margin: 45rpx auto 0rpx auto;
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 160rpx;
+    background-repeat: no-repeat;
+    font-size:80rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(51,51,51,1)
+}
+.fatHard-c{
+    background-image: url("http://img.hipee.cn/hibreath/fatWindows/fat-c1.png");
+    width: 158rpx;
+    height: 141rpx;
+    margin: 45rpx auto 0rpx auto;
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 160rpx;
+    background-repeat: no-repeat;
+    font-size:80rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(51,51,51,1)
+}
+.fatHard-ppm{
+    font-size:16rpx;
+    text-align: center;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(220,220,220,1);
+}
+.fatOutburst-view{
+    padding-top: 32rpx;
+    width: 560rpx;
+    border-radius: 10rpx 10rpx 0 0;
+    height: 434rpx;
+    background: #fff;
+    margin: 0 auto;
+    text-align: center;
+}
+.fatOutburst-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 26rpx;
+}
+.fatOutburst-top-text{
+    font-size:38rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    margin: 0 17rpx;
+    color:rgba(255,255,255,1);
+}
+
+.fatOutburst-view-bottom-btn{
+    width:317rpx;
+    height:80rpx;
+    line-height: 80rpx;
+    background:rgba(255,255,255,1);
+    border-radius:42rpx;
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    margin:60rpx auto 0rpx auto;
+    color:rgba(51,51,51,1);
+}
+.fatOutburst-view-bottom{
+    margin: 0 auto;
+    background-image:url("http://img.hipee.cn/hibreath/fatOutburst-view-bottom.png") ;
+    width: 560rpx;
+    height: 366rpx;
+    background-size: 100% 100%;
+    text-align: center;
+    padding-top: 57rpx;
+}
+.fatHard-textContent{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+
+.fatHard-view-bottom-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:370rpx;
+    height:90rpx;
+    background:rgba(255,255,255,1);
+    border-radius:45px;
+    line-height: 90rpx;
+    margin: 10rpx auto 0rpx auto;
+    text-align: center;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.fatForward-view-bottom{
+    width: 560rpx;
+    height: 366rpx;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    padding-top: 50rpx;
+    text-align: center;
+}
+.fatHard-view-bottom{
+    width: 560rpx;
+    height: 456rpx;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    padding-top: 50rpx;
+    text-align: center;
+    background-image: url("http://img.hipee.cn/hibreath/fatWindows/fat-type1.png");
+}
+.fat-window-close{
+    width:31rpx;
+    height:31rpx;
+    float: right;
+    margin-right: 31rpx;
+}
+.fat-window-sj{
+    width:0;
+    margin: 0 22rpx 0 28rpx;
+    height:0;
+    border-top:10rpx solid transparent;
+    border-bottom:10rpx solid transparent;
+    border-left:20rpx solid black;
+}
+.fat-window-fatLast-bg{
+    width: 100rpx;
+    height: 198rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAADGCAMAAAAT6NWDAAABGlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACrq6sAAAC0tLQBAQG9vb3CwsLGxsa5ubnKysqvr68BAQHy8vLq6urx8fHq6uqzs7OsrKyGhoZ7e3tTU1MqKirl5eXu7u7k5OTPz8+9vb2Ghoapqamzs7Pt7e3R0dHDw8O9vb3MzMzJycmmpqa7u7uwsLCbm5uGhoaAgID09PSjo6OhoaHe3t7f39/ExMT6+vqcnJzl5eXIyMjAwMDb29vZ2dnV1dXS0tLOzs7Ozs7Ly8uenp6YmJh5eXlsbGxGRkY/Pz9MTExSUlJCQkJPT09JSUk4ODhVVVU7OzuWlpaTk5NYWFiYmJiSkpJtbW13d3doaGheXl58fHxiYmInnX0IAAAASXRSTlMFAAIKEB4mFzAbnRSdKZ2dnZ2dnTT49/XomZlTTkU99u7enIj++fj39fX19PSBfHplW/75+ff11pH8++Tg4MjBubGpmJNtW1lRLDa6EwAAB/NJREFUeNqs1s9O20AQBvC0JQ4hpBXilMCxh4KaCyo3eIDIJlYVo7z/mzCMvfqS3Yy//cNoLaEc/NM3s7t48u24vn9Znbx24gOTLygHeQh5f7Z0jID48SUFxiFqQLgoLjiDMoHRA4vFYlZU8oIegjJRwxHy/rnUtKDmUiIpMyiKqKHE5/ur4vqUlFEFiBhCiLBcLi8LS14hjjCqKDIEUaO626xWq9urslqv15v7SpUhysQFEeP+5eG56w6ytPTPvg7yk/sRP+lCHfTRen58vRdFoygyBBHjz1PT7HZNWP9lkXqXdVy//4oyRFFEg0yrl6cdiMAh0HugvFZTjSKIpBmC3D3stBpAXhySRRHUo4sigiIykWrzbzCABE4K9Lyp5jMg2q3lqhNilKGELDjdetn3SwQdyWIOBB3L2gDvTjkIMl/oUBxSCQIDYdLTOESSVEB07tXltSKASufSXV0KcgFk9okcjg2LEUIdMhuHzI6RKRAwuVnUUGQaIF29q08YOwxnDOS2qz1jNEvDxm8kkSBwMJq8ppntAkFPDG/ZCOJBDSRyLhMQCHz+yJKKaAWO0bVMRAVZZPqodAQVQo3JNJntcnFAmD3LT8LnwjczR3bnGKsKkujj3TJmmCYDQcdqLwu5MmORwslwhCuWISsDAcPPDEaTiuDEeHOx0iALQUgWNhg4iQiSkIaBiEbYyZR13mkcchuF5FyYSLInSSKbZlZmknCT4QIIBIaUdgxH00D2bV23pRAuGSNJDNE72GH2+TeQtm4J408fik/YiBRPQxGtUaR0LqjxJO04oU/E6d9bCLKUn8tuHOEtsxieZK9E7Fxqc/y8XWrQNMZgeLtukAQIS+M50QjSsBpX9tfnke0JQxsGAw0jM7npnAGH1PmvjN1Ykq7dbk+ztDl3GdplJNmKczr+nNtsdCZbJCEtI1uZIJJFHFBxJ8YbjD4jSO/wMLxjNuIYQLiZE+9MhsCAkh6GIAbTjhkBw5F2YGCkdIy3C1DPAMJoom7MWGTrIcSQikfAeEcGDhmNifwMEVlJ1z+IKMQ+MjE9q9OQhNMPhyPh8LP+zVCEb2VWcUj5BkhFEq5/jKWORvKvzJQk2bc/S2LNXxcYfcqSlHcsB+FnsxzhgylHoIRHBlIRwk9MOcLn0uYjBXcZR0o2AEfeohnr0HDkzUb4tdwGyI2BgCEK+ZYhiDBvmZssHiECHQ1Bfg2IMEQiH8w0CQlDNwBNAkTjZKfhCG8ZvwAIwhl++vWhiBqysrPIspGPVu50p20gigKwWqXBCLlFKJuEIAlhB7EUxCqx74tIHTWE7f1fo5NxLifMZHLGdm+J1H+fzr13xvDDuYOSYDSOv/6diFZgJMliX5nudokjUeCQTbab5kK+RiEEeWI626UQ9Y/0zPdcuhERoPiHMRrWdiODIDgcQrV+uhBNfFGSHH4wBFFlL0CiE3NLEFEQJ8VdxpOAMSrZMnOErDItmgQM8oABxEbDEbtjIngvAEVQGSbDED4YbvghODLGZHy3mSLDT4wf0nYjfC7IkiLJeMtlkPGnRfgCpEXaDgNp+p3/mwTXspEmM2I7BsSXrO2HkGsmM+I/muwIP5lwMiPu53LKFc48GY5knwtvFzfiDwhn11q/CJJ2MjxJO7qL/BBhEAYMkMFJIhiEsa9MTIYjcDjkaBpDCMHPJUfaXQQQnT4UUF6INjzn7/71nyPI4gWZjkAsCUEIwxAUg/htxtuVYJft4Xsh6FrSZcYN4NeuNOMH40Qm2s2oaTB+0KBL5pEnwSZH6c6/+nElaTYHOekYF6K6RRX/p8yQJOpHJLJmbDRDEMPoAv5XpjYooisiWfgjkyORPX5vxKtdwiCKlYb3jCJwHFm4QpKAQNOggKEVI+MuBI6hYMm4wJCsHcPzn8+EQ/yS8UniOJlwGMQR55Hx7xhBSMOyJ7GVtIyNjOaDGUcS/QERfzyR0X5kzIGQyXBkzBshDEfwIqsgLseYS0SRib4XWb/3Xsm9mGu6K8VlNrfXeyUXbzD/CNdWhhFKSLjOq2thb7mA5CdLTVLJlOpk/hP5JpMPK6+ESPRU7hyGeu7Gq+u6X8yJ2AMA3dJBBJHjGNZeGOL/+H+phHIUBdH7lZ8so2EZB/NaUhPpLTCQnFLCjSKyZFrl99JGqIzcJyLKiFKuKot/KWIzhvO2Ur9SxogYgogSNMqL71GWwTz+Xqw1AjEE+fJtFfkwWN8tbj/QMIYiWf5sl3bXgzDf/10VgsRKLlaCm7PiygtRBo7/ZXXh7CaIjVxsCCINQ5hger2+cHBPxm8wDwcqxHSAGNKsLiKKtKzLhEHh+rS41CEM6q6zVD69LgRhl5BWiSGIKMLoOI3DUuvWZzT3rWq9oUMIIQYQi1FN010rbJ5sLb+6o8RGZ7l8slnQfVKNMghBoAiDOIXpvUr1+dYd5vZ5p9KYLiCEEDCAKMVkJM7G8db8x2DkY754vCEhDEIbQMCgaapr3VWLl2DqorYze2cKj7M7lb2peNjdhVJ9QqNAABkSJ6/jXB5tzb/1E2/zxaPLAobtCAHEZuw4wdRMrTrXeeoCT525am1iKrBDgLAREkeczfN6eX9hYb9cP98UgYQAwhhpm3JUIpVACdImm+CIvQQSR+eR0hkkhDFsjthx4GhIVQxAQAiK8Dj4iif1n5wVgiM8ji5855QVgiM8DiAACMERfwdlCxzhDiAAEBIgHEIB4PUPjBl0v7E42D4AAAAASUVORK5CYII=");
+}
+.fat-window-fatLast{
+    font-size:100rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(255,251,255,1);
+}
+.fat-window-fatLast-ppm{
+    font-size:16rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(220,220,220,1);
+}
 .fat-window-title{
     font-size:30rpx;
     font-family:DINCondensed-Bold,DINCondensed;
@@ -6,16 +169,29 @@
     color:rgba(51,51,51,1);
 }
 .fat-window-subTitle{
+    margin-bottom: 45rpx;
     font-size:30rpx;
     font-family:PingFang-SC-Light,PingFang-SC;
     font-weight:300;
     color:rgba(102,102,102,1);
+}
+.fatOutburst-window-textContent{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    padding-left: 105rpx;
+    padding-right: 105rpx;
+    line-height: 40rpx;
 }
 .fat-window-textContent{
     font-size:24rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
     color:rgba(255,255,255,1);
+    padding-left: 60rpx;
+    padding-right: 60rpx;
+    line-height: 45rpx;
 }
 .fat-window-fatValue{
     font-size:80rpx;

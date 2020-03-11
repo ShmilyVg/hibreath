@@ -294,7 +294,12 @@ Page({
     this.setData({
       burnReadyLeft
     })
-
+  },
+  closeWindow(e){
+    console.log('rrrr',e)
+    this.setData({
+      showWindows:e.detail.showWindows
+    })
   },
   //燃脂
   async fatTaskToFinish() {
