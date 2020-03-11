@@ -44,7 +44,7 @@
           领取{{breathSign.days == 3?'首次':''}}大礼
           <image src="../../images/set-info/goRight.png" class="goNext"></image>
         </view>
-        <text class="clockBtnTip" wx:if='{{!breathSign.isFinished}}'>使用燃脂精灵并上传燃脂数据即可签到成功</text>
+        <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
       </view>
     </view>
 

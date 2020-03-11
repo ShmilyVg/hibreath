@@ -218,7 +218,7 @@ Page({
     }
     console.log('postData', postData)
     let { result } = await Protocol.putBreathSign(postData);
-    if (result.code == 1){
+    if (result.status ){
       wx.showToast({
         title: '补签成功',
         icon: none,
@@ -422,11 +422,13 @@ Page({
         let postData = {
           "sharedId": sharedId //分享用户编号
         }
-        await Protocol.putBreathSign(postData);
-        wx.showToast({
-          title: '帮好友补签成功',
-          duration: 500
-        });
+        let { result } = await Protocol.putBreathSign(postData);
+        if (result.status){
+          wx.showToast({
+            title: '帮好友补签成功',
+            duration: 500
+          });
+        }
         setTimeout(() => {
           HiNavigator.navigateToGuidance({sharedId})
         }, 500);

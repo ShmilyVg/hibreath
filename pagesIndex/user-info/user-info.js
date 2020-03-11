@@ -64,7 +64,7 @@ Page({
       height: '请填写身高',
       weight: '体重必填且不小于40KG',
       birthday: '请填写生日信息',
-      illnessType: '请填写身体状况信息'
+      // illnessType: '请填写身体状况信息'
     },
     replenish:''
   },
@@ -81,7 +81,7 @@ Page({
         weight,
         birthday,
         // bodyFatRate,
-        illnessType
+        // illnessType
       }
     } = await Protocol.getUserDetailInfo();
     const now = new Date();
@@ -99,26 +99,26 @@ Page({
         weight,
         birthday: birthdayStr,
         // bodyFatRate,
-        illnessType,
+        // illnessType,
       }
     }, () => {
-      getApp().globalData.tempValue.foodHabitArray = illnessType;
-      this.setData({
-        illnessType
-      })
-      this.setData({
-        'editUserInfo.illnessType': illnessType,
-      });
-      this.showMealType(illnessType);
+      // getApp().globalData.tempValue.foodHabitArray = illnessType;
+      // this.setData({
+      //   illnessType
+      // })
+      // this.setData({
+      //   'editUserInfo.illnessType': illnessType,
+      // });
+      // this.showMealType(illnessType);
     });
   },
 
   onShow() {
-    const illnessType = getApp().globalData.tempValue.foodHabitArray || this.data.illnessType;
-    this.showMealType(illnessType);
-    this.setData({
-      'editUserInfo.illnessType': illnessType,
-    });
+    // const illnessType = getApp().globalData.tempValue.foodHabitArray || this.data.illnessType;
+    // this.showMealType(illnessType);
+    // this.setData({
+    //   'editUserInfo.illnessType': illnessType,
+    // });
   },
 
   showMealType(illnessType) {

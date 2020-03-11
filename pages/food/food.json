@@ -1,4 +1,9 @@
 {
+  "navigationBarBackgroundColor": "#7BC877",
+  "navigationBarTitleText": "体重记录",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#ffffff",
   "usingComponents": {
     "bottom-dialog": "../../components/bottom-dialog/index",
     "my-toast": "../../components/my-toast/my-toast"

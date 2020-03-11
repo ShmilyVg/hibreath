@@ -43,6 +43,7 @@
 button::after{ border: none; }
 .commodity_input{
     text-align: right;
+    color: #333;
 }
 .commodity_title{
     margin-left: 70rpx;
