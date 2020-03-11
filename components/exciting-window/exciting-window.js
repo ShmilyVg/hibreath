@@ -111,15 +111,12 @@ Component({
       }
       HiNavigator.switchToSetInfo()*/
       HiNavigator.navigateToLowFatReport()
-      mta.Event.stat('zhulujing',{'clicktodaysummaryreport':'true'})
     },
     goTask(){
       this.excitingKnow()
       if(this.data.toastType == "fatBurn"){
         wx.setStorageSync('showWeight', true);
-        mta.Event.stat('zhulujing',{'clickrecordweight':'true'})
       }else{
-        mta.Event.stat('zhulujing',{'clickfatburningtest':'true'})
       }
       HiNavigator.switchToSetInfo()
 

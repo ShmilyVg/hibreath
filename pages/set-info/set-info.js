@@ -17,6 +17,8 @@ import { ConnectState } from "../../modules/bluetooth/bluetooth-state";
 import { showActionSheet } from "../../view/view";
 import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
 import { UploadUrl } from "../../utils/config";
+const ImageSource = require('../../utils/ImageSource.js');
+const ImageLoader = require('../../utils/ImageLoader.js')
 const app = getApp();
 var mta = require('../../utils//mta_analysis.js')
 Page({
@@ -144,6 +146,9 @@ Page({
       this.showModal();
       wx.setStorageSync('showWeight', false)
     }
+  },
+  onUnload(){
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -285,9 +290,15 @@ Page({
       taskInfo: result
     })
     if(this.data.taskInfo.modalList.length>0){
-      this.setData({
-        showWindows:true
-      })
+      var loader=new ImageLoader({
+        base: ImageSource.BASE ,
+        source: ImageSource.flashList,
+        loaded: res => {
+          this.setData({
+            showWindows:true
+          })
+        }
+      });
     }
     let imgUrlsLength = result.otherUsers.imgUrls.length;
     let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
@@ -334,10 +345,6 @@ Page({
         HiNavigator.navigateToResultNOnum();
       }
     })
-
-
-    mta.Event.stat('zhulujing', { 'clickfatburningtest': 'true' })
-    mta.Event.stat('ranzhijiance', { 'clickfatburningtest': 'true' })
   },
   //修改体重
   weightGoalChange(e) {
@@ -460,7 +467,6 @@ Page({
   async goToFatResultPage(){
     if (this.data.taskInfo.fatTask.finished) {
       HiNavigator.navigateToResultNOnum();
-      mta.Event.stat('zhulujing', { 'clicktodaysummaryreport': 'true' })
       return;
     }
     let {
@@ -503,10 +509,6 @@ Page({
         }
       }
     })
-
-
-    mta.Event.stat('zhulujing', { 'clickfatburningtest': 'true' })
-    mta.Event.stat('ranzhijiance', { 'clickfatburningtest': 'true' })
   },
   //加群页
   goToAddLowfat() {

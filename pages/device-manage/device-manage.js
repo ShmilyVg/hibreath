@@ -42,7 +42,6 @@ Page({
         }).finally(() => Toast.hiddenLoading());
     },
     toBind(){
-      mta.Event.stat('ranzhijiance',{'clickbinddevice':'true'})
       wx.getSystemInfo({
         success (res) {
           console.log('locationEnabled',res.locationEnabled,res.bluetoothEnabled)

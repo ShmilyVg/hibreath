@@ -17,19 +17,19 @@ Component({
 
     },
     attached() {
-      this.setData({
-        firstArr:this.data.modalList[0]
-      })
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: ImageSource.imageList,
         loading: res => {
           // 可以做进度条动画
-          console.log(res);
+          console.log('resresresresresresresres',res);
         },
         loaded: res => {
           // 可以加载完毕动画
-          console.log(res);
+          this.setData({
+            firstArr:this.data.modalList[0]
+          })
+          console.log('111resresresresresresresres',res);
         }
       });
     }

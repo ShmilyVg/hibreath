@@ -63,7 +63,6 @@ Page({
  * @desc 去检测
   */
   goIndex(){
-   mta.Event.stat('ranzhijiance',{'clickfatburningtest':'true'})
    wx.getSystemInfo({
      success (res) {
        if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){

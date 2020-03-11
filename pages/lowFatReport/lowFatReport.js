@@ -99,7 +99,6 @@ Page({
     this.setweightChange()
   },
   onShareAppMessage(res){
-    mta.Event.stat('zhulujing',{'clicksharefriends':'true'})
     let reportId = this.data.reportId;
     return {
       title: '我的今日减脂报告已生成，快来围观！',
@@ -107,7 +106,6 @@ Page({
     }
   },
   shareFr(){
-    mta.Event.stat('zhulujing',{'clicksharefriendscircle':'true'})
     toast.warn("敬请期待");
     return;
   },

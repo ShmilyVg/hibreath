@@ -1,3 +1,8 @@
+/**
+ * @Date: 2020-03-11 18:07:19
+ * @LastEditors: 张浩玉
+ * @ 图片预加载
+ */
 let base = 0;
 let Img = function (src) {
   this.src = src;
