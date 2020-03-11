@@ -1,0 +1,31 @@
+/* components/fat-window/fat-window.wxss */
+.fat-window-title{
+    font-size:30rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.fat-window-subTitle{
+    font-size:30rpx;
+    font-family:PingFang-SC-Light,PingFang-SC;
+    font-weight:300;
+    color:rgba(102,102,102,1);
+}
+.fat-window-textContent{
+    font-size:24rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.fat-window-fatValue{
+    font-size:80rpx;
+    font-family:DINCondensed-Bold,DINCondensed;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.fat-window-fatDesc{
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+}

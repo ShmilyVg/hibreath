@@ -41,7 +41,8 @@
         </view>
         <view class="replenish" catchtap="goToGetGift" wx:elif="{{breathSign.isFinished && breathSign.isCoupon&& !breathSign.replenish}}">
           <image src="../../images/set-info/gift.png" class="gift"></image>
-          领取{{breathSign.days == 3?'首次':''}}大礼
+          领取
+          <text wx:if='{{breathSign.days == 3}}'>首次</text>大礼
           <image src="../../images/set-info/goRight.png" class="goNext"></image>
         </view>
         <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
@@ -153,7 +154,10 @@
     </view>
   </view>
 </view>
+<!--燃脂&体重情况弹窗-->
+<fat-window wx:if="{{showWindows}}" modalList="{{taskInfo.modalList}}">
 
+</fat-window>
 <!--非首次打卡完成toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" integral="{{integral}}" inTaskProgress="{{inTaskProgress}}" integralTaskTitle="{{integralTaskTitle}}">
 </my-toast>
@@ -166,9 +170,9 @@
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-    <view class="weight-title"> <view bindtap="hideModal">取消</view> 请输入当前体重</view>
-    <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
-    <!-- <view class="page2-line"></view> -->
+    <view>请输入当前体重</view>
+    <input class="weightInput" value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+    <view class="page2-line"></view>
     <view class="unit">KG</view>
     <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
   </view>
@@ -188,3 +192,9 @@
   <view class='shareRow margin-top' bindtap='cancel' style="font-size: 18px">取 消</view>
 </view>
 <view class='shareMask' wx:if='{{isOpened}}' bindtap='cancel'></view>
+
+<!--体重达到目标弹窗-->
+<!--
+<weight-window wx:if="{{showWeight}}">
+
+</weight-window>-->

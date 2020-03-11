@@ -134,11 +134,11 @@ Page({
     })
       if(this.data.isHave){
           wx.showTabBarRedDot({
-              index: 2,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
+              index: 3,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
           })
       }else{
           wx.hideTabBarRedDot({
-              index: 2,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
+              index: 3,//index是让tabbar的第几个图标闪起来(从0开始的)，我现在是让第二个图片的红点闪
           })
       }
   },
