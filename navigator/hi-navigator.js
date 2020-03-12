@@ -12,8 +12,13 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToResult({fatText, fatTextEn, fatDes, score}) {
         this.navigateTo({url:`/pages/result/result?fatText=${fatText}&fatTextEn=${fatTextEn}&fatDes=${fatDes}&score=${score}`});
     }
+    
     static navigateToResultNOnum() {
-        this.navigateTo({url: '/pages/result/result'});
+      this.navigateTo({url: '/pages/result/result'});
+    }
+    //燃脂列表页（每天）
+    static navigateToBurnDay() {
+      this.navigateTo({url: '/pagesIndex/burnDay/burnDay'});
     }
     //注册页面
     static navigateToGoRegister() {

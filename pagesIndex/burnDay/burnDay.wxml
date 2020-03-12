@@ -1,2 +1,30 @@
 <!--pagesIndex/burnDay/burnDay.wxml-->
-<text>pagesIndex/burnDay/burnDay.wxml</text>
+<wxs src="../../utils/tool.wxs" module="tools"></wxs>
+<view class="burnDay">
+  <view class="burnDay-date" wx:for="{{trendData}}" wx:key='item'  wx:for-item="dayItem">
+    <view class="burnDay-date-title {{ tools.indexOf(activeDay,dayItem[0].day) > -1 ?'active':''}}" data-item="{{dayItem}}" bindtap="showDayData" >
+      {{dayItem[0].day}}
+      <image src="../../images/jt/{{tools.indexOf(activeDay,dayItem[0].day) > -1 ? 'up':'down'}}.png"></image>
+    </view>
+    <view class="burnDay-date-list" animation="{{ animation[dayItem[0].tip]}}" style="height:0;">
+      <view wx:for="{{dayItem}}" wx:key="index" class="flex-column cell" bindtap="deleteDataValue" data-index="{{item.id}}">
+        <view class="flex-row" style="width:100%;justify-content: space-between">
+          <view class="flex-column" style="align-items: start;height: 160rpx;padding-left:60rpx;position: relative;">
+            <view class="status-tip">
+              <view wx:for="{{status[item.desZh]}}" wx:key='item' style="background: {{item}}"></view>
+            </view>
+            <view class="cell-title">{{item.desZh}}
+              <view class="excessive" wx:if="{{item.desZh == '过度燃脂'}}">!</view>
+            </view>
+            <view class="cell-date">{{item.date}}</view>
+          </view>
+          <view class="cell-image">
+            <image src="{{item.image}}" class="cell-image-image"></image>
+            <view class="cell-image-text">{{item.dataValue}}</view>
+          </view>
+        </view>
+        <view class="cell-line"></view>
+      </view>
+    </view>
+  </view>
+</view>

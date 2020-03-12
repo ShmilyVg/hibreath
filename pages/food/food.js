@@ -252,10 +252,10 @@ Page({
     }
   },
   onDialogShowEvent(e) {
-    // console.log('333',e);
-    // this.setData({
-    //   canvasShow: !e.detail.show
-    // })
+    console.log('333',e);
+    this.setData({
+      canvasShow: !e.detail.show
+    })
   },
   async onSubmitEvent(e) {
     console.log(e);

@@ -15,6 +15,12 @@ function toUpperCase(str){
   }
 }
 
+function indexOf(arr,str) {
+  if (str && arr) {
+    return arr.indexOf(str);
+  }
+}
+
  function getMonthStr(date) {
     str = ('0' + (date.getMonth() + 1)).slice(-2)
     return str;
@@ -75,5 +81,6 @@ module.exports = {
   getCommentTime:getCommentTime,
   getAllday:getAllday,
   getFoodday:getFoodday,
-  getWeek:getWeek
+  getWeek:getWeek,
+  indexOf:indexOf
 };

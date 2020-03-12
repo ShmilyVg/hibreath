@@ -114,6 +114,7 @@ Page({
           that.data.sync.timer = "";
           that.data.sync.timer = setTimeout(function () {
             that.getTaskInfo();
+            this.getBreathSignInInfo()
             that.setData({
               showBigTip: false
             });

@@ -10,7 +10,25 @@ function createDateAndTime(timeStamp) {
     let time = (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute);
     return {date: dateT, dateX, time: time, day: day, month: month, year: year};
 }
-
+function dateFormat(time = new Date(),fmt = 'YYYY/MM/DD') {
+    let ret;
+    let date = new Date(time);
+    const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "M+": (date.getMonth() + 1).toString(),     // 月
+        "D+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "m+": date.getMinutes().toString(),         // 分
+        "s+": date.getSeconds().toString()          // 秒
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
+}
 function createDateAndTime06(timestamp01, timestamp02) {
     let date01 = new Date(timestamp01);
     let date02 = new Date(timestamp02);
@@ -63,5 +81,6 @@ module.exports = {
     subStringNum,
     createDateAndTime06,
     filterEmoji,
-    filterSpace
+    filterSpace,
+    dateFormat
 }
