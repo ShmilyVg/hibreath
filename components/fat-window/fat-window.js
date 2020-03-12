@@ -1,4 +1,7 @@
 // components/fat-window/fat-window.js
+import HiNavigator from "../../navigator/hi-navigator";
+const ImageSource = require('../../utils/ImageSource.js');
+const ImageLoader = require('../../utils/ImageLoader.js')
 Component({
   /**
    * 组件的属性列表
@@ -14,29 +17,55 @@ Component({
 
     },
     attached() {
-      console.log('thisdsad2222',this.data.modalList)
-      this.setData({
-        firstArr:this.data.modalList[0]
-      })
+      var loader=new ImageLoader({
+        base: ImageSource.BASE ,
+        source: ImageSource.imageList,
+        loading: res => {
+          // 可以做进度条动画
+          console.log('resresresresresresresres',res);
+        },
+        loaded: res => {
+          // 可以加载完毕动画
+          this.setData({
+            firstArr:this.data.modalList[0]
+          })
+          console.log('111resresresresresresresres',res);
+        }
+      });
     }
   },
   /**
    * 组件的初始数据
    */
   data: {
-
+    showWindows:false,
+    firstArr:{}
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    toRecomTarNew(){
+      HiNavigator.navigateToRecomTarNew();
+      this.triggerEvent("closeWindow", {showWindows:false})
+    },
     closeW(){
-      var newArr = this.data.modalList.shift(); //删除并返回数组的第一个元素
-      console.log('_arr',newArr)
-      this.setData({
-        modalList:newArr
-      })
-    }
+      if(this.data.modalList.length>1){
+        this.data.modalList = this.data.modalList.filter((d, i) => i > 0);
+        this.setData({
+          firstArr:this.data.modalList[0]
+        })
+      }else{
+        this.triggerEvent("closeWindow", {showWindows:false})
+        this.setData({
+          firstArr:[]
+        })
+      }
+    },
+    toGift(){
+      HiNavigator.navigateToGetGift();
+      this.triggerEvent("closeWindow", {showWindows:false})
+    },
   }
 })

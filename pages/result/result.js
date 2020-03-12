@@ -68,9 +68,6 @@ Page({
     this.init();
     /*存在id 即为在线检测进入结果页面*/
     if (e.id) {
-      mta.Event.stat('ranzhijiance', {
-        'result': 'true'
-      })
       const {
         result
       } = await Protocol.postIncentive();
@@ -191,9 +188,6 @@ Page({
   },
 
   toIndex() {
-    mta.Event.stat('ranzhijiance', {
-      'clickfatburningtest': 'true'
-    })
     //检测蓝牙状态
     wx.getSystemInfo({
       success(res) {

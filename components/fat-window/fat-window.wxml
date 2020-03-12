@@ -1,37 +1,94 @@
 <!--components/fat-window/fat-window.wxml-->
 <!--燃脂目标达成-->
-<view catchtouchmove="stopScroll" wx:if="{{firstArr.modalType == 'goalFinish'}}">
-    1
-</view>
-<!--进阶-->
-<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatForward'}}">
-    <view>
+<view class="fat-window-container" catchtouchmove="stopScroll">
+    <view catchtouchmove="stopScroll" wx:if="{{firstArr.modalType == 'goalFinish'}}">
+        1
+    </view>
+    <!--进阶-->
+    <view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatForward'}}" style="margin-top: 175rpx">
+        <view class="fatOutburst-top">
+            <image src="../../images/indexWindow/3d2.png" style="width: 50rpx;height: 21rpx;"></image>
+            <view  class="fatOutburst-top-text">燃脂进阶</view>
+            <image src="../../images/indexWindow/3d1.png" style="width: 50rpx;height: 20rpx;"></image>
+        </view>
+        <view class="fatOutburst-view">
+            <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
+            <view class="clear"></view>
+            <view class="fat-window-title">{{firstArr.title}}</view>
+            <view class="fat-window-subTitle" style="margin-bottom: 32rpx">{{firstArr.subTitle}}</view>
+            <view class="fatForward-c" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fat-c{{firstArr.ext.fatLevel+1}}.png')">{{firstArr.ext.fatValue}}</view>
+            <view class="fatHard-ppm">ppm</view>
+            <view style="font-size:28rpx;font-family:PingFang-SC-Medium,PingFang-SC;font-weight:bold;color:rgba(51,51,51,1);margin-top: 26rpx">{{firstArr.ext.fatDesc}}</view>
+        </view>
+        <view class="fatForward-view-bottom" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fat-type{{firstArr.ext.fatLevel+1}}.png')">
+            <view class="fatOutburst-window-textContent">{{firstArr.textContent}}</view>
+            <view class="fatOutburst-view-bottom-btn" bindtap="toGift">继续加速</view>
+        </view>
+    </view>
+    <!--退阶-->
+    <view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatBackward'}}">
         <view class="fat-window-title">{{firstArr.title}}</view>
         <view class="fat-window-subTitle">{{firstArr.subTitle}}</view>
         <view class="fat-window-fatValue">{{firstArr.ext.fatValue}}</view>
         <view class="fat-window-fatDesc">{{firstArr.ext.fatDesc}}</view>
+        <view class="fat-window-textContent">{{firstArr.textContent}}</view>
     </view>
+    <!--燃脂爆发-->
+    <view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatOutburst'}}" style="margin-top: 175rpx">
+        <view class="fatOutburst-top">
+            <image src="../../images/indexWindow/3d2.png" style="width: 50rpx;height: 21rpx;"></image>
+            <view   class="fatOutburst-top-text">燃脂速度大爆发</view>
+            <image   src="../../images/indexWindow/3d1.png" style="width: 50rpx;height: 20rpx;"></image>
+        </view>
+        <view class="fatOutburst-view">
+            <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
+            <view class="clear"></view>
+            <view class="fat-window-title">{{firstArr.title}}</view>
+            <view class="fat-window-subTitle" style="margin-bottom: 32rpx">{{firstArr.subTitle}}</view>
+            <view style="display: flex;align-items: center;justify-content: center">
+                <view class="fat-window-fatLast-bg">
+                    <view class="fat-window-fatLast">{{firstArr.ext.fatLast}}</view>
+                    <view class="fat-window-fatLast-ppm">ppm</view>
+                </view>
+                <view class="fat-window-sj"></view>
+                <view class="fat-window-fatLast-bg">
+                    <view class="fat-window-fatLast">{{firstArr.ext.fatValue}}</view>
+                    <view class="fat-window-fatLast-ppm">ppm</view>
+                </view>
 
-    <view class="fat-window-textContent">{{firstArr.textContent}}</view>
+            </view>
+            <view style="font-size:28rpx;font-family:PingFang-SC-Medium,PingFang-SC;font-weight:bold;color:rgba(51,51,51,1);margin-top: 18rpx">今天燃脂突飞猛进</view>
 
-</view>
-<!--退阶-->
-<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatBackward'}}">
-    <view class="fat-window-title">{{firstArr.title}}</view>
-    <view class="fat-window-subTitle">{{firstArr.subTitle}}</view>
-    <view class="fat-window-fatValue">{{firstArr.ext.fatValue}}</view>
-    <view class="fat-window-fatDesc">{{firstArr.ext.fatDesc}}</view>
-    <view class="fat-window-textContent">{{firstArr.textContent}}</view>
-</view>
-<!--燃脂爆发-->
-<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatOutburst'}}">
-    4
-</view>
-<!--没有进入燃脂阶段-->
-<view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatHard'}}">
-    5
-</view>
-<view bindtap="closeW">
-    XXXX
-</view>
+        </view>
+        <view class="fatOutburst-view-bottom">
+            <view class="fat-window-textContent">{{firstArr.textContent}}</view>
+            <view class="fatOutburst-view-bottom-btn" bindtap="toGift">继续加速</view>
+        </view>
 
+    </view>
+    <!--没有进入燃脂阶段-->
+    <view catchtouchmove="stopScroll" wx:elif="{{firstArr.modalType == 'fatHard'}}" style="margin-top: 135rpx">
+        <view class="fatOutburst-top">
+            <image src="../../images/indexWindow/3d2.png" style="width: 50rpx;height: 21rpx;"></image>
+            <view  class="fatOutburst-top-text">没有进入燃脂状态</view>
+            <image src="../../images/indexWindow/3d1.png" style="width: 50rpx;height: 20rpx;"></image>
+        </view>
+        <view class="fatOutburst-view">
+            <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
+            <view class="clear"></view>
+            <view class="fat-window-title">{{firstArr.title}}</view>
+            <view class="fat-window-subTitle" style="margin-bottom: 32rpx">{{firstArr.subTitle}}</view>
+            <view class="fatHard-c">{{firstArr.ext.fatValue}}</view>
+            <view class="fatHard-ppm">ppm</view>
+            <view style="font-size:28rpx;font-family:PingFang-SC-Medium,PingFang-SC;font-weight:bold;color:rgba(51,51,51,1);margin-top: 26rpx">{{firstArr.ext.fatDesc}}</view>
+        </view>
+        <view class="fatHard-view-bottom">
+            <text class="fatHard-textContent">{{firstArr.textContent}}</text>
+            <view class="fatHard-view-bottom-btn" bindtap="toGift" style="margin-top: 50rpx" bindtap="toRecomTarNew">查看我的减脂历程</view>
+            <view class="fatHard-view-bottom-btn">
+                <image style="width: 71rpx;height: 50rpx" src="../../images/indexWindow/box.png"></image>
+                <view style="margin-left: 15rpx" bindtap="toGift">补充盒子完成历程</view>
+            </view>
+        </view>
+    </view>
+</view>

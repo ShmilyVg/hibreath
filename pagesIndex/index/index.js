@@ -338,7 +338,6 @@ Page({
 
 
     onGetUserInfoEvent(e) {
-        mta.Event.stat('ranzhijiance',{'clickbinddevice':'true'})
         wx.getSystemInfo({
             success (res) {
                 if(res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized){
