@@ -53,7 +53,14 @@ Page({
     tabIsShow: true,
     fatText: '',
     fatTextEn: '',
-    fatDes: ''
+    fatDes: '',
+    status:{
+      '即将燃脂': ['#D0E5CC', '#D0E5CC', '#5D6AED'],
+      '低速燃脂': ['#D0E5CC', '#009DFF', '#009DFF'],
+      '状态极佳': ['#0AC1A1', '#0AC1A1', '#0AC1A1'],
+      '过度燃脂': ['#FF6100', '#FF6100', '#FF6100'],
+      '快速燃脂': ['#FFAD00', '#FFAD00', '#FFAD00'],
+    },
   },
   async onLoad(e) {
     console.log('eeeeeee', e)
@@ -290,7 +297,9 @@ Page({
     }
 
   },
-
+  toBurnDay(){
+    HiNavigator.navigateToBurnDay()
+  },
   toChooseDate() {
     wx.navigateTo({
       url: '../calendar/calendar?type=' + 'breath'

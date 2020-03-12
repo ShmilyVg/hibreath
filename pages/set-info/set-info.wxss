@@ -97,10 +97,27 @@ view{
   font-weight:500;
   color:rgba(102,102,102,1);
   padding-top: 22rpx;
+  position: relative;
 }
 .task image{
   width: 36rpx;
   height: 44rpx;
+}
+.replenish-tip{
+  font-size:18rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  width:40rpx;
+  height:40rpx;
+  line-height: 36rpx;
+  background:rgba(255,157,104,1);
+  border:3rpx solid rgba(255,255,255,1);
+  border-radius:50%;
+  position: absolute;
+  right: -7rpx;
+  top: 5rpx;
+  text-align: center;
 }
 .set-top-title {
   font-size: 44rpx;

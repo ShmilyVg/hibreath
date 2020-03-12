@@ -1,18 +1,15 @@
-<!--<navBar
-        title='燃脂检测'
-        color="#000000"
-        iconTheme="black"
-        background='#FFFFFF'
-        back="{{true}}"
-        bindback="handlerGobackClick">
-
-</navBar>-->
 <view wx:if="{{trendData.length !==0}}">
   <view class="burn-top">
     <view class="result-top flex-row">
       <view class="flex-row">
         <image class="result-img1" src="../../images/result/circle.png"></image>
         <text class="result-text1">最近一次</text>
+      </view>
+      <view class="result-status">
+        <view>燃脂不佳·点击加速
+          <view class="triangle"></view>
+        </view>
+        <image src="../../images/result/speed.png"></image>
       </view>
       <!--    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>-->
     </view>
@@ -33,13 +30,19 @@
   <view class="burn-list">
     <view class="burn-list-top">
       <view>每日燃脂记录</view>
-      <view class="detail">查看详细记录</view>
+      <view class="detail" bindtap="toBurnDay">查看详细记录</view>
     </view>
     <view class="burn-list-contain">
-      <view wx:for="{{trendData}}" wx:key="index" class="flex-column cell" bindtap="deleteDataValue" data-index="{{item.id}}">
+      <view wx:for="{{trendData}}" wx:key="index" class="flex-column cell {{index?'':'burn-best'}}" bindtap="deleteDataValue" data-index="{{item.id}}">
+        <image src="../../images/result/best.png" class="bestImg" wx:if="{{!index}}"></image>
         <view class="flex-row" style="width:100%;justify-content: space-between">
-          <view class="flex-column" style="align-items: start;height: 160rpx">
-            <view class="cell-title">{{item.desZh}}</view>
+          <view class="flex-column" style="align-items: start;height: 160rpx;padding-left:60rpx;position: relative;">
+            <view class="status-tip">
+              <view wx:for="{{status[item.desZh]}}" wx:key='item' style="background: {{item}}"></view>
+            </view>
+            <view class="cell-title">{{item.desZh}}
+              <view class="excessive" wx:if="{{item.desZh == '过度燃脂'}}">!</view>
+            </view>
             <view class="cell-date">{{item.date}}</view>
           </view>
           <view class="cell-image">

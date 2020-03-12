@@ -380,6 +380,13 @@
 					"pathName": "pages/sharedGuidance/sharedGuidance",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 46,
+					"name": "pagesIndex/burnDay/burnDay",
+					"pathName": "pagesIndex/burnDay/burnDay",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
