@@ -46,7 +46,8 @@ Page({
     ],
     answer: true,
     answerData: {},
-    answerBtnReady: false
+    answerBtnReady: false,
+    needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"]
   },
 
 
@@ -283,6 +284,26 @@ Page({
       breathSign: result
     })
   },
+  //图片预加载列表
+  imgListArr(){
+    var that = this;
+    for(var i=0;i<that.data.taskInfo.modalList.length;i++){
+      if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
+        let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
+        that.data.needImgList.push(imageListfinUrl)
+      }
+      if(that.data.taskInfo.modalList[i].modalType == 'fatForward' || that.data.taskInfo.modalList[i].modalType == 'fatBackward'){
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
+        let imageListfinUrl = "fatWindows/fat-type"+Num+'.png'
+        that.data.needImgList.push(imageListfinUrl)
+      }
+      if(that.data.taskInfo.modalList[i].modalType == 'fatHard'){
+        that.data.needImgList.push('fatWindows/fat-type1no.png')
+      }
+      that.data.needImgList =[...new Set([... that.data.needImgList])]
+    }
+  },
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
@@ -290,13 +311,16 @@ Page({
       taskInfo: result
     })
     if(this.data.taskInfo.modalList.length>0){
+      this.imgListArr()
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
-        source: ImageSource.flashList,
+        source: this.data.needImgList,
         loaded: res => {
-          this.setData({
-            showWindows:true
-          })
+          setTimeout(()=>{
+            this.setData({
+              showWindows:true
+            })
+          },300)
         }
       });
     }
@@ -311,6 +335,9 @@ Page({
     this.setData({
       showWindows:e.detail.showWindows
     })
+  },
+  weightGoal(){
+    this.showModal()
   },
   //燃脂
   async fatTaskToFinish() {

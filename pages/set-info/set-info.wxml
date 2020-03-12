@@ -156,6 +156,7 @@
 <!--燃脂&体重情况弹窗-->
 <fat-window wx:if="{{showWindows}}"
             bind:closeWindow="closeWindow"
+            bind:weightGoal="weightGoal"
             modalList="{{taskInfo.modalList}}">
 
 </fat-window>
