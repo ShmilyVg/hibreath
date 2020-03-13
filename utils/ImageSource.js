@@ -29,5 +29,7 @@ module.exports = {
   "flashList":[
     "fatWindows/flash1.png",
     "fatWindows/flash2.png"
-  ]
+  ],
+  //记录页弹窗
+
 }

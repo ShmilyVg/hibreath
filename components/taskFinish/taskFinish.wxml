@@ -1,0 +1,73 @@
+<!--components/taskFinish/taskFinish.wxml-->
+<view class="fat-window-container">
+    <view class="taskFinish-bg taskFinish-bg-active" wx:if="{{weightFinish && fatFinish}}">
+        <view class="taskFinish-text1">总结报告已解锁·记得前往<text class="taskFinish-text2" bindtap="">首页查看</text></view>
+        <view class="taskFinish-fat">
+            <view class="taskFinish-fat-text">测测燃脂速度</view>
+            <view class="taskFinish-fat-view">
+                <image class="taskFinish-fat-img" src="http://img.hipee.cn/hibreath/fatWindows/fatS-icon.png"></image>
+            </view>
+        </view>
+        <view class="taskFinish-weight" style="margin-top: 20rpx">
+            <view class="taskFinish-fat-text">量体重</view>
+            <view class="taskFinish-fat-view">
+                <image  class="taskFinish-weight-img" src="http://img.hipee.cn/hibreath/fatWindows/weightS.png"></image>
+            </view>
+        </view>
+        <view class="taskFinish-bottom" bindtap="secAgain">
+            <view wx:if="{{isGreen}}" class="taskFinish-bottom-isGreen">
+                <view class="taskFinish-bottom-isGreen-c"></view>
+            </view>
+            <view wx:else  class="taskFinish-bottom-noGreen"></view>
+            <view class="taskFinish-bottom-text">下次不再提示</view>
+        </view>
+    </view>
+    <!--燃脂完成-->
+    <view class="taskFinish-bg taskFinish-bg-png" wx:if="{{weightFinish && !fatFinish}}">
+        <view class="taskFinish-text1">完成全部任务·解锁总结报告</view>
+        <view class="taskFinish-fat">
+            <view class="taskFinish-fat-text">测测燃脂速度</view>
+            <view class="taskFinish-fat-view">
+                <image class="taskFinish-fat-img" src="http://img.hipee.cn/hibreath/fatWindows/fatS-icon.png"></image>
+            </view>
+
+        </view>
+        <view class="taskFinish-weight" bindtap="toWeight" style="margin-top: 20rpx;;background-color: rgba(216,217,220,1)">
+            <view class="taskFinish-fat-text">量体重</view>
+            <view class="taskFinish-fat-view">
+                <image  class="taskFinish-weight-img" src="http://img.hipee.cn/hibreath/fatWindows/weight.png"></image>
+            </view>
+        </view>
+        <view class="taskFinish-bottom" bindtap="secAgain">
+            <view wx:if="{{isGreen}}" class="taskFinish-bottom-isGreen">
+                <view class="taskFinish-bottom-isGreen-c"></view>
+            </view>
+            <view wx:else  class="taskFinish-bottom-noGreen"></view>
+            <view class="taskFinish-bottom-text">下次不再提示</view>
+        </view>
+    </view>
+    <!--体重完成-->
+    <view class="taskFinish-bg taskFinish-bg-png" wx:if="{{!weightFinish && fatFinish}}">
+        <view class="taskFinish-text1">完成全部任务·解锁总结报告</view>
+        <view class="taskFinish-fat" bindtap="toFat" style="background-color: rgba(216,217,220,1);">
+            <view class="taskFinish-fat-text">测测燃脂速度</view>
+            <view class="taskFinish-fat-view">
+                <image class="taskFinish-fat-img" src="http://img.hipee.cn/hibreath/fatWindows/fat-icon.png"></image>
+            </view>
+
+        </view>
+        <view class="taskFinish-weight"  style="margin-top: 20rpx">
+            <view class="taskFinish-fat-text">量体重</view>
+            <view class="taskFinish-fat-view">
+                <image  class="taskFinish-weight-img" src="http://img.hipee.cn/hibreath/fatWindows/weightS.png"></image>
+            </view>
+        </view>
+        <view class="taskFinish-bottom" bindtap="secAgain">
+            <view wx:if="{{isGreen}}" class="taskFinish-bottom-isGreen">
+                <view class="taskFinish-bottom-isGreen-c"></view>
+            </view>
+            <view wx:else  class="taskFinish-bottom-noGreen"></view>
+            <view class="taskFinish-bottom-text">下次不再提示</view>
+        </view>
+    </view>
+</view>

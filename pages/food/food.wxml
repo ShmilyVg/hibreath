@@ -45,3 +45,10 @@
 <!--toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}">
 </my-toast>
+
+<!--
+<taskFinish
+        wx:if="{{showTaskFinish}}"
+        weightFinish="{{weightFinish}}"
+        fatFinish="{{fatFinish}}">
+</taskFinish>-->

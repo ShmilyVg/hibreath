@@ -43,7 +43,7 @@
             <view class="triangle-right {{triangleNum==6?'triangle-active':'triangle-right1'}}"></view>
         </view>
         <view class="fatOutburst-view">
-            <view bindtap="closeW" style="float: right;margin-right: 25rpx;width: 60rpx;height: 60rpx">
+            <view class="fatOutburst-view-close" bindtap="closeW">
                 <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
             </view>
             <view class="clear"></view>
@@ -70,7 +70,7 @@
             <view class="triangle-left {{triangleNum==1?'triangle-active':'triangle-right1'}}"></view>
         </view>
         <view class="fatOutburst-view">
-            <view bindtap="closeW" style="float: right;margin-right: 25rpx;width: 60rpx;height: 60rpx">
+            <view class="fatOutburst-view-close" bindtap="closeW">
                 <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
             </view>
             <view class="clear"></view>
@@ -93,7 +93,7 @@
             <image   src="../../images/indexWindow/3d1.png" style="width: 50rpx;height: 20rpx;"></image>
         </view>
         <view class="fatOutburst-view">
-            <view bindtap="closeW" style="float: right;margin-right: 25rpx;width: 60rpx;height: 60rpx">
+            <view class="fatOutburst-view-close" bindtap="closeW">
                 <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
             </view>
             <view class="clear"></view>
@@ -128,7 +128,7 @@
             <image src="../../images/indexWindow/3d1.png" style="width: 50rpx;height: 20rpx;"></image>
         </view>
         <view class="fatOutburst-view">
-            <view bindtap="closeW" style="float: right;margin-right: 25rpx;width: 60rpx;height: 60rpx">
+            <view class="fatOutburst-view-close" bindtap="closeW">
                 <image bindtap="closeW"  class="fat-window-close" src="../../images/indexWindow/close.png"></image>
             </view>
             <view class="clear"></view>

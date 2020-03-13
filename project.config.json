@@ -200,10 +200,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 20,
 					"name": "pages/food/food",
 					"pathName": "pages/food/food",
-					"query": "",
+					"query": "weightFinish=true&fatFinish=false",
 					"scene": null
 				},
 				{

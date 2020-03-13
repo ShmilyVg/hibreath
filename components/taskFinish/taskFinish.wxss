@@ -1,0 +1,136 @@
+/* components/taskFinish/taskFinish.wxss */
+.fat-window-container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 350%;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 995;
+    background-size: 100% 1096rpx;
+    background-repeat: no-repeat;
+    animation:myOne 0.4s  infinite alternate;
+}
+@keyframes myOne{
+    0% {background-image:url('https://img.hipee.cn/hibreath/fatWindows/flash1.png')}
+    100% {background-image:url('https://img.hipee.cn/hibreath/fatWindows/flash2.png')}
+}
+.taskFinish-bg{
+    width: 560rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.taskFinish-bg-png{
+    height: 707rpx;
+    background-image:url('https://img.hipee.cn/hibreath/fatWindows/gifBg.png');
+    margin: 284rpx auto 0rpx auto;
+    padding-top: 170rpx;
+    text-align: center;
+}
+.taskFinish-bg-active{
+    margin: 169rpx auto 0rpx auto;
+    height: 868rpx;
+    padding-top: 330rpx;
+    text-align: center;
+    background-image:url('https://img.hipee.cn/hibreath/fatWindows/gifBg.gif')
+}
+.taskFinish-text1{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin-bottom: 45rpx;
+}
+.taskFinish-text2{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:#7BC877;
+}
+.taskFinish-weight{
+    width:480rpx;
+    height:147rpx;
+    background-color:rgba(111,214,193,1);
+    border-radius:20rpx;
+    line-height: 147rpx;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0rpx 33rpx 0rpx 43rpx;
+    background-image: url("https://img.hipee.cn/hibreath/fatWindows/nike.png");
+    background-position:290rpx 23rpx;
+    background-size: 190rpx 123rpx;
+    background-repeat: no-repeat;
+}
+.taskFinish-fat{
+    width:480rpx;
+    height:147rpx;
+    background-color:rgba(255,174,185,1);
+    border-radius:20rpx;
+    line-height: 147rpx;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0rpx 33rpx 0rpx 43rpx;
+    background-image: url("https://img.hipee.cn/hibreath/fatWindows/nike.png");
+    background-position:290rpx 23rpx;
+    background-size: 190rpx 123rpx;
+    background-repeat: no-repeat;
+}
+.taskFinish-fat-view{
+    float: right;
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 110rpx;
+    background: rgba(255,255,255,1);
+    border-radius: 50%;
+    margin-top: 28rpx;
+}
+.taskFinish-fat-text{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    float: left;
+}
+.taskFinish-fat-img{
+    width:40rpx;
+    height:50rpx;
+}
+.taskFinish-weight-img{
+    width:46rpx;
+    height:46rpx;
+}
+.taskFinish-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40rpx;
+}
+.taskFinish-bottom-noGreen{
+    width:22rpx;
+    height:22rpx;
+    margin-right: 8rpx;
+    border:1rpx solid rgba(153,153,153,1);
+    border-radius:50%;
+}
+.taskFinish-bottom-text{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.taskFinish-bottom-isGreen{
+    width:22rpx;
+    height:22rpx;
+    border:1rpx solid rgba(123,200,119,1);
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    margin-right: 8rpx;
+    align-items: center;
+}
+.taskFinish-bottom-isGreen-c{
+    width:14rpx;
+    height:14rpx;
+    background:rgba(123,200,119,1);
+    border-radius:50%;
+}
