@@ -9,7 +9,7 @@ Component({
   properties: {
     modalList: {
       type: Array,
-      value: []
+      value: [],
     }
   },
   lifetimes: {
@@ -17,21 +17,10 @@ Component({
 
     },
     attached() {
-      var loader=new ImageLoader({
-        base: ImageSource.BASE ,
-        source: ImageSource.imageList,
-        loading: res => {
-          // 可以做进度条动画
-          console.log('resresresresresresresres',res);
-        },
-        loaded: res => {
-          // 可以加载完毕动画
-          this.setData({
-            firstArr:this.data.modalList[0]
-          })
-          console.log('111resresresresresresresres',res);
-        }
-      });
+      this.setData({
+        firstArr:this.data.modalList[0]
+      })
+      this.triangleNumF()
     }
   },
   /**
@@ -39,7 +28,9 @@ Component({
    */
   data: {
     showWindows:false,
-    firstArr:{}
+    firstArr:{},
+    triangleNum:1,
+    times:1,//执行次数
   },
 
   /**
@@ -67,5 +58,28 @@ Component({
       HiNavigator.navigateToGetGift();
       this.triggerEvent("closeWindow", {showWindows:false})
     },
+    toGoal(){
+      this.triggerEvent("closeWindow", {showWindows:false})
+      this.triggerEvent("weightGoal")
+    },
+    triangleNumF(){
+      const that =this
+      setTimeout(() => {
+        if(that.data.times<499){
+          that.setData({
+            triangleNum:that.data.triangleNum+1
+          })
+          if(that.data.triangleNum == 7){
+            that.setData({
+              triangleNum:1
+            })
+          }
+          that.triangleNumF()
+          that.setData({
+            times:this.data.times+1
+          })
+        }
+      }, 200)
+    }
   }
 })
