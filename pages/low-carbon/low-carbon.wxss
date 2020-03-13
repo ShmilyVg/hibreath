@@ -39,7 +39,7 @@ page{
 }
 .low-carbon-topView-view4{
     font-size:56rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     float: right;
     color:rgba(255,255,255,1);
@@ -236,7 +236,7 @@ page{
 }
 .swiper-tag1{
     font-size:44rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(68,68,68,1);
 }

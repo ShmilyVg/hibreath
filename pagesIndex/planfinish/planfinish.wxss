@@ -24,7 +24,7 @@
 }
 .planfinish-subtitle{
     font-size:34rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(73,62,56,1);
     opacity:0.4;
@@ -59,7 +59,7 @@
 }
 .planfinish-content-number{
     font-size:60rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     float: right;
     color:rgba(69,69,69,1);
@@ -126,7 +126,7 @@
 }
 .planfinish-top-weight{
     font-size:120rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(51,51,51,1);
     line-height: 150rpx
@@ -134,7 +134,7 @@
 }
 .planfinish-top-kg{
     font-size:44rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(51,51,51,1);
     line-height: 190rpx;

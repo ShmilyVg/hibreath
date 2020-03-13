@@ -15,7 +15,7 @@
       <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}" wx:key='executeOrder'>
       <view class="replenish-tip" wx:if="{{item.executeOrder < breathSign.days && !item.isFinished}}">补</view>
         <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished && !item.isCoupon}}"></image>
-        <image src="../../images/set-info/{{!item.isCoupon?'task':item.isFinished?'gift-open':'gift'}}.png" mode="aspectFill" wx:else></image>
+        <image src="../../images/set-info/{{!item.isCoupon?'task':item.isTakeCoupon?'gift-open':'gift'}}.png" mode="aspectFill" wx:else></image>
         <view>{{item.executeOrder}}天</view>
       </view>
     </view>

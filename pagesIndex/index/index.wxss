@@ -72,14 +72,14 @@
 .fatBurning-textEn{
     font-size: 15px;
     color: #454545;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     margin-top: 10rpx;
 }
 .readyImg-textEn{
     font-size: 15px;
     color: #454545;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     margin-top: 15rpx;
 }
@@ -118,7 +118,7 @@
 .blowing-number{
     font-size: 100px;
     color: #0AC1A1;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     position: absolute;
     top: 60rpx;

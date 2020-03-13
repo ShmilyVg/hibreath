@@ -72,7 +72,10 @@ Page({
     this.setData({
       sharedId
     })
-    wx.removeStorage('sharedId')
+    if(sharedId){
+      wx.removeStorage('sharedId')
+    }
+    
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide()

@@ -1,6 +1,23 @@
 <!--pages/sharedGuidance/sharedGuidance.wxml-->
+<navBar title='' color="#ffffff" iconTheme="white" background='#333333' back="{{false }}" bindback="handlerGobackClick">
+  <view slot='left' class="tabBar-left">Sliple轻松派</view>
+</navBar>
 <view class="sharedGuidance">
-
-
-  <button bindtap="goNextPage"> 马上拥有自己的Simple</button>
+  <view class="swiper-con">
+     <swiper autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <view class="shared-bottom">
+    <view class="shared-bottom-title">您的好友</view>
+    <view class="image"></view>
+    <view class="shared-bottom-name">白天不懂夜的黑</view>
+    <view class="shared-bottom-text">亲亲，我正在使用Slimple低碳燃脂很有效果，快来一起吧！</view>
+    <button bindtap="goNextPage"> 马上拥有自己的Simple <view></view></button>
+  </view>
+  
 </view>
