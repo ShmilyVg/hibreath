@@ -143,10 +143,9 @@ Page({
     var pages = getCurrentPages(); // 获取页面栈
     var currPage = pages[pages.length - 1]; // 当前页面
     var prevPage = pages[pages.length - 2]; // 上一个页面
-    // prevPage.setData({
-    //   isFood: true
-    // })
-
+    prevPage.setData({
+      isFood: true
+    })
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });
@@ -255,6 +254,15 @@ Page({
     this.setData({ dataList: list }, () => {
       this.handleTrendData();
     });
+    if (!this.data.dataList.length){
+      this.setData({
+        dataListTip:true
+      })
+    }else{
+      this.setData({
+        dataListTip: false
+      })
+    }
   },
   async handleTrendData() {
     let dataListX = [], dataListY = [], dataListY2 = [], dataListY1Name = '', dataListY2Name = '';
