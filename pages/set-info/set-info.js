@@ -113,11 +113,11 @@ Page({
           clearTimeout(that.data.sync.timer);
           that.data.sync.timer = "";
           that.data.sync.timer = setTimeout(function () {
-            that.getTaskInfo();
-            this.getBreathSignInInfo()
             that.setData({
               showBigTip: false
             });
+            that.getTaskInfo();
+            that.getBreathSignInInfo()
             if (that.data.showBigTip == false) {
               WXDialog.showDialog({
                 content: "上传成功，本次共上传" + that.data.sync.num + "条结果",
