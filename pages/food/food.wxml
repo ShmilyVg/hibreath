@@ -38,7 +38,7 @@
     </view>
   </view>
 </view>
-<view wx:if="{{!dataList.length}}">
+<view wx:if="{{dataListTip}}">
   <image class="empty-img" src="../../images/food/empty.png"></image>
   <view class="empty-text">暂无记录</view>
 </view>
