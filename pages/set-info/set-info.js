@@ -302,8 +302,19 @@ Page({
       if(that.data.taskInfo.modalList[i].modalType == 'fatHard'){
         that.data.needImgList.push('fatWindows/fat-type1no.png')
       }
-      that.data.needImgList =[...new Set([... that.data.needImgList])]
     }
+    that.data.needImgList =[...new Set([... that.data.needImgList])]
+    var loader=new ImageLoader({
+      base: ImageSource.BASE ,
+      source: this.data.needImgList,
+      loaded: res => {
+        setTimeout(()=>{
+          this.setData({
+            showWindows:true
+          })
+        },300)
+      }
+    });
   },
   //获取任务信息
   async getTaskInfo() {
@@ -313,17 +324,7 @@ Page({
     })
     if(this.data.taskInfo.modalList.length>0){
       this.imgListArr()
-      var loader=new ImageLoader({
-        base: ImageSource.BASE ,
-        source: this.data.needImgList,
-        loaded: res => {
-          setTimeout(()=>{
-            this.setData({
-              showWindows:true
-            })
-          },300)
-        }
-      });
+
     }
     let imgUrlsLength = result.otherUsers.imgUrls.length;
     let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
@@ -672,6 +673,7 @@ Page({
         this.setData({
           showMytoast: false,
         })
+        HiNavigator.navigateTofood();
       }, 3000)
     }
     this.getAnswer()

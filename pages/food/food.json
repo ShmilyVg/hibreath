@@ -6,6 +6,7 @@
   "backgroundColor": "#ffffff",
   "usingComponents": {
     "bottom-dialog": "../../components/bottom-dialog/index",
+    "taskFinish": "../../components/taskFinish/taskFinish",
     "my-toast": "../../components/my-toast/my-toast"
   }
 }

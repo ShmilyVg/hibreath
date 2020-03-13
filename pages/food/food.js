@@ -7,6 +7,8 @@ import HiNavigator from "../../navigator/hi-navigator";
 import { Toast, WXDialog } from "heheda-common-view";
 import { dealInputEvent } from "./manager";
 import { previewImage, showActionSheet } from "../../view/view";
+const ImageSource = require('../../utils/ImageSource.js');
+const ImageLoader = require('../../utils/ImageLoader.js')
 const timeObj = {
   _frontTimestamp: 0,
   _endTimestamp: 0,
@@ -76,13 +78,52 @@ Page({
     dataList: [],
     dataTrend: [],
     canvasShow: true,
-    dataTrendTime: ''
+    dataTrendTime: '',
+    showTaskFinish:true,
+    imgList:[],
+    weightFinish:false,
+    fatFinish:false
   },
 
-  onLoad() {
+  onLoad(e) {
     Trend.init(this);
+    this.setData({
+      weightFinish:JSON.parse(e.weightFinish),
+      fatFinish:JSON.parse(e.fatFinish)
+    })
+    console.log(e)
+    if(this.data.weightFinish || this.data.fatFinish){
+      if(wx.getStorageSync('showTaskFinish') || wx.getStorageSync('showTaskFinish') == '' || wx.getStorageSync('showTaskFinish') == undefined) {
+        this.needImgList()
+      }
+    } else{
+      this.setData({
+        showTaskFinish:false
+      })
+    }
   },
-
+  needImgList(){
+    if(this.data.weightFinish&& !this.data.fatFinish){
+      this.data.imgList.push('fatWindows/weight.png','fatWindows/fatS-icon.png','fatWindows/gifBg.png')
+    }
+    if(!this.data.weightFinish&& this.data.fatFinish){
+      this.data.imgList.push('fatWindows/weightS.png','fatWindows/fat-icon.png','fatWindows/gifBg.png')
+    }
+    if(this.data.weightFinish && this.data.fatFinish){
+      this.data.imgList.push('fatWindows/weightS.png','fatWindows/fatS-icon.png','fatWindows/gifBg.gif')
+    }
+    var loader=new ImageLoader({
+      base: ImageSource.BASE ,
+      source: this.data.imgList,
+      loaded: res => {
+        setTimeout(()=>{
+          this.setData({
+            showTaskFinish:true
+          })
+        },300)
+      }
+    });
+  },
 
   async onReady() {
     Trend.initTouchHandler();
