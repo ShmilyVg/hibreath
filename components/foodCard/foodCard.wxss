@@ -44,7 +44,7 @@
     background:rgba(255,242,241,1);
     border-radius:6rpx;
     text-align: center;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
     font-size:40rpx;

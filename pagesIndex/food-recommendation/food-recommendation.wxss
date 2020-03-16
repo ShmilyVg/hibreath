@@ -37,13 +37,13 @@
 }
 .swiperItemNR{
     font-size:34rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(255,255,255,1);
 }
 .swiperItemNW{
     font-size:34rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
 }

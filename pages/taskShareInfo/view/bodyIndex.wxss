@@ -9,14 +9,14 @@
 }
 .shareInfo-bodyText1{
     font-size:76rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
     margin-left: 25rpx;
 }
 .shareInfo-bodyText2{
     font-size:50rpx;
-    font-family:DIN Condensed;
+    font-family:DINCondensed;
     font-weight:bold;
     color:rgba(69,69,69,1);
     margin-right: 17rpx;

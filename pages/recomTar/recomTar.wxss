@@ -50,7 +50,7 @@ view{
 .recomNum {
   height: 120rpx;
   font-size: 120rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
   line-height: 120rpx;
@@ -60,7 +60,7 @@ view{
 .recomUnit {
   height: 50rpx;
   font-size: 50rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
   line-height: 50rpx;
@@ -134,7 +134,7 @@ view{
 
 .stepLast {
   font-size: 56rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(69, 69, 69, 1);
   float: right;
@@ -167,7 +167,7 @@ view{
 .now_num {
   margin-top: 22rpx;
   font-size: 70rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(69, 69, 69, 1);
 }

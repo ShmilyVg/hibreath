@@ -139,7 +139,7 @@ view {
   left: 0;
   line-height: 69rpx;
   text-align: center;
-  font-family: DIN Condensed-Bold, DIN Condensed;
+  font-family: DIN Condensed-Bold, DINCondensed;
   z-index: 90;
 }
 

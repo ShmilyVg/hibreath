@@ -204,7 +204,7 @@ Page({
     async onGetUserInfoEvent(e) {
       const { result } = await Protocol.postMemberInfo();
       if(!getApp().globalData.isLogin || !result.finishedPhone){
-        HiNavigator.navigateToGoRegister()
+        HiNavigator.navigateToGuidance({})
       }else{
         getApp().globalData.isGroupjoin = true //是圈子进入 加入 燃脂页面的标志位
         HiNavigator.reLaunchToGroupNumber()

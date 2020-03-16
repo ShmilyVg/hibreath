@@ -152,7 +152,7 @@ view{
 }
 .clock-day{
   font-size:40rpx;
-  font-family:DIN Condensed;
+  font-family:DINCondensed;
   font-weight:bold;
   color:rgba(255,255,255,1);
 }
@@ -294,7 +294,7 @@ view{
   display: inline-block;
   border-radius: 10rpx;
   font-size:36rpx;
-  font-family:DIN Condensed;
+  font-family:DINCondensed;
   font-weight:bold;
   margin-right: 10rpx;
 }
@@ -414,7 +414,7 @@ view{
 }
 .item-contain-r{
   font-size:56rpx;
-  font-family:DIN Condensed;
+  font-family:DINCondensed;
   font-weight:bold;
   color:rgba(51,51,51,1);
   margin-top: 44rpx;
@@ -766,7 +766,7 @@ view{
 
 .tip-view-content {
   font-size: 90rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: 400;
   color: rgba(69, 69, 69, 1);
   line-height: 28rpx;
