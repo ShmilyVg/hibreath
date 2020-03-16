@@ -129,6 +129,14 @@ export default class AbstractBlueTooth {
                               console.log('断开蓝牙Adapter失败', res);
                               this._isConnected = false;
                               reject(res);
+                            }, complete: function (res) {
+                              setTimeout(()=>{
+                                wx.closeBluetoothAdapter({
+                                  success (res) {
+                                    console.log('我主动---------关闭后再次关闭蓝牙模块')
+                                  }
+                                })
+                              })
                             }
                           })
                         },timeOut)
@@ -216,7 +224,7 @@ export default class AbstractBlueTooth {
                                 if (++connectionInfo.index >= connectionInfo.count) {
                                   connectionInfo.index = connectionInfo.count;
                                 }
-                                connectionInfo.timeout = (connectionInfo.index) * 15;
+                                connectionInfo.timeout = (connectionInfo.index) * 10;
                                 console.warn('下次蓝牙连接的超时时间', connectionInfo.timeout, connectionInfo.index);
                               }
                               reject(res);
@@ -263,6 +271,15 @@ export default class AbstractBlueTooth {
                         } else {
                           reject(res);
                         }
+                      },complete:res =>{
+                        setTimeout(()=>{
+                          wx.closeBLEConnection({
+                            deviceId: this._deviceId,
+                            success (res) {
+                              console.log('我主动---------我再次断开了与蓝牙的连接')
+                            }
+                          })
+                        },1000)
                       }
                     });
                   },500)
