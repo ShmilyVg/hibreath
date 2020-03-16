@@ -31,7 +31,7 @@ Page({
   },
   onPersonalCenter:function(e){
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-      HiNavigator.navigateToGoRegister();
+      HiNavigator.navigateToGuidance({});
       return;
     }
     HiNavigator.navigateToUserInfoPage()
@@ -39,14 +39,14 @@ Page({
   onTargetWeight:function(e){
     console.log('个人中心',getApp().globalData.isLogin,this.data.finishedPhone)
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-      HiNavigator.navigateToGoRegister();
+      HiNavigator.navigateToGuidance({});
       return;
     }
     HiNavigator.navigateToRecomTar({personalCenter:true})
   },
   onDeviceManagement(){
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-      HiNavigator.navigateToGoRegister();
+      HiNavigator.navigateToGuidance({});
       return;
     }
     HiNavigator.navigateToDeviceUnbind()
@@ -87,7 +87,7 @@ Page({
               break;
           case "paiMoney":
             if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-              HiNavigator.navigateToGoRegister();
+              HiNavigator.navigateToGuidance({});
               return;
             }
               HiNavigator.navigateToPaiCoinPage();
@@ -113,7 +113,7 @@ Page({
    */
   goVerify(){
     if(!getApp().globalData.isLogin || !this.data.finishedPhone){
-      HiNavigator.navigateToGoRegister();
+      HiNavigator.navigateToGuidance({});
       return;
     }
   },
