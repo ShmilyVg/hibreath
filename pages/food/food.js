@@ -140,12 +140,7 @@ Page({
       this.updateTrendTime({ frontTimestamp, endTimestamp });
 
     }
-    // var pages = getCurrentPages(); // 获取页面栈
-    // var currPage = pages[pages.length - 1]; // 当前页面
-    // var prevPage = pages[pages.length - 2]; // 上一个页面
-    // prevPage.setData({
-    //   isFood: true
-    // })
+
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });

@@ -10,10 +10,6 @@ import {
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
 import {Toast} from "heheda-common-view";
-import Login from "../../modules/network/login";
-import * as Shared from "./shared.js";
-import UserInfo from "../../modules/network/userInfo";
-import {WXDialog} from "heheda-common-view";
 const app = getApp()
 Page({
 
@@ -37,7 +33,6 @@ Page({
     async updata(){
         await whenDismissGroup(Protocol.postMemberGroupExit({...(await judgeGroupEmpty())}));
         this.forceUpdateAll();
-        //this.NoticeList();
     },
     async onCommunitySettingClickEvent() {
         console.log('socialMemberInfo',this.data.socialMemberInfo.isMajor)
@@ -49,20 +44,6 @@ Page({
                     HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo), currentSocial: JSON.stringify(this.data.currentSocial)});
                     console.log( this.data.currentSocial)
                         break;
-                        //        WXDialog.showDialog({
-                        //     content: '确定要删除该圈子吗\n' + '删除后记录无法找回 慎重操作',
-                        //     showCancel: true,
-                        //     confirmText: "确定",
-                        //     cancelText: "取消",
-                        //     confirmEvent: () => {
-                        //         wx.clearStorageSync('currentSocialGroupId')
-                        //        this.updata()
-                        //     },
-                        //     cancelEvent: () => {
-
-                        //     }
-                        // });
-                        // break;
                     case 1:
                         HiNavigator.navigateToCommunityManagement();
                         break;
@@ -79,23 +60,6 @@ Page({
                     HiNavigator.navigateToSetup({ socialMemberInfo: JSON.stringify(this.data.socialMemberInfo), currentSocial: JSON.stringify(this.data.currentSocial) });
                     console.log(this.data.currentSocial)
                     break;
-
-                        // WXDialog.showDialog({
-                        //   content: '确定要退出该圈子吗',
-                        //   showCancel: true,
-                        //   confirmText: "确定",
-                        //   cancelText: "取消",
-                        //   confirmEvent: () => {
-                        //     this.updata()
-                        //   },
-                        //   cancelEvent: () => {
-
-                        //   }
-                        // });
-                        // break;
-
-                        // HiNavigator.navigateToCommunityManagement();
-                        // break;
                     case 1:
                         HiNavigator.navigateToCommunityManagement();
                         break;
@@ -336,24 +300,9 @@ Page({
         this.setData({
             scrollTopNum:e.scrollTop
         })
-        //wx.setStorageSync('communityScrollTop', e.scrollTop);
     },
-/*   async NoticeList(){
-     let groupId = wx.getStorageSync('currentSocialGroupId');
-     console.log(groupId);
-     this.data.groupId = groupId
-     const { result: { notice: noticeList } } = await whenDismissGroup(Protocol.postGroupDynamicLatest({
-       groupId: this.data.groupId ,
-       page: 1
-     }));
 
-     this.setData({
-       noticeList: noticeList
-     })
-     console.log("未读消息",this.data.noticeList)
-   },*/
   async toNoticeList(){
-    /*HiNavigator.navigateToNoticeList({groupId:wx.getStorageSync('currentSocialGroupId'),total: this.data.noticeList.total});*/
       HiNavigator.navigateToNoticeList({ groupId: (await judgeGroupEmpty()).groupId});
 
   }

@@ -7,7 +7,7 @@
 <view class="punchList-main">
     <!-- 左 -->
     <view class="{{todayDif == null?'punchList_Day2':'punchList_Day1'}}">
-        <text wx:if="{{todayDif !== null}}" class="punchList_Day-Text1">{{todayDif}}</text>
+        <text wx:if="{{todayDif}}" class="punchList_Day-Text1">{{todayDif}}</text>
         <text wx:if="{{!!todayDif || todayDif == 0}}" class="punchList_Day-Text2">kg</text>
         <view wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</view>
         <text class="punchList_Day-Text4">今日减重</text>

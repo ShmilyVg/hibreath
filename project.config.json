@@ -74,9 +74,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/update/update",
-					"pathName": "pages/update/update",
+					"id": 2,
+					"name": "pagesIndex/update/update",
+					"pathName": "pagesIndex/update/update",
 					"query": "",
 					"scene": null
 				},

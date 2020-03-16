@@ -2,8 +2,8 @@
 <view class="flex-column">
    <!-- <image style="width:277rpx;height:597rpx;margin:110rpx 0 55rpx" src="../../images/update/item.png"></image>-->
     <view class="update-image-center">
-        <image wx:if="{{isUpdate}}" class="small-pic ani" src="../../images/update/update.png"></image>
-        <image wx:else class="small-pic" src="../../images/update/finish.png"></image>
+        <image wx:if="{{isUpdate}}" class="small-pic ani" src="../images/update/update.png"></image>
+        <image wx:else class="small-pic" src="../images/update/finish.png"></image>
     </view>
 
     <text class="update-titleZh">{{isUpdate?'设备正在升级':'升级成功'}}</text>

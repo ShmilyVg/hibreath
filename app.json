@@ -2,11 +2,9 @@
   "pages": [
     "pages/set-info/set-info",
     "pages/low-carbon/low-carbon",
-    "pages/goRegister/goRegister",
     "pages/goVerification/goVerification",
     "pages/community/community",
     "pages/result/result",
-    "pages/update/update",
     "pages/device-manage/device-manage",
     "pages/calendar/calendar",
     "pages/successInfo/successInfo",
@@ -19,12 +17,9 @@
     "pages/communityManagement/communityManagement",
     "pages/shareAddcommunity/shareAddcommunity",
     "pages/shareAddcommunity/getPhone/getPhone",
-    "pages/punchList/punchList",
-    "pages/reductionList/reductionList",
     "pages/taskShareInfo/taskShareInfo",
     "pages/set-up/set-up",
     "pages/set-up/rename/rename",
-    "pages/fatBurningList/fatBurningList",
     "pages/programmeDetails/programmeDetails",
     "pages/personalCenter/personalCenter",
     "pages/guidance/guidance",
@@ -51,6 +46,7 @@
         "target-weight/target-weight",
         "detailsList/detailsList",
         "myDynamicList/myDynamicList",
+        "update/update",
         "food-details/food-details",
         "food-recommendation/food-recommendation",
         "shareDynamics/shareDynamics",
@@ -66,7 +62,10 @@
         "literature/literature",
         "takeOut/takeOut",
         "gdDay/gdDay",
-        "burnDay/burnDay"
+        "burnDay/burnDay",
+        "punchList/punchList",
+        "reductionList/reductionList",
+        "fatBurningList/fatBurningList"
       ]
     }
   ],

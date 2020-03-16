@@ -94,7 +94,7 @@ export default class HiNavigator extends CommonNavigator {
 
     static relaunchToUpdatePage({binUrl, datUrl}) {
         getApp().otaUrl = arguments[0];
-        this.navigateTo({url: '/pages/update/update'});
+        this.navigateTo({url: '/pagesIndex/update/update'});
     }
 
     /*新加跳转*/
@@ -137,18 +137,18 @@ export default class HiNavigator extends CommonNavigator {
         this.switchTab({url: '/pages/community/community'});
     }
     static navigateToReductionList({groupId}) {
-        this.navigateTo({url: '/pages/reductionList/reductionList?groupId=' + groupId});
+        this.navigateTo({url: '/pagesIndex/reductionList/reductionList?groupId=' + groupId});
     }
     /*授权获取手机号*/
     static navigateToGetPhone({sharedId}) {
         this.navigateTo({url: '/pages/shareAddcommunity/getPhone/getPhone?sharedId=' + sharedId});
     }
     static navigateToPunchList({groupId}) {
-        this.navigateTo({url: '/pages/punchList/punchList?groupId=' + groupId});
+        this.navigateTo({url: '/pagesIndex/punchList/punchList?groupId=' + groupId});
     }
     //减脂榜
    static navigateToFatBurningList({ groupId }) {
-     this.navigateTo({ url: '/pages/fatBurningList/fatBurningList?groupId=' + groupId });
+     this.navigateTo({ url: '/pagesIndex/fatBurningList/fatBurningList?groupId=' + groupId });
     }
 
   static navigateToSetup({ socialMemberInfo, currentSocial}) {
