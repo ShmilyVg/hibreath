@@ -74,7 +74,6 @@ const loginFailObj = {
         _needRegister = true;
         getApp().globalData.isLogin = false
         wx.removeStorageSync('currentSocialGroupId')
-        //HiNavigator.navigateToGoRegister()
        /* //圈子未注册用户显示
         getApp().globalData.isNoRegister = true
         console.log('isNoRegisterisNoRegister',getApp().globalData.isNoRegister)*/

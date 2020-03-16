@@ -20,10 +20,6 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToBurnDay() {
       this.navigateTo({url: '/pagesIndex/burnDay/burnDay'});
     }
-    //注册页面
-    static navigateToGoRegister() {
-        this.navigateTo({url: '/pages/goRegister/goRegister'});
-    }
     //验证手机号页面
     static navigateToGoVerification() {
         this.navigateTo({url: '/pages/goVerification/goVerification'});
