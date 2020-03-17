@@ -676,7 +676,6 @@ Page({
         this.setData({
           showMytoast: false,
         })
-        HiNavigator.navigateTofood();
       }, 3000)
     }
     this.getAnswer()
