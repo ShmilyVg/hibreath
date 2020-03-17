@@ -65,7 +65,8 @@
         "burnDay/burnDay",
         "punchList/punchList",
         "reductionList/reductionList",
-        "fatBurningList/fatBurningList"
+        "fatBurningList/fatBurningList",
+        "coupon/coupon"
       ]
     }
   ],
