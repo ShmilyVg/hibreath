@@ -589,4 +589,8 @@ export default class Protocol {
     static extraData(data) {
         return Network.request({url: 'food/extraData',data});
     }
+    // 获取我的优惠券
+    static getCouponListPage({page, limit = 8,isUsed,isExpired}) {
+    return Network.request({url: 'coupon/getCouponListPage', data: {page,limit,isUsed,isExpired}});
+  }
 }

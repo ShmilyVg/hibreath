@@ -1,2 +1,71 @@
 <!--pagesIndex/coupon/coupon.wxml-->
-<text>pagesIndex/coupon/coupon.wxml</text>
+<view  class="coupon_tab_top">
+        <view style="margin-right: 89rpx" class="{{currenttab=== 'noUsed'?'tab_item_active':'tab_item'}}" data-tabid="noUsed" bindtap='selectTab'>
+            <view style="margin-bottom: 20rpx">未使用<text wx:if="{{resultIndex.length>0}}">({{resultIndex.length}})</text></view>
+            <view class="active_line" wx:if="{{currenttab === 'noUsed'}}"></view>
+        </view>
+        <view class="{{currenttab=== 'isExpired'?'tab_item_active':'tab_item'}}" data-tabid="isExpired" bindtap='selectTab'>
+            <view style="margin-bottom: 20rpx">已过期</view>
+            <view class="active_line" wx:if="{{currenttab === 'isExpired'}}"></view>
+        </view>
+</view>
+<block wx:for="{{resultIndex}}" wx:key="index" wx:if="{{currenttab=== 'noUsed' && resultIndex.length>0}}">
+    <view class="coupon_list">
+        <view class="coupon_list_left" style="background-color: {{item.type == 1?'#8ED787' : (item.type==2?'#84D7C8':'#FFAF83')}}">
+            {{item.typeName}}券
+        </view>
+        <view class="coupon_list_right">
+            <view class="coupon_list_right_title">{{item.title}}</view>
+            <view class="coupon_list_right_usedAmount">
+                <view wx:if="{{item.type !== 3}}" style="font-size:24rpx;padding-top: 10rpx">￥</view>
+                <view>{{item.usedAmount}}</view>
+                <view wx:if="{{item.type == 3}}" style="font-size:24rpx;padding-top: 35rpx;padding-left: 8rpx;">折</view>
+            </view>
+            <view class="clear"></view>
+            <view class="coupon_list_right_time">
+                {{item.validStartTime}}-{{item.validEndTime}}
+            </view>
+            <view class="coupon_list_right_fullAmount">满{{item.fullAmount}}可用</view>
+            <view class="clear"></view>
+            <view class="coupon_list_right_bottom">
+                <view class="coupon_list_right_bottom_description">{{item.description}}</view>
+                <view class="coupon_list_right_bottom_btn" data-id="{{item.couponId}}" bindtap="toGift">立即使用</view>
+            </view>
+            <view class="clear"></view>
+        </view>
+    </view>
+</block>
+<view class="coupon_noData"  wx:if="{{currenttab=== 'noUsed' && !resultIndex.length}}">
+    <image  src="https://img.hipee.cn/hibreath/nodata.png"></image>
+    <view class="coupon_noData_view">暂无优惠券</view>
+</view>
+<view class="coupon_noData"  wx:if="{{currenttab=== 'isExpired' && !resultSub.length}}">
+    <image  src="https://img.hipee.cn/hibreath/nodata.png"></image>
+    <view class="coupon_noData_view">暂无优惠券</view>
+</view>
+<block wx:for="{{resultSub}}" wx:key="index" wx:if="{{currenttab=== 'isExpired' && resultSub.length !== 0}}">
+    <view class="coupon_list">
+        <view class="coupon_list_left" style="background-color:rgba(216,217,218,1);}}">
+            {{item.typeName}}券
+        </view>
+        <view class="coupon_list_right">
+            <view class="coupon_list_right_title">{{item.title}}</view>
+            <view class="coupon_list_right_usedAmount" style="color:rgba(153,153,153,1); ">
+                <view wx:if="{{item.type !== 3}}" style="font-size:24rpx;padding-top: 10rpx">￥</view>
+                <view>{{item.usedAmount}}</view>
+                <view wx:if="{{item.type == 3}}" style="font-size:24rpx;padding-top: 35rpx;padding-left: 8rpx;">折</view>
+            </view>
+            <view class="clear"></view>
+            <view class="coupon_list_right_time">
+                {{item.validStartTime}}-{{item.validEndTime}}
+            </view>
+            <view class="coupon_list_right_fullAmount">满{{item.fullAmount}}可用</view>
+            <view class="clear"></view>
+            <view class="coupon_list_right_bottom">
+                <view class="coupon_list_right_bottom_description">{{item.description}}</view>
+            </view>
+            <view class="clear"></view>
+        </view>
+    </view>
+
+</block>

@@ -18,8 +18,19 @@ Page({
     this.setData({
       ...result
     })
+    console.log('ree',result)
   },
-
+  //复制文字
+  copyBtn(){
+    wx.setClipboardData({
+      data: this.data.fetchCode,
+      success(res) {
+        wx.showToast({
+          title: '复制成功',
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

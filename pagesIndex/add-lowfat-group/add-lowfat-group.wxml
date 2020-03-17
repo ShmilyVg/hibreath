@@ -5,7 +5,7 @@
     <view class="add-view3">方式1</view>
     <view class="add-view4">复制客服微信号添加</view>
 </view>
-<view class="add-view5" bindtap="copyBtn"  style="margin: 48rpx auto 118rpx">点击复制</view>
+<view class="add-view5" bindtap="copyBtn"  style="margin: 68rpx auto 118rpx">点击复制</view>
 <view style="display: flex">
     <view class="add-view3">方式2</view>
     <view class="add-view4">保存二维码，使用微信扫一扫添加</view>
