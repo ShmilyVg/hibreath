@@ -1,6 +1,11 @@
 <!--pagesIndex/getGift/getGift.wxml-->
 <view class="getGift-top">
     <view class="getGift-text">免费领取专属礼包</view>
+    <image src="{{imgUrl}}" style="width: 310rpx;height: 310rpx;margin-top: 85rpx"></image>
+    <view class="getGift-title">{{title}}</view>
+    <view class="getGift-fetchCode">{{fetchCode}}</view>
+    <view class="getGift-subTitle">{{subTitle}}</view>
+    <view class="getGift-btn" bindtap="copyBtn">点击复制</view>
 </view>
 
 

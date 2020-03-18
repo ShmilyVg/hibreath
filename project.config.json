@@ -137,13 +137,6 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/caseDetails/caseDetails",
-					"pathName": "pages/caseDetails/caseDetails",
-					"query": "sharedId=FBD7939D674997CDB4692D34DE8633C449FBFA6AE1EFAFB6EE09AA18730C4FC8",
-					"scene": null
-				},
-				{
 					"id": 12,
 					"name": "分享详情页",
 					"pathName": "pages/taskShareInfo/taskShareInfo",
@@ -385,6 +378,20 @@
 					"id": 46,
 					"name": "pagesIndex/burnDay/burnDay",
 					"pathName": "pagesIndex/burnDay/burnDay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/coupon/coupon",
+					"pathName": "pagesIndex/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/food-ruler/food-ruler",
+					"pathName": "pages/food-ruler/food-ruler",
 					"query": "",
 					"scene": null
 				}

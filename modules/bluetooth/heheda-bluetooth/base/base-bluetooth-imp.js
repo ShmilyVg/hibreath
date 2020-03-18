@@ -54,7 +54,7 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
                     } else {
                         that._bleStateListener(that.getState({connectState: this.type}));
                     }
-                }, 800);
+                }, 1000);
             }
         };
         this._devices = [];
