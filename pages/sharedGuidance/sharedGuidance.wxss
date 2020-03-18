@@ -19,16 +19,12 @@ view {
 
 .swiper-con , .swiper-item, swiper{
   height:600rpx;
+  text-align: center;
 }
 
-.demo-text-1{
-  background: red;
-}
-.demo-text-2{
-  background: green;
-}
-.demo-text-3{
-  background: rgb(252, 189, 189);
+.swiper-item image{
+  width: 600rpx;
+  height: 600rpx;
 }
 
 .shared-bottom {
@@ -78,13 +74,14 @@ button {
 button view{
   width:70rpx;
   height:70rpx;
+  line-height: 70rpx;
   border-radius: 50%;
   background:rgba(255,255,255,1);
   position: absolute;
   right: 18rpx;
   top: 15rpx;
   text-align: center;
-  padding-top: 17rpx;
+  padding-top: 7rpx;
 }
 button view image{
   width:44rpx;
