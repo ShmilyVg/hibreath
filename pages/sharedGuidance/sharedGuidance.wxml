@@ -5,9 +5,11 @@
 <view class="sharedGuidance">
   <view class="swiper-con">
      <swiper autoplay="true" interval="3000" duration="500">
-        <block wx:for="{{background}}" wx:key="*this">
+        <block wx:for="{{needImgList}}" wx:key="*this">
           <swiper-item>
-            <view class="swiper-item {{item}}"></view>
+            <view class="swiper-item ">
+            <image src="http://img.hipee.cn/hibreath/{{item}}"></image>
+            </view>
           </swiper-item>
         </block>
       </swiper>
@@ -17,7 +19,7 @@
     <view class="image"></view>
     <view class="shared-bottom-name">白天不懂夜的黑</view>
     <view class="shared-bottom-text">亲亲，我正在使用Slimple低碳燃脂很有效果，快来一起吧！</view>
-    <button bindtap="goNextPage"> 马上拥有自己的Simple <view></view></button>
+    <button bindtap="goNextPage"> 马上拥有自己的Simple <view> <image src="../../images/green-left.png"></image> </view></button>
   </view>
   
 </view>

@@ -7,11 +7,11 @@ const app = getApp();
 Page({
 
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    needImgList:[]
+    needImgList: ['shareGuide-1.png', 'shareGuide-2.png']
   },
 
   onLoad: function (options) {
+    this.getImages();
     let sharedId = options.sharedId;
     wx.setStorageSync('sharedId', sharedId);
 
@@ -24,11 +24,6 @@ Page({
       base: ImageSource.BASE,
       source: this.data.needImgList,
       loaded: res => {
-        setTimeout(() => {
-          this.setData({
-            showWindows: true
-          })
-        }, 300)
       }
     });
   },
