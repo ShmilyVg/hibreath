@@ -190,7 +190,7 @@ export default class AbstractBlueTooth {
                           wx.createBLEConnection({
                             // 这里的 deviceId 需要已经通过 createBLEConnection 与对应设备建立链接
                             deviceId,
-                            timeout: connectionInfo.timeout * 1000,
+                            timeout: 10000,
                             success: (res) => this._findThatCharacteristics({deviceId}).then(() => {
                               // t连接成功
                               this._getEventAndTimestamp({event: 'linkResultTime', status: 1});
@@ -230,7 +230,7 @@ export default class AbstractBlueTooth {
                               reject(res);
                             }
                           });
-                        },500)
+                        },1500)
                     } else {
                         console.log('createBLEConnection already create!!!');
                         resolve();

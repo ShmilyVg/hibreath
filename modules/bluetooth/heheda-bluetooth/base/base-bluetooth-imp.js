@@ -310,12 +310,13 @@ export default class BaseBlueToothImp extends AbstractBlueTooth {
         return !this._bleStateListener(this.getState({connectState: CommonConnectState.CONNECTING}))
             && this._updateFinalState({
                 promise: this.openAdapter().then(() =>
+                  this.startBlueToothDevicesDiscovery()
                     // !!this._deviceId && !this.isBluetoothAdapterClose ?
                     //     this.createBLEConnection({deviceId: this._deviceId}).catch((res) => {
                     //         console.log('连接失败', res);
                     //         return this.startBlueToothDevicesDiscovery();
                     //     }) :
-                    this._deviceId ? this.createBLEConnection({deviceId: this._deviceId}) : this.startBlueToothDevicesDiscovery()
+                    /*this._deviceId ? this.createBLEConnection({deviceId: this._deviceId}) : */
                 )
             });
     }
