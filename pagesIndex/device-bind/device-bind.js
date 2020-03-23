@@ -61,7 +61,7 @@ Page({
                 app.getBLEManager().clearConnectedBLE();
                 this.indexCommonManager.setDissearchState();
                 this.setData({
-                    bgColor:"#EE6F69",
+                    bgColor:"#7BC877",
                     finding:false,
                     finded:false,
                     bindHint:"",

@@ -1,0 +1,28 @@
+<!--pages/introduce/introduce.wxml-->
+<view class="introduce-title">
+    燃脂精灵是什么
+</view>
+<view class="introduce-subTitle">
+    燃脂精灵是一款可以检测身体脂肪有没有被消耗的黑科技神器。
+</view>
+<view class="introduce-title">
+    燃脂精灵的原理
+</view>
+<view class="introduce-subTitle">
+    通过检测身体脂肪消耗后产生的酮体（丙酮）多少，来评估您身体的脂肪是否真的有被消耗。
+</view>
+<view class="introduce-title">
+    燃脂精灵与体脂称的区别
+</view>
+<view class="introduce-subTitle" style="margin-bottom: 48rpx">
+    体脂称对身体脂肪的测算仅仅是估算，而燃脂精灵可以真的检测到脂肪消耗分解的产物，从而精准的确定身体是否在燃脂，对减脂过程有重要的
+</view>
+<view class="introduce-ps">
+    ※ 我们建议您以每日早8点的检测结果作为标准，来制定您的每日减脂计划
+</view>
+<view class="introduce-btn" bindtap="toIndex">
+    立即检测
+</view>
+<view class="introduce-buy" bindtap="toBuy">
+    没有设备，马上购买
+</view>

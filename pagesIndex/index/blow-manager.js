@@ -165,15 +165,9 @@ export default class BlowManager {
             topStateS:"短按设备按键·开始检测",
             bgColor:"#fff",
             homePointHot:false,
-
-
             stateBtnShow: false,
-
             state: "设备已连接",
-
             btnState: false,
-
-
             homeTitle: false,
             homeOrangeBtn: false,
         })

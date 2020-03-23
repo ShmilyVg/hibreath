@@ -228,16 +228,18 @@ Page({
         /*电量测试*/
 
         Protocol.getDeviceBindInfo().then(data => {
-            let deviceInfo = data.result;
+            this.setData({
+                ...data.result
+            })
             console.log('获取到的设备', data);
-            if (!deviceInfo) {
+            if (!this.data.mac) {
                 app.getBLEManager().clearConnectedBLE();
                 this.connectionPage.unbind();
             } else {
                 app.getBLEManager().setBindMarkStorage();
                 console.log('app.getLatestBLEState().connectState', app.getLatestBLEState().connectState)
                 if(app.getLatestBLEState().connectState !== 'connected'){
-                    app.getBLEManager().connect({macId: deviceInfo.mac});
+                    app.getBLEManager().connect({macId: this.data.mac});
                 }
             }
         });

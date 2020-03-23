@@ -65,10 +65,10 @@ export default class ConnectionManager {
         this._page.setData({
             navBarColor:'#FFFFFF',//导航字体颜色
             navBarIconTheme:'white',//导航返回键颜色
-            navBarBackground:'#EE6F69',//导航背景色
+            navBarBackground:'#7BC877',//导航背景色
             needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
-            bgColor:"#EE6F69",//PAGE背景
+            bgColor:"#7BC877",//PAGE背景
             tryAgain:false,//未找到设备标志位
             finding:false,//正在寻找设备标志位
             readyimg:false,
@@ -85,10 +85,10 @@ export default class ConnectionManager {
         this._page.setData({
             navBarColor:'#FFFFFF',//导航字体颜色
             navBarIconTheme:'white',//导航返回键颜色
-            navBarBackground:'#EE6F69',//导航背景色
+            navBarBackground:'#7BC877',//导航背景色
             tryAgain:true,//未找到设备标志位
             finding:false,//正在寻找设备标志位
-            bgColor:"#EE6F69",
+            bgColor:"#7BC877",
             needCheckOTAUpdate:false,
             readyimg:false,
             blowpicShow:false,

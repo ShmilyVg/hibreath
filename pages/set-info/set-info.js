@@ -47,7 +47,8 @@ Page({
     answer: true,
     answerData: {},
     answerBtnReady: false,
-    needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"]
+    needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"],
+    isBind:false//是否绑定设备
   },
 
 
@@ -346,37 +347,41 @@ Page({
   },
   //燃脂
   async fatTaskToFinish() {
-    wx.getSystemInfo({
-      success(res) {
-        if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
-          HiNavigator.navigateIndex();
-          return
-        } else if (!res.bluetoothEnabled) {
-          setTimeout(() => {
-            WXDialog.showDialog({ title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了' });
-          }, 200);
-          return
-        } else if (!res.locationEnabled) {
-          setTimeout(() => {
-            WXDialog.showDialog({ title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了' });
-          }, 200);
-          return
-        } else if (!res.locationAuthorized) {
-          setTimeout(() => {
-            wx.showModal({
-              title: '小贴士',
-              content: '前往手机【设置】->找到【微信】应用\n' +
-                '\n' +
-                '打开【微信定位/位置权限】',
-              showCancel: false,
-              confirmText: '我知道了',
-            })
-          }, 200);
-          return
+    if(!this.isBind){
+      HiNavigator.navigateIntroduce({couponId:this.data.couponId});
+    }else{
+      wx.getSystemInfo({
+        success(res) {
+          if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
+            HiNavigator.navigateIndex();
+            return
+          } else if (!res.bluetoothEnabled) {
+            setTimeout(() => {
+              WXDialog.showDialog({ title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了' });
+            }, 200);
+            return
+          } else if (!res.locationEnabled) {
+            setTimeout(() => {
+              WXDialog.showDialog({ title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了' });
+            }, 200);
+            return
+          } else if (!res.locationAuthorized) {
+            setTimeout(() => {
+              wx.showModal({
+                title: '小贴士',
+                content: '前往手机【设置】->找到【微信】应用\n' +
+                  '\n' +
+                  '打开【微信定位/位置权限】',
+                showCancel: false,
+                confirmText: '我知道了',
+              })
+            }, 200);
+            return
+          }
+          HiNavigator.navigateToResultNOnum();
         }
-        HiNavigator.navigateToResultNOnum();
-      }
-    })
+      })
+    }
   },
   //修改体重
   weightGoalChange(e) {
@@ -604,19 +609,23 @@ Page({
     });
 
     Protocol.getDeviceBindInfo().then(data => {
-      let deviceInfo = data.result;
+      this.setData({
+        ...data.result
+      })
       console.log("获取到的设备", data);
-      if (!deviceInfo) {
+      if (!this.data.mac) {
+        this.isBind = false
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
       } else {
+        this.isBind = true
         app.getBLEManager().setBindMarkStorage();
         console.log(
           "app.getLatestBLEState().connectState",
           app.getLatestBLEState().connectState
         );
         if (app.getLatestBLEState().connectState !== "connected") {
-          app.getBLEManager().connect({ macId: deviceInfo.mac });
+          app.getBLEManager().connect({ macId: this.data.mac });
         }
       }
     });

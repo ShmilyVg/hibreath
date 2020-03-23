@@ -15,7 +15,7 @@ page{
 .home-orangebtn{
     width: 500rpx;
     height: 100rpx;
-    color: #EE6F69;
+    color: #7BC877;
     font-size: 30rpx;
     text-align: center;
     line-height: 100rpx;
@@ -64,9 +64,9 @@ page{
 }
 @keyframes myFirst
 {
-    0%    {background-image: url("http://backend.hipee.cn/assets/home/images/hb/findWhite.png") }
-    20%   {background-image: url("http://backend.hipee.cn/assets/home/images/hb/findWhite.png") }
-    100%  {background-image: url("http://backend.hipee.cn/assets/home/images/hb/findRed.png") }
+    0%    {background-image: url("https://img.hipee.cn/hibreath/icon/findWhite.png") }
+    20%   {background-image: url("https://img.hipee.cn/hibreath/icon/findWhite.png") }
+    100%  {background-image: url("https://img.hipee.cn/hibreath/icon/findRed.png") }
 }
 .contentTextB{
     font-family: PingFang-SC;
@@ -84,10 +84,12 @@ page{
 .nofind-img{
     width: 36rpx;
     height: 36rpx;
+    border-radius: 50%;
     float: right;
     display: flex;
     align-items: center;
     margin-left: 18rpx;
+    color: #7BC877;
 }
 .bindSuccess-top{
     width: 100%;
@@ -173,12 +175,12 @@ page{
     height: 15rpx;
     margin-right: 30rpx;
     border-radius: 50%;
-    background-color:#EE6F69;
+    background-color:#7BC877;
 }
 .bindSuccess-btn{
     width:500rpx;
     height:100rpx;
-    background:rgba(238,111,105,1);
+    background:#7BC877;
     border-radius:50rpx;
     text-align: center;
     margin: 84rpx auto;

@@ -10,21 +10,35 @@ page{
     background-size: 100% 100%;
 }
 .getGift-text{
-    padding-top: 50rpx;
     font-size:66rpx;
     font-family:PingFang SC;
     font-weight:bold;
+    text-align: center;
+    padding-top: 60rpx;
+    background-color: #7BC877;
+    color:rgba(255,255,255,1);
+    line-height:69rpx;
+    text-shadow:0rpx 8rpx 20rpx rgba(105,184,101,1);
+}
+.getGift-top-title{
+    font-size:36rpx;
+    padding-top: 50rpx;
+    font-family:PingFang SC;
+    font-weight:500;
     color:rgba(255,255,255,1);
     line-height:69rpx;
     text-shadow:0rpx 8rpx 20rpx rgba(105,184,101,1);
 }
 .getGift-title{
-    width:336rpx;
+    max-width:560rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     font-size:32rpx;
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(68,68,68,1);
-    margin: 32rpx auto 62rpx;
+    margin: 32rpx auto 18rpx;
 }
 .getGift-fetchCode{
     width:620rpx;
@@ -58,4 +72,33 @@ page{
     color:rgba(255,255,255,1);
     text-align: center;
     line-height: 100rpx;
+}
+.getGift-yuan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(79,187,73,1)
+}
+.getGift-mj{
+    width:72rpx;
+    height:36rpx;
+    line-height: 36rpx;
+    background:linear-gradient(90deg,#FF6E4C,#FF825B);
+    border-radius:18rpx 4rpx 18rpx 4rpx;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    margin-right: 8rpx;
+    color:rgba(255,255,255,1);
+}
+.getGift-time{
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    margin-top: 25rpx;
+    margin-bottom: 47rpx;
 }

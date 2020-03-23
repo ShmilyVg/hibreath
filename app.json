@@ -5,6 +5,7 @@
     "pages/goVerification/goVerification",
     "pages/community/community",
     "pages/result/result",
+    "pages/introduce/introduce",
     "pages/device-manage/device-manage",
     "pages/calendar/calendar",
     "pages/successInfo/successInfo",

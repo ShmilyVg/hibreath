@@ -124,6 +124,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateIndex() {
         this.navigateTo({url: '/pagesIndex/index/index'});
     }
+  static navigateIntroduce({couponId}) {
+    this.navigateTo({url: '/pages/introduce/introduce?couponId='+couponId});
+  }
     static navigateToCalendar({type}) {
         this.navigateTo({url: '/pages/calendar/calendar?type=' + type});
     }
