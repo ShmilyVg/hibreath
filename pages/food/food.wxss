@@ -18,7 +18,8 @@ view {
 }
 
 .food-top-text2 {
-  margin-top: 26rpx;
+  margin-top: 50rpx;
+  margin-bottom: 100rpx;
   font-size: 120rpx;
   font-weight: bold;
   height: 88rpx;
