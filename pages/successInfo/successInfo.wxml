@@ -1,15 +1,16 @@
 <view>
     <navBar
+            title='设备绑定'
             color="#FFF"
             iconTheme="white"
-            background='#EE6F69'
+            background='#7BC877'
             back="{{true}}"
             bindback="handlerGobackClick">
 
     </navBar>
     <!--   <view>-->
     <view class="bindSuccess-top">
-        <image class="bindSuccess-img" src="../../images/device-bind/successBind.png"></image>
+        <image class="bindSuccess-img" src="https://img.hipee.cn/hibreath/icon/greenNike.png"></image>
         <view class="bind-text">绑定成功</view>
     </view>
     <view class="bindSuccess-bto">

@@ -1,6 +1,6 @@
 /* pages/device-manage/device-manage.wxss */
 page{
-    background: #EE6F69;
+    background: #7BC877;
 }
 .image{
     width: 260rpx;
@@ -17,7 +17,7 @@ page{
 }
 
 .btn-bg{
-    background-color: #FF5F00;
+    background-color: #7BC877;
     color: white;
 }
 .home-orangebtn{
@@ -27,7 +27,7 @@ page{
     font-size: 30rpx;
     text-align: center;
     line-height: 100rpx;
-    background: #EE6F69;
+    background: #7BC877;
     border-radius: 50rpx;
     border: 1px #fff solid;
     margin: 0rpx auto 0rpx auto;
@@ -35,7 +35,7 @@ page{
 .againImg{
     width: 320rpx;
     height: 510rpx ;
-    background-image:url("http://backend.hipee.cn/assets/home/images/hb/Redbg.png");
+    background-image:url("https://img.hipee.cn/hibreath/icon/greenBg.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0 auto;

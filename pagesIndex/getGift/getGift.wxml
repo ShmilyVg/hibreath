@@ -1,8 +1,14 @@
 <!--pagesIndex/getGift/getGift.wxml-->
+<view class="getGift-text">加速礼包</view>
 <view class="getGift-top">
-    <view class="getGift-text">免费领取专属礼包</view>
+    <view class="getGift-top-title">Slimple天猫旗舰店专用福利</view>
     <image src="{{imgUrl}}" style="width: 310rpx;height: 310rpx;margin-top: 85rpx"></image>
     <view class="getGift-title">{{title}}</view>
+    <view class="getGift-yuan">
+        <view class="getGift-mj">满减</view>
+        满300元减100元
+    </view>
+    <view class="getGift-time">有效期：2020.03.13-2020.04.12</view>
     <view class="getGift-fetchCode">{{fetchCode}}</view>
     <view class="getGift-subTitle">{{subTitle}}</view>
     <view class="getGift-btn" bindtap="copyBtn">点击复制</view>

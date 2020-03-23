@@ -12,14 +12,16 @@ Page({
     onLoad() {
         Toast.showLoading();
         Protocol.getDeviceBindInfo().then(data => {
-            const deviceInfo = data.result;
-            if(data.result == null){
+            this.setData({
+              ...data.result
+            })
+            if(!this.data.mac){
                 this.setData({
                     isBind:false
                 })
             }else{
                 this.setData({
-                    deviceId: deviceInfo.deviceId,
+                    deviceId: this.data.deviceId,
                     isBind:true
                 })
             }

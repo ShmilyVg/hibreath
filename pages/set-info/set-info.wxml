@@ -89,7 +89,7 @@
               <view> {{taskInfo.fatTask.dataDesc}}</view>
             </view>
             <view class="item-contain-n" wx:if="{{!taskInfo.fatTask.finished}}" catchtap="fatTaskToFinish">
-              <view>去完成</view>
+              <view>吹一吹</view>
             </view>
           </view>
         </view>
@@ -110,7 +110,7 @@
               <view>kg</view>
             </view>
             <view class="item-contain-n" catchtap="showModal" wx:if="{{!taskInfo.weightTask.finished}}">
-              <view class="item-contain-n-weight">去完成</view>
+              <view class="item-contain-n-weight">量一量</view>
             </view>
           </view>
         </view>

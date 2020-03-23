@@ -46,11 +46,11 @@ export default class IndexCommonManager {
         getApp().getBLEManager().checkLocationPermission();
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
-            backgroundColor: '#EE6F69',
+            backgroundColor: '#7BC877',
         })
         this._page.setData({
             nofind: true,
-            bgColor:"#EE6F69",
+            bgColor:"#7BC877",
 
 
             btnState: false,

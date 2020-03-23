@@ -16,8 +16,10 @@
 
     <!--未绑定情况-->
 <view class="home-bind" wx:if="{{noBind}}">
-    <view class="bindText" style="padding-top: 80rpx;margin-bottom: 20rpx">绑定燃脂精灵</view>
-    <view class="bindText" style="margin-bottom: 75rpx">测测你的燃脂情况</view>
+    <view class="bindText" style="padding-top: 80rpx;margin-bottom: 20rpx">绑定你的燃脂精灵</view>
+    <view class="bindSub">监测数据实时上传，及时记录，并可结合身体多</view>
+    <view class="bindSub">维度指标分析减脂状态。</view>
+    <view class="bindSub" style="margin-bottom: 60rpx">PS:确保手机蓝牙和GPS处于开启状态。</view>
     <view class="bindImg"></view>
     <view class="bindSj"></view>
     <button class="hint-btn"   bindtap="onGetUserInfoEvent" >点击绑定燃脂精灵</button>
