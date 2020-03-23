@@ -1,0 +1,61 @@
+/* pagesIndex/reduceFatExp/reduceFatExp.wxss */
+view{
+  box-sizing: border-box;
+  font-family: PingFang SC;
+  color: #666666;
+  font-size:28rpx;
+  font-weight:400;
+}
+.reduceFatExp{
+  padding: 50rpx;
+}
+.title{
+  font-size:48rpx;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  margin-bottom: 44rpx;
+}
+.serial{
+  width:62rpx;
+  height:32rpx;
+  background:rgba(123,200,119,1);
+  border-radius:18rpx 4rpx 18rpx 4rpx;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  line-height: 32rpx;
+  margin-right: 13rpx;
+}
+.step-exp{
+  padding-left: 75rpx;
+}
+.exp-text1{
+  margin-bottom: 30rpx;
+}
+.exp-text2{
+  margin-bottom: 60rpx;
+}
+.exp-tip{
+  margin-bottom: 50rpx;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.step{
+  margin-bottom: 56rpx;
+}
+.step-title{
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  margin-bottom: 26rpx;
+}
+.img-con{
+  margin: 84rpx 0 51rpx;
+  text-align: center;
+}
+.img-con image{
+  width: 490rpx;
+  height: 279rpx;
+}
+.tip{
+  font-size: 24rpx;
+}

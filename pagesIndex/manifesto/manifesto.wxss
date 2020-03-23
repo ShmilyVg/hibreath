@@ -1,0 +1,147 @@
+/* pagesIndex/manifesto/manifesto.wxss */
+
+page {
+  background: #3d3a3d;
+  min-height: 100%;
+  position: relative;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.manifesto {
+  font-family: PingFang SC;
+  color: rgba(255, 255, 255, 1);
+}
+
+.item-list {
+  position: relative;
+}
+
+.manifesto-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  margin: 53rpx 0 53rpx 66rpx;
+}
+
+.item {
+  position: absolute;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.text1 {
+  width: 214rpx;
+  font-size: 25rpx;
+  height: 206rpx;
+  padding: 70rpx 0;
+  left: 110rpx;
+  top: 26rpx;
+  background: orange;
+  z-index: 10;
+}
+
+.text2 {
+  width: 162rpx;
+  height: 156rpx;
+  padding: 52rpx 0;
+  left: 370rpx;
+  font-size: 21rpx;
+  top: 0;
+  background: rgb(126, 126, 96);
+}
+
+.text3 {
+  width: 255rpx;
+  height: 247rpx;
+  padding: 105rpx 0;
+  left: 221rpx;
+  font-size: 36rpx;
+  top: 165rpx;
+  background: blue;
+  z-index: 20;
+  font-weight: bold;
+}
+
+.text4 {
+  width: 226rpx;
+  height: 218rpx;
+  padding: 63rpx 0;
+  left: 454rpx;
+  font-size: 23rpx;
+  top: 90rpx;
+  background: gray;
+  z-index: 18;
+}
+
+.text5 {
+  width: 212rpx;
+  height: 204rpx;
+  padding: 74rpx 0;
+  left: 386rpx;
+  font-size: 23rpx;
+  top: 300rpx;
+  background: orchid;
+  z-index: 10;
+}
+
+.text6 {
+  width: 162rpx;
+  height: 156rpx;
+  left: 68rpx;
+  top: 288rpx;
+  font-size: 23rpx;
+  background: green;
+  padding: 52rpx 0;
+  z-index: 10;
+}
+
+.contain{
+  width:750rpx;
+  height:474rpx;
+  background:rgba(255,255,255,1);
+  border-radius:80rpx 0rpx 0rpx 0rpx;
+  position: absolute;
+  bottom: 0;
+  padding: 71rpx 0 0 51rpx;
+}
+.contain-title image{
+  width: 59rpx;
+  height: 47rpx;
+  position: absolute;
+  left: 51rpx;
+  top: 68rpx;
+}
+textarea{
+  display: inline-block;
+  margin-left: 65rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(68,68,68,1);
+  padding: 10rpx;
+  height: 90rpx;
+}
+.holder{
+  color:rgba(187,187,187,1);
+}
+.reduceBtn{
+  width:520rpx;
+  height:100rpx;
+  background:rgba(123,200,119,1);
+  border-radius:50rpx;
+  line-height: 100rpx;
+  text-align: center;
+  margin: 45rpx auto;
+  color: #fff;
+}
+.pass{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+  margin-bottom: 67rpx;
+  text-align: center;
+}
+

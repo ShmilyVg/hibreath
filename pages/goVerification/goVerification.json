@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "验证手机号及群号",
+  "navigationBarTitleText": "完善资料",
   "usingComponents": {
     "my-toast": "../../components/my-toast/my-toast"
   }

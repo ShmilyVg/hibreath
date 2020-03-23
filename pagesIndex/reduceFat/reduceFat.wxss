@@ -1,0 +1,144 @@
+/* pagesIndex/reduceFat/reduceFat.wxss */
+page{
+  min-height: 100%;
+  position: relative;
+}
+
+.reduceFat {
+  background: #fff;
+  padding: 76rpx 63rpx 190rpx 41rpx;
+  border-top-left-radius: 80rpx;
+  box-sizing: border-box;
+}
+
+.tit-h2 {
+  font-size: 48rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(68, 68, 68, 1);
+  margin-bottom: 30rpx;
+}
+
+.steps {
+  border-left: 2rpx solid #d4e9d3;
+  padding: 10rpx 0;
+}
+.step_item{
+  position: relative;
+}
+.step_title {
+  background: #666;
+  padding: 15rpx 24rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 18rpx 4rpx 18rpx 4rpx;
+  margin-left: 40rpx;
+  
+}
+.ready_step{
+  color: #fff;
+}
+.ready_step .step_title{
+  background: #7BC877;
+}
+.ready_step .num{
+  color: #7BC877;
+}
+.num{
+  width:26rpx;
+  height:26rpx;
+  background:rgba(255,255,255,1);
+  border-radius:50%;
+  color: #666666;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  text-align: center;
+  line-height: 26rpx;
+  display: inline-block;
+  margin: 0 8rpx;
+}
+.clearFix{
+  margin-bottom: 71rpx;
+}
+.ready_step .reduce_time{
+  color: #4FBB49;
+}
+.reduce_time{
+  display: inline-block;
+  margin-left: 36rpx;
+  font-size:56rpx;
+  font-family:DIN Condensed;
+  font-weight:bold;
+  color:rgba(69,69,69,1);
+}
+.reduce_time text{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  margin-left: -10rpx;
+}
+.step_item image {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: -19rpx;
+  top: 20rpx;
+}
+
+.now{
+  padding-bottom: 64rpx;
+}
+.now_item {
+  display: inline-block;
+  margin: 37rpx 60rpx 0rpx;
+}
+.now_item image{
+  width: 136rpx;
+  height: 138rpx;
+}
+.now_w {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(69, 69, 69, 1);
+}
+
+.now_num {
+  margin-top: 22rpx;
+  font-size: 70rpx;
+  font-family: DINCondensed;
+  font-weight: bold;
+  color: rgba(69, 69, 69, 1);
+}
+
+.now_num text {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(136, 136, 136, 1);
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.bgBottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 750rpx;
+  height: 94rpx;
+}
+.weightBtn{
+  background: #7BC877;
+  width:500rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  margin: 0 auto;
+  border-radius: 50rpx; 
+}

@@ -13,7 +13,7 @@ Page({
   data: {
     totNum:4,
     guidance: {
-      page: 1,
+      page: 2,
       portraitUrl: '',
       info: {
         height: 175,
@@ -164,6 +164,10 @@ Page({
     }, 200)
   },
   back() {
+    if (this.data.guidance.page == 2){
+      HiNavigator.navigateToGoVerification();
+      return;
+    }
     this.setData({
       'guidance.page': --this.data.guidance.page
     });
@@ -172,18 +176,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let totNum = 4, page= 1;
-    let sharedId = null;
-    if (options.sharedId != "undefined") {
-      totNum =3;
-      page =2;
-      sharedId = options.sharedId;
-    }
     this.setData({
-      reset: options.reset,
-      sharedId: sharedId,
-      totNum: totNum,
-      'guidance.page': page
+      reset: options.reset
     })
     
     this.getUserInfo()
@@ -276,17 +270,10 @@ Page({
   //保存
   async postGuidance() {
     let data = this.data.guidance.info;
-    Toast.showLoading('正在生成')
     let result = await Protocol.postGuidance(data);
-    await Protocol.getMyLossfatCourse();
     Toast.hiddenLoading();
     if (result.code) {
-      Toast.success('生成成功');
-      wx.setStorageSync('finishedGuide', true);
-      setTimeout(()=>{
-        HiNavigator.switchToLowCarbon()
-      },2000)
-      
+      HiNavigator.navigateToWeightTarget()
     }
   },
   onHide() {

@@ -394,6 +394,33 @@
 					"pathName": "pages/food-ruler/food-ruler",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/weightTarget/weightTarget",
+					"pathName": "pagesIndex/weightTarget/weightTarget",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/reduceFat/reduceFat",
+					"pathName": "pagesIndex/reduceFat/reduceFat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/reduceFatExp/reduceFatExp",
+					"pathName": "pagesIndex/reduceFatExp/reduceFatExp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/manifesto/manifesto",
+					"pathName": "pagesIndex/manifesto/manifesto",
+					"scene": null
 				}
 			]
 		}

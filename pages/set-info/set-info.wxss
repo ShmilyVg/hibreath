@@ -13,7 +13,7 @@ page{
 }
 .firstPage{
   box-sizing: border-box;
-  padding-top: 288rpx;
+  padding-top: 222rpx;
 }
 .guidanceBg{
   position: absolute;
@@ -24,17 +24,34 @@ page{
 }
 
 .header_h2 {
-  margin-top: 39rpx;
-  height: 84rpx;
+  height: 62rpx;
   font-size: 60rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #fff;
-  line-height: 84rpx;
-  padding-left: 62rpx;
+  line-height: 62rpx;
+  padding-left: 60rpx;
+}
+.header_text1{
+  margin-top: 32rpx;
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  padding-left: 60rpx;
+}
+.lineBold{
+  margin-top: 48rpx;
+  width:64rpx;
+  height:6rpx;
+  background:rgba(255,255,255,1);
+  opacity:0.5;
+  border-radius:3rpx;
+  margin-left: 60rpx;
 }
 
 .header_text {
+  margin-top: 50rpx;
   height: 50rpx;
   font-size: 32rpx;
   font-family: PingFang-SC-Regular, PingFang-SC;
@@ -42,7 +59,7 @@ page{
   color: #fff;
   line-height: 50rpx;
   padding-left: 62rpx;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .text_left {

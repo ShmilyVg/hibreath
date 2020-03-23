@@ -1,0 +1,23 @@
+<!--pagesIndex/reduceFatExp/reduceFatExp.wxml-->
+<view class="reduceFatExp">
+  <view class="title">Slimple低碳燃脂方案</view>
+  <view class="exp-text1">Slimple依据科学的低碳水饮食原则，以天然食材构建三日燃脂餐；</view>
+  <view class="exp-text2">根据每位用户自身情况，综合身高、体重、年龄等因素，提供完整的瘦身燃脂方案。</view>
+  <view class="exp-tip">方案包括以下三个阶段</view>
+  <view class="step">
+    <view class="step-title"><view class="serial">1</view>低碳适应期（第一套三日燃脂餐期间）</view>
+    <view class="step-exp">消耗过剩碳水，促进脂肪开始燃烧</view>
+  </view>
+  <view class="step">
+    <view class="step-title"><view class="serial">2</view>燃脂期（三日燃脂餐与低碳饮食指导期间）</view>
+    <view class="step-exp">快速燃烧脂肪，达到你的目标体重</view>
+  </view>
+  <view class="step">
+    <view class="step-title"><view class="serial">3</view>巩固期（日常低碳水饮食期间）</view>
+    <view class="step-exp">找到低碳水平衡点与食物和解，养成易瘦体质</view>
+  </view>
+  <view class="img-con">
+    <image src="../images/burn-step.png"></image>
+  </view>
+  <view class="tip">在此方案的历程中，你的体重将呈现阶梯状缓步下降的过程，努力坚持哟~</view>
+</view>

@@ -1,6 +1,6 @@
 /* pages/goVerification/goVerification.wxss */
 page{
-    padding: 180rpx 60rpx 0rpx;
+    padding: 59rpx 60rpx 0rpx;
     box-sizing: border-box;
 }
 .goVerification-view{
@@ -65,4 +65,33 @@ page{
 }
 button:after{
     border: none;
+}
+
+
+.header_h3 {
+  padding-top: 13rpx;
+  font-size: 50rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  line-height: 70rpx;
+  text-align: center;
+}
+
+.curPage {
+  text-align: center;
+  display: inline-block;
+  margin-top: 10rpx;
+  width: 98rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular, PingFang-SC;
+  font-weight: 400;
+  color: #4FBB49;
+  border-radius: 25rpx;
+  background-color: #ECF8EB;
+}
+.pageNum{
+  margin: 29rpx 0 100rpx;
+  text-align: center;
 }

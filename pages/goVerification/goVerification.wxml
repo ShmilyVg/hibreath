@@ -4,6 +4,12 @@
     &lt;!&ndash;<view class="goVerification-lookNumber" hover-class="press-style">查看群号</view>&ndash;&gt;
     <view class="clear"></view>
 </view>-->
+<view class="header-top">
+  <view class="header_h3">性别</view>
+      <view class="pageNum">
+        <text class="curPage">1/4</text>
+      </view>
+</view>
 <view class="goVerification-view {{phoneNumbersFocus?'goVerification-bottomLineR':'goVerification-bottomLineW'}}" style="width: 100%">
     <input class="goVerification-input" bindfocus="phoneNumbersFocus" bindblur="phoneNumbersBlur" style="width: 100%" value="{{phoneNumbers}}" placeholder="请填写首次下单的收货手机号" maxlength="11" placeholder-class="goVerification-placeholder"  bindinput="bindInputPhone" type="number"/>
 </view>
@@ -12,7 +18,7 @@
     <button class="goVerification-getCode" bindtap="getCode" hover-class="press-style" disabled="{{captchaDisabled}}"  disabled-class="disabled">{{btntext}}</button>
     <view class="clear"></view>
 </view>
-<button class="goVerification-btn" disabled="{{disabledBtn}}" hover-class="press-style" bindtap="submitMsg">确定</button>
+<button class="goVerification-btn" disabled="{{disabledBtn}}" hover-class="press-style" bindtap="submitMsg">下一步</button>
 <my-toast
         wx:if="{{showMytoast}}"
         toastType="{{toastType}}"

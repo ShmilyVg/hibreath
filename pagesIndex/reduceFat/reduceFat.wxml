@@ -1,0 +1,64 @@
+<!--pagesIndex/reduceFat/reduceFat.wxml-->
+<view class="reduceFat">
+  <view class="tit-h2">我的减脂方案</view>
+  <view class="steps">
+    <view class="step_item">
+      <view class="step_title inline_block">现在的我</view>
+      <image src="../../images/lowFatReport/willbe-1.png"></image>
+    </view>
+    <view class="now">
+      <view class="now_item weigth">
+        <view class="now_w">体重</view>
+        <view class="now_num">80.3
+          <text>kg</text>
+        </view>
+      </view>
+      <view class="now_item">
+        <view class="now_w">需要减掉</view>
+        <view class="now_num">10.1
+          <text>kg</text>
+        </view>
+      </view>
+    </view>
+    <view class="step_item ready_step">
+      <view class="step_title inline_block">当前 ·<view class="num">1</view>经历低碳适应期</view>
+      <view class="reduce_time">2
+        <text>日</text>
+      </view>
+      <image src="../../images/lowFatReport/ready-1.png"></image>
+    </view>
+    <view class="clearFix"></view>
+    <view class="step_item ">
+      <view class="step_title inline_block"><view class="num">2</view>经历减脂期</view>
+      <view class="reduce_time">2
+        <text>日</text>
+      </view>
+      <image src="../../images/lowFatReport/willbe-1.png"></image>
+    </view>
+    <view class="clearFix"></view>
+    <view class="step_item">
+      <view class="step_title inline_block"><view class="num">3</view>经历巩固期</view>
+      <view class="reduce_time">2
+        <text>日</text>
+      </view>
+      <image src="../../images/lowFatReport/willbe-1.png"></image>
+    </view>
+    <view class="clearFix"></view>
+    <view class="step_item">
+      <view class="step_title inline_block">之后的我</view>
+      <image src="../../images/lowFatReport/willbe-1.png"></image>
+    </view>
+    <view class="ultimately">
+      <view class="now_item weigth">
+        <view class="now_w">体重减到</view>
+        <view class="now_num">70.2
+          <text>kg</text>
+        </view>
+      </view>
+      <view class="now_item">
+        <image src="../../images/lowFatReport/success.png"></image>
+      </view>
+    </view>
+  </view>
+  <image src="../../images/lowFatReport/bgBottom.png" class="bgBottom"></image>
+</view>

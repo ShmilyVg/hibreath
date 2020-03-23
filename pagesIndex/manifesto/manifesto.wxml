@@ -1,0 +1,19 @@
+<!--pagesIndex/manifesto/manifesto.wxml-->
+<view style="height:1rpx;"> </view>
+<view class="manifesto">
+  <view class="manifesto-title">我想要减脂！是因为</view>
+  <view class="item-list">
+    <view class="item {{'text'+(index+1)}}" wx:for="{{textList}}" wx:key='item' data-item="{{item}}" bindtap="setManifesto">
+      <text>{{item}}</text> 
+    </view>
+  </view>
+
+</view>
+<view class="contain">
+  <view class="contain-title">
+    <image src="../images/icon/needEdit.png"></image>
+    <textarea placeholder="我想要减脂，是因为…（20字）" value='{{manifesto}}' placeholder-class='holder' auto-focus />
+  </view>
+  <button class="reduceBtn" open-type='share'>生成并分享减脂宣言</button>
+  <view class="pass" bindtap="reduceFun">跳过</view>
+</view>

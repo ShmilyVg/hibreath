@@ -1,0 +1,333 @@
+/* pagesIndex/weightTarget/weightTarget.wxss */
+
+page {
+  background: #7bc877;
+  height: 100%;
+}
+
+view {
+  box-sizing: border-box;
+}
+.bgrz{
+  width: 244rpx; 
+  height: 300rpx;
+  position: absolute;
+  bottom: -45rpx;
+  right: 54rpx;
+  z-index: 10;
+}
+.weightTarget {
+  position: relative;
+  height: 100%;
+}
+
+.weightTarget-header {
+  position: relative;
+  color: #fff;
+  padding: 62rpx 98rpx 58rpx 65rpx;
+}
+
+.top-title {
+  font-size: 48rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.top-num {
+  margin-top: 41rpx;
+  font-size: 120rpx;
+  font-family: DIN Condensed;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  position: relative;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.top-num text {
+  font-size: 50rpx;
+  font-family: DIN Condensed;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.top-num image {
+  width: 28rpx;
+  height: 26rpx;
+  position: absolute;
+  top: 0;
+  margin-left: 22rpx;
+  z-index: 100;
+  padding: 0 100rpx 100rpx 0;
+}
+
+.top-text {
+  margin-top: 37rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  opacity: 0.7;
+}
+
+.weight-contain {
+  /* position: absolute; */
+  width: 100%;
+  /* bottom: 0; */
+  background: rgba(255, 255, 255, 1);
+  border-radius: 80rpx 0px 0px 0px;
+  padding: 74rpx 65rpx 70rpx 68rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(68, 68, 68, 1);
+  line-height: 52rpx;
+}
+
+.contain-text2 text {
+  color: #4fbb49;
+}
+
+.contain-view {
+  height: 160rpx;
+  background: rgba(248, 249, 253, 1);
+  border-radius: 10rpx;
+  padding: 49rpx 34rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 45rpx;
+}
+
+.contain-view .time {
+  font-size: 80rpx;
+  font-family: DIN Condensed;
+  font-weight: bold;
+  color: rgba(79, 187, 73, 1);
+}
+
+.contain-view .time text {
+  font-size: 30rpx;
+  margin-left: -20rpx;
+}
+
+.contain-view .checkBtn {
+  width: 186rpx;
+  height: 64rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(123, 200, 119, 1);
+  border-radius: 32rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(79,187,73,1);
+}
+.contain-text4{
+  box-sizing: border-box;
+  margin-top: 37rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  position: relative;
+  padding-left: 34rpx;
+}
+.contain-text4 image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 13rpx;
+}
+.startBtn{
+  margin: 161rpx auto 0rpx;
+  width:520rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  background:rgba(123,200,119,1);
+  border-radius:50px;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  text-align: center;
+}
+
+
+
+/*模态框*/
+
+.modals {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modals-cancel {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bottom-dialog-body {
+  position: absolute;
+  z-index: 10001;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  height: 700rpx;
+  background-color: #fff;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  text-align: center;
+}
+
+/*动画前初始位置*/
+
+.bottom-pos {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.placeholder {
+  font-size: 46rpx;
+  font-family: PingFang-SC;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+.weight-title{
+  color: #333333;
+  font-size: 32rpx;
+}
+.weight-title view{
+  float: left;
+  color: #999999;
+  font-size: 30rpx;
+}
+.weightInput {
+  margin: 120rpx auto 0;
+  height: 120rpx;
+  width: 300rpx;
+  background: #ECF8EB;
+  border-radius: 20rpx;
+  font-size: 100rpx;
+  font-weight: bold;
+  color: #4FBB49;
+  font-family: DINCondensed-Bold;
+}
+
+.page2-line {
+  width: 154rpx;
+  height: 2rpx;
+  background-color: #7BC877;
+  margin: 20rpx auto;
+}
+
+.unit {
+  margin-top: 37rpx;
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #444444;
+  font-family: DINCondensed-Bold;
+}
+
+.weightBtn{
+  background: #7BC877;
+  width:500rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  border-radius: 50rpx; 
+  margin: 100rpx auto 0;
+}
+
+
+/*分享弹窗*/
+
+.shareMask {
+  background: #000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 600;
+}
+
+.shareRow {
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  background: #fff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.text-gray {
+  color: gray;
+}
+
+.margin-top {
+  margin-top: 10rpx;
+}
+
+.shareContainer {
+  background: #f0f0f0;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  z-index: 888;
+  font-size: 30rpx;
+}
+
+
+.tip-full {
+  position: fixed;
+  min-height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: black;
+  opacity: 0.85;
+}
+
+.tip-view {
+  width: 560rpx;
+  height: 300rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8rpx;
+  position: fixed;
+  top: 333rpx;
+  z-index: 1001;
+}
+
+.tip-view-title {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(50, 50, 50, 1);
+  line-height: 28rpx;
+  margin-top: 60rpx;
+}
+
+.tip-view-content {
+  font-size: 90rpx;
+  font-family: DINCondensed;
+  font-weight: 400;
+  color: rgba(69, 69, 69, 1);
+  line-height: 28rpx;
+  margin-top: 90rpx;
+}

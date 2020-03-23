@@ -469,7 +469,8 @@ Page({
           });
         }
         setTimeout(() => {
-          HiNavigator.navigateToGuidance({sharedId})
+          HiNavigator.navigateToGoVerification()
+          // HiNavigator.navigateToGuidance({sharedId})
         }, 500);
       }else{
         wx.showToast({
@@ -477,7 +478,8 @@ Page({
           duration: 500
         });
         setTimeout(() => {
-          HiNavigator.navigateToGuidance({})
+          HiNavigator.navigateToGoVerification()
+          // HiNavigator.navigateToGuidance({})
         }, 500);
       }
       

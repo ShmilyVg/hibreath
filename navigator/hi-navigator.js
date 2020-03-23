@@ -32,6 +32,22 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGuidance({reset,sharedId}) {
       this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}&sharedId=${sharedId}`});
     }
+    //我的减脂方案
+    static navigateToWeightTarget() {
+      this.navigateTo({url: `/pagesIndex/weightTarget/weightTarget`});
+    }
+    //燃脂方案解释
+    static navigateToReduceFatExp() {
+      this.navigateTo({url: `/pagesIndex/reduceFatExp/reduceFatExp`});
+    }
+    //燃脂宣言
+    static navigateToManifesto() {
+      this.navigateTo({url: `/pagesIndex/manifesto/manifesto`});
+    }
+    //生成方案
+    static navigateToReduceFat() {
+      this.navigateTo({url: `/pagesIndex/reduceFat/reduceFat`});
+    }
     //低碳饮食
     static switchToLowCarbon() {
       this.switchTab({url: `/pages/low-carbon/low-carbon`});

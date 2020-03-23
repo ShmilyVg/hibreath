@@ -1,11 +1,13 @@
 <view class="guidance" wx:if="{{!finishedGuide}}">
   <view class="firstPage">
     <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
-    <view class="header_h2 text_left">Hi,欢迎来到Silmple</view>
-    <view class="header_text text_left">接下来花点时间，为您定制专属的减脂方案</view>
+    <view class="header_h2 text_left">Slimple低碳燃脂</view>
+    <view class="header_text1">好身材·很简单</view>
+    <view class="lineBold"></view>
+    <view class="header_text text_left">成为会员，专享服务</view>
   </view>
   <view class="btn_group">
-    <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">定制专属减脂方案 </button>
+    <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">开始低碳燃脂</button>
   </view>
 </view>
 <view class="set-info" wx:if="{{finishedGuide}}">
