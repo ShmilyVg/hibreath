@@ -41,17 +41,20 @@
   </view>
   <view class="contain">
     <!-- <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image> -->
-    <view class="puzzled" data-url="{{banner.url}}" bindtap="goToTask">
+    <view class="puzzled" wx:if="{{banner.url}}" data-url="{{banner.url}}" bindtap="goToTask">
       <image src="{{banner.image}}"></image>
     </view>
     <view class="task-day">
-      <view class="task-day-top">
+      <view class="task-day-top" >
         <view class="task-day-title">今日燃脂分析</view>
         <view class="task-text">完成以下任务解锁营养师专业分析报告</view>
-        <view class="taskRes">
+        <view class="taskRes {{taskFinished?'open_c':'close_c'}}" bindtap="goToLowFatReport">
           <image src="../../images/set-info/{{taskFinished?'open_c':'close_c'}}.png"></image>
-          <view>完成全部</view>
-          <view>任务解锁</view>
+          <block wx:if="{{!taskFinished}}">
+            <view>完成全部</view>
+            <view>任务解锁</view>
+          </block>
+          <view wx:if="{{taskFinished}}" class="openrReport">查看报告</view>
         </view>
       </view>
       <view class="task-card ">

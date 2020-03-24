@@ -305,6 +305,10 @@ view{
   padding-top: 12rpx;
   padding-left: 72rpx;
 }
+.task-day .open_c{
+  background:linear-gradient(90deg,rgba(148,228,163,1),rgba(129,211,125,1));
+  color: #fff;
+}
 .taskRes image{
   height: 50rpx;
   width: 50rpx;
@@ -315,6 +319,9 @@ view{
 }
 .taskRes view{
   line-height:26rpx;
+}
+.task-day .open_c view{
+  line-height: 52rpx;
 }
 .task-card{
   display: flex;

@@ -38,7 +38,7 @@ Page({
     this.setData({
       listObj
     })
-    let height = item.length * 160
+    let height = item.length * 180
     var dayItem = item[0].day;
     let activeDay = this.data.activeDay;
     let animation = item[0].animationName
