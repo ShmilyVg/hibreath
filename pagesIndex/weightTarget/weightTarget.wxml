@@ -3,13 +3,13 @@
   <view class="weightTarget-header">
     <view bindtap="showModal">
       <view class="top-title">我的目标体重是</view>
-      <view class="top-num">70.2
+      <view class="top-num">{{result.weightGoalt}}
         <text>KG</text>
         <image src="../../images/edit.png"></image>
       </view>
     </view>
     <image src="../../images/lowFatReport/newBg.png" class="bgrz"></image>
-    <view class="top-text">*根据《公共营养师》及《中国营养科学全书》推荐公式 计算，适合您的体重是70.2kg
+    <view class="top-text">*根据《公共营养师》及《中国营养科学全书》推荐公式 计算，适合您的体重是{{result.weightGoalt}}kg
     </view>
   </view>
   <view class="weight-contain">
@@ -18,8 +18,8 @@
       <text>Slimple低碳饮食方案*</text>,</view>
     <view class="contain-text3">预计经历：</view>
     <view class="contain-view">
-      <view class="time">5-7
-        <text>周</text> </view>
+      <view class="time">{{result.totalPeriod}}
+        <text>{{result.unit}}</text> </view>
       <view class="checkBtn" bindtap="goReduceFat">查看我的方案</view>
     </view>
     <view class="contain-text4" bindtap="goReduceFatExp">

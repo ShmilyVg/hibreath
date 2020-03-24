@@ -55,11 +55,12 @@ Page({
     fatTextEn: '',
     fatDes: '',
     status:{
-      '即将燃脂': ['#D0E5CC', '#D0E5CC', '#5D6AED'],
-      '低速燃脂': ['#D0E5CC', '#009DFF', '#009DFF'],
-      '状态极佳': ['#0AC1A1', '#0AC1A1', '#0AC1A1'],
-      '过度燃脂': ['#FF6100', '#FF6100', '#FF6100'],
-      '快速燃脂': ['#FFAD00', '#FFAD00', '#FFAD00'],
+      '即将燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#D0E5CC', '#5D6AED'],
+      '低速燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#009DFF', '#009DFF'],
+      '状态极佳': ['#D0E5CC', '#D0E5CC', '#0AC1A1', '#0AC1A1', '#0AC1A1'],
+      '快速燃脂': ['#D0E5CC', '#FFAD00', '#FFAD00', '#FFAD00', '#FFAD00'],
+      '过度燃脂': ['#FF6100', '#FF6100', '#FF6100', '#FF6100', '#FF6100'],
+      
     },
   },
   async onLoad(e) {
@@ -117,7 +118,8 @@ Page({
     Toast.showLoading();
     let {
       result: {
-        list
+        list,
+        bestBreathData
       }
     } = await Protocol.getBreathDataList({
       page,
@@ -135,8 +137,9 @@ Page({
           console.log('绘制一次')
           Circular.run();
         }, 500)
+        list.unshift(bestBreathData)
       }
-
+      
       list.map(value => {
         const {
           time,

@@ -150,6 +150,14 @@ export default class Protocol {
         return Network.request({url: 'breathData/listAll', data});
     }
 
+    static postBreathDatalist() {
+        return Network.request({url: 'breathData/dateList'});
+    }
+
+    static postBreathDateTimeItem(data) {
+        return Network.request({url: 'breathData/dateTimeItem',data});
+    }
+
     static postWeightDataAdd({weight: dataValue}) {
         return Network.request({url: 'weightData/add', data: {dataValue}})
     }

@@ -9,18 +9,27 @@ Page({
   data: {
     hideModal: true,
     animationData:'',
-    weightGoalt:null
+    weightGoalt:null,
+    result:{}
   },
   onLoad: function (options) {
-
+    this.initMyLossfatCourse();
   },
   onShow: function () {
 
   },
-  async startPlan(){
+  async initMyLossfatCourse(){
     let weightGoalt = this.data.weightGoalt
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    await Protocol.getMyLossfatCourse(data);
+    let { result } = await Protocol.initMyLossfatCourse(data);
+    this.setData({
+      result
+    })
+  },
+  async startPlan(){
+    let weightGoalt = this.data.weightGoalt;
+    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+    await Protocol.postMembersJoinSchema(data)
     HiNavigator.navigateToManifesto()
   },
   goReduceFat(){
@@ -30,7 +39,7 @@ Page({
     HiNavigator.navigateToReduceFatExp();
   },
   weightGoalChange(e) {
-    let targetDate = this.data.targetDate
+    let targetDate = this.data.result
     let nowW = targetDate.weightLoss + targetDate.weightGoalt;
     let weightGoalt = e.detail.value;
     if (nowW <= weightGoalt) {
@@ -47,7 +56,7 @@ Page({
     })
   },
   saveWeight() {
-    this.getMyLoss();
+    this.initMyLossfatCourse();
     this.hideModal();
   },
   // 显示遮罩层

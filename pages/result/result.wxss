@@ -326,9 +326,9 @@ button::after {
 
 .status-tip view {
   width: 20rpx;
-  height: 20rpx;
+  height: 8rpx;
   border-radius: 5rpx;
-  margin-bottom: 4rpx;
+  margin-bottom: 9rpx;
 }
 
 .cell-date {
