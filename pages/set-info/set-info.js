@@ -19,8 +19,8 @@ Page({
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
-    animationTop: '',
     breathSign: {},//签到数据
+    taskFinished:false,
     sync:{
       num: 0,
       countNum: 0, //需要同步的总数
@@ -67,10 +67,15 @@ Page({
     if(sharedId){
       wx.removeStorage('sharedId')
     }
-    
+    if (wx.getStorageSync('finishedGuide')){
+      this.setData({
+        finishedGuide:true
+      })
+    }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
-    this.getFinishedGuide()
+    this.getFinishedGuide();
+    this.getBanner();
     this.getPresonMsg();
     setTimeout(() => {
       //每天第一次登录积分奖励
@@ -92,7 +97,6 @@ Page({
     this.getFinishedGuide()
     this.handleBle();
     this.getAnswer();
-    this.getBreathSignInInfo();
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
     app.onDataSyncListener = ({ num, countNum }) => {
@@ -112,7 +116,6 @@ Page({
               showBigTip: false
             });
             that.getTaskInfo();
-            that.getBreathSignInInfo()
             if (that.data.showBigTip == false) {
               WXDialog.showDialog({
                 content: "上传成功，本次共上传" + that.data.sync.num + "条结果",
@@ -151,15 +154,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-   /* console.log(this.data.showNewInfo, this.data.showGuide, this.data.showGoclockin, '======')
-    if (!this.data.showNewInfo && !this.data.showGuide && !this.data.showGoclockin) {
-      Toast.showLoading();
-      await this.getTaskInfo();
-      Toast.hiddenLoading();
-    }*/
     Toast.showLoading();
     await this.getTaskInfo();
-    await this.getBreathSignInInfo();
     Toast.hiddenLoading();
     wx.stopPullDownRefresh();
   },
@@ -265,26 +261,54 @@ Page({
       })
     }
   },
-  //获取打卡信息
-  async getBreathSignInInfo() {
-    const { result } = await Protocol.getBreathSignInInfo();
-    if (result.isFinished){
-      let data = result.data;
-      for (let item of data) {
-        if (item.executeOrder < result.days && !item.isFinished){
-          result.replenish = true;
-        }
+  //图片预加载列表
+  imgListArr(){
+    var that = this;
+    for(var i=0;i<that.data.taskInfo.modalList.length;i++){
+      if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
+        let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
+        that.data.needImgList.push(imageListfinUrl)
+      }
+      if(that.data.taskInfo.modalList[i].modalType == 'fatForward' || that.data.taskInfo.modalList[i].modalType == 'fatBackward'){
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
+        let imageListfinUrl = "fatWindows/fat-type"+Num+'.png'
+        that.data.needImgList.push(imageListfinUrl)
+      }
+      if(that.data.taskInfo.modalList[i].modalType == 'fatHard'){
+        that.data.needImgList.push('fatWindows/fat-type1no.png')
       }
     }
+    that.data.needImgList =[...new Set([... that.data.needImgList])]
+    var loader=new ImageLoader({
+      base: ImageSource.BASE ,
+      source: this.data.needImgList,
+      loaded: res => {
+        setTimeout(()=>{
+          this.setData({
+            showWindows:true
+          })
+        },300)
+      }
+    });
+  },
+  async getBanner(){
+    const { result: { dataList} } = await Protocol.getBannerList();
     this.setData({
-      breathSign: result
+      banner: dataList[0],
+      banner1: dataList[1],
     })
   },
-
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
+    let taskFinished = false;
+    console
+    if (result.fatTask && result.weightTask && result.fatTask.finished && result.weightTask.finished){
+      taskFinished = true;
+    }
     this.setData({
+      taskFinished,
       taskInfo: result
     })
 
@@ -439,13 +463,8 @@ Page({
       HiNavigator.navigateToResultNOnum();
       return;
     }
-    let {
-      result: { list: breathList }
-    } = await Protocol.postBreathDatalistAll({
-      timeBegin: 1510468206000,
-      timeEnd: Date.now()
-    });
-    if (breathList.length > 0) {
+    let { result :{ dateTime}} = await Protocol.postBreathDatalist();
+    if (dateTime.length > 0) {
       HiNavigator.navigateToResultNOnum();
       return;
     }
@@ -483,6 +502,9 @@ Page({
   //加群页
   goToAddLowfat() {
     HiNavigator.navigateToAddLowfatGroup();
+  },
+  goToTask(e){
+    console.log(e.currentTarget.dataset.url)
   },
   //减脂效果页
   goToLowFatReport() {
@@ -560,18 +582,6 @@ Page({
         }
       }
     });
-  },
-  //展示页面头部
-  showTopTask() {
-    let topTaskTip = this.data.topTaskTip;
-    this.setData({
-      topTaskTip: !topTaskTip
-    })
-    if (topTaskTip) {
-      this.topFadeIn()
-    } else {
-      this.topFadeDown()
-    }
   },
   cancel() {
     this.setData({
@@ -672,33 +682,4 @@ Page({
       animationData: this.animation.export(),
     })
   },
-  topFadeIn() {
-    var that = this;
-    var animation = wx.createAnimation({
-      duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
-      timingFunction: 'ease',//动画的效果 默认值是linear
-    })
-    this.animation = animation
-    that.animation.height(0).step()
-    that.setData({
-      animationTop: that.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
-    })
-  },
-  topFadeDown() {
-    var that = this;
-    var animation = wx.createAnimation({
-      duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
-      timingFunction: 'ease',//动画的效果 默认值是linear
-    })
-    this.animation = animation
-    let height = '310rpx'
-    if (this.data.breathSign.days == 1 && !this.data.breathSign.isFinished){
-      height = '240rpx'
-    }
-    that.animation.height(height).step()
-    that.setData({
-      animationTop: that.animation.export(),
-    })
-  }
-
 });

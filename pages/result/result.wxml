@@ -54,79 +54,14 @@
       </view>
     </view>
   </view>
-  <!-- <view wx:if="{{tabIsShow}}" class="result_tab">
-    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>
-      燃脂记录
-      <view class="active_line" wx:if="{{currenttab==='0'}}"></view>
-    </view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>
-      燃脂趋势
-      <view class="active_line" wx:if="{{currenttab==='1'}}"></view>
-    </view>
-    <view class="clear"></view>
-  </view>
-  <view wx:else class="result_tab" style="opacity: 0"></view>
 
-  <view wx:if="{{!tabIsShow}}" class="result_tab_top">
-    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>燃脂记录</view>
-    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" style="margin-left: 40rpx" data-tabid="1" bindtap='selectTab'>燃脂趋势</view>
-    <view class="clear"></view>
-  </view> -->
-
-  <!--燃脂记录  -->
-  <!-- <view wx:if="{{currenttab==='0'}}">
-    <view wx:for="{{trendData}}" wx:key="index" class="flex-column cell" bindtap="deleteDataValue" data-index="{{item.id}}">
-      <view class="flex-row" style="width:100%;justify-content: space-between">
-        <view class="flex-column" style="align-items: start;height: 160rpx">
-          <view class="cell-title">{{item.desZh}}</view>
-          <view class="cell-date">{{item.date}}</view>
-        </view>
-        <view class="cell-image">
-          <image src="{{item.image}}" class="cell-image-image"></image>
-          <view class="cell-image-text">{{item.dataValue}}</view>
-        </view>
-      </view>
-      <view class="cell-line"></view>
-    </view>
-  </view> -->
-
-  <!--燃脂趋势 -->
-  <!-- <view wx:if="{{currenttab==='1'}}">
-    <block wx:if="{{!noData}}">
-      <view class="canvas-base-view">
-        <view class="flex-row" style="justify-content: center;width: 100%;align-items: center;margin-top: 20rpx;" bindtap="toChooseDate">
-          <view class="canvas-bottom-text">{{trendDate}}</view>
-          <image wx:if="{{trendDate}}" class="middle-view-arr" src="../../images/arr-right.png"></image>
-        </view>
-        <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
-
-      </view>
-    </block>
-    <block wx:else>
-      <view class="flex-column index-history-no-data-text">
-        <template is="no-data" data="{{content:'暂无趋势数据'}}"></template>
-      </view>
-    </block>
-  </view> -->
   <!--非首次打卡完成激励弹窗-->
   <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" inTaskProgress="{{inTaskProgress}}" integral="{{integral}}" integralTaskTitle="{{integralTaskTitle}}">
   </my-toast>
   <!--首次打卡完成激励弹窗-->
   <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
   </exciting-window>
-  <!-- 弹窗组件 -->
-  <!--<view class="modal" hidden="{{beyondLastTime.type == '0' ?true:''}}">
-      <view class="result-container">
-          <view class="title" bindtap='confirm'>{{beyondLastTime.title}}</view>
-          <view class="content" bindtap='confirm'>
-              {{beyondLastTime.content}}
-          </view>
-          <view class='modal-btn-wrapper'>
-              &lt;!&ndash;<view class='confirm-btn' style="{{tintColor}}" bindtap='confirm'>{{confirmText}}</view>&ndash;&gt;
-              <button data-id="shareBtn"  open-type="share">分享</button>
-          </view>
-      </view>
-  </view>-->
+
 </view>
 <view wx:else>
   <image class="phone-img" src="../../images/set-info/empty.png"></image>

@@ -238,30 +238,6 @@ Page({
   handlerGobackClick() {
     HiNavigator.switchToSetInfo()
   },
-  //切换标签页
-  async selectTab(e) {
-    let newtab = e.currentTarget.dataset.tabid;
-    if (this.data.currenttab !== newtab) {
-      this.setData({
-        currenttab: newtab
-      });
-      if (newtab == 1) {
-        const {
-          frontTimestamp,
-          endTimestamp
-        } = timeObj;
-        console.log('getLatestOneWeekTimestamp()', getLatestOneWeekTimestamp())
-        let {
-          result
-        } = await Protocol.postBreathDatalistAll();
-        this.updateTrendTime({
-          frontTimestamp: frontTimestamp || result.startTime * 1000,
-          endTimestamp: endTimestamp || result.endTime * 1000
-        });
-      }
-    }
-  },
-
   async handleTrend({
     list
   }) {
@@ -376,13 +352,8 @@ Page({
     timeObj.frontTimestamp = frontTimestamp;
     timeObj.endTimestamp = endTimestamp;
     let {
-      result: {
-        list
-      }
-    } = await Protocol.postBreathDatalistAll({
-      timeBegin: timeObj.frontTimestamp,
-      timeEnd: timeObj.endTimestamp
-    });
+      result: { dateTiem: list }
+    } = await Protocol.postBreathDatalist();
     if (list && list.length) {
       this.setData({
         trendDate: getTimeString({

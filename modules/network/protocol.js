@@ -130,6 +130,11 @@ export default class Protocol {
     static getTaskInfo() {
         return Network.request({url: 'index/taskInfo'})
     }
+    //获取首页banner
+    static getBannerList() {
+        return Network.request({url: 'index/bannerList'})
+    }
+
     //方案完成荣誉报告
     static postPlanFinish({planId,sharedId}) {
         return Network.request({url: 'members/plan/finishInfo',data: {planId,sharedId}})
@@ -144,10 +149,6 @@ export default class Protocol {
 
     static postSettingsLosefatSchema() {
         return Network.request({url: 'settings/losefatSchema'})
-    }
-
-    static postBreathDatalistAll(data) {
-        return Network.request({url: 'breathData/listAll', data});
     }
 
     static postBreathDatalist() {
