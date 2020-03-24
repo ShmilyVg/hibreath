@@ -156,26 +156,22 @@
     </view>
   </view>
 </view>
-<!--燃脂&体重情况弹窗-->
-<fat-window wx:if="{{showWindows}}"
-            bind:closeWindow="closeWindow"
-            bind:weightGoal="weightGoal"
-            modalList="{{taskInfo.modalList}}">
 
-</fat-window>
 <!--非首次打卡完成toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" integral="{{integral}}" inTaskProgress="{{inTaskProgress}}" integralTaskTitle="{{integralTaskTitle}}">
 </my-toast>
-<!--首次打卡完成激励弹窗-->
+<!--首次打卡完成激励弹窗
 <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
-</exciting-window>
+</exciting-window>-->
 
 
 <!--体重底部弹窗-->
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-    <view class="weight-title"> <view bindtap="hideModal">取消</view> 请输入当前体重</view>
+    <view class="weight-title"> <view style="margin-left: 65rpx;margin-right: 143rpx" bindtap="hideModal">取消</view> 请输入当前体重</view>
+    <view class="weight-text1" style="margin: 36rpx 0rpx 20rpx 0rpx">-我们建议您-</view>
+    <view class="weight-text1">以<text class="weight-text2">每天同一时间的体重结果</text>作为减脂计划的重要参考</view>
     <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <!-- <view class="page2-line"></view> -->
     <view class="unit">KG</view>

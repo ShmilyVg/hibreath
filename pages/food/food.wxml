@@ -17,7 +17,7 @@
       <view class="food-chart-title-date">{{dataTrendTime}}</view>
       <image class="food-chart-title-img" src="../../images/arr-right.png"></image>
     </view>
-    <view class="canvas" style="margin-top: 0;">
+    <view class="canvas" style="margin-top: 0;display: {{showCanvas}}">
       <canvas canvas-id="lineCanvas" class="canvas" style="height: {{canvasShow?'380rpx':'0'}};" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
     <view class="bottom-view" wx:if="{{dataList.length}}">
@@ -49,8 +49,8 @@
 <fat-window wx:if="{{showWindows}}"
             bind:closeWindow="closeWindow"
             bind:weightGoal="weightGoal"
-            modalList="{{taskInfo.modalList}}">
-
+            modalList="{{taskInfo.modalList}}"
+            nowDataValue="{{taskInfo.weightTask.dataValue}}">
 </fat-window>
 <!--
 <taskFinish

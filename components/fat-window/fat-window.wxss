@@ -118,7 +118,7 @@
     top: -75rpx;
     width:150rpx;
     height:150rpx;
-    padding-top: 45rpx;
+    padding-top: 52rpx;
     background-size: 100% 100%;
 }
 .goalFinish-fatLast{
@@ -179,7 +179,7 @@
 .goalFinish-view-bottom{
     margin: 0 auto;
     width: 560rpx;
-    height: 536rpx;
+    height: 416rpx;
     background-size: 100% 100%;
     text-align: center;
     position: relative;
@@ -221,7 +221,7 @@
     background:rgba(255,255,255,1);
     border-radius:45px;
     line-height: 90rpx;
-    margin: 10rpx auto 0rpx auto;
+    margin: 30rpx auto 0rpx auto;
     text-align: center;
     font-size:28rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;

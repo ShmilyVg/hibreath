@@ -9,16 +9,7 @@ import Protocol from "../../modules/network/protocol";
 import IndexCommonManager from "./view/indexCommon";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
-import UserInfo from "../../modules/network/userInfo";
-
 import ConnectionManager from "./view/connection-manager";
-import { oneDigit } from "../food/manager";
-import { ConnectState } from "../../modules/bluetooth/bluetooth-state";
-import { showActionSheet } from "../../view/view";
-import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
-import { UploadUrl } from "../../utils/config";
-const ImageSource = require('../../utils/ImageSource.js');
-const ImageLoader = require('../../utils/ImageLoader.js')
 const app = getApp();
 var mta = require('../../utils//mta_analysis.js')
 Page({
@@ -289,59 +280,21 @@ Page({
       breathSign: result
     })
   },
-  //图片预加载列表
-  imgListArr(){
-    var that = this;
-    for(var i=0;i<that.data.taskInfo.modalList.length;i++){
-      if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
-        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
-        let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
-        that.data.needImgList.push(imageListfinUrl)
-      }
-      if(that.data.taskInfo.modalList[i].modalType == 'fatForward' || that.data.taskInfo.modalList[i].modalType == 'fatBackward'){
-        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
-        let imageListfinUrl = "fatWindows/fat-type"+Num+'.png'
-        that.data.needImgList.push(imageListfinUrl)
-      }
-      if(that.data.taskInfo.modalList[i].modalType == 'fatHard'){
-        that.data.needImgList.push('fatWindows/fat-type1no.png')
-      }
-    }
-    that.data.needImgList =[...new Set([... that.data.needImgList])]
-    var loader=new ImageLoader({
-      base: ImageSource.BASE ,
-      source: this.data.needImgList,
-      loaded: res => {
-        setTimeout(()=>{
-          this.setData({
-            showWindows:true
-          })
-        },300)
-      }
-    });
-  },
+
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
     this.setData({
       taskInfo: result
     })
-    if(this.data.taskInfo.modalList.length>0){
-      this.imgListArr()
 
-    }
     let imgUrlsLength = result.otherUsers.imgUrls.length;
     let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
     this.setData({
       burnReadyLeft
     })
   },
-  closeWindow(e){
-    console.log('rrrr',e)
-    this.setData({
-      showWindows:e.detail.showWindows
-    })
-  },
+
   weightGoal(){
     this.showModal()
   },
@@ -418,10 +371,11 @@ Page({
       this.showDialog("体重至多支持3位整数+1位小数");
       return;
     }
-    const { result: bodyIndexResult } = await Protocol.setBodyIndex({ weight: this.data.weight });
-    this.getTaskInfo();
+    await Protocol.setBodyIndex({ weight: this.data.weight });
     this.hideModal();
-    const { result: incentiveList } = await Protocol.postIncentive();
+    wx.showTabBar()
+    HiNavigator.navigateTofood();
+ /*   const { result: incentiveList } = await Protocol.postIncentive();
     if (incentiveList.taskInfo.bodyIndex && incentiveList.taskInfo.bodyIndex.todayFirst) {
       this.setData({
         showExcitation: true,
@@ -443,7 +397,7 @@ Page({
       this.setData({
         showMytoast: false,
       })
-    }, 3000)
+    }, 3000)*/
   },
   //体重弹框
   getShowExcitation(e) {
@@ -706,6 +660,7 @@ Page({
     this.animation = animation
     setTimeout(function () {
       that.fadeIn();//调用显示动画
+      wx.hideTabBar();
     }, 200)
   },
 
@@ -722,6 +677,7 @@ Page({
       that.setData({
         hideModal: true
       })
+      wx.showTabBar()
     }, 720)//先执行下滑动画，再隐藏模块
 
   },
