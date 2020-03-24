@@ -12,72 +12,48 @@
 </view>
 <view class="set-info" wx:if="{{finishedGuide}}">
   <view class="set-top-view">
-    <view class="set-info-top">天天燃脂有好礼</view>
-    <view class="tasks">
-      <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}" wx:key='executeOrder'>
-      <view class="replenish-tip" wx:if="{{item.executeOrder < breathSign.days && !item.isFinished}}">补</view>
-        <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished && !item.isCoupon}}"></image>
-        <image src="../../images/set-info/{{!item.isCoupon?'task':item.isTakeCoupon?'gift-open':'gift'}}.png" mode="aspectFill" wx:else></image>
-        <view>{{item.executeOrder}}天</view>
+    <view class="set-top">
+      <view class="set-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
+      <view class="set-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅</view>
+    </view>
+    <view class="weightAbout">
+      <view class="weight_item weigth">
+        <view class="weight_w">目标体重</view>
+        <view class="weight_num">{{taskInfo.weightGoal}}
+          <text>kg</text>
+        </view>
+      </view>
+      <view class="weight_item">
+        <view class="weight_w">累积减重</view>
+        <view class="weight_num">{{taskInfo.addUpWeightLoss}}
+          <text>kg</text>
+        </view>
       </view>
     </view>
-    <view animation="{{animationTop}}" class="clock-con">
-      <view class="clock-tip">
-        <view wx:if="{{breathSign.days == 1 && !breathSign.isFinished}}"></view>
-        <view class="clock-day" wx:else="{{breathSign.days}}">Day{{breathSign.days}}
-          <text>·{{breathSign.isFinished?'已打卡':'未完成'}}</text> </view>
-        <view class="clock-text">连续7日打卡，可领取
-          <text>3日代餐超值优惠券</text>，让燃脂不停歇</view>
-      </view>
-      <view class="clockBtn">
-        <view wx:if="{{!breathSign.isFinished}}" catchtap="fatTaskToFinish">
-          开始燃脂打卡
-          <image src="../../images/set-info/right-3.png" class="goNext"></image>
-        </view>
-        <button wx:elif="{{breathSign.isFinished && breathSign.replenish}}" open-type='share'>
-          补签得好礼
-          <image src="../../images/set-info/right-3.png" class="goNext"></image>
-        </button>
-        <view wx:elif="{{breathSign.days && !breathSign.replenish && !breathSign.isCoupon}}" catchtap="fatTaskToFinish">
-          继续燃脂打卡
-          <image src="../../images/set-info/right-3.png" class="goNext"></image>
-        </view>
-        <view class="replenish" catchtap="goToGetGift" wx:elif="{{breathSign.isFinished && breathSign.isCoupon&& !breathSign.replenish}}">
-          <image src="../../images/set-info/gift.png" class="gift"></image>
-          领取{{breathSign.days == 3?'首次':''}}大礼
-          <image src="../../images/set-info/goRight.png" class="goNext"></image>
-        </view>
-        <text class="clockBtnTip">使用燃脂精灵并上传燃脂数据即可签到成功</text>
-      </view>
+    <view class="manifesto" wx:if="{{taskInfo.flag}}">
+      <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
+      <text>{{taskInfo.flag}}</text>
+      <image src="../../images/set-info/edit.png" class="edit"></image>
+      <image src="../../images/set-info/yh.png" class="yhClass"></image>
+      <view class="line"></view>
     </view>
 
   </view>
-
   <view class="contain">
-    <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image>
-    <view class="contain-top">
-      <view class="contain-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
-      <view class="contain-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅</view>
-      <view class="burn-ready">
-        <block wx:for="{{taskInfo.otherUsers.imgUrls}}" wx:key='item'>
-          <image src="{{item}}" style="z-index:{{100-index}}"></image>
-        </block>
-        <text style="margin-left: {{burnReadyLeft}}rpx;">今日{{taskInfo.otherUsers.dayNum}}人·正在燃脂</text>
-      </view>
-      <!-- <view class="burn-about" wx:if="{{taskInfo.dayNum}}">
-        <view class="stage">{{taskInfo.stateDay}}
-          <text>· {{taskInfo.stateTitle}}</text> </view>
-        <view class="speed" wx:if="{{taskInfo.fatTask.dataValue}}">{{taskInfo.fatTask.dataValue}}
-          <text>· {{taskInfo.fatTask.dataDesc}}</text> </view>
-      </view> -->
-    </view>
-    <view class="puzzled" bindtap="goToAddLowfat">
-      <text class="puzzled-title">减脂过程中有困惑？</text>
-      <text class="puzzled-text">点击加入Slimple减脂群，在线营养师专业解答</text>
-      <image src="../../images/set-info/puzzled.png"></image>
+    <!-- <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image> -->
+    <view class="puzzled" data-url="{{banner.url}}" bindtap="goToTask">
+      <image src="{{banner.image}}"></image>
     </view>
     <view class="task-day">
-      <view class="task-day-title">今日任务</view>
+      <view class="task-day-top">
+        <view class="task-day-title">今日燃脂分析</view>
+        <view class="task-text">完成以下任务解锁营养师专业分析报告</view>
+        <view class="taskRes">
+          <image src="../../images/set-info/{{taskFinished?'open_c':'close_c'}}.png"></image>
+          <view>完成全部</view>
+          <view>任务解锁</view>
+        </view>
+      </view>
       <view class="task-card ">
         <view class="speed-now" bindtap="goToFatResultPage">
           <view class="item-tip">
@@ -85,12 +61,18 @@
           </view>
           <image src="../../images/set-info/speed-bg.png" class="item"></image>
           <view class="item-contain">
-            <view class="item-contain-tit">当前燃脂速度</view>
-            <view class="item-contain-tit-en">FAT BURNING SPEED</view>
-            <view class="item-contain-r" wx:if="{{taskInfo.fatTask.finished}}">{{taskInfo.fatTask.dataValue}}
-              <view> {{taskInfo.fatTask.dataDesc}}</view>
-            </view>
-            <view class="item-contain-n" wx:if="{{!taskInfo.fatTask.finished}}" catchtap="fatTaskToFinish">
+            <block wx:if="{{taskInfo.fatTask.finished}}">
+              <view class="item-contain-tit">当前燃脂速度</view>
+              <view class="item-contain-r">{{taskInfo.fatTask.dataValue}}
+                <view> {{taskInfo.fatTask.dataDesc}}</view>
+              </view>
+            </block>
+            <block wx:if="{{!taskInfo.fatTask.finished}}">
+              <view class="taskI-text1">使用燃脂精灵</view>
+              <view class="taskI-text1">随时监测燃脂状态</view>
+              <view class="taskI-text2">让减脂心里有数</view>
+            </block>
+            <view class="item-contain-n" catchtap="fatTaskToFinish">
               <view>吹一吹</view>
             </view>
           </view>
@@ -101,28 +83,32 @@
           </view>
           <image src="../../images/set-info/weight-bg.png" class="item"></image>
           <view class="item-contain">
-            <view class="item-contain-tit">当前体重(kg)</view>
-            <view class="item-contain-tit-en">MEASURE WEIGHT</view>
-            <view class="item-contain-r" wx:if="{{taskInfo.weightTask.finished}}">{{taskInfo.weightTask.dataValue}}
-              <view wx:if="{{taskInfo.weightTask.thanValue}}">
-                比上一次
-                <image src="../../images/set-info/{{taskInfo.weightTask.thanValue >0?'shareDown':'shareUp'}}.png"></image>
-                {{taskInfo.weightTask.thanValue}}
+            <block wx:if="{{taskInfo.weightTask.finished}}">
+              <view class="item-contain-tit">当前体重(kg)</view>
+              <view class="item-contain-r">{{taskInfo.weightTask.dataValue}}
+                <view wx:if="{{taskInfo.weightTask.thanValue}}">
+                  比上一次
+                  <image src="../../images/set-info/{{taskInfo.weightTask.thanValue >0?'shareDown':'shareUp'}}.png"></image>
+                  {{taskInfo.weightTask.thanValue}}
+                </view>
+                <view>kg</view>
               </view>
-              <view>kg</view>
-            </view>
-            <view class="item-contain-n" catchtap="showModal" wx:if="{{!taskInfo.weightTask.finished}}">
+            </block>
+
+            <block wx:if="{{!taskInfo.weightTask.finished}}">
+              <view class="taskI-text1">使用燃脂精灵</view>
+              <view class="taskI-text1">随时监测燃脂状态</view>
+              <view class="taskI-text2">让减脂心里有数</view>
+            </block>
+            <view class="item-contain-n" catchtap="showModal">
               <view class="item-contain-n-weight">量一量</view>
             </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="today-result" bindtap="goToLowFatReport">
-      <image src="../../images/set-info/today-result.png"></image>
-      <view class="today-result-tit">今日减脂效果如何？</view>
-      <view class="today-result-text" wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}">报告已解锁·点击查看</view>
-      <view class="today-result-text" wx:else>完成今日任务·解锁总结报告</view>
+    <view class="today-result" wx:if="{{banner1.url}}" data-url="{{banner1.url}}" bindtap="goToTask">
+      <image src="{{banner1.image}}"></image>
     </view>
     <view class="bigTruth">
       <view class="bigTruthTit">
@@ -157,10 +143,7 @@
   </view>
 </view>
 <!--燃脂&体重情况弹窗-->
-<fat-window wx:if="{{showWindows}}"
-            bind:closeWindow="closeWindow"
-            bind:weightGoal="weightGoal"
-            modalList="{{taskInfo.modalList}}">
+<fat-window wx:if="{{showWindows}}" bind:closeWindow="closeWindow" bind:weightGoal="weightGoal" modalList="{{taskInfo.modalList}}">
 
 </fat-window>
 <!--非首次打卡完成toast弹窗-->
@@ -175,7 +158,8 @@
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-    <view class="weight-title"> <view bindtap="hideModal">取消</view> 请输入当前体重</view>
+    <view class="weight-title">
+      <view bindtap="hideModal">取消</view> 请输入当前体重</view>
     <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <!-- <view class="page2-line"></view> -->
     <view class="unit">KG</view>
