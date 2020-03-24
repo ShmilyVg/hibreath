@@ -4,11 +4,14 @@
     <view class="getGift-top-title">Slimple天猫旗舰店专用福利</view>
     <image src="{{imgUrl}}" style="width: 310rpx;height: 310rpx;margin-top: 85rpx"></image>
     <view class="getGift-title">{{title}}</view>
+    <!--1:满减、2:抵用、3折扣-->
     <view class="getGift-yuan">
-        <view class="getGift-mj">满减</view>
-        满300元减100元
+        <view class="getGift-mj">{{typeName}}</view>
+        <view wx:if="{{type == 1}}">满{{fullAmount}}元减{{usedAmount}}元</view>
+        <view wx:if="{{type == 2}}">满{{fullAmount}}元抵{{usedAmount}}元</view>
+        <view wx:if="{{type == 3}}">满{{fullAmount}}元{{usedAmount}}折</view>
     </view>
-    <view class="getGift-time">有效期：2020.03.13-2020.04.12</view>
+    <view class="getGift-time">有效期：{{validStartTime}}-{{validEndTime}}</view>
     <view class="getGift-fetchCode">{{fetchCode}}</view>
     <view class="getGift-subTitle">{{subTitle}}</view>
     <view class="getGift-btn" bindtap="copyBtn">点击复制</view>

@@ -2,9 +2,9 @@
 <view wx:if="{{dataList.length}}" class="food">
   <view class="food-top">
     <view class="food-top-text1">最新体重</view>
-    <view class="food-top-text2">80.2
+    <view class="food-top-text2">{{dataList[0].dataValue}}
       <text>KG</text> </view>
-    <view class="food-top-text3">体重较昨日有所下降，但是整体趋势没有大的变动，还需要继续加油哦</view>
+   <!-- <view class="food-top-text3">体重较昨日有所下降，但是整体趋势没有大的变动，还需要继续加油哦</view>-->
     <bottom-dialog inputType="{{topChose[currentIndex].inputType}}" maxLength="{{topChose[currentIndex].maxLength}}" bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
       <view class="food-top-btn">
         <image class="food-top-btn-image" src="../../images/set-info/weight-tip1.png"></image>
@@ -45,7 +45,13 @@
 <!--toast弹窗-->
 <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}">
 </my-toast>
+<!--体重目标完成弹窗-->
+<fat-window wx:if="{{showWindows}}"
+            bind:closeWindow="closeWindow"
+            bind:weightGoal="weightGoal"
+            modalList="{{taskInfo.modalList}}">
 
+</fat-window>
 <!--
 <taskFinish
         wx:if="{{showTaskFinish}}"

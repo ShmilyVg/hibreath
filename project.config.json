@@ -354,10 +354,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 42,
 					"name": "pagesIndex/getGift/getGift",
 					"pathName": "pagesIndex/getGift/getGift",
-					"query": "",
+					"query": "couponId=1",
 					"scene": null
 				},
 				{
@@ -420,6 +420,7 @@
 					"id": -1,
 					"name": "pagesIndex/manifesto/manifesto",
 					"pathName": "pagesIndex/manifesto/manifesto",
+					"query": "",
 					"scene": null
 				}
 			]

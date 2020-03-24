@@ -25,8 +25,7 @@
             <view style="position: relative;top: -80rpx">
                 <view class="goalFinish-view-bottom-text">{{firstArr.ext.fatDesc}}</view>
                 <view class="fat-window-textContent">{{firstArr.textContent}}</view>
-                <view class="fatHard-view-bottom-btn" bindtap="toGift" style="margin-top: 50rpx">巩固不反弹</view>
-                <view class="fatHard-view-bottom-btn" bindtap="toGoal">挑战新的目标</view>
+                <view class="fatHard-view-bottom-btn" bindtap="toGift">秀出我的好身材——></view>
             </view>
 
         </view>
