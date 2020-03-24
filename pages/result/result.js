@@ -185,7 +185,13 @@ Page({
     wx.stopPullDownRefresh();
     Toast.hiddenLoading();
   },
-
+  //获取任务信息
+  async getTaskInfo() {
+    const { result } = await Protocol.getTaskInfo();
+    this.setData({
+      taskInfo: result
+    })
+  },
   toBind() {
     HiNavigator.navigateToDeviceUnbind();
   },
@@ -320,6 +326,7 @@ Page({
       getApp().globalData.trendTime = null;
     }
     this.cellDataHandle({});
+    this.getTaskInfo()
   },
 
   onReady() {
@@ -415,6 +422,7 @@ Page({
                       console.log('绘制一次')
                       Circular.run();
                     }, 500)
+                    this.getTaskInfo()
                   })
                 }
               })

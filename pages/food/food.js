@@ -192,15 +192,8 @@ Page({
       });
     }else{
       this.setData({
-        showMytoast:true,
-        toastType:'weight',
         showCanvas:"block"
       })
-      setTimeout(()=>{
-        this.setData({
-          showMytoast:false,
-        })
-      },1000)
     }
 
   },
@@ -373,6 +366,16 @@ Page({
     await Protocol.postWeightDataAdd({weight:this.data.weight});
     this.hideModal();
     await this.handleListData({ isRefresh: true });
+    this.setData({
+      showMytoast:true,
+      toastType:'weight',
+      showCanvas:"block"
+    })
+    setTimeout(()=>{
+      this.setData({
+        showMytoast:false,
+      })
+    },1000)
     this.getTaskInfo()
   },
 
@@ -399,19 +402,7 @@ Page({
                 const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
                 Protocol.postDeleteWeightData({ id: this.data.id }).then(()=>{
                   this.handleListData({ isRefresh: true });
-                })
-
-              } else if (this.data.currentIndex == 1) {
-                this.data.id = e.currentTarget.dataset.index;
-                const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
-                Protocol.postDeleteBloodPressureData({ id: this.data.id }).then(() => {
-                  this.handleListData({ isRefresh: true });
-                })
-              } else {
-                this.data.id = e.currentTarget.dataset.index;
-                const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
-                Protocol.postDeleteHeartData({ id: this.data.id }).then(() => {
-                  this.handleListData({ isRefresh: true });
+                  this.getTaskInfo()
                 })
               }
             },
