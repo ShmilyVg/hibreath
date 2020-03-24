@@ -7,12 +7,13 @@ Page({
     activeDay:[],
     animation:{},
     status: {
-      '即将燃脂': ['#D0E5CC', '#D0E5CC', '#5D6AED'],
-      '低速燃脂': ['#D0E5CC', '#009DFF', '#009DFF'],
-      '状态极佳': ['#0AC1A1', '#0AC1A1', '#0AC1A1'],
-      '过度燃脂': ['#FF6100', '#FF6100', '#FF6100'],
-      '快速燃脂': ['#FFAD00', '#FFAD00', '#FFAD00'],
+      '即将燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#D0E5CC', '#5D6AED'],
+      '低速燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#009DFF', '#009DFF'],
+      '状态极佳': ['#D0E5CC', '#D0E5CC', '#0AC1A1', '#0AC1A1', '#0AC1A1'],
+      '快速燃脂': ['#D0E5CC', '#FFAD00', '#FFAD00', '#FFAD00', '#FFAD00'],
+      '过度燃脂': ['#FF6100', '#FF6100', '#FF6100', '#FF6100', '#FF6100'],
     },
+    listObj:{}
   },
   onLoad: function (options) {
     this.getBreathData();
@@ -29,30 +30,47 @@ Page({
     }catch(error){}
     wx.stopPullDownRefresh();
   },
-  showDayData(e){
-    let item = e.currentTarget.dataset.item;
+  async showDayData(e){
+    let day = e.currentTarget.dataset.item;
+    let item = await this.getDayData(day);
+    let listObj = this.data.listObj;
+    listObj[day] = item
+    this.setData({
+      listObj
+    })
+    console.log(this.data.listObj)
     let height = item.length * 160
     var dayItem = item[0].day;
     let activeDay = this.data.activeDay;
     let animation = item[0].animationName
     let index = activeDay.indexOf(dayItem)
+    console.log(animation)
     if (index > -1){
       activeDay.splice(index,1)
       this.topFadeIn(animation)
     }else{
       activeDay.push(dayItem)
       this.topFadeDown(animation, height)
-      
     }
+    
     this.setData({
       activeDay: activeDay
     })
   },
   async getBreathData() {
-    let { result: { list } } = await Protocol.postBreathDatalistAll();
-    let trendData = [], dates = [];
-    for(let item of list){
-
+    let { result: { dateTime } } = await Protocol.postBreathDatalist();
+    this.setData({
+      trendData: dateTime
+    })
+    return true;
+  },
+  async getDayData(day){
+    let postData = {
+      dateTime:day
+    }
+    let { result: { dataList } } = await Protocol.postBreathDateTimeItem(postData);
+    let newDataList =[];
+    for (let item of dataList) {
       let image = '../../images/result/cell';
       const dValue = item.dataValue;
       if (dValue >= 0 && dValue <= 2) {
@@ -67,23 +85,14 @@ Page({
         image = image + '5.png';
       }
       item.image = image;
-      let day = tools.dateFormat(item.createdTimestamp);
+      let day = tools.dateFormat(item.createdTimestamp,'YYYY-MM-DD');
       item.day = day;
       item.tip = tools.dateFormat(item.createdTimestamp, 'YYYYMMDD');
-      item.animationName = 'animation.'+tools.dateFormat(item.createdTimestamp, 'YYYYMMDD');
-      item.date = tools.dateFormat(item.createdTimestamp,'YYYY/MM/DD HH:mm');
-      let index = dates.indexOf(day)
-      if (index >-1){
-        trendData[index].push(item)
-      }else{
-        dates.push(day);
-        trendData.push([item])
-      }
+      item.animationName = 'animation.' + tools.dateFormat(item.createdTimestamp, 'YYYY-MM-DD');
+      item.date = tools.dateFormat(item.createdTimestamp, 'YYYY/MM/DD HH:mm');
+      newDataList.push(item);
     }
-    this.setData({
-      trendData: trendData
-    })
-    return true;
+    return newDataList
   },
   topFadeIn(animationName) {
     var that = this;
@@ -96,7 +105,6 @@ Page({
     that.setData({
       [animationName]: that.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
     })
-    console.log(this.data[animationName])
   },
   topFadeDown(animationName,height) {
     var that = this;
