@@ -375,29 +375,6 @@ Page({
     this.hideModal();
     wx.showTabBar()
     HiNavigator.navigateTofood();
- /*   const { result: incentiveList } = await Protocol.postIncentive();
-    if (incentiveList.taskInfo.bodyIndex && incentiveList.taskInfo.bodyIndex.todayFirst) {
-      this.setData({
-        showExcitation: true,
-        toastType: "weight",
-        toastResult: incentiveList
-      });
-    }
-    this.setData({
-      ...bodyIndexResult,
-      showMytoast: true,
-      toastType: "weight"
-    })
-    if (wx.pageScrollTo) {
-      wx.pageScrollTo({
-        scrollTop: 0
-      })
-    }
-    setTimeout(() => {
-      this.setData({
-        showMytoast: false,
-      })
-    }, 3000)*/
   },
   //体重弹框
   getShowExcitation(e) {

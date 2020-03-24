@@ -3,14 +3,25 @@
   <view class="food-top">
     <view class="food-top-text1">最新体重</view>
     <view class="food-top-text2">{{dataList[0].dataValue}}
-      <text>KG</text> </view>
+      <text class="food-top-text2-kg">KG</text> </view>
    <!-- <view class="food-top-text3">体重较昨日有所下降，但是整体趋势没有大的变动，还需要继续加油哦</view>-->
-    <bottom-dialog inputType="{{topChose[currentIndex].inputType}}" maxLength="{{topChose[currentIndex].maxLength}}" bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
+ <!--   <bottom-dialog inputType="{{topChose[currentIndex].inputType}}" maxLength="{{topChose[currentIndex].maxLength}}" bind:onSubmitEvent="onSubmitEvent" bind:onShowEvent="onDialogShowEvent" list="{{topChose[currentIndex].addProjectList}}">
       <view class="food-top-btn">
         <image class="food-top-btn-image" src="../../images/set-info/weight-tip1.png"></image>
         <text class="food-top-btn-text">{{topChose[currentIndex].addText}}</text>
       </view>
-    </bottom-dialog>
+    </bottom-dialog>-->
+
+    <view class="food-top-btn" bindtap="showModal" wx:if="{{!taskInfo.weightTask.finished}}">
+      <image class="food-top-btn-image" src="../../images/set-info/weight-tip1.png"></image>
+      <text class="food-top-btn-text">记体重</text>
+    </view>
+    <view class="food-top-btn" bindtap="toIndex" wx:if="{{taskInfo.weightTask.finished && !taskInfo.fatTask.finished}}">
+      <text class="food-top-btn-text">完善健康报告</text>
+    </view>
+    <view class="food-top-btn" bindtap="toReport" wx:if="{{taskInfo.weightTask.finished && taskInfo.fatTask.finished}}">
+      <text class="food-top-btn-text">查看健康报告</text>
+    </view>
   </view>
   <view class="food-contain">
     <view class="food-chart-title" bindtap="toCalendarPage">
@@ -52,6 +63,20 @@
             modalList="{{taskInfo.modalList}}"
             nowDataValue="{{taskInfo.weightTask.dataValue}}">
 </fat-window>
+
+<!--体重底部弹窗-->
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+  <view class="modals-cancel" bindtap="hideModal"></view>
+  <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+    <view class="weight-title"> <view style="margin-left: 65rpx;margin-right: 143rpx" bindtap="hideModal">取消</view> 请输入当前体重</view>
+    <view class="weight-text1" style="margin: 36rpx 0rpx 20rpx 0rpx">-我们建议您-</view>
+    <view class="weight-text1">以<text class="weight-text2">每天同一时间的体重结果</text>作为减脂计划的重要参考</view>
+    <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
+    <!-- <view class="page2-line"></view> -->
+    <view class="unit">KG</view>
+    <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
+  </view>
+</view>
 <!--
 <taskFinish
         wx:if="{{showTaskFinish}}"

@@ -4,7 +4,7 @@ import Protocol from "../../modules/network/protocol";
 import * as Tools from "../../utils/tools";
 import { getEndZeroTimestamp, getFrontZeroTimestamp, getLatestOneWeekTimestamp, getTimeString } from "../../utils/time";
 import HiNavigator from "../../navigator/hi-navigator";
-import { Toast, WXDialog } from "heheda-common-view";
+import {Toast as toast, Toast, WXDialog} from "heheda-common-view";
 import { dealInputEvent } from "./manager";
 import { previewImage, showActionSheet } from "../../view/view";
 const ImageSource = require('../../utils/ImageSource.js');
@@ -83,7 +83,8 @@ Page({
     needImgList:['fatWindows/flash1.png','fatWindows/flash2.png'],
     weightFinish:false,
     fatFinish:false,
-    showCanvas:"block"
+    showCanvas:"block",
+    hideModal: true,
   },
 
   onLoad(e) {
@@ -111,6 +112,28 @@ Page({
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });
+  },
+  //完善分析报告弹窗
+  toIndex(){
+    wx.showModal({
+      title: '完善分析报告',
+      content: '需要您使用燃脂精灵\n' +
+        '了解当前具体的燃脂情况',
+      confirmText:'前往',
+      confirmColor:'#4FBB49',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          HiNavigator.navigateIndex();
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  //查看分析报告
+  toReport(){
+
   },
   updateTrendTime({ frontTimestamp, endTimestamp }) {
     // const {timeObj} = this.data;
@@ -169,9 +192,15 @@ Page({
       });
     }else{
       this.setData({
-        showWindows:false,
+        showMytoast:true,
+        toastType:'weight',
         showCanvas:"block"
       })
+      setTimeout(()=>{
+        this.setData({
+          showMytoast:false,
+        })
+      },1000)
     }
 
   },
@@ -308,77 +337,45 @@ Page({
       });
     }
   },
-  onDialogShowEvent(e) {
-    console.log('333',e);
-    this.setData({
-      canvasShow: !e.detail.show
-    })
-  },
-  async onSubmitEvent(e) {
-    console.log(e);
+  //修改体重
+  weightGoalChange(e) {
+    let weight = e.detail.value;
 
-    const { currentIndex } = this.data, { detail: { inputType, value } } = e;
-    let failed = false;
-    for (let key in value) {
-      if (value.hasOwnProperty(key)) {
-        if (!parseInt(value[key])) {
-          failed = true;
-        }
-      }
+    let str = (weight + '').split('.')[1];
+
+    if (str && str.length > 1) {
+      toast.warn('只能一位小数')
+      weight = Number(weight).toFixed(1);
     }
-    if (!failed) {
-      try {
-        switch (currentIndex) {
-          case 0:
-            const { value: finalValue } = await dealInputEvent({ value, inputType });
-            await Protocol.postWeightDataAdd(finalValue);
-              this.setData({
-                  showMytoast:true,
-                  toastType:'weight'
-              })
-              setTimeout(()=>{
-                  this.setData({
-                      showMytoast:false,
-                  })
-              },1000)
-            break;
-          case 1:
-            await Protocol.postBloodPressureDataAdd(value);
-              this.setData({
-                  showMytoast:true,
-                  toastType:'blood'
-              })
-              setTimeout(()=>{
-                  this.setData({
-                      showMytoast:false,
-                  })
-              },3000)
-            break;
-          case 2:
-            await Protocol.postHeartDataAdd(value);
-              this.setData({
-                  showMytoast:true,
-                  toastType:'heart'
-              })
-              setTimeout(()=>{
-                  this.setData({
-                      showMytoast:false,
-                  })
-              },3000)
-            break;
-          default:
-            break;
-        }
-        await this.handleListData({ isRefresh: true });
-      } catch (e) {
-        console.error(e);
-        WXDialog.showDialog({ content: e.errMsg });
-      }
-    } else {
-      Toast.warn('请填写完整信息');
+    this.setData({
+      weight: weight
+    })
+    console.log('weight',this.data.weight)
+  },
+  objIsEmpty(obj) {
+    return typeof obj === "undefined" || obj === "" || obj === null;
+  },
+  //保存体重
+  async saveWeight() {
+    if (this.objIsEmpty(this.data.weight)) {
+      toast.warn("请填写体重");
+      return;
     }
+    const weightnum = this.data.weight.split(".");
+    if (weightnum.length > 1 && weightnum[1] >= 10) {
+      this.showDialog("体重至多支持3位整数+1位小数");
+      return;
+    }
+    if (weightnum[0] >= 1000) {
+      this.showDialog("体重至多支持3位整数+1位小数");
+      return;
+    }
+    await Protocol.postWeightDataAdd({weight:this.data.weight});
+    this.hideModal();
+    await this.handleListData({ isRefresh: true });
     this.getTaskInfo()
   },
+
   choseItem() {
     return this.data.currentIndex;
   },
@@ -434,6 +431,80 @@ Page({
       path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.sharedId,
       imageUrl:'https://backend'
     };
-  }
+  },
+  // 显示遮罩层
+  showModal: function () {
+    var that = this;
+    that.setData({
+      weight: '',
+      hideModal: false
+    })
+    var animation = wx.createAnimation({
+      duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    setTimeout(function () {
+      that.fadeIn();//调用显示动画
+    }, 200)
+  },
 
+  // 隐藏遮罩层
+  hideModal: function () {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 800,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.fadeDown();//调用隐藏动画
+    setTimeout(function () {
+      that.setData({
+        hideModal: true
+      })
+      wx.showTabBar()
+    }, 720)//先执行下滑动画，再隐藏模块
+
+  },
+  //动画集
+  fadeIn: function () {
+    this.animation.translateY(0).step()
+    this.setData({
+      animationData: this.animation.export()
+    })
+  },
+  fadeDown: function () {
+    this.animation.translateY(300).step()
+    this.setData({
+      animationData: this.animation.export(),
+    })
+  },
+  topFadeIn() {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.animation.height(0).step()
+    that.setData({
+      animationTop: that.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
+    })
+  },
+  topFadeDown() {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    let height = '310rpx'
+    if (this.data.breathSign.days == 1 && !this.data.breathSign.isFinished){
+      height = '240rpx'
+    }
+    that.animation.height(height).step()
+    that.setData({
+      animationTop: that.animation.export(),
+    })
+  }
 });
