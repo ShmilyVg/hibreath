@@ -9,23 +9,23 @@
             <image bindtap="closeW" class="goalFinish-window-close" src="../../images/indexWindow/close.png"></image>
         </view>
         <view class="goalFinish-view">
-            <view class="fat-window-subTitle" style="margin-bottom: 32rpx">{{firstArr.subTitle}}</view>
+            <view class="fat-window-subTitle" style="margin-bottom: 32rpx">{{firstArr.title}}</view>
             <view style="display: flex;align-items: center;justify-content: center">
                 <view class="goalFinish-bg">
-                    <view class="goalFinish-bg-num">{{firstArr.ext.weightGoal}}</view>
+                    <view class="goalFinish-bg-num">{{nowDataValue}}</view>
                     <view class="goalFinish-bg-kg">kg</view>
                 </view>
             </view>
         </view>
-        <view class="goalFinish-view-bottom" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fin-type{{firstArr.ext.fatLevel+1}}.png')">
-            <view class="goalFinish-view-bottom-C" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fin-c{{firstArr.ext.fatLevel+1}}.png')">
+        <view class="goalFinish-view-bottom" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fat-type{{firstArr.ext.fatLevel+1}}.png')">
+            <view class="goalFinish-view-bottom-C" wx:if="{{firstArr.ext}}" style="background-image: url('http://img.hipee.cn/hibreath/fatWindows/fin-c{{firstArr.ext.fatLevel+1}}.png')">
                 <view class="goalFinish-fatLast">{{firstArr.ext.fatValue}}</view>
                 <view class="goalFinish-ppm">ppm</view>
             </view>
-            <view style="position: relative;top: -80rpx">
+            <view style="position: relative;top: {{firstArr.ext?'-80rpx':'40rpx'}}">
                 <view class="goalFinish-view-bottom-text">{{firstArr.ext.fatDesc}}</view>
                 <view class="fat-window-textContent">{{firstArr.textContent}}</view>
-                <view class="fatHard-view-bottom-btn" bindtap="toGift">秀出我的好身材——></view>
+                <button class="fatHard-view-bottom-btn" open-type='share' bindtap="toGift">秀出我的好身材<image style="width: 40rpx;height: 33rpx;margin-left: 20rpx" src="../../images/jt/jtR.png"></image></button>
             </view>
 
         </view>

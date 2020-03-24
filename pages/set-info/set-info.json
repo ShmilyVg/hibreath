@@ -4,9 +4,6 @@
   "enablePullDownRefresh": true,
   "backgroundColor": "#ffffff",
   "usingComponents": {
-    "my-toast": "../../components/my-toast/my-toast",
-    "fat-window":"../../components/fat-window/fat-window",
-    "weight-window":"../../components/weight-window/weight-window"
-
+    "my-toast": "../../components/my-toast/my-toast"
   }
 }

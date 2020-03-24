@@ -80,9 +80,10 @@ Page({
     canvasShow: true,
     dataTrendTime: '',
     showTaskFinish:true,
-    imgList:[],
+    needImgList:['fatWindows/flash1.png','fatWindows/flash2.png'],
     weightFinish:false,
-    fatFinish:false
+    fatFinish:false,
+    showCanvas:"block"
   },
 
   onLoad(e) {
@@ -91,40 +92,8 @@ Page({
       weightFinish:JSON.parse(e.weightFinish),
       fatFinish:JSON.parse(e.fatFinish)
     })
-    console.log(e)
-    if(this.data.weightFinish || this.data.fatFinish){
-      if(wx.getStorageSync('showTaskFinish') || wx.getStorageSync('showTaskFinish') == '' || wx.getStorageSync('showTaskFinish') == undefined) {
-        this.needImgList()
-      }
-    } else{
-      this.setData({
-        showTaskFinish:false
-      })
-    }
-  },
-  needImgList(){
-    if(this.data.weightFinish&& !this.data.fatFinish){
-      this.data.imgList.push('fatWindows/weight.png','fatWindows/fatS-icon.png','fatWindows/gifBg.png')
-    }
-    if(!this.data.weightFinish&& this.data.fatFinish){
-      this.data.imgList.push('fatWindows/weightS.png','fatWindows/fat-icon.png','fatWindows/gifBg.png')
-    }
-    if(this.data.weightFinish && this.data.fatFinish){
-      this.data.imgList.push('fatWindows/weightS.png','fatWindows/fatS-icon.png','fatWindows/gifBg.gif')
-    }
-    var loader=new ImageLoader({
-      base: ImageSource.BASE ,
-      source: this.data.imgList,
-      loaded: res => {
-        setTimeout(()=>{
-          this.setData({
-            showTaskFinish:true
-          })
-        },300)
-      }
-    });
-  },
 
+  },
   async onReady() {
     Trend.initTouchHandler();
     let {result} = await Protocol.postWeightDataListAll();
@@ -134,13 +103,11 @@ Page({
 
   onShow() {
     const { trendTime } = getApp().globalData;
-
     if (trendTime) {
       const { startTimeValue: frontTimestamp, endTimeValue: endTimestamp } = trendTime;
       this.updateTrendTime({ frontTimestamp, endTimestamp });
-
     }
-
+    this.getTaskInfo()
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });
@@ -161,7 +128,53 @@ Page({
      /* timeObj.frontTimestamp = 0;
       timeObj.endTimestamp = Date.now();*/
   },
+  //关闭弹窗
+  closeWindow(e){
+    console.log('rrrr',e)
+    this.setData({
+      showWindows:e.detail.showWindows,
+      showCanvas:"block"
+    })
+  },
+  //获取任务信息
+  async getTaskInfo() {
+    const { result } = await Protocol.getTaskInfo();
+    this.setData({
+      taskInfo: result
+    })
+    var that = this;
+    if(that.data.taskInfo.modalList.length>0){
+      this.setData({
+        showCanvas:"none"
+      })
+      for(var i=0;i<that.data.taskInfo.modalList.length;i++){
+        if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
+          let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
+          let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
+          that.data.needImgList.push(imageListfinUrl)
+        }
+      }
+      that.data.needImgList =[...new Set([... that.data.needImgList])]
+      console.log('needImgList',that.data.needImgList)
+      var loader=new ImageLoader({
+        base: ImageSource.BASE ,
+        source: this.data.needImgList,
+        loaded: res => {
+          setTimeout(()=>{
+            this.setData({
+              showWindows:true
+            })
+          },300)
+        }
+      });
+    }else{
+      this.setData({
+        showWindows:false,
+        showCanvas:"block"
+      })
+    }
 
+  },
   async handleListData({ isRefresh = false } = {}) {
     const { currentIndex, topChose } = this.data,
       list = [];
@@ -327,7 +340,7 @@ Page({
                   this.setData({
                       showMytoast:false,
                   })
-              },3000)
+              },1000)
             break;
           case 1:
             await Protocol.postBloodPressureDataAdd(value);
@@ -364,7 +377,7 @@ Page({
     } else {
       Toast.warn('请填写完整信息');
     }
-
+    this.getTaskInfo()
   },
   choseItem() {
     return this.data.currentIndex;
@@ -414,6 +427,13 @@ Page({
     } catch (e) {
       console.warn(e);
     }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '邀请你加入[',
+      path: '/pages/shareAddcommunity/shareAddcommunity?sharedId=' + this.data.sharedId,
+      imageUrl:'https://backend'
+    };
   }
 
 });

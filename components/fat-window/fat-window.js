@@ -10,15 +10,20 @@ Component({
     modalList: {
       type: Array,
       value: [],
-    }
+    },
+    nowDataValue: {
+      type: Number,
+      value: 0
+    },
   },
   lifetimes: {
      created() {
 
     },
     attached() {
+       console.log('nowDataValue',this.data.nowDataValue)
       this.setData({
-        firstArr:this.data.modalList[0]
+        firstArr:this.data.modalList[0],
       })
       this.triangleNumF()
     }
@@ -54,7 +59,7 @@ Component({
         })
       }
     },
-    toGift(){
+    toShare(){
       HiNavigator.navigateToGetGift();
       this.triggerEvent("closeWindow", {showWindows:false})
     },
@@ -80,6 +85,6 @@ Component({
           })
         }
       }, 200)
-    }
+    },
   }
 })

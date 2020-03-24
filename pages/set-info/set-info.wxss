@@ -578,8 +578,9 @@ view{
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 30rpx;
-  height: 700rpx;
+  box-sizing: border-box;
+  padding: 30rpx0 0rpx 0rpx 0rpx;
+  height: 778rpx;
   background-color: #fff;
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;
@@ -601,7 +602,23 @@ view{
 }
 .weight-title{
   color: #333333;
+  display: flex;
   font-size: 32rpx;
+  height: 123rpx;
+  line-height: 123rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.weight-text1{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(68,68,68,1);
+}
+.weight-text2{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#4FBB49;
 }
 .weight-title view{
   float: left;
@@ -609,7 +626,7 @@ view{
   font-size: 30rpx;
 }
 .weightInput {
-  margin: 120rpx auto 0;
+  margin: 54rpx auto 0;
   height: 120rpx;
   width: 300rpx;
   background: #ECF8EB;
@@ -642,7 +659,7 @@ view{
   line-height: 100rpx;
   color: #fff;
   border-radius: 50rpx; 
-  margin: 100rpx auto 0;
+  margin: 75rpx auto 0;
 }
 
 
