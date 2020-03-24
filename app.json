@@ -27,7 +27,8 @@
     "pages/recomTar/recomTar",
     "pages/lowFatReport/lowFatReport",
     "pages/groupNumber/groupNumber",
-    "pages/sharedGuidance/sharedGuidance"
+    "pages/sharedGuidance/sharedGuidance",
+    "components/weight-dialog/weight-dialog"
   ],
   "subpackages": [
     {
@@ -82,14 +83,16 @@
     "backgroundTextStyle": "dark",
     "navigationBarTitleText": "Slimple轻松派"
   },
-  "navigateToMiniProgramAppIdList": ["wxe5f52902cf4de896"],
+  "navigateToMiniProgramAppIdList": [
+    "wxe5f52902cf4de896"
+  ],
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#BBBCCD",
     "selectedColor": "#5a5a5b",
     "backgroundColor": "#fff",
     "list": [
-       {
+      {
         "pagePath": "pages/set-info/set-info",
         "text": "打卡",
         "iconPath": "images/tabBar/clock.png",

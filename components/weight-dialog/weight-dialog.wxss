@@ -1,0 +1,113 @@
+/* components/weight-dialog/weight-dialog.wxss */
+
+
+/*模态框*/
+
+.modals {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modals-cancel {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bottom-dialog-body {
+  position: absolute;
+  z-index: 10001;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 30rpx0 0rpx 0rpx 0rpx;
+  height: 778rpx;
+  background-color: #fff;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  text-align: center;
+}
+
+/*动画前初始位置*/
+
+.bottom-pos {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+.placeholder {
+  font-size: 46rpx;
+  font-family: PingFang-SC;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+.weight-title{
+  color: #333333;
+  display: flex;
+  font-size: 32rpx;
+  height: 123rpx;
+  line-height: 123rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.weight-text1{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(68,68,68,1);
+}
+.weight-text2{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:#4FBB49;
+}
+.weight-title view{
+  float: left;
+  color: #999999;
+  font-size: 30rpx;
+}
+.weightInput {
+  margin: 54rpx auto 0;
+  height: 120rpx;
+  width: 300rpx;
+  background: #ECF8EB;
+  border-radius: 20rpx;
+  font-size: 100rpx;
+  font-weight: bold;
+  color: #4FBB49;
+  font-family: DINCondensed-Bold;
+}
+
+.page2-line {
+  width: 154rpx;
+  height: 2rpx;
+  background-color: #7BC877;
+  margin: 20rpx auto;
+}
+
+.unit {
+  margin-top: 37rpx;
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #444444;
+  font-family: DINCondensed-Bold;
+}
+
+.weightBtn{
+  background: #7BC877;
+  width:500rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  border-radius: 50rpx; 
+  margin: 75rpx auto 0;
+}

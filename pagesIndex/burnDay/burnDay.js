@@ -38,13 +38,11 @@ Page({
     this.setData({
       listObj
     })
-    console.log(this.data.listObj)
     let height = item.length * 160
     var dayItem = item[0].day;
     let activeDay = this.data.activeDay;
     let animation = item[0].animationName
     let index = activeDay.indexOf(dayItem)
-    console.log(animation)
     if (index > -1){
       activeDay.splice(index,1)
       this.topFadeIn(animation)
@@ -52,7 +50,6 @@ Page({
       activeDay.push(dayItem)
       this.topFadeDown(animation, height)
     }
-    
     this.setData({
       activeDay: activeDay
     })
@@ -85,16 +82,17 @@ Page({
         image = image + '5.png';
       }
       item.image = image;
-      let day = tools.dateFormat(item.createdTimestamp,'YYYY-MM-DD');
+      let day = tools.dateFormat(item.time*1000,'YYYY-MM-DD');
       item.day = day;
-      item.tip = tools.dateFormat(item.createdTimestamp, 'YYYYMMDD');
-      item.animationName = 'animation.' + tools.dateFormat(item.createdTimestamp, 'YYYY-MM-DD');
-      item.date = tools.dateFormat(item.createdTimestamp, 'YYYY/MM/DD HH:mm');
+      item.tip = tools.dateFormat(item.time * 1000, 'YYYYMMDD');
+      item.animationName = 'animation.' + tools.dateFormat(item.time * 1000, 'YYYY-MM-DD');
+      item.date = tools.dateFormat(item.time * 1000, 'YYYY/MM/DD HH:mm');
       newDataList.push(item);
     }
     return newDataList
   },
   topFadeIn(animationName) {
+    console.log('topFadeIn:'+animationName)
     var that = this;
     var animation = wx.createAnimation({
       duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -107,6 +105,7 @@ Page({
     })
   },
   topFadeDown(animationName,height) {
+    console.log('topFadeDown:' + animationName)
     var that = this;
     var animation = wx.createAnimation({
       duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
