@@ -76,6 +76,10 @@
         "box-replenish/box-replenish",
         "adaptive/adaptive"
       ]
+    },
+    {
+      "root": "pagesThree",
+      "pages": []
     }
   ],
   "window": {

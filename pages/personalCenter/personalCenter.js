@@ -98,6 +98,9 @@ Page({
           case "task":
             HiNavigator.navigateToDayReportConclude();
             break;
+        case "gift":
+            HiNavigator.navigateTocoupon();
+            break;
       }
     },
 

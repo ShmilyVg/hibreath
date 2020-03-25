@@ -80,6 +80,9 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             '0x41': () => {
 
+            },
+            '0x48': () => {
+                return {state: ProtocolState.GAS_INTERFERENCE};
             }
         }
     }

@@ -49,6 +49,9 @@ export default class BlowManager {
                     this.connected();
                     //page.picAnimation();
                 };
+        this.actionBlow[ProtocolState.GAS_INTERFERENCE] = () => {
+            console.log('气体干扰命令执行了哦');
+        };
     }
     //若预热中状态持续＞2分钟，仍然没有进入下一环节，则出现该提示文案
     timer(){
