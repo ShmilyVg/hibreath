@@ -56,6 +56,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToGetGift({couponId}) {
       this.navigateTo({url: '/pagesIndex/getGift/getGift?couponId='+couponId});
     }
+    //我的优惠券
+    static navigateTocoupon() {
+      this.navigateTo({url: '/pagesIndex/coupon/coupon'});
+    }
      //引导加入减脂群
      static navigateToAddLowfatGroup() {
       this.navigateTo({url: `/pagesIndex/add-lowfat-group/add-lowfat-group`});

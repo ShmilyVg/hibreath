@@ -74,6 +74,10 @@
         "reduceFat/reduceFat",
         "weightTarget/weightTarget"
       ]
+    },
+    {
+      "root": "pagesThree",
+      "pages": []
     }
   ],
   "window": {

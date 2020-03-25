@@ -119,7 +119,8 @@ Page({
     let {
       result: {
         list,
-        bestBreathData
+        bestBreathData,
+        lastBreathData
       }
     } = await Protocol.getBreathDataList({
       page,
@@ -128,10 +129,10 @@ Page({
     if (list.length) {
       if (page == 1) {
         this.setData({
-          fatText: list[0].desZh,
-          score: list[0].dataValue,
-          fatTextEn: list[0].des.en,
-          fatDes: list[0].visDes,
+          fatText: lastBreathData.desZh,
+          score: lastBreathData.dataValue,
+          fatTextEn:lastBreathData.des.en,
+          fatDes: lastBreathData.visDes,
         })
         setTimeout(() => {
           console.log('绘制一次')

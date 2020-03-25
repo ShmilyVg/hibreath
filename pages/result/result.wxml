@@ -24,8 +24,8 @@
     </view>
     <view class="fatDes" style="line-height: 45rpx;">{{fatDes}}</view>
     <button wx:if="{{!taskInfo.fatTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">吹一吹</button>
-    <button wx:if="{{taskInfo.fatTask.finished && !taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">完善健康报告</button>
-    <button wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">查看健康报告</button>
+    <button wx:if="{{taskInfo.fatTask.finished && !taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="">完善健康报告</button>
+    <button wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toReport">查看健康报告</button>
   </view>
 
   <view class="burn-list">

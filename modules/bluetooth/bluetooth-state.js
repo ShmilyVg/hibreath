@@ -10,6 +10,7 @@ const ProtocolState = {
     BREATH_RESTART: 'breath_restart',//重新吹气
     BREATH_START: 'breath_start',//设备发出的开始吹气通知
     BREATH_FINISH: 'breath_finish',//设备发出的吹气完成通知
+    GAS_INTERFERENCE:'gas_interference',//设备发出的气体干扰通知
     ...CommonProtocolState
 };
 
