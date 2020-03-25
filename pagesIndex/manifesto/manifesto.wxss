@@ -126,7 +126,7 @@ textarea{
 .holder{
   color:rgba(187,187,187,1);
 }
-.reduceBtn{
+button{
   width:520rpx;
   height:100rpx;
   background:rgba(123,200,119,1);
@@ -135,6 +135,7 @@ textarea{
   text-align: center;
   margin: 45rpx auto;
   color: #fff;
+  border-style: none;
 }
 .pass{
   font-size:30rpx;
@@ -144,4 +145,8 @@ textarea{
   margin-bottom: 67rpx;
   text-align: center;
 }
-
+button[disabled]{
+  border-style: none !important;
+  color: #999 !important;
+  background: #e7e7e7 !important;
+}

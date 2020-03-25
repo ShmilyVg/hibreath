@@ -1,0 +1,35 @@
+<!--pagesIndex/adaptive/adaptive.wxml-->
+<view class="adaptive">
+  <view style="height:1rpx;"></view>
+  <image src="../images/burn.png" class="burn"></image>
+  <view class="adaptive-h3">脂肪有没有开始燃烧？</view>
+  <view class="adaptive-text">用燃脂精灵吹一吹就知道</view>
+  <view class="adaptive-btn">立即检测</view>
+
+  <view class="contain">
+    <view class="title">{{result.title}}</view>
+    <view class="day" wx:for="{{result.images}}" wx:for-item='day' wx:key="index">
+      <view class="day-title">
+        <text>{{day.tag1}}·</text>{{day.tag2}}</view>
+      <view class="day-contain">
+        <view class="day-item" wx:for="{{day.foodList}}" wx:for-item='food' wx:key="tag">
+          <image src="{{food.img}}"></image>
+          <view class="food-tag">{{food.tag}}</view>
+          <view wx:for="{{food.subList}}" wx:key="title" class="foodName">
+            <text>{{item.title}}{{item.quantityDesc}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="day-other" wx:if="{{day.optionalList.length}}">
+        可选加餐：
+        <text wx:for="{{day.optionalList}}" wx:key="title">{{index?'、':''}}{{item.title}}{{item.quantityDesc}}</text>
+      </view>
+    </view>
+    <view class="replenish" bindtap="goToReplenish">
+      <image src="../images/recommendation/bg.png"></image>
+      <view class="replenish-text1">吃盒子过程中饿了怎么办？</view>
+      <view class="replenish-text2">量身定制每日可额外补充食物</view>
+    </view>
+  </view>
+
+</view>

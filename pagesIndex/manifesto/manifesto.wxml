@@ -12,8 +12,8 @@
 <view class="contain">
   <view class="contain-title">
     <image src="../../images/set-info/{{!!manifesto?'readyEdit':'needEdit'}}.png"></image>
-    <textarea placeholder="我想要减脂，是因为…（20字）" value='{{manifesto}}' placeholder-class='holder' auto-focus />
+    <textarea placeholder="我想要减脂，是因为…（20字）" maxlength ='20' bindinput="changeValue" value='{{manifesto}}' placeholder-class='holder' auto-focus />
   </view>
-  <button class="reduceBtn" open-type='share'>生成并分享减脂宣言</button>
+  <button class="reduceBtn {{disabled?'disabled':''}}" open-type='share' disabled="{{disabled}}">生成并分享减脂宣言</button>
   <view class="pass" bindtap="reduceFun">跳过</view>
 </view>

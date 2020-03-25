@@ -1,0 +1,168 @@
+/* pagesIndex/adaptive/adaptive.wxss */
+page{
+  background: #423f42;
+  height: 100%;
+}
+view{
+  box-sizing: border-box;
+}
+.adaptive{
+  position: relative;
+  height: 100%;
+}
+.adaptive-h3{
+  margin: 69rpx 0 21rpx 65rpx;
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(129,204,126,1);
+}
+.adaptive-text{
+  margin: 0rpx 0 65rpx 65rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(123,200,119,1);
+  opacity:0.6;
+}
+.adaptive-btn{
+  width:144rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background:rgba(123,200,119,1);
+  border-radius:30px;
+  position: absolute;
+  right: 62rpx;
+  top: 95rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  z-index: 20;
+}
+.burn{
+  width: 199rpx;
+  height: 169rpx;
+  position: absolute;
+  top: 58rpx;
+  right: 125rpx;
+  z-index: 10;
+}
+
+.contain{
+  position: relative;
+  z-index: 20;
+  background:rgba(255,255,255,1);
+  border-radius:80rpx 0 0 0;
+  padding: 65rpx 30rpx 92rpx;
+  min-height: calc(100% - 231rpx);
+}
+.title{
+  font-size:44rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-left: 13rpx;
+  margin-bottom: 67rpx;
+}
+.day{
+  margin-bottom: 89rpx;
+}
+.day-title{
+  margin-left: 14rpx;
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(69,69,69,1);
+  margin-bottom: 36rpx;
+}
+.day-title text{
+  font-size:44rpx;
+  font-family:DIN Condensed;
+}
+.day-contain{
+  display: flex;
+  justify-content: space-between;
+}
+.day-item{
+  width:214rpx;
+  position: relative;
+}
+.day-item image{
+  width:214rpx;
+  height:166rpx;
+  border-radius:10rpx;
+  margin-bottom: 20rpx;
+}
+.food-tag{
+  position: absolute;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  width:62rpx;
+  height:37rpx;
+  text-align: center;
+  line-height: 37rpx;
+  background:rgba(0,0,0,1);
+  opacity:0.3;
+  border-radius:19rpx 0rpx 19rpx 19rpx;
+  right: 0;
+  top: 0;
+}
+.foodName{
+  line-height: 32rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(69,69,69,1);
+  margin-bottom: 10rpx;
+  padding: 0 8rpx 0 25rpx;
+}
+.foodName::before{
+  content: '·';
+  color: #999;
+  font-weight: bold;
+  position: absolute;
+  left: 0rpx;
+}
+.day-other{
+  height:77rpx;
+  line-height: 77rpx;
+  background:rgba(246,251,245,1);
+  border-radius:10rpx;
+  padding-left: 21rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(69,69,69,1);
+}
+.day-other text{
+  font-weight:400;
+}
+.replenish{
+  position: relative;
+}
+.replenish image{
+  width: 690rpx;
+  height: 180rpx;
+}
+.replenish view{
+  position: absolute;
+  left: 175rpx;
+}
+.replenish-text1{
+  top: 54rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(69,69,69,1);
+}
+.replenish-text2{
+  top: 107rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(69,69,69,1);
+}

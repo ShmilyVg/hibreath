@@ -422,6 +422,19 @@
 					"pathName": "pagesIndex/manifesto/manifesto",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/adaptive/adaptive",
+					"pathName": "pagesIndex/adaptive/adaptive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/box-replenish/box-replenish",
+					"pathName": "pagesIndex/box-replenish/box-replenish",
+					"scene": null
 				}
 			]
 		}

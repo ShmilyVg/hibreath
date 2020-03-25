@@ -1,0 +1,34 @@
+<!--pagesIndex/box-replenish/box-replenish.wxml-->
+<view class="low-carbon-topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
+  <view class="low-carbon-topView-view1">吃盒子过程中饿了怎么办?</view>
+  <view class="low-carbon-topView-view2">DIETARY PRINCIPLE</view>
+  <view class="clear"></view>
+</view>
+<view class="low-carbon-howEat">
+  <view style="margin-bottom: 48rpx;margin-left: 44rpx">
+    <text class="hungry-view-text1">每日可额外补充</text>
+    <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
+  </view>
+  <view style="display: flex;justify-content:center">
+    <view wx:key="index" wx:for="{{result.howEatAdditionaObj[0].foodList}}">
+      <view style="display: flex;text-align: center;">
+        <view>
+          <image style="width: 190rpx;height: 150rpx" src="{{item.img}}"></image>
+          <block wx:for="{{item.subList}}">
+            <view class="hungry-image-text1">{{item.title}}</view>
+            <view class="hungry-image-text2">{{item.quantityDesc}}</view>
+          </block>
+        </view>
+        <view wx:if="{{result.howEatAdditionaObj[0].foodList.length>1 && index === 0}}" style="height: 214rpx;width:78rpx;margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
+          +
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class="hungry-view-text">以下
+    <text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
+  <view style="text-align: center;">
+    <image src='http://img.hipee.cn/vg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
+  </view>
+</view>

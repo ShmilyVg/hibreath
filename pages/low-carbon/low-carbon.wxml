@@ -1,155 +1,69 @@
 <!--pages/low-carbon/low-carbon.wxml-->
-<view class="low-carbon-topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
-    <view class="low-carbon-topView-view1">我的减脂历程</view>
-    <view class="low-carbon-topView-view2" bindtap="toRecomTarNew">查看完整历程</view>
-    <view class="clear"></view>
-    <view class="low-carbon-topView-view3">{{result.title}}</view>
-    <view class="low-carbon-topView-view4">{{result.duration}}<text class="low-carbon-topView-text1">{{result.unit}}</text></view>
-    <view class="clear"></view>
-    <view style="margin-top: 35rpx" wx:for="{{result.images}}" wx:key="index">
-        <view wx:for="{{item.foodList}}" wx:key="index" wx:if="{{result.stage == 1}}">
-            <image class="low-carbon-topView-img" src="{{item.img}}"></image>
-            <view style="line-height: 150rpx;margin:  0rpx 34rpx;float: left">
-                <image src="../../images/jt/yjt.png" style="width: 10rpx;height: 12rpx"></image>
-            </view>
-
-            <view class="low-carbon-topView-goal">
-                <view class="low-carbon-topView-goal-text1">目标</view>
-                <view wx:for="{{item.goalList}}" wx:key="index">
-                    <view style="display: flex;align-items: center;margin-bottom: 10rpx">
-                        <view class="low-carbon-topView-goalList-view1">{{index+1}}</view>
-                        <view class="low-carbon-topView-goalList-view2">{{item.title}}</view>
-                    </view>
-                </view>
-            </view>
-            <view class="clear"></view>
-            <view class="low-carbon-topView-sub" wx:for="{{item.subList}}" wx:key="index">{{item.title}}{{item.quantityDesc}}</view>
-        </view>
-        <view  wx:if="{{result.stage == 2}}">
-            <view class="reduce_tit">{{item.tag}}</view>
-                <view class="experience">
-                    <block wx:for="{{item.foodList}}" wx:key="index">
-                        <view class="box_con">
-                            <view class="box">
-                                <image src="{{item.img}}" mode='aspectFill'></image>
-                            </view>
-                            <view class="quantityDesc" wx:for="{{item.subList}}" wx:key="img">{{item.title}} {{item.quantityDesc}}</view>
-                        </view>
-                        <view class="tip_con" wx:if="{{index<2}}">
-                            +
-                        </view>
-                    </block>
-                </view>
-                <view class="clear"></view>
-            <view class="low-carbon-topView-view5" wx:if="{{index === 1}}">*预计需要循环1次</view>
-        </view>
-        <view  wx:if="{{result.stage == 3}}">
-            <view class="reduce_tit">{{item.tag}}</view>
-            <view class="experience">
-                <block wx:for="{{item.foodList}}" wx:key="index">
-                    <view class="box_con">
-                        <view class="box">
-                            <image src="{{item.img}}" mode='aspectFill'></image>
-                        </view>
-                        <view class="quantityDesc" wx:for="{{item.subList}}" wx:key="img">{{item.title}} {{item.quantityDesc}}</view>
-                    </view>
-                    <view class="tip_con" wx:if="{{index<2}}">
-                        +
-                    </view>
-                </block>
-            </view>
-        </view>
-    </view>
+<view class="topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
+  <view class="topView-view1">我的减脂方案</view>
+  <view class="topView-view2" bindtap="toRecomTarNew">重新制定</view>
+  <view class="clear"></view>
 </view>
-<view class="low-carbon-howEat">
-    <view  class="result_tab_top">
-        <view wx:for="{{result.howEatObj.typeList}}" wx:key="index">
-            <view class="{{currenttab===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTab'>
-                <view style="margin-bottom: 20rpx">{{item.title}}</view>
-                <view class="active_line" wx:if="{{currenttab === item.type}}"></view>
-            </view>
+<view class="contain">
+  <view class="family">
+    <view class="family-title">低碳CLUB·燃脂大家庭</view>
+    <view class="family-text">点击添加营养师，享受1对1营养服务</view>
+    <view class="family-text">加入燃脂大家庭，倾听更多人背后的故事</view>
+    <view class="family-btn" bindtap="goToAddLowfat">立即加入</view>
+  </view>
+  <view class="adaptive card">
+    <image src="../../images/orange.png"></image>
+    <view class="card-title">低碳适应期·{{result.adaptPeriod.duration}}{{result.adaptPeriod.unit}}</view>
+    <view class="card-more" bindtap="goToAdaptive">more＞</view>
+    <view class="card-contain">
+      <view class="stepTip">阶段目标</view>
+      <view class="card-text1" wx:for="{{result.adaptPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
+      <view class="card-text2">※ {{result.adaptPeriod.remarks}}</view>
+    </view>
+  </view>
+  <view class="reduce card">
+    <image src="../../images/orange.png"></image>
+    <view class="card-title">低碳减脂期·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</view>
+    <view class="card-more">more＞</view>
+    <view class="card-contain">
+    <view class="stepTip">阶段目标</view>
+      <view class="card-text1" wx:for="{{result.reduceFatPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
+      <view class="card-text2">{{result.reduceFatPeriod.remarks}}</view>
+    </view>
+  </view>
+  <view class="consolidate card">
+    <image src="../../images/orange.png"></image>
+    <view class="card-title">低碳适应期·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</view>
+    <view class="card-more">more＞</view>
+    <view class="card-contain">
+    <view class="stepTip">阶段目标</view>
+      <view class="card-text1" wx:for="{{result.consolidatePeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
+      <view class="card-text2">{{result.consolidatePeriod.remarks}}</view>
+    </view>
+  </view>
+
+  <view class="needMore">
+    <view class="needMore-title">还需要做什么</view>
+    <view class="toDo">
+      <view class="toDo-item">
+        <view class="toDo-view1">减脂效果到底如何?</view>
+        <view style="display: flex;margin-bottom: 23rpx">
+          <view class="toDo-view2">1</view>
+          <view class="toDo-view3">
+            完成每日任务，解锁燃脂效果报告
+          </view>
         </view>
-    </view>
-    <!--盒子怎么吃  -->
-    <view wx:if="{{currenttab==='howEatBox'}}" style="margin-top: 67rpx">
-        <swiper bindchange="swiperChange"  current="{{result.howEatObj.executeDays>3?0:result.howEatObj.executeDays-1}}" indicator-dots="true" indicator-active-color="#7BC877"  class="" style="height: 600rpx">
-            <block wx:for="{{result.howEatObj.images}}" wx:key="index">
-                <swiper-item>
-                    <view class="swiper-tag">
-                        <view class="swiper-tag1">{{item.tag1}}</view><view class="swiper-tag1" style="margin: 0 10rpx">·</view><view class="swiper-tag2">{{item.tag2}}</view>
-                    </view>
-                    <view style="display: flex;justify-content: space-around;margin-top: 40rpx">
-                        <view class="day-body-foodlist" wx:key="index" wx:for="{{item.foodList}}">
-                            <view class="foodlist-img"  style="background:url({{item.img}}) no-repeat center/100% 100%;">
-                                <view class="foodlist-tag">{{item.tag}}</view>
-                            </view>
-                            <view class="foodtask-desc" wx:key="index" wx:for="{{item.subList}}">
-                                <view style="width: 6rpx;height: 6rpx;border-radius: 50%;background: #AAA;float: left;margin-top: 12rpx;margin-right: 10rpx"></view>
-                                <view style="float: left;word-break: break-all;width: 175rpx">{{item.title}}
-                                    <text style="font-weight: bold">{{item.quantityDesc}}</text>
-                                </view>
-                                <view class="clear"></view>
-                            </view>
-                        </view>
-                    </view>
-                </swiper-item>
-            </block>
-        </swiper>
-        <view class="hungry-view">
-            <view style="font-size:36rpx;font-family:PingFang SC;font-weight:bold;color:rgba(68,68,68,1);margin: 0rpx 0rpx 45rpx 45rpx">吃盒子过程中如果饿了怎么办</view>
-            <view style="margin-bottom: 48rpx;margin-left: 44rpx">
-                <text class="hungry-view-text1">每日可额外补充</text>
-                <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
-            </view>
-            <view style="display: flex;justify-content:center">
-                <view wx:key="index" wx:for="{{result.howEatAdditionaObj[0].foodList}}">
-                    <view style="display: flex;text-align: center;">
-                        <view>
-                            <image style="width: 190rpx;height: 150rpx" src="{{item.img}}"></image>
-                            <block wx:for="{{item.subList}}">
-                                <view class="hungry-image-text1">{{item.title}}</view>
-                                <view class="hungry-image-text2">{{item.quantityDesc}}</view>
-                            </block>
-                        </view>
-                        <view wx:if="{{result.howEatAdditionaObj[0].foodList.length>1 && index === 0}}" style="height: 214rpx;width:78rpx;margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
-                            +
-                        </view>
-                    </view>
-
-                </view>
-            </view>
-
-
-            <view class="hungry-view-text">以下<text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
-            <view style="text-align: center;">
-                <image src='http://img.hipee.cn/vg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
-            </view>
-            <view >
-                <view style="height: 79rpx;width: 100%;background: #fff"></view>
-                <view class="low-carbon-toDo">
-                    <view style="width: 100%;padding: 57rpx 98rpx 0rpx 185rpx;box-sizing: border-box">
-                        <view class="low-carbon-toDo-view1">还需要做什么?</view>
-                        <view style="display: flex;margin-bottom: 33rpx">
-                            <view class="low-carbon-toDo-view2">1</view>
-                            <view class="low-carbon-toDo-view3">
-                                完成每日打卡任务，解锁专业
-                                <view>燃脂情况分析报告</view>
-                            </view>
-                        </view>
-                        <view style="display: flex;">
-                            <view class="low-carbon-toDo-view2">2</view>
-                            <view class="low-carbon-toDo-view3">连续打卡签到可得优惠券</view>
-                        </view>
-                    </view>
-                    <view class="low-carbon-toDo-btn" bindtap="toSetInfo">
-                        <text style="margin-left: 186rpx;margin-right: 121rpx">立即前往打卡首页</text>
-                        <image src="../../images/green-left.png" style="width: 26rpx;height: 19rpx"></image>
-                    </view>
-                </view>
-
-            </view>
-    </view>
+        <view style="display: flex;">
+          <view class="toDo-view2">2</view>
+          <view class="toDo-view3">连续完成任务，可得惊喜奖励</view>
+        </view>
+      </view>
+      <view class="toDo-btn" bindtap="toSetInfo">
+        <text style="margin-left: 186rpx;margin-right: 121rpx">立即前往打卡首页</text>
+        <image src="../../images/set-info/right-3.png" style="width: 26rpx;height: 19rpx"></image>
+      </view>
     </view>
 
+  </view>
 
 </view>

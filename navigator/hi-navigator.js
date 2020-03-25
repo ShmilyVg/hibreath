@@ -41,8 +41,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pagesIndex/reduceFatExp/reduceFatExp`});
     }
     //燃脂宣言
-    static navigateToManifesto() {
-      this.navigateTo({url: `/pagesIndex/manifesto/manifesto`});
+    static navigateToManifesto(sharedId) {
+      this.navigateTo({url: `/pagesIndex/manifesto/manifesto?sharedId=${sharedId}`});
     }
     //生成方案
     static navigateToReduceFat() {
@@ -51,6 +51,16 @@ export default class HiNavigator extends CommonNavigator {
     //低碳饮食
     static switchToLowCarbon() {
       this.switchTab({url: `/pages/low-carbon/low-carbon`});
+    }
+
+    //低碳适应期
+    static navigateToAdaptive() {
+      this.navigateTo({url: `/pagesIndex/adaptive/adaptive`});
+    }
+
+    //盒子日额外补充
+    static navigateToBoxReplenish() {
+      this.navigateTo({url: `/pagesIndex/box-replenish/box-replenish`});
     }
     //领取优惠券
     static navigateToGetGift({couponId}) {

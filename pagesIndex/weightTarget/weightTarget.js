@@ -29,8 +29,8 @@ Page({
   async startPlan(){
     let weightGoalt = this.data.weightGoalt;
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    await Protocol.postMembersJoinSchema(data)
-    HiNavigator.navigateToManifesto()
+    let { result} = await Protocol.postMembersJoinSchema(data)
+    HiNavigator.navigateToManifesto(result.sharedId)
   },
   goReduceFat(){
     HiNavigator.navigateToReduceFat();

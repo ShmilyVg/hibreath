@@ -4,33 +4,10 @@ import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    currenttab: 'howEatBox',
+    result: {},
   },
-  //切换标签页
-  async selectTab(e) {
-    let newtab = e.currentTarget.dataset.tabid;
-    console.log(newtab)
-    if (this.data.currenttab !== newtab) {
-      this.setData({
-        currenttab: newtab
-      });
-      console.log('currenttab',this.data.currenttab)
-    }
-  },
-  toRecomTarNew(){
-    HiNavigator.navigateToRecomTarNew()
-  },
-  toSetInfo(){
-    HiNavigator.switchToSetInfo()
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad(options) {
     wx.showTabBar({
       fail: function () {
@@ -39,68 +16,27 @@ Page({
         }, 500);
       }
     });
-    this.getResult();
-    
+    this.getResult()
   },
-
-  async getResult(){
-    try {
-      const { result } = await Protocol.getLossfatCourse()
-      this.setData({
-        result: result
-      })
-      console.log('result', this.data.result.howEatAdditionaObj[0].foodList)
-    } catch (error) { }
-  
+  async getResult() {
+    let { result } = await Protocol.getLossfatCourse({});
+    this.setData({
+      result
+    })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     if (!this.data.result){
-      this.getResult();
+      this.getResult()
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //加群页
+  goToAddLowfat() {
+    // HiNavigator.navigateToAddLowfatGroup();
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  goToAdaptive(){
+    HiNavigator.navigateToAdaptive();
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  toRecomTarNew(){
+    HiNavigator.navigateToWeightTarget();
   }
 })

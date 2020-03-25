@@ -499,12 +499,12 @@ Page({
       }
     })
   },
-  //加群页
-  goToAddLowfat() {
-    HiNavigator.navigateToAddLowfatGroup();
-  },
+  
   goToTask(e){
     console.log(e.currentTarget.dataset.url)
+  },
+  goToManifesto(){
+    HiNavigator.navigateToManifesto(this.data.taskInfo.sharedId)
   },
   //减脂效果页
   goToLowFatReport() {

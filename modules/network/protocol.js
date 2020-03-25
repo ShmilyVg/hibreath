@@ -76,6 +76,12 @@ export default class Protocol {
     static postSettingsGoals() {
         return Network.request({url: 'settings/goals'})
     }
+
+    // 保存成员减脂宣言
+    static putGoalDesc(data) {
+        return Network.request({url: 'members/putGoalDesc',data})
+    }
+
     //首页打卡分享
     static postSharetask(data) {
         return Network.request({url: 'members/share/task',data:data})
@@ -310,13 +316,20 @@ export default class Protocol {
     static getGift({couponId}) {
         return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
     }
-    //获取我的减脂历程
-    static getMyLossfatCourse({weightGoalt}) {
-        return Network.request({url: 'members/getMyLossfatCourse',data:{weightGoalt}})
-    }
+
     //低碳饮食-减脂历程
     static getLossfatCourse() {
         return Network.request({url: 'lowCarbonMeal/getLossfatCourse'})
+    }
+    
+    //低碳饮食-盒子怎么吃
+    static getBoxHowToEat() {
+        return Network.request({url: 'lowCarbonMeal/getBoxHowToEat'})
+    }
+
+    //低碳饮食-每日可额外补充
+    static getAdditionalMeal() {
+        return Network.request({url: 'lowCarbonMeal/getAdditionalMeal'})
     }
     //微信客服信息
     static getSupportStaff() {

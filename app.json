@@ -72,7 +72,9 @@
         "manifesto/manifesto",
         "reduceFatExp/reduceFatExp",
         "reduceFat/reduceFat",
-        "weightTarget/weightTarget"
+        "weightTarget/weightTarget",
+        "box-replenish/box-replenish",
+        "adaptive/adaptive"
       ]
     }
   ],
