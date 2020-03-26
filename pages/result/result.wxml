@@ -36,6 +36,7 @@
     <view class="burn-list-contain">
       <view wx:for="{{trendData}}" wx:key="index" class="flex-column cell {{index?'':'burn-best'}}" bindtap="deleteDataValue" data-index="{{item.id}}">
         <image src="../../images/result/best.png" class="bestImg" wx:if="{{!index}}"></image>
+        <image src="../../images/result/heigh.png" class="bestTopimg" wx:if="{{!index}}"></image>
         <view class="flex-row" style="width:100%;justify-content: space-between">
           <view class="flex-column" style="align-items: start;height: 160rpx;padding-left:60rpx;position: relative;">
             <view class="status-tip">

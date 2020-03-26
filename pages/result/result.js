@@ -126,7 +126,7 @@ Page({
       page,
       pageSize: 20
     });
-    if (list.length) {
+    if (bestBreathData) {
       if (page == 1) {
         this.setData({
           fatText: lastBreathData.desZh,
