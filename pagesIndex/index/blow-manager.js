@@ -50,6 +50,7 @@ export default class BlowManager {
                     //page.picAnimation();
                 };
         this.actionBlow[ProtocolState.GAS_INTERFERENCE] = () => {
+            this.interference()
             console.log('气体干扰命令执行了哦');
         };
     }
@@ -173,6 +174,7 @@ export default class BlowManager {
             btnState: false,
             homeTitle: false,
             homeOrangeBtn: false,
+            interference:false//气体干扰
         })
         console.log("this._pagethis._page",this._page.data.needCheckOTAUpdate)
     }
@@ -189,8 +191,6 @@ export default class BlowManager {
             state: "设备已连接",
             finding:false,
             btnState: false,
-
-
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,
@@ -202,6 +202,7 @@ export default class BlowManager {
             textStateEn:'',
             homeTitle: false,
             homeOrangeBtn: false,
+            interference:false//气体干扰
         })
     }
 
@@ -227,7 +228,7 @@ export default class BlowManager {
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
-
+            interference:false,//气体干扰
             homeTitle: false,
             homeOrangeBtn: false,
         });
@@ -241,14 +242,10 @@ export default class BlowManager {
             tryAgain:false,
             needCheckOTAUpdate:false,
             noBind:false,
-
             stateBtnShow: false,
-
             state: "设备已连接",
-
-
             btnState: false,
-
+            interference:false,//气体干扰
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,//吹气图片
@@ -259,8 +256,6 @@ export default class BlowManager {
             textStateEn:'NOT ENOUGH',
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
-
-
             homeTitle: false,
             homeOrangeBtn: false,
         })
@@ -288,7 +283,7 @@ export default class BlowManager {
             disblowImg:false,//吹气不足状态
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:false,//分析中
-
+            interference:false,//气体干扰
             homeTitle: false,
             homeOrangeBtn: false,
         })
@@ -303,12 +298,10 @@ export default class BlowManager {
             noBind:false,
             needCheckOTAUpdate:false,
             stateBtnShow: false,
-
             state: "设备已连接",
             finding:false,
             btnState: false,
-
-
+            interference:false,//气体干扰
             bgColor:"#fff",
             beginFat:false,
             blowpicShow: false,//吹气图片
@@ -320,13 +313,37 @@ export default class BlowManager {
             homePointHot:false, //吹气时 隐藏预热过长文案
             process:true,//分析中
             homeOrangeBtn: false,//重试
-
-
-
-            homeTitle: true,
+            homeTitle: false,
             homeTitleText: "",
+        })
+    }
 
-
+    interference(){
+        this._page.setData({
+            navBarColor:'#000000',//导航字体颜色
+            navBarIconTheme:'black',//导航返回键颜色
+            navBarBackground:'#FFFFFF',//导航背景色
+            tryAgain:false,
+            noBind:false,
+            needCheckOTAUpdate:false,
+            stateBtnShow: false,
+            state: "设备已连接",
+            finding:false,
+            btnState: false,
+            interference:true,//气体干扰
+            bgColor:"#fff",
+            beginFat:false,
+            blowpicShow: false,//吹气图片
+            readyimg:false,// 预热图片
+            blowingImg:false,
+            textState:'有气体干扰 \n请短按按键重新检测',
+            textStateEn:'INTERFERE',
+            disblowImg:false,//吹气不足状态
+            homePointHot:false, //吹气时 隐藏预热过长文案
+            process:false,//分析中
+            homeOrangeBtn: false,//重试
+            homeTitle: false,
+            homeTitleText: "",
         })
     }
 

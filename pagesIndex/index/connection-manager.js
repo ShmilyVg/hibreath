@@ -32,7 +32,8 @@ export default class ConnectionManager {
         };
         //正在连接蓝牙设备
         this.action[ConnectState.CONNECTING] = ()=>{
-            this.connecting();
+            //this.connecting();
+            this.disconnect();
         };
         //蓝牙已连接
        /* this.action[ProtocolState.QUERY_DATA_START]=
@@ -78,6 +79,7 @@ export default class ConnectionManager {
             blowpicShow: false,
             homeTitle: false,
             homeOrangeBtn: false,
+            interference:false,//气体干扰
         })
     }
 
@@ -103,6 +105,7 @@ export default class ConnectionManager {
             btnState: false,
             homeTitle: false,
             homeOrangeBtn: false,
+            interference:false,//气体干扰
         });
     }
 
@@ -111,7 +114,6 @@ export default class ConnectionManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
             needCheckOTAUpdate:false,
             noBind:false,//显示绑定按钮等
             tryAgain:false,//未找到设备标志位
@@ -119,8 +121,7 @@ export default class ConnectionManager {
             bgColor:"#fff",
             contentStateB:"正在寻找您的设备",
             contentStateS:"长按设备按键·3秒开机",
-
-
+            interference:false,//气体干扰
             readyimg:false,
             blowpicShow:false,
             textState:"",
@@ -130,19 +131,10 @@ export default class ConnectionManager {
             process:false,
             homePointHot:false,
             stateBtnShow: false,
-
             state: "正在连接设备",
-
-
             beginFat:false,
-
             btnState: false,
-
-
-
-
             homeTitle: false,
-
             homeOrangeBtn: false,
         })
     }
@@ -151,7 +143,6 @@ export default class ConnectionManager {
             navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#FFFFFF',//导航背景色
-
             needCheckOTAUpdate:false,
             noBind:false,
             finding:false,
@@ -168,15 +159,10 @@ export default class ConnectionManager {
             topStateS:"短按设备按键·开始检测",
             bgColor:"#fff",
             homePointHot:false,
-
-
             stateBtnShow: false,
-
             state: "设备已连接",
-
             btnState: false,
-
-
+            interference:false,//气体干扰
             homeTitle: false,
             homeOrangeBtn: false,
         })

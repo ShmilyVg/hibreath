@@ -81,7 +81,9 @@
     },
     {
       "root": "pagesThree",
-      "pages": []
+      "pages": [
+        "index/index"
+      ]
     }
   ],
   "window": {
