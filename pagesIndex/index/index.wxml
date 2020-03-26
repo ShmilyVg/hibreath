@@ -60,6 +60,7 @@
         <view class="readyImg-btoView">
             - 以下情况可能对结果产生影响 -
         </view>
+        <view style="width:200rpx;height:18rpx;background:rgba(199,238,197,1);position: relative;left: 327rpx;top: 50rpx;z-index: -10;"></view>
         <view style="font-size:34rpx;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 50rpx">如有下述行为，请在1小时后进行测量</view>
         <view class='readyImg-bottom'>
             <view class="readyImg-littleImg" wx:for="{{6}}">
