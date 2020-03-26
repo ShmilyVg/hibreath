@@ -75,15 +75,15 @@
     <view wx:if="{{blowingImg}}" class="blowing-img"></view>
     <view wx:if="{{blowingImg}}" class="blowing-imgs"></view>
     <view wx:if="{{blowingImg}}" class="blowing-number">{{blowNumber}}</view>
-
-    <view wx:if="{{disblowImg}}" class="disblow-error"></view>
-    <view wx:if="{{disblowImg}}" class="disblow-img disblow-circular{{disblowNumber}}"></view>
-    <view wx:if="{{disblowImg}}" class="blowing-imgs"></view>
-
+    <view wx:if="{{disblowImg}}" style="margin: 131rpx auto 112rpx">
+        <image style="width: 385rpx;height: 369rpx" src="../images/index/disblowImg.png"></image>
+    </view>
+    <view wx:if="{{interference}}" style="margin: 131rpx auto 112rpx">
+        <image style="width: 386rpx;height: 372rpx" src="../images/index/interference.png"></image>
+    </view>
     <view wx:if="{{process}}" class="processC"></view>
     <view wx:if="{{process}}" class="processM"></view>
-
-    <view class="fatBurning-text">{{textState}}</view>
+    <view class="fatBurning-text"><text>{{textState}}</text></view>
     <view class="fatBurning-textEn">{{textStateEn}}</view>
   <!--  <view class="fatBurning-tip" wx:if="{{homePointHot}}">
         <text>
@@ -91,7 +91,9 @@
         </text>
     </view>-->
     <view wx:if="{{disblowImg}}" class="fatBurning-tip"><text>吹气不足，短按设备按键重新吹气，吹\n气中请保持匀速，不要忽快忽慢</text></view>
-
+    <view wx:if="{{interference}}" class="interference-tip" style="padding: 0rpx 119rpx">
+        <text>您周围可能存在有干扰检测的气体，有可能因为味道比较淡您没有闻到，例如：周围人的香水、涂抹的口红等，如您在室内建议换个屋子，在室外建议远离人群再测一次</text>
+    </view>
 </view>
 <!--
 
