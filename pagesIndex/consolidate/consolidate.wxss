@@ -1,0 +1,203 @@
+/* pagesIndex/consolidate/consolidate.wxss */
+page{
+  background: #423f42;
+  height: 100%;
+}
+view{
+  box-sizing: border-box;
+}
+.adaptive{
+  position: relative;
+  height: 100%;
+}
+.adaptive-h3{
+  margin: 69rpx 0 21rpx 65rpx;
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(129,204,126,1);
+}
+.adaptive-text{
+  margin: 0rpx 0 65rpx 65rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(123,200,119,1);
+  opacity:0.6;
+}
+.adaptive-btn{
+  width:144rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background:rgba(123,200,119,1);
+  border-radius:30px;
+  position: absolute;
+  right: 62rpx;
+  top: 95rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  z-index: 20;
+}
+.burn{
+  width: 199rpx;
+  height: 169rpx;
+  position: absolute;
+  top: 58rpx;
+  right: 125rpx;
+  z-index: 10;
+}
+
+.contain{
+  position: relative;
+  z-index: 20;
+  background:rgba(255,255,255,1);
+  border-radius:80rpx 0 0 0;
+  padding: 65rpx 0rpx 92rpx;
+  min-height: calc(100% - 231rpx);
+}
+.item-title {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(68, 68, 68, 1);
+  margin: 0rpx 0rpx 45rpx 45rpx;
+}
+/* 低碳日怎么吃 */
+
+.lowFat {
+  margin-top: 0rpx;
+  position: relative;
+}
+
+.rang {
+  padding: 0 44rpx;
+  display: flex;
+  justify-content: center;
+  height: 110rpx;
+  margin-bottom: 100rpx;
+}
+
+.rang-item {
+  padding-left: 132rpx;
+  position: relative;
+  width: 50%;
+}
+
+.num-tit {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(68, 68, 68, 1);
+}
+
+.num {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+.rang image {
+  position: absolute;
+  width: 110rpx;
+  height: 110rpx;
+  left: 0;
+  top: 0;
+}
+
+.eatSome-item {
+  box-sizing: border-box;
+  width: 690rpx;
+  height: 260rpx;
+  padding: 147rpx 0 0 37rpx;
+  margin: 0 auto 20rpx;
+  background-size: 100% 100%;
+}
+
+.color1 {
+  color: #653c26;
+}
+
+.eatSome-item-text1 {
+  margin-bottom: 10rpx;
+  height: 32rpx;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+}
+
+.eatSome-item-text2 {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+}
+.eatNum{
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 100rpx;
+}
+.eatNum view{
+  box-sizing: border-box;
+}
+.eatNum-item{
+  width:335rpx;
+  height:340rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 40rpx 0rpx rgba(153,153,153,0.2);
+  border-radius:20rpx;
+  text-align: center;
+  padding-top: 38rpx;
+  margin: 10rpx;
+  display: inline-block;
+  
+}
+.eatNum-item image{
+  width: 126rpx;
+  height: 126rpx;
+}
+.eatNum-item view{
+  text-align: left;
+  padding-left: 29rpx;
+}
+.eatNum-item-name{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  margin: 25rpx 0 10rpx;
+  color:rgba(68,68,68,1);
+}
+.eatNum-item-num{
+  font-size:40rpx;
+  font-family:DINCondensed;
+  font-weight:bold;
+  color:rgba(69,69,69,1);
+}
+.eatNum-item-num text{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(69,69,69,1);
+}
+.eatHow{
+  padding-right: 50rpx;
+}
+.eatHow-item{
+  position: relative;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(68,68,68,1);
+  padding-left: 108rpx;
+  margin-bottom: 55rpx;
+}
+.eatHow-item image{
+  position: absolute;
+  left: 43rpx;
+  top: 0rpx;
+  width: 44rpx;
+  height: 44rpx;
+}

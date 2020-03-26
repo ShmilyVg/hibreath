@@ -1,0 +1,175 @@
+<!--pagesIndex/reduceFatPeriod/reduceFatPeriod.wxml-->
+<view class="low-carbon-topView">
+  <view class="low-carbon-title">减脂期饮食原则</view>
+  <view class="table">
+    <view class="thead tr">
+      <text wx:for="{{table}}" wx:key="item">{{item}}</text>
+    </view>
+    <view class="tr">
+      <view class="serial">第1周</view>
+      <view class="three">3日盒子</view>
+      <view class="three special">3日盒子</view>
+      <view class="lowF brief">低碳日</view>
+    </view>
+    <view class="tr">
+      <view class="serial">第2周</view>
+      <view class="three">3日盒子</view>
+      <view class="lowF">低碳日</view>
+    </view>
+    <view class="tr">
+      <view class="serial">第3周</view>
+      <view class="three">3日盒子</view>
+      <view class="lowF">低碳日</view>
+    </view>
+    <view class="tr">
+      <view class="serial">第4周</view>
+      <view class="three">3日盒子</view>
+      <view class="lowF">低碳日</view>
+    </view>
+  </view>
+  <view class="paragraph">*
+    <text> 建议盒子从周一开始吃</text>并且每个盒子需要连续3天吃完 </view>
+  <view class="paragraph">* Slimple减脂盒子虽然可以既保证低碳效果并且营养均衡，但毕竟不能涵盖自然界食物的所有营养元素，
+    <text>每周需要额外几日“低碳日”自行补充其他食物，但是别担心，照着推荐做，低碳日也不会反弹。</text> </view>
+  <button>
+    <image src="../images/box.png" class="boxImg"></image> 盒子吃完了？点击购买</button>
+</view>
+<view class="low-carbon-howEat">
+  <view class="result_tab_top">
+    <view wx:for="{{typeList}}" wx:key="index">
+      <view class="{{currenttab===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTab'>
+        <view style="margin-bottom: 20rpx">{{item.title}}</view>
+        <view class="active_line" wx:if="{{currenttab === item.type}}"></view>
+      </view>
+    </view>
+  </view>
+  <!--盒子怎么吃  -->
+  <view wx:if="{{currenttab==='howEatBox'}}" style="margin-top: 70rpx">
+    <swiper bindchange="swiperChange" current="0" indicator-dots="true" indicator-active-color="#7BC877" class="" style="height: 700rpx">
+      <block wx:for="{{boxHowToEat.images}}" wx:key="index">
+        <swiper-item>
+          <view class="swiper-tag">
+            <view class="swiper-tag1">{{item.tag1}}</view>
+            <view class="swiper-tag1" style="margin: 0 10rpx">·</view>
+            <view class="swiper-tag2">{{item.tag2}}</view>
+          </view>
+          <view style="display: flex;justify-content: space-around;margin-top: 40rpx">
+            <view class="day-body-foodlist" wx:key="index" wx:for="{{item.foodList}}">
+              <view class="foodlist-img" style="background:url({{item.img}}) no-repeat center/100% 100%;">
+                <view class="foodlist-tag">{{item.tag}}</view>
+              </view>
+              <view class="foodtask-desc" wx:key="index" wx:for="{{item.subList}}">
+                <view style="width: 6rpx;height: 6rpx;border-radius: 50%;background: #AAA;float: left;margin-top: 12rpx;margin-right: 10rpx"></view>
+                <view style="float: left;word-break: break-all;width: 175rpx">{{item.title}}
+                  <text style="font-weight: bold">{{item.quantityDesc}}</text>
+                </view>
+                <view class="clear"></view>
+              </view>
+            </view>
+          </view>
+          <view class="day-other" wx:if="{{item.optionalList.length}}">
+            可选加餐：
+            <text wx:for="{{item.optionalList}}" wx:key="title">{{index?'、':''}}{{item.title}}{{item.quantityDesc}}</text>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="hungry-view">
+      <view class="item-title">吃盒子过程中如果饿了怎么办</view>
+      <view style="margin-bottom: 48rpx;margin-left: 44rpx">
+        <text class="hungry-view-text1">每日可额外补充</text>
+        <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
+      </view>
+      <view style="display: flex;justify-content:center">
+        <view wx:key="index" wx:for="{{additionalMea.howEatAdditionaObj[0].foodList}}">
+          <view style="display: flex;text-align: center;">
+            <view>
+              <image style="width: 190rpx;height: 150rpx" src="{{item.img}}"></image>
+              <block wx:for="{{item.subList}}">
+                <view class="hungry-image-text1">{{item.title}}</view>
+                <view class="hungry-image-text2">{{item.quantityDesc}}</view>
+              </block>
+            </view>
+            <view wx:if="{{additionalMea.howEatAdditionaObj[0].foodList.length>1 && index === 0}}" style="height: 214rpx;width:78rpx;margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
+              +
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+
+      <view class="hungry-view-text">以下
+        <text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
+      <view style="text-align: center;">
+        <image src='http://img.hipee.cn/vg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
+      </view>
+      <view class="check-reduce">
+        <image src="../images/burn.png" class="burn"></image>
+        <view class="adaptive-h3">脂肪甩掉了多少了？</view>
+        <view class="adaptive-text">用燃脂精灵吹一吹就知道</view>
+        <view class="adaptive-btn" bindtap="fatTaskToFinish">立即检测</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{currenttab==='lowFat'}}" class="lowFat">
+    <view class="item-title">低碳日摄入参考范围</view>
+    <view class="rang">
+      <view class="rang-item" wx:for="{{dayHowToEat.howEatTransitionPeriodObj[0].foodList}}" wx:key="img">
+        <image src="{{item.img}}"></image>
+        <view class="num-tit">{{item.subList[0].title}}</view>
+        <view class="num">{{item.subList[0].quantityDesc}}</view>
+      </view>
+    </view>
+    <view class="item-title">低碳日吃什么</view>
+    <view class="eatSome">
+      <view class="eatSome-item color1" wx:for="{{dayHowToEat.theRemainingMealObj.restMealObj}}" style="background-image: url({{item.img}})" wx:key="img" data-index="{{index}}" bindtap="goNextPage">
+      </view>
+    </view>
+    <view class="item-title">每日吃多少</view>
+    <view class="eatNum">
+      <view class="eatNum-item">
+        <image src="../images/icon/shucai.png"></image>
+        <view class="eatNum-item-name">多种蔬菜</view>
+        <view class="eatNum-item-num">500<text>克以上·绿叶菜占一半</text> </view>
+      </view>
+      <view class="eatNum-item">
+        <image src="../images/icon/danbaizhi.png"></image>
+        <view class="eatNum-item-name">肉蛋海鲜豆制品</view>
+        <view class="eatNum-item-num">300<text>克左右</text> </view>
+      </view>
+      <view class="eatNum-item">
+        <image src="../images/icon/zhushi.png"></image>
+        <view class="eatNum-item-name">主食</view>
+        <view class="eatNum-item-num">150<text>克以下·约1拳</text> </view>
+      </view>
+      <view class="eatNum-item">
+        <image src="../images/icon/you.png"></image>
+        <view class="eatNum-item-name">多种蔬菜</view>
+        <view class="eatNum-item-num">25<text>克以下·约2.5勺瓷汤匙</text> </view>
+      </view>
+    
+    </view>
+    <view class="item-title">每日怎么吃</view>
+    <view class="eatHow">
+      <view class="eatHow-item">
+        <image src="../images/icon/cooking.png"></image> <text>烹饪方式：以生吃、水煮、清炒、白灼、炖、蒸为主，清炒时不要勾芡；</text>
+      </view>
+      <view class="eatHow-item">
+        <image src="../images/icon/water-2.png"></image> <text>每日2L水分的摄入，可保持高效燃脂状态哦；</text>
+      </view>
+      <view class="eatHow-item">
+        <image src="../images/icon/eat.png"></image> <text>每餐保持七八分饱，是比较良好的状态；晚上20点后不宜补充食物，如饿感明显，可适量补充一些绿灯区蔬菜；</text>
+      </view>
+      <view class="eatHow-item">
+        <image src="../images/icon/sport-2.png"></image> <text>每周最好有3次40-60分钟的运动，对减脂、健康都有益。</text>
+      </view>
+    </view>
+    <view class="replenish" bindtap="goToReplenish">
+      <image src="../images/recommendation/bg.png"></image>
+      <view class="replenish-text1">吃盒子过程中饿了怎么办？</view>
+      <view class="replenish-text2">量身定制每日可额外补充食物</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,77 @@
+<!--pagesIndex/consolidate/consolidate.wxml-->
+<view class="adaptive">
+  <view style="height:1rpx;"></view>
+  <image src="../images/burn.png" class="burn"></image>
+  <view class="adaptive-h3">脂肪有没有开始燃烧？</view>
+  <view class="adaptive-text">用燃脂精灵吹一吹就知道</view>
+  <view class="adaptive-btn" bindtap="fatTaskToFinish">立即检测</view>
+
+  <view class="contain">
+    <view class="lowFat">
+      <view class="item-title">低碳日摄入参考范围</view>
+      <view class="rang">
+        <view class="rang-item" wx:for="{{dayHowToEat.howEatTransitionPeriodObj[0].foodList}}" wx:key="img">
+          <image src="{{item.img}}"></image>
+          <view class="num-tit">{{item.subList[0].title}}</view>
+          <view class="num">{{item.subList[0].quantityDesc}}</view>
+        </view>
+      </view>
+      <view class="item-title">每日早/晚餐吃什么</view>
+      <view class="eatSome-item" style="margin-bottom:40rpx;background-image: url({{dayHowToEat.theRemainingMealObj.brunchWhatToEatObj[0].img}})" bindtap="goToBuy"></view>
+      <view class="item-title">其余餐吃什么</view>
+      <view class="eatSome">
+        <view class="eatSome-item color1" wx:for="{{dayHowToEat.theRemainingMealObj.restMealObj}}" style="background-image: url({{item.img}})" wx:key="img" data-index="{{index}}" bindtap="goNextPage">
+        </view>
+      </view>
+      
+      <view class="item-title">其余餐吃多少</view>
+      <view class="eatNum">
+        <view class="eatNum-item">
+          <image src="../images/icon/shucai.png"></image>
+          <view class="eatNum-item-name">多种蔬菜</view>
+          <view class="eatNum-item-num">500
+            <text>克以上·绿叶菜占一半</text> </view>
+        </view>
+        <view class="eatNum-item">
+          <image src="../images/icon/danbaizhi.png"></image>
+          <view class="eatNum-item-name">肉蛋海鲜豆制品</view>
+          <view class="eatNum-item-num">300
+            <text>克左右</text> </view>
+        </view>
+        <view class="eatNum-item">
+          <image src="../images/icon/zhushi.png"></image>
+          <view class="eatNum-item-name">主食</view>
+          <view class="eatNum-item-num">150
+            <text>克以下·约1拳</text> </view>
+        </view>
+        <view class="eatNum-item">
+          <image src="../images/icon/you.png"></image>
+          <view class="eatNum-item-name">多种蔬菜</view>
+          <view class="eatNum-item-num">25
+            <text>克以下·约2.5勺瓷汤匙</text> </view>
+        </view>
+
+      </view>
+      <view class="item-title">其余餐怎么吃</view>
+      <view class="eatHow">
+        <view class="eatHow-item">
+          <image src="../images/icon/cooking.png"></image>
+          <text>烹饪方式：以生吃、水煮、清炒、白灼、炖、蒸为主，清炒时不要勾芡；</text>
+        </view>
+        <view class="eatHow-item">
+          <image src="../images/icon/water-2.png"></image>
+          <text>每日2L水分的摄入，可保持高效燃脂状态哦；</text>
+        </view>
+        <view class="eatHow-item">
+          <image src="../images/icon/eat.png"></image>
+          <text>每餐保持七八分饱，是比较良好的状态；晚上20点后不宜补充食物，如饿感明显，可适量补充一些绿灯区蔬菜；</text>
+        </view>
+        <view class="eatHow-item">
+          <image src="../images/icon/sport-2.png"></image>
+          <text>每周最好有3次40-60分钟的运动，对减脂、健康都有益。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -74,7 +74,9 @@
         "reduceFat/reduceFat",
         "weightTarget/weightTarget",
         "box-replenish/box-replenish",
-        "adaptive/adaptive"
+        "adaptive/adaptive",
+        "reduceFatPeriod/reduceFatPeriod",
+        "consolidate/consolidate"
       ]
     },
     {

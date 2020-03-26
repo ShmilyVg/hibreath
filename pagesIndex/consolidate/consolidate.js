@@ -1,27 +1,23 @@
-// pagesIndex/adaptive/adaptive.js
+// pagesIndex/consolidate/consolidate.js
+import { getLatestOneWeekTimestamp } from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
+
 Page({
-
   data: {
-    result:{}
   },
 
-  onLoad: function (options) {
-    this.getBoxHowToEat()
+  onLoad(options) {
   },
-
   onShow: function () {
-
+    this.getLowCarbonDayHowToEat();
   },
-  goToReplenish(){
-    HiNavigator.navigateToBoxReplenish();
-  },
-  async getBoxHowToEat(){
-    let { result } = await Protocol.getBoxHowToEat();
+  async getLowCarbonDayHowToEat() {
+    let { result } = await Protocol.getLowCarbonDayHowToEat()
+    console.log('dayHowToEat', result)
     this.setData({
-      result
+      dayHowToEat: result
     })
   },
   fatTaskToFinish() {
@@ -57,4 +53,22 @@ Page({
       }
     })
   },
+  goToBuy(){},
+  goToReplenish() {
+    HiNavigator.navigateToBoxReplenish();
+  },
+  goNextPage(e) {
+    let index = e.currentTarget.dataset['index'];
+    switch (index) {
+      case 0:
+        console.log('制作美食');
+        break;
+      case 1:
+        console.log('外卖');
+        break;
+      case 2:
+        console.log('放纵');
+        break;
+    }
+  }
 })

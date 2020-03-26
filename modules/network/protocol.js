@@ -331,6 +331,10 @@ export default class Protocol {
     static getAdditionalMeal() {
         return Network.request({url: 'lowCarbonMeal/getAdditionalMeal'})
     }
+    //低碳饮食-低碳日怎么吃
+    static getLowCarbonDayHowToEat() {
+        return Network.request({url: 'lowCarbonMeal/getLowCarbonDayHowToEat'})
+    }
     //微信客服信息
     static getSupportStaff() {
         return Network.request({url: 'supportStaff/get'})

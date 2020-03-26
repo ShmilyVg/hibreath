@@ -22,7 +22,9 @@ Page({
     })
   },
   onShow: function () {
- 
+    if(!this.data.result){
+      this.getAdditionalMeal();
+    }
   },
 
 })

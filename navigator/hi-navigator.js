@@ -57,6 +57,15 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToAdaptive() {
       this.navigateTo({url: `/pagesIndex/adaptive/adaptive`});
     }
+    //低碳减脂期
+    static navigateToReduceFatPeriod() {
+      this.navigateTo({url: `/pagesIndex/reduceFatPeriod/reduceFatPeriod`});
+    }
+    
+    //低碳巩固期
+    static navigateToConsolidate() {
+      this.navigateTo({url: `/pagesIndex/consolidate/consolidate`});
+    }
 
     //盒子日额外补充
     static navigateToBoxReplenish() {

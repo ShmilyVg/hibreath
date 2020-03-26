@@ -434,6 +434,27 @@
 					"id": -1,
 					"name": "pagesIndex/box-replenish/box-replenish",
 					"pathName": "pagesIndex/box-replenish/box-replenish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/reduceFatPeriod/reduceFatPeriod",
+					"pathName": "pagesIndex/reduceFatPeriod/reduceFatPeriod",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/introduce/introduce",
+					"pathName": "pages/introduce/introduce",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/consolidate/consolidate",
+					"pathName": "pagesIndex/consolidate/consolidate",
 					"scene": null
 				}
 			]
