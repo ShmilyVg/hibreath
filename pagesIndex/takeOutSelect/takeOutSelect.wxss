@@ -1,7 +1,6 @@
 /* pagesIndex/takeOutSelect/takeOutSelect.wxss */
 
 page {
-  background-color: #7BC877;
   height: 100%;
 }
 view{
@@ -9,24 +8,24 @@ view{
 }
 .takeOutSelect {
   position: relative;
-  height: 100%;
+  background-color: #7BC877;
 }
 .rzbg{
   position: absolute;
-  width: 283rpx;
-  height: 359rpx;
+  width: 244rpx;
+  height: 300rpx;
   right: 40rpx;
-  top: 57rpx;
+  top: 50rpx;
 }
 .headTake{
-  height: 210rpx;
+  height: 254rpx;
 }
 
 .title {
   position: absolute;
   width: 100%;
-  top: 52rpx;
-  text-align: center;
+  top: 81rpx;
+  padding-left: 65rpx;
   color: #fff;
 }
 
@@ -37,19 +36,20 @@ view{
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
   line-height: 25rpx;
+  margin-bottom: 26rpx;
 }
 
 .tit_en {
-  height: 22rpx;
-  font-size: 28rpx;
-  font-family: PingFang SC;
-  font-weight: 500;
-  color: rgba(255, 201, 187, 1);
-  line-height: 25rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:28rpx;
+  opacity:0.8;
 }
 .itemCon{
   background-color: #fff;
-  height: calc(100% - 210rpx);
+  height: 940rpx;
   padding-top:83rpx; 
   border-top-left-radius: 100rpx;
 }
@@ -64,9 +64,9 @@ view{
   font-size: 32rpx;
   font-family: PingFang SC;
   font-weight: 500;
-  color: rgba(69, 69, 69, 1);
+  color: #666666;
   line-height: 41rpx;
-  margin-bottom: 33rpx;
+  margin-bottom: 36rpx;
 }
 .itemTit image{
   width:38rpx;
@@ -82,4 +82,63 @@ view{
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
   line-height: 37rpx;
+}
+.foodTab{
+  width: 100%;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx -20rpx 90rpx 0rpx rgba(247,241,237,1);
+  border-radius:80rpx 0rpx 0rpx 0rpx;
+  margin-top: 65rpx;
+}
+.foodList_tab{
+  display: flex;
+  padding-top: 72rpx;
+  padding-left: 50rpx
+}
+.tab_item{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(170,170,170,1)
+}
+.tab_item_active{
+  font-size:34rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(68,68,68,1);
+  text-align: center;
+}
+.active_line{
+  width:70rpx;
+  height:6rpx;
+  background:rgba(123,200,119,1);
+  border-radius:2rpx;
+  margin: 23rpx auto 89rpx;
+}
+.takeOutSelect-tab{
+  display: flex;
+  margin-bottom: 56rpx;
+}
+.takeOutSelect-img{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0rpx 35rpx 0rpx 40rpx;
+}
+.takeOutSelect-title{
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  margin-bottom: 20rpx;
+}
+.takeOutSelect-Desc{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height: 35rpx;
+}
+.takeOutSelect-view{
+  padding-top: 15rpx;
+  line-height: 50rpx;
 }

@@ -76,7 +76,8 @@
         "box-replenish/box-replenish",
         "adaptive/adaptive",
         "reduceFatPeriod/reduceFatPeriod",
-        "consolidate/consolidate"
+        "consolidate/consolidate",
+        "Indulge/Indulge"
       ]
     },
     {
