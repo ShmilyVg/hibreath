@@ -2,6 +2,7 @@
 <view class="low-carbon-topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
   <view class="low-carbon-topView-view1">吃盒子过程中饿了怎么办?</view>
   <view class="low-carbon-topView-view2">DIETARY PRINCIPLE</view>
+  <image src="../../images/lowFatReport/newBg.png" class="bgrz"></image>
   <view class="clear"></view>
 </view>
 <view class="low-carbon-howEat">

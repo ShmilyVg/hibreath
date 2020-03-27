@@ -31,7 +31,7 @@
     <text> 建议盒子从周一开始吃</text>并且每个盒子需要连续3天吃完 </view>
   <view class="paragraph">* Slimple减脂盒子虽然可以既保证低碳效果并且营养均衡，但毕竟不能涵盖自然界食物的所有营养元素，
     <text>每周需要额外几日“低碳日”自行补充其他食物，但是别担心，照着推荐做，低碳日也不会反弹。</text> </view>
-  <button>
+  <button bindtap="goToGift">
     <image src="../images/box.png" class="boxImg"></image> 盒子吃完了？点击购买</button>
 </view>
 <view class="low-carbon-howEat">

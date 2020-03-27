@@ -31,7 +31,7 @@ Page({
   },
   //加群页
   goToAddLowfat() {
-    // HiNavigator.navigateToAddLowfatGroup();
+    HiNavigator.navigateToAddLowfatGroup();
   },
   //低碳适应期
   goToAdaptive(){
@@ -47,5 +47,8 @@ Page({
   //低碳减脂期
   goToReduce() {
     HiNavigator.navigateToReduceFatPeriod();
+  },
+  toSetInfo(){
+    HiNavigator.switchToSetInfo()
   }
 })

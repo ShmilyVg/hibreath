@@ -36,6 +36,7 @@ page {
   font-weight: 400;
   height: 57rpx;
   line-height: 57rpx;
+  opacity: 0.8;
 }
 
 .three {
