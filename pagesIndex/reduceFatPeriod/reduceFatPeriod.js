@@ -112,5 +112,9 @@ Page({
         console.log('放纵');
         break;
     }
+  },
+  goToGift(){
+    let couponId = this.data.couponId
+    HiNavigator.navigateToGetGift({ couponId});
   }
 })

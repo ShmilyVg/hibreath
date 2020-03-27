@@ -4,7 +4,7 @@
     <view class="header_h2 text_left">Slimple低碳燃脂</view>
     <view class="header_text1">好身材·很简单</view>
     <view class="lineBold"></view>
-    <view class="header_text text_left">成为会员，专享服务</view>
+    <view class="header_text text_left">成为低碳club会员，领取免费好礼</view>
   </view>
   <view class="btn_group">
     <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">开始低碳燃脂</button>
@@ -30,7 +30,7 @@
         </view>
       </view>
     </view>
-    <view class="manifesto" wx:if="{{taskInfo.flag}}">
+    <view class="manifesto" >
       <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
       <text>{{taskInfo.flag}}</text>
       <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
