@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "放纵餐怎么吃",
+  "navigationBarBackgroundColor": "#7BC877",
+  "navigationBarTextStyle": "white"
 }

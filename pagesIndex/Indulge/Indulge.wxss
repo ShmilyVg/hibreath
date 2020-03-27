@@ -1,1 +1,111 @@
 /* pagesIndex/Indulge/Indulge.wxss */
+page{
+    background-color: #7BC877;
+    height: 100%;
+}
+.rzbg{
+    position: absolute;
+    width: 244rpx;
+    height: 300rpx;
+    right: 40rpx;
+    top: 50rpx;
+}
+.Indulge-title{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    margin: 81rpx 0rpx 27rpx 65rpx;
+}
+.Indulge-subtitle{
+    font-size:48rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    margin-left: 65rpx;
+}
+.Indulge-bottom{
+    width: 100%;
+    margin-top: 81rpx;
+    height:1457rpx;
+    background:rgba(255,255,255,1);
+    border-radius:80rpx 0rpx 0rpx 0rpx;
+    box-sizing: border-box;
+    padding: 83rpx 69rpx 0rpx 30rpx;
+}
+.Indulge-bottom-title{
+    font-size:36rpx;
+    margin-left: 12rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(69,69,69,1);
+    margin-bottom: 64rpx;
+}
+.Indulge-foodList-right{
+   width: calc(100% - 231rpx);
+   padding-top: 25rpx;
+}
+.Indulge-bottom-img{
+    width: 200rpx;
+    height: 140rpx;
+    margin-right: 31rpx;
+}
+.Indulge-foodList-right-title{
+    float: left;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(69,69,69,1);
+    margin-bottom: 25rpx;
+}
+.Indulge-foodList-right-quantityDesc{
+    float: right;
+    font-size:24rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.Indulge-foodList-right-calorie{
+    max-width:150rpx;
+    height:46rpx;
+    line-height: 21rpx;
+    background:rgba(253,244,235,1);
+    border-radius:10rpx;
+    text-align: center;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,127,58,1);
+    box-sizing: border-box;
+    padding: 13rpx 18rpx 12rpx 12rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Indulge-foodList-right-calorie>image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 6rpx;
+}
+.Indulge-foodList-right-carbohydrate{
+    max-width:150rpx;
+    line-height: 21rpx;
+    height:46rpx;
+    background:rgba(236,248,235,1);
+    border-radius:10rpx;
+    text-align: center;
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(79,187,73,1);
+    box-sizing: border-box;
+    padding: 13rpx 18rpx 12rpx 12rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Indulge-foodList-right-carbohydrate>image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 6rpx;
+}
