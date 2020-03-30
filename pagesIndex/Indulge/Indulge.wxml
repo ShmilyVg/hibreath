@@ -1,0 +1,23 @@
+<!--pagesIndex/Indulge/Indulge.wxml-->
+<view class="Indulge">
+    <image src="../../images/lowFatReport/newBg.png" class="rzbg"></image>
+    <view class="Indulge-title">坚持了太久？一周放纵一餐也无妨</view>
+    <view class="Indulge-subtitle">照着吃既解馋也不会胖！</view>
+</view>
+<view class="Indulge-bottom">
+    <view class="Indulge-bottom-title">每周最后一个低碳日可以选择一顿</view>
+    <block wx:for="{{dataList}}">
+        <view style="display: flex;margin-bottom: 60rpx">
+            <image class="Indulge-bottom-img" src="{{item.img}}"></image>
+            <view class="Indulge-foodList-right">
+                <view class="Indulge-foodList-right-title">{{item.title}}</view>
+                <view class="Indulge-foodList-right-quantityDesc">{{item.quantityDesc}}</view>
+                <view class="clear"></view>
+                <view style="display: flex">
+                    <view style="margin-right: 22rpx" class="Indulge-foodList-right-calorie"><image  src="../images/icon/calorie.png"></image>{{item.calorie}}</view>
+                    <view class="Indulge-foodList-right-carbohydrate"><image  src="../images/icon/carbohydrate.png"></image>{{item.carbohydrate}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

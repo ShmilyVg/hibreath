@@ -617,6 +617,10 @@ export default class Protocol {
     static extraData(data) {
         return Network.request({url: 'food/extraData',data});
     }
+    //放纵餐怎么吃
+    static Indulge(data) {
+      return Network.request({url: 'lowCarbonMeal/getIndulgeMealHowToEat',data});
+    }
     // 获取我的优惠券
     static getCouponListPage({page, limit = 8,isUsed,isExpired}) {
     return Network.request({url: 'coupon/getCouponListPage', data: {page,limit,isUsed,isExpired}});

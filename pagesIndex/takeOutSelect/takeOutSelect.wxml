@@ -1,10 +1,10 @@
 <!--pagesIndex/takeOutSelect/takeOutSelect.wxml-->
 <view class="takeOutSelect">
-<image src="../../images/lowFatReport/bg.png" class="rzbg"></image>
+<image src="../../images/lowFatReport/newBg.png" class="rzbg"></image>
   <view class="headTake">
     <view class="title">
       <view class="tit_h3">外卖怎么选</view>
-      <view class="tit_en">Dietary principle</view>
+      <view class="tit_en">DIETARY PRINCIPLE</view>
     </view>
   </view>
   <view class="itemCon">
@@ -14,5 +14,29 @@
       <view class="itemDesc">{{item.Desc}}</view>
     </view>
   </view>
-
+</view>
+<view class="foodTab" style="height: {{currenttab==='0'?'1480rpx':'950rpx'}}">
+  <view class="foodList_tab">
+    <view class="{{currenttab==='0'?'tab_item_active':'tab_item'}}" data-tabid="0" bindtap='selectTab'>
+      推荐菜品
+      <view class="active_line" wx:if="{{currenttab === '0'}}"></view>
+    </view>
+    <view class="{{currenttab==='1'?'tab_item_active':'tab_item'}}" data-tabid="1" bindtap='selectTab' style="margin-left: 100rpx">
+      严禁菜品
+      <view class="active_line" wx:if="{{currenttab === '1'}}"></view>
+    </view>
+    <view class="clear"></view>
+  </view>
+    <block wx:if="{{currenttab==='0'}}" wx:for="{{foodList}}">
+      <view class="takeOutSelect-tab">
+        <image class="takeOutSelect-img" src="{{item.imgPath}}"></image>
+        <view class="takeOutSelect-view">
+          <view class="takeOutSelect-title">{{item.title}}</view>
+          <view class="takeOutSelect-Desc"><text>{{item.Desc}}</text></view>
+        </view>
+      </view>
+    </block>
+  <view wx:if="{{currenttab==='1'}}">
+    <image style="height: 584rpx;width: 100%" src="https://img.hipee.cn/hibreath/icon/LosefatReport/jinzhi.png"></image>
+  </view>
 </view>

@@ -455,6 +455,14 @@
 					"id": -1,
 					"name": "pagesIndex/consolidate/consolidate",
 					"pathName": "pagesIndex/consolidate/consolidate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/Indulge/Indulge",
+					"pathName": "pagesIndex/Indulge/Indulge",
+					"query": "",
 					"scene": null
 				}
 			]
