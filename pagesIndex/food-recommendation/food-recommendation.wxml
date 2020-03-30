@@ -1,32 +1,81 @@
 <!--pagesIndex/food-recommendation/food-recommendation.wxml-->
 <wxs src="../../utils/tool.wxs" module="tools"></wxs>
-<view class="page">
-    <view wx:for="{{contentResult.dataList}}" wx:key="index" class="recommendation-content">
-        <!--<view class="recommendation-line"></view>-->
+<view class="recommendation">
+  <view class="result_tab_top">
+    <view wx:for="{{typeList}}" wx:key="index">
+      <view class="{{currenttab===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTab'>
+        <view style="margin-bottom: 20rpx">{{item.title}}</view>
+        <view class="active_line" wx:if="{{currenttab === item.type}}"></view>
+      </view>
+    </view>
+  </view>
+  <view style='clear:both;'></view>
+  <view wx:if="{{currenttab == 'ingredient'}}" class="ingredient">
+    <view class="ingredient-top">
+      <view class="ingredient-type" wx:for="{{ingredientType}}" wx:key="img" style="background:{{item.bgColor}}">
+        <image src="../images/icon/{{item.img}}.png"></image>
+        <view class="type-text" style="background:{{item.bgColor1}}">
+          <view>{{item.text1}}</view>
+          <text>{{item.text2}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="ingredient-contain">
+      <view class="contain_tab-left">
+        <view>蛋类</view>
+        <view class="active">蛋类</view>
+        <view>蛋类</view>
+      </view>
+      <view class="contain_tab-right">
+        <view class="contain_tab_top">
+          <view wx:for="{{colorList}}" wx:key="index">
+            <view class="{{typeColor===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTabColor'>
+              <view style="margin-bottom: 20rpx">{{item.title}}</view>
+              <view class="active_line" wx:if="{{typeColor === item.type}}"></view>
+            </view>
+          </view>
+        </view>
+        <view style='clear:both;'></view>
+        <view class="foodList">
+          <view class="food-item">
+            <image src="../images/icon/diy.png"></image>
+            牛里脊肉
+          </view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+  <view wx:if="{{currenttab == 'recommend'}}">
+    <view class="page">
+      <view wx:for="{{contentResult.dataList}}" wx:key="index" class="recommendation-content">
         <view class="recommendation-swiperItem" style="margin-bottom: 30rpx">
-            <view class="content-title">{{item.title}}</view>
-            <view class="content-kcal">
-                <!--<view style="box-sizing: border-box;padding: 0 8rpx;z-index: 999;position: relative"></view>-->
-                总共{{item.total}}kcal
-               <!-- <view style="max-width: 185rpx;height: 12rpx;background: rgba(254,236,235,1);position: relative;top:-10rpx"></view>-->
-            </view>
-            <view class="swiperChange" bindtap="foodChange" data-id="{{item.id}}" data-index="{{index}}">
-                <image  animation="{{rotate3dA[index]}}"  src="../../images/set-info/greenChange.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
-                <text class="swiperText">换一换</text>
-            </view>
+          <view class="content-title">{{item.title}}</view>
+          <view class="content-kcal">
+            总共{{item.total}}kcal
+          </view>
+          <view class="swiperChange" bindtap="foodChange" data-id="{{item.id}}" data-index="{{index}}">
+            <image animation="{{rotate3dA[index]}}" src="../../images/set-info/greenChange.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
+            <text class="swiperText">换一换</text>
+          </view>
         </view>
 
         <view class="recommendation-content-bottom" wx:for="{{item.list}}" wx:key="index">
-            <view data-foodId="{{item.foodId}}" bindtap="toDetails">
-                <image  src="{{item.imgUrl}}" style="width: 200rpx;height: 140rpx;float: left;border-radius: 10rpx"></image>
-                <view style="float: left;margin-left: 30rpx;line-height: 45rpx;padding-top: 30rpx;">
-                    <view class="food-title">{{item.title}}</view>
-                    <view class="food-kcal">{{item.calorie}}kcal</view>
-                </view>
-                <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
-                <view class="clear"></view>
+          <view data-foodId="{{item.foodId}}" bindtap="toDetails">
+            <image src="{{item.imgUrl}}" style="width: 200rpx;height: 140rpx;float: left;border-radius: 10rpx"></image>
+            <view style="float: left;margin-left: 30rpx;line-height: 45rpx;padding-top: 30rpx;">
+              <view class="food-title">{{item.title}}</view>
+              <view class="food-kcal">{{item.calorie}}kcal</view>
             </view>
+            <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+            <view class="clear"></view>
+          </view>
         </view>
+      </view>
     </view>
-</view>
 
+  </view>
+
+
+</view>

@@ -3,7 +3,7 @@ import { getLatestOneWeekTimestamp } from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
-
+const app = getApp();
 Page({
   data: {
     currenttab: 'howEatBox',
@@ -13,7 +13,7 @@ Page({
   
 
   onLoad(options) {
-    
+    console.log(app.globalData.shoppingJumpCodes)
   },
 
   onShow: function () {
@@ -54,7 +54,6 @@ Page({
       this.setData({
         currenttab: newtab
       });
-      console.log('currenttab', this.data.currenttab)
     }
   },
   toRecomTarNew() {
@@ -103,18 +102,25 @@ Page({
     let index = e.currentTarget.dataset['index'];
     switch(index){
       case 0:
-        console.log('制作美食');
+        HiNavigator.navigateTorecommendation();
         break;
       case 1:
-        console.log('外卖');
+        HiNavigator.navigateToTakeOutSelect();
         break;
       case 2:
-        console.log('放纵');
+        HiNavigator.navigateToIndulge()
         break;
     }
   },
   goToGift(){
-    let couponId = this.data.couponId
+    let couponId;
+    let list = app.globalData.shoppingJumpCodes;
+    for (let item of list){
+      if (item.code == 'box'){
+        couponId = item.couponId
+        break;
+      }
+    }
     HiNavigator.navigateToGetGift({ couponId});
   }
 })
