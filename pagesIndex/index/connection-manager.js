@@ -32,8 +32,8 @@ export default class ConnectionManager {
         };
         //正在连接蓝牙设备
         this.action[ConnectState.CONNECTING] = ()=>{
-            //this.connecting();
-            this.disconnect();
+            this.connecting();
+            //this.disconnect();
         };
         //蓝牙已连接
        /* this.action[ProtocolState.QUERY_DATA_START]=
