@@ -303,6 +303,10 @@ export default class Protocol {
     static postPublish(data) {
         return Network.request({url: 'group/dynamic/publish', data})
     }
+    //圈子banner
+    static postBanner() {
+      return Network.request({url: 'group/banner'});
+    }
 
 
     /**

@@ -130,6 +130,7 @@ Page({
           })
         }
       },800)
+      this.getBanner()
       //this.NoticeList();
     },
     async onShow() {
@@ -185,7 +186,19 @@ Page({
      async toFatBurningList(){
        HiNavigator.navigateToFatBurningList({ groupId: (await judgeGroupEmpty()).groupId })
      },
+    // 圈子banner
+    async getBanner(){
+        const { result } = await Protocol.postBanner();
+        if(result.dataList){
+            wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#4c4c4c'});
+            this.setData({
+                dataList:result.dataList
+            })
+        }else{
+            wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#7bcb77'});
+        }
 
+    },
     async forceUpdateAll() {
         if(this.data.noUpdateAll){
             this.setData({
@@ -200,7 +213,6 @@ Page({
                 try {
                     console.log(currentSocial,'currentSocial')
                     if (currentSocial.groupId) {
-                        wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#171717'});
                         wx.setBackgroundColor({
                             backgroundColor: '#171717', // 窗口的背景色为黑色
                         });
@@ -209,7 +221,6 @@ Page({
                             noCommunity:false
                         })
                     } else {
-                        wx.setNavigationBarColor({frontColor: '#000000', backgroundColor: '#ffffff'});
                         wx.setBackgroundColor({
                             backgroundColor: '#ffffff', // 窗口的背景色为白色
                         });

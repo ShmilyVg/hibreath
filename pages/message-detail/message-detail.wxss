@@ -110,7 +110,7 @@
     font-family:PingFang SC;
     font-weight:400;
     float: left;
-    color:rgba(238,111,105,1);
+    color:#0A0A0A;
 }
 .commentInfoList-time{
     float: right;
@@ -170,7 +170,7 @@
     color:rgba(255,255,255,1);
 }
 .commentContentRed{
-    background:rgba(238,111,105,1);
+    background:#7BC877;
 }
 .commentContentWhite{
     background:rgba(195,197,200,1);

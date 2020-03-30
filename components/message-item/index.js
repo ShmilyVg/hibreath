@@ -15,6 +15,10 @@ Component({
       type: Number,
       value: 0
     },
+    index: {
+      type: Number,
+      value: 0
+    },
   },
   observers: {
     'message'() {
