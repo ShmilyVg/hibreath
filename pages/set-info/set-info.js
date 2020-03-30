@@ -92,6 +92,7 @@ Page({
         }, 3000)
       }
     }, 1200)
+    this.getShoppingJumpCodes();
   },
   onShow() {
     this.getFinishedGuide()
@@ -682,4 +683,8 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  async getShoppingJumpCodes(){
+    let { result } = await Protocol.getShoppingJumpCodes();
+    app.globalData.shoppingJumpCodes = result;
+  }
 });

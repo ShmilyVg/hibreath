@@ -316,7 +316,9 @@ export default class Protocol {
     static getGift({couponId}) {
         return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
     }
-
+    static getShoppingJumpCodes(){
+        return Network.request({url: 'coupon/getShoppingJumpCodes'})
+    }
     //低碳饮食-减脂历程
     static getLossfatCourse() {
         return Network.request({url: 'lowCarbonMeal/getLossfatCourse'})

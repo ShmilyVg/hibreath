@@ -290,6 +290,18 @@ export default class HiNavigator extends CommonNavigator {
         this.navigateTo({url: '/pagesIndex/food-recommendation/food-recommendation'});
     }
     /**
+     * 进入外卖推荐
+     */
+    static navigateToTakeOutSelect() {
+      this.navigateTo({url: '/pagesIndex/takeOutSelect/takeOutSelect'});
+    }
+    /**
+     * 进入放纵餐页面
+     */
+    static navigateToIndulge() {
+      this.navigateTo({url: '/pagesIndex/Indulge/Indulge'});
+    }
+    /**
      * 进入饮食详情页面
      */
     static navigateToFooddetails({foodId}) {
