@@ -315,7 +315,11 @@ export default class Protocol {
     //优惠礼包
     static getGift({couponId}) {
         return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
-    }
+		}
+		//领取优惠券takeGift
+		static takeGift({couponId,executeOrder}) {
+			return Network.request({url: 'coupon/takeCouponOnBreathSignIn', data:{couponId,executeOrder}})
+	}
     static getShoppingJumpCodes(){
         return Network.request({url: 'coupon/getShoppingJumpCodes'})
     }
@@ -570,12 +574,20 @@ export default class Protocol {
         return Network.request({url: 'food/dateInfo'});
     }
     //饮食打卡-换一换
-    static postFoodChange({id}) {
-        return Network.request({url: 'food/change',data: {id}});
+    static postFoodChange(data) {
+      return Network.request({url: 'lowCarbonMeal/changeFood',data});
     }
     //新版饮食推荐
     static postMenuRecommend() {
-      return Network.request({url: 'food/menuRecommend'});
+      return Network.request({url: 'lowCarbonMeal/getRecommendedFatLossRecipes'});
+    }
+		//减脂食材清单列表（种类）
+    static getFoodMaterialsList(){
+      return Network.request({url: 'lowCarbonMeal/getFoodMaterialsList'});
+		}
+		//减脂食材清单（详情）
+    static searchFood(data){
+      return Network.request({url: 'lowCarbonMeal/searchFood',data});
     }
     //好物推荐
     static postConversionInfo({page = 1, pageSize = 10} = {}) {

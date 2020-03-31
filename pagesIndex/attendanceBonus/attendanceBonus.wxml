@@ -1,0 +1,61 @@
+<!--pagesIndex/attendanceBonus/attendanceBonus.wxml-->
+<navBar title='加入减脂圈' color="#fff" iconTheme="white" background='' back="{{true}}" bindback="handlerGobackClick">
+
+</navBar>
+<view class="tasks">
+  <view class="task {{item.isFinished ?'readyClock':'' }}" wx:for="{{breathSign.data}}" wx:key='executeOrder'>
+    <view class="replenish-tip" wx:if="{{item.executeOrder < breathSign.days && !item.isFinished}}">
+      补
+    </view>
+    <image src="../../images/set-info/ready.png" class="" mode="aspectFill" wx:if="{{item.isFinished && !item.isCoupon}}"></image>
+    <image src="../../images/set-info/{{!item.isCoupon?'task':item.isTakeCoupon?'gift-open':'gift'}}.png" mode="aspectFill" wx:else></image>
+    <view>{{item.executeOrder}}天</view>
+  </view>
+</view>
+<view class="attendanceBonus">
+
+  <!-- <view class="top-tip replenishClass"> -->
+  <view class="top-tip replenishClass" wx:if="{{breathSign.isCoupon && breathSign.isFinished}}">
+    <button wx:if="{{breathSign.replenish}}" bindtap="takeGift">
+      <image src="../../images/set-info/gift.png" class="gift"></image> 领取奖励
+      <image src="../../images/set-info/goRight.png" class="goNext"></image>
+    </button>
+    <view class="newTip">※新人礼会自动收入我的优惠券中</view>
+  </view>
+  <view class="top-tip {{breathSign.replenish?'replenishClass':''}}" wx:else>
+    <button wx:if="{{breathSign.replenish}}" open-type='share'>立即补签
+      <image src="../../images/set-info/goRight.png" class="goNext"></image>
+    </button>
+    <view class="text1">新用户连续签到7日， </view>
+    <view class="text1">即可领取
+      <text>7日全勤打卡商品优惠券！</text>
+    </view>
+  </view>
+  <view class="discounts">
+    <view class="discounts-left">全 勤 新 人 礼</view>
+    <view class="discounts-top">
+      <view class="discounts-title">{{gift.title}}</view>
+      <view class="discounts-time">{{gift.validStartTime}}-{{gift.validEndTime}}</view>
+    </view>
+    <view class="discounts-right">
+      <view class="discounts-value">
+        <view>￥</view> {{gift.usedAmount}}</view>
+      <view class="discounts-condition">满{{gift.fullAmount}}{{gift.typeName}}</view>
+    </view>
+    <view class="discounts-bottom">{{gift.description}}</view>
+
+  </view>
+  <view class="contain">
+    <view class="contain-title">以下方式任意完成一条即算打卡成功</view>
+    <view class="task-text">
+      <image src="../images/icon/burn.png"></image> 完成今日燃脂速度打卡</view>
+    <view class="task-text">
+      <image src="../images/icon/foot.png"></image> 完成今日体重记录打卡</view>
+    <view class="line"></view>
+    <view class="replenish">关于补卡</view>
+    <view class="replenish-text">邀请新用户进入小程序即可~ </view>
+    <view class="replenish-text">
+      <text>方法：</text>分享小程序到微信，当有新用户点击进入后，则补卡成功~~ </view>
+  </view>
+
+</view>

@@ -22,24 +22,22 @@
     </view>
     <view class="ingredient-contain">
       <view class="contain_tab-left">
-        <view>蛋类</view>
-        <view class="active">蛋类</view>
-        <view>蛋类</view>
+        <view wx:for="{{materialsList.foodType}}" class="{{item.k == foodType?'active':''}}" wx:key="id" data-item="{{item.k}}" bindtap="getFoodType">{{item.val}}</view>
       </view>
       <view class="contain_tab-right">
         <view class="contain_tab_top">
           <view wx:for="{{colorList}}" wx:key="index">
-            <view class="{{typeColor===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTabColor'>
+            <view class="{{foodColor===item.type?'tab_item_active':'tab_item'}}" data-item="{{item.type}}" bindtap='getFoodColor'>
               <view style="margin-bottom: 20rpx">{{item.title}}</view>
-              <view class="active_line" wx:if="{{typeColor === item.type}}"></view>
+              <view class="active_line" wx:if="{{foodColor === item.type}}"></view>
             </view>
           </view>
         </view>
         <view style='clear:both;'></view>
         <view class="foodList">
-          <view class="food-item">
-            <image src="../images/icon/diy.png"></image>
-            牛里脊肉
+          <view class="food-item" wx:for="{{foodList}}" wx:key='id' data-foodId="{{item.id}}" bindtap="toDetails">
+            <image src="{{item.imgUrl}}"></image>
+            {{item.title}}
           </view>
         </view>
       </view>
@@ -49,26 +47,26 @@
   </view>
   <view wx:if="{{currenttab == 'recommend'}}">
     <view class="page">
-      <view wx:for="{{contentResult.dataList}}" wx:key="index" class="recommendation-content">
+      <view wx:for="{{contentResult}}" wx:key="index" class="recommendation-content">
         <view class="recommendation-swiperItem" style="margin-bottom: 30rpx">
           <view class="content-title">{{item.title}}</view>
           <view class="content-kcal">
-            总共{{item.total}}kcal
+            总共{{item.totalCalorie}}kcal
           </view>
-          <view class="swiperChange" bindtap="foodChange" data-id="{{item.id}}" data-index="{{index}}">
+          <view class="swiperChange" bindtap="foodChange" data-id="{{item.code}}" data-index="{{index}}">
             <image animation="{{rotate3dA[index]}}" src="../../images/set-info/greenChange.png" style="width: 18rpx;height: 20rpx;margin-right: 10rpx"></image>
             <text class="swiperText">换一换</text>
           </view>
         </view>
 
-        <view class="recommendation-content-bottom" wx:for="{{item.list}}" wx:key="index">
-          <view data-foodId="{{item.foodId}}" bindtap="toDetails">
+        <view class="recommendation-content-bottom" wx:for="{{item.foodList}}" wx:key="index">
+          <view data-foodId="{{item.id}}" bindtap="toDetails">
             <image src="{{item.imgUrl}}" style="width: 200rpx;height: 140rpx;float: left;border-radius: 10rpx"></image>
             <view style="float: left;margin-left: 30rpx;line-height: 45rpx;padding-top: 30rpx;">
               <view class="food-title">{{item.title}}</view>
               <view class="food-kcal">{{item.calorie}}kcal</view>
             </view>
-            <view class="food-quantityDesc">x{{item.quantityDesc}}</view>
+            <view class="food-quantityDesc">x{{item.carbohydrate}}</view>
             <view class="clear"></view>
           </view>
         </view>

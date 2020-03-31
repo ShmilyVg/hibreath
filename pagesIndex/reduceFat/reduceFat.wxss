@@ -70,7 +70,7 @@ page{
   display: inline-block;
   margin-left: 36rpx;
   font-size:56rpx;
-  font-family:DIN Condensed;
+  font-family:DINCondensed;
   font-weight:bold;
   color:rgba(69,69,69,1);
 }

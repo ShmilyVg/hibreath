@@ -37,7 +37,7 @@ view {
 .top-num {
   margin-top: 41rpx;
   font-size: 120rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
   position: relative;
@@ -47,7 +47,7 @@ view {
 
 .top-num text {
   font-size: 50rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(255, 255, 255, 1);
 }
@@ -101,7 +101,7 @@ view {
 
 .contain-view .time {
   font-size: 80rpx;
-  font-family: DIN Condensed;
+  font-family: DINCondensed;
   font-weight: bold;
   color: rgba(79, 187, 73, 1);
 }

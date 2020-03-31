@@ -10,9 +10,10 @@ Page({
     idx: 0,
     num: [1, 1, 1, 1, 1, 1, 1, 1],
     currenttab: 'ingredient',
-    typeColor: 'green',
+    foodColor: 'green',
+    activeMater: '',
     ingredientType: [{
-      img: 'warn',
+      img: 'red',
       bgColor: '#FFF4EC',
       bgColor1: '#FF9D76',
       text1: '红灯',
@@ -32,12 +33,12 @@ Page({
     }],
     colorList: [{
       type: 'green',
-      title: '绿灯'
+      title: '绿灯',
     }, {
       type: 'yellow',
       title: '黄灯'
     }, {
-      type: 'warn',
+      type: 'red',
       title: '红灯'
     }],
     rotate3dA: ['rotate3dA0', 'rotate3dA1', 'rotate3dA2', 'rotate3dA3', 'rotate3dA4', 'rotate3dA5'],
@@ -53,7 +54,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options) {
+  onLoad(options) {
+    this.getMenuRecommend();
+    this.getFoodMaterialsList()
+  },
+  onShow: function() {
+
+  },
+  async getMenuRecommend() {
     const {
       result: contentResult
     } = await Protocol.postMenuRecommend()
@@ -69,84 +77,13 @@ Page({
       });
     }
   },
-  selectTabColor(e){
-    let newtab = e.currentTarget.dataset.tabid;
-    if (this.data.currenttab !== newtab) {
-      this.setData({
-        typeColor: newtab
-      });
-    }
-  },
   toDetails(e) {
+    console.log(e.currentTarget.dataset.foodid)
     if (e.currentTarget.dataset.foodid) {
       HiNavigator.navigateToFooddetails({
         foodId: e.currentTarget.dataset.foodid
       })
     }
-  },
-  toRule() {
-    HiNavigator.navigateToFoodRuler()
-  },
-  async secDate(e) {
-    let id = e.currentTarget.dataset.id;
-    let time = e.currentTarget.dataset.time
-    this.setData({
-      idx: id
-    })
-    this.getMonth(time);
-    const {
-      result: contentResult
-    } = await Protocol.postFoodItemInfo({
-      itemId: e.currentTarget.dataset.id
-    })
-    this.setData({
-      contentResult: contentResult
-    })
-  },
-  getMonth(time) {
-    var date = new Date(time);
-    var month = date.getMonth() + 1;
-    switch (month) {
-      case 1:
-        var str = "January · 1"
-        break;
-      case 2:
-        var str = "February · 2"
-        break;
-      case 3:
-        var str = "March · 3"
-        break;
-      case 4:
-        var str = "April · 4"
-        break;
-      case 5:
-        var str = "May · 5"
-        break;
-      case 6:
-        var str = "June · 6"
-        break;
-      case 7:
-        var str = "July · 7"
-        break;
-      case 8:
-        var str = "August · 8"
-        break;
-      case 9:
-        var str = "September · 9"
-        break;
-      case 10:
-        var str = "October · 10"
-        break;
-      case 11:
-        var str = "November · 11"
-        break;
-      case 12:
-        var str = "December · 12"
-        break;
-    }
-    this.setData({
-      monthStr: str
-    })
   },
   async foodChange(e) {
     this.animation = wx.createAnimation({
@@ -159,20 +96,59 @@ Page({
       [`num[${index}]`]: this.data.num[index] + 1,
       [`rotate3dA[${index}]`]: this.animation.export()
     })
+    let id= e.currentTarget.dataset.id;
+    let data ={
+      tags: [id]
+    }
     const {
       result
-    } = await Protocol.postFoodChange({
-      id: e.currentTarget.dataset.id
-    })
+    } = await Protocol.postFoodChange(data);
     this.setData({
-      [`contentResult.dataList[${index}].list`]: result.data.list,
-      [`contentResult.dataList[${index}].total`]: result.data.total,
-      [`contentResult.dataList[${index}].id`]: result.data.id,
+      [`contentResult[${index}].foodList`]: result.foodList,
+      [`contentResult[${index}].totalCalorie`]: result.totalCalorie,
     })
   },
-
-  onShow: function () {
-
+  //减脂食材清单列表（种类）
+  async getFoodMaterialsList() {
+    const {
+      result
+    } = await Protocol.getFoodMaterialsList();
+    let foodType = result.foodType[0].k;
+    let foodColor = result.foodType[0].k;
+    this.setData({
+      foodType,
+      foodColor:'green',
+      materialsList: result
+    })
+    this.searchFood();
   },
+  getFoodType(e){
+    let foodType = e.currentTarget.dataset.item;
+    this.setData({
+      foodType
+    })
+    this.searchFood();
+  },
+  getFoodColor(e) {
+    let foodColor = e.currentTarget.dataset.item;
+    this.setData({
+      foodColor
+    })
+    this.searchFood();
+  },
+  //减脂食材清单（详情）
+  async searchFood() {
+    let foodType = this.data.foodType;
+    let foodColor = this.data.foodColor;
+    let data = {
+      tags: [foodType, foodColor]
+    }
+    const {
+      result
+    } = await Protocol.searchFood(data)
+    this.setData({
+      foodList: result
+    })
+  }
 
 })

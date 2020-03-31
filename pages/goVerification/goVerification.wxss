@@ -7,7 +7,7 @@ page{
     box-sizing: border-box;
     padding-bottom: 15rpx;
     height: 60rpx;
-    margin-bottom: 80rpx;
+    margin-bottom: 30rpx;
 }
 .goVerification-bottomLineW{
     border-bottom: 1rpx #E8E8E8 solid;

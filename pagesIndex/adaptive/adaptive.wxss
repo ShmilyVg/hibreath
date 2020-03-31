@@ -79,7 +79,7 @@ view{
 }
 .day-title text{
   font-size:44rpx;
-  font-family:DIN Condensed;
+  font-family:DINCondensed;
 }
 .day-contain{
   display: flex;

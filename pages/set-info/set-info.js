@@ -502,7 +502,8 @@ Page({
   },
   
   goToTask(e){
-    console.log(e.currentTarget.dataset.url)
+    // console.log(e.currentTarget.dataset.url)
+    HiNavigator.navigateToAttendanceBonus()
   },
   goToManifesto(){
     HiNavigator.navigateToManifesto(this.data.taskInfo.sharedId)

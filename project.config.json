@@ -464,6 +464,12 @@
 					"pathName": "pagesIndex/Indulge/Indulge",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/attendanceBonus/attendanceBonus",
+					"pathName": "pagesIndex/attendanceBonus/attendanceBonus",
+					"scene": null
 				}
 			]
 		}
