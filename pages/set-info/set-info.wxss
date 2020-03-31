@@ -254,6 +254,9 @@ view{
 .speed text{
   color: #FF7F3A;
 }
+swiper{
+  height: 166rpx;
+}
 .puzzled{
   text-align: center;
   position: relative;

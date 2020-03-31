@@ -1,8 +1,8 @@
 /* pagesIndex/weightTarget/weightTarget.wxss */
 
 page {
-  background: #7bc877;
-  height: 100%;
+  background: #fff;
+  /* height: 100%; */
 }
 
 view {
@@ -23,8 +23,10 @@ view {
 
 .weightTarget-header {
   position: relative;
+  height: 650rpx;
   color: #fff;
   padding: 62rpx 98rpx 58rpx 65rpx;
+  background: #7bc877;
 }
 
 .top-title {
@@ -72,9 +74,9 @@ view {
 }
 
 .weight-contain {
-  /* position: absolute; */
+  position: absolute;
   width: 100%;
-  /* bottom: 0; */
+  top: 400rpx;
   background: rgba(255, 255, 255, 1);
   border-radius: 80rpx 0px 0px 0px;
   padding: 74rpx 65rpx 70rpx 68rpx;

@@ -296,7 +296,7 @@ Page({
   async getBanner(){
     const { result: { dataList} } = await Protocol.getBannerList();
     this.setData({
-      banner: dataList[0],
+      banner: dataList,
       banner1: dataList[1],
     })
   },
@@ -503,7 +503,13 @@ Page({
   
   goToTask(e){
     // console.log(e.currentTarget.dataset.url)
-    HiNavigator.navigateToAttendanceBonus()
+    let { type, url} = e.currentTarget.dataset.item;
+    if (type == 'wechat'){
+      wx.navigateTo({
+        url: url
+      })
+    }
+    // HiNavigator.navigateToAttendanceBonus()
   },
   goToManifesto(){
     HiNavigator.navigateToManifesto(this.data.taskInfo.sharedId)
