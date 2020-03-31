@@ -1,43 +1,20 @@
 <view wx:if="{{haveGroupId}}" class="relative fill-width flex-column box-sizing-border-box community-layout">
-    <view class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;">
-        <view class="flex-row align-items-center">
-            <view class="relative">
-                <image mode="aspectFill" src="{{currentSocial.imgUrl}}" class="community-logo"></image>
-                <image src="{{socialMemberInfo.isMajor?'../../images/community/group.png':'../../images/community/green.png'}}" class="absolute community-switch-icon"></image>
-            </view>
-            <view class="community-name">{{currentSocial.name}}</view>
-        </view>
-        <setting bind:onSettingClickEvent="onCommunitySettingClickEvent"></setting>
-    </view>
-    <view bindtap="toMemberManagerPage" class="fill-width flex-row align-items-center space-between" style="margin-top: 80rpx;margin-left: 25rpx">
-       <!-- <view class="flex-row align-items-center">
-            <view class="community-member-num">{{socialMemberInfo.memberCount}}</view>
-            <view class="community-member-description">位·燃脂成员</view>
-        </view>-->
-
-        <view class="flex-row align-items-center relative">
-            <image wx:for="{{socialMemberInfo.memberImgs}}" wx:key="index" src="{{item}}" class="community-member-head"></image>
-            <view class="flex-row align-items-center justify-center community-Add">
-                <image src="../../images/community/add.png" style="width: 32rpx;height: 32rpx;border-radius: 50%;"></image>
-            </view>
-
-        </view>
-        <view class="community-NumberText">{{socialMemberInfo.memberCount}}位成员</view>
-
+    <view wx:if="{{dataList}}" style="width: 100%;height: 391rpx">
+        <image style="width: 100%;height: 100%" src="{{dataList[0].imageUrl}}"></image>
     </view>
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
         <view class="" bindtap="toReductionList" style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-start">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <image src="../../images/community/weight.png" class="community-rank-icon"></image>
             <view class="community-rank-text">减重榜</view>
         </view>
-        <view style="height:61rpx;background:#fff;opacity: 0.4;width: 5rpx"></view>
+        <view style="height:60rpx;background:#fff;opacity: 0.3;width: 2rpx"></view>
         <view class="" bindtap="toFatBurningList"  style="height: 100%;width: 54%;display: flex;align-items: center;justify-content: center;">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <image src="../../images/community/fat.png" class="community-rank-icon"></image>
             <view class="community-rank-text">燃脂榜</view>
         </view>
         <view style="height:61rpx;background:#fff;opacity: 0.4;width: 5rpx"></view>
         <view class="" bindtap="toPunchList"  style="height: 100%;width: 45%;display: flex;align-items: center;justify-content: flex-end">
-            <image src="../../images/community/rank.png" class="community-rank-icon"></image>
+            <image src="../../images/community/clock.png" class="community-rank-icon"></image>
             <view class="community-rank-text">打卡榜</view>
         </view>
     </view>
@@ -48,12 +25,14 @@
     </view>
     <message-item
             id="messageItem"
-            class="fill-width" style="padding-bottom: 30rpx"
+            class="fill-width"
+            style="padding-bottom: 30rpx;background-color: #fff;border-radius: {{index == 0?'80rpx 0rpx 0rpx 0rpx':'0rpx'}}"
             bind:onMessageDeleteEvent="onDynamicItemDeleteEvent"
             bind:onNoupdate="onNoupdate"
             scrollTopNum="{{scrollTopNum}}"
             wx:for="{{dynamicList}}"
             wx:key="taskId"
+            index = "{{index}}"
             message="{{item}}">
     </message-item>
 

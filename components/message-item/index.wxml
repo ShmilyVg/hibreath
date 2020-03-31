@@ -33,18 +33,17 @@
     <view class="giveCommentNum" bindtap="goCommunity">{{message.commentInfo.totalCount}}</view>
 </view>
 <view class="clear"></view>
-<view class="extraBottomview" wx:if="{{message.praiseInfo.list.length>0 || message.commentInfo.list.length>0}}">
     <view class="giveHeartList"  wx:if="{{message.praiseInfo.list.length>0}}">
         <!-- <view class="giveHeartlistImg" style="padding-top: 5rpx;">
             <image src="../../images/community/heart.png" style="height: 21rpx;width: 24rpx;margin-right: 17rpx"></image>
         </view> -->
         <view class="giveHeartlistView">
-             <image src="../../images/community/heart.png" style="height: 21rpx;width: 24rpx;margin-right: 17rpx"></image>
+             <image src="../../images/community/heart.png" style="height: 21rpx;width: 24rpx;margin-right: 11rpx"></image>
              {{nickNameList}}
         </view>
     </view>
-    <view wx:if="{{message.praiseInfo.list.length>0 && message.commentInfo.list.length>0}}" class="message-item-line"></view>
-    <view wx:if="{{message.commentInfo.list.length>0}}">
+<!--    <view wx:if="{{message.praiseInfo.list.length>0 && message.commentInfo.list.length>0}}" class="message-item-line"></view>-->
+    <view wx:if="{{message.commentInfo.list.length>0}}" style="background:rgba(247,247,247,1);border-radius:10rpx;box-sizing: border-box;padding: 38rpx 41rpx 46rpx 32rpx;margin: 0 40rpx">
         <view class="extraBottomview-commentView"
               hover-class="commentHover"
               wx:for="{{message.commentInfo.list}}"
@@ -60,7 +59,7 @@
             <text class="extraBottomview-text2">：{{item.content}}</text>
         </view>
     </view>
-</view>
+<view style="height:16rpx;background:rgba(247,247,247,1);margin-top: 70rpx"></view>
 <!--打卡完成激励弹窗-->
 <my-toast
         wx:if="{{showMytoast}}"

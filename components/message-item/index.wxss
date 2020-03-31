@@ -1,5 +1,5 @@
 .message-item-layout {
-    padding: 70rpx 0rpx 20rpx 0rpx;
+    padding: 70rpx 40rpx 20rpx 40rpx;
     align-self: flex-start;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .message-item-setting-layout{
-    padding: 0 30rpx;
+    padding: 0 4rpx;
 }
 
 .message-item-setting-point{
@@ -70,7 +70,8 @@
     display: flex;
     line-height: 50rpx;
     align-items:center;
-    float: left
+    float: left;
+    margin-left: 40rpx;
 }
 .giveHeartImgView{
     width: 70rpx;
@@ -80,7 +81,7 @@
     line-height: 70rpx;
 }
 .giveHeartImg{
-    width: 39rpx;
+    width: 36rpx;
     height:34rpx;
 }
 .giveHeartNum{
@@ -88,14 +89,14 @@
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
-    margin-left: -10rpx;
+    margin-left: -20rpx;
 }
 .giveCommentNum{
     font-size:32rpx;
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
-    margin-left: 10rpx;
+    margin-left: -20rpx;
 }
 .commentView{
     width: 200rpx;
@@ -136,9 +137,13 @@
 }
 .giveHeartList{
     box-sizing: border-box;
-    width: 100%;
-    max-height:118rpx;
+    height:86rpx;
+    background:rgba(247,247,247,1);
+    border-radius:10rpx;
+    line-height: 86rpx;
+    padding-left: 26rpx;
     display: flex;
+    margin: 40rpx 40rpx 20rpx 40rpx;
 }
 .giveHeartlistImg{
     align-items: center;
@@ -177,7 +182,7 @@
     color:rgba(255,255,255,1);
 }
 .commentContentRed{
-    background:rgba(238,111,105,1);
+    background:#7BC877;
 }
 .commentContentWhite{
     background:rgba(195,197,200,1);
@@ -199,25 +204,21 @@
 }
 .extraBottomview-text1{
     font-size:26rpx;
+    font-weight:bold;
     font-family:PingFang-SC-Regular;
-    color:#EE6F69;
-/*
+    color:#0A0A0A;
 
-    width: 320rpx;
-    word-break:break-all;
-    text-overflow: -o-ellipsis-lastline;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-    -webkit-box-orient: vertical;*/
 }
 .extraBottomview-text2{
     word-break: break-all;
     font-size:26rpx;
     font-family:PingFang-SC-Regular;
     color:#454545;
+}
+.extraBottomview-text3{
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular;
+    color:#4FBB49;
 }
 .commentHover{
     background: #e7e7e7;
