@@ -47,7 +47,7 @@
 <view class="fatBurning-part">
     <view wx:if="{{readyimg}}">
         <!-- <view class="fatBurning-img"></view> -->
-        <view class="readyImg-text">预热中</view>
+        <view class="readyImg-text">预热中·请稍后</view>
         <view class="readyImg-textEn">PREHEATING</view>
         <!-- <view class="readyImg-midView">
             请打开吹嘴的盖子进行预热
