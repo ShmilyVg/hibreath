@@ -11,6 +11,8 @@ import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
 import ConnectionManager from "./view/connection-manager";
 const app = getApp();
+const ImageSource = require('../../utils/ImageSource.js');
+const ImageLoader = require('../../utils/ImageLoader.js')
 var mta = require('../../utils//mta_analysis.js')
 Page({
   data: {
@@ -39,7 +41,9 @@ Page({
     answerData: {},
     answerBtnReady: false,
     needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"],
-    isBind:false//是否绑定设备
+    gitImgList:['fatWindows/getGift.png'],
+    isBind:false,//是否绑定设备
+    showGiftwindows:false
   },
 
 
@@ -293,6 +297,15 @@ Page({
       }
     });
   },
+  closeWindows(){
+    this.setData({
+      showWindows:false
+    })
+  },
+  //前往 领取低碳饮食页面
+  toGetLowFood(){
+    HiNavigator.navigateToBoxReplenish();
+  },
   async getBanner(){
     const { result: { dataList} } = await Protocol.getBannerList();
     this.setData({
@@ -304,9 +317,23 @@ Page({
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
     let taskFinished = false;
-    console
     if (result.fatTask && result.weightTask && result.fatTask.finished && result.weightTask.finished){
       taskFinished = true;
+    }
+    console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
+    if(result.isLowCarbonSnacks){
+      var loader=new ImageLoader({
+        base: ImageSource.BASE ,
+        source: this.data.gitImgList,
+        loaded: res => {
+          setTimeout(()=>{
+            this.setData({
+              showGiftwindows:true
+            })
+          },300)
+        }
+      });
+
     }
     this.setData({
       taskFinished,

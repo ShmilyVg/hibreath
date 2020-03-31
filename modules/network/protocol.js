@@ -320,6 +320,10 @@ export default class Protocol {
     static getGift({couponId}) {
         return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
     }
+    //领取低碳饮食
+    static getLowCarbonSnacks(){
+      return Network.request({url: 'lowCarbonMeal/getLowCarbonSnacks'})
+    }
     static getShoppingJumpCodes(){
         return Network.request({url: 'coupon/getShoppingJumpCodes'})
     }

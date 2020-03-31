@@ -748,3 +748,22 @@ view{
   margin-top: 90rpx;
 }
 
+.showGiftwindows{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 350%;
+  background-color: rgba(0, 0, 0, .9);
+  z-index: 995;
+  background-size: 100% 1096rpx;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.showGiftwindows-text{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  text-align: center;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}

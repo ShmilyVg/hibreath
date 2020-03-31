@@ -188,3 +188,10 @@
 <weight-window wx:if="{{showWeight}}">
 
 </weight-window>-->
+<!--领取低碳零食弹窗-->
+<view wx:if="{{showGiftwindows}}" class="showGiftwindows">
+  <image bindtap="toGetLowFood" src="http://img.hipee.cn/hibreath/fatWindows/getGift.png" style="width: 560rpx;height: 570rpx;margin: 300rpx auto 29rpx auto"></image>
+  <view class="showGiftwindows-text">
+    <view style="width: 100rpx;margin: 0 auto" bindtap="closeWindows">稍后</view>
+  </view>
+</view>

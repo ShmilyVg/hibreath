@@ -1,0 +1,31 @@
+<!--pagesThree/get-low-carbon/get-low-carbon.wxml-->
+<view style="background: url('{{content.img}}');width: 750rpx;height: 585rpx;margin-bottom: 46rpx;background-size: 100% 100%;border-radius:0px 0px 0px 80rpx;">
+    <navBar
+            title='领取低碳零食'
+            color="white"
+            iconTheme="white"
+            background='{{navBarBackground}}'
+            back="{{true}}"
+            bindback="handlerGobackClick">
+    </navBar>
+</view>
+<view class="description">
+    {{content.description}}
+</view>
+<view style="padding-left: 47rpx;padding-right: 70rpx">
+    <view class="rule-title">领取规则</view>
+    <view wx:for="{{content.ruleList}}" style="margin-bottom: 60rpx;max-height: 115rpx">
+        <view class="ruleList-index">{{index+1}}</view>
+        <view class="ruleList-title">{{item.title}}</view>
+        <view class="clear"></view>
+        <view class="buy-btn" wx:if="{{index == 0 && content.qualificationStatus !== 2}}" bindtap="getShoppingJumpCodes">
+            <image style="width: 50rpx;height: 44rpx;margin-right: 14rpx" src="../images/little-box.png"></image>
+            <view style="font-size:28rpx;font-family:PingFang SC;font-weight:500;color:rgba(255,255,255,1);">去购买</view>
+        </view>
+        <view class="clear"></view>
+    </view>
+    <view class="dis-goBuy-btn" wx:if="{{content.qualificationStatus == 1}}">暂无资格</view>
+    <view class="goBuy-btn" bindtap="toYz" wx:if="{{content.qualificationStatus == 2}}">立即领取</view>
+    <view class="goBuy-btn" bindtap="toYz" wx:if="{{content.qualificationStatus == 3}}">已领取去使用</view>
+    <view class="dis-goBuy-btn" wx:if="{{content.qualificationStatus == 4}}">优惠券已使用</view>
+</view>
