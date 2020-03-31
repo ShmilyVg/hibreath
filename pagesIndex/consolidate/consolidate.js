@@ -3,7 +3,7 @@ import { getLatestOneWeekTimestamp } from "../../utils/time";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
-
+const app = getApp();
 Page({
   data: {
   },

@@ -110,7 +110,6 @@ view {
 
 .contain-view .time text {
   font-size: 30rpx;
-  margin-left: -20rpx;
 }
 
 .contain-view .checkBtn {
