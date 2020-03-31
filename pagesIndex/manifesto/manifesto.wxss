@@ -14,15 +14,26 @@ view {
   font-family: PingFang SC;
   color: rgba(255, 255, 255, 1);
 }
-
+.qipaobg{
+  position: absolute;
+  z-index: 1;
+  width: 371rpx;
+  height:1038rpx;
+  right: 0;
+  top: 0;
+}
 .item-list {
   position: relative;
+  width: 100%;
+  height: 692rpx;
+  background-image: url('http://img.hipee.cn/hibreath/icon/qipao.png');
+  background-size: 100% 692rpx;
 }
 
 .manifesto-title {
   font-size: 44rpx;
   font-weight: bold;
-  margin: 53rpx 0 53rpx 66rpx;
+  margin: 53rpx 0 0rpx 66rpx;
 }
 
 .item {
@@ -37,8 +48,7 @@ view {
   height: 206rpx;
   padding: 70rpx 0;
   left: 110rpx;
-  top: 26rpx;
-  background: orange;
+  top: 66rpx;
   z-index: 10;
 }
 
@@ -48,8 +58,8 @@ view {
   padding: 52rpx 0;
   left: 370rpx;
   font-size: 21rpx;
-  top: 0;
-  background: rgb(126, 126, 96);
+  top: 40rpx;
+  z-index: 2;
 }
 
 .text3 {
@@ -58,8 +68,7 @@ view {
   padding: 105rpx 0;
   left: 221rpx;
   font-size: 36rpx;
-  top: 165rpx;
-  background: blue;
+  top: 205rpx;
   z-index: 20;
   font-weight: bold;
 }
@@ -70,8 +79,7 @@ view {
   padding: 63rpx 0;
   left: 454rpx;
   font-size: 23rpx;
-  top: 90rpx;
-  background: gray;
+  top: 130rpx;
   z-index: 18;
 }
 
@@ -81,8 +89,7 @@ view {
   padding: 74rpx 0;
   left: 386rpx;
   font-size: 23rpx;
-  top: 300rpx;
-  background: orchid;
+  top: 340rpx;
   z-index: 10;
 }
 
@@ -90,9 +97,8 @@ view {
   width: 162rpx;
   height: 156rpx;
   left: 68rpx;
-  top: 288rpx;
+  top: 328rpx;
   font-size: 23rpx;
-  background: green;
   padding: 52rpx 0;
   z-index: 10;
 }
@@ -105,6 +111,7 @@ view {
   position: absolute;
   bottom: 0;
   padding: 71rpx 0 0 51rpx;
+  z-index: 2;
 }
 .contain-title image{
   width: 59rpx;

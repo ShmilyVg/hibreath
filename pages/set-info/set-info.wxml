@@ -30,7 +30,7 @@
         </view>
       </view>
     </view>
-    <view class="manifesto" >
+    <view class="manifesto">
       <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
       <text>{{taskInfo.flag}}</text>
       <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
@@ -40,12 +40,17 @@
 
   </view>
   <view class="contain">
+    <swiper indicator-dots="true" indicator-color="rgba(212,233,211,1)" indicator-active-color="rgba(123,200,119,1)"  autoplay="true">
+      <swiper-item class="puzzled" wx:for="{{banner}}" wx:key="index">
+        <image src="{{item.image}}" data-item="{{item}}" bindtap="goToTask"></image>
+      </swiper-item>
+    </swiper>
     <!-- <image class="step" src="../../images/set-info/step.png" bindtap="showTopTask"></image> -->
-    <view class="puzzled" wx:if="{{banner.url}}" data-url="{{banner.url}}" bindtap="goToTask">
-      <image src="{{banner.image}}"></image>
-    </view>
+    <!-- <view class="puzzled" wx:if="{{banner.url}}">
+      
+    </view> -->
     <view class="task-day">
-      <view class="task-day-top" >
+      <view class="task-day-top">
         <view class="task-day-title">今日燃脂分析</view>
         <view class="task-text">完成以下任务解锁营养师专业分析报告</view>
         <view class="taskRes {{taskFinished?'open_c':'close_c'}}" bindtap="goToLowFatReport">
@@ -110,9 +115,9 @@
         </view>
       </view>
     </view>
-    <view class="today-result" wx:if="{{banner1.url}}" data-url="{{banner1.url}}" bindtap="goToTask">
+    <!-- <view class="today-result" wx:if="{{banner1.url}}" data-url="{{banner1.url}}" bindtap="goToTask">
       <image src="{{banner1.image}}"></image>
-    </view>
+    </view> -->
     <view class="bigTruth">
       <view class="bigTruthTit">
         <text>#减脂大实话#</text>
@@ -158,9 +163,11 @@
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
   <view class="modals-cancel" bindtap="hideModal"></view>
   <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-    <view class="weight-title"> <view style="margin-left: 65rpx;margin-right: 143rpx" bindtap="hideModal">取消</view> 请输入当前体重</view>
+    <view class="weight-title">
+      <view style="margin-left: 65rpx;margin-right: 143rpx" bindtap="hideModal">取消</view> 请输入当前体重</view>
     <view class="weight-text1" style="margin: 36rpx 0rpx 20rpx 0rpx">-我们建议您-</view>
-    <view class="weight-text1">以<text class="weight-text2">每天同一时间的体重结果</text>作为减脂计划的重要参考</view>
+    <view class="weight-text1">以
+      <text class="weight-text2">每天同一时间的体重结果</text>作为减脂计划的重要参考</view>
     <input class="weightInput " value="{{weight}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <!-- <view class="page2-line"></view> -->
     <view class="unit">KG</view>

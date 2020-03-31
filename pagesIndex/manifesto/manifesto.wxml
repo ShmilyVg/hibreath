@@ -1,13 +1,13 @@
 <!--pagesIndex/manifesto/manifesto.wxml-->
 <view style="height:1rpx;"> </view>
 <view class="manifesto">
+<image src="../images/qipaobg.png" class="qipaobg"></image>
   <view class="manifesto-title">我想要减脂！是因为</view>
   <view class="item-list">
     <view class="item {{'text'+(index+1)}}" wx:for="{{textList}}" wx:key='item' data-item="{{item}}" bindtap="setManifesto">
       <text>{{item}}</text> 
     </view>
   </view>
-
 </view>
 <view class="contain">
   <view class="contain-title">

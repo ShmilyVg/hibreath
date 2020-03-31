@@ -16,6 +16,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToResultNOnum() {
       this.navigateTo({url: '/pages/result/result'});
     }
+    //新人七日打卡礼
+    static navigateToAttendanceBonus() {
+      this.navigateTo({url: '/pagesIndex/attendanceBonus/attendanceBonus'});
+    }
     //燃脂列表页（每天）
     static navigateToBurnDay() {
       this.navigateTo({url: '/pagesIndex/burnDay/burnDay'});

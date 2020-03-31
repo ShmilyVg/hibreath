@@ -2,6 +2,9 @@
 page{
    background:#fff;
 }
+ view{
+   font-family: DINCondensed;
+ }
 .titleCon{
   background: #7BC877;
   padding: 73rpx 0 180rpx 51rpx;

@@ -77,7 +77,8 @@
         "adaptive/adaptive",
         "reduceFatPeriod/reduceFatPeriod",
         "consolidate/consolidate",
-        "Indulge/Indulge"
+        "Indulge/Indulge",
+        "attendanceBonus/attendanceBonus"
       ]
     },
     {

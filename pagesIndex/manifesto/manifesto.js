@@ -45,6 +45,7 @@ Page({
     })
   },
   async reduceFun(){
+    wx.setStorageSync('finishedGuide', true);
     HiNavigator.switchToSetInfo();
   },
   async onShareAppMessage() {
