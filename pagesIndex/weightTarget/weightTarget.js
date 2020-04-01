@@ -18,6 +18,16 @@ Page({
   onShow: function () {
 
   },
+  async onShareAppMessage() {
+    let weightGoalt = this.data.weightGoalt;
+    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+    await Protocol.postMembersJoinSchema(data)
+    return {
+      title: '我正在低碳燃脂，快来一起加入！',
+      path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.sharedId}`,
+      imageUrl: this.data.shareImg
+    };
+  },
   async initMyLossfatCourse(){
     let weightGoalt = this.data.weightGoalt
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
@@ -106,4 +116,7 @@ Page({
       animationData: this.animation.export(),
     })
   },
+  handlerGobackClick() {
+    HiNavigator.switchToSetInfo();
+  }
 })

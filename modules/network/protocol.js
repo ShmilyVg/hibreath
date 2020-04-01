@@ -583,7 +583,7 @@ export default class Protocol {
         return Network.request({url: 'food/dateInfo'});
     }
     //饮食打卡-换一换
-    static postFoodChange({data}) {
+    static postFoodChange(data) {
         return Network.request({url: 'lowCarbonMeal/changeFood',data});
     }
     //新版饮食推荐

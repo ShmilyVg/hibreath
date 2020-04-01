@@ -100,6 +100,7 @@ Page({
     let data ={
       tags: [id]
     }
+    console.log(data)
     const {
       result
     } = await Protocol.postFoodChange(data);

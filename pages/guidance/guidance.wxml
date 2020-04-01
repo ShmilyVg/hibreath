@@ -1,4 +1,7 @@
 <!--pages/guidance/guidance.wxml-->
+<navBar title='完善资料' color="#000000" iconTheme="black" background='#FFFFFF' back="{{true}}" bindback="handlerGobackClick">
+
+</navBar>
 <view class="guidance">
   <block wx:if="{{!sharedId}}">
     <view class="otherPage" wx:if="{{guidance.page==1 }}">
@@ -95,7 +98,9 @@
     <button class="bottom-btn greenBtn" wx:if="{{guidance.page > 1}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page
       <4? '下一步': '完成'}} </button>
         <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="back" wx:if="{{guidance.page >2 || (!sharedId && guidance.page == 2)}}">返回</view>
-        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50"  wx:if="{{sharedId && guidance.page == 2}}"><text decode="{{true}}"> &emsp;</text></view>
+        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" wx:if="{{sharedId && guidance.page == 2}}">
+          <text decode="{{true}}"> &emsp;</text>
+        </view>
         <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="continueFun" wx:if="{{guidance.page == 1}}">短信验证码验证</view>
   </view>
 </view>

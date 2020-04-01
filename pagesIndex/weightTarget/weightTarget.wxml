@@ -1,4 +1,5 @@
 <!--pagesIndex/weightTarget/weightTarget.wxml-->
+<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#7BC877' back="{{true}}" bindback="handlerGobackClick"></navBar>
 <view class="weightTarget">
   <view class="weightTarget-header">
     <view bindtap="showModal">
@@ -26,7 +27,8 @@
       <image src="../images/icon/ask.png"></image>
       <text>什么是slimple低碳饮食方案？</text>
     </view>
-    <view class="startBtn" bindtap="startPlan">开启减脂计划</view>
+    <view class="startText" bindtap="startPlan">开启我的燃脂计划</view>
+    <button class="startBtn" open-type='share'>开启减脂计划并分享</button>
   </view>
 
 </view>

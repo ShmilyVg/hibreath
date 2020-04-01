@@ -300,5 +300,8 @@ Page({
       wx.removeStorage({ key: 'guidance' })
     }
     
+  },
+  handlerGobackClick(){
+    HiNavigator.switchToSetInfo();
   }
 })

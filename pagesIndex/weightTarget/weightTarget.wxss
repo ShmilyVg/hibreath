@@ -144,8 +144,15 @@ view {
   left: 0;
   top: 13rpx;
 }
+.startText{
+  margin-top: 100rpx;
+  text-align: center;
+  color: rgba(123,200,119,1);
+  font-size:30rpx;
+  font-family:PingFang SC;
+}
 .startBtn{
-  margin: 161rpx auto 0rpx;
+  margin: 15rpx auto 0rpx;
   width:520rpx;
   height:100rpx;
   line-height: 100rpx;
