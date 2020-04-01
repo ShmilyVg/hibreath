@@ -1,6 +1,8 @@
 // pagesIndex/manifesto/manifesto.js
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+const ImageSource = require('../../utils/ImageSource.js');
+const ImageLoader = require('../../utils/ImageLoader.js')
 Page({
 
   data: {
@@ -13,9 +15,15 @@ Page({
       '拥有更\n健康的状态'],
     manifesto:'',
     sharedId:'',
-    disabled:true
+    disabled:true,
+    needImgList: ['/icon/qipao.png']
   },
   onLoad: function (options) {
+    var loader = new ImageLoader({
+      base: ImageSource.BASE,
+      source: this.data.needImgList,
+      loaded: res => {}
+    });
     this.setData({
       sharedId: options.sharedId
     })
@@ -48,18 +56,14 @@ Page({
     wx.setStorageSync('finishedGuide', true);
     HiNavigator.switchToSetInfo();
   },
-  async onShareAppMessage() {
+  async warnMySelf() {
     // await
     let goalDesc = this.data.manifesto;
     let data = {
       goalDesc
     }
     await Protocol.putGoalDesc(data);
-    return {
-      title: '我正在低碳燃脂，快来一起加入！',
-      path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.sharedId}`,
-      imageUrl: this.data.shareImg
-    };
+    this.reduceFun()
   },
 
 })

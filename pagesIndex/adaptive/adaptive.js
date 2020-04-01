@@ -16,6 +16,7 @@ Page({
 
   },
   goToReplenish(){
+    
     HiNavigator.navigateToBoxReplenish();
   },
   async getBoxHowToEat(){
