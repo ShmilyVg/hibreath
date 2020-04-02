@@ -50,11 +50,12 @@ function normalTrend(widthRpx) {
         console.error(e);
     }
 
-    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit,showLegend} = trendData;
+    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit,showLegend,color} = trendData;
+    let bg_color = color|| '#ffb185';
     const series = [{
         name: dataListY1Name,
         data: dataListY,
-        color: '#ffb185',
+        color: bg_color,
         format: function (val) {
             return val;
         }

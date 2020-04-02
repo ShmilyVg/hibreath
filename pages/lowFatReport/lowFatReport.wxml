@@ -1,164 +1,151 @@
 <!--pages/lowFatReport/lowFatReport.wxml-->
-<view class="lowFat">
-  <view class="header">{{report.title}}</view>
-  <view class="header_counts">打卡第 {{report.clockinAddup | 0}} 天</view>
-  <image src="../../images/lowFatReport/bg.png" class="bg"></image>
-  <view class="pageItem readyLow">
-    <view class="ItemTit">今日已减掉脂肪约</view>
-    <view class="readyNum">
-      {{report.losefatGrams.grams }}
-      <text class="readyUnit">g</text>
-    </view>
-    <view class="imageCon" wx:if="{{report.losefatGrams.grams}}">
-      <view class="imageItem">
-        <image src="{{report.losefatGrams.foodIconUrl}}"></image>
-        <view class="foodNum">X {{report.losefatGrams.foodQuantity}}</view>
-        <view>{{foodDescription[0]}}</view>
-        <view>{{foodDescription[1]}}</view>
-      </view>
-      <view class="imageItem">
-        <image src="{{report.losefatGrams.sprotIconUrl}}"></image>
-        <view class="foodNum">X {{report.losefatGrams.sprotQuantity}}</view>
-        <view>{{sprotDescription[0]}}</view>
-        <view>{{sprotDescription[1]}}</view>
-      </view>
-    </view>
-    <view class="imageConZ" wx:else>
-      <view class="imageItemZ">
-          <image src="../../images/lowFatReport/noChange.png"></image>
-          <view>相当于没有减掉脂肪哦</view>
-        </view>
-    </view>
-    <view class="personInfo">
-      <image src="{{report.member.portraitUrl}}"></image>
-      <view class="personName">{{report.member.name}}</view>
-      <view class="personDate">{{curDate}}</view>
-    </view>
-  </view>
-  <view class="pageItem speed">
-    <view class="ItemTit">
-      <image src="../../images/lowFatReport/speedTip.png"></image> 减脂速度</view>
-    <view class="speedTit">{{report.losefatSpeed.description}}</view>
-    <view class="speedCon space-between">
-      <view class="speedItem">
-        <view class="speedItemTit">燃脂速度</view>
-        <view class="speedItemV">{{report.losefatSpeed.dataValueToday}}</view>
-      </view>
-      <view class="speedItem">
-        <view class="speedItemTit">预计今日总消耗脂肪约</view>
-        <view class="speedItemV">{{report.losefatSpeed.grams}}
-          <text>g</text>
-        </view>
-      </view>
-    </view>
-    <view class="speedImg">
-      <image src="../../images/lowFatReport/speed.png" class="speedLevel"></image>
-      <image src="../../images/lowFatReport/active.png" class="level" style="left:{{left}}rpx"></image>
-      <view class="speedList">
-        <view class="speedItemText">
-          <text class="point" style="background:#4C6CAC;"></text>即将燃脂
-        </view>
-        <view class="speedItemText">
-          <text class="point" style="background:#549DDC;"></text>低速燃脂
-        </view>
-        <view class="speedItemText">
-          <text class="point" style="background:#3FC8BC;"></text>状态极佳
-        </view>
-        <view class="speedItemText">
-          <text class="point" style="background:#FBC58A;"></text>快速燃脂
-        </view>
-        <view class="speedItemText">
-          <text class="point" style="background:#F0837E;"></text>过度燃脂
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="pageItem weight">
-    <view class="ItemTit">
-      <image src="../../images/lowFatReport/weight.png"></image> 体重变化</view>
-    <view class="weightChange">
-    <image src="../../images/lowFatReport/{{subKGrams > 0?'up':'down'}}.png" wx:if="{{subKGrams}}"></image>
-    {{ subKGrams >0 ? subKGrams:-subKGrams}}kg
-    </view>
-    <view class="weightCon space-between" wx:if="{{sharedId == null}}">
-      <view class="weightItem">
-        <view class="weightItemTit">{{weightName}}</view>
-        <view class="weightdItemV">{{report.weightChange.lastTimeWeight}}
-          <text>kg</text>
-        </view>
-      </view>
-      <view class="weightItem">
-        <view class="weightItemTit">今日</view>
-        <view class="weightdItemV">{{report.weightChange.weightToday}}
-          <text>kg</text>
-        </view>
-      </view>
-    </view>
-    <view class="progressCon">
-      <view class="yesterdaProgress progress" style="width:{{yesterdayPer}}">
-        {{weightName}}
-      </view>
-      <view class="progress todayProgress" style="width:{{todayPer}}">
-        今日
-      </view>
-    </view>
-  </view>
-  <view class="pageItem totle">
-    <view class="ItemTit">
-      <image src="../../images/lowFatReport/totle.png"></image>累积减重</view>
-    <view class="totleChange">{{report.weightAccumulate.downAccumulateKGrams}}kg</view>
-    <view class="totleCon space-between" wx:if="{{sharedId == null}}">
-      <view class="totleItem">
-        <view class="totleItemTit">当前</view>
-        <view class="totledItemV">{{report.weightAccumulate.weightToday}}
-          <text>kg</text> </view>
-      </view>
-      <view class="totleItem">
-        <view class="totleItemTit"> 　 </view>
-        <view class="totledItemV">-</view>
-      </view>
-      <view class="totleItem">
-        <view class="totleItemTit">目标</view>
-        <view class="totledItemV">{{report.weightAccumulate.weightGoalt}}
-          <text>kg</text> </view>
-      </view>
-      <view class="totleItem">
-        <view class="totleItemTit"> 　 </view>
-        <view class="totledItemV"> = </view>
-      </view>
-      <view class="totleItem">
-        <view class="totleItemTit">还差</view>
-        <view class="totledItemV showFColor">{{report.weightAccumulate.subKGrams}}
-          <text>kg</text> </view>
-      </view>
-    </view>
-  </view>
+<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#34cb8c' back="{{true}}" bindback="handlerGobackClick">
 
-  <view class="reviewedTitle space-between">
-    <text>专业点评</text>
-    <view bindtap="literature"> <image src="../../images/lowFatReport/literature.png"></image>参考文献</view>
-  </view>
-  <view class="pageItem reviewed">
-    <image src="../../images/lowFatReport/buttom.png" class="reviewedBg"></image>
-    <view class="imgCon">
-      <image src="{{report.dietitians.portraitUrl}}"></image>
-      <text>{{report.dietitians.name}}</text>
+</navBar>
+<image src="../../images/lowFatReport/lowFatReportBg.png" class="lowFatReportBg"></image>
+<view class="lowFat">
+  <view class="lowFat-header">
+    <view>
+      今日打卡报告
+      <button class="share" open-type="share">
+        <image src="../../images/lowFatReport/copy.png" class="copy"></image> 分享</button>
     </view>
-    <view class="reviewedCon">
-      <view id="triangle-up"></view>
-      {{report.dietitians.reviews}}
-    </view>
-  </view>
-  <view class="share" wx:if="{{sharedId == null}}">
-    <view class="shareImgCon">
-      <button class="shareBtn" open-type="share"></button>
-      <image src="../../images/lowFatReport/wx.png"></image>
-      <view>分享给好友</view>
-    </view>
-    <view class="shareImgCon">
-      <button class="shareBtn" bindtap="shareFr"></button>
-      <image src="../../images/lowFatReport/pyq.png"></image>
-      <view>分享到朋友圈</view>
+    <view class="lowFat-header-item">
+      <image src="{{report.member.portraitUrl}}" class="portrait"></image>
+      <view class="p-name">{{report.member.name}}</view>
+      <view class="p-time">2020.03.23 08:30</view>
+      <image src="../../images/lowFatReport/medal.png" class="medal"></image>
     </view>
   </view>
+  <view class="burnFat lowFat-item" wx:if="{{report.breathData.dataValue}}">
+    <view class="item-title">我的燃脂状况
+      <view class="item-title-text" bindtap="goToResult">查看历史记录
+        <image src="../../images/arr-right.png"></image>
+      </view>
+    </view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/elf.png"></image>
+      当前燃脂速度
+    </view>
+    <view class="speed-contain">
+      <view class="speed-num">
+        <text>{{report.breathData.dataValue}}</text>
+        <view>PPM</view>
+      </view>
+      <image src="../../images/lowFatReport/speedBg.png" class="speedBg"></image>
+      <view class="elf-contain" style="transform: rotate({{rotate}}deg);">
+        <image src="../../images/lowFatReport/elf-tip.png" class="elf-tip"></image>
+      </view>
+
+    </view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/elf.png"></image>
+      当前燃脂状态
+    </view>
+    <view class="item-g-text">{{report.breathData.desZh}}</view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/vs.png" class="vspng"></image>
+      与上次相比
+    </view>
+    <view class="item-g-text"> {{report.breathData.comparison.title}}</view>
+    <view class="item-n-text">{{report.breathData.comparison.content}}</view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/fire.png" class="fire"></image>
+      今日消耗脂肪状态
+      <view class="item-title-text" bindtap="goToLiterature">参考文献
+        <image src="../../images/arr-right.png"></image>
+      </view>
+    </view>
+    <view class="burn-progress">
+      <view class="burn-progress-left">
+        <view class="burn-progress-contain">
+          <view class="burn-value" style="width:{{progress}}rpx">今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
+        </view>
+        <view class="burn-progress-tip">
+          <view class="burn-progress-text">预计今日总消耗脂肪</view>
+          <view class="burn-progress-val">{{report.breathData.losefatGrams.predictGrams}}g</view>
+        </view>
+      </view>
+      <view class="burn-progress-right">
+        <view class="img-con">
+          <image src="{{report.breathData.losefatGrams.foodIconUrl}}"></image>
+          <view class="foodQuantity">X{{report.breathData.losefatGrams.foodQuantity}}</view>
+        </view>
+        <text>{{report.breathData.losefatGrams.foodDescription}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="weight lowFat-item" wx:if="{{report.weigthData.weightToday}}">
+    <view class="item-title">近一周体重趋势
+      <view class="item-title-text" bindtap="goToFood">查看历史记录
+        <image src="../../images/arr-right.png"></image>
+      </view>
+    </view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/weight.png"></image>
+      累积变化
+    </view>
+    <view class="item-g-text">
+      <text class="num">{{report.weigthData.downAccumulateKGrams}}</text>
+      <text class="unit">kg</text>
+    </view>
+    <view class="item-n-text">距离目标体重
+      <text class="num">{{report.weigthData.weightGoalt}}</text>
+      <text class="unit">kg</text>，还差
+      <text class="num">{{report.weigthData.subKGrams}}</text>
+      <text class="unit">kg</text> </view>
+    <view class="item-h4">
+      <image src="../../images/lowFatReport/chart.png"></image>
+      体重趋势
+    </view>
+    <view class="weight-chart">
+      <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      <view class="shade"></view>
+    </view>
+  </view>
+  <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
+    <view class="suggest">
+      <view class="suggest-tip">综合建议</view>
+      <image src="../../images/lowFatReport/person.png" class="personImg"></image>
+      <image src="../../images/lowFatReport/xsj.png" class="xsj"></image>
+      <view>
+        <text class="suggest-text">身体正在逐步加快燃脂的步伐，这是一个好的现象！</text>
+      </view>
+      <view>
+        <text class="suggest-text">同时我们要注意一下日常的饮食，是否遵循了低碳饮食的原则，少碳水、多补水，增加优质脂肪蛋白质，明天的体重数值会更友好些哦~</text>
+      </view>
+    </view>
+    <view class="dietician">
+      <image src="../../images/lowFatReport/bannerBg.png" class="bannerBg"></image>
+      <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
+    </view>
+  </block>
+  <block wx:if="{{request}}">
+    <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
+      <view class="item-title synthesize-title">综合分析</view>
+      <view class="synthesize-contain">
+        <image src="../../images/lowFatReport/lock.png"></image>
+        <block wx:if="{{!report.weigthData.weightToday}}">
+          <view>你减少的体重里有多少是脂肪呢？ </view>
+          <view>来测测燃脂状况吧，获取今日综合分析</view>
+          <button bindtap="weightFinish">去体重打卡</button>
+        </block>
+        <block wx:if="{{!report.breathData.dataValue}}">
+          <view>完成全部打卡检测，获取今日综合分析</view>
+          <button bindtap="fatTaskToFinish">去燃脂打卡</button>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <view class="scheme" wx:if="{{shareTip}}">
+    <view class="scheme-title">想要快速燃脂？</view>
+    <view class="scheme-text">查看为您推荐的
+      <text>专属Slimple燃脂方案</text>
+    </view>
+    <image src="../../images/jt/downD.png"></image>
+    <button>去体重打卡</button>
+
+  </view>
+  <image src="../../images/lowFatReport/bottomBg.png" class="bottomBg"></image>
 </view>

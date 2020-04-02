@@ -89,10 +89,13 @@ Page({
 
   onLoad(e) {
     Trend.init(this);
-    this.setData({
-      weightFinish:JSON.parse(e.weightFinish),
-      fatFinish:JSON.parse(e.fatFinish)
-    })
+    try{
+      this.setData({
+        weightFinish: JSON.parse(e.weightFinish),
+        fatFinish: JSON.parse(e.fatFinish)
+      })
+    }catch(err){}
+    
 
   },
   async onReady() {
