@@ -133,7 +133,7 @@ Page({
   },
   //查看分析报告
   toReport(){
-
+    HiNavigator.navigateToLowFatReport();
   },
   updateTrendTime({ frontTimestamp, endTimestamp }) {
     // const {timeObj} = this.data;

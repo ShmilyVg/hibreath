@@ -56,7 +56,7 @@
       <image src="../../images/lowFatReport/active.png" class="level" style="left:{{left}}rpx"></image>
       <view class="speedList">
         <view class="speedItemText">
-          <text class="point" style="background:#4C6CAC;"></text>即将燃脂
+          <text class="point" style="background:#4C6CAC;"></text>未燃脂
         </view>
         <view class="speedItemText">
           <text class="point" style="background:#549DDC;"></text>低速燃脂
