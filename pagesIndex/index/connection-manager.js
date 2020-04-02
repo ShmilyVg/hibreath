@@ -64,12 +64,12 @@ export default class ConnectionManager {
     }*/
     unbind() {
         this._page.setData({
-            navBarColor:'#FFFFFF',//导航字体颜色
+            navBarColor:'#000000',//导航字体颜色
             navBarIconTheme:'white',//导航返回键颜色
-            navBarBackground:'#7BC877',//导航背景色
+            navBarBackground:'#ffffff',//导航背景色
             needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
-            bgColor:"#7BC877",//PAGE背景
+            bgColor:"#ffffff",//PAGE背景
             tryAgain:false,//未找到设备标志位
             finding:false,//正在寻找设备标志位
             readyimg:false,
@@ -107,6 +107,7 @@ export default class ConnectionManager {
             homeOrangeBtn: false,
             interference:false,//气体干扰
         });
+
     }
 
     connecting() {

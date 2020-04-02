@@ -234,19 +234,26 @@
 .bindText{
     font-family: PingFang-SC;
     font-size: 50rpx;
-    color: #fff;
+    color: #454545;
 }
 .bindSub{
     font-size:27rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
-    margin-bottom: 20rpx;
-    color:rgba(255,255,255,1);
+    margin-bottom: 15rpx;
+    color:#7C7C7C;
+}
+button::after{ border: none; }
+.bindSub-green{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(123,200,119,1);
 }
 .bindImg{
-    width: 320rpx;
-    height: 510rpx ;
-    background-image:url("https://img.hipee.cn/hibreath/icon/greenBg.jpg");
+    width: 750rpx;
+    height: 774rpx ;
+    background-image:url("https://img.hipee.cn/hibreath/icon/findWhite.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0 auto;
@@ -255,8 +262,23 @@
 .home-bind{
     width: 100%;
     height: 100%;
-    background-color: #7BC877;
+    background-color: #ffffff;
     text-align: center;
+}
+.bindSj-green{
+    width: 48rpx;
+    height: 28rpx ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-bottom: 40rpx;
+    position:relative;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAbCAYAAAAH+20UAAAAAXNSR0IArs4c6QAAAfFJREFUWAnNl09OAjEUh98rYzIat644g38XzMIYD6BxScIx0MTE4IIFYtiwgHO48whu3BjiHUh0b4REx9ofpAyUKZYZGKebTtvX975p4EuHmy83O59f8oGIjqWUQvV5bCEzP3m+X/YG3z/XUtJJHimnmArqME/D4eBKkKSfqYVcP0piFv5WoU3E/VyTjuC477HfFrXd5vuGEOdM/JFXaLCBsV6qv43+ZPVSs6dOu6KAwxxCh2AbMSq4iRUawf0jM1XzBgwmsGmuCTAmGkGrq37PHb34/z13xkwRyQwwpveDo0vlvMkbRaHZPoEBLGbVOeAyl0Nv268QU88MzmysaoMBLGZNNif0uNGrFQfD8JlIFvVcNj33N/1CcHtwF6vauRPWUNiQte60vmywYLMCYzFj3c3oC/Xj2kJgbMhKd6a+4mAx9ycwgtavu3l9oW5ccwLGxnXpzqavOFjMOQOvRXcL9GUDtmrNtmF1ulusL1t95xPWCVahOxd96XpmvzQwEqTUnZO+TFA9TgSMzUl156ovDWj2iYHH0K2u+mhRNzy3hljz9uW2M4pKBYw0e6XDqsvtDjGIjUone0oN7KS7BPqyvc7SWrMlsusumb5sdVKfsE4cp7s0+tJ5zX5lwEgM3QkSF+PLP79KIc/0x6NZOOn4F/zCrCa9V9owAAAAAElFTkSuQmCC');
+    animation:mySJ 0.5s linear infinite alternate;
+}
+@keyframes mySJ{
+    from {top:0rpx;}
+    to {top:20rpx;}
 }
 .bindSj{
     width: 48rpx;
@@ -272,6 +294,17 @@
 @keyframes myFive{
     from {top:0rpx;}
     to {top:20rpx;}
+}
+.ble{
+    width: 39rpx;
+    height: 77rpx;
+    margin-top: 300rpx;
+    margin-left: 100rpx;
+    animation:myBle 1s linear infinite alternate;
+}
+@keyframes myBle{
+    from {opacity:0;}
+    to {opacity:1;}
 }
 .againText{
     font-family: PingFang-SC;
