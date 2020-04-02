@@ -138,7 +138,7 @@ Page({
           console.log('绘制一次')
           Circular.run();
         }, 500)
-        list.unshift(bestBreathData)
+
       }
       
       list.map(value => {
