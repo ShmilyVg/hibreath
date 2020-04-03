@@ -64,8 +64,11 @@
     <view class="replenish-text">
       <text>方法：</text>分享小程序到微信，当有<text style="color: #4FBB49">新用户</text>点击进入后，则补卡成功~~
     </view>
-    <view class="attendanceBonus-title">优惠券使用期限：</view>
-    <view class="attendanceBonus-des">优惠券使用期限： 自优惠券领取后<text style="color: #4FBB49">7日</text>自动过期，领取后请尽快使用哦~</view>
+    <view class="replenish-text">
+      <text>优惠券使用期限：</text>
+      <view>自优惠券领取后<text style="color: #4FBB49">7日</text>自动过期，领取后请尽快使用哦~</view>
+    </view>
+    
   </view>
 
 </view>
