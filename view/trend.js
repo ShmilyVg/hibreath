@@ -50,7 +50,7 @@ function normalTrend(widthRpx) {
         console.error(e);
     }
 
-    const {dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit,showLegend,color} = trendData;
+  const { dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit, showLegend, color, legend=true} = trendData;
     let bg_color = color|| '#ffb185';
     const series = [{
         name: dataListY1Name,
@@ -95,6 +95,7 @@ function normalTrend(widthRpx) {
         enableScroll: true,
         dataLabel: false,
         haveNum: true,
+        legend,
         yAxisSplit: yAxisSplit - 1,
         animation: true
     });

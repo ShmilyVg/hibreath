@@ -113,8 +113,9 @@ Page({
       dataListY.push(0);
     }
     dataListY1Name = this.data.weight.text;
-    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#35C050' }, 650);
+    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#35C050', legend: false }, 650);
   },
+  //
   onShareAppMessage(res) {
     let reportId = this.data.reportId;
     return {
@@ -127,12 +128,15 @@ Page({
       delta: 1,
     })
   },
+  //跳转文献
   goToLiterature() {
     HiNavigator.navigateToLiterature()
   },
+  //跳转燃脂
   goToResult() {
     HiNavigator.navigateToResultNOnum()
   },
+  //跳转体重列表
   goToFood() {
     HiNavigator.navigateTofood()
   },
@@ -170,6 +174,7 @@ Page({
       }
     })
   },
+  //分享至朋友圈
   downShareImg() {
     let url = '';
     wx.downloadFile({
@@ -191,9 +196,11 @@ Page({
     })
 
   },
+  //跳转首页
   weightFinish() {
     HiNavigator.switchToSetInfo()
   },
+  //展开分享
   showModal: function () {
     // 显示遮罩层
     var animation = wx.createAnimation({

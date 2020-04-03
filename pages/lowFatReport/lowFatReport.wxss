@@ -341,14 +341,6 @@ view {
   position: relative;
 }
 
-.shade {
-  width: 100%;
-  height: 60rpx;
-  position: absolute;
-  background: #fff;
-  bottom: 23rpx;
-}
-
 .canvas {
   width: 100%;
   height: 380rpx;

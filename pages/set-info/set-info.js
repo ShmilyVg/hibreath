@@ -64,6 +64,7 @@ Page({
   },
 
   async onLoad(options) {
+    console.log("optionsoptionsoptionsoptions", options)
     let sharedId =  wx.getStorageSync('sharedId')
     this.setData({
       sharedId

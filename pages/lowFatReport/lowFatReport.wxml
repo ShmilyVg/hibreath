@@ -99,8 +99,7 @@
       体重趋势
     </view>
     <view class="weight-chart">
-      <canvas canvas-id="lineCanvas" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
-      <view class="shade"></view>
+      <canvas canvas-id="lineCanvas" wx:if="{{!showModalStatus}}" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
   <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
