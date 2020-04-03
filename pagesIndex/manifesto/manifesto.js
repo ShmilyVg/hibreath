@@ -16,6 +16,7 @@ Page({
     manifesto:'',
     sharedId:'',
     disabled:true,
+    curText:'',
     needImgList: ['/icon/qipao.png']
   },
   onLoad: function (options) {
@@ -36,6 +37,7 @@ Page({
     let item = e.currentTarget.dataset['item']
     let str = item.replace(/\n/img, '');
     this.setData({
+      curText:item,
       disabled:false,
       manifesto: str
     })

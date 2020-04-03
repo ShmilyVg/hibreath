@@ -2,9 +2,11 @@
 <view style="height:1rpx;"> </view>
 <view class="manifesto">
 <image src="../images/qipaobg.png" class="qipaobg"></image>
-  <view class="manifesto-title">我想要减脂！是因为</view>
+  <view class="manifesto-title"> <view>减脂前，请务必花点时间回想下</view> 我的<text>减脂初心</text>是什么?</view>
   <view class="item-list">
     <view class="item {{'text'+(index+1)}}" wx:for="{{textList}}" wx:key='item' data-item="{{item}}" bindtap="setManifesto">
+      
+      <view class="img-con" wx:if="{{item == curText}}"><image src="../images/huangguan.png" class="huangguan"></image></view>
       <text>{{item}}</text> 
     </view>
   </view>

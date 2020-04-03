@@ -170,11 +170,12 @@ view {
 }
 
 .elf-contain {
-  width: 350rpx;
+  width: 330rpx;
   height: 2rpx;
   background: transparent;
   position: absolute;
-  left: 130rpx;
+  /* background: red; */
+  left: 140rpx;
   top: 180rpx;
 }
 

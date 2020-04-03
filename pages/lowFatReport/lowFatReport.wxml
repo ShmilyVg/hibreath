@@ -34,7 +34,7 @@
       </view>
       <image src="../../images/lowFatReport/speedBg.png" class="speedBg"></image>
       <view class="elf-contain" style="transform: rotate({{rotate}}deg);">
-        <image src="../../images/lowFatReport/elf-tip.png" class="elf-tip"></image>
+        <image src="../../images/lowFatReport/elf-tip.png" class="elf-tip" style="transform: rotate({{-rotate}}deg);"></image>
       </view>
 
     </view>
@@ -43,11 +43,11 @@
       当前燃脂状态
     </view>
     <view class="item-g-text">{{report.breathData.desZh}}</view>
-    <view class="item-h4">
+    <view class="item-h4" wx:if="{{report.breathData.comparison.title != '无'}}">
       <image src="../../images/lowFatReport/vs.png" class="vspng"></image>
       与上次相比
     </view>
-    <view class="item-g-text"> {{report.breathData.comparison.title}}</view>
+    <view class="item-g-text" wx:if="{{report.breathData.comparison.title != '无'}}"> {{report.breathData.comparison.title}}</view>
     <view class="item-n-text">{{report.breathData.comparison.content}}</view>
     <view class="item-h4">
       <image src="../../images/lowFatReport/fire.png" class="fire"></image>
