@@ -517,6 +517,7 @@ export default class Protocol {
         })
 
     }
+
     //个人中心-获取每日减脂报告分页列表
     static getTodayLosefatReportListPage(data){
         return Network.request({ url: '/members/getTodayLosefatReportListPage',data:data })

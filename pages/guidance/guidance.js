@@ -9,6 +9,7 @@ import {
 } from "../food/manager";
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
+const app = getApp();
 Page({
   data: {
     totNum:4,
@@ -179,7 +180,12 @@ Page({
     this.setData({
       reset: options.reset
     })
-    
+    if (app.globalData.fromType == 'hardware'){
+      this.setData({
+        totNum:3,
+        fromType: 'hardware'
+      })
+    }
     this.getUserInfo()
   },
   async getUserInfo() {
@@ -269,10 +275,13 @@ Page({
   },
   //保存
   async postGuidance() {
+    Toast.showLoading();
     let data = this.data.guidance.info;
     let result = await Protocol.postGuidance(data);
     Toast.hiddenLoading();
-    if (result.code) {
+    if (result.code && this.data.reset ==2) {
+      HiNavigator.navigateToLowFatReport()
+    }else{
       HiNavigator.navigateToWeightTarget()
     }
   },

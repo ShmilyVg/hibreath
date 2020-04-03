@@ -64,7 +64,7 @@
         </view>
         <view class="eatHow-item">
           <image src="../images/icon/eat.png"></image>
-          <text>每餐保持七八分饱，是比较良好的状态；晚上20点后不宜补充食物，如饿感明显，可适量补充一些绿灯区蔬菜；</text>
+          <text>每餐保持七八分饱，是比较良好的状态；晚上20点后不宜补充食物，如饿感明显，可适量补充一些绿灯区蔬菜；限制高盐类食物（咸菜.酱油.腌制品.熏肉.腊肉等）;</text>
         </view>
         <view class="eatHow-item">
           <image src="../images/icon/sport-2.png"></image>

@@ -24,15 +24,15 @@
       <view wx:for="{{days}}" wx:key="index" class="pickerDateColumn-view" >{{item}}日</view>
     </picker-view-column>
   </picker-view> -->
-  <picker-view indicator-style="height: 55px; color:#4FBB49;" style="width: 100%; height: 540rpx;background-color: #ECF8EB;color:#4FBB49; " value="{{value}}" bindchange="bindChange" bindpickend="bindpickend" bindpickstart="bindpickstart">
+  <picker-view indicator-style="height: 55px; color:#4FBB49;" style="width: 100%; height: 540rpx;background-color: #ECF8EB;color:#666; " value="{{value}}" bindchange="bindChange" bindpickend="bindpickend" bindpickstart="bindpickstart">
     <picker-view-column >
-      <view wx:for="{{years}}" wx:key="index" class="pickerDateColumn-view" >{{item}}年</view>
+      <view wx:for="{{years}}" wx:key="index" class="pickerDateColumn-view {{serial_y == index?'active':''}}" >{{item}}年</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:for="{{months}}" wx:key="index" class="pickerDateColumn-view" >{{item}}月</view>
+      <view wx:for="{{months}}" wx:key="index" class="pickerDateColumn-view {{serial_m == index?'active':''}}">{{item}}月</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:for="{{days}}" wx:key="index" class="pickerDateColumn-view" >{{item}}日</view>
+      <view wx:for="{{days}}" wx:key="index" class="pickerDateColumn-view {{serial_d == index?'active':''}}" >{{item}}日</view>
     </picker-view-column>
   </picker-view>
 </view>
