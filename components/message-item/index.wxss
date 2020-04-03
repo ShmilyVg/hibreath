@@ -1,5 +1,5 @@
 .message-item-layout {
-    padding: 70rpx 40rpx 20rpx 40rpx;
+    padding: 50rpx 40rpx 20rpx 40rpx;
     align-self: flex-start;
 }
 

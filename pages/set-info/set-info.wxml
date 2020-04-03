@@ -64,7 +64,7 @@
         </view>
       </view>
       <view class="task-card ">
-        <view class="speed-now" bindtap="goToFatResultPage">
+        <view class="speed-now" bindtap="fatTaskToFinish">
           <view class="item-tip">
             <image src="../../images/set-info/{{taskInfo.fatTask.finished?'speed-tip1':'speed-tip'}}.png" class="speed-tip"></image>
           </view>
@@ -81,12 +81,12 @@
               <view class="taskI-text1">随时监测燃脂状态</view>
               <view class="taskI-text2">让减脂心里有数</view>
             </block>
-            <view class="item-contain-n" catchtap="fatTaskToFinish">
+            <view class="item-contain-n">
               <view>吹一吹</view>
             </view>
           </view>
         </view>
-        <view class="weigth-now" bindtap="bindTapToFood">
+        <view class="weigth-now" bindtap="showModal">
           <view class="item-tip">
             <image src="../../images/set-info/{{taskInfo.weightTask.finished?'weight-tip1':'weight-tip'}}.png" class="weigth-tip"></image>
           </view>
@@ -109,7 +109,7 @@
               <view class="taskI-text1">随时总结燃脂进程</view>
               <view class="taskI-text2">让减脂不再盲目</view>
             </block>
-            <view class="item-contain-n" catchtap="showModal">
+            <view class="item-contain-n">
               <view class="item-contain-n-weight">量一量</view>
             </view>
           </view>
