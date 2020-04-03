@@ -464,6 +464,27 @@
 					"pathName": "pagesIndex/Indulge/Indulge",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/user-info/user-info",
+					"pathName": "pagesIndex/user-info/user-info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 59,
+					"name": "pagesThree/help-cards/help-cards",
+					"pathName": "pagesThree/help-cards/help-cards",
+					"query": "sharedId=3857D3058E9B69EAF72F7EC81BFDC7A44EB5158260C033187BF5061E4FCFD71B",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/attendanceBonus/attendanceBonus",
+					"pathName": "pagesIndex/attendanceBonus/attendanceBonus",
+					"query": "sharedId=3857D3058E9B69EAF72F7EC81BFDC7A44EB5158260C033187BF5061E4FCFD71B",
+					"scene": null
 				}
 			]
 		}

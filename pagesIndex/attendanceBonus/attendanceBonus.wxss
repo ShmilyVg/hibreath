@@ -1,7 +1,7 @@
 /* pagesIndex/attendanceBonus/attendanceBonus.wxss */
 page{
   box-sizing: border-box;
-  height: 1689rpx;
+  height: 1800rpx;
   background-image: url('http://img.hipee.cn/hibreath/banner/bannerBg.png');
   background-size: 100% 1689rpx;
   position: relative;
@@ -109,7 +109,7 @@ view{
   height:230rpx;
   background:rgba(255,255,255,1);
   border-radius:10rpx;
-  top: 768rpx;
+  top: 718rpx;
   left: 53rpx;
   padding-left: 63rpx;
 }
@@ -243,4 +243,17 @@ view{
 .replenish-text text{
   color: #444444;
   font-weight: bold;
+}
+.attendanceBonus-title{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:blod;
+  color:rgba(68,68,68,1);
+  margin-top: 53rpx;
+}
+.attendanceBonus-des{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(68,68,68,1);
 }

@@ -27,11 +27,11 @@ page{
 .Indulge-bottom{
     width: 100%;
     margin-top: 81rpx;
-    height:1457rpx;
+    max-height:5457rpx;
     background:rgba(255,255,255,1);
     border-radius:80rpx 0rpx 0rpx 0rpx;
     box-sizing: border-box;
-    padding: 83rpx 69rpx 0rpx 30rpx;
+    padding: 83rpx 69rpx 30rpx 30rpx;
 }
 .Indulge-bottom-title{
     font-size:36rpx;
@@ -66,7 +66,7 @@ page{
     color:rgba(153,153,153,1);
 }
 .Indulge-foodList-right-calorie{
-    max-width:150rpx;
+    max-width:170rpx;
     height:46rpx;
     line-height: 21rpx;
     background:rgba(253,244,235,1);

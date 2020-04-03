@@ -1,0 +1,101 @@
+/* pagesThree/help-cards/help-cards.wxss */
+page{
+    background-color: #7BC877;
+    height: 100%;
+}
+.rzbg{
+    position: absolute;
+    width: 244rpx;
+    height: 300rpx;
+    right: 40rpx;
+    top: 225rpx;
+}
+.Indulge{
+    height: 270rpx;
+}
+.Indulge-title{
+    font-size:48rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+    box-sizing: border-box;
+    padding: 81rpx 0rpx 22rpx 65rpx;
+}
+.Indulge-subtitle{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    margin-left: 65rpx;
+}
+.Indulge-bottom{
+    width: 100%;
+    height:calc(100% - 270rpx);
+    background:rgba(255,255,255,1);
+    border-radius:80rpx 0rpx 0rpx 0rpx;
+    box-sizing: border-box;
+    padding: 50rpx 53rpx 70rpx 53rpx;
+}
+.cards-imgView{
+    width:102rpx;
+    height:102rpx;
+    background:#F6F6F6;
+    border-radius:50%;
+    box-sizing: border-box;
+    padding: 3rpx;
+    margin-right: 23rpx;
+}
+.cards-title{
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(68,68,68,1);
+    margin-bottom: 13rpx;
+}
+.cards-subtitle{
+    font-size:36rpx;
+    font-family:PingFang SC;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.cards-days-title{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(68,68,68,1);
+    margin: 70rpx 0rpx 28rpx;
+}
+.cards-days-Num{
+    font-size:80rpx;
+    font-family:DIN Condensed;
+    font-weight:bold;
+    color:rgba(79,187,73,1);
+}
+.cards-days-Num text{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(79,187,73,1);
+    margin-left: 12rpx;
+}
+.cards-dec{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(68,68,68,1);
+}
+.cards-btn{
+    width:520rpx;
+    height:100rpx;
+    line-height: 100rpx;
+    background:rgba(123,200,119,1);
+    border-radius:50rpx;
+    margin: 93rpx auto 0rpx auto;
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+}
+button:after{
+    border: none;
+}

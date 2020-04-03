@@ -14,7 +14,7 @@
         <image src="../../images/personalCenter/gray.png" class="gray-img"></image>
       </view>
      </view>
-     <view class="per-nav flex-row">
+  <!--   <view class="per-nav flex-row">
         <view class="per-nav-list" bindtap="toNoticeList">
           <image class="per-nav-img" src="../../images/personalCenter/message.png"></image>
           <view class="per-nav-text">消息</view>
@@ -25,7 +25,7 @@
           <view class="per-nav-text">我的动态</view>
         </view>
         <view class="per-nav-border"></view>
-      <!--  <view class="per-nav-list" data-type="paiMoney" bindtap="toDatalist">
+      &lt;!&ndash;  <view class="per-nav-list" data-type="paiMoney" bindtap="toDatalist">
           <view style="padding-left: 45rpx;display: flex;justify-content: center">
             <text wx:if="{{isShowlogin}}">{{amount}}</text>
             <text wx:else>0</text>
@@ -33,13 +33,70 @@
               <view class="per-redC" wx:if="{{isHave}}"></view>
           </view>
           <view class="per-nav-text">我的积分</view>
-        </view>-->
+        </view>&ndash;&gt;
          <view class="per-nav-list" data-type="gift" bindtap="toDatalist">
              <image class="per-nav-img" src="../../images/personalCenter/user.png"></image>
              <view class="per-nav-text">我的优惠券</view>
          </view>
-     </view>
+     </view>-->
      <view class="per-main">
+         <view class="per-main-list flex-row space-between" data-type="task" bindtap="toDatalist">
+             <view>
+                 <image class="per-main-image" src="../../images/personalCenter/smallpeoper.png"></image>
+                 <text class="per-main-text">历史综合分析报告</text>
+             </view>
+             <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+         </view>
+
+         <view class="per-main-list flex-row space-between" data-type="fatBurn" bindtap="toDatalist">
+             <view>
+                 <image class="per-main-image" src="../../images/personalCenter/equipment.png"></image>
+                 <text class="per-main-text">燃脂检测记录</text>
+             </view>
+             <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+         </view>
+         <view class="per-main-list flex-row space-between" data-type="bodyIndex" bindtap="toDatalist">
+             <view>
+                 <image class="per-main-image" src="../../images/personalCenter/weight.png"></image>
+                 <text class="per-main-text">体重趋势记录</text>
+             </view>
+             <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+         </view>
+     </view>
+    <button class="per-administration per-main-list flex-row space-between"   bindtap="onDeviceManagement">
+        <view>
+            <image class="per-main-image" src="../../images/personalCenter/device.png"></image>
+            <text class="per-main-text">设备管理</text>
+        </view>
+        <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+    </button>
+    <view class="per-main">
+        <view class="per-main-list flex-row space-between" data-type="gift" bindtap="toDatalist">
+            <view>
+                <image class="per-main-image" src="../../images/personalCenter/task.png"></image>
+                <text class="per-main-text">我的优惠券</text>
+            </view>
+            <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+        </view>
+     <!--   <view class="per-main-list flex-row space-between" data-type="paiMoney" bindtap="toDatalist">
+            <view>
+                <image class="per-main-image" src="../../images/personalCenter/task.png"></image>
+                <text class="per-main-text">我的积分</text>
+            </view>
+            <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+        </view>-->
+    </view>
+    <view class="per-main" style="margin: 20rpx 0rpx">
+        <view class="per-main-list flex-row space-between" bindtap="toNoticeList">
+            <view>
+                <image class="per-main-image" src="../../images/personalCenter/message.png"></image>
+                <text class="per-main-text">动态消息</text>
+            </view>
+            <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
+        </view>
+    </view>
+    <view class="per-main" style="margin-bottom: 34rpx">
+<!--
          <button class="per-main-list flex-row space-between"   bindtap="onTargetWeight">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/weight.png"></image>
@@ -47,34 +104,10 @@
               <text class="per-main-text"></text>
           </view>
           <view>
-            <!--  <text wx:if="{{isShowlogin}}">
-                  <text class="weightGoalN" wx:if="{{weightGoal}}">{{weightGoal}}kg</text>
-                  <text class="weightGoalT" wx:else>未填写</text>
-              </text>-->
               <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
           </view>
-         </button>
-         <view class="per-main-list flex-row space-between" data-type="task" bindtap="toDatalist">
-             <view>
-                 <image class="per-main-image" src="../../images/personalCenter/task.png"></image>
-                 <text class="per-main-text">每日总结报告</text>
-             </view>
-             <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-         </view>
-         <view class="per-main-list flex-row space-between" data-type="fatBurn" bindtap="toDatalist">
-          <view>
-              <image class="per-main-image" src="../../images/personalCenter/equipment.png"></image>
-              <text class="per-main-text">燃脂检测记录</text>
-          </view>
-          <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-        </view>
-         <view class="per-main-list flex-row space-between" data-type="bodyIndex" bindtap="toDatalist">
-          <view>
-              <image class="per-main-image" src="../../images/personalCenter/smallpeoper.png"></image>
-              <text class="per-main-text">身体指标记录</text>
-          </view>
-          <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-        </view>
+         </button>-->
+
         <view class="per-main-list flex-row space-between" bindtap="toCommonProblem">
           <view>
               <image class="per-main-image" src="../../images/personalCenter/warning.png"></image>
@@ -83,12 +116,6 @@
           <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
         </view>
      </view>
-     <button class="per-administration per-main-list flex-row space-between"   bindtap="onDeviceManagement">
-         <view>
-              <image class="per-main-image" src="../../images/personalCenter/device.png"></image>
-              <text class="per-main-text">设备管理</text>
-          </view>
-          <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>
-     </button>
+
 </view>
 

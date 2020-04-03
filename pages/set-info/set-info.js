@@ -461,10 +461,10 @@ Page({
           // HiNavigator.navigateToGuidance({sharedId})
         }, 500);
       }else{
-        wx.showToast({
+       /* wx.showToast({
           title: '授权成功',
           duration: 500
-        });
+        });*/
         setTimeout(() => {
           HiNavigator.navigateToGoVerification()
           // HiNavigator.navigateToGuidance({})

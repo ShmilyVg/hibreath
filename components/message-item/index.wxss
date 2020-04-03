@@ -143,7 +143,7 @@
     line-height: 86rpx;
     padding-left: 26rpx;
     display: flex;
-    margin: 40rpx 40rpx 20rpx 40rpx;
+    margin: 40rpx 40rpx 0rpx 40rpx;
 }
 .giveHeartlistImg{
     align-items: center;
@@ -167,6 +167,13 @@
     font-family:PingFang SC;
     font-weight:400;
     color:rgba(69,69,69,1);
+}
+.commentInfoListStyle{
+    background:rgba(247,247,247,1);
+    border-radius:10rpx;
+    box-sizing: border-box;
+    padding: 38rpx 41rpx 46rpx 32rpx;
+    margin: 20rpx 40rpx 0rpx 40rpx
 }
 .commentContentView{
     float: left;

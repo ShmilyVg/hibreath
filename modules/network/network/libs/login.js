@@ -74,12 +74,6 @@ const loginFailObj = {
         _needRegister = true;
         getApp().globalData.isLogin = false
         wx.removeStorageSync('currentSocialGroupId')
-       /* //圈子未注册用户显示
-        getApp().globalData.isNoRegister = true
-        console.log('isNoRegisterisNoRegister',getApp().globalData.isNoRegister)*/
-        /*wx.reLaunch({
-          url: '../../../../../pages/set-info/set-info?isNotRegister=1',
-        })*/
     },
     4000: ({resolve, reject}) => {
         WXDialog.showDialog({

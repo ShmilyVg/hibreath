@@ -84,7 +84,8 @@
     {
       "root": "pagesThree",
       "pages": [
-        "get-low-carbon/get-low-carbon"
+        "get-low-carbon/get-low-carbon",
+        "help-cards/help-cards"
       ]
     }
   ],

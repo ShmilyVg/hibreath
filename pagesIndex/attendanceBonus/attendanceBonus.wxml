@@ -1,5 +1,5 @@
 <!--pagesIndex/attendanceBonus/attendanceBonus.wxml-->
-<navBar title='加入减脂圈' color="#fff" iconTheme="white" background='' back="{{true}}" bindback="handlerGobackClick">
+<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='' back="{{true}}" bindback="handlerGobackClick">
 
 </navBar>
 <view class="tasks">
@@ -48,14 +48,24 @@
   <view class="contain">
     <view class="contain-title">以下方式任意完成一条即算打卡成功</view>
     <view class="task-text">
-      <image src="../images/icon/burn.png"></image> 完成今日燃脂速度打卡</view>
+      <image src="../images/icon/burn.png"></image>
+      完成今日燃脂速度打卡
+    </view>
     <view class="task-text">
-      <image src="../images/icon/foot.png"></image> 完成今日体重记录打卡</view>
+      <image src="../images/icon/foot.png"></image>
+      完成今日体重记录打卡
+    </view>
     <view class="line"></view>
     <view class="replenish">关于补卡</view>
-    <view class="replenish-text">邀请新用户进入小程序即可~ </view>
+    <view class="replenish-text">邀请
+      <text style="color: #4FBB49">新用户</text>
+      进入小程序即可~
+    </view>
     <view class="replenish-text">
-      <text>方法：</text>分享小程序到微信，当有新用户点击进入后，则补卡成功~~ </view>
+      <text>方法：</text>分享小程序到微信，当有<text style="color: #4FBB49">新用户</text>点击进入后，则补卡成功~~
+    </view>
+    <view class="attendanceBonus-title">优惠券使用期限：</view>
+    <view class="attendanceBonus-des">优惠券使用期限： 自优惠券领取后<text style="color: #4FBB49">7日</text>自动过期，领取后请尽快使用哦~</view>
   </view>
 
 </view>

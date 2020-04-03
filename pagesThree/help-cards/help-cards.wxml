@@ -1,0 +1,32 @@
+<!--pagesThree/help-cards/help-cards.wxml-->
+<navBar
+        title='领取低碳零食'
+        color="white"
+        iconTheme="white"
+        background='{{navBarBackground}}'
+        back="{{false}}"
+        bindback="handlerGobackClick">
+</navBar>
+<view class="Indulge">
+    <image src="../../images/lowFatReport/newBg.png" class="rzbg"></image>
+    <view class="Indulge-title">Slimple轻松派</view>
+    <view class="Indulge-subtitle">好身材·很简单</view>
+</view>
+<view class="Indulge-bottom">
+    <view style="display: flex">
+        <view class="cards-imgView">
+            <image src=""></image>
+        </view>
+        <view style="padding-top: 10rpx">
+            <view class="cards-title">陆小贱Lucy</view>
+            <view class="cards-subtitle">邀请你帮Ta补卡！~</view>
+        </view>
+    </view>
+    <view class="cards-days-title">我已经在Slimple坚持打卡</view>
+    <view class="cards-days-Num">{{fatBurnDays}}<text>天</text></view>
+    <view class="cards-days-title">目前共减重</view>
+    <view class="cards-days-Num">{{addUpWeightLoss}}<text>kg</text></view>
+    <view class="cards-dec" style="margin-top: 73rpx;margin-bottom: 10rpx">亲爱的小伙伴</view>
+    <view class="cards-dec">点击下方按钮，来帮我补个卡啦!</view>
+    <button class="cards-btn" open-type="getUserInfo" bindgetuserinfo="{{todo}}">{{btnText}}</button>
+</view>

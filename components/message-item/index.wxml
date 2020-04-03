@@ -43,7 +43,7 @@
         </view>
     </view>
 <!--    <view wx:if="{{message.praiseInfo.list.length>0 && message.commentInfo.list.length>0}}" class="message-item-line"></view>-->
-    <view wx:if="{{message.commentInfo.list.length>0}}" style="background:rgba(247,247,247,1);border-radius:10rpx;box-sizing: border-box;padding: 38rpx 41rpx 46rpx 32rpx;margin: 0 40rpx">
+    <view wx:if="{{message.commentInfo.list.length>0}}" class="commentInfoListStyle" style="margin-top: {{message.praiseInfo.list.length>0?'20rpx':'40rpx'}}">
         <view class="extraBottomview-commentView"
               hover-class="commentHover"
               wx:for="{{message.commentInfo.list}}"

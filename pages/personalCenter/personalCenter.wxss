@@ -120,7 +120,6 @@ button::after {
 .per-main{
   background:#fff;
   border-radius:20rpx;
-  margin-top:20rpx;
   padding:0 35rpx;
 }
 .per-main-list{
@@ -150,8 +149,8 @@ height:25rpx;
 }
 .per-administration{
   background:#fff;
-  margin-top:18rpx;
+  margin-top:20rpx;
   padding:0 35rpx;
   border-radius: 20rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }

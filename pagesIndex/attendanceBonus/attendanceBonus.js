@@ -68,9 +68,9 @@ Page({
   },
   onShareAppMessage(){
     return{
-      title: '我正在低碳燃脂，快来一起加入！',
+      title: '我在Slimple低碳club减脂！拜托 拜托！来帮我补个卡吧~',
       path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.breathSign.sharedId}`,
-      imageUrl: this.data.shareImg
+      imageUrl: this.data.breathSign.sharedImg
     }
   }
 })

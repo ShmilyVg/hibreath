@@ -145,7 +145,7 @@ view{
   height: 22rpx;
   position: absolute;
   right: 54rpx;
-  top: 0rpx;
+  top: 60rpx;
   z-index: 20;
   padding: 10rpx 0 40rpx 40rpx;
 }
@@ -154,7 +154,7 @@ view{
   height: 80rpx;
   position: absolute;
   right: 54rpx;
-  top: 6rpx;
+  top: 60rpx;
   z-index: 10;
 }
 .line{
@@ -764,9 +764,21 @@ swiper{
   text-align: center;
 }
 .showGiftwindows-text{
-  font-size:24rpx;
+  font-size:28px;
   font-family:PingFang SC;
-  text-align: center;
-  font-weight:500;
-  color:rgba(153,153,153,1);
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+.setInfo-text{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+}
+.setInfo-flag{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  margin-top: 20rpx;
 }

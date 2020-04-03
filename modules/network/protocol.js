@@ -121,7 +121,10 @@ export default class Protocol {
     static postMembersTasks() {
         return Network.request({url: 'members/tasks'})
     }
-
+    //获取补卡页面信息
+    static getTaskInfoBySharedId({sharedType,sharedId}) {
+      return Network.request({url: 'index/getTaskInfoBySharedId',data: {sharedType,sharedId}})
+    }
     //首页-天天燃脂签到
     static getBreathSignInInfo() {
         return Network.request({url: 'members/getBreathSignInInfo'})
