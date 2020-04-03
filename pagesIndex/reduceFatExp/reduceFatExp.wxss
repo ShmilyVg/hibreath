@@ -54,7 +54,7 @@ view{
 }
 .img-con image{
   width: 490rpx;
-  height: 279rpx;
+  height: 270rpx;
 }
 .tip{
   font-size: 24rpx;

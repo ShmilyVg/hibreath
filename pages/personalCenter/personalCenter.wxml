@@ -73,7 +73,7 @@
     <view class="per-main">
         <view class="per-main-list flex-row space-between" data-type="gift" bindtap="toDatalist">
             <view>
-                <image class="per-main-image" src="../../images/personalCenter/task.png"></image>
+                <image class="per-main-image" src="../../images/personalCenter/yhq.png"></image>
                 <text class="per-main-text">我的优惠券</text>
             </view>
             <image class="per-main-img" src="../../images/personalCenter/gray.png"></image>

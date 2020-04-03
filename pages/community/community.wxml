@@ -19,14 +19,16 @@
         </view>
     </view>
     <!-- 未读状态 -->
-    <view class="noticeList" wx:if="{{noticeList.imgUrl}}" bindtap="toNoticeList">
-      <image  src="{{noticeList.imgUrl}}" class="notice-img"></image>
-      <text class="notice-text" >{{noticeList.total}}条新消息</text>
+    <view style="background-color: #fff;border-radius:80rpx 0rpx 0rpx 0rpx;width: 100%;">
+        <view class="noticeList" wx:if="{{noticeList.imgUrl}}" bindtap="toNoticeList">
+            <image  src="{{noticeList.imgUrl}}" class="notice-img"></image>
+            <text class="notice-text" >{{noticeList.total}}条新消息</text>
+        </view>
     </view>
     <message-item
             id="messageItem"
             class="fill-width"
-            style="padding-bottom: 30rpx;background-color: #fff;border-radius: {{index == 0?'80rpx 0rpx 0rpx 0rpx':'0rpx'}}"
+            style="padding-bottom: 30rpx;background-color: #fff;border-radius: {{!noticeList.imgUrl && index == 0?'80rpx 0rpx 0rpx 0rpx':'0rpx'}}"
             bind:onMessageDeleteEvent="onDynamicItemDeleteEvent"
             bind:onNoupdate="onNoupdate"
             scrollTopNum="{{scrollTopNum}}"
