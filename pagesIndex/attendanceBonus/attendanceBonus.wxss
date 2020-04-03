@@ -3,7 +3,7 @@ page{
   box-sizing: border-box;
   height: 1800rpx;
   background-image: url('http://img.hipee.cn/hibreath/banner/bannerBg.png');
-  background-size: 100% 1689rpx;
+  background-size: 100% 1800rpx;
   position: relative;
 }
 
@@ -57,7 +57,7 @@ view{
 .top-tip{
   position: absolute;
   width:100%;
-  top: 542rpx;
+  top: 582rpx;
   left: 0;
   text-align: center;
   font-size:28rpx;
@@ -109,7 +109,7 @@ view{
   height:230rpx;
   background:rgba(255,255,255,1);
   border-radius:10rpx;
-  top: 718rpx;
+  top: 828rpx;
   left: 53rpx;
   padding-left: 63rpx;
 }
@@ -125,6 +125,7 @@ view{
   writing-mode:vertical-rl;
   text-align: center;
   line-height: 63rpx;
+  font-size: 24rpx;
 }
 .discounts-top{
   padding: 40rpx 20rpx;
@@ -186,12 +187,12 @@ view{
   width: 579rpx;
 }
 .contain{
-  padding: 80rpx 40rpx 60rpx;
+  padding: 70rpx 40rpx 60rpx;
   width: 690rpx;
-  height: 630rpx;
+  height: 670rpx;
   left: 32rpx;
   position: absolute;
-  bottom: 30rpx;
+  bottom: 40rpx;
 }
 .contain-title{
   font-size:30rpx;
@@ -205,7 +206,7 @@ view{
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(68,68,68,1);
-  margin-bottom: 25rpx;
+  margin-bottom: 20rpx;
   position: relative;
 }
 .task-text image{
@@ -218,7 +219,7 @@ view{
   height: 1rpx;
   width:603rpx;
   background:rgba(238,238,238,1);
-  margin: 60rpx auto;
+  margin: 40rpx auto;
 }
 .replenish{
   width:130rpx;
@@ -244,16 +245,6 @@ view{
   color: #444444;
   font-weight: bold;
 }
-.attendanceBonus-title{
-  font-size:26rpx;
-  font-family:PingFang SC;
-  font-weight:blod;
-  color:rgba(68,68,68,1);
-  margin-top: 53rpx;
-}
-.attendanceBonus-des{
-  font-size:26rpx;
-  font-family:PingFang SC;
-  font-weight:400;
-  color:rgba(68,68,68,1);
+.replenish-text view{
+  margin-top: 10rpx;
 }

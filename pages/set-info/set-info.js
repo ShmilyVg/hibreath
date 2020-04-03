@@ -64,7 +64,7 @@ Page({
   },
 
   async onLoad(options) {
-
+    //hardware为硬件扫码标志  mealReplacement 为代餐扫码标志 正常进入时为normal
     let sharedId = options.sharedId || null;
     let fromType = 'hardware';
     app.globalData.fromType = fromType;
