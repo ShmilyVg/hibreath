@@ -26,7 +26,6 @@ view {
 
 .lowFat-header {
   font-size: 56rpx;
-  
   font-weight: 800;
   color: rgba(255, 255, 255, 1);
   margin-left: 20rpx;
@@ -70,7 +69,6 @@ view {
 
 .p-name {
   font-size: 32rpx;
-  
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   margin-bottom: 15rpx;
@@ -78,7 +76,6 @@ view {
 
 .p-time {
   font-size: 24rpx;
-  
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
   opacity: 0.7;
@@ -105,14 +102,12 @@ view {
 
 .item-title {
   font-size: 36rpx;
-  
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
 }
 
 .item-title-text {
   font-size: 24rpx;
-  
   font-weight: 400;
   color: rgba(53, 192, 80, 1);
   display: inline-block;
@@ -127,7 +122,6 @@ view {
 
 .item-h4 {
   font-size: 28rpx;
-  
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
   margin-top: 50rpx;
@@ -174,15 +168,16 @@ view {
   width: 526rpx;
   height: 342rpx;
 }
-.elf-contain{
+
+.elf-contain {
   width: 350rpx;
   height: 2rpx;
   background: transparent;
   position: absolute;
   left: 130rpx;
   top: 180rpx;
-  
 }
+
 .elf-tip {
   width: 89rpx;
   height: 89rpx;
@@ -201,20 +196,22 @@ view {
   color: rgba(53, 192, 80, 1);
   margin-top: 30rpx;
 }
-.item-g-text .num{
-  font-size:80rpx;
-  font-family:DINCondensed;
-  font-weight:bold;
-  color:rgba(53,192,80,1);
+
+.item-g-text .num {
+  font-size: 80rpx;
+  font-family: DINCondensed;
+  font-weight: bold;
+  color: rgba(53, 192, 80, 1);
 }
-.item-g-text .unit{
-  font-size:36rpx;
-  font-weight:500;
-  color:rgba(53,192,80,1);
+
+.item-g-text .unit {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: rgba(53, 192, 80, 1);
 }
+
 .item-n-text {
   font-size: 28rpx;
-  
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
   margin-top: 40rpx;
@@ -226,18 +223,20 @@ view {
   border-radius: 10rpx;
 }
 
-.item-n-text .num{
-  font-size:46rpx;
-  font-family:DINCondensed;
-  font-weight:bold;
-  color:rgba(53,192,80,1);
+.item-n-text .num {
+  font-size: 46rpx;
+  font-family: DINCondensed;
+  font-weight: bold;
+  color: rgba(53, 192, 80, 1);
 }
-.item-n-text .unit{
-  font-size:28rpx;
-  font-family:PingFang SC;
-  font-weight:400;
-  color:rgba(53,192,80,1);
+
+.item-n-text .unit {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(53, 192, 80, 1);
 }
+
 .item-h4 .fire {
   width: 24rpx;
   height: 30rpx;
@@ -269,7 +268,6 @@ view {
   background: linear-gradient(90deg, rgba(38, 204, 144, 1), rgba(114, 213, 133, 1));
   border-radius: 28rpx;
   font-size: 24rpx;
-  
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
   padding-left: 17rpx;
@@ -284,14 +282,12 @@ view {
 
 .burn-progress-text {
   font-size: 24rpx;
-  
   font-weight: 500;
   color: rgba(102, 102, 102, 1);
 }
 
 .burn-progress-val {
   font-size: 28rpx;
-  
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
 }
@@ -299,7 +295,6 @@ view {
 .burn-progress-right {
   width: 131rpx;
   font-size: 22rpx;
-  
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
   text-align: center;
@@ -314,15 +309,16 @@ view {
   margin: 0 auto 10rpx;
   position: relative;
 }
-.foodQuantity{
-  width:40rpx;
-  height:40rpx;
-  background:rgba(104,207,124,1);
-  border-radius:50%;
-  font-size:22rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:rgba(255,255,255,1);
+
+.foodQuantity {
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(104, 207, 124, 1);
+  border-radius: 50%;
+  font-size: 22rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
   position: absolute;
   text-align: center;
   line-height: 40rpx;
@@ -339,22 +335,26 @@ view {
 .weight {
   margin-top: 50rpx;
 }
-.weight-chart{
+
+.weight-chart {
   margin-top: 35rpx;
   position: relative;
 }
-.shade{
+
+.shade {
   width: 100%;
   height: 60rpx;
   position: absolute;
   background: #fff;
   bottom: 23rpx;
 }
-.canvas{
+
+.canvas {
   width: 100%;
   height: 380rpx;
 }
-.suggest{
+
+.suggest {
   background: #fff;
   box-shadow: 0rpx -4rpx 30rpx 0rpx rgba(0, 0, 0, 0.04);
   border-radius: 20rpx;
@@ -364,67 +364,77 @@ view {
   position: relative;
   height: 360rpx;
 }
-.suggest-tip{
-  width:176rpx;
-  height:56rpx;
+
+.suggest-tip {
+  width: 176rpx;
+  height: 56rpx;
   line-height: 56rpx;
   text-align: center;
-  background:rgba(105,207,124,1);
-  border-radius:28rpx;
-  font-size:30rpx;
-  font-family:PingFang SC;
-  font-weight:bold;
-  color:rgba(255,255,255,1);
+  background: rgba(105, 207, 124, 1);
+  border-radius: 28rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
   position: absolute;
   top: -28rpx;
   left: 41rpx;
 }
-.personImg{
+
+.personImg {
   width: 139rpx;
   height: 277rpx;
   position: absolute;
   right: -80rpx;
   bottom: -19rpx;
 }
-.suggest view{
+
+.suggest view {
   margin-bottom: 10rpx;
 }
-.suggest-text{
-  font-size:26rpx;
-  font-family:PingFang SC;
-  font-weight:400;
-  color:rgba(102,102,102,1);
+
+.suggest-text {
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
   line-height: 45rpx;
 }
-.dietician{
+
+.dietician {
   margin-top: 40rpx;
   position: relative;
 }
-.dietician, .bannerBg{
+
+.dietician, .bannerBg {
   height: 114rpx;
   width: 629rpx;
 }
-.dietician view{
+
+.dietician view {
   position: absolute;
   height: 100%;
-  font-size:24rpx;
-  font-family:PingFang SC;
-  font-weight:400;
-  color:rgba(146,123,101,1);
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(146, 123, 101, 1);
 }
-.dietician-text1{
+
+.dietician-text1 {
   top: 27rpx;
   left: 145rpx;
   width: 348rpx;
 }
-.xsj{
+
+.xsj {
   position: absolute;
   width: 36rpx;
   height: 54rpx;
   top: 30rpx;
   right: -30rpx;
 }
-.bottomBg{
+
+.bottomBg {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -432,13 +442,16 @@ view {
   height: 198rpx;
   z-index: 10;
 }
-.synthesize{
+
+.synthesize {
   margin-top: 61rpx;
 }
-.synthesize-title{
+
+.synthesize-title {
   margin-left: 20rpx;
 }
-.synthesize-contain{
+
+.synthesize-contain {
   padding: 43rpx 0 73rpx;
   margin-top: 32rpx;
   width: 690rpx;
@@ -447,62 +460,145 @@ view {
   background-size: 100% 100%;
   text-align: center;
 }
-.synthesize-contain image{
+
+.synthesize-contain image {
   width: 94rpx;
   height: 94rpx;
 }
-.synthesize-contain view{
-  font-size:28rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:#333333;
+
+.synthesize-contain view {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #333;
   margin-top: 30rpx;
 }
-.synthesize-contain button{
+
+.synthesize-contain button {
   margin-top: 40rpx;
   color: #fff;
-  width:350rpx;
-  height:80rpx;
+  width: 350rpx;
+  height: 80rpx;
   line-height: 80rpx;
-  background:rgba(123,200,119,1);
-  border-radius:40rpx;
-  font-size:28rpx;
-  font-family:PingFang SC;
-  font-weight:500;
+  background: rgba(123, 200, 119, 1);
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
 }
-.scheme{
+
+.scheme {
   margin-top: 74rpx;
   text-align: center;
 }
-.scheme-title{
-  font-size:36rpx;
-  font-weight:bold;
-  color:rgba(51,51,51,1);
+
+.scheme-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
 }
-.scheme-text{
+
+.scheme-text {
   margin-top: 20rpx;
-  font-size:28rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:rgba(68,68,68,1);
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(68, 68, 68, 1);
 }
-.scheme-text text{
-  color:#4FBB49;
+
+.scheme-text text {
+  color: #4fbb49;
 }
-.scheme image{
+
+.scheme image {
   margin-top: 25rpx;
   width: 38rpx;
   height: 39rpx;
 }
-.scheme button{
+
+.scheme button {
   margin-top: 17rpx;
-  width:520rpx;
-  height:100rpx;
-  background:rgba(123,200,119,1);
-  border-radius:50rpx;
+  width: 520rpx;
+  height: 100rpx;
+  background: rgba(123, 200, 119, 1);
+  border-radius: 50rpx;
   line-height: 100rpx;
-  font-size:30rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.85;
+  overflow: hidden;
+  z-index: 9;
+  
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background: #fff;
+  padding-top: 30rpx;
+  text-align: center;
+  border-radius: 60rpx 60rpx 0 0;
+}
+.box_title{
+  font-size:28rpx;
   font-family:PingFang SC;
   font-weight:500;
-  color:rgba(255,255,255,1);
+  color:rgba(51,51,51,1);
+  margin-bottom: 34rpx;
+}
+.commodity_attr_box button{
+  display: inline-block;
+  background: transparent;
+  border-style: none;
+  padding: 0;
+}
+.commodity_attr_box button view{
+  line-height: 24rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(69,69,69,1);
+}
+.commodity_attr_box button::after{
+  border-style: none;
+}
+.wx_friend{
+  margin-right: 84rpx;
+}
+.cancel{
+  height: 102rpx;
+  line-height: 102rpx;
+  margin-top: 52rpx;
+  border-top: 12rpx solid #F3F3F3;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(155,155,155,1);
+}
+.bottmFixd{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  height:100rpx;
+  line-height: 100rpx;
+  background:rgba(123,200,119,1);
+  box-shadow:0rpx -10rpx 40rpx 0rpx rgba(255,255,255,1);
+  z-index: 100;
+  text-align: center;
+  color: #fff;
 }

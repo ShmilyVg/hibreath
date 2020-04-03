@@ -431,7 +431,8 @@ Page({
     var that = this;
     that.setData({
       weight: '',
-      hideModal: false
+      hideModal: false,
+      canvasShow:false
     })
     var animation = wx.createAnimation({
       duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -470,6 +471,7 @@ Page({
   fadeDown: function () {
     this.animation.translateY(300).step()
     this.setData({
+      canvasShow:true,
       animationData: this.animation.export(),
     })
   },

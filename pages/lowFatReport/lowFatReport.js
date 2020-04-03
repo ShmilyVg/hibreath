@@ -14,7 +14,7 @@ Page({
 
   data: {
     rotate: 130,
-    progress:0,
+    progress: 0,
     weight: {
       type: 'weight',
       maxLength: 5,
@@ -28,25 +28,38 @@ Page({
         }
       ]
     },
-    shareTip:false,
-    report:{}
+    animationData: false,
+    showModalStatus: false,
+    shareTip: false,
+    report: {},
   },
 
   onLoad: function (options) {
     Trend.init(this);
     this.handleListData();
     this.getTodayLosefatReport()
+
+  },
+  getImageInfoFun(src){
+    wx.getImageInfo({
+      src: src,
+      success: res => {},
+      fail: err => {}
+    })
   },
   onReady: function () {
     Trend.initTouchHandler();
   },
-  async getTodayLosefatReport(){
+  async getTodayLosefatReport() {
     let { result } = await Protocol.getTodayLosefatReport({});
-    let losefatGrams = result.breathData.losefatGrams;
 
-    let progress = (losefatGrams.grams * 450)/losefatGrams.predictGrams
+    let losefatGrams = result.breathData.losefatGrams;
+    let progress = 0;
+    if (losefatGrams) {
+      progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
+    };
     this.setData({
-      request:true,
+      request: true,
       progress,
       report: result
     })
@@ -100,7 +113,7 @@ Page({
       dataListY.push(0);
     }
     dataListY1Name = this.data.weight.text;
-    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color:'#35C050'}, 650);
+    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#35C050' }, 650);
   },
   onShareAppMessage(res) {
     let reportId = this.data.reportId;
@@ -114,7 +127,7 @@ Page({
       delta: 1,
     })
   },
-  goToLiterature(){
+  goToLiterature() {
     HiNavigator.navigateToLiterature()
   },
   goToResult() {
@@ -157,7 +170,56 @@ Page({
       }
     })
   },
-  weightFinish(){
+  downShareImg() {
+    let url = '';
+    wx.downloadFile({
+      url,
+      success() { 
+        wx.saveImageToPhotosAlbum({　　　　　　　　　//保存到本地
+          filePath: res.tempFilePath,
+          success(res) {
+            wx.showToast({
+              title: '图片已保存至相册，请到朋友圈选择图片发布！',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      }, fail() {
+
+      }
+    })
+
+  },
+  weightFinish() {
     HiNavigator.switchToSetInfo()
-  }
+  },
+  showModal: function () {
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "ease-in-out",
+      delay: 0
+    });
+    this.animation = animation;
+    animation.translateY(500).step();
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    });
+    setTimeout(
+      function () {
+        animation.translateY(0).step();
+        this.setData({
+          animationData: animation.export()
+        });
+      }.bind(this),
+      200
+    );
+  },
+  hideModal: function () {
+    this.setData({
+      showModalStatus: false
+    });
+  },
 })

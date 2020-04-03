@@ -7,7 +7,7 @@
   <view class="lowFat-header">
     <view>
       今日打卡报告
-      <button class="share" open-type="share">
+      <button class="share" bindtap="showModal" wx:if="{{!shareTip}}">
         <image src="../../images/lowFatReport/copy.png" class="copy"></image> 分享</button>
     </view>
     <view class="lowFat-header-item">
@@ -109,10 +109,7 @@
       <image src="../../images/lowFatReport/person.png" class="personImg"></image>
       <image src="../../images/lowFatReport/xsj.png" class="xsj"></image>
       <view>
-        <text class="suggest-text">身体正在逐步加快燃脂的步伐，这是一个好的现象！</text>
-      </view>
-      <view>
-        <text class="suggest-text">同时我们要注意一下日常的饮食，是否遵循了低碳饮食的原则，少碳水、多补水，增加优质脂肪蛋白质，明天的体重数值会更友好些哦~</text>
+        <text class="suggest-text">{{report.dietitians.reviews}}</text>
       </view>
     </view>
     <view class="dietician">
@@ -149,3 +146,18 @@
   </view>
   <image src="../../images/lowFatReport/bottomBg.png" class="bottomBg"></image>
 </view>
+<view class="commodity_screen" wx:if="{{showModalStatus}}" bindtap="hideModal">
+</view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view class="box_title">分享给好友</view>
+      <button class="wx_friend" open-type="share">
+        <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
+        <view>微信好友</view>
+      </button>
+      <button class="wx_pyq" bindtap="downShareImg">
+        <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
+        <view>朋友圈</view>
+      </button>
+    <view class="cancel" bindtap="hideModal">取消</view>
+  </view>
+  <view class="bottmFixd" wx:if="{{shareTip}}">加入Slimple低碳CLUB，一起燃脂吧！</view>

@@ -317,7 +317,9 @@ Page({
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
     let taskFinished = false;
-    if (result.fatTask && result.weightTask && result.fatTask.finished && result.weightTask.finished){
+    if (result.fatTask && result.fatTask.finished){
+      taskFinished = true;
+    } else if (result.weightTask && result.weightTask.finished){
       taskFinished = true;
     }
     console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
@@ -426,7 +428,7 @@ Page({
     await Protocol.setBodyIndex({ weight: this.data.weight });
     this.hideModal();
     wx.showTabBar()
-    HiNavigator.navigateTofood();
+    HiNavigator.navigateToLowFatReport();
   },
   //体重弹框
   getShowExcitation(e) {
@@ -544,7 +546,7 @@ Page({
   //减脂效果页
   goToLowFatReport() {
     let taskInfo = this.data.taskInfo;
-    if (taskInfo.fatTask.finished && taskInfo.weightTask.finished) {
+    if (taskInfo.fatTask.finished || taskInfo.weightTask.finished) {
       HiNavigator.navigateToLowFatReport();
       return;
     }
