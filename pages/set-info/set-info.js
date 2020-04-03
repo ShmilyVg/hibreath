@@ -64,8 +64,10 @@ Page({
   },
 
   async onLoad(options) {
-    console.log("optionsoptionsoptionsoptions", options)
-    let sharedId =  wx.getStorageSync('sharedId')
+
+    let sharedId = options.sharedId || null;
+    let fromType = 'hardware';
+    app.globalData.fromType = fromType;
     this.setData({
       sharedId
     })

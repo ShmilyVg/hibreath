@@ -28,7 +28,7 @@
       <text>什么是slimple低碳饮食方案？</text>
     </view>
     <view class="startText" bindtap="startPlan">开启我的燃脂计划</view>
-    <button class="startBtn" open-type='share'>开启减脂计划并分享</button>
+    <button class="startBtn" bindtap="showModal">开启减脂计划并分享</button>
   </view>
 
 </view>
@@ -43,4 +43,18 @@
     <view class="unit">KG</view>
     <view class="weightBtn" hover-class="press-style" bindtap="saveWeight">保存</view>
   </view>
+</view>
+<view class="commodity_screen" wx:if="{{showModalStatus}}" bindtap="hideModal">
+</view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="box_title">分享给好友</view>
+  <button class="wx_friend" open-type="share">
+    <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
+    <view>微信好友</view>
+  </button>
+  <button class="wx_pyq" bindtap="downShareImg">
+    <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
+    <view>朋友圈</view>
+  </button>
+  <view class="cancel" bindtap="hideModal">取消</view>
 </view>

@@ -35,10 +35,16 @@ Page({
   },
 
   onLoad: function (options) {
+    let sharedId = options.sharedId == 'undefined' ? null : options.sharedId;
+    let reportId = options.reportId == 'undefined' ? null : options.reportId;
+    this.setData({
+      sharedId,
+      reportId
+    })
+
     Trend.init(this);
     this.handleListData();
     this.getTodayLosefatReport()
-
   },
   getImageInfoFun(src){
     wx.getImageInfo({
@@ -51,7 +57,9 @@ Page({
     Trend.initTouchHandler();
   },
   async getTodayLosefatReport() {
-    let { result } = await Protocol.getTodayLosefatReport({});
+    let sharedId = this.data.sharedId ||null;
+    let reportId = this.data.reportId || null;
+    let { result } = await Protocol.getTodayLosefatReport({ sharedId, reportId});
 
     let losefatGrams = result.breathData.losefatGrams;
     let progress = 0;
@@ -139,6 +147,13 @@ Page({
   //跳转体重列表
   goToFood() {
     HiNavigator.navigateTofood()
+  },
+  //跳转新手引导页
+  goToGuidance(){
+    HiNavigator.navigateToGuidance({ reset:2})
+  },
+  goToWeightTarget(){
+    HiNavigator.navigateToWeightTarget()
   },
   //燃脂
   async fatTaskToFinish() {

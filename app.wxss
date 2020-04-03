@@ -62,7 +62,10 @@
 .relative{
   position: relative;
 }
-
+button::after{
+  border-style:none;
+  outline-style: none; 
+}
 .press-style{
   opacity: 0.5;
 }

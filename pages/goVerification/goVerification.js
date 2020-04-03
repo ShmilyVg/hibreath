@@ -3,6 +3,7 @@ import {Toast} from "heheda-common-view";
 import Protocol from "../../modules/network/protocol";
 import { judgeGroupEmpty, whenDismissGroup } from "../community/social-manager";
 import HiNavigator from "../../navigator/hi-navigator";
+const app = getApp();
 Page({
 
   /**
@@ -139,31 +140,12 @@ Page({
   async submitMsg(){
     Toast.showLoading('登录中')
     const {result} = await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code}))
-    Toast.hiddenLoading()
-    if(result.inTaskProgress){
-      this.setData({
-        showMytoast:true,
-        ...result
-      })
-      setTimeout(()=>{
-        this.setData({
-          showMytoast:false,
-        })
-        Toast.hiddenLoading()
-        // HiNavigator.reLaunchToGroupNumber()
-        HiNavigator.navigateToGuidance({reset:2})
-      },2000)
-    }else{
-      // HiNavigator.reLaunchToGroupNumber()
-      HiNavigator.navigateToGuidance({ reset: false })
+    
+    if (app.globalData.fromType == 'hardware'){
+      HiNavigator.navigateIndex();
+      return;
     }
-
-   /* wx.showToast({
-      title: '登录成功',
-      icon: 'success',
-      duration: 2000,
-    })*/
-
+    HiNavigator.navigateToGuidance({ reset: false })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

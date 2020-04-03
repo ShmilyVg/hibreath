@@ -7,7 +7,7 @@
   <view class="lowFat-header">
     <view>
       今日打卡报告
-      <button class="share" bindtap="showModal" wx:if="{{!shareTip}}">
+      <button class="share" bindtap="showModal" wx:if="{{sharedId == 'undefined'}}">
         <image src="../../images/lowFatReport/copy.png" class="copy"></image> 分享</button>
     </view>
     <view class="lowFat-header-item">
@@ -56,7 +56,7 @@
         <image src="../../images/arr-right.png"></image>
       </view>
     </view>
-    <view class="burn-progress">
+    <view class="burn-progress" wx:if="{{report.member.isDoingPlan}}">
       <view class="burn-progress-left">
         <view class="burn-progress-contain">
           <view class="burn-value" style="width:{{progress}}rpx">今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
@@ -72,6 +72,13 @@
           <view class="foodQuantity">X{{report.breathData.losefatGrams.foodQuantity}}</view>
         </view>
         <text>{{report.breathData.losefatGrams.foodDescription}}</text>
+      </view>
+    </view>
+    <view class="synthesize" wx:if="{{!report.member.isDoingPlan}}">
+      <view class="synthesize-contain">
+        <image src="../../images/lowFatReport/lock.png"></image>
+        <view>完善个人信息，了解自己燃脂状态</view>
+        <button bindtap="goToGuidance">去完善信息</button>
       </view>
     </view>
   </view>
@@ -116,7 +123,7 @@
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
   </block>
-  <block wx:if="{{request}}">
+  <block wx:if="{{request && report.finishedGuide}}">
     <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
       <view class="synthesize-contain">
@@ -126,7 +133,7 @@
           <view>来测测燃脂状况吧，获取今日综合分析</view>
           <button bindtap="weightFinish">去体重打卡</button>
         </block>
-        <block wx:if="{{!report.breathData.dataValue}}">
+        <block wx:elif="{{!report.breathData.dataValue}}">
           <view>完成全部打卡检测，获取今日综合分析</view>
           <button bindtap="fatTaskToFinish">去燃脂打卡</button>
         </block>
@@ -134,13 +141,13 @@
     </view>
   </block>
 
-  <view class="scheme" wx:if="{{shareTip}}">
+  <view class="scheme" wx:if="{{!report.member.finishedGuide}}">
     <view class="scheme-title">想要快速燃脂？</view>
     <view class="scheme-text">查看为您推荐的
       <text>专属Slimple燃脂方案</text>
     </view>
     <image src="../../images/jt/downD.png"></image>
-    <button>去体重打卡</button>
+    <button bindtap="goToWeightTarget">立即查看</button>
 
   </view>
   <image src="../../images/lowFatReport/bottomBg.png" class="bottomBg"></image>
@@ -148,15 +155,15 @@
 <view class="commodity_screen" wx:if="{{showModalStatus}}" bindtap="hideModal">
 </view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-    <view class="box_title">分享给好友</view>
-      <button class="wx_friend" open-type="share">
-        <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
-        <view>微信好友</view>
-      </button>
-      <button class="wx_pyq" bindtap="downShareImg">
-        <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
-        <view>朋友圈</view>
-      </button>
-    <view class="cancel" bindtap="hideModal">取消</view>
-  </view>
-  <view class="bottmFixd" wx:if="{{shareTip}}">加入Slimple低碳CLUB，一起燃脂吧！</view>
+  <view class="box_title">分享给好友</view>
+  <button class="wx_friend" open-type="share">
+    <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
+    <view>微信好友</view>
+  </button>
+  <button class="wx_pyq" bindtap="downShareImg">
+    <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
+    <view>朋友圈</view>
+  </button>
+  <view class="cancel" bindtap="hideModal">取消</view>
+</view>
+<view class="bottmFixd" wx:if="{{sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</view>
