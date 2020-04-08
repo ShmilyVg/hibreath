@@ -7,13 +7,13 @@
   <view class="lowFat-header">
     <view>
       今日打卡报告
-      <button class="share" bindtap="showModal" wx:if="{{sharedId == 'undefined'}}">
+      <button class="share" bindtap="showModal" wx:if="{{!sharedId || sharedId == 'undefined'}}">
         <image src="../../images/lowFatReport/copy.png" class="copy"></image> 分享</button>
     </view>
     <view class="lowFat-header-item">
       <image src="{{report.member.portraitUrl}}" class="portrait"></image>
       <view class="p-name">{{report.member.name}}</view>
-      <view class="p-time">2020.03.23 08:30</view>
+      <view class="p-time">{{report.showTime}}</view>
       <image src="../../images/lowFatReport/medal.png" class="medal"></image>
     </view>
   </view>
@@ -106,7 +106,7 @@
       体重趋势
     </view>
     <view class="weight-chart">
-      <canvas canvas-id="lineCanvas" wx:if="{{!showModalStatus}}" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      <canvas canvas-id="lineCanvas" style="display:{{showModalStatus?'none':'block'}}" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
   <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
@@ -123,7 +123,7 @@
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
   </block>
-  <block wx:if="{{request && report.finishedGuide}}">
+  <block wx:if="{{request && report.member.finishedInfo}}">
     <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
       <view class="synthesize-contain">
@@ -141,7 +141,7 @@
     </view>
   </block>
 
-  <view class="scheme" wx:if="{{!report.member.finishedGuide}}">
+  <view class="scheme" wx:if="{{!report.member.finishedInfo}}">
     <view class="scheme-title">想要快速燃脂？</view>
     <view class="scheme-text">查看为您推荐的
       <text>专属Slimple燃脂方案</text>
@@ -166,4 +166,4 @@
   </button>
   <view class="cancel" bindtap="hideModal">取消</view>
 </view>
-<view class="bottmFixd" wx:if="{{sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</view>
+<view class="bottmFixd" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</view>

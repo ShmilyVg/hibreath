@@ -16,7 +16,8 @@ const ImageLoader = require('../../utils/ImageLoader.js')
 var mta = require('../../utils//mta_analysis.js')
 Page({
   data: {
-    finishedGuide: false,//新手引导是否完成编制
+    finishedPhone: false,//新手引导是否完成编制
+    showPage:false,
     deny:false,
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
@@ -28,7 +29,6 @@ Page({
       countNum: 0, //需要同步的总数
       timer: ""
     },
-    burnReadyLeft: 130,
     hideModal: true,
     topTaskTip: false,//头部显隐标志
     showBigTip:false,//离线上传数据弹框
@@ -64,21 +64,20 @@ Page({
   },
 
   async onLoad(options) {
-    //hardware为硬件扫码标志  mealReplacement 为代餐扫码标志 正常进入时为normal
-    let sharedId = options.sharedId || null;
-    let fromType = 'hardware';
-    app.globalData.fromType = fromType;
+    //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
+    let sharedId = options.sharedId ;
+    let hipeeScene = options.hipeeScene;
+    if (hipeeScene){
+      wx.setStorage('hipeeScene', hipeeScene)
+    }else{
+      hipeeScene = wx.getStorageSync('hipeeScene');
+    }
+    app.globalData.hipeeScene = hipeeScene;
     this.setData({
+      hipeeScene,
       sharedId
     })
-    if(sharedId){
-      wx.removeStorage('sharedId')
-    }
-    if (wx.getStorageSync('finishedGuide')){
-      this.setData({
-        finishedGuide:true
-      })
-    }
+
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide();
@@ -186,11 +185,12 @@ Page({
   },
   //是否完成新手引导
   getFinishedGuide(){
-    if (!wx.getStorageSync('finishedGuide')) {
+    
+    if (!wx.getStorageSync('finishedPhone')) {
       //获取是否完成手机号验证、新手引导是否完成
-      if (this.data.deny) {
-        return;
-      }
+      this.setData({
+        showPage:false
+      })
       wx.hideTabBar({
         fail: function () {
           setTimeout(function () {
@@ -199,22 +199,7 @@ Page({
         }
       });
 
-    } else {
-      this.setData({
-        finishedGuide: true
-      })
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
-      //判断是否是从补签页面导入
-      if (!!this.data.sharedId) {
-        this.putBreathSign();
-      }
-    }
+    } 
   },
   //补签请求接口
   async putBreathSign(){
@@ -236,9 +221,23 @@ Page({
   //获取个人信息
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
-    if (result.finishedGuide) {
+    let hipeeScene = this.data.hipeeScene;
+    if (!result.finishedPhone) {
+      //获取是否完成手机号验证、新手引导是否完成
       this.setData({
-        finishedGuide: true
+        showPage: false
+      })
+      wx.hideTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.hideTabBar()
+          }, 200)
+        }
+      });
+
+    } else if (hipeeScene != 'device' && result.finishedGuide) {
+      this.setData({
+        showPage: true
       })
       wx.showTabBar({
         fail: function () {
@@ -247,26 +246,8 @@ Page({
           }, 200);
         }
       });
-      wx.setStorageSync('finishedGuide', true);
-      this.getTaskInfo()
-      //判断是否是从补签页面导入
-      if (!!this.data.sharedId) {
-        this.putBreathSign();
-      }
-    } else {
-      if (this.data.deny){
-        return;
-      }
-      wx.hideTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.hideTabBar()
-          }, 200)
-        }
-      });
-      this.setData({
-        finishedGuide: false
-      })
+    }else{
+      HiNavigator.navigateToGuidance({ reset:2})
     }
   },
   //图片预加载列表
@@ -319,6 +300,7 @@ Page({
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
+    
     let taskFinished = false;
     if (result.fatTask && result.fatTask.finished){
       taskFinished = true;
@@ -344,12 +326,12 @@ Page({
       taskFinished,
       taskInfo: result
     })
-
-    let imgUrlsLength = result.otherUsers.imgUrls.length;
-    let burnReadyLeft = (imgUrlsLength == 0) ? '0' : (imgUrlsLength == 1) ? '63' : (imgUrlsLength == 2) ? '97' : '130';
-    this.setData({
-      burnReadyLeft
-    })
+    setTimeout(()=>{
+      if (!result.flag && this.data.isBind) {
+        this.goToManifesto()
+      }
+    },3000)
+    
   },
 
   weightGoal(){
@@ -442,7 +424,6 @@ Page({
   //引导页授权
   async onGetUserInfoEvent(e) {
     const { detail: { userInfo, encryptedData, iv } } = e;
-    console.log(userInfo)
     if (!!userInfo) {
       await Login.doRegister({ userInfo, encryptedData, iv });
       let sharedId = this.data.sharedId
@@ -450,31 +431,33 @@ Page({
       this.setData({
         deny: false
       })
-      if (sharedId){
-        let postData = {
-          "sharedId": sharedId //分享用户编号
-        }
-        let { result } = await Protocol.putBreathSign(postData);
-        if (result.status){
-          wx.showToast({
-            title: '帮好友补签成功',
-            duration: 500
-          });
-        }
+      
+      if (this.data.hipeeScene){
         setTimeout(() => {
           HiNavigator.navigateToGoVerification()
-          // HiNavigator.navigateToGuidance({sharedId})
         }, 500);
       }else{
-       /* wx.showToast({
-          title: '授权成功',
-          duration: 500
-        });*/
+        if (sharedId) {
+          let postData = {
+            "sharedId": sharedId //分享用户编号
+          }
+          let { result } = await Protocol.putBreathSign(postData);
+          if (result.status) {
+            wx.showToast({
+              title: '帮好友补签成功',
+              duration: 500
+            });
+          }
+        }
+        await this.getShoppingJumpCodes();
         setTimeout(() => {
-          HiNavigator.navigateToGoVerification()
-          // HiNavigator.navigateToGuidance({})
+          let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
+          let couponId = couponItem.couponId
+          HiNavigator.navigateToGetGift({ couponId: couponId, finishedPhone:'false'})
         }, 500);
+        return;
       }
+      
       
 
     }else{
@@ -544,7 +527,7 @@ Page({
     // HiNavigator.navigateToAttendanceBonus()
   },
   goToManifesto(){
-    HiNavigator.navigateToManifesto(this.data.taskInfo.sharedId)
+    HiNavigator.navigateToManifesto()
   },
   //减脂效果页
   goToLowFatReport() {
@@ -610,7 +593,18 @@ Page({
         this.isBind = false
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
+        //扫硬件码。没有绑定时跳转绑定接口
+        if (this.data.hipeeScene == 'device'){
+          HiNavigator.navigateIndex();
+        }
       } else {
+        //扫硬件码。绑定时显示首页
+        if (this.data.hipeeScene == 'device') {
+          this.setData({
+            isBind:true,
+            showPage: true
+          })
+        }
         this.isBind = true
         app.getBLEManager().setBindMarkStorage();
         console.log(
@@ -725,5 +719,7 @@ Page({
   async getShoppingJumpCodes(){
     let { result } = await Protocol.getShoppingJumpCodes();
     app.globalData.shoppingJumpCodes = result;
+    this.shoppingJumpCodes = result;
+    return ;
   }
 });

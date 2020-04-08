@@ -102,3 +102,10 @@ page{
     margin-top: 25rpx;
     margin-bottom: 47rpx;
 }
+.readyBuy{
+  color:rgba(79,187,73,1);
+  text-align: center;
+  margin-top: 20rpx;
+  font-size:32rpx;
+  margin-bottom: 40rpx;
+}

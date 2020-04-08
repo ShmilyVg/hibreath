@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hideModal: true,
+    hideModal_w: true,
     animationData:'',
     weightGoalt:null,
     result:{},
@@ -71,34 +71,34 @@ Page({
     this.hideModal();
   },
   // 显示遮罩层
-  showModal: function () {
+  showModal_w: function () {
     var that = this;
     that.setData({
       weightGoalt: '',
-      hideModal: false
+      hideModal_w: false
     })
-    var animation = wx.createAnimation({
+    var animation_w = wx.createAnimation({
       duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
-    this.animation = animation
+    this.animation_w = animation_w
     setTimeout(function () {
       that.fadeIn();//调用显示动画
     }, 200)
   },
 
   // 隐藏遮罩层
-  hideModal: function () {
+  hideModal_w: function () {
     var that = this;
-    var animation = wx.createAnimation({
+    var animation_w = wx.createAnimation({
       duration: 800,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
-    this.animation = animation
+    this.animation_w = animation_w
     that.fadeDown();//调用隐藏动画
     setTimeout(function () {
       that.setData({
-        hideModal: true
+        hideModal_w: true
       })
     }, 720)//先执行下滑动画，再隐藏模块
 
@@ -106,15 +106,15 @@ Page({
 
   //动画集
   fadeIn: function () {
-    this.animation.translateY(0).step()
+    this.animation_w.translateY(0).step()
     this.setData({
-      animationData: this.animation.export()
+      animationData_w: this.animation_w.export()
     })
   },
   fadeDown: function () {
-    this.animation.translateY(300).step()
+    this.animation_w.translateY(300).step()
     this.setData({
-      animationData: this.animation.export(),
+      animationData_w: this.animation_w.export(),
     })
   },
   handlerGobackClick() {

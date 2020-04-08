@@ -4,7 +4,9 @@
   <image src="../images/burn.png" class="burn"></image>
   <view class="adaptive-h3">脂肪有没有开始燃烧？</view>
   <view class="adaptive-text">用燃脂精灵吹一吹就知道</view>
-  <view class="adaptive-btn" bindtap="fatTaskToFinish">立即检测</view>
+  <view class="adaptive-btn" bindtap="fatTaskToFinish">
+    <view>立即检测</view>
+  </view>
 
   <view class="contain">
     <view class="title">{{result.title}}</view>

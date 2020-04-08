@@ -448,7 +448,7 @@ Page({
   hideModal: function () {
     var that = this;
     var animation = wx.createAnimation({
-      duration: 800,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      duration: 0,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
@@ -458,7 +458,7 @@ Page({
         hideModal: true
       })
       wx.showTabBar()
-    }, 720)//先执行下滑动画，再隐藏模块
+    }, 0)//先执行下滑动画，再隐藏模块
 
   },
   //动画集

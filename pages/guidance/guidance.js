@@ -180,10 +180,9 @@ Page({
     this.setData({
       reset: options.reset
     })
-    if (app.globalData.fromType == 'hardware'){
+    if (app.globalData.hipeeScene == 'device' || options.reset == 2){
       this.setData({
-        totNum:3,
-        fromType: 'hardware'
+        totNum:3
       })
     }
     this.getUserInfo()
@@ -279,7 +278,7 @@ Page({
     let data = this.data.guidance.info;
     let result = await Protocol.postGuidance(data);
     Toast.hiddenLoading();
-    if (result.code && this.data.reset ==2) {
+    if (result.code && this.data.reset =='device') {
       HiNavigator.navigateToLowFatReport()
     }else{
       HiNavigator.navigateToWeightTarget()

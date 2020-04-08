@@ -1,6 +1,6 @@
 // pagesIndex/getGift/getGift.js
 import Protocol from "../../modules/network/protocol";
-
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
@@ -14,8 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    let finishedPhone = options.finishedPhone;
     const {result} = await Protocol.getGift({couponId: options.couponId})
     this.setData({
+      finishedPhone,
       ...result
     })
     console.log('ree',result)
@@ -30,6 +32,9 @@ Page({
         });
       }
     });
+  },
+  goToClub(){
+    HiNavigator.navigateToGoVerification()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

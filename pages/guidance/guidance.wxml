@@ -3,7 +3,7 @@
 
 </navBar>
 <view class="guidance">
-  <block wx:if="{{fromType != 'hardware'}}">
+  <block wx:if="{{reset != 2}}">
     <view class="otherPage" wx:if="{{guidance.page==1 }}">
       <view class="header_h3 text_center">验证您的手机号</view>
       <view class="text_center">
@@ -53,7 +53,7 @@
 
     </view>
   </block>
-  <block wx:if="{{fromType == 'hardware'}}">
+  <block wx:if="{{reset == 2}}">
     <view class="otherPage" wx:if="{{guidance.page==2}}">
       <view class="header_h3 text_center">性别</view>
       <view class="text_center">

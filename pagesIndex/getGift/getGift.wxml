@@ -15,6 +15,7 @@
     <view class="getGift-fetchCode">{{fetchCode}}</view>
     <view class="getGift-subTitle">{{subTitle}}</view>
     <view class="getGift-btn" bindtap="copyBtn">点击复制</view>
+    <view bindtap="goToClub" class='readyBuy' wx:if="{{finishedPhone == 'false'}}">我已购买，验证成为低碳Club会员</view>
 </view>
 
 
