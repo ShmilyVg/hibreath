@@ -66,7 +66,7 @@ Page({
   async onLoad(options) {
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
-    let hipeeScene = options.hipeeScene || 'device';
+    let hipeeScene = options.hipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
     }else{
@@ -101,10 +101,10 @@ Page({
     this.getShoppingJumpCodes();
   },
   onShow() {
+    this.getPresonMsg();
     this.getFinishedGuide()
     this.handleBle();
     this.getAnswer();
-    this.getPresonMsg();
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
     app.onDataSyncListener = ({ num, countNum }) => {
@@ -614,7 +614,7 @@ Page({
           if (this.data.hipeeScene == 'device' && this.data.finishedPhone) {
             HiNavigator.navigateIndex();
           }
-        },2000)
+        },400)
         
       } else {
         //扫硬件码。绑定时显示首页
