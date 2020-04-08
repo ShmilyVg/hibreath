@@ -1,4 +1,7 @@
 <!--pagesIndex/manifesto/manifesto.wxml-->
+<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#3d3a3d' back="{{true}}" bindback="handlerGobackClick">
+
+</navBar>
 <view style="height:1rpx;"> </view>
 <view class="manifesto">
 <image src="../images/qipaobg.png" class="qipaobg"></image>

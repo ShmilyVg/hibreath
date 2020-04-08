@@ -2,7 +2,7 @@
 <navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#7BC877' back="{{true}}" bindback="handlerGobackClick"></navBar>
 <view class="weightTarget">
   <view class="weightTarget-header">
-    <view bindtap="showModal">
+    <view bindtap="showModal_w">
       <view class="top-title">我的目标体重是</view>
       <view class="top-num">{{result.weightGoalt}}
         <text>KG</text>
@@ -33,11 +33,11 @@
 
 </view>
 <!--体重底部弹窗-->
-<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
-  <view class="modals-cancel" bindtap="hideModal"></view>
-  <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+<view class="modals modals-bottom-dialog" hidden="{{hideModal_w}}">
+  <view class="modals-cancel" bindtap="hideModal_w"></view>
+  <view class="bottom-dialog-body bottom-pos" animation="{{animationData_w}}">
     <view class="weight-title">
-      <view bindtap="hideModal">取消</view> 请输入目标体重</view>
+      <view bindtap="hideModal_w">取消</view> 请输入目标体重</view>
     <input class="weightInput " value="{{weightGoalt}}" bindinput="weightGoalChange" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
     <!-- <view class="page2-line"></view> -->
     <view class="unit">KG</view>

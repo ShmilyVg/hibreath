@@ -54,7 +54,6 @@ Page({
     })
   },
   async reduceFun(){
-    wx.setStorageSync('finishedGuide', true);
     HiNavigator.switchToSetInfo();
   },
   async warnMySelf() {
@@ -66,5 +65,7 @@ Page({
     await Protocol.putGoalDesc(data);
     this.reduceFun()
   },
-
+  handlerGobackClick(){
+    this.reduceFun()
+  }
 })

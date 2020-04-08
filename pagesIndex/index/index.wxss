@@ -4,7 +4,9 @@
  */
 
 /*9.22 新加B*/
-
+page{
+  height: 100%;
+}
 .page{
     min-height: 100%;
     width: 100%;
@@ -12,6 +14,7 @@
     left: 0;
     top: 0;
     z-index: 1;
+    padding-bottom: 60rpx;
 }
 .readyImg-text{
     font-size:50rpx;

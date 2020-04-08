@@ -1,7 +1,7 @@
 <!--pages/low-carbon/low-carbon.wxml-->
-<view class="topView" style="padding: 74rpx 60rpx 60rpx 60rpx">
+<view class="topView" style="padding: 74rpx 60rpx 60rpx 60rpx"  bindtap="toRecomTarNew">
   <view class="topView-view1">我的减脂方案</view>
-  <view class="topView-view2" bindtap="toRecomTarNew">重新制定</view>
+  <view class="topView-view2">重新制定</view>
   <view class="clear"></view>
 </view>
 <view class="contain">
@@ -11,30 +11,30 @@
     <view class="family-text">加入燃脂大家庭，倾听更多人背后的故事</view>
     <view class="family-btn" bindtap="goToAddLowfat">立即加入</view>
   </view>
-  <view class="adaptive card">
+  <view class="adaptive card" bindtap="goToAdaptive">
     <image src="../../images/orange.png"></image>
     <view class="card-title">低碳适应期·{{result.adaptPeriod.duration}}{{result.adaptPeriod.unit}}</view>
-    <view class="card-more" bindtap="goToAdaptive"><view>more＞</view></view>
+    <view class="card-more"><view>more＞</view></view>
     <view class="card-contain">
       <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.adaptPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
       <view class="card-text2">※ {{result.adaptPeriod.remarks}}</view>
     </view>
   </view>
-  <view class="reduce card">
+  <view class="reduce card" bindtap="goToReduce">
     <image src="../../images/orange.png"></image>
     <view class="card-title">低碳减脂期·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</view>
-    <view class="card-more" bindtap="goToReduce"><view>more＞</view></view>
+    <view class="card-more"><view>more＞</view></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.reduceFatPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
       <view class="card-text2">{{result.reduceFatPeriod.remarks}}</view>
     </view>
   </view>
-  <view class="consolidate card">
+  <view class="consolidate card" bindtap="goToConsolidate">
     <image src="../../images/orange.png"></image>
     <view class="card-title">低碳巩固期·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</view>
-    <view class="card-more" bindtap="goToConsolidate"><view>more＞</view></view>
+    <view class="card-more"><view>more＞</view></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.consolidatePeriod.dscriptionList}}" wx:key="item">·{{item}}</view>

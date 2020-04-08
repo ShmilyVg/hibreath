@@ -66,6 +66,7 @@ Page({
     if (losefatGrams) {
       progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
     };
+    result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss')
     this.setData({
       request: true,
       progress,

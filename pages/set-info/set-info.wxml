@@ -1,4 +1,4 @@
-<view class="guidance" wx:if="{{!finishedGuide}}">
+<view class="guidance" wx:if="{{!showPage}}">
   <view class="firstPage">
     <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
     <view class="header_h2 text_left">Slimple低碳燃脂</view>
@@ -10,7 +10,7 @@
     <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">开始低碳燃脂</button>
   </view>
 </view>
-<view class="set-info" wx:if="{{finishedGuide}}">
+<view class="set-info" wx:if="{{showPage}}">
   <view class="set-top-view">
     <view class="set-top">
       <view class="set-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
@@ -18,14 +18,14 @@
     </view>
     <view class="weightAbout">
       <view class="weight_item weigth">
-        <view class="weight_w">目标体重</view>
-        <view class="weight_num">{{taskInfo.weightGoal}}
+        <view class="weight_w">累积减重</view>
+        <view class="weight_num">{{taskInfo.addUpWeightLoss|| 0}}
           <text>kg</text>
         </view>
       </view>
-      <view class="weight_item">
-        <view class="weight_w">累积减重</view>
-        <view class="weight_num">{{taskInfo.addUpWeightLoss}}
+      <view class="weight_item" wx:if="{{taskInfo.isDoingPlan}}">
+        <view class="weight_w">目标体重</view>
+        <view class="weight_num">{{taskInfo.weightGoal}}
           <text>kg</text>
         </view>
       </view>

@@ -57,7 +57,7 @@ view{
 .top-tip{
   position: absolute;
   width:100%;
-  top: 582rpx;
+  top: 542rpx;
   left: 0;
   text-align: center;
   font-size:28rpx;
@@ -109,7 +109,7 @@ view{
   height:230rpx;
   background:rgba(255,255,255,1);
   border-radius:10rpx;
-  top: 828rpx;
+  top: 768rpx;
   left: 53rpx;
   padding-left: 63rpx;
 }
