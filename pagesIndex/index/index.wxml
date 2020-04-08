@@ -20,9 +20,9 @@
     <view class="bindSub">监测数据实时上传，及时记录，并可结合身体多</view>
     <view class="bindSub" style="margin-bottom: 55rpx">维度指标分析减脂状态。</view>
     <view class="bindImg"><image class="ble" src="../../images/index/ble.png"></image></view>
-    <view style="position: relative;top: -240rpx">
+    <view style="position: relative;top: -270rpx">
         <view class="bindSub-green">PS:确保手机蓝牙和GPS处于开启状态。</view>
-        <view class="bindSub-green" style="margin-bottom: 65rpx">确保硬件处于开机界面，且蓝牙标志为闪动状态</view>
+        <view class="bindSub-green" style="margin-bottom: 50rpx">确保硬件处于开机界面，且蓝牙标志为闪动状态</view>
         <view class="bindSj-green"></view>
         <button class="hint-btn"   bindtap="onGetUserInfoEvent" >点击绑定燃脂精灵</button>
     </view>
