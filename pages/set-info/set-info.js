@@ -67,12 +67,13 @@ Page({
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
     let hipeeScene = options.hipeeScene;
+    let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
     }else{
-      hipeeScene = wx.getStorageSync('hipeeScene');
+      hisHipeeScene = wx.getStorageSync('hipeeScene');
     }
-    app.globalData.hipeeScene = hipeeScene;
+    app.globalData.hipeeScene = hisHipeeScene;
     this.setData({
       hipeeScene,
       sharedId
@@ -229,6 +230,7 @@ Page({
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
     let hipeeScene = this.data.hipeeScene;
+    let hisH = wx.getStorageSync('hipeeScene')
     this.setData({
       finishedPhone: result.finishedPhone,
     })
@@ -259,8 +261,22 @@ Page({
           }, 200);
         }
       });
-    } else if ( hipeeScene != 'device' ){
-      HiNavigator.navigateToGuidance({ reset:2})
+    } else if (hipeeScene != 'device' ){
+      if (hisH != 'device'){
+        HiNavigator.navigateToGuidance({ reset: 2 })
+      }else{
+        this.setData({
+          showPage: true
+        })
+        wx.showTabBar({
+          fail: function () {
+            setTimeout(function () {
+              wx.showTabBar();
+            }, 200);
+          }
+        });
+      }
+      
     }
   },
   //图片预加载列表
