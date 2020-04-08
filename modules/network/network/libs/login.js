@@ -108,7 +108,7 @@ function login({resolve, reject}) {
         if (res.data) {
             const {data: {code}} = res;
             if(code == 2){
-                wx.setStorageSync('finishedPhone', false);
+                wx.setStorageSync('finishedGuide', false);
             }
             const obj = loginFailObj[code];
             obj && obj({resolve, reject});
