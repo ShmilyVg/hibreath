@@ -44,13 +44,13 @@
     </view>
     <view class="item-g-text">{{report.breathData.desZh}}</view>
     <view class="item-h4" wx:if="{{report.breathData.comparison.title != '无'}}">
-      <image src="../../images/lowFatReport/vs.png" class="vspng"></image>
+      <image style="width: 30rpx;height: 30rpx" src="../../images/lowFatReport/vs.png" class="vspng"></image>
       与上次相比
     </view>
     <view class="item-g-text" wx:if="{{report.breathData.comparison.title != '无'}}"> {{report.breathData.comparison.title}}</view>
     <view class="item-n-text">{{report.breathData.comparison.content}}</view>
     <view class="item-h4">
-      <image src="../../images/lowFatReport/fire.png" class="fire"></image>
+      <image style="width: 24rpx;height: 30rpx" src="../../images/lowFatReport/fire.png" class="fire"></image>
       今日消耗脂肪状态
       <view class="item-title-text" bindtap="goToLiterature">参考文献
         <image src="../../images/arr-right.png"></image>
@@ -89,7 +89,7 @@
       </view>
     </view>
     <view class="item-h4">
-      <image src="../../images/lowFatReport/weight.png"></image>
+      <image style="width: 29rpx;height: 31rpx" src="../../images/lowFatReport/weight.png"></image>
       累积变化
     </view>
     <view class="item-g-text">
@@ -102,7 +102,7 @@
       <text class="num">{{report.weigthData.subKGrams}}</text>
       <text class="unit">kg</text> </view>
     <view class="item-h4">
-      <image src="../../images/lowFatReport/chart.png"></image>
+      <image style="width: 26rpx;height: 26rpx" src="../../images/lowFatReport/chart.png"></image>
       体重趋势
     </view>
     <view class="weight-chart">

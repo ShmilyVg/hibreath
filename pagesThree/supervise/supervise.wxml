@@ -1,0 +1,2 @@
+<!--pagesThree/supervise/supervise.wxml-->
+<image style="width: 515rpx;height: 916rpx" src="{{needImg}}"></image>

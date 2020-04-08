@@ -485,6 +485,13 @@
 					"pathName": "pagesIndex/attendanceBonus/attendanceBonus",
 					"query": "sharedId=3857D3058E9B69EAF72F7EC81BFDC7A44EB5158260C033187BF5061E4FCFD71B",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesThree/supervise/supervise",
+					"pathName": "pagesThree/supervise/supervise",
+					"query": "sharedId=CC23CC23F313C27A3F3AA999F251E90339C4AF0F2149266CED4B9D91D5385008",
+					"scene": null
 				}
 			]
 		}

@@ -18,6 +18,7 @@ export default class HiBlueToothProtocol {
             //由手机发出的连接请求
             '0x01': () => {
                 this.sendData({command: '0x01'});
+                console.log('！！！！！！！！！！！我发送了0x01指令啊！！！！！！！！！！！！！！！！！！！！')
             },
             //由设备发出的连接反馈 1接受 2不接受 后面的是
             '0x02': ({dataArray}) => {
