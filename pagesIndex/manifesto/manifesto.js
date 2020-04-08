@@ -6,7 +6,6 @@ const ImageLoader = require('../../utils/ImageLoader.js')
 Page({
 
   data: {
-    manifesto: '',
     textList: ['穿上好看的\n小裙子',
       '不让别人\n叫我胖妞',
       '变瘦变漂亮',
