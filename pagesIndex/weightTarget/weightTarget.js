@@ -19,12 +19,9 @@ Page({
   onShow: function () {
 
   },
-  async onShareAppMessage() {
-    let weightGoalt = this.data.weightGoalt;
-    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    await Protocol.postMembersJoinSchema(data)
+   onShareAppMessage() {
     return {
-      title: '我正在低碳燃脂，快来一起加入！',
+      title: this.data.shareTitle,
       path: `/pagesIndex/weightTarget/weightTarget?sharedId=${this.data.sharedId}`,
       imageUrl: this.data.shareImg
     };
@@ -71,7 +68,7 @@ Page({
     this.hideModal();
   },
   // 显示遮罩层
-  showModal_w: function () {
+  async showModal_w() {
     var that = this;
     that.setData({
       weightGoalt: '',
@@ -121,7 +118,7 @@ Page({
     HiNavigator.switchToSetInfo();
   },
   //展开分享
-  showModal: function () {
+  async showModal() {
     // 显示遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -143,6 +140,65 @@ Page({
       }.bind(this),
       200
     );
+    const {result} = await Protocol.getTaskInfoBySharedId({sharedId:this.data.result.sharedId,sharedType:"initialHeart"});
+    this.setData({
+      shareTitle:result.sharePoster.toFriend.title,
+      shareImg:result.sharePoster.toFriend.url,
+      groupImg:result.sharePoster.toGroup.url
+    })
+    console.log('result',result)
+  },
+//分享至朋友圈
+  downShareImg() {
+    let that = this
+    //判断用户是否授权"保存到相册"
+    wx.getSetting({
+      success (res) {
+        //没有权限，发起授权
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success () {//用户允许授权，保存图片到相册
+              that.savePhoto();
+            },
+            fail () {//用户点击拒绝授权，引导用户授权
+              wx.openSetting({
+                success () {
+                  wx.authorize({
+                    scope: 'scope.writePhotosAlbum',
+                    success() {
+                      that.savePhoto();
+                    }
+                  })
+                }
+              })
+            }
+          })
+        } else {//用户已授权，保存到相册
+          that.savePhoto()
+        }
+      }
+    })
+  },
+  savePhoto(){
+    let url = this.data.groupImg;
+    wx.downloadFile({
+      url,
+      success: function (res) {
+        wx.saveImageToPhotosAlbum({　　　　　　　　　//保存到本地
+          filePath: res.tempFilePath,
+          success(res) {
+            wx.showToast({
+              title: '图片已保存至相册，请到朋友圈选择图片发布！',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        })
+      }, fail() {
+
+      }
+    })
   },
   hideModal: function () {
     this.setData({

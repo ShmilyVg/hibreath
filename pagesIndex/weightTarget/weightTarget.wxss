@@ -350,7 +350,7 @@ view {
   background: #000;
   opacity: 0.85;
   overflow: hidden;
-  z-index: 19;
+  z-index: 400;
   
 }
 
@@ -360,7 +360,7 @@ view {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 30;
+  z-index: 3000;
   background: #fff;
   padding-top: 30rpx;
   text-align: center;

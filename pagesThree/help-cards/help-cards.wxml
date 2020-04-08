@@ -15,10 +15,10 @@
 <view class="Indulge-bottom">
     <view style="display: flex">
         <view class="cards-imgView">
-            <image src=""></image>
+            <image src="{{portraitUrl}}"></image>
         </view>
         <view style="padding-top: 10rpx">
-            <view class="cards-title">陆小贱Lucy</view>
+            <view class="cards-title">{{name}}</view>
             <view class="cards-subtitle">邀请你帮Ta补卡！~</view>
         </view>
     </view>
