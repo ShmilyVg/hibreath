@@ -449,9 +449,7 @@ Page({
       })
       
       if (this.data.hipeeScene){
-        setTimeout(() => {
-          HiNavigator.navigateToGoVerification()
-        }, 500);
+        HiNavigator.navigateToGoVerification()
       }else{
         if (sharedId) {
           let postData = {
@@ -582,6 +580,10 @@ Page({
   },
   //蓝牙
   handleBle() {
+    wx.showLoading({
+      title: '加载中',
+      mask:true,
+    })
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
       bleStateListener: () => {
@@ -613,10 +615,13 @@ Page({
         setTimeout(()=>{
           if (this.data.hipeeScene == 'device' && this.data.finishedPhone) {
             HiNavigator.navigateIndex();
+          }else{
+            wx.hideLoading();
           }
-        },400)
+        },300)
         
       } else {
+        wx.hideLoading();
         //扫硬件码。绑定时显示首页
         if (this.data.hipeeScene == 'device') {
           this.setData({
