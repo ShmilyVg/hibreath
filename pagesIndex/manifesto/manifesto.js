@@ -13,7 +13,6 @@ Page({
       '成为可以和\n我家蒸煮\n比肩的女人!',
       '不瘦下来\n怎么找男朋友!',
       '拥有更\n健康的状态'],
-    manifesto:'',
     sharedId:'',
     disabled:true,
     curText:'',
@@ -31,7 +30,7 @@ Page({
   },
 
   onShow: function () {
-
+    wx.setStorageSync('flag', true)
   },
   setManifesto(e) {
     let item = e.currentTarget.dataset['item']

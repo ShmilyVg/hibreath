@@ -66,9 +66,9 @@ Page({
   async onLoad(options) {
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
-    let hipeeScene = options.hipeeScene;
+    let hipeeScene = options.hipeeScene || 'device';
     if (hipeeScene){
-      wx.setStorage('hipeeScene', hipeeScene)
+      wx.setStorageSync('hipeeScene', hipeeScene)
     }else{
       hipeeScene = wx.getStorageSync('hipeeScene');
     }
@@ -104,6 +104,7 @@ Page({
     this.getFinishedGuide()
     this.handleBle();
     this.getAnswer();
+    this.getPresonMsg();
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
     app.onDataSyncListener = ({ num, countNum }) => {
@@ -185,12 +186,19 @@ Page({
   },
   //是否完成新手引导
   getFinishedGuide(){
-    
-    if (!wx.getStorageSync('finishedPhone')) {
+    if (wx.getStorageSync('finishedGuide')) {
       //获取是否完成手机号验证、新手引导是否完成
       this.setData({
-        showPage:false
+        showPage:true
       })
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
+    }else{
       wx.hideTabBar({
         fail: function () {
           setTimeout(function () {
@@ -198,7 +206,6 @@ Page({
           }, 200)
         }
       });
-
     } 
   },
   //补签请求接口
@@ -222,6 +229,9 @@ Page({
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
     let hipeeScene = this.data.hipeeScene;
+    this.setData({
+      finishedPhone: result.finishedPhone,
+    })
     if (!result.finishedPhone) {
       //获取是否完成手机号验证、新手引导是否完成
       this.setData({
@@ -235,10 +245,13 @@ Page({
         }
       });
 
-    } else if (hipeeScene != 'device' && result.finishedGuide) {
+    } else if (result.finishedGuide) {
       this.setData({
+        finishedPhone: result.finishedPhone,
+        finishedGuide:true,
         showPage: true
       })
+      wx.setStorageSync('finishedGuide', true)
       wx.showTabBar({
         fail: function () {
           setTimeout(function () {
@@ -246,7 +259,7 @@ Page({
           }, 200);
         }
       });
-    }else{
+    } else if ( hipeeScene != 'device' ){
       HiNavigator.navigateToGuidance({ reset:2})
     }
   },
@@ -326,11 +339,14 @@ Page({
       taskFinished,
       taskInfo: result
     })
-    setTimeout(()=>{
-      if (!result.flag && this.data.isBind) {
+    if (!result.flag && !wx.getStorageSync('flag')) {
+      if (this.data.hipeeScene =='device' && this.data.isBind){
+        this.goToManifesto()
+      } else if (this.data.finishedGuide){
         this.goToManifesto()
       }
-    },3000)
+      
+    }
     
   },
 
@@ -594,9 +610,12 @@ Page({
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
         //扫硬件码。没有绑定时跳转绑定接口
-        if (this.data.hipeeScene == 'device'){
-          HiNavigator.navigateIndex();
-        }
+        setTimeout(()=>{
+          if (this.data.hipeeScene == 'device' && this.data.finishedPhone) {
+            HiNavigator.navigateIndex();
+          }
+        },2000)
+        
       } else {
         //扫硬件码。绑定时显示首页
         if (this.data.hipeeScene == 'device') {
@@ -604,6 +623,13 @@ Page({
             isBind:true,
             showPage: true
           })
+          wx.showTabBar({
+            fail: function () {
+              setTimeout(function () {
+                wx.showTabBar();
+              }, 200);
+            }
+          });
         }
         this.isBind = true
         app.getBLEManager().setBindMarkStorage();
