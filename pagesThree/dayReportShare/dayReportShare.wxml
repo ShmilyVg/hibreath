@@ -1,0 +1,4 @@
+<!--pagesThree/dayReportShare/dayReportShare.wxml-->
+<view class="supervise">
+  <image src="{{needImg}}"></image>
+</view>

@@ -86,7 +86,8 @@
       "pages": [
         "get-low-carbon/get-low-carbon",
         "help-cards/help-cards",
-        "supervise/supervise"
+        "supervise/supervise",
+        "dayReportShare/dayReportShare"
       ]
     }
   ],

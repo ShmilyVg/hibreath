@@ -369,7 +369,7 @@ Page({
   //燃脂
   async fatTaskToFinish() {
     if(!this.isBind){
-      HiNavigator.navigateIntroduce({couponId:this.data.couponId});
+      HiNavigator.navigateIntroduce({couponCode:this.data.couponCode});
     }else{
       wx.getSystemInfo({
         success(res) {
@@ -479,8 +479,8 @@ Page({
         await this.getShoppingJumpCodes();
         setTimeout(() => {
           let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
-          let couponId = couponItem.couponId
-          HiNavigator.navigateToGetGift({ couponId: couponId, finishedPhone:'false'})
+          let couponCode = couponItem.couponCode
+          HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone:'false'})
         }, 500);
         return;
       }

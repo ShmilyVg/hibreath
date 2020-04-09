@@ -18,24 +18,22 @@ Page({
   },
   async getGiftInfo(result){
    
-    let couponId = result.couponId;
-    console.log(couponId);
-    if (couponId){
-      const { result } = await Protocol.getGift({ couponId: couponId })
+    let couponCode = result.couponCode;
+    if (couponCode){
+      const { result } = await Protocol.getGift({ couponCode: couponCode })
       this.setData({
         gift: result
       })
     }
   },
   async takeGift(){
-    let couponId = this.data.couponId;
-    let executeOrder = this.data.breathSign.days;
-    if (couponId){
-      let res = await Protocol.takeGift({ couponId, executeOrder });
+    let couponCode = this.data.couponCode;
+    if (couponCode){
+      let res = await Protocol.takeGift({ couponCode });
       if (res.code == 1){
         wx.showToast({
-          title: '领取成功',
-          icon: none,
+          title: '领取成功,已放入“我的-优惠券”中',
+          icon: "none",
           duration: 3000
         });
         setTimeout(()=>{
@@ -69,7 +67,7 @@ Page({
   onShareAppMessage(){
     return{
       title: '我在Slimple低碳club减脂！拜托 拜托！来帮我补个卡吧~',
-      path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.breathSign.sharedId}`,
+      path: `/pagesThree/help-cards/help-cards?sharedId=${this.data.breathSign.sharedId}`,
       imageUrl: this.data.breathSign.sharedImg
     }
   }

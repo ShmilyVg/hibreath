@@ -196,7 +196,13 @@ Page({
           }
         })
       }, fail() {
-
+        wx.showToast({
+          title: '图片保存失败，请重试！',
+          icon: 'none',//
+          duration: 2000
+        })
+      }, complete() {
+        that.hideModal()
       }
     })
   },

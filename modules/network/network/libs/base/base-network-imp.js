@@ -57,7 +57,8 @@ export default class BaseNetworkImp {
                     'pagesIndex/planfinish/planfinish',
                     'pagesThree/help-cards/help-cards',
                     'pagesIndex/weightTarget/weightTarget',
-                    'pagesThree/supervise/supervise'
+                    'pagesThree/supervise/supervise',
+                    'pagesThree/dayReportShare/dayReportShare'
                 ]
                 if(currentPage){
                     for(var i =0;i<sharePage.length;i++){

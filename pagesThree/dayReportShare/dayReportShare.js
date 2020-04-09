@@ -1,6 +1,6 @@
-// pagesIndex/getGift/getGift.js
+// pagesThree/dayReportShare/dayReportShare.js
 import Protocol from "../../modules/network/protocol";
-import HiNavigator from "../../navigator/hi-navigator";
+
 Page({
 
   /**
@@ -14,38 +14,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    let finishedPhone = options.finishedPhone;
-    let id = options.id;
-    if (id && id != 'undefined'){
-      const { result } = await Protocol.getCouponInfoById({ id: options.id })
+    const { result } = await Protocol.getTaskInfoBySharedId({ sharedId: options.sharedId, sharedType: "initialHeart" });
+    console.log('result', result)
+    setTimeout(() => {
       this.setData({
-        finishedPhone,
-        ...result
+        needImg: result.sharePoster.toGroup.url2
       })
-    }else{
-      const { result } = await Protocol.getGift({ couponCode: options.couponCode })
-      this.setData({
-        finishedPhone,
-        ...result
-      })
-    }
-    
+      console.log(this.data.needImg)
+    }, 500)
 
   },
-  //复制文字
-  copyBtn(){
-    wx.setClipboardData({
-      data: this.data.fetchCode,
-      success(res) {
-        wx.showToast({
-          title: '复制成功',
-        });
-      }
-    });
-  },
-  goToClub(){
-    HiNavigator.navigateToGoVerification()
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

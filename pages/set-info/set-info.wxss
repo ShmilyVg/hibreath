@@ -96,7 +96,7 @@ view{
   /* width: 100%;
   justify-content: space-between;
   z-index: 50; */
-  margin-top: 62rpx;
+  margin-top: 52rpx;
 }
 
 .weightAbout{
@@ -347,6 +347,7 @@ swiper{
   text-align: center;
   left: 42rpx;
   top: 60rpx;
+ 
 }
 .speed-tip{
   width: 50rpx;
@@ -455,7 +456,7 @@ swiper{
   text-align: center;
   font-size: 28rpx;
   font-family: PingFang SC;
-  font-weight: 800;
+  /* font-weight: 800; */
   color: rgba(224, 196, 139, 1);
   position: relative;
   z-index: 30;
@@ -770,7 +771,7 @@ swiper{
   color:rgba(255,255,255,1);
 }
 .setInfo-text{
-  font-size:26rpx;
+  font-size:28rpx;
   font-family:PingFang SC;
   font-weight:bold;
   color:rgba(255,255,255,1);

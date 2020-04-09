@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    couponId:0
+    couponCode:0
   },
 
   /**
@@ -28,18 +28,48 @@ Page({
     result.map((index,value)=>{
       if(index.code == 'box'){
         this.setData({
-          couponId:index.couponId
+          couponCode:index.couponCode
         })
       }
     })
-    HiNavigator.navigateToGetGift({couponId:this.data.couponId})
-    console.log('couponId',this.data.couponId)
+    HiNavigator.navigateToGetGift({couponCode:this.data.couponCode})
+    console.log('couponCode',this.data.couponCode)
   },
   handlerGobackClick(){
     HiNavigator.navigateBack({delta: 1});
-  }
+  },
+  async toYz(){
+    if (this.data.content.qualificationStatus == 1){
+      let couponCode = this.data.content.couponCode;
 
-  ,
+      if (couponCode) {
+
+        let res = await Protocol.takeGift({ couponCode });
+        if (res.code == 1) {
+          wx.showToast({
+            title: '领取成功,即将跳转有赞小程序',
+            icon: 'none',
+            duration: 3000
+          });
+          setTimeout(() => {
+            //跳转有赞小程序
+          }, 3000)
+
+        }
+      }
+    }else{
+      wx.showToast({
+        title: '即将跳转有赞小程序',
+        icon: 'none',
+        duration: 3000
+      });
+      setTimeout(() => {
+        //跳转有赞小程序
+      }, 3000)
+    }
+    
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

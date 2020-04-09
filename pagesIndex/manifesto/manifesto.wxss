@@ -4,7 +4,6 @@ page {
   background: #3d3a3d;
   min-height: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 view {

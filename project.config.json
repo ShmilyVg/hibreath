@@ -357,7 +357,7 @@
 					"id": 42,
 					"name": "pagesIndex/getGift/getGift",
 					"pathName": "pagesIndex/getGift/getGift",
-					"query": "couponId=1",
+					"query": "couponCode=8704885&id=29",
 					"scene": null
 				},
 				{
@@ -491,6 +491,20 @@
 					"name": "pagesThree/supervise/supervise",
 					"pathName": "pagesThree/supervise/supervise",
 					"query": "sharedId=CC23CC23F313C27A3F3AA999F251E90339C4AF0F2149266CED4B9D91D5385008",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesThree/get-low-carbon/get-low-carbon",
+					"pathName": "pagesThree/get-low-carbon/get-low-carbon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesThree/dayReportShare/dayReportShare",
+					"pathName": "pagesThree/dayReportShare/dayReportShare",
+					"query": "",
 					"scene": null
 				}
 			]

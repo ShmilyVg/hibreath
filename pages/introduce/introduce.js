@@ -41,7 +41,7 @@ Page({
 
   },
   toBuy(){
-    HiNavigator.navigateToGetGift({couponId:this.data.couponId})
+    HiNavigator.navigateToGetGift({couponCode:this.data.couponCode})
   },
   toIndex(){
     wx.getSystemInfo({

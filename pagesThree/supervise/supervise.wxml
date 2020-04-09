@@ -1,2 +1,5 @@
 <!--pagesThree/supervise/supervise.wxml-->
-<image style="width: 515rpx;height: 916rpx" src="{{needImg}}"></image>
+<view class="supervise">
+  <image src="{{needImg}}"></image>
+  <view class="supervise_btn">加入Slimple低碳CLUB，一起燃脂吧！</view>
+</view>

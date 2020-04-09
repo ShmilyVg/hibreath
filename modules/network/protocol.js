@@ -320,16 +320,20 @@ export default class Protocol {
         return Network.request({url: 'members/share/taskInfo', data:{sharedId}})
     }
     //优惠礼包
-    static getGift({couponId}) {
-        return Network.request({url: 'coupon/fetchinfo', data:{couponId}})
+    static getGift({couponCode}) {
+        return Network.request({url: 'coupon/fetchinfo', data:{couponCode}})
+    }
+    //优惠礼包通过ID
+    static getCouponInfoById({id}) {
+        return Network.request({url: 'coupon/getCouponInfoById', data:{id}})
     }
   //领取低碳饮食
   static getLowCarbonSnacks(){
     return Network.request({url: 'lowCarbonMeal/getLowCarbonSnacks'})
   }
   //领取优惠券takeGift
-  static takeGift({couponId,executeOrder}) {
-    return Network.request({url: 'coupon/takeCouponOnBreathSignIn', data:{couponId,executeOrder}})
+  static takeGift({couponCode}) {
+    return Network.request({url: 'coupon/takeCouponOnYouZan', data:{couponCode}})
   }
 
   static getShoppingJumpCodes(){

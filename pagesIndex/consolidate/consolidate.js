@@ -71,14 +71,14 @@ Page({
     }
   },
   goToGift() {
-    let couponId;
+    let couponCode;
     let list = app.globalData.shoppingJumpCodes;
     for (let item of list) {
       if (item.code == 'milkshake') {
-        couponId = item.couponId
+        couponCode = item.couponCode
         break;
       }
     }
-    HiNavigator.navigateToGetGift({ couponId });
+    HiNavigator.navigateToGetGift({ couponCode });
   }
 })

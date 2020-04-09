@@ -76,8 +76,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pagesIndex/box-replenish/box-replenish`});
     }
     //领取优惠券
-    static navigateToGetGift({couponId,finishedPhone}) {
-      this.navigateTo({url: `/pagesIndex/getGift/getGift?couponId=${couponId}&finishedPhone=${finishedPhone}`});
+    static navigateToGetGift({couponCode,finishedPhone,id}) {
+      this.navigateTo({url: `/pagesIndex/getGift/getGift?couponCode=${couponCode}&finishedPhone=${finishedPhone}&id=${id}`});
     }
     //领取低碳饮食
     static navigateTogetLowCarbon() {
@@ -155,8 +155,8 @@ export default class HiNavigator extends CommonNavigator {
     static navigateIndex() {
         this.navigateTo({url: '/pagesIndex/index/index'});
     }
-  static navigateIntroduce({couponId}) {
-    this.navigateTo({url: '/pages/introduce/introduce?couponId='+couponId});
+  static navigateIntroduce({couponCode}) {
+    this.navigateTo({url: '/pages/introduce/introduce?couponCode='+couponCode});
   }
     static navigateToCalendar({type}) {
         this.navigateTo({url: '/pages/calendar/calendar?type=' + type});

@@ -83,7 +83,7 @@ Page({
 
   },
   toGift(e){
-    HiNavigator.navigateToGetGift({couponId:e.currentTarget.dataset.id})
+    HiNavigator.navigateToGetGift({id:e.currentTarget.dataset.id})
   },
   /**
    * 页面上拉触底事件的处理函数

@@ -126,9 +126,12 @@ Page({
   },
   //
   onShareAppMessage(res) {
+    //
     let reportId = this.data.reportId;
+    let sharePoster = this.data.report.sharePoster;
     return {
-      title: '我的今日减脂报告已生成，快来围观！',
+      title: sharePoster.toFriend.title || "我的减脂报告已生成，快来围观！",
+      imageUrl: sharePoster.toFriend.url,
       path: `/pages/lowFatReport/lowFatReport?sharedId=${this.data.report.sharedId}&reportId=${reportId}`
     }
   },
@@ -192,25 +195,63 @@ Page({
   },
   //分享至朋友圈
   downShareImg() {
-    let url = '';
+    let that = this
+    //判断用户是否授权"保存到相册"
+    wx.getSetting({
+      success(res) {
+        //没有权限，发起授权
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success() {//用户允许授权，保存图片到相册
+              that.savePhoto();
+            },
+            fail() {//用户点击拒绝授权，引导用户授权
+              wx.openSetting({
+                success() {
+                  wx.authorize({
+                    scope: 'scope.writePhotosAlbum',
+                    success() {
+                      that.savePhoto();
+                    }
+                  })
+                }
+              })
+            }
+          })
+        } else {//用户已授权，保存到相册
+          that.savePhoto()
+        }
+      }
+    })
+  },
+  savePhoto() {
+    let url = this.data.report.sharePoster.toGroup.url;
+    let that = this;
     wx.downloadFile({
       url,
-      success() { 
+      success: function (res) {
         wx.saveImageToPhotosAlbum({　　　　　　　　　//保存到本地
           filePath: res.tempFilePath,
           success(res) {
             wx.showToast({
               title: '图片已保存至相册，请到朋友圈选择图片发布！',
-              icon: 'success',
+              icon: 'success',//hideModal
               duration: 2000
             })
           }
         })
       }, fail() {
-
+        wx.showToast({
+          title: '图片保存失败，请重试！',
+          icon: 'none',//
+          duration: 2000
+        })
+      }, complete(){
+        that.hideModal()
       }
+      
     })
-
   },
   //跳转首页
   weightFinish() {

@@ -33,7 +33,7 @@
     <view class="manifesto">
       <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
       <text class="setInfo-text">我的减脂初心——</text>
-      <view class="setInfo-flag">{{taskInfo.flag}}</view>
+      <view class="setInfo-flag"><text space="emsp">{{taskInfo.flag|| '  '}}</text></view>
       <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
       <image src="../../images/set-info/yh.png" class="yhClass"></image>
       <view class="line"></view>
