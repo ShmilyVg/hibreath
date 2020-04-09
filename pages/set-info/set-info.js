@@ -24,6 +24,7 @@ Page({
     animationData: '',
     breathSign: {},//签到数据
     taskFinished:false,
+    original_show:false,
     sync:{
       num: 0,
       countNum: 0, //需要同步的总数
@@ -66,19 +67,19 @@ Page({
   async onLoad(options) {
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
-    let hipeeScene = options.hipeeScene;
+    let hipeeScene = options.hipeeScene ||'device' ;
     let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
     }else{
       hisHipeeScene = wx.getStorageSync('hipeeScene');
     }
-    app.globalData.hipeeScene = hisHipeeScene;
+    app.globalData.hipeeScene = hipeeScene || hisHipeeScene;
     this.setData({
       hipeeScene,
       sharedId
     })
-
+    
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide();
@@ -102,6 +103,13 @@ Page({
     this.getShoppingJumpCodes();
   },
   onShow() {
+    //判断初心遮罩是否显示
+    if (wx.getStorageSync('original_tip') == 'first') {
+      this.setData({
+        original_show: true
+      })
+      wx.setStorageSync('original_tip', 'ready')
+    }
     this.getPresonMsg();
     this.getFinishedGuide()
     this.handleBle();
@@ -209,23 +217,6 @@ Page({
       });
     } 
   },
-  //补签请求接口
-  async putBreathSign(){
-    let sharedId = this.data.sharedId;
-    let postData = {
-      "sharedId": sharedId //分享用户编号
-    }
-    console.log('postData', postData)
-    let { result } = await Protocol.putBreathSign(postData);
-    if (result.status ){
-      wx.showToast({
-        title: '补签成功',
-        icon: none,
-        duration: 3000
-      });
-    }
-    
-  },
   //获取个人信息
   async getPresonMsg() {
     const { result } = await Protocol.getAccountInfo();
@@ -313,6 +304,12 @@ Page({
   closeWindows(){
     this.setData({
       showWindows:false
+    })
+  },
+  //关闭初心遮罩
+  closeOriginal() {
+    this.setData({
+      original_show: false
     })
   },
   //前往 领取低碳饮食页面
@@ -557,7 +554,8 @@ Page({
     // HiNavigator.navigateToAttendanceBonus()
   },
   goToManifesto(){
-    HiNavigator.navigateToManifesto()
+    let { sharedId, flag } = this.data.taskInfo
+    HiNavigator.navigateToManifesto({ sharedId, flag})
   },
   //减脂效果页
   goToLowFatReport() {
@@ -596,10 +594,12 @@ Page({
   },
   //蓝牙
   handleBle() {
-    wx.showLoading({
-      title: '加载中',
-      mask:true,
-    })
+    if (!this.data.showPage){
+      wx.showLoading({
+        title: '加载中',
+        mask: true,
+      })
+    }
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
       bleStateListener: () => {

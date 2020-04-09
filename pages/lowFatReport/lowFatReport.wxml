@@ -6,7 +6,7 @@
 <view class="lowFat">
   <view class="lowFat-header">
     <view>
-      今日打卡报告
+      {{report.title}}
       <button class="share" bindtap="showModal" wx:if="{{!sharedId || sharedId == 'undefined'}}">
         <image src="../../images/lowFatReport/copy.png" class="copy"></image> 分享</button>
     </view>
@@ -56,7 +56,7 @@
         <image src="../../images/arr-right.png"></image>
       </view>
     </view>
-    <view class="burn-progress" wx:if="{{report.member.isDoingPlan}}">
+    <view class="burn-progress" wx:if="{{report.member.finishedInfo}}">
       <view class="burn-progress-left">
         <view class="burn-progress-contain">
           <view class="burn-value" style="width:{{progress}}rpx">今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
@@ -74,7 +74,7 @@
         <text>{{report.breathData.losefatGrams.foodDescription}}</text>
       </view>
     </view>
-    <view class="synthesize" wx:if="{{!report.member.isDoingPlan}}">
+    <view class="synthesize" wx:if="{{!report.member.finishedInfo}}">
       <view class="synthesize-contain">
         <image src="../../images/lowFatReport/lock.png"></image>
         <view>完善个人信息，了解自己燃脂状态</view>
@@ -141,7 +141,7 @@
     </view>
   </block>
 
-  <view class="scheme" wx:if="{{!report.member.finishedInfo}}">
+  <view class="scheme" wx:if="{{!report.member.isDoingPlan && report.member.finishedInfo}}">
     <view class="scheme-title">想要快速燃脂？</view>
     <view class="scheme-text">查看为您推荐的
       <text>专属Slimple燃脂方案</text>

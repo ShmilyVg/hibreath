@@ -45,8 +45,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pagesIndex/reduceFatExp/reduceFatExp`});
     }
     //燃脂宣言
-    static navigateToManifesto(sharedId) {
-      this.navigateTo({url: `/pagesIndex/manifesto/manifesto?sharedId=${sharedId}`});
+    static navigateToManifesto({sharedId,flag}) {
+      this.navigateTo({url: `/pagesIndex/manifesto/manifesto?sharedId=${sharedId}&flag=${flag}`});
     }
     //生成方案
     static navigateToReduceFat() {

@@ -4,6 +4,7 @@ page {
   background: #3d3a3d;
   min-height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 view {
@@ -130,12 +131,12 @@ view {
 
 .contain{
   width:750rpx;
-  height:474rpx;
+  height:444rpx;
   background:rgba(255,255,255,1);
   border-radius:80rpx 0rpx 0rpx 0rpx;
   position: absolute;
-  bottom: 0;
-  padding: 71rpx 0 0 51rpx;
+  bottom: 0rpx;
+  padding: 71rpx 51rpx 0 51rpx;
   z-index: 2;
 }
 .contain-title image{
@@ -168,6 +169,7 @@ button{
   margin: 45rpx auto;
   color: #fff;
   border-style: none;
+  font-size:30rpx;
 }
 .pass{
   font-size:30rpx;

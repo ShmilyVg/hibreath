@@ -41,7 +41,7 @@
 
   </view>
   <view class="contain">
-    <swiper indicator-dots="true" indicator-color="rgba(212,233,211,1)" indicator-active-color="rgba(123,200,119,1)"  autoplay="true">
+    <swiper indicator-dots="true" indicator-color="rgba(212,233,211,1)" indicator-active-color="rgba(123,200,119,1)" autoplay="true">
       <swiper-item class="puzzled" wx:for="{{banner}}" wx:key="index">
         <image src="{{item.image}}" data-item="{{item}}" bindtap="goToTask"></image>
       </swiper-item>
@@ -202,4 +202,21 @@
   <view class="showGiftwindows-text">
     <view style="width: 100rpx;margin: 0 auto" bindtap="closeWindows">稍后</view>
   </view>
+</view>
+<view class="shade modals modals-bottom-dialog" wx:if="{{original_show}}"></view>
+<view class="original" wx:if="{{original_show}}">
+  <view class="originalBg">
+    <view class="original_contain">
+      <view class="manifesto">
+        <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
+        <text class="setInfo-text">我的减脂初心——</text>
+        <view class="setInfo-flag" style="font-weight:normal;"><text space="emsp">{{taskInfo.flag|| '  '}}</text></view>
+        <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
+        <image src="../../images/set-info/yh.png" class="yhClass"></image>
+        <view class="line"></view>
+      </view>
+    </view>
+  </view>
+  <view class="original_tip">{{taskInfo.flag?'这里会一直展示你的减脂初心，请一定认真对待它，加油！':'如果确认了你的减脂初心，可以在此继续填写，它会一直在首页提示你'}}</view>
+  <view class="original_btn" bindtap="closeOriginal">我知道啦</view>
 </view>

@@ -9,8 +9,8 @@
   <view class="item-list">
     <view class="item {{'text'+(index+1)}}" wx:for="{{textList}}" wx:key='item' data-item="{{item}}" bindtap="setManifesto">
       
-      <view class="img-con" wx:if="{{item == curText}}"><image src="../images/huangguan.png" class="huangguan"></image></view>
-      <text>{{item}}</text> 
+      <view class="img-con" wx:if="{{item.value == manifesto}}"><image src="../images/huangguan.png" class="huangguan"></image></view>
+      <text>{{item.text}}</text> 
     </view>
   </view>
 </view>
@@ -19,6 +19,6 @@
     <image src="../../images/set-info/{{!!manifesto?'readyEdit':'needEdit'}}.png"></image>
     <textarea placeholder="我想要减脂，是因为…（20字）" maxlength ='20' bindinput="changeValue" value='{{manifesto}}' placeholder-class='holder' auto-focus />
   </view>
-  <button class="reduceBtn {{disabled?'disabled':''}}" disabled="{{disabled}}" bindtap="warnMySelf" >记下来，警示自己</button>
+  <button class="reduceBtn {{!manifesto?'disabled':''}}" disabled="{{!manifesto}}" bindtap="warnMySelf" >记下来，警示自己</button>
   <view class="pass" bindtap="reduceFun">跳过</view>
 </view>
