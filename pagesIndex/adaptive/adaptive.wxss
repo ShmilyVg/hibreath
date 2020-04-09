@@ -5,20 +5,21 @@ page{
 }
 view{
   box-sizing: border-box;
+  font-weight: normal;
 }
 .adaptive{
   position: relative;
   height: 100%;
 }
 .adaptive-h3{
-  margin: 69rpx 0 21rpx 65rpx;
+  margin: 69rpx 0 16rpx 65rpx;
   font-size:36rpx;
   font-family:PingFang SC;
   font-weight:bold;
   color:rgba(129,204,126,1);
 }
 .adaptive-text{
-  margin: 0rpx 0 65rpx 65rpx;
+  margin: 0rpx 0 55rpx 65rpx;
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;
@@ -69,7 +70,7 @@ view{
   font-weight:500;
   color:rgba(51,51,51,1);
   margin-left: 13rpx;
-  margin-bottom: 67rpx;
+  margin-bottom: 50rpx;
 }
 .day{
   margin-bottom: 89rpx;
@@ -82,9 +83,12 @@ view{
   color:rgba(69,69,69,1);
   margin-bottom: 36rpx;
 }
-.day-title text{
+.day-title .day-n{
   font-size:44rpx;
+  margin-right: 10rpx;
   font-family:DINCondensed;
+  position: relative;
+  bottom: -3rpx;
 }
 .day-contain{
   display: flex;
@@ -128,6 +132,7 @@ view{
 .foodName::before{
   content: '·';
   color: #999;
+  font-size: 30rpx;
   font-weight: bold;
   position: absolute;
   left: 0rpx;
@@ -140,8 +145,9 @@ view{
   padding-left: 21rpx;
   font-size:24rpx;
   font-family:PingFang SC;
-  font-weight:500;
+  font-weight:600;
   color:rgba(69,69,69,1);
+  margin-top: 20rpx;
 }
 .day-other text{
   font-weight:400;
@@ -158,16 +164,16 @@ view{
   left: 175rpx;
 }
 .replenish-text1{
-  top: 54rpx;
+  top: 44rpx;
   font-size:30rpx;
   font-family:PingFang SC;
-  font-weight:500;
+  font-weight:600;
   color:rgba(69,69,69,1);
 }
 .replenish-text2{
-  top: 107rpx;
+  top: 97rpx;
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;
-  color:rgba(69,69,69,1);
+  color:#666;
 }

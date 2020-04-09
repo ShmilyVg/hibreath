@@ -473,7 +473,7 @@ swiper{
 }
 
 .bigTruthCon {
-  padding: 42rpx 20rpx 62rpx;
+  padding: 42rpx 20rpx 42rpx;
   font-size: 40rpx;
   font-family: PingFang SC;
   font-weight: bold;
@@ -515,6 +515,8 @@ swiper{
   font-size:36rpx;
   font-family:PingFang SC;
   font-weight:bold;
+  display: flex;
+  justify-content: center;
 }
 .answerRight{
   color:#4FBB49;
@@ -526,6 +528,7 @@ swiper{
   width: 74rpx;
   height: 50rpx;
   vertical-align: middle;
+  margin-right: 10rpx;
 }
 .answerDetails{
   width:632rpx;
@@ -541,7 +544,8 @@ swiper{
   color:rgba(146,123,101,1);
 }
 .answerResult{
-  margin-bottom: 33rpx;
+  margin-bottom: 23rpx;
+  font-weight: bold;
 }
 .answerRecord{
   margin-top: 31rpx;
@@ -580,7 +584,7 @@ swiper{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .bottom-dialog-body {
@@ -638,7 +642,7 @@ swiper{
 }
 .weightInput {
   margin: 54rpx auto 0;
-  height: 120rpx;
+  height: 140rpx;
   width: 300rpx;
   background: #ECF8EB;
   border-radius: 20rpx;

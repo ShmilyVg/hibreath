@@ -22,7 +22,7 @@
     </view>
   </view>
   <view class="reduce card" bindtap="goToReduce">
-    <image src="../../images/orange.png"></image>
+    <image src="../../images/cauliflower.png"></image>
     <view class="card-title">低碳减脂期·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</view>
     <view class="card-more"><view>more＞</view></view>
     <view class="card-contain">
@@ -31,8 +31,8 @@
       <view class="card-text2">{{result.reduceFatPeriod.remarks}}</view>
     </view>
   </view>
-  <view class="consolidate card" bindtap="goToConsolidate">
-    <image src="../../images/orange.png"></image>
+  <view class="consolidate card" bindtap="goToConsolidate" style="margin-bottom: 72rpx;">
+    <image src="../../images/coconut.png"></image>
     <view class="card-title">低碳巩固期·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</view>
     <view class="card-more"><view>more＞</view></view>
     <view class="card-contain">
@@ -59,7 +59,7 @@
         </view>
       </view>
       <view class="toDo-btn" bindtap="toSetInfo">
-        <text style="margin-left: 186rpx;margin-right: 121rpx">立即前往打卡首页</text>
+        <text>立即前往打卡首页</text>
         <image src="../../images/set-info/right-3.png" style="width: 26rpx;height: 19rpx"></image>
       </view>
     </view>

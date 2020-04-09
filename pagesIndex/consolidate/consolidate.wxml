@@ -19,7 +19,7 @@
         </view>
       </view>
       <view class="item-title">每日早/晚餐吃什么</view>
-      <view class="eatSome-item" style="margin-bottom:40rpx;background-image: url({{dayHowToEat.theRemainingMealObj.brunchWhatToEatObj[0].img}})" bindtap="goToGift"></view>
+      <view class="eatSome-item" style="margin-bottom:80rpx;background-image: url({{dayHowToEat.theRemainingMealObj.brunchWhatToEatObj[0].img}})" bindtap="goToGift"></view>
       <view class="item-title">其余餐吃什么</view>
       <view class="eatSome">
         <view class="eatSome-item color1" wx:for="{{dayHowToEat.theRemainingMealObj.restMealObj}}" style="background-image: url({{item.img}})" wx:key="img" data-index="{{index}}" bindtap="goNextPage">

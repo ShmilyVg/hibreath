@@ -6,19 +6,15 @@ page{
 view{
   box-sizing: border-box;
 }
-.adaptive{
-  position: relative;
-  height: 100%;
-}
 .adaptive-h3{
-  margin: 69rpx 0 21rpx 65rpx;
+  margin: 69rpx 0 16rpx 65rpx;
   font-size:36rpx;
   font-family:PingFang SC;
   font-weight:bold;
   color:rgba(129,204,126,1);
 }
 .adaptive-text{
-  margin: 0rpx 0 65rpx 65rpx;
+  margin: 0rpx 0 55rpx 65rpx;
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;
@@ -113,13 +109,15 @@ view{
   left: 0;
   top: 0;
 }
-
+.eatSome{
+  margin-bottom: 80rpx;
+}
 .eatSome-item {
   box-sizing: border-box;
   width: 690rpx;
   height: 260rpx;
   padding: 147rpx 0 0 37rpx;
-  margin: 0 auto 20rpx;
+  margin: 0 auto 50rpx;
   background-size: 100% 100%;
 }
 
@@ -172,7 +170,7 @@ view{
   font-size:32rpx;
   font-family:PingFang SC;
   font-weight:500;
-  margin: 25rpx 0 10rpx;
+  margin: 25rpx 0 20rpx;
   color:rgba(68,68,68,1);
 }
 .eatNum-item-num{
@@ -189,6 +187,7 @@ view{
 }
 .eatHow{
   padding-right: 50rpx;
+  line-height: 40rpx;
 }
 .eatHow-item{
   position: relative;
@@ -197,7 +196,7 @@ view{
   font-weight:400;
   color:rgba(68,68,68,1);
   padding-left: 108rpx;
-  margin-bottom: 55rpx;
+  margin-bottom: 35rpx;
 }
 .eatHow-item image{
   position: absolute;

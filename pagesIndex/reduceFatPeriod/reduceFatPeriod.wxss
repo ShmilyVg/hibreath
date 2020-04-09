@@ -13,7 +13,7 @@ page {
   font-size: 48rpx;
   font-family: PingFang SC;
   font-weight: bold;
-  margin: 62rpx 0 60rpx 66rpx;
+  margin: 62rpx 0 50rpx 66rpx;
 }
 
 .table {
@@ -22,6 +22,7 @@ page {
 
 .thead {
   padding: 0 29rpx 0 107rpx;
+  font-size:26rpx;
 }
 
 .tr {
@@ -75,10 +76,11 @@ page {
 .paragraph {
   font-size: 26rpx;
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: 400;
   color: rgba(255, 255, 255, 1);
   margin-bottom: 40rpx;
   padding: 0 68rpx 0 47rpx;
+  line-height: 40rpx
 }
 
 .paragraph text {
@@ -159,7 +161,7 @@ button {
 
 .hungry-view {
   width: 100%;
-  padding: 47rpx 0rpx 60rpx 0rpx;
+  padding: 67rpx 0rpx 60rpx 0rpx;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0rpx -20rpx 90rpx 0rpx rgba(247, 241, 237, 1);
@@ -178,7 +180,6 @@ button {
 
 .hungry-view-text text {
   color: #999;
-  font-size: 24rpx;
 }
 
 .hungry-view-text1 {
@@ -205,7 +206,7 @@ button {
 
 .hungry-image-text2 {
   font-size: 24rpx;
-  margin: 15rpx 0 77rpx;
+  margin: 10rpx 0 77rpx;
   font-family: PingFang SC;
   font-weight: 400;
   color: rgba(153, 153, 153, 1);
@@ -261,6 +262,8 @@ button {
   font-family: DINCondensed;
   font-weight: bold;
   color: rgba(68, 68, 68, 1);
+  position: relative;
+  bottom: -3rpx;
 }
 
 .swiper-tag2 {
@@ -292,13 +295,13 @@ button {
 .check-reduce {
   width: 690rpx;
   height: 180rpx;
-  margin: 40rpx auto 0;
+  margin: 60rpx auto 0;
   background: rgba(64, 63, 68, 1);
   border-radius: 20rpx;
   position: relative;
   color: #81cc7e;
   box-sizing: border-box;
-  padding: 52rpx 0 0 49rpx;
+  padding: 42rpx 0 0 49rpx;
 }
 
 .adaptive-h3 {
@@ -309,7 +312,7 @@ button {
 }
 
 .adaptive-text {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: 400;
@@ -326,7 +329,7 @@ button {
   border-radius: 30px;
   position: absolute;
   right: 62rpx;
-  top: 75rpx;
+  top: 65rpx;
   font-size: 24rpx;
   font-family: PingFang SC;
   font-weight: 500;
@@ -346,9 +349,9 @@ button {
 /* 低碳日怎么吃 */
 
 .lowFat {
-  margin-top: 115rpx;
+  /* margin-top: 115rpx; */
   position: relative;
-  padding-bottom: 90rpx;
+  padding: 67rpx 0 90rpx 0;
 }
 
 .rang {
@@ -387,7 +390,9 @@ button {
   left: 0;
   top: 0;
 }
-
+.eatSome{
+  margin-bottom: 80rpx;
+}
 .eatSome-item {
   box-sizing: border-box;
   width: 690rpx;
@@ -446,7 +451,7 @@ button {
   font-size:32rpx;
   font-family:PingFang SC;
   font-weight:500;
-  margin: 25rpx 0 10rpx;
+  margin: 25rpx 0 20rpx;
   color:rgba(68,68,68,1);
 }
 .eatNum-item-num{
@@ -463,6 +468,8 @@ button {
 }
 .eatHow{
   padding-right: 50rpx;
+  line-height: 40rpx;
+  margin-bottom: 60rpx;
 }
 .eatHow-item{
   position: relative;
@@ -471,7 +478,7 @@ button {
   font-weight:400;
   color:rgba(68,68,68,1);
   padding-left: 108rpx;
-  margin-bottom: 55rpx;
+  margin-bottom: 35rpx;
 }
 .eatHow-item image{
   position: absolute;
@@ -493,16 +500,16 @@ button {
   left: 175rpx;
 }
 .replenish-text1{
-  top: 54rpx;
+  top: 44rpx;
   font-size:30rpx;
   font-family:PingFang SC;
-  font-weight:500;
+  font-weight:600;
   color:rgba(69,69,69,1);
 }
 .replenish-text2{
-  top: 107rpx;
+  top: 97rpx;
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;
-  color:rgba(69,69,69,1);
+  color:#666;
 }

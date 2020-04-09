@@ -6,7 +6,7 @@
       <view class="top-title">我的目标体重是</view>
       <view class="top-num">{{result.weightGoalt}}
         <text>KG</text>
-        <image src="../../images/edit.png"></image>
+        <image src="../../images/edit_2.png"></image>
       </view>
     </view>
     <image src="../../images/lowFatReport/newBg.png" class="bgrz"></image>
@@ -27,8 +27,8 @@
       <image src="../images/icon/ask.png"></image>
       <text>什么是slimple低碳饮食方案？</text>
     </view>
-    <view class="startText" bindtap="startPlan">开启我的燃脂计划</view>
     <button class="startBtn" bindtap="showModal">开启减脂计划并分享</button>
+    <view class="startText" bindtap="startPlan">开启我的燃脂计划</view>
   </view>
 
 </view>

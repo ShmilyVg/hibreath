@@ -1,6 +1,7 @@
 /* pagesIndex/food-details/food-details.wxss */
 page{
    background:#fff;
+   /* overflow: hidden; */
 }
  view{
    font-family: DINCondensed;
@@ -12,13 +13,14 @@ page{
 }
 .food-image{
   position: absolute;
-  right: 0;
+  right: -200rpx;
   top: 57rpx;
-  width: 299rpx;
+  width: 500rpx;
   height: 500rpx;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
+  border-radius: 50%;
   z-index: 1000;
+  border:10rpx solid rgba(255,255,255,1);
+  box-shadow:-5rpx 9rpx 60rpx 0rpx rgba(0, 0, 0, 0.08);
 }
 .title{
   color: #fff;
@@ -26,11 +28,15 @@ page{
   padding-bottom: 70rpx;
 }
 .contain{
-  width: 40%;
+  width: 50%;
   color: #fff;
   display: flex;
-  justify-content: space-between
+  justify-content: center;
 }
+.contain >view{
+  width: 50%;
+}
+
 .food-num{
   font-size: 60rpx;
   /* margin-bottom: 17rpx; */
@@ -40,7 +46,7 @@ page{
 }
 
 .ingredient{
-  background: #FFF3DD;
+  background: #f8f4f0;
   position: relative;
   top: -100rpx;
   border-top-left-radius: 60rpx;
@@ -50,8 +56,9 @@ page{
   margin-bottom: 41rpx;
 }
 .need-title-text{
-  color: #333333;
+  color: #444;
   font-size: 36rpx;
+  font-weight: 600;
 }
 .need-text{
   color: #454545;

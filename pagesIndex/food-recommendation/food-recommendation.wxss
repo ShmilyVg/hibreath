@@ -37,7 +37,7 @@ view {
 .tab_item_active {
   font-size: 34rpx;
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(68, 68, 68, 1);
   width: 33.33%;
   float: left;
@@ -88,11 +88,15 @@ view {
   color: #fff;
   text-align: center;
   padding-top: 10rpx;
+  
 }
 
 .type-text view {
   font-size: 30rpx;
   font-weight: bold;
+  height: 25rpx;
+  line-height: 25rpx;
+  margin-top: 5rpx;
 }
 
 .type-text text {
@@ -112,6 +116,7 @@ view {
   background: rgba(246, 247, 248, 1);
   float: left;
   min-height: 589rpx;
+  font-size:30rpx;
 }
 .contain_tab-left view{
   text-align: center;
@@ -121,6 +126,7 @@ view {
 
 .contain_tab-left .active{
   background: #fff;
+  color: #4FBB49;
 }
 
 .contain_tab-right{
@@ -143,7 +149,7 @@ view {
   margin-top:40rpx; 
   font-size:28rpx;
   font-family:PingFang SC;
-  font-weight:500;
+  font-weight:400;
   color:rgba(68,68,68,1);
 }
 .food-item image{
@@ -180,6 +186,8 @@ view {
 }
 
 .recommendation-swiperItem {
+  height: 44rpx;
+  line-height: 44rpx;
   display: flex;
   align-content: center;
   align-items: center;
@@ -242,7 +250,7 @@ view {
 .recommendation-content {
   width: 100%;
   box-sizing: border-box;
-  padding: 50rpx 70rpx 30rpx 30rpx;
+  padding: 50rpx 70rpx 10rpx 30rpx;
   background: #fff;
   position: relative;
 }
@@ -287,8 +295,8 @@ view {
 }
 
 .content-kcal {
-  width: 159rpx;
-  height: 44rpcx;
+  padding: 0 20rpx;
+  height: 44rpx;
   font-size: 22rpx;
   font-family: PingFang SC;
   font-weight: 500;
@@ -297,8 +305,10 @@ view {
   text-align: center;
   z-index: 90;
   background: rgba(236, 248, 235, 1);
-  border-radius: 18px 4px 18px 4px;
-  margin-right: 200rpx;
+  border-radius: 18rpx 4rpx 18rpx 4rpx;
+  margin-right: 250rpx;
+  position: relative;
+  bottom: -3rpx;
 }
 
 .food-title {
@@ -346,7 +356,10 @@ view {
 .swiperChange {
   text-align: center;
 }
-
+.swiperChange image{
+  position: relative;
+  bottom: -3rpx;
+}
 .swiperText {
   font-size: 22rpx;
   font-family: PingFang SC;

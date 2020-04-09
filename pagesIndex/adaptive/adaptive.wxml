@@ -12,13 +12,13 @@
     <view class="title">{{result.title}}</view>
     <view class="day" wx:for="{{result.images}}" wx:for-item='day' wx:key="index">
       <view class="day-title">
-        <text>{{day.tag1}}·</text>{{day.tag2}}</view>
+        <text class="day-n">{{day.tag1}} ·</text><text>{{day.tag2}}</text></view>
       <view class="day-contain">
         <view class="day-item" wx:for="{{day.foodList}}" wx:for-item='food' wx:key="tag">
           <image src="{{food.img}}"></image>
           <view class="food-tag">{{food.tag}}</view>
           <view wx:for="{{food.subList}}" wx:key="title" class="foodName">
-            <text>{{item.title}}{{item.quantityDesc}}</text>
+            <text>{{item.title}}</text><text style="font-weight: bold">{{item.quantityDesc}}</text>
           </view>
         </view>
       </view>

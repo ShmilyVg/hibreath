@@ -43,9 +43,10 @@
       </view>
     </view>
   </view>
+  <view style="height:1rpx;clear:both;"></view>
   <!--盒子怎么吃  -->
-  <view wx:if="{{currenttab==='howEatBox'}}" style="margin-top: 70rpx">
-    <swiper bindchange="swiperChange" current="0" indicator-dots="true" indicator-active-color="#7BC877" class="" style="height: 700rpx">
+  <view wx:if="{{currenttab==='howEatBox'}}">
+    <swiper bindchange="swiperChange" current="0" indicator-dots="true" indicator-color="#D4E9D3" indicator-active-color="#7BC877" class="" style="height: 720rpx">
       <block wx:for="{{boxHowToEat.images}}" wx:key="index">
         <swiper-item>
           <view class="swiper-tag">
@@ -75,7 +76,7 @@
       </block>
     </swiper>
     <view class="hungry-view">
-      <view class="item-title">吃盒子过程中如果饿了怎么办</view>
+      <view class="item-title" style="margin-bottom:16rpx;">吃盒子过程中如果饿了怎么办</view>
       <view style="margin-bottom: 48rpx;margin-left: 44rpx">
         <text class="hungry-view-text1">每日可额外补充</text>
         <text class="hungry-view-text2">（*数量根据您的体重计算得出）</text>
@@ -90,7 +91,7 @@
                 <view class="hungry-image-text2">{{item.quantityDesc}}</view>
               </block>
             </view>
-            <view wx:if="{{additionalMea.howEatAdditionaObj[0].foodList.length>1 && index === 0}}" style="height: 214rpx;width:78rpx;margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:500;">
+            <view wx:if="{{additionalMea.howEatAdditionaObj[0].foodList.length>1 && index === 0}}" style="height: 214rpx;width:78rpx;margin: 0rpx 30rpx;font-size: 40rpx;color: #666666;line-height: 140rpx;font-weight:400;">
               +
             </view>
           </view>
@@ -99,8 +100,7 @@
       </view>
 
 
-      <view class="hungry-view-text">以下
-        <text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
+      <view class="hungry-view-text">以下<text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
       <view style="text-align: center;">
         <image src='http://img.hipee.cn/vg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
       </view>

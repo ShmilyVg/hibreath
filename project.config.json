@@ -506,6 +506,13 @@
 					"pathName": "pagesThree/dayReportShare/dayReportShare",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/food-details/food-details",
+					"pathName": "pagesIndex/food-details/food-details",
+					"query": "foodId=31",
+					"scene": null
 				}
 			]
 		}

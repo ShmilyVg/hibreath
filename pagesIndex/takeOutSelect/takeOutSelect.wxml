@@ -31,7 +31,7 @@
       <view class="takeOutSelect-tab">
         <image class="takeOutSelect-img" src="{{item.imgPath}}"></image>
         <view class="takeOutSelect-view">
-          <view class="takeOutSelect-title">{{item.title}}</view>
+          <view class="takeOutSelect-title {{item.Desc.length <= 17?'moreMar':''}}">{{item.title}}</view>
           <view class="takeOutSelect-Desc"><text>{{item.Desc}}</text></view>
         </view>
       </view>

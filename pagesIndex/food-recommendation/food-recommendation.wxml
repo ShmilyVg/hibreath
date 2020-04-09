@@ -4,7 +4,7 @@
   <view class="result_tab_top">
     <view wx:for="{{typeList}}" wx:key="index">
       <view class="{{currenttab===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTab'>
-        <view style="margin-bottom: 20rpx">{{item.title}}</view>
+        <view style="margin-bottom: 20rpx;">{{item.title}}</view>
         <view class="active_line" wx:if="{{currenttab === item.type}}"></view>
       </view>
     </view>
@@ -49,7 +49,7 @@
   <view wx:if="{{currenttab == 'recommend'}}">
     <view class="page">
       <view wx:for="{{contentResult}}" wx:key="index" class="recommendation-content" wx:if="{{item.foodList.length}}">
-        <view class="recommendation-swiperItem" style="margin-bottom: 30rpx">
+        <view class="recommendation-swiperItem" style="margin-bottom: 50rpx">
           <view class="content-title">{{item.title}}</view>
           <view class="content-kcal">
             总共{{item.totalCalorie}}kcal

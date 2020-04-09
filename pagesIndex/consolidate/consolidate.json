@@ -1,3 +1,6 @@
 {
+  "navigationBarBackgroundColor": "#3e3d42",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "低碳巩固期",
   "usingComponents": {}
 }
