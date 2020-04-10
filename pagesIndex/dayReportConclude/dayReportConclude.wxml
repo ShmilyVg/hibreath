@@ -11,6 +11,10 @@
       <view class="DescTit" wx:if="{{item.dataDesc}}">{{item.dataDesc}}</view>
       <view class="DescTime {{item.dataDesc?'':'DescTimeSpe'}}">{{item.dateTime}}</view>
     </view>
+    <view class="weight" wx:if="{{!item.dataValueToday}}">
+      <view class="value"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
+      <view class="unit"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
+    </view>
     <view class="weight">
       <view class="value">{{item.weightToday }}</view>
       <view class="unit">kg</view>

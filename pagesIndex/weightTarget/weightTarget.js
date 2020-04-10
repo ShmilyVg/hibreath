@@ -20,6 +20,7 @@ Page({
 
   },
    onShareAppMessage() {
+     this.hideModal()
     return {
       title: this.data.shareTitle,
       path: `/pagesIndex/weightTarget/weightTarget?sharedId=${this.data.sharedId}`,

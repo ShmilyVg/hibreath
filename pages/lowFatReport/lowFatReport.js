@@ -129,6 +129,7 @@ Page({
     //
     let reportId = this.data.reportId;
     let sharePoster = this.data.report.sharePoster;
+    this.hideModal();
     return {
       title: sharePoster.toFriend.title || "我的减脂报告已生成，快来围观！",
       imageUrl: sharePoster.toFriend.url,

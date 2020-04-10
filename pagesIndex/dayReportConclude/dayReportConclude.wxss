@@ -67,7 +67,7 @@ page {
   color: rgba(155, 155, 155, 1);
   line-height: 70rpx;
 }
-.weight {
+.weight , .ppm {
   width: 90rpx;
 }
 
