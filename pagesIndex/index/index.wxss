@@ -223,7 +223,6 @@ page{
     margin-top: 95rpx;
 }
 .hint-btn{
-    font-size: 30px;
     border: 1px #fff solid;
     border-radius: 60rpx;
     width: 500rpx;
@@ -243,7 +242,7 @@ page{
     font-size:27rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
-    margin-bottom: 15rpx;
+    margin-bottom: 5rpx;
     color:#7C7C7C;
 }
 button::after{ border: none; }
@@ -267,6 +266,7 @@ button::after{ border: none; }
     height: 100%;
     background-color: #ffffff;
     text-align: center;
+    margin-bottom: 60rpx;
 }
 .bindSj-green{
     width: 48rpx;

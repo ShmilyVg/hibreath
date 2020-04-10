@@ -14,7 +14,7 @@
                 <view class="Indulge-foodList-right-quantityDesc">{{item.quantityDesc}}</view>
                 <view class="clear"></view>
                 <view style="display: flex">
-                    <view style="margin-right: 22rpx" class="Indulge-foodList-right-calorie"><image  src="../images/icon/calorie.png"></image>{{item.calorie}}</view>
+                    <view style="margin-right: 12rpx" class="Indulge-foodList-right-calorie"><image  src="../images/icon/calorie.png"></image>{{item.calorie}}</view>
                     <view class="Indulge-foodList-right-carbohydrate"><image  src="../images/icon/carbohydrate.png"></image>{{item.carbohydrate}}</view>
                 </view>
             </view>

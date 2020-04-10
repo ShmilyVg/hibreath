@@ -357,7 +357,7 @@
 					"id": 42,
 					"name": "pagesIndex/getGift/getGift",
 					"pathName": "pagesIndex/getGift/getGift",
-					"query": "couponCode=8704885&id=29",
+					"query": "couponCode=1",
 					"scene": null
 				},
 				{

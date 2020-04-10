@@ -2,12 +2,13 @@
 page{
     padding: 59rpx 60rpx 0rpx;
     box-sizing: border-box;
+    height: 100%;
 }
 .goVerification-view{
     box-sizing: border-box;
-    padding-bottom: 15rpx;
+    padding-bottom: 25rpx;
     height: 60rpx;
-    margin-bottom: 30rpx;
+    margin-bottom: 70rpx;
 }
 .goVerification-bottomLineW{
     border-bottom: 1rpx #E8E8E8 solid;
@@ -41,6 +42,12 @@ page{
     font-weight:500;
     color:rgba(255,255,255,1);
     line-height:100rpx;
+    position: fixed;
+    bottom: 70rpx;
+    left: 125rpx;
+}
+button[disabled]{
+  background: #E7E7E7 !important;
 }
 .goVerification-getCode{
     position: relative;
@@ -54,7 +61,7 @@ page{
     line-height: 60rpx;
     text-align: center;
     font-family:PingFang SC;
-    font-weight:500;
+    font-weight:400;
     color:#4FBB49;
 }
 .goVerification-placeholder{
@@ -92,6 +99,7 @@ button:after{
   background-color: #ECF8EB;
 }
 .pageNum{
-  margin: 29rpx 0 100rpx;
+  margin: 15rpx 0 100rpx;
   text-align: center;
 }
+

@@ -17,11 +17,11 @@ page {
 }
 
 .table {
-  padding: 0 47rpx 50rpx;
+  padding: 0 47rpx 30rpx;
 }
 
 .thead {
-  padding: 0 29rpx 0 107rpx;
+  padding: 0 29rpx 10rpx 107rpx;
   font-size:26rpx;
 }
 
@@ -54,7 +54,7 @@ page {
 }
 
 .special {
-  width: 233rpx;
+  width: 228rpx;
 }
 
 .lowF {
@@ -78,7 +78,7 @@ page {
   font-family: PingFang SC;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
-  margin-bottom: 40rpx;
+  margin-bottom: 30rpx;
   padding: 0 68rpx 0 47rpx;
   line-height: 40rpx
 }
@@ -263,7 +263,7 @@ button {
   font-weight: bold;
   color: rgba(68, 68, 68, 1);
   position: relative;
-  bottom: -3rpx;
+  bottom: -9rpx;
 }
 
 .swiper-tag2 {

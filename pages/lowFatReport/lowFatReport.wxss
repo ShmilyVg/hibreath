@@ -1,7 +1,7 @@
 /* pages/lowFatReport/lowFatReport.wxss */
 
 page {
-  background: #f7fcec;
+  background: #f5f0eb;
 }
 
 view {
@@ -39,27 +39,29 @@ view {
   border-radius: 25rpx;
   color: #2ccc8e;
   text-align: center;
-  padding: 0 30rpx;
+  padding: 0 20rpx;
   font-size: 24rpx;
   font-weight: 500;
   position: absolute;
   left: 350rpx;
-  top: 20rpx;
+  top: 15rpx;
 }
 
 .copy {
   width: 24rpx;
   height: 24rpx;
+  position: relative;
+  bottom: -5rpx;
 }
 
 .lowFat-header-item {
   margin-top: 60rpx;
   position: relative;
-  padding-left: 126rpx;
+  padding-left: 132rpx;
 }
 
 .portrait {
-  width: 96rpx;
+  width: 102rpx;
   height: 102rpx;
   border: 4rpx solid #fff;
   border-radius: 50%;
@@ -71,7 +73,9 @@ view {
   font-size: 32rpx;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
-  margin-bottom: 15rpx;
+  margin-bottom: 10rpx;
+  position: relative;
+  top: 5rpx;
 }
 
 .p-time {
@@ -117,7 +121,7 @@ view {
 .item-title-text image {
   width: 20rpx;
   height: 20rpx;
-  margin-left: 10rpx;
+  margin-left: 0rpx;
 }
 
 .item-h4 {
@@ -128,7 +132,7 @@ view {
   height: 40rpx;
   line-height: 40rpx;
   position: relative;
-  padding-left: 40rpx;
+  padding-left: 50rpx;
 }
 
 .item-h4 >image {
@@ -196,6 +200,7 @@ view {
   font-weight: bold;
   color: rgba(53, 192, 80, 1);
   margin-top: 30rpx;
+  padding-left: 10rpx;
 }
 
 .item-g-text .num {
@@ -209,13 +214,14 @@ view {
   font-size: 36rpx;
   font-weight: 500;
   color: rgba(53, 192, 80, 1);
+  padding-left: 10rpx;
 }
 
 .item-n-text {
   font-size: 28rpx;
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
-  margin-top: 40rpx;
+  margin-top: 20rpx;
 }
 
 .weight .item-n-text {

@@ -39,7 +39,7 @@ Page({
     HiNavigator.navigateBack({delta: 1});
   },
   async toYz(){
-    if (this.data.content.qualificationStatus == 1){
+    if (this.data.content.qualificationStatus == 2){
       let couponCode = this.data.content.couponCode;
 
       if (couponCode) {

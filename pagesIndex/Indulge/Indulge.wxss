@@ -15,7 +15,7 @@ page{
     font-family:PingFang SC;
     font-weight:400;
     color:rgba(255,255,255,1);
-    margin: 81rpx 0rpx 27rpx 65rpx;
+    margin: 81rpx 0rpx 17rpx 65rpx;
 }
 .Indulge-subtitle{
     font-size:48rpx;
@@ -49,6 +49,7 @@ page{
     width: 200rpx;
     height: 140rpx;
     margin-right: 31rpx;
+    border-radius: 10rpx;
 }
 .Indulge-foodList-right-title{
     float: left;
@@ -56,7 +57,7 @@ page{
     font-family:PingFang SC;
     font-weight:500;
     color:rgba(69,69,69,1);
-    margin-bottom: 25rpx;
+    margin-bottom: 20rpx;
 }
 .Indulge-foodList-right-quantityDesc{
     float: right;

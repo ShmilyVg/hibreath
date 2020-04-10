@@ -100,7 +100,7 @@ view{
 }
 
 .weightAbout{
-  padding-bottom: 50rpx;
+  padding-bottom: 30rpx;
   color: #fff;
 }
 .weight_item {
@@ -111,7 +111,7 @@ view{
 .weight_w {
   font-size: 28rpx;
   font-family: PingFang SC;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .weight_num {
@@ -139,6 +139,8 @@ view{
   height: 34rpx;
   margin-right: 10rpx;
   vertical-align: bottom;
+  position: relative;
+  bottom: 4rpx;
 }
 .manifesto .edit{
   width: 24rpx;
@@ -487,9 +489,9 @@ swiper{
 }
 
 .btnCon view {
-  width: 277rpx;
+  width: 260rpx;
   height: 124rpx;
-  line-height: 74rpx;
+  line-height: 100rpx;
   position: relative;
   z-index: 30;
   font-size: 26rpx;
@@ -497,7 +499,12 @@ swiper{
   font-weight: 800;
   color: rgba(255, 255, 255, 1);
 }
-
+.btnCon view:nth-last-of-type(2){
+  padding-left: 40rpx;
+}
+.btnCon view:nth-last-of-type(1){
+  padding-right: 40rpx;
+}
 .btnCon image {
   width: 292rpx;
   height: 124rpx;
