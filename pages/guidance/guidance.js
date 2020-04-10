@@ -310,6 +310,7 @@ Page({
     
   },
   handlerGobackClick(){
+    wx.setStorageSync('guidance_tip', 'ready')
     HiNavigator.switchToSetInfo();
   }
 })

@@ -65,6 +65,7 @@ Page({
   },
 
   async onLoad(options) {
+    console.log('hipeeScenehipeeScenehipeeScene', options)
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
     let hipeeScene = options.hipeeScene ;
@@ -259,7 +260,10 @@ Page({
       });
     } else if (hipeeScene != 'device' ){
       if (hisH != 'device'){
-        HiNavigator.navigateToGuidance({ reset: 2 })
+        if (wx.getStorageSync('guidance_tip') != 'ready'){
+          HiNavigator.navigateToGuidance({ reset: 2 })
+        }
+        wx.setStorageSync('guidance_tip', '')
       }else{
         this.setData({
           showPage: true
