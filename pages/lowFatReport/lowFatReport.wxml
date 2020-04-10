@@ -118,7 +118,7 @@
         <text class="suggest-text">{{report.dietitians.reviews}}</text>
       </view>
     </view>
-    <view class="dietician">
+    <view class="dietician" bindtap="toAdd">
       <image src="../../images/lowFatReport/bannerBg.png" class="bannerBg"></image>
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>

@@ -46,6 +46,10 @@ Page({
     this.handleListData();
     this.getTodayLosefatReport()
   },
+  //跳转微信加人页面
+  toAdd(){
+    HiNavigator.navigateToAddLowfatGroup();
+  },
   getImageInfoFun(src){
     wx.getImageInfo({
       src: src,
