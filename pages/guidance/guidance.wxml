@@ -40,12 +40,12 @@
       <view class="text_center">
         <text class="curPage">{{guidance.page}}/{{totNum}}</text>
       </view>
-      <view class="space-between">
-        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+      <view class="space-between sgtz" >
+        <view class="hei_wei text_center" style="margin-top: 60rpx;">
           <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
           <view class="page2-kg">CM</view>
         </view>
-        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+        <view class="hei_wei text_center" style="margin-top: 60rpx;">
           <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
           <view class="page2-kg">KG</view>
         </view>
@@ -76,15 +76,15 @@
     </view>
     <view class="otherPage " wx:if="{{guidance.page==4}}">
       <view class="header_h3 text_center">身高体重</view>
-      <view class="text_center">
+      <view class="text_center" style="height: 50rpx;line-height: 50rpx;">
         <text class="curPage">{{guidance.page-1}}/{{totNum}}</text>
       </view>
-      <view class="space-between">
-        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+      <view class="space-between sgtz" >
+        <view class="hei_wei text_center" style="margin-top: 60rpx;">
           <input class="page2-num " value="{{guidance.info.height}}" bindinput="bindInputHeight" maxlength="3" type="number" placeholder="身高" placeholder-class="placeholder" />
           <view class="page2-kg">CM</view>
         </view>
-        <view class="hei_wei text_center" style="width: 45%;margin-top: 60rpx;">
+        <view class="hei_wei text_center" style="margin-top: 60rpx;">
           <input class="page2-num" value="{{guidance.info.weight}}" bindinput="bindInputWeight" maxlength="5" type="digit" placeholder="体重" placeholder-class="placeholder" />
           <view class="page2-kg">KG</view>
         </view>

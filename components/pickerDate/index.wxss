@@ -9,6 +9,9 @@
     font-weight:bold;
     color:#454545;
 }
+picker-view{
+  border-style: none;
+}
 .pickerDateColumn{
     height: 166rpx;
     /* border-top:1px solid red;
@@ -17,7 +20,7 @@
 }
 
 .pickerDateColumn-view{
-     font-weight:500;
+     font-weight:400;
      font-size:38rpx;
      height:115rpx;
      line-height: 115rpx;

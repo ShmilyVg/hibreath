@@ -2,7 +2,7 @@ page{
   height: 100%;
 }
 .guidance{
-  height: 100%;
+  height: calc(100% - 140rpx);
   box-sizing: border-box;
   padding-top: 60rpx;
 }
@@ -69,6 +69,7 @@ page{
 .curPage {
   display: inline-block;
   margin-top: 10rpx;
+  padding-top: 2rpx;
   width: 98rpx;
   height: 50rpx;
   line-height: 50rpx;
@@ -126,23 +127,21 @@ page{
 
 .page2-num {
   height: 180rpx;
+  width: 260rpx;
   line-height: 180rpx;
-  font-size: 100rpx;
+  font-size: 80rpx;
   font-weight: bold;
   background-color: #ECF8EB;
   color: #4FBB49;
-  width: 80%;
   border-radius: 20rpx;
   margin: 0 auto;
-  font-family: DINCondensed-Bold, DINCondensed;
+  font-family: DINCondensed , DINCondensed-Bold;
 }
-
 .hei_wei {
   width: 280rpx;
   height: 401rpx;
   text-align: center;
 }
-
 .page2-kg {
   height: 120rpx;
   font-size: 80rpx;
@@ -150,8 +149,12 @@ page{
   color: rgba(69, 69, 69, 1);
   line-height: 120rpx;
   font-family: DINCondensed-Bold, DINCondensed;
+  margin-top: 20rpx;
 }
+.sgtz{
+  padding: 0 60rpx;
 
+}
 .bottom-page4 {
   width: 500rpx;
   height: 100rpx;
@@ -209,7 +212,7 @@ page{
   font-size: 30rpx;
 }
 .greenBtn{
-  background-color: #4FBB49;
+  background-color: #7BC877;
   color: #fff;
 }
 .whtieBtn{

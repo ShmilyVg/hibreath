@@ -153,7 +153,7 @@ view {
   font-family:PingFang SC;
 }
 .startBtn{
-  margin: 100rpx auto 15rpx;
+  margin: 100rpx auto 30rpx;
   width:520rpx;
   height:100rpx;
   line-height: 100rpx;

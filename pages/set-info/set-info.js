@@ -67,13 +67,14 @@ Page({
   async onLoad(options) {
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
-    let hipeeScene = options.hipeeScene ||'device' ;
+    let hipeeScene = options.hipeeScene ;
     let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
     }else{
       hisHipeeScene = wx.getStorageSync('hipeeScene');
     }
+    hipeeScene = (hipeeScene == 'undefined') ? '' : hipeeScene;
     app.globalData.hipeeScene = hipeeScene || hisHipeeScene;
     this.setData({
       hipeeScene,
