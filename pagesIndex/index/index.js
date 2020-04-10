@@ -133,6 +133,9 @@ Page({
       HiNavigator.switchToSetInfo()
       return
     }
+    if(this.data.noBind){
+      HiNavigator.switchToSetInfo()
+    }
     HiNavigator.navigateBack({ delta: 1 });
   },
   preheatImg() {
