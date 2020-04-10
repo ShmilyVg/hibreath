@@ -51,7 +51,7 @@ function normalTrend(widthRpx) {
     }
 
   const { dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit, showLegend, color, legend=true} = trendData;
-    let bg_color = color|| '#ffb185';
+  let bg_color = color || '#9fe79c';
     const series = [{
         name: dataListY1Name,
         data: dataListY,

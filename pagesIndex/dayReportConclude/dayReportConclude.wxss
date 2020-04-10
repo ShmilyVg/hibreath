@@ -15,6 +15,7 @@ page {
   justify-content: space-between;
   padding: 50rpx 49rpx 47rpx 31rpx;
   border-radius: 20rpx;
+  position: relative;
 }
 
 .dayConclude image {
@@ -22,10 +23,22 @@ page {
   height: 28rpx;
   margin-top: 23rpx;
 }
-
+.status-tip {
+  width: 22rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 52rpx;
+}
+.status-tip view {
+  width: 20rpx;
+  height: 8rpx;
+  border-radius: 5rpx;
+  margin-bottom: 9rpx;
+}
 .Desc {
   width: 360rpx;
   margin-left: 17rpx;
+  padding-left: 60rpx;
 }
 
 .DescTit {
@@ -46,7 +59,14 @@ page {
   color: rgba(155, 155, 155, 1);
   line-height: 28rpx;
 }
-
+.DescTimeSpe{
+  height: 70rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(155, 155, 155, 1);
+  line-height: 70rpx;
+}
 .weight {
   width: 90rpx;
 }

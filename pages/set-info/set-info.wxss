@@ -842,5 +842,5 @@ swiper{
   font-weight:500;
   color:rgba(79,187,73,1);
   float: right;
-  margin: 38rpx 112rpx;
+  margin: 68rpx 112rpx;
 }

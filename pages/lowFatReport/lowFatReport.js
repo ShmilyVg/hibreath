@@ -122,7 +122,7 @@ Page({
       dataListY.push(0);
     }
     dataListY1Name = this.data.weight.text;
-    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#35C050', legend: false }, 650);
+    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
   },
   //
   onShareAppMessage(res) {

@@ -148,7 +148,7 @@ page{
     /* margin-bottom: 80rpx; */
 }
 .punchList_Day2{
-   width:196rpx;
+   width:190rpx;
     float: left;
     margin-top: 100rpx;
     /* margin-bottom: 80rpx; */

@@ -12,13 +12,15 @@ Page({
     page:1,
     limit:20,
     lastPage:false,
-    imgCon: {
-      '未燃脂': '../images/dayReportConclude/level1.png',
-      '低速燃脂': '../images/dayReportConclude/level2.png',
-      '状态极佳': '../images/dayReportConclude/level3.png',
-      '快速燃脂': '../images/dayReportConclude/level4.png',
-      '过度燃脂': '../images/dayReportConclude/level5.png'
-    }
+    status: {
+      'kong': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#D0E5CC', '#D0E5CC'],
+      '未燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#D0E5CC', '#5D6AED'],
+      '稳步燃脂': ['#D0E5CC', '#D0E5CC', '#D0E5CC', '#009DFF', '#009DFF'],
+      '状态极佳': ['#D0E5CC', '#D0E5CC', '#0AC1A1', '#0AC1A1', '#0AC1A1'],
+      '快速燃脂': ['#D0E5CC', '#FFAD00', '#FFAD00', '#FFAD00', '#FFAD00'],
+      '过度燃脂，急需注意': ['#FF6100', '#FF6100', '#FF6100', '#FF6100', '#FF6100'],
+      '过度燃脂，危险状态': ['#FF6100', '#FF6100', '#FF6100', '#FF6100', '#FF6100'],
+    },
   },
 
   onLoad: function (options) {
@@ -47,6 +49,13 @@ Page({
         let bT = new Date(b.dateTime).getTime();
         return bT - aT;
       })
+      // reportList.push({
+      //   "dataDesc": "",
+      //   "dateTime": "2020/04/10 16:33",
+      //   "reportId": 152,
+      //   "dataValueToday": '',
+      //   "weightToday": 68
+      // })
       this.setData({
         lastPage:false,
         reportList: reportList
