@@ -49,13 +49,13 @@ Page({
         let bT = new Date(b.dateTime).getTime();
         return bT - aT;
       })
-      reportList.push({
-        "dataDesc": "",
-        "dateTime": "2020/04/10 16:33",
-        "reportId": 152,
-        "dataValueToday": '',
-        "weightToday": 68
-      })
+      // reportList.push({
+      //   "dataDesc": "",
+      //   "dateTime": "2020/04/10 16:33",
+      //   "reportId": 152,
+      //   "dataValueToday": '',
+      //   "weightToday": 68
+      // })
       this.setData({
         lastPage:false,
         reportList: reportList
