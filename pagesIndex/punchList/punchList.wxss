@@ -262,7 +262,7 @@ page{
   float:right;
 }
 .cell-rankR{
-    color:rgba(237,111,105,1);
+    color:#4FBB49;
 }
 .cell-rankB{
     color:rgba(84,84,84,1);
@@ -319,12 +319,12 @@ page{
 .fatBurningState{
   width:100rpx;
   height:32rpx;
-  background:rgba(252,236,235,1);
+  background:#ECF8EB;
   border-radius:8rpx;
   font-size:18rpx;
   font-family:PingFang-SC-Regular,PingFang-SC;
   font-weight:400;
-  color:rgba(237,111,105,1);
+  color:#4FBB49;
   margin-left:53rpx;
   margin-top:-30rpx;
   text-align:center;
