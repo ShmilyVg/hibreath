@@ -32,6 +32,7 @@
                 <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
             </block>
         </view>
-        <view class="bindSuccess-btn"   bindtap="toIndex">我知道了</view>
+        <view class="bindSuccess-btn"   bindtap="toIndex">立即检测</view>
+        <view class="bindSuccess-text" bindtap="toSetInfo">暂不检测,前往首页</view>
     </view>
 </view>

@@ -34,6 +34,9 @@ Page({
         })
 
     },
+    toSetInfo(){
+        HiNavigator.switchToSetInfo()
+    },
     toIndex(){
         HiNavigator.navigateIndexSuc({data:true})
     },
