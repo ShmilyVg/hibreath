@@ -6,6 +6,7 @@ const app = getApp();
 Page({
 
   data: {
+    navBarShow:'Slimple轻松派',
     breathSign: {},//签到数据
   },
   onLoad: function (options) {
@@ -23,6 +24,17 @@ Page({
       const { result } = await Protocol.getGift({ couponCode: couponCode })
       this.setData({
         gift: result
+      })
+    }
+  },
+  onPageScroll(ev){
+    if (!ev.scrollTop){
+      this.setData({
+        navBarShow:'Slimple轻松派'
+      })
+    }else{
+      this.setData({
+        navBarShow: ''
       })
     }
   },

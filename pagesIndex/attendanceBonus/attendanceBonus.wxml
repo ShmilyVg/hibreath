@@ -1,5 +1,5 @@
 <!--pagesIndex/attendanceBonus/attendanceBonus.wxml-->
-<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='' back="{{true}}" bindback="handlerGobackClick">
+<navBar title='{{navBarShow}}' color="#fff" iconTheme="white"  background='' back="{{true}}" bindback="handlerGobackClick">
 
 </navBar>
 <view class="tasks">
