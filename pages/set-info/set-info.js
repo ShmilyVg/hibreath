@@ -110,6 +110,10 @@ Page({
         original_show: true
       })
       wx.setStorageSync('original_tip', 'ready')
+    }else{
+      this.setData({
+        original_show: false
+      })
     }
     this.getPresonMsg();
     this.getFinishedGuide()
