@@ -62,7 +62,7 @@
 }
 .bindSuccess-swiper{
     text-align: center;
-    padding: 92rpx 40rpx 0rpx 40rpx;
+    padding: 62rpx 40rpx 0rpx 40rpx;
 }
 /*用来包裹所有的小圆点 */
 .dots {
@@ -72,7 +72,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: -80rpx;
+    margin-top: -50rpx;
 }
 /*未选中时的小圆点样式 */
 .dot {
@@ -96,8 +96,13 @@
     background:#7BC877;
     border-radius:50rpx;
     text-align: center;
-    margin: 84rpx auto;
+    margin: 54rpx auto 20rpx auto;
     color: #fff;
     font-family: PingFang-SC;
     line-height: 100rpx;
+}
+.bindSuccess-text{
+    color: #7bc877;
+    font-size: 24rpx;
+    text-align: center;
 }

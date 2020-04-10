@@ -1,5 +1,10 @@
 /* pagesThree/supervise/supervise.wxss */
-
+page{
+  background-color: #E2ECD6;
+}
+.supervise{
+  text-align: center;
+}
 .supervise image{
   width: 100%;
   height: 1334rpx;

@@ -144,7 +144,7 @@ Page({
     this.setData({
       shareTitle:result.sharePoster.toFriend.title,
       shareImg:result.sharePoster.toFriend.url,
-      groupImg:result.sharePoster.toGroup.url
+      groupImg:result.sharePoster.toGroup.url1
     })
     console.log('result',result)
   },
@@ -181,6 +181,7 @@ Page({
     })
   },
   savePhoto(){
+    var that = this;
     let url = this.data.groupImg;
     wx.downloadFile({
       url,
