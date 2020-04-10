@@ -96,7 +96,7 @@ view{
   height: 210rpx;
   position: absolute;
   top: 24rpx;
-  left: 32rpx;
+  left: 10rpx;
   z-index: 10;
 }
 .card-title{

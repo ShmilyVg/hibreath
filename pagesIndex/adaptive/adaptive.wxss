@@ -127,16 +127,26 @@ view{
   font-weight:400;
   color:rgba(69,69,69,1);
   margin-bottom: 10rpx;
-  padding: 0 8rpx 0 25rpx;
+  padding: 0 8rpx 0 16rpx;
+  position: relative;
 }
-.foodName::before{
+.point{
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 15rpx;
+  background: #999;
+}
+/* .foodName::before{
   content: '·';
   color: #999;
   font-size: 30rpx;
   font-weight: bold;
   position: absolute;
   left: 0rpx;
-}
+} */
 .day-other{
   height:77rpx;
   line-height: 77rpx;

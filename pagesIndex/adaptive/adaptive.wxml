@@ -18,6 +18,7 @@
           <image src="{{food.img}}"></image>
           <view class="food-tag">{{food.tag}}</view>
           <view wx:for="{{food.subList}}" wx:key="title" class="foodName">
+            <view class="point"></view>
             <text>{{item.title}}</text><text style="font-weight: bold">{{item.quantityDesc}}</text>
           </view>
         </view>

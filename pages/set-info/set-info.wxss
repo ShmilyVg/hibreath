@@ -482,13 +482,13 @@ swiper{
 
 .btnCon {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 85rpx 52rpx;
 }
 
 .btnCon view {
-  width: 260rpx;
-  height: 74rpx;
+  width: 277rpx;
+  height: 124rpx;
   line-height: 74rpx;
   position: relative;
   z-index: 30;
@@ -496,12 +496,11 @@ swiper{
   font-family: PingFang SC;
   font-weight: 800;
   color: rgba(255, 255, 255, 1);
-  overflow: hidden;
 }
 
 .btnCon image {
   width: 292rpx;
-  height: 110rpx;
+  height: 124rpx;
   position: absolute;
   left: -16rpx;
   top: -12rpx;
