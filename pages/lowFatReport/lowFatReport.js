@@ -15,6 +15,7 @@ Page({
   data: {
     rotate: 130,
     progress: 0,
+    navBarBack:true,
     weight: {
       type: 'weight',
       maxLength: 5,
@@ -35,11 +36,14 @@ Page({
   },
 
   onLoad: function (options) {
+    
     let sharedId = options.sharedId == 'undefined' ? null : options.sharedId;
     let reportId = options.reportId == 'undefined' ? null : options.reportId;
+    let navBarBack = sharedId ? false:true;
     this.setData({
       sharedId,
-      reportId
+      reportId,
+      navBarBack
     })
 
     Trend.init(this);
