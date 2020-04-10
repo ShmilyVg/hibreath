@@ -20,9 +20,10 @@ Page({
 
   },
    onShareAppMessage() {
+    this.hideModal()
     return {
       title: this.data.shareTitle,
-      path: `/pagesIndex/weightTarget/weightTarget?sharedId=${this.data.sharedId}`,
+      path: `/pagesThree/supervise/supervise?sharedId=${this.data.sharedId}`,
       imageUrl: this.data.shareImg
     };
   },

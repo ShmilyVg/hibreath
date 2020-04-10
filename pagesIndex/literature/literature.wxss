@@ -33,7 +33,7 @@
   display: block;
   width: 12rpx;
   height: 12rpx;
-  background: rgba(240, 145, 126, 1);
+  background: #7bc877;
   border-radius: 50%;
 }
 
@@ -41,12 +41,12 @@
   width: 260rpx;
   height: 76rpx;
   line-height: 76rpx;
-  background: rgba(255, 247, 245, 1);
+  background: #7bc877;
   border-radius: 38rpx;
   margin: 50rpx auto 100rpx;
   font-size:24rpx;
   font-family:PingFang SC;
   font-weight:400;
-  color:rgba(237,111,105,1);
+  color:#fff;
   text-align: center;
 }
