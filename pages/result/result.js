@@ -126,7 +126,8 @@ Page({
       page,
       pageSize: 20
     });
-    if (bestBreathData) {
+
+    if (list.length>0) {
       if (page == 1) {
         this.setData({
           fatText: lastBreathData.desZh,
@@ -185,6 +186,7 @@ Page({
     }
     wx.stopPullDownRefresh();
     Toast.hiddenLoading();
+    console.log('trendData',this.data.trendData)
   },
   //获取任务信息
   async getTaskInfo() {

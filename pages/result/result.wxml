@@ -1,4 +1,8 @@
-<view wx:if="{{trendData.length !==0}}">
+<view wx:if="{{trendData.length ==0}}">
+  <image class="phone-img" src="../../images/set-info/empty.png"></image>
+  <view class="empty-text">暂无记录</view>
+</view>
+<view wx:else>
   <view class="burn-top">
     <view class="result-top flex-row">
       <view class="flex-row">
@@ -65,8 +69,4 @@
   <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
   </exciting-window>
 
-</view>
-<view wx:else>
-  <image class="phone-img" src="../../images/set-info/empty.png"></image>
-  <view class="empty-text">暂无记录</view>
 </view>
