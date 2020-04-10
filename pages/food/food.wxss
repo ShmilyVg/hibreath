@@ -21,7 +21,7 @@ view {
   display: flex;
   justify-content: center;
   margin-top: 50rpx;
-  margin-bottom: 80rpx;
+  margin-bottom: 60rpx;
   font-size: 120rpx;
   font-weight: bold;
   height: 88rpx;
@@ -33,7 +33,7 @@ view {
 .food-top-text2-kg {
   font-size: 40rpx;
   opacity: 0.5;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   margin-left: 15rpx
 }
 

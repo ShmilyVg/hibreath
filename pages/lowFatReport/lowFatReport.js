@@ -126,13 +126,14 @@ Page({
       dataListY.push(0);
     }
     dataListY1Name = this.data.weight.text;
-    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#35C050', legend: false }, 650);
+    Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
   },
   //
   onShareAppMessage(res) {
     //
     let reportId = this.data.reportId;
     let sharePoster = this.data.report.sharePoster;
+    this.hideModal();
     return {
       title: sharePoster.toFriend.title || "我的减脂报告已生成，快来围观！",
       imageUrl: sharePoster.toFriend.url,

@@ -1,16 +1,25 @@
 <!--pagesIndex/dayReportConclude/dayReportConclude.wxml-->
 <view class="dayReportConclude">
   <view class="dayConclude" wx:for="{{reportList}}" bindtap="goReport" data-index="{{index}}">
-    <image src="{{imgCon[item.dataDesc]}}"></image>
+    <view class="status-tip" wx:if="{{item.dataDesc}}">
+      <view wx:for="{{status[item.dataDesc]}}" wx:key='item' style="background: {{item}}"></view>
+    </view>
+    <view class="status-tip" wx:if="{{!item.dataDesc}}">
+      <view wx:for="{{status['kong']}}" wx:key='item' style="background: {{item}}"></view>
+    </view>
     <view class="Desc">
-      <view class="DescTit">{{item.dataDesc}}</view>
-      <view class="DescTime">{{item.dateTime}}</view>
+      <view class="DescTit" wx:if="{{item.dataDesc}}">{{item.dataDesc}}</view>
+      <view class="DescTime {{item.dataDesc?'':'DescTimeSpe'}}">{{item.dateTime}}</view>
+    </view>
+    <view class="weight" wx:if="{{!item.dataValueToday}}">
+      <view class="value"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
+      <view class="unit"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
     </view>
     <view class="weight">
       <view class="value">{{item.weightToday }}</view>
       <view class="unit">kg</view>
     </view>
-    <view class="ppm">
+    <view class="ppm" wx:if="{{item.dataValueToday}}">
       <view class="value">{{item.dataValueToday}}</view>
       <view class="unit">ppm</view>
     </view>
