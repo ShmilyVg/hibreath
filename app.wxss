@@ -124,7 +124,7 @@ button::after{
 .common-btn{
   width:500rpx;
   height:100rpx;
-  background:rgba(237,111,105,1);
+  background:#7bc877;
   border-radius:50rpx;
   font-size:30rpx;
   font-family:PingFang SC;
