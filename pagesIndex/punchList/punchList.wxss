@@ -100,7 +100,7 @@ page{
 .punchList_share{
     width:240rpx;
     height:70rpx;
-    background:rgba(237,111,105,1);
+    background:#7BC877;
     border-radius:50rpx;
     font-size:24rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
@@ -216,7 +216,7 @@ page{
 .tab_item_active{
     width:320rpx;
     height:70rpx;
-    background:rgba(237,111,105,1);
+    background:#7BC877;
     border-radius:15rpx;
     font-size:26rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
@@ -233,7 +233,7 @@ page{
     font-size:26rpx;
     font-family:PingFang-SC-Regular,PingFang-SC;
     font-weight:400;
-    color:rgba(237,111,105,1);
+    color:#4FBB49;
 }
 .cell{
     width:670rpx;

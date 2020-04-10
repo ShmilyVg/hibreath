@@ -65,7 +65,7 @@ export default class ConnectionManager {
     unbind() {
         this._page.setData({
             navBarColor:'#000000',//导航字体颜色
-            navBarIconTheme:'white',//导航返回键颜色
+            navBarIconTheme:'black',//导航返回键颜色
             navBarBackground:'#ffffff',//导航背景色
             needCheckOTAUpdate:false,
             noBind:true,//显示绑定按钮等
