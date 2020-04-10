@@ -513,6 +513,12 @@
 					"pathName": "pagesIndex/food-details/food-details",
 					"query": "foodId=31",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/manifesto/manifesto",
+					"pathName": "pagesIndex/manifesto/manifesto",
+					"scene": null
 				}
 			]
 		}

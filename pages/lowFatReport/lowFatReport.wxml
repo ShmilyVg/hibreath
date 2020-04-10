@@ -19,7 +19,7 @@
   </view>
   <view class="burnFat lowFat-item" wx:if="{{report.breathData.dataValue}}">
     <view class="item-title">我的燃脂状况
-      <view class="item-title-text" bindtap="goToResult">查看历史记录
+      <view class="item-title-text" bindtap="goToResult" wx:if="{{!sharedId || sharedId == 'undefined'}}">查看历史记录
         <image src="../../images/arr-right.png"></image>
       </view>
     </view>
@@ -84,7 +84,7 @@
   </view>
   <view class="weight lowFat-item" wx:if="{{report.weigthData.weightToday}}">
     <view class="item-title">近一周体重趋势
-      <view class="item-title-text" bindtap="goToFood">查看历史记录
+      <view class="item-title-text" bindtap="goToFood" wx:if="{{!sharedId || sharedId == 'undefined'}}">查看历史记录
         <image src="../../images/arr-right.png"></image>
       </view>
     </view>
@@ -118,7 +118,7 @@
         <text class="suggest-text">{{report.dietitians.reviews}}</text>
       </view>
     </view>
-    <view class="dietician">
+    <view class="dietician" bindtap="toAdd" wx:if="{{!sharedId || sharedId == 'undefined'}}">
       <image src="../../images/lowFatReport/bannerBg.png" class="bannerBg"></image>
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
