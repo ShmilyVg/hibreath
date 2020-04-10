@@ -21,8 +21,10 @@ Page({
       source: this.data.needImgList,
       loaded: res => {}
     });
+    console.log(options);
+    let flag = (options.flag == 'undefined') ? '' : options.flag;
     this.setData({
-      manifesto: options.flag,
+      manifesto: flag,
       sharedId: options.sharedId
     })
   },

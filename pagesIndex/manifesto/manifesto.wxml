@@ -19,6 +19,9 @@
     <image src="../../images/set-info/{{!!manifesto?'readyEdit':'needEdit'}}.png"></image>
     <textarea placeholder="我想要减脂，是因为…（20字）" maxlength ='20' bindinput="changeValue" value='{{manifesto}}' placeholder-class='holder' auto-focus />
   </view>
-  <button class="reduceBtn {{!manifesto?'disabled':''}}" disabled="{{!manifesto}}" bindtap="warnMySelf" >记下来，警示自己</button>
+  <view class="btn_con_c">
+    <button class="reduceBtn {{!manifesto?'disabled':''}}" disabled="{{!manifesto}}" bindtap="warnMySelf" >记下来，警示自己   </button>
   <view class="pass" bindtap="reduceFun">跳过</view>
+  </view>
+  
 </view>

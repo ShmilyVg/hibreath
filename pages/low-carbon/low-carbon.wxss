@@ -108,24 +108,16 @@ view{
   text-align: center;
 }
 .card-more{
-  position: absolute;
-  right: 0rpx;
-  top: 0rpx;
-  padding: 66rpx 31rpx;
-}
-.card-more view{
   width:92rpx;
   height:36rpx;
-  line-height: 28rpx;
-  opacity:0.8;
-  border-radius:18rpx;
-  
-  font-size:22rpx;
-  font-family:PingFang SC;
-  font-weight:500;
-  color:#fff;
-  text-align: center;
-  border:1rpx solid #fff;
+  position: absolute;
+  right: 36rpx;
+  top: 50rpx;
+  z-index: 1000;
+}
+.card-more image{
+  width:92rpx;
+  height:36rpx;
 }
 .card-contain{
   background:rgba(255,255,255,1);

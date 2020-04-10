@@ -14,7 +14,7 @@
   <view class="adaptive card" bindtap="goToAdaptive">
     <image src="../../images/orange.png"></image>
     <view class="card-title">低碳适应期<text wx:if="{{result.adaptPeriod.duration}}">·{{result.adaptPeriod.duration}}{{result.adaptPeriod.unit}}</text></view>
-    <view class="card-more"><view>more＞</view></view>
+    <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
       <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.adaptPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
@@ -24,7 +24,7 @@
   <view class="reduce card" bindtap="goToReduce">
     <image src="../../images/cauliflower.png" style="width: 173rpx;height: 183rpx;top: 34rpx;"></image>
     <view class="card-title">低碳减脂期 <text wx:if="{{result.reduceFatPeriod.duration}}">·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</text>  </view>
-    <view class="card-more"><view>more＞</view></view>
+    <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.reduceFatPeriod.dscriptionList}}" wx:key="item">·{{item}}</view>
@@ -34,7 +34,7 @@
   <view class="consolidate card" bindtap="goToConsolidate" style="margin-bottom: 72rpx;">
     <image src="../../images/coconut.png" style="width: 182rpx;height: 146rpx;top: 44rpx;"></image>
     <view class="card-title">低碳巩固期<text wx:if="{{result.consolidatePeriod.duration}}">·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</text></view>
-    <view class="card-more"><view>more＞</view></view>
+    <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
       <view class="card-text1" wx:for="{{result.consolidatePeriod.dscriptionList}}" wx:key="item">·{{item}}</view>

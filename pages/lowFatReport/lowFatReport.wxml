@@ -102,7 +102,7 @@
       <text class="num">{{report.weigthData.subKGrams}}</text>
       <text class="unit">kg</text> </view>
     <view class="item-h4">
-      <image style="width: 26rpx;height: 26rpx" src="../../images/lowFatReport/chart.png"></image>
+      <image style="width: 26rpx;height: 26rpx;top:7rpx;" src="../../images/lowFatReport/chart.png"></image>
       体重趋势
     </view>
     <view class="weight-chart">

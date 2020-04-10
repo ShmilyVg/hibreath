@@ -26,7 +26,7 @@
     <view class="cards-days-Num">{{fatBurnDays}}<text>天</text></view>
     <view class="cards-days-title">目前共减重</view>
     <view class="cards-days-Num">{{addUpWeightLoss}}<text>kg</text></view>
-    <view class="cards-dec" style="margin-top: 73rpx;margin-bottom: 10rpx">亲爱的小伙伴</view>
+    <view class="cards-dec" style="margin-top: 33rpx;margin-bottom: 10rpx">亲爱的小伙伴</view>
     <view class="cards-dec">点击下方按钮，来帮我补个卡啦!</view>
     <button class="cards-btn" open-type="getUserInfo" bindgetuserinfo="{{todo}}">{{btnText}}</button>
 </view>

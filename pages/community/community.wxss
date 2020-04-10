@@ -112,8 +112,8 @@ page{
     color:rgba(255,255,255,1);
     text-align: center;
     box-sizing: border-box;
-    line-height: 50rpx;
-    padding-top: 20rpx;
+    line-height: 36rpx;
+    padding-top: 27rpx;
 
 }
 .community-text{

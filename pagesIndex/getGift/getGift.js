@@ -15,6 +15,7 @@ Page({
    */
   async onLoad(options) {
     let finishedPhone = options.finishedPhone;
+    console.log(options)
     let id = options.id;
     if (id && id != 'undefined'){
       const { result } = await Protocol.getCouponInfoById({ id: options.id })

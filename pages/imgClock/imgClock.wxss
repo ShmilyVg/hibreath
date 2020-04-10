@@ -29,6 +29,7 @@ page {
   font-size: 48rpx;
   padding-left: 53rpx;
   margin-bottom: 71rpx;
+  padding-right: 50rpx;
 }
 .photo {
   display: flex;
@@ -119,7 +120,7 @@ form{
   display: block;
   background: #fff;
   border-top-left-radius: 80rpx;
-  padding: 100rpx 20rpx 60rpx;
+  padding: 50rpx 20rpx 60rpx;
   box-sizing: border-box;
 }
 button[disabled] {

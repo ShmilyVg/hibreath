@@ -107,6 +107,7 @@ view {
 .item-title {
   font-size: 36rpx;
   font-weight: bold;
+  padding-left: 10rpx;
   color: rgba(51, 51, 51, 1);
 }
 
@@ -147,6 +148,7 @@ view {
   position: relative;
   text-align: center;
   margin-bottom: 20rpx;
+  margin-top: 10rpx;
 }
 
 .speed-num {
@@ -222,11 +224,12 @@ view {
   font-weight: 400;
   color: rgba(102, 102, 102, 1);
   margin-top: 20rpx;
+  padding-left: 10rpx;
 }
 
 .weight .item-n-text {
   background: rgba(248, 248, 248, 1);
-  padding: 23rpx;
+  padding: 23rpx 23rpx 17rpx;
   border-radius: 10rpx;
 }
 
@@ -250,7 +253,7 @@ view {
 }
 
 .burn-progress {
-  margin-top: 36rpx;
+  margin-top: 10rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -258,6 +261,7 @@ view {
 .burn-progress-left {
   padding-top: 25rpx;
   width: 450rpx;
+  margin-left: 10rpx;
 }
 
 .burn-progress-contain {
@@ -302,7 +306,7 @@ view {
 .burn-progress-right {
   width: 131rpx;
   font-size: 22rpx;
-  font-weight: 500;
+  font-weight: 400;
   color: rgba(51, 51, 51, 1);
   text-align: center;
 }
@@ -310,32 +314,32 @@ view {
 .burn-progress-right .img-con {
   width: 95rpx;
   height: 95rpx;
+  line-height: 30rpx;
   padding-top: 8rpx;
-  background: rgba(180, 139, 118, 1);
   border-radius: 50%;
-  margin: 0 auto 10rpx;
+  margin: 0 auto 20rpx;
   position: relative;
 }
 
 .foodQuantity {
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
   background: rgba(104, 207, 124, 1);
   border-radius: 50%;
-  font-size: 22rpx;
+  font-size: 20rpx;
   font-family: PingFang SC;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   position: absolute;
   text-align: center;
-  line-height: 40rpx;
-  right: -10rpx;
-  bottom: 10rpx;
+  line-height: 50rpx;
+  right: -15rpx;
+  bottom: 0rpx;
 }
 
 .burn-progress-right image {
-  width: 80rpx;
-  height: 79rpx;
+  width: 95rpx;
+  height: 95rpx;
   opacity: 0.64;
 }
 
@@ -357,7 +361,7 @@ view {
   background: #fff;
   box-shadow: 0rpx -4rpx 30rpx 0rpx rgba(0, 0, 0, 0.04);
   border-radius: 20rpx;
-  padding: 50rpx 30rpx;
+  padding: 50rpx 30rpx 50rpx 40rpx;
   width: 600rpx;
   margin-top: 60rpx;
   position: relative;
@@ -470,11 +474,11 @@ view {
   font-family: PingFang SC;
   font-weight: 500;
   color: #333;
-  margin-top: 30rpx;
+  margin-top: 10rpx;
 }
 
 .synthesize-contain button {
-  margin-top: 40rpx;
+  margin-top: 30rpx;
   color: #fff;
   width: 350rpx;
   height: 80rpx;
