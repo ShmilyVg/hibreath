@@ -142,7 +142,7 @@ view {
   border-radius:80rpx 0rpx 0rpx 0rpx;
   position: fixed;
   bottom: 0rpx;
-  padding: 71rpx 51rpx 0 51rpx;
+  padding: 41rpx 51rpx 0 51rpx;
   z-index: 2;
 }
 .contain-title{
@@ -153,7 +153,7 @@ view {
   height: 47rpx;
   position: absolute;
   left: 1rpx;
-  top: 8rpx;
+  top: 38rpx;
 }
 textarea{
   display: inline-block;
@@ -162,9 +162,10 @@ textarea{
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(68,68,68,1);
-  padding: 10rpx;
-  height: 90rpx;
+  padding: 40rpx 10rpx 10rpx;
+  height: 240rpx;
   /* min-height:  */
+  width: calc(100% - 65rpx);
 }
 .holder{
   color:rgba(187,187,187,1);
@@ -174,6 +175,7 @@ textarea{
   bottom: 50rpx;
   width: 648rpx;
   box-sizing: border-box;
+  z-index: 10;
 }
 button{
   width:520rpx;

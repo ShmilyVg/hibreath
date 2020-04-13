@@ -108,7 +108,6 @@ Page({
   },
   async handleListData() {
     let list = this.data.report.weigthData.list;
-    console
     if (!list)return;
     list.forEach((value) => {
       const { time, dateX } = Tools.createDateAndTime(value.time * 1000);

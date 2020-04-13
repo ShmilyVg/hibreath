@@ -30,11 +30,11 @@
         </view>
       </view>
     </view>
-    <view class="manifesto">
+    <view class="manifesto" bindtap="goToManifesto">
       <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
       <text class="setInfo-text">我的减脂初心——</text>
       <view class="setInfo-flag"><text space="emsp">{{taskInfo.flag|| '  '}}</text></view>
-      <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
+      <image src="../../images/set-info/edit.png" class="edit"></image>
       <image src="../../images/set-info/yh.png" class="yhClass"></image>
       <view class="line"></view>
     </view>
@@ -208,11 +208,11 @@
 <view class="original" wx:if="{{original_show}}">
   <view class="originalBg">
     <view class="original_contain">
-      <view class="manifesto" style="padding-top:15rpx;">
+      <view class="manifesto" style="padding-top:15rpx;"  bindtap="goToManifesto">
         <image src="../../images/set-info/readyEdit.png" class="speakImg"></image>
         <text class="setInfo-text">我的减脂初心——</text>
         <view class="setInfo-flag" style="font-weight:normal;margin-top: 15rpx;"><text space="emsp">{{taskInfo.flag|| '  '}}</text></view>
-        <image src="../../images/set-info/edit.png" class="edit" bindtap="goToManifesto"></image>
+        <image src="../../images/set-info/edit.png" class="edit"></image>
         <image src="../../images/set-info/yh.png" class="yhClass"></image>
         <view class="line"></view>
       </view>
