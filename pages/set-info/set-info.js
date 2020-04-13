@@ -284,6 +284,12 @@ Page({
         });
       }
       
+    }else{
+      this.setData({
+        finishedPhone: result.finishedPhone,
+        finishedGuide: false,
+        showPage: true
+      })
     }
   },
   //图片预加载列表
