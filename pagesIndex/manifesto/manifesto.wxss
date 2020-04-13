@@ -9,7 +9,11 @@ page {
 view {
   box-sizing: border-box;
 }
-
+.navBar_class{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .manifesto {
   font-family: PingFang SC;
   color: rgba(255, 255, 255, 1);

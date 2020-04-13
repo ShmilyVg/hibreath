@@ -47,7 +47,7 @@ Page({
     })
 
     Trend.init(this);
-    this.handleListData();
+    
     this.getTodayLosefatReport()
   },
   //跳转微信加人页面
@@ -80,7 +80,8 @@ Page({
       progress,
       report: result
     })
-    this.getlosefatspeed(result.breathData.dataValue)
+    this.getlosefatspeed(result.breathData.dataValue);
+    this.handleListData();
   },
   getlosefatspeed(speed) {
     let rotate = 130, piceRotate = 58;
@@ -101,7 +102,8 @@ Page({
     })
   },
   async handleListData() {
-    let timeEnd = getEndZeroTimestamp({ timestamp: new Date() });
+    let timestamp = this.data.report.time;
+    let timeEnd = getEndZeroTimestamp({ timestamp });
     let timeBegin = timeEnd - 7 * 24 * 3600000;
     let { result: { list: list } } = await Protocol.postWeightDataListAll({
       timeBegin,
@@ -131,6 +133,21 @@ Page({
     }
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
+  },
+  onPageScroll(ev){
+    let that = this;
+    wx.createSelectorQuery().select('#lineCanvas_con').boundingClientRect(function (rect) { 
+      console.log(rect)
+      if (rect.top <68){
+        that.setData({
+          canvasTip:true
+        })
+      }else{
+        that.setData({
+          canvasTip: false
+        })
+      }
+    }).exec()
   },
   //
   onShareAppMessage(res) {

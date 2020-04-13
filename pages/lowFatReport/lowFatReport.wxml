@@ -101,12 +101,12 @@
       <text class="unit">kg</text>，还差
       <text class="num">{{report.weigthData.subKGrams}}</text>
       <text class="unit">kg</text> </view>
-    <view class="item-h4">
+    <view class="item-h4" >
       <image style="width: 26rpx;height: 26rpx;top:7rpx;" src="../../images/lowFatReport/chart.png"></image>
       体重趋势
     </view>
-    <view class="weight-chart">
-      <canvas canvas-id="lineCanvas" style="display:{{showModalStatus?'none':'block'}}" class="canvas" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view class="weight-chart" id="lineCanvas_con">
+      <canvas canvas-id="lineCanvas" class="canvas {{showModalStatus?'hidden':''}} {{canvasTip?'hidden':''}}" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
   <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
@@ -123,7 +123,7 @@
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
   </block>
-  <block wx:if="{{request && report.member.finishedInfo}}">
+  <block wx:if="{{ !reportId && request && report.member.finishedInfo}}">
     <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
       <view class="synthesize-contain">

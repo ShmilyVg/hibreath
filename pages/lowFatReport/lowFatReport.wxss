@@ -53,7 +53,9 @@ view {
   position: relative;
   bottom: -5rpx;
 }
-
+.hidden{
+  display: none;
+}
 .lowFat-header-item {
   margin-top: 60rpx;
   position: relative;
@@ -349,6 +351,7 @@ view {
 
 .weight-chart {
   margin-top: 35rpx;
+  height: 380rpx;
   position: relative;
 }
 

@@ -616,7 +616,7 @@ swiper{
 }
 
 .placeholder {
-  font-size: 46rpx;
+  font-size: 100rpx;
   font-family: PingFang-SC;
   font-weight: 400;
   color: #b0b0b0;
