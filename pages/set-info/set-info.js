@@ -360,7 +360,7 @@ Page({
       taskFinished = true;
     }
     console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
-    if(result.modalList){
+    if(result.modalList.length>0){
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: this.data.gitImgList,
