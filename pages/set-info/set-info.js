@@ -327,6 +327,7 @@ Page({
     });
   },
   closeWindows(){
+    wx.showTabBar();
     this.setData({
       showGiftwindows:false
     })
@@ -366,6 +367,7 @@ Page({
         source: this.data.gitImgList,
         loaded: res => {
           setTimeout(()=>{
+            wx.hideTabBar();
             this.setData({
               showGiftwindows:true
             })

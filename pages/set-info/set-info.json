@@ -2,8 +2,10 @@
   "navigationBarBackgroundColor": "#7BC877",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
   "backgroundColor": "#ffffff",
   "usingComponents": {
-    "my-toast": "../../components/my-toast/my-toast"
+    "my-toast": "../../components/my-toast/my-toast",
+    "navBar": "/components/navBar/navBar"
   }
 }
