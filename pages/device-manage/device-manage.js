@@ -10,24 +10,26 @@ Page({
     },
 
     onLoad() {
-        Toast.showLoading();
-        Protocol.getDeviceBindInfo().then(data => {
-            this.setData({
-              ...data.result
-            })
-            if(!this.data.mac){
-                this.setData({
-                    isBind:false
-                })
-            }else{
-                this.setData({
-                    deviceId: this.data.deviceId,
-                    isBind:true
-                })
-            }
 
-        }).finally(() => Toast.hiddenLoading());
+    },
+    onShow(){
+      Toast.showLoading();
+      Protocol.getDeviceBindInfo().then(data => {
+        this.setData({
+          ...data.result
+        })
+        if(!this.data.mac){
+          this.setData({
+            isBind:false
+          })
+        }else{
+          this.setData({
+            deviceId: this.data.deviceId,
+            isBind:true
+          })
+        }
 
+      }).finally(() => Toast.hiddenLoading());
     },
     unbindDevice() {
         Toast.showLoading();
