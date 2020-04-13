@@ -110,7 +110,8 @@ Page({
   },
   handlerGobackClick() {
     if (!wx.getStorageSync('flag')) {
-      HiNavigator.navigateToManifesto()
+      HiNavigator.navigateToManifesto({})
+      return;
     }
     console.log('app.getLatestBLEState().connectState', app.getLatestBLEState().connectState)
     if (app.getLatestBLEState().connectState === 'connected') {
@@ -135,6 +136,7 @@ Page({
     }
     if(this.data.noBind){
       HiNavigator.switchToSetInfo()
+      return;
     }
     HiNavigator.navigateBack({ delta: 1 });
   },
