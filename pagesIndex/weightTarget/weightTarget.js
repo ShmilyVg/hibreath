@@ -41,6 +41,17 @@ Page({
     let { result} = await Protocol.postMembersJoinSchema(data)
     HiNavigator.navigateToManifesto({sharedId:result.sharedId})
   },
+  async startShare(){
+    let weightGoalt = this.data.weightGoalt;
+    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+    let { result} = await Protocol.postMembersJoinSchema(data)
+    this.showModal()
+    this.setData({
+      shareTitle:result.toFriend.title,
+      shareImg:result.toFriend.url,
+      groupImg:result.toGroup.url
+    })
+  },
   goReduceFat(){
     HiNavigator.navigateToReduceFat();
   },
@@ -141,13 +152,6 @@ Page({
       }.bind(this),
       200
     );
-    const {result} = await Protocol.getTaskInfoBySharedId({sharedId:this.data.result.sharedId,sharedType:"initialHeart"});
-    this.setData({
-      shareTitle:result.sharePoster.toFriend.title,
-      shareImg:result.sharePoster.toFriend.url,
-      groupImg:result.sharePoster.toGroup.url1
-    })
-    console.log('result',result)
   },
 //分享至朋友圈
   downShareImg() {

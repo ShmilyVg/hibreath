@@ -27,7 +27,7 @@
       <image src="../images/icon/ask.png"></image>
       <text>什么是slimple低碳饮食方案？</text>
     </view>
-    <button class="startBtn" bindtap="showModal">开启减脂计划并分享</button>
+    <button class="startBtn" bindtap="startShare">开启减脂计划并分享</button>
     <view class="startText" bindtap="startPlan">开启我的燃脂计划</view>
   </view>
 
