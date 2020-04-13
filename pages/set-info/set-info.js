@@ -489,6 +489,10 @@ Page({
             });
           }
         }
+        if (this.data.finishedPhone){
+          HiNavigator.navigateToGuidance({ reset:2});
+          return;
+        }
         await this.getShoppingJumpCodes();
         setTimeout(() => {
           let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
