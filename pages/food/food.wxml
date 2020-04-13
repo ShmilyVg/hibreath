@@ -28,8 +28,9 @@
       <view class="food-chart-title-date">{{dataTrendTime}}</view>
       <image class="food-chart-title-img" src="../../images/arr-right.png"></image>
     </view>
-    <view class="canvas" style="margin-top: 0;display: {{showCanvas}}">
-      <canvas canvas-id="lineCanvas" class="canvas" style="height: {{canvasShow?'380rpx':'0'}};" disable-scroll="true" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+    <view class="canvas" style="margin-top: 0;">
+      <image  bindtouchstart="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style="width: 95%;height: 380rpx;margin-left: 2.5%"></image>
+      <canvas canvas-id="lineCanvas" class="canvas" style="display:{{scrollIng?'none':'block'}};height: 380rpx"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
     <view class="bottom-view" wx:if="{{dataList.length}}">
       <view wx:for="{{dataList}}" wx:key='id' class="bottom-view-cell" bindtap="deleteDataValue" data-index="{{item.id}}">

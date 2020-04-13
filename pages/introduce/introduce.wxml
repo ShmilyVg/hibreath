@@ -1,24 +1,22 @@
 <!--pages/introduce/introduce.wxml-->
 <view class="introduce-title">
-    燃脂精灵是什么
+    什么是智能燃脂检测仪？
 </view>
+<view class="introduce-subTitle" style="margin-bottom: 30rpx">
+    Slimple智能燃脂检测仪是一款针对减脂人群设计的验证是否真正达到燃脂效果的检测仪器。
+</view>
+
 <view class="introduce-subTitle">
-    燃脂精灵是一款可以检测身体脂肪有没有被消耗的黑科技神器。
+    通过使用燃脂检测仪，减脂人群可以快速知道自己的燃脂状态，从而指导自己如何调整燃脂方案。
 </view>
 <view class="introduce-title">
-    燃脂精灵的原理
+    智能燃脂检测仪测的是什么？
 </view>
-<view class="introduce-subTitle">
-    通过检测身体脂肪消耗后产生的酮体（丙酮）多少，来评估您身体的脂肪是否真的有被消耗。
+<view class="introduce-subTitle" style="margin-bottom: 30rpx">
+    真正减脂后，脂肪燃烧，会产生脂肪的代谢产物。在单位时间内，产生速度越快，脂肪燃烧得越多。
 </view>
-<view class="introduce-title">
-    燃脂精灵与体脂称的区别
-</view>
-<view class="introduce-subTitle" style="margin-bottom: 48rpx">
-    体脂称对身体脂肪的测算仅仅是估算，而燃脂精灵可以真的检测到脂肪消耗分解的产物，从而精准的确定身体是否在燃脂，对减脂过程有重要的
-</view>
-<view class="introduce-ps">
-    ※ 我们建议您以每日早8点的检测结果作为标准，来制定您的每日减脂计划
+<view class="introduce-subTitle" style="margin-bottom: 200rpx">
+    检测仪测量的就是脂肪的燃烧速度的快慢。
 </view>
 <view class="introduce-btn" bindtap="toIndex">
     立即检测

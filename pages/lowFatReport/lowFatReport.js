@@ -154,10 +154,11 @@ Page({
     },500)
   },
   showCanvas(){
-    console.log('2222')
-    this.setData({
-      scrollIng:false
-    })
+    if(this.data.scrollIng){
+      this.setData({
+        scrollIng:false
+      })
+    }
   },
   onPageScroll(e){
     var that = this;

@@ -110,7 +110,7 @@
       体重趋势
     </view>
     <view class="weight-chart">
-      <image bindtap="showCanvas" bindlongtap="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
+      <image  bindtouchstart="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
       <canvas  canvas-id="lineCanvas" style="display:{{scrollIng?'none':'block'}}" class="canvas"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>

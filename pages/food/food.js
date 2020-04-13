@@ -85,6 +85,7 @@ Page({
     fatFinish:false,
     showCanvas:"block",
     hideModal: true,
+    scrollIng:false
   },
 
   onLoad(e) {
@@ -111,7 +112,7 @@ Page({
       const { startTimeValue: frontTimestamp, endTimeValue: endTimestamp } = trendTime;
       this.updateTrendTime({ frontTimestamp, endTimestamp });
     }
-    //this.getTaskInfo()
+    this.getTaskInfo()
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });
@@ -162,6 +163,7 @@ Page({
       showCanvas:"block"
     })
   },
+
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
@@ -323,8 +325,43 @@ Page({
       dataListY1Name = topChose[currentIndex].text;
     }
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5 }, 650);
+    var that = this;
+    setTimeout(()=>{
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        canvasId: 'lineCanvas',
+        success: function (res) {
+          that.setData({
+            canvasImg: res.tempFilePath
+          })
+        }
+      })
+    },500)
   },
-
+  showCanvas(){
+    if(this.data.scrollIng){
+      this.setData({
+        scrollIng:false
+      })
+    }
+  },
+  onPageScroll(e){
+    var that = this;
+    that.setData({
+      scrollIng:true
+    })
+    /* let timer= setTimeout(()=>{
+       if(that.data.scrollTop===e.scrollTop){
+         that.setData({
+           scrollTop:e.scrollTop,
+           scrollIng:false
+         })
+         console.log('滚动结束')
+         clearTimeout(timer)
+       }
+     },300)*/
+  },
   bindTapTopChose(e) {
     const { currentTarget: { dataset: { index: currentIndex } } } = e;
     if (currentIndex !== this.data.currentIndex) {
