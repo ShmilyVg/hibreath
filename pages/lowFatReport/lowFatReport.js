@@ -47,7 +47,7 @@ Page({
     })
 
     Trend.init(this);
-    this.handleListData();
+    
     this.getTodayLosefatReport()
   },
   //跳转微信加人页面
@@ -74,13 +74,19 @@ Page({
     if (losefatGrams) {
       progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
     };
-    result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss')
+    result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss');
+    let downAccumulateKGrams = result.weigthData.downAccumulateKGrams
+    if (downAccumulateKGrams){
+      result.weigthData.downAccumulateKGramsTxt = downAccumulateKGrams > 0?'增加':'减少';
+      result.weigthData.downAccumulateKGrams = Math.abs(downAccumulateKGrams);
+    }
     this.setData({
       request: true,
       progress,
       report: result
     })
-    this.getlosefatspeed(result.breathData.dataValue)
+    this.getlosefatspeed(result.breathData.dataValue);
+    this.handleListData()
   },
   getlosefatspeed(speed) {
     let rotate = 130, piceRotate = 58;
@@ -101,13 +107,9 @@ Page({
     })
   },
   async handleListData() {
-    let timeEnd = getEndZeroTimestamp({ timestamp: new Date() });
-    let timeBegin = timeEnd - 7 * 24 * 3600000;
-    let { result: { list: list } } = await Protocol.postWeightDataListAll({
-      timeBegin,
-      timeEnd
-    });
-
+    let list = this.data.report.weigthData.list;
+    console
+    if (!list)return;
     list.forEach((value) => {
       const { time, dateX } = Tools.createDateAndTime(value.time * 1000);
       value.date = { time, date: dateX };
@@ -131,6 +133,21 @@ Page({
     }
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
+  },
+  onPageScroll(ev){
+    let that = this;
+    wx.createSelectorQuery().select('#lineCanvas_con').boundingClientRect(function (rect) { 
+      console.log(rect)
+      if (rect.top <68){
+        that.setData({
+          canvasTip:true
+        })
+      }else{
+        that.setData({
+          canvasTip: false
+        })
+      }
+    }).exec()
   },
   //
   onShareAppMessage(res) {
@@ -170,6 +187,14 @@ Page({
   },
   //燃脂
   async fatTaskToFinish() {
+    if (this.data.reportId){
+      wx.showToast({
+        title: '昨天已经过去，今天继续燃脂',
+        icon: 'none',//
+        duration: 3000
+      })
+      return;
+    }
     wx.getSystemInfo({
       success(res) {
         if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
@@ -264,6 +289,14 @@ Page({
   },
   //跳转首页
   weightFinish() {
+    if (this.data.reportId) {
+      wx.showToast({
+        title: '昨天已经过去，今天继续燃脂',
+        icon: 'none',//
+        duration: 3000
+      })
+      return;
+    }
     HiNavigator.switchToSetInfo()
   },
   //展开分享
