@@ -745,7 +745,7 @@ Page({
     if (bodyIndexResult.isCorrect == 1) {
       this.setData({
         ...bodyIndexResult,
-        showMytoast: true,
+        showMytoast: false,
       })
       setTimeout(() => {
         this.setData({
