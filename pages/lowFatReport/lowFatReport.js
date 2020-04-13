@@ -86,7 +86,7 @@ Page({
       report: result
     })
     this.getlosefatspeed(result.breathData.dataValue);
-    this.handleListData();
+    this.handleListData()
   },
   getlosefatspeed(speed) {
     let rotate = 130, piceRotate = 58;
@@ -107,14 +107,9 @@ Page({
     })
   },
   async handleListData() {
-    let timestamp = this.data.report.time;
-    let timeEnd = getEndZeroTimestamp({ timestamp });
-    let timeBegin = timeEnd - 7 * 24 * 3600000;
-    let { result: { list: list } } = await Protocol.postWeightDataListAll({
-      timeBegin,
-      timeEnd
-    });
-
+    let list = this.data.report.weigthData.list;
+    console
+    if (!list)return;
     list.forEach((value) => {
       const { time, dateX } = Tools.createDateAndTime(value.time * 1000);
       value.date = { time, date: dateX };

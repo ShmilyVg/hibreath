@@ -123,7 +123,7 @@
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
   </block>
-  分享页面不显示
+  <!-- 分享页面不显示该模块 -->
   <block wx:if="{{!sharedId && request && report.member.finishedInfo}}">
     <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
