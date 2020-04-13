@@ -518,6 +518,13 @@
 					"id": -1,
 					"name": "pagesIndex/manifesto/manifesto",
 					"pathName": "pagesIndex/manifesto/manifesto",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/dayReportConclude/dayReportConclude",
+					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
 					"scene": null
 				}
 			]
