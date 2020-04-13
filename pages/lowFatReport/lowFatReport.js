@@ -77,6 +77,10 @@ Page({
       progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
     };
     result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss');
+    let isToday = false;
+    if (Tools.dateFormat(result.time) == Tools.dateFormat(new Date())){
+      isToday = true;
+    }
     let downAccumulateKGrams = result.weigthData.downAccumulateKGrams
     if (downAccumulateKGrams){
       result.weigthData.downAccumulateKGramsTxt = downAccumulateKGrams > 0?'增加':'减少';
@@ -85,6 +89,7 @@ Page({
     this.setData({
       request: true,
       progress,
+      isToday,
       report: result
     })
     this.getlosefatspeed(result.breathData.dataValue);
@@ -208,7 +213,7 @@ Page({
   },
   //燃脂
   async fatTaskToFinish() {
-    if (this.data.reportId){
+    if (!this.data.isToday){
       wx.showToast({
         title: '昨天已经过去，今天继续燃脂',
         icon: 'none',//
@@ -310,7 +315,7 @@ Page({
   },
   //跳转首页
   weightFinish() {
-    if (this.data.reportId) {
+    if (!this.data.isToday) {
       wx.showToast({
         title: '昨天已经过去，今天继续燃脂',
         icon: 'none',//

@@ -3,7 +3,7 @@
  * @LastEditors: 张浩玉
  */
 import HiNavigator from "../../navigator/hi-navigator";
-
+const app = getApp();
 Page({
 
     data: {
@@ -13,10 +13,17 @@ Page({
             "测试完毕后使用洁净柔软的干布或纸张轻轻擦拭干净吹气口。使用后请盖好保护盖，防止灰尘等细小异物"
         ],
         currentSwiper: 0,
-        resultDelta:1
+        resultDelta:1,
+        showText:false
     },
 
     onLoad: function () {
+        if(app.globalData.hipeeScene == 'device' && !wx.getStorageSync('bind_first')){
+            wx.setStorageSync('bind_first', 'ready')
+            this.setData({
+                showText:true
+            })
+        }
         wx.setNavigationBarColor({
             frontColor: '#ffffff',
             backgroundColor: '#7BC877',
@@ -26,7 +33,7 @@ Page({
        /* HiNavigator.navigateIndex();*/
     },
     onShow:function () {
-
+        
     },
     swiperChange: function (e) {
         this.setData({

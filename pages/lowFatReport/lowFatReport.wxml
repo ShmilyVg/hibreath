@@ -43,12 +43,16 @@
       当前燃脂状态
     </view>
     <view class="item-g-text">{{report.breathData.desZh}}</view>
-    <view class="item-h4" wx:if="{{report.breathData.comparison.title != '无'}}">
-      <image style="width: 30rpx;height: 30rpx" src="../../images/lowFatReport/vs.png" class="vspng"></image>
-      与上次相比
-    </view>
-    <view class="item-g-text" wx:if="{{report.breathData.comparison.title || report.breathData.comparison.title != '无'}}"> {{report.breathData.comparison.title}}</view>
-    <view class="item-n-text">{{report.breathData.comparison.content}}</view>
+    <block wx:if="{{report.breathData.comparison.title}}">
+      <view class="item-h4">
+        <image style="width: 30rpx;height: 30rpx" src="../../images/lowFatReport/vs.png" class="vspng"></image>
+        与上次相比
+      </view>
+      <view class="item-g-text" > {{report.breathData.comparison.title}}</view>
+      <view class="item-n-text">{{report.breathData.comparison.content}}</view>
+    </block>
+    
+    
     <view class="item-h4">
       <image style="width: 24rpx;height: 30rpx" src="../../images/lowFatReport/fire.png" class="fire"></image>
       今日消耗脂肪状态
@@ -132,12 +136,12 @@
         <image src="../../images/lowFatReport/lock.png"></image>
         <block wx:if="{{!report.weigthData.weightToday}}">
           <view>完成全部打卡检测，获取今日综合分析</view>
-          <button bindtap="weightFinish" class="{{reportId?'disabledClass':''}}">去体重打卡</button>
+          <button bindtap="weightFinish" class="{{isToday?'':'disabledClass'}}">去体重打卡</button>
         </block>
         <block wx:elif="{{!report.breathData.dataValue}}">
           <view>你减少的体重里有多少是脂肪呢？ </view>
           <view>来测测燃脂状况吧，获取今日综合分析</view>
-          <button bindtap="fatTaskToFinish" class="{{reportId?'disabledClass':''}}">去燃脂打卡</button>
+          <button bindtap="fatTaskToFinish" class="{{isToday?'':'disabledClass'}}">去燃脂打卡</button>
         </block>
       </view>
     </view>
