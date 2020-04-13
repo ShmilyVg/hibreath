@@ -321,4 +321,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToShareDynamics({type,orderNumber}) {
         this.navigateTo({url: '/pagesIndex/shareDynamics/shareDynamics?type='+ type+'&orderNumber='+orderNumber});
     }
+    /**
+     * 返回
+    */
+   static navigateBack({ delta}){
+    this.navigateBack({delta})
+   }
 }
