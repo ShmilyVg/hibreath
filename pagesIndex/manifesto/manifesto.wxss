@@ -164,6 +164,7 @@ textarea{
   color:rgba(68,68,68,1);
   padding: 10rpx;
   height: 90rpx;
+  /* min-height:  */
 }
 .holder{
   color:rgba(187,187,187,1);

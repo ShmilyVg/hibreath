@@ -134,22 +134,7 @@ Page({
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
   },
-  onPageScroll(ev){
-    let that = this;
-    wx.createSelectorQuery().select('#lineCanvas_con').boundingClientRect(function (rect) { 
-      console.log(rect)
-      if (rect.top <68){
-        that.setData({
-          canvasTip:true
-        })
-      }else{
-        that.setData({
-          canvasTip: false
-        })
-      }
-    }).exec()
-  },
-  //
+
   onShareAppMessage(res) {
     //
     let reportId = this.data.reportId;
