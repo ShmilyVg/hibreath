@@ -137,10 +137,10 @@ Page({
       HiNavigator.switchToSetInfo()
       return
     }
-    if(this.data.noBind){
+ /*   if(this.data.noBind){
       HiNavigator.switchToSetInfo()
       return;
-    }
+    }*/
     HiNavigator.navigateBack({ delta: 1 });
   },
   preheatImg() {
