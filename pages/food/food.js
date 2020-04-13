@@ -111,7 +111,7 @@ Page({
       const { startTimeValue: frontTimestamp, endTimeValue: endTimestamp } = trendTime;
       this.updateTrendTime({ frontTimestamp, endTimestamp });
     }
-    this.getTaskInfo()
+    //this.getTaskInfo()
   },
   toCalendarPage() {
     HiNavigator.navigateToCalendar({ type: this.data.topChose[this.data.currentIndex].type });
