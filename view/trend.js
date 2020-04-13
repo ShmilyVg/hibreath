@@ -97,7 +97,7 @@ function normalTrend(widthRpx) {
         haveNum: true,
         legend,
         yAxisSplit: yAxisSplit - 1,
-        animation: true
+        animation: false
     });
 }
 

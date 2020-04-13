@@ -487,10 +487,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 61,
 					"name": "pagesThree/supervise/supervise",
 					"pathName": "pagesThree/supervise/supervise",
-					"query": "sharedId=CC23CC23F313C27A3F3AA999F251E90339C4AF0F2149266CED4B9D91D5385008",
+					"query": "sharedId=98AC437CE4EC74BBAF04C2DAD7719A4C57EC2C2A42A8026D35AB6A5CF898021F",
 					"scene": null
 				},
 				{
@@ -525,6 +525,7 @@
 					"id": -1,
 					"name": "pagesIndex/dayReportConclude/dayReportConclude",
 					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
+					"query": "",
 					"scene": null
 				}
 			]

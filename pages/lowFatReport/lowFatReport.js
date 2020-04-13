@@ -10,6 +10,7 @@ import {
   WXDialog
 } from "heheda-common-view";
 var mta = require('../../utils//mta_analysis.js')
+let isImg = true
 Page({
 
   data: {
@@ -33,6 +34,7 @@ Page({
     showModalStatus: false,
     shareTip: false,
     report: {},
+    scrollIng:false
   },
 
   onLoad: function (options) {
@@ -132,8 +134,37 @@ Page({
     }
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
+    var that = this;
+    setTimeout(()=>{
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        canvasId: 'lineCanvas',
+        success: function (res) {
+          that.setData({
+            canvasImg: res.tempFilePath
+          })
+        }
+      })
+    },500)
   },
-
+  onPageScroll(e){
+    var that = this;
+    that.setData({
+      scrollTop:e.scrollTop,
+      scrollIng:true
+    })
+    let timer= setTimeout(()=>{
+      if(that.data.scrollTop===e.scrollTop){
+        that.setData({
+          scrollTop:e.scrollTop,
+          scrollIng:false
+        })
+        console.log('滚动结束')
+        clearTimeout(timer)
+      }
+    },300)
+  },
   onShareAppMessage(res) {
     //
     let reportId = this.data.reportId;
@@ -295,7 +326,8 @@ Page({
     animation.translateY(500).step();
     this.setData({
       animationData: animation.export(),
-      showModalStatus: true
+      showModalStatus: true,
+      scrollIng:true
     });
     setTimeout(
       function () {
@@ -309,7 +341,8 @@ Page({
   },
   hideModal: function () {
     this.setData({
-      showModalStatus: false
+      showModalStatus: false,
+      scrollIng:false
     });
   },
 })

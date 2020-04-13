@@ -21,6 +21,7 @@ Page({
   },
    onShareAppMessage() {
     this.hideModal()
+     console.log('this.data.sharedId',this.data.sharedId)
     return {
       title: this.data.shareTitle,
       path: `/pagesThree/supervise/supervise?sharedId=${this.data.sharedId}`,
@@ -47,6 +48,7 @@ Page({
     let { result} = await Protocol.postMembersJoinSchema(data)
     this.showModal()
     this.setData({
+      sharedId:result.sharedId,
       shareTitle:result.toFriend.title,
       shareImg:result.toFriend.url,
       groupImg:result.toGroup.url
