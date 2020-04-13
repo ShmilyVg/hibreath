@@ -83,7 +83,10 @@ Page({
     })
     //扫硬件二维码时清除已进入绑定页面标志
     if (hipeeScene == 'device'){
-      wx.removeStorage('bindPage');
+      try{
+        wx.removeStorage('bindPage');
+      }catch(error){}
+      
     }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
@@ -626,7 +629,9 @@ Page({
         mask: true,
       })
     }
-    
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 1000)
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
       bleStateListener: () => {
@@ -644,9 +649,7 @@ Page({
         console.log("setPage-receiveDataListener", finalResult, state);
       }
     });
-    setTimeout(() => {
-      wx.hideLoading();
-    },1000)
+    
     Protocol.getDeviceBindInfo().then(data => {
       this.setData({
         ...data.result
