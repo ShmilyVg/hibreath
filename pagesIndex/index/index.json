@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "Slimple轻松派",
-  "disableScroll":true,
+  "disableScroll":false,
   "navigationStyle": "custom",
   "navigationBarTextStyle":"white",
   "usingComponents": {
