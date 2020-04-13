@@ -287,6 +287,9 @@ Page({
   imgListArr(){
     var that = this;
     for(var i=0;i<that.data.taskInfo.modalList.length;i++){
+      if(that.data.taskInfo.modalList[i].modalType == 'lowCarbon'){
+        that.data.needImgList.push('fatWindows/getGift.png')
+      }
       if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
         let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
         let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
@@ -316,7 +319,7 @@ Page({
   },
   closeWindows(){
     this.setData({
-      showWindows:false
+      showGiftwindows:false
     })
   },
   //关闭初心遮罩
@@ -327,7 +330,7 @@ Page({
   },
   //前往 领取低碳饮食页面
   toGetLowFood(){
-    HiNavigator.navigateToBoxReplenish();
+    HiNavigator.navigateTogetLowCarbon();
   },
   async getBanner(){
     const { result: { dataList} } = await Protocol.getBannerList();
@@ -347,7 +350,7 @@ Page({
       taskFinished = true;
     }
     console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
-    if(result.isLowCarbonSnacks){
+    if(result.modalList){
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: this.data.gitImgList,
