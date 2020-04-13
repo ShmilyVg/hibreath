@@ -36,7 +36,6 @@ Page({
     }
     
   },
-  
   setManifesto(e) {
     let item = e.currentTarget.dataset['item']
     let str = item.value;
