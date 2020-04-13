@@ -68,7 +68,7 @@ Page({
     console.log('hipeeScenehipeeScenehipeeScene', options)
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = options.sharedId ;
-    let hipeeScene = options.hipeeScene ;
+    let hipeeScene = options.hipeeScene ||"device";
     let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
@@ -83,7 +83,7 @@ Page({
     })
     //扫硬件二维码时清除已进入绑定页面标志
     if (hipeeScene == 'device'){
-      wx.removeStorag('bindPage');
+      wx.removeStorage('bindPage');
     }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
@@ -476,7 +476,16 @@ Page({
       this.setData({
         deny: false
       })
-      
+      //已经验证过手机号
+      if (this.data.finishedPhone) {
+        if (this.data.hipeeScene =='device'){
+          HiNavigator.navigateIndex();
+        }else{
+          HiNavigator.navigateToGuidance({ reset: 2 });
+        }
+        return;
+      }
+      //没有验证过手机号
       if (this.data.hipeeScene){
         HiNavigator.navigateToGoVerification()
       }else{
@@ -492,10 +501,7 @@ Page({
             });
           }
         }
-        if (this.data.finishedPhone){
-          HiNavigator.navigateToGuidance({ reset:2});
-          return;
-        }
+        
         await this.getShoppingJumpCodes();
         setTimeout(() => {
           let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
@@ -620,6 +626,7 @@ Page({
         mask: true,
       })
     }
+    
     this.indexCommonManager = new IndexCommonManager(this);
     app.setBLEListener({
       bleStateListener: () => {
@@ -637,7 +644,9 @@ Page({
         console.log("setPage-receiveDataListener", finalResult, state);
       }
     });
-
+    setTimeout(() => {
+      wx.hideLoading();
+    },1000)
     Protocol.getDeviceBindInfo().then(data => {
       this.setData({
         ...data.result
