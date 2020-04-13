@@ -148,13 +148,19 @@ Page({
       })
     },500)
   },
+  showCanvas(){
+    console.log('2222')
+    this.setData({
+      scrollIng:false
+    })
+  },
   onPageScroll(e){
     var that = this;
     that.setData({
       scrollTop:e.scrollTop,
       scrollIng:true
     })
-    let timer= setTimeout(()=>{
+   /* let timer= setTimeout(()=>{
       if(that.data.scrollTop===e.scrollTop){
         that.setData({
           scrollTop:e.scrollTop,
@@ -163,7 +169,7 @@ Page({
         console.log('滚动结束')
         clearTimeout(timer)
       }
-    },300)
+    },300)*/
   },
   onShareAppMessage(res) {
     //

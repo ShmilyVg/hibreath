@@ -84,7 +84,7 @@ Page({
     //扫硬件二维码时清除已进入绑定页面标志
     if (hipeeScene == 'device'){
       try{
-        wx.removeStorage('bindPage');
+        wx.removeStorageSync('bindPage');
       }catch(error){}
       
     }
