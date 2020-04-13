@@ -74,7 +74,7 @@
         <text>{{report.breathData.losefatGrams.foodDescription}}</text>
       </view>
     </view>
-    <view class="synthesize" wx:if="{{!report.member.finishedInfo}}">
+    <view class="synthesize" wx:if="{{!sharedId && !report.member.finishedInfo}}">
       <view class="synthesize-contain">
         <image src="../../images/lowFatReport/lock.png"></image>
         <view>完善个人信息，了解自己燃脂状态</view>
@@ -93,10 +93,10 @@
       累积变化
     </view>
     <view class="item-g-text">
-      <text class="num">{{report.weigthData.downAccumulateKGrams}}</text>
+      <text class="num"><text>{{report.weigthData.downAccumulateKGramsTxt}}</text>{{report.weigthData.downAccumulateKGrams}}</text>
       <text class="unit">kg</text>
     </view>
-    <view class="item-n-text">距离目标体重
+    <view class="item-n-text" wx:if="{{report.weigthData.weightGoalt}}">距离目标体重
       <text class="num">{{report.weigthData.weightGoalt}}</text>
       <text class="unit">kg</text>，还差
       <text class="num">{{report.weigthData.subKGrams}}</text>
@@ -123,7 +123,8 @@
       <view class="dietician-text1">想要获得更符合个人情况的解析？来和营养师聊聊吧~</view>
     </view>
   </block>
-  <block wx:if="{{ !reportId && request && report.member.finishedInfo}}">
+  分享页面不显示
+  <block wx:if="{{!sharedId && request && report.member.finishedInfo}}">
     <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
       <view class="synthesize-contain">
@@ -131,11 +132,11 @@
         <block wx:if="{{!report.weigthData.weightToday}}">
           <view>你减少的体重里有多少是脂肪呢？ </view>
           <view>来测测燃脂状况吧，获取今日综合分析</view>
-          <button bindtap="weightFinish">去体重打卡</button>
+          <button bindtap="weightFinish" class="{{reportId?'disabledClass':''}}">去体重打卡</button>
         </block>
         <block wx:elif="{{!report.breathData.dataValue}}">
           <view>完成全部打卡检测，获取今日综合分析</view>
-          <button bindtap="fatTaskToFinish">去燃脂打卡</button>
+          <button bindtap="fatTaskToFinish" class="{{reportId?'disabledClass':''}}">去燃脂打卡</button>
         </block>
       </view>
     </view>

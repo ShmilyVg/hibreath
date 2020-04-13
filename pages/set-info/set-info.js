@@ -81,7 +81,10 @@ Page({
       hipeeScene,
       sharedId
     })
-    
+    //扫硬件二维码时清除已进入绑定页面标志
+    if (hipeeScene == 'device'){
+      wx.removeStorag('bindPage');
+    }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide();
@@ -260,6 +263,7 @@ Page({
       });
     } else if (hipeeScene != 'device' ){
       if (hisH != 'device'){
+        //guidance_tip为ready时  不再进入选择性别体重页
         if (wx.getStorageSync('guidance_tip') != 'ready'){
           HiNavigator.navigateToGuidance({ reset: 2 })
         }
@@ -639,6 +643,9 @@ Page({
         //扫硬件码。没有绑定时跳转绑定接口
         setTimeout(()=>{
           if (this.data.hipeeScene == 'device' && this.data.finishedPhone) {
+            if (wx.getStorageSync('bindPage') == 'ready'){
+              return;
+            }
             HiNavigator.navigateIndex();
           }else{
             wx.hideLoading();

@@ -74,7 +74,12 @@ Page({
     if (losefatGrams) {
       progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
     };
-    result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss')
+    result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss');
+    let downAccumulateKGrams = result.weigthData.downAccumulateKGrams
+    if (downAccumulateKGrams){
+      result.weigthData.downAccumulateKGramsTxt = downAccumulateKGrams > 0?'增加':'减少';
+      result.weigthData.downAccumulateKGrams = Math.abs(downAccumulateKGrams);
+    }
     this.setData({
       request: true,
       progress,
@@ -187,6 +192,14 @@ Page({
   },
   //燃脂
   async fatTaskToFinish() {
+    if (this.data.reportId){
+      wx.showToast({
+        title: '昨天已经过去，今天继续燃脂',
+        icon: 'none',//
+        duration: 3000
+      })
+      return;
+    }
     wx.getSystemInfo({
       success(res) {
         if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
@@ -281,6 +294,14 @@ Page({
   },
   //跳转首页
   weightFinish() {
+    if (this.data.reportId) {
+      wx.showToast({
+        title: '昨天已经过去，今天继续燃脂',
+        icon: 'none',//
+        duration: 3000
+      })
+      return;
+    }
     HiNavigator.switchToSetInfo()
   },
   //展开分享

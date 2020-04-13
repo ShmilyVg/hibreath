@@ -109,6 +109,9 @@ Page({
     HiNavigator.navigateToDeviceUnbind();
   },
   handlerGobackClick() {
+    //添加已经进入本页标志
+    wx.setStorageSync('bindPage', 'ready')
+    //没有进入宣言页时 直接进入宣言页
     if (!wx.getStorageSync('flag')) {
       HiNavigator.navigateToManifesto({})
       return;

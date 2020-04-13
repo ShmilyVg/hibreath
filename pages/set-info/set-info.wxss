@@ -151,6 +151,9 @@ view{
   z-index: 20;
   padding: 10rpx 0 40rpx 40rpx;
 }
+.original_contain .manifesto{
+  padding-left: 30rpx;
+}
 .yhClass{
   width: 92rpx;
   height: 80rpx;
