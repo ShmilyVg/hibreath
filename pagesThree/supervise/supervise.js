@@ -18,7 +18,7 @@ Page({
     console.log('result',result)
     setTimeout(()=>{
       this.setData({
-        needImg:result.sharePoster.toGroup.url2
+        needImg:result.sharePoster.toGroup.url
       })
       console.log(this.data.needImg)
     },500)

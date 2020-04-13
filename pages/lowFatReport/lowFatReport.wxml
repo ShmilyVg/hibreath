@@ -106,7 +106,8 @@
       体重趋势
     </view>
     <view class="weight-chart">
-      <canvas canvas-id="lineCanvas" style="display:{{showModalStatus?'none':'block'}}" class="canvas"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      <image wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
+      <canvas  canvas-id="lineCanvas" style="display:{{scrollIng?'none':'block'}}" class="canvas"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
   <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
