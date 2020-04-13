@@ -334,6 +334,7 @@ Page({
   //前往 领取低碳饮食页面
   toGetLowFood(){
     HiNavigator.navigateTogetLowCarbon();
+    this.closeWindows()
   },
   async getBanner(){
     const { result: { dataList} } = await Protocol.getBannerList();

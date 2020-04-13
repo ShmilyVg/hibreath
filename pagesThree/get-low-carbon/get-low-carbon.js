@@ -36,7 +36,7 @@ Page({
     console.log('couponCode',this.data.couponCode)
   },
   handlerGobackClick(){
-    HiNavigator.navigateBack({delta: 1});
+    HiNavigator.switchToSetInfo()
   },
   async toYz(){
     if (this.data.content.qualificationStatus == 2){
