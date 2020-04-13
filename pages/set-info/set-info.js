@@ -83,7 +83,7 @@ Page({
     })
     //扫硬件二维码时清除已进入绑定页面标志
     if (hipeeScene == 'device'){
-      wx.removeStorag('bindPage');
+      wx.removeStorage('bindPage');
     }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
