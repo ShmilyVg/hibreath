@@ -49,16 +49,24 @@ Page({
       })
       return;
     }
-    let weightGoalt = this.data.weightGoalt;
-    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    let { result} = await Protocol.postMembersJoinSchema(data)
-    if (this.data.fromPage != 1){
-      HiNavigator.navigateToManifesto({ sharedId: result.sharedId })
-    }else{
-      this.setData({
-        can_change: false
-      })
-    }
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    try{
+      let weightGoalt = this.data.weightGoalt;
+      let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+      let { result } = await Protocol.postMembersJoinSchema(data)
+      if (this.data.fromPage != 1) {
+        HiNavigator.navigateToManifesto({ sharedId: result.sharedId })
+      } else {
+        this.setData({
+          can_change: false
+        })
+      }
+    }catch(err){}
+    wx.hideLoading();
+    
     
   },
   async startShare(){
