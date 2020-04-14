@@ -1,7 +1,7 @@
 <!--pages/low-carbon/low-carbon.wxml-->
 <view class="topView" style="padding: 74rpx 60rpx 60rpx 60rpx"  bindtap="toRecomTarNew">
   <view class="topView-view1">我的减脂方案</view>
-  <view class="topView-view2">重新制定</view>
+  <view class="topView-view2">立即开启计划</view>
   <view class="clear"></view>
 </view>
 <view class="contain">
