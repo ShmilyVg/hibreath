@@ -604,6 +604,7 @@ view {
   color:rgba(155,155,155,1);
 }
 .bottmFixd{
+  border-radius: 0rpx;
   position: fixed;
   bottom: 0;
   width:100%;

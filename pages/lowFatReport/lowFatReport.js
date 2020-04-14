@@ -9,6 +9,7 @@ import {
   Toast,
   WXDialog
 } from "heheda-common-view";
+import Login from "../../modules/network/login";
 var mta = require('../../utils//mta_analysis.js')
 let isImg = true
 Page({
@@ -356,5 +357,19 @@ Page({
       showModalStatus: false,
       scrollIng:false
     });
+  },
+  async toNextpage(e){
+    if(getApp().globalData.isLogin){
+      HiNavigator.switchToSetInfo()
+    }else {
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      console.log(userInfo)
+      if (!!userInfo) {
+        await Login.doRegister({ userInfo, encryptedData, iv });
+        setTimeout(() => {
+          HiNavigator.switchToSetInfo()
+        }, 500);
+      }
+    }
   },
 })

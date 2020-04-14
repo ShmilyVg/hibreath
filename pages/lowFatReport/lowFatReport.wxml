@@ -172,4 +172,4 @@
   </button>
   <view class="cancel" bindtap="hideModal">取消</view>
 </view>
-<view class="bottmFixd" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</view>
+<button class="bottmFixd" open-type="getUserInfo" bindgetuserinfo="toNextpage" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</button>
