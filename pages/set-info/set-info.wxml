@@ -2,7 +2,7 @@
         title='Slimple轻松派'
         color="#fff"
         iconTheme="{{navBarIconTheme}}"
-        background='{{navBarBackground}}'
+        background='#7BC877'
         back="{{false}}"
         bindback="handlerGobackClick">
 
