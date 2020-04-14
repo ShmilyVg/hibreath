@@ -41,9 +41,7 @@ Page({
   async toYz(){
     if (this.data.content.qualificationStatus == 2){
       let couponCode = this.data.content.couponCode;
-
       if (couponCode) {
-
         let res = await Protocol.takeGift({ couponCode });
         if (res.code == 1) {
           wx.showToast({
@@ -53,7 +51,18 @@ Page({
           });
           setTimeout(() => {
             //跳转有赞小程序
-          }, 3000)
+            wx.navigateToMiniProgram({
+              appId:'wxeea809f23b5a5d9d',
+              extraData: {
+                // foo: 'bar'
+              },
+              envVersion: 'develop',
+              success: (res) => {
+                // 打开成功
+                console.log('打开有赞小程序成功', res);
+              }
+            })
+          }, 1000)
 
         }
       }
@@ -65,7 +74,18 @@ Page({
       });
       setTimeout(() => {
         //跳转有赞小程序
-      }, 3000)
+        wx.navigateToMiniProgram({
+          appId:'wxeea809f23b5a5d9d',
+          extraData: {
+            // foo: 'bar'
+          },
+          envVersion: 'develop',
+          success: (res) => {
+            // 打开成功
+            console.log('打开有赞小程序成功', res);
+          }
+        })
+      }, 1000)
     }
     
   },
