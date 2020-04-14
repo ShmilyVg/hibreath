@@ -10,6 +10,7 @@ page{
   height: 1334rpx;
 }
 .supervise_btn{
+  border-radius: 0px;
   font-size:30rpx;
   font-family:PingFang SC;
   font-weight:500;
