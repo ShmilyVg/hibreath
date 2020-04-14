@@ -4,7 +4,10 @@
 </navBar>
 <view style="height:139rpx;"> </view>
 <view class="manifesto">
-<image src="../images/qipaobg.png" class="qipaobg"></image>
+  <view  class="qipaobg">
+    <image src="../images/qipaobg.png" style="width: 100%;height: 100%"></image>
+  </view>
+
   <view class="manifesto-title"> <view>减脂前，请务必花点时间回想下</view> 我的<text>减脂初心</text>是什么?</view>
   <view class="item-list">
     <view class="item {{'text'+(index+1)}}" wx:for="{{textList}}" wx:key='item' data-item="{{item}}" bindtap="setManifesto">
