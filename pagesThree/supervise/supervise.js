@@ -1,5 +1,7 @@
 // pagesThree/supervise/supervise.js
 import Protocol from "../../modules/network/protocol";
+import HiNavigator from "../../navigator/hi-navigator";
+import Login from "../../modules/network/login";
 
 Page({
 
@@ -24,7 +26,20 @@ Page({
     },500)
 
   },
-
+  async toNextpage(e){
+    if(getApp().globalData.isLogin){
+      HiNavigator.switchToSetInfo()
+    }else {
+      const { detail: { userInfo, encryptedData, iv } } = e;
+      console.log(userInfo)
+      if (!!userInfo) {
+        await Login.doRegister({ userInfo, encryptedData, iv });
+        setTimeout(() => {
+          HiNavigator.switchToSetInfo()
+        }, 500);
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
