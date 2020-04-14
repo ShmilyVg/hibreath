@@ -67,7 +67,7 @@ Page({
   async onLoad(options) {
     console.log('hipeeScenehipeeScenehipeeScene', options)
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
-    let sharedId = options.sharedId ;
+    let sharedId = app.globalData.firendSharedId;
     let hipeeScene = options.hipeeScene;
     let hisHipeeScene;
     if (hipeeScene){
@@ -234,7 +234,12 @@ Page({
     const { result } = await Protocol.getAccountInfo();
     let hipeeScene = this.data.hipeeScene;
     let hisH = wx.getStorageSync('hipeeScene')
+    let finishedInfo = false;
+    if (result.birthday && result.sex && result.weight && result.height){
+      finishedInfo = true;
+    }
     this.setData({
+      finishedInfo,
       finishedPhone: result.finishedPhone,
     })
     if (!result.finishedPhone) {
@@ -264,32 +269,19 @@ Page({
           }, 200);
         }
       });
-    } else if (hipeeScene != 'device' ){
-      if (hisH != 'device'){
-        //guidance_tip为ready时  不再进入选择性别体重页
-        if (wx.getStorageSync('guidance_tip') != 'ready'){
-          HiNavigator.navigateToGuidance({ reset: 2 })
-        }
-        wx.setStorageSync('guidance_tip', '')
-      }else{
+    } else if (finishedInfo){
+      if (hipeeScene != 'device'){
         this.setData({
+          finishedPhone: result.finishedPhone,
           showPage: true
         })
-        wx.showTabBar({
-          fail: function () {
-            setTimeout(function () {
-              wx.showTabBar();
-            }, 200);
-          }
-        });
       }
-      
+
     }else{
-      this.setData({
-        finishedPhone: result.finishedPhone,
-        finishedGuide: false,
-        showPage: true
-      })
+      if (wx.getStorageSync('guidance_tip') != 'ready') {
+        HiNavigator.navigateToGuidance({ reset: 2 })
+      }
+      wx.setStorageSync('guidance_tip', '')
     }
   },
   //图片预加载列表
@@ -501,18 +493,19 @@ Page({
       if (this.data.hipeeScene){
         HiNavigator.navigateToGoVerification()
       }else{
-        if (sharedId) {
-          let postData = {
-            "sharedId": sharedId //分享用户编号
-          }
-          let { result } = await Protocol.putBreathSign(postData);
-          if (result.status) {
-            wx.showToast({
-              title: '帮好友补签成功',
-              duration: 500
-            });
-          }
-        }
+        //补签
+        // if (sharedId) {
+        //   let postData = {
+        //     "sharedId": sharedId //分享用户编号
+        //   }
+        //   let { result } = await Protocol.putBreathSign(postData);
+        //   if (result.status) {
+        //     wx.showToast({
+        //       title: '帮好友补签成功',
+        //       duration: 500
+        //     });
+        //   }
+        // }
         
         await this.getShoppingJumpCodes();
         setTimeout(() => {
@@ -670,11 +663,10 @@ Page({
         this.connectionPage.unbind();
         //扫硬件码。没有绑定时跳转绑定接口
         setTimeout(()=>{
-          if (this.data.hipeeScene == 'device' && this.data.finishedPhone) {
-            if (wx.getStorageSync('bindPage') == 'ready'){
-              return;
+          if (this.data.hipeeScene == 'device' && this.data.finishedInfo) {
+            if (wx.getStorageSync('bindPage') != 'ready'){
+              HiNavigator.navigateIndex();
             }
-            HiNavigator.navigateIndex();
           }else{
             wx.hideLoading();
           }
