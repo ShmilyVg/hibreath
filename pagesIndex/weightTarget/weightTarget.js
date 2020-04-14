@@ -1,6 +1,7 @@
 // pagesIndex/weightTarget/weightTarget.js
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+const app = getApp();
 Page({
 
   /**
@@ -14,6 +15,10 @@ Page({
     showModalStatus:false
   },
   onLoad: function (options) {
+    
+    this.setData({
+      can_change: !app.globalData.isDoingPlan
+    })
     this.initMyLossfatCourse();
   },
   onShow: function () {
@@ -37,12 +42,19 @@ Page({
     })
   },
   async startPlan(){
+    if (!this.data.can_change) {
+      this.setData({
+        can_change:true
+      })
+      return;
+    }
     let weightGoalt = this.data.weightGoalt;
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
     let { result} = await Protocol.postMembersJoinSchema(data)
     HiNavigator.navigateToManifesto({sharedId:result.sharedId})
   },
   async startShare(){
+    
     let weightGoalt = this.data.weightGoalt;
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
     let { result} = await Protocol.postMembersJoinSchema(data)
