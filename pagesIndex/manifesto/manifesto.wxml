@@ -14,10 +14,10 @@
     </view>
   </view>
 </view>
-<view class="contain">
+<view class="contain" style="bottom:{{containBottom}}rpx">
   <view class="contain-title">
     <image src="../../images/set-info/{{!!manifesto?'readyEdit':'needEdit'}}.png"></image>
-    <textarea placeholder="我想要减脂，是因为…（20字）" maxlength ='20' bindinput="changeValue" value='{{manifesto}}' placeholder-class='holder'/>
+    <textarea placeholder="我想要减脂，是因为…（20字）" bindfocus="showHeight" bindblur="hidenHeight" adjust-position="{{false}}" maxlength ='20' bindinput="changeValue" value='{{manifesto}}' placeholder-class='holder'/>
   </view>
   <view class="btn_con_c">
     <button class="reduceBtn {{!manifesto?'disabled':''}}" disabled="{{!manifesto}}" catchtap="warnMySelf" >记下来，警示自己   </button>

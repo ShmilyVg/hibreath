@@ -141,9 +141,8 @@ view {
   background:rgba(255,255,255,1);
   border-radius:80rpx 0rpx 0rpx 0rpx;
   position: fixed;
-  bottom: 0rpx;
   padding: 41rpx 51rpx 0 51rpx;
-  z-index: 2;
+  z-index: 200;
 }
 .contain-title{
   height: calc(100% - 240rpx);

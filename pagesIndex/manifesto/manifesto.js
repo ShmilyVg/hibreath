@@ -13,7 +13,8 @@ Page({
       { text: '不瘦下来\n怎么找男朋友!', value: '不瘦下来怎么找男朋友!'},
       { text: '拥有更\n健康的状态', value: '拥有更健康的状态'}],
     sharedId:'',
-    needImgList: ['/icon/qipao.png']
+    needImgList: ['/icon/qipao.png'],
+    containBottom:0
   },
   onLoad: function (options) {
     var loader = new ImageLoader({
@@ -63,5 +64,16 @@ Page({
   },
   handlerGobackClick(){
     this.reduceFun()
+  },
+  showHeight(e){
+    console.log('eee',e)
+    this.setData({
+      containBottom:e.detail.height
+    })
+  },
+  hidenHeight(){
+    this.setData({
+      containBottom:0
+    })
   }
 })
