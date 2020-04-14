@@ -15,7 +15,11 @@
       <view class="value"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
       <view class="unit"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
     </view>
-    <view class="weight">
+    <view class="weight" wx:if="{{!item.weightToday}}">
+      <view class="value"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
+      <view class="unit"><text space="ensp" decode="{{true}}">&ensp;&ensp;</text></view>
+    </view>
+    <view class="weight" wx:if="{{item.weightToday}}">
       <view class="value">{{item.weightToday }}</view>
       <view class="unit">kg</view>
     </view>
