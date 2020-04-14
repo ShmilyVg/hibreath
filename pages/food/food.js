@@ -85,7 +85,8 @@ Page({
     fatFinish:false,
     showCanvas:"block",
     hideModal: true,
-    scrollIng:false
+    scrollIng:false,
+    isToday:false
   },
 
   onLoad(e) {
@@ -95,9 +96,26 @@ Page({
         weightFinish: JSON.parse(e.weightFinish),
         fatFinish: JSON.parse(e.fatFinish)
       })
-    }catch(err){}
-    
+    }catch(err){
 
+    }
+    this.setData({
+      isReport:e.isReport
+    })
+  },
+   isToday(str) {
+      if (new Date(str).toDateString() === new Date().toDateString()) {
+        console.log("当天");
+        this.setData({
+          isToday:true
+        })
+      } else if (new Date(str) < new Date()){
+        //之前
+        console.log("以前的日期");
+        this.setData({
+          isToday:false
+        })
+      }
   },
   async onReady() {
     Trend.initTouchHandler();
@@ -175,7 +193,7 @@ Page({
       this.setData({
         showCanvas:"none"
       })
-      for(var i=0;i<that.data.taskInfo.modalList.length;i++){
+      /*for(var i=0;i<that.data.taskInfo.modalList.length;i++){
         if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
           let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
           let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
@@ -194,7 +212,7 @@ Page({
             })
           },300)
         }
-      });
+      });*/
     }else{
       this.setData({
         showCanvas:"block"
@@ -439,9 +457,12 @@ Page({
                 console.log(e)
                 console.log(e.currentTarget.dataset.index)
                 this.data.id = e.currentTarget.dataset.index;
+                this.data.createdTimestamp = e.currentTarget.dataset.time;
                 const { frontTimestamp: timeBegin, endTimestamp: timeEnd } = timeObj;
                 Protocol.postDeleteWeightData({ id: this.data.id }).then(()=>{
                   this.handleListData({ isRefresh: true });
+                  this.isToday(this.data.createdTimestamp)
+                  console.log('是否符合条件',this.data.isReport,this.data.isToday)
                   this.getTaskInfo()
                 })
               }
@@ -454,6 +475,14 @@ Page({
       }
     } catch (e) {
       console.warn(e);
+    }
+  },
+  //返回逻辑
+  handlerGobackClick(){
+    if(this.data.isReport === 'true' && this.data.isToday){
+      HiNavigator.switchToSetInfo()
+    }else{
+      HiNavigator.navigateBack({delta: 1});
     }
   },
   onShareAppMessage: function () {

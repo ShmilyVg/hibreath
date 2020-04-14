@@ -90,10 +90,13 @@ Page({
       console.log('inTaskProgressinTaskProgress', this.data.inTaskProgress)
       setTimeout(() => {
         this.setData({
-          showMytoast: false,
+          showMytoast: false
         })
       }, 3000)
     }
+    this.setData({
+      isReport:e.isReport
+    })
   },
   getShowExcitation(e) {
     console.log('e11', e)
@@ -244,8 +247,13 @@ Page({
     })
 
   },
+  //左上角返回逻辑
   handlerGobackClick() {
-    HiNavigator.switchToSetInfo()
+    if(this.data.isReport === 'true' && this.data.isToday){
+      HiNavigator.switchToSetInfo()
+    }else{
+      HiNavigator.navigateBack({delta: 1});
+    }
   },
   async handleTrend({
     list
@@ -384,6 +392,20 @@ Page({
     }
 
   },
+  isToday(str) {
+    if (new Date(str).toDateString() === new Date().toDateString()) {
+      console.log("当天");
+      this.setData({
+        isToday:true
+      })
+    } else if (new Date(str) < new Date()){
+      //之前
+      console.log("以前的日期");
+      this.setData({
+        isToday:false
+      })
+    }
+  },
   async deleteDataValue(e) {
     try {
       const {
@@ -401,11 +423,14 @@ Page({
             cancelText: "取消",
             confirmEvent: () => {
               this.data.breathid = e.currentTarget.dataset.index;
+              this.data.createdTimestamp = e.currentTarget.dataset.time;
               const index = this.data.trendData.findIndex(item => item.id === this.data.breathid);
               Protocol.postDeleteBreathData({
                 id: this.data.breathid
               }).then(() => {
                 if (index !== -1) {
+                  this.isToday(this.data.createdTimestamp)
+                  console.log('是否符合条件',this.data.isReport,this.data.isToday)
                   this.data.trendData.splice(index, 1);
                   this.setData({
                     trendData: this.data.trendData

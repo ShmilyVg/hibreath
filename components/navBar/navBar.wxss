@@ -82,8 +82,8 @@ page {
   opacity: 0.5;
 }
 .lxy-nav-bar__inner .lxy-nav-bar__center {
-  font-size: 13px;
-  line-height: 13px;
+  font-size: 17px;
+  line-height: 17px;
   text-align: center;
   position: relative;
   flex: 1;

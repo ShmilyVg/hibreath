@@ -16,6 +16,9 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToResultNOnum() {
       this.navigateTo({url: '/pages/result/result'});
     }
+  static navigateToResultData() {
+    this.navigateTo({url: '/pages/result/result?isReport=true'});
+  }
     //新人七日打卡礼
     static navigateToAttendanceBonus() {
       this.navigateTo({url: '/pagesIndex/attendanceBonus/attendanceBonus'});
@@ -138,7 +141,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateTofood() {
         this.navigateTo({url: '/pages/food/food'})
     }
-
+    //今日打卡报告进入记录页
+    static navigateTofoodData() {
+      this.navigateTo({url: '/pages/food/food?isReport=true'})
+    }
     static relaunchToUpdatePage({binUrl, datUrl}) {
         getApp().otaUrl = arguments[0];
         this.navigateTo({url: '/pagesIndex/update/update'});

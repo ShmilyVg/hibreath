@@ -40,7 +40,7 @@ Page({
   },
 
   onLoad: function (options) {
-    
+
     let sharedId = options.sharedId == 'undefined' ? null : options.sharedId;
     let reportId = options.reportId == 'undefined' ? null : options.reportId;
     let navBarBack = sharedId ? false:true;
@@ -51,7 +51,7 @@ Page({
     })
 
     Trend.init(this);
-    
+
     this.getTodayLosefatReport()
     setTimeout(()=>{
       this.setData({
@@ -174,16 +174,16 @@ Page({
       scrollTop:e.scrollTop,
       scrollIng:true
     })
-   /* let timer= setTimeout(()=>{
-      if(that.data.scrollTop===e.scrollTop){
-        that.setData({
-          scrollTop:e.scrollTop,
-          scrollIng:false
-        })
-        console.log('滚动结束')
-        clearTimeout(timer)
-      }
-    },300)*/
+    /* let timer= setTimeout(()=>{
+       if(that.data.scrollTop===e.scrollTop){
+         that.setData({
+           scrollTop:e.scrollTop,
+           scrollIng:false
+         })
+         console.log('滚动结束')
+         clearTimeout(timer)
+       }
+     },300)*/
   },
   onShareAppMessage(res) {
     //
@@ -207,11 +207,11 @@ Page({
   },
   //跳转燃脂
   goToResult() {
-    HiNavigator.navigateToResultNOnum()
+    HiNavigator.navigateToResultData()
   },
   //跳转体重列表
   goToFood() {
-    HiNavigator.navigateTofood()
+    HiNavigator.navigateTofoodData()
   },
   //跳转新手引导页
   goToGuidance(){
@@ -319,7 +319,7 @@ Page({
       }, complete(){
         that.hideModal()
       }
-      
+
     })
   },
   toSetInfo(){

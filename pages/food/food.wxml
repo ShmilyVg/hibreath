@@ -1,4 +1,5 @@
 <!--pages/food/food.wxml-->
+<navBar title='体重记录' color="#fff" iconTheme="white" background='#7BC877' back="{{true}}" bindback="handlerGobackClick"></navBar>
 <view wx:if="{{dataList.length}}" class="food">
   <view class="food-top">
     <view class="food-top-text1">最新体重</view>
@@ -33,7 +34,7 @@
       <canvas canvas-id="lineCanvas" class="canvas" style="display:{{scrollIng?'none':'block'}};height: 380rpx"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
     <view class="bottom-view" wx:if="{{dataList.length}}">
-      <view wx:for="{{dataList}}" wx:key='id' class="bottom-view-cell" bindtap="deleteDataValue" data-index="{{item.id}}">
+      <view wx:for="{{dataList}}" wx:key='id' class="bottom-view-cell" bindtap="deleteDataValue" data-time="{{item.createdTimestamp}}" data-index="{{item.id}}">
         <view class="flex-column" style="width: 100%">
           <view class="flex-row" style="justify-content: space-between;width: 100%">
             <view class="flex-column" style="margin-top: 40rpx;align-items:start">

@@ -4,10 +4,12 @@
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh":false,
   "backgroundColor": "#ffffff",
+  "navigationStyle":"custom",
   "usingComponents": {
     "bottom-dialog": "../../components/bottom-dialog/index",
     "taskFinish": "../../components/taskFinish/taskFinish",
     "my-toast": "../../components/my-toast/my-toast",
-    "fat-window":"../../components/fat-window/fat-window"
+    "fat-window":"../../components/fat-window/fat-window",
+    "navBar": "/components/navBar/navBar"
   }
 }
