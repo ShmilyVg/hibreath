@@ -68,7 +68,7 @@ Page({
     console.log('hipeeScenehipeeScenehipeeScene', options)
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = app.globalData.firendSharedId;
-    let hipeeScene = options.hipeeScene;
+    let hipeeScene = options.hipeeScene || 'device';
     let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
@@ -239,7 +239,7 @@ Page({
     if (detail.birthday && detail.sex && detail.weight && detail.height){
       finishedInfo = true;
     }
-    
+    wx.setStorageSync('finishedGuide', result.finishedGuide)
     this.setData({
       finishedInfo,
       finishedPhone: result.finishedPhone,
@@ -264,7 +264,7 @@ Page({
           finishedGuide: true,
           showPage: true
         })
-        wx.setStorageSync('finishedGuide', true)
+        
         wx.showTabBar({
           fail: function () {
             setTimeout(function () {
