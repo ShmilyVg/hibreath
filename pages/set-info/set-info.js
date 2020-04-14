@@ -68,7 +68,7 @@ Page({
     console.log('hipeeScenehipeeScenehipeeScene', options)
     //device为硬件扫码标志  menu01 为代餐扫码标志 正常进入时为空（即不存在此值）
     let sharedId = app.globalData.firendSharedId;
-    let hipeeScene = options.hipeeScene;
+    let hipeeScene = options.hipeeScene || 'device';
     let hisHipeeScene;
     if (hipeeScene){
       wx.setStorageSync('hipeeScene', hipeeScene)
@@ -235,7 +235,8 @@ Page({
     let hipeeScene = this.data.hipeeScene;
     let hisH = wx.getStorageSync('hipeeScene')
     let finishedInfo = false;
-    if (result.birthday && result.sex && result.weight && result.height){
+    let detail = result.detail;
+    if (detail.birthday && detail.sex && detail.weight && detail.height){
       finishedInfo = true;
     }
     this.setData({
@@ -482,11 +483,7 @@ Page({
       })
       //已经验证过手机号
       if (this.data.finishedPhone) {
-        if (this.data.hipeeScene =='device'){
-          HiNavigator.navigateIndex();
-        }else{
-          HiNavigator.navigateToGuidance({ reset: 2 });
-        }
+        HiNavigator.navigateToGuidance({ reset: 2 });
         return;
       }
       //没有验证过手机号
@@ -662,6 +659,7 @@ Page({
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
         //扫硬件码。没有绑定时跳转绑定接口
+        
         setTimeout(()=>{
           if (this.data.hipeeScene == 'device' && this.data.finishedInfo) {
             if (wx.getStorageSync('bindPage') != 'ready'){
