@@ -102,7 +102,7 @@
 
       <view class="hungry-view-text">以下<text style="color: #4FBB49">12种</text>蔬菜任选，做法以生吃、水煮、清炒（勿勾芡）、白灼、炖、蒸为主</view>
       <view style="text-align: center;">
-        <image src='http://img.hipee.cn/vg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
+        <image src='http://img.hipee.cn/hibreath/food/addsc.jpg' style="width: 670rpx;height: 542rpx;margin: 50rpx auto 0rpx auto"></image>
       </view>
       <view class="check-reduce">
         <image src="../images/burn.png" class="burn"></image>
