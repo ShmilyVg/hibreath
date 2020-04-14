@@ -10,5 +10,5 @@
 </navBar>
 <view class="supervise">
   <image style="width: 750rpx;height: 1334rpx;" src="{{needImg}}"></image>
-  <button  open-type="getUserInfo" bindgetuserinfo="toNextpage" class="supervise_btn">加入Slimple低碳CLUB，一起燃脂吧！</button>
+  <button class="supervise_btn" bindtap="toNextpage">加入Slimple低碳CLUB，一起燃脂吧！</button>
 </view>

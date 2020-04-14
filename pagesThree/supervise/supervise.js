@@ -2,7 +2,7 @@
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
 import Login from "../../modules/network/login";
-
+const app = getApp();
 Page({
 
   /**
@@ -16,10 +16,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    const {result} = await Protocol.getTaskInfoBySharedId({sharedId:options.sharedId,sharedType:"initialHeart"});
+    let sharedId = options.sharedId;
+    const { result } = await Protocol.getTaskInfoBySharedId({ sharedId: sharedId,sharedType:"initialHeart"});
     console.log('result',result)
     setTimeout(()=>{
       this.setData({
+        sharedId,
         needImg:result.sharePoster.toGroup.url
       })
       console.log(this.data.needImg)
@@ -82,10 +84,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
