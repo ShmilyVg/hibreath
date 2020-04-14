@@ -487,7 +487,9 @@ Page({
       })
       //已经验证过手机号
       if (this.data.finishedPhone) {
-        HiNavigator.navigateToGuidance({ reset: 2 });
+        if (wx.getStorageSync('guidance_tip') != 'ready') {
+          HiNavigator.navigateToGuidance({ reset: 2 })
+        }
         return;
       }
       //没有验证过手机号
