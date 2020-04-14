@@ -218,7 +218,9 @@ Page({
     HiNavigator.navigateToGuidance({ reset:2})
   },
   goToWeightTarget(){
-    HiNavigator.navigateToWeightTarget()
+    //参数fromPage  为1的时候从减脂方案页进入
+    let fromPage = 1
+    HiNavigator.navigateToWeightTarget(fromPage)
   },
   //燃脂
   async fatTaskToFinish() {

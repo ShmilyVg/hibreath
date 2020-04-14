@@ -17,6 +17,7 @@ Page({
   onLoad: function (options) {
     
     this.setData({
+      fromPage: options.fromPage,
       can_change: !app.globalData.isDoingPlan
     })
     this.initMyLossfatCourse();
@@ -48,10 +49,25 @@ Page({
       })
       return;
     }
-    let weightGoalt = this.data.weightGoalt;
-    let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    let { result} = await Protocol.postMembersJoinSchema(data)
-    HiNavigator.navigateToManifesto({sharedId:result.sharedId})
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    try{
+      let weightGoalt = this.data.weightGoalt;
+      let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
+      let { result } = await Protocol.postMembersJoinSchema(data)
+      if (this.data.fromPage != 1) {
+        HiNavigator.navigateToManifesto({ sharedId: result.sharedId })
+      } else {
+        this.setData({
+          can_change: false
+        })
+      }
+    }catch(err){}
+    wx.hideLoading();
+    
+    
   },
   async startShare(){
     
@@ -60,6 +76,7 @@ Page({
     let { result} = await Protocol.postMembersJoinSchema(data)
     this.showModal()
     this.setData({
+      can_change: false,
       sharedId:result.sharedId,
       shareTitle:result.toFriend.title,
       shareImg:result.toFriend.url,
@@ -91,10 +108,13 @@ Page({
   },
   saveWeight() {
     this.initMyLossfatCourse();
-    this.hideModal();
+    this.hideModal_w();
   },
   // 显示遮罩层
   async showModal_w() {
+    if (!this.data.can_change){
+      return;
+    }
     var that = this;
     that.setData({
       weightGoalt: '',
