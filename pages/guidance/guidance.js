@@ -166,7 +166,7 @@ Page({
   },
   back() {
     if (this.data.guidance.page == 2){
-      HiNavigator.navigateToGoVerification();
+      HiNavigator.switchToSetInfo();
       return;
     }
     this.setData({

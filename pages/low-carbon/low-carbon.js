@@ -16,18 +16,24 @@ Page({
         }, 500);
       }
     });
-    this.getResult()
+    
   },
   async getResult() {
-    let { result } = await Protocol.getLossfatCourse({});
-    this.setData({
-      result
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
     })
+    try{
+      let { result } = await Protocol.getLossfatCourse({});
+      this.setData({
+        result
+      })
+    }catch(err){}
+    wx.hideLoading();
+    
   },
   onShow: function () {
-    if (!this.data.result){
-      this.getResult()
-    }
+    this.getResult()
   },
   //加群页
   goToAddLowfat() {

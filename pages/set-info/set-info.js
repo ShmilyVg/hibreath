@@ -239,6 +239,7 @@ Page({
     if (detail.birthday && detail.sex && detail.weight && detail.height){
       finishedInfo = true;
     }
+    
     this.setData({
       finishedInfo,
       finishedPhone: result.finishedPhone,
@@ -257,19 +258,21 @@ Page({
       });
 
     } else if (result.finishedGuide) {
-      this.setData({
-        finishedPhone: result.finishedPhone,
-        finishedGuide:true,
-        showPage: true
-      })
-      wx.setStorageSync('finishedGuide', true)
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
+      if (hipeeScene != 'device') {
+        this.setData({
+          finishedPhone: result.finishedPhone,
+          finishedGuide: true,
+          showPage: true
+        })
+        wx.setStorageSync('finishedGuide', true)
+        wx.showTabBar({
+          fail: function () {
+            setTimeout(function () {
+              wx.showTabBar();
+            }, 200);
+          }
+        });
+      }
     } else if (finishedInfo){
       if (hipeeScene != 'device'){
         this.setData({
@@ -353,6 +356,7 @@ Page({
     } else if (result.weightTask && result.weightTask.finished){
       taskFinished = true;
     }
+    app.globalData.isDoingPlan = result.isDoingPlan;
     console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
     if(result.modalList.length>0){
       var loader=new ImageLoader({
