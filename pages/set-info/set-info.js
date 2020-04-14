@@ -258,21 +258,18 @@ Page({
       });
 
     } else if (result.finishedGuide) {
-      if (hipeeScene != 'device') {
-        this.setData({
-          finishedPhone: result.finishedPhone,
-          finishedGuide: true,
-          showPage: true
-        })
-        
-        wx.showTabBar({
-          fail: function () {
-            setTimeout(function () {
-              wx.showTabBar();
-            }, 200);
-          }
-        });
-      }
+      this.setData({
+        finishedPhone: result.finishedPhone,
+        finishedGuide: true,
+        showPage: true
+      })
+      wx.showTabBar({
+        fail: function () {
+          setTimeout(function () {
+            wx.showTabBar();
+          }, 200);
+        }
+      });
     } else if (finishedInfo){
       if (hipeeScene != 'device'){
         this.setData({
