@@ -180,7 +180,7 @@ Page({
     this.setData({
       reset: options.reset
     })
-    if (app.globalData.hipeeScene == 'device' || options.reset == 2){
+    if (options.reset == 2){
       this.setData({
         totNum:3
       })
@@ -278,8 +278,8 @@ Page({
     let data = this.data.guidance.info;
     let result = await Protocol.postGuidance(data);
     Toast.hiddenLoading();
-    if (result.code && this.data.reset =='device') {
-      HiNavigator.navigateToLowFatReport()
+    if (result.code && app.globalData.hipeeScene =='device') {
+      HiNavigator.navigateIndex();
     }else{
       HiNavigator.navigateToWeightTarget()
     }
