@@ -107,7 +107,7 @@
       <text class="unit">kg</text> </view>
     <view class="item-h4">
       <image style="width: 26rpx;height: 26rpx;top:7rpx;" src="../../images/lowFatReport/chart.png"></image>
-      体重趋势
+      近一周体重趋势
     </view>
     <view class="weight-chart">
       <image  bindtouchstart="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
