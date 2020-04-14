@@ -1,4 +1,5 @@
 <navBar
+        wx:if="{{!showGiftwindows}}"
         title='Slimple轻松派'
         color="#fff"
         iconTheme="{{navBarIconTheme}}"

@@ -355,7 +355,7 @@ Page({
     }
     app.globalData.isDoingPlan = result.isDoingPlan;
     console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
-    if(result.modalList.length>0){
+    if(result.modalList){
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: this.data.gitImgList,
