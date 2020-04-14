@@ -185,6 +185,7 @@ Page({
         totNum:3
       })
     }
+    wx.setStorageSync('guidance_tip', 'ready')
     this.getUserInfo()
   },
   async getUserInfo() {
@@ -310,7 +311,7 @@ Page({
     
   },
   handlerGobackClick(){
-    wx.setStorageSync('guidance_tip', 'ready')
+    
     HiNavigator.switchToSetInfo();
   }
 })
