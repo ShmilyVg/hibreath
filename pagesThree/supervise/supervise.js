@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isLogin:false
   },
 
   /**
@@ -20,16 +20,13 @@ Page({
     console.log('result',result)
     setTimeout(()=>{
       this.setData({
-        needImg:result.sharePoster.toGroup.url
+        needImg:result.sharePoster.toGroup.url,
+        isLogin:getApp().globalData.isLogin
       })
-      console.log(this.data.needImg)
     },500)
 
   },
   async toNextpage(e){
-    if(getApp().globalData.isLogin){
-      HiNavigator.switchToSetInfo()
-    }else {
       const { detail: { userInfo, encryptedData, iv } } = e;
       console.log(userInfo)
       if (!!userInfo) {
@@ -38,7 +35,10 @@ Page({
           HiNavigator.switchToSetInfo()
         }, 500);
       }
-    }
+
+  },
+  toSetInfo(){
+    HiNavigator.switchToSetInfo()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

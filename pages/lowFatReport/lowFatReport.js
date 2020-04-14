@@ -35,7 +35,8 @@ Page({
     showModalStatus: false,
     shareTip: false,
     report: {},
-    scrollIng:false
+    scrollIng:false,
+    isLogin:false
   },
 
   onLoad: function (options) {
@@ -52,6 +53,11 @@ Page({
     Trend.init(this);
     
     this.getTodayLosefatReport()
+    setTimeout(()=>{
+      this.setData({
+        isLogin:getApp().globalData.isLogin
+      })
+    },500)
   },
   //跳转微信加人页面
   toAdd(){
@@ -315,6 +321,9 @@ Page({
       }
       
     })
+  },
+  toSetInfo(){
+    HiNavigator.switchToSetInfo()
   },
   //跳转首页
   weightFinish() {

@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    this.getLowCarbonSnacks()
+
   },
   async getLowCarbonSnacks(){
     let { result } = await Protocol.getLowCarbonSnacks();
@@ -100,8 +100,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  async onShow() {
+    this.getLowCarbonSnacks()
   },
 
   /**
