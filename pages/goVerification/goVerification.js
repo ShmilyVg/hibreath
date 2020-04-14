@@ -141,11 +141,6 @@ Page({
     Toast.showLoading('登录中')
     const {result} = await whenDismissGroup(Protocol.postPhone({phoneNumbers:this.data.phoneNumbers,code:this.data.code}))
     wx.setStorageSync('finishedPhone', true);
-    
-    if (app.globalData.hipeeScene == 'device'){
-      HiNavigator.navigateIndex();
-      return;
-    }
     HiNavigator.navigateToGuidance({ reset: false })
   },
   /**
