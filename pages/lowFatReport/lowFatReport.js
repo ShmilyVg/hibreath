@@ -68,9 +68,10 @@ Page({
     Trend.initTouchHandler();
   },
   async getTodayLosefatReport() {
-    let sharedId = this.data.sharedId ||null;
-    let reportId = this.data.reportId || null;
-    let { result } = await Protocol.getTodayLosefatReport({ sharedId, reportId});
+    let data ={};
+    this.data.sharedId ? data.sharedId = this.data.sharedId:'';
+    this.data.reportId ? data.reportId = this.data.reportId : '';
+    let { result } = await Protocol.getTodayLosefatReport(data);
 
     let losefatGrams = result.breathData.losefatGrams;
     let progress = 0;

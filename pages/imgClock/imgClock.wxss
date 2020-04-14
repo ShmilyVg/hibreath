@@ -56,19 +56,19 @@ page {
 .pic-box {
   flex-flow: wrap;
   width: 100%;
+  padding: 0 10rpx 0 15rpx;
 }
 
 .ap-box {
   position: relative;
   width: 210rpx;
   height: 210rpx;
-  margin-right: 20rpx;
-  margin-bottom: 20rpx;
+  margin:  0 10rpx 20rpx;
 }
 
-.imgMargin {
+/* .imgMargin {
   margin-right: 0 !important;
-}
+} */
 
 .show-view {
 }
@@ -105,7 +105,7 @@ page {
   height: 40rpx;
   border-radius: 50%;
   position: absolute;
-  right: 45rpx;
+  right: 25rpx;
   top: 15rpx;
 }
 
