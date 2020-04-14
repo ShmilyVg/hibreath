@@ -44,7 +44,9 @@ Page({
     HiNavigator.navigateToAdaptive();
   },
   toRecomTarNew(){
-    HiNavigator.navigateToWeightTarget();
+    //参数  为1的时候从减脂方案页进入
+    let fromPage = 1;
+    HiNavigator.navigateToWeightTarget(fromPage);
   },
   //低碳巩固期
   goToConsolidate(){

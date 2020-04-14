@@ -37,8 +37,9 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pages/guidance/guidance?reset=${reset}&sharedId=${sharedId}`});
     }
     //我的减脂方案
-    static navigateToWeightTarget() {
-      this.navigateTo({url: `/pagesIndex/weightTarget/weightTarget`});
+    //参数fromPage  为1的时候从减脂方案页进入或需要处理的页面 为0的时候从身高体重页进入
+    static navigateToWeightTarget(fromPage=0) {
+      this.navigateTo({url: `/pagesIndex/weightTarget/weightTarget?fromPage=${fromPage}`});
     }
     //燃脂方案解释
     static navigateToReduceFatExp() {
