@@ -354,14 +354,18 @@ Page({
       taskFinished = true;
     }
     app.globalData.isDoingPlan = result.isDoingPlan;
-    console.log('isLowCarbonSnacks',!result.isLowCarbonSnacks)
     if(result.modalList){
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: this.data.gitImgList,
         loaded: res => {
           setTimeout(()=>{
-            wx.hideTabBar();
+            var pages = getCurrentPages(); //获取加载的页面
+            var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+            console.log('当前页面是', currentPage.route)
+            if (currentPage.route === 'pages/set-info/set-info') {
+              wx.hideTabBar();
+            }
             this.setData({
               showGiftwindows:true
             })

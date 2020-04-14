@@ -37,6 +37,6 @@
       </view>
     </block>
   <view wx:if="{{currenttab==='1'}}" style="padding-bottom:80rpx;">
-    <image style="height: 784rpx;width: 100%" src="http://img.hipee.cn/hibreath/icon/LosefatReport/jianzhi_2.png"></image>
+    <image style="height: 784rpx;width: 750rpx" src="http://img.hipee.cn/hibreath/icon/LosefatReport/jianzhi_2.png"></image>
   </view>
 </view>
