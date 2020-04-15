@@ -1,7 +1,6 @@
 // pagesThree/get-low-carbon/get-low-carbon.js
 import Protocol from "../../modules/network/protocol";
 import HiNavigator from "../../navigator/hi-navigator";
-
 Page({
 
   /**
@@ -15,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-
+    this.debounce = this.debounce();// 防抖函数，在此处初始化
   },
   async getLowCarbonSnacks(){
     let { result } = await Protocol.getLowCarbonSnacks();
@@ -38,58 +37,68 @@ Page({
   handlerGobackClick(){
     HiNavigator.switchToSetInfo()
   },
-  async toYz(){
-    if (this.data.content.qualificationStatus == 2){
-      let couponCode = this.data.content.couponCode;
-      if (couponCode) {
-        let res = await Protocol.takeGift({ couponCode });
-        if (res.code == 1) {
-          wx.showToast({
-            title: '领取成功,即将跳转有赞小程序',
-            icon: 'none',
-            duration: 3000
-          });
-          setTimeout(() => {
-            //跳转有赞小程序
-            wx.navigateToMiniProgram({
-              appId:'wxeea809f23b5a5d9d',
-              extraData: {
-                // foo: 'bar'
-              },
-              envVersion: 'develop',
-              success: (res) => {
-                // 打开成功
-                console.log('打开有赞小程序成功', res);
-              }
-            })
-          }, 1000)
-
-        }
-      }
-    }else{
-      wx.showToast({
-        title: '即将跳转有赞小程序',
-        icon: 'none',
-        duration: 3000
-      });
-      setTimeout(() => {
-        //跳转有赞小程序
-        wx.navigateToMiniProgram({
-          appId:'wxeea809f23b5a5d9d',
-          extraData: {
-            // foo: 'bar'
-          },
-          envVersion: 'develop',
-          success: (res) => {
-            // 打开成功
-            console.log('打开有赞小程序成功', res);
-          }
-        })
-      }, 1000)
+  //函数节流 防止重复点击
+    debounce : function () {
+    var timeOut = null;
+    return () => {
+      clearTimeout(timeOut);
+      timeOut = setTimeout(() => {
+        this.yzfn()
+      }, 300);
     }
-    
   },
-  
+
+  //跳转有赞
+   async yzfn(){
+     if (this.data.content.qualificationStatus == 2){
+       let couponCode = this.data.content.couponCode;
+       if (couponCode) {
+         let res = await Protocol.takeGift({ couponCode });
+         if (res.code == 1) {
+           wx.showToast({
+             title: '领取成功,即将跳转有赞小程序',
+             icon: 'none',
+             duration: 1200
+           });
+           setTimeout(() => {
+             //跳转有赞小程序
+             wx.navigateToMiniProgram({
+               appId:'wxeea809f23b5a5d9d',
+               extraData: {
+                 // foo: 'bar'
+               },
+               envVersion: 'develop',
+               success: (res) => {
+                 // 打开成功
+                 console.log('打开有赞小程序成功', res);
+               }
+             })
+           }, 1300)
+
+         }
+       }
+     }else{
+       wx.showToast({
+         title: '即将跳转有赞小程序',
+         icon: 'none',
+         duration: 1200
+       });
+       setTimeout(() => {
+         //跳转有赞小程序
+         wx.navigateToMiniProgram({
+           appId:'wxeea809f23b5a5d9d',
+           extraData: {
+             // foo: 'bar'
+           },
+           envVersion: 'develop',
+           success: (res) => {
+             // 打开成功
+             console.log('打开有赞小程序成功', res);
+           }
+         })
+       }, 1300)
+     }
+   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
