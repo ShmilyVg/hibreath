@@ -44,7 +44,8 @@ Page({
     needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"],
     gitImgList:['fatWindows/getGift.png'],
     isBind:false,//是否绑定设备
-    showGiftwindows:false
+    showGiftwindows:false,
+    showGiftwindowsTip:false
   },
 
 
@@ -322,12 +323,15 @@ Page({
   closeWindows(){
     wx.showTabBar();
     this.setData({
+      showGiftwindowsTip:false,
       showGiftwindows:false
     })
   },
   //关闭初心遮罩
   closeOriginal() {
+    //初心遮罩在前  开箱礼在后
     this.setData({
+      showGiftwindowsTip: this.data.showGiftwindows,
       original_show: false
     })
   },
@@ -366,7 +370,9 @@ Page({
             if (currentPage.route === 'pages/set-info/set-info') {
               wx.hideTabBar();
             }
+            //初心遮罩在前  开箱礼在后
             this.setData({
+              showGiftwindowsTip:!this.data.original_show,
               showGiftwindows:true
             })
           },300)
