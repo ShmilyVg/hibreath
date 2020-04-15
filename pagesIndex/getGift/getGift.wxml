@@ -2,7 +2,7 @@
 <view class="bg"></view>
 <view class="getGift-top">
     <view class="getGift-text">加速礼包</view>
-    <view class="getGift-top-title">Slimple天猫旗舰店专用福利</view>
+    <view class="getGift-top-title">Slimple专用福利</view>
     <image src="{{imgUrl}}" style="width: 310rpx;height: 310rpx;margin-top: 28rpx"></image>
     <view class="getGift-title">{{title}}</view>
     <!--1:满减、2:抵用、3折扣-->
