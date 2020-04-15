@@ -354,7 +354,7 @@ Page({
       taskFinished = true;
     }
     app.globalData.isDoingPlan = result.isDoingPlan;
-    if(result.modalList){
+    if(result.modalList.length>0){
       var loader=new ImageLoader({
         base: ImageSource.BASE ,
         source: this.data.gitImgList,
