@@ -29,7 +29,7 @@
             <view class="clear"></view>
             <view class="coupon_list_right_bottom">
                 <view class="coupon_list_right_bottom_description">{{item.description}}</view>
-                <view class="coupon_list_right_bottom_btn" data-id="{{item.id}}" bindtap="toGift">立即使用</view>
+                <view class="coupon_list_right_bottom_btn" data-item="{{item}}" bindtap="toGift">立即使用</view>
             </view>
             <view class="clear"></view>
         </view>

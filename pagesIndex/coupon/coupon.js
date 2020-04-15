@@ -83,7 +83,31 @@ Page({
 
   },
   toGift(e){
-    HiNavigator.navigateToGetGift({id:e.currentTarget.dataset.id})
+    let item = e.currentTarget.dataset.item
+    if (item.platform == ' youzan'){
+      wx.showToast({
+        title: '即将跳转有赞小程序',
+        icon: 'none',
+        duration: 3000
+      });
+      setTimeout(() => {
+        //跳转有赞小程序
+        wx.navigateToMiniProgram({
+          appId: 'wxeea809f23b5a5d9d',
+          extraData: {
+            // foo: 'bar'
+          },
+          envVersion: 'develop',
+          success: (res) => {
+            // 打开成功
+            console.log('打开有赞小程序成功', res);
+          }
+        })
+      }, 1000)
+    }else{
+      HiNavigator.navigateToGetGift({ id: item.id })
+    }
+    
   },
   /**
    * 页面上拉触底事件的处理函数
