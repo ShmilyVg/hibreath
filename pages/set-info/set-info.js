@@ -493,32 +493,35 @@ Page({
         }
         return;
       }
+
+      HiNavigator.navigateToGoVerification()
+      return;
       //没有验证过手机号
-      if (this.data.hipeeScene){
-        HiNavigator.navigateToGoVerification()
-      }else{
-        //补签
-        // if (sharedId) {
-        //   let postData = {
-        //     "sharedId": sharedId //分享用户编号
-        //   }
-        //   let { result } = await Protocol.putBreathSign(postData);
-        //   if (result.status) {
-        //     wx.showToast({
-        //       title: '帮好友补签成功',
-        //       duration: 500
-        //     });
-        //   }
-        // }
+      // if (this.data.hipeeScene){
         
-        await this.getShoppingJumpCodes();
-        setTimeout(() => {
-          let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
-          let couponCode = couponItem.couponCode
-          HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone:'false'})
-        }, 500);
-        return;
-      }
+      // }else{
+      //   //补签
+      //   // if (sharedId) {
+      //   //   let postData = {
+      //   //     "sharedId": sharedId //分享用户编号
+      //   //   }
+      //   //   let { result } = await Protocol.putBreathSign(postData);
+      //   //   if (result.status) {
+      //   //     wx.showToast({
+      //   //       title: '帮好友补签成功',
+      //   //       duration: 500
+      //   //     });
+      //   //   }
+      //   // }
+        
+      //   await this.getShoppingJumpCodes();
+      //   setTimeout(() => {
+      //     let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
+      //     let couponCode = couponItem.couponCode
+      //     HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone:'false'})
+      //   }, 500);
+      //   return;
+      // }
       
       
 
