@@ -766,11 +766,11 @@ swiper{
 }
 
 .showGiftwindows{
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 350%;
+  height: 100%;
   background-color: rgba(0, 0, 0, .9);
   z-index: 995;
   background-size: 100% 1096rpx;
