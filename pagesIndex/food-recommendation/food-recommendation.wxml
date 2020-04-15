@@ -36,10 +36,11 @@
         <view style='clear:both;'></view>
         <view class="foodList">
           <!-- <view class="food-item" wx:for="{{foodList}}" wx:key='id' data-foodId="{{item.id}}" bindtap="toDetails"> -->
-          <view class="food-item" wx:for="{{foodList}}" wx:key='id' data-foodId="{{item.id}}">
+          <view wx:if="{{foodList.list}}" class="food-item" wx:for="{{foodList.list}}" wx:key='id' data-foodId="{{item.id}}">
             <image src="{{item.imgUrl}}"></image>
             {{item.title}}
           </view>
+          <view style="font-size:24rpx;font-family:PingFang SC;font-weight:400;color:#999999;line-height: 40rpx;text-indent:2em;padding: 0 20rpx;" wx:if="{{!foodList.list}}">{{foodList.tips}}</view>
         </view>
       </view>
 
