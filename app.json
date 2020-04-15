@@ -86,6 +86,7 @@
       "pages": [
         "get-low-carbon/get-low-carbon",
         "help-cards/help-cards",
+        "bannerPage/bannerPage",
         "supervise/supervise",
         "dayReportShare/dayReportShare"
       ]
@@ -100,7 +101,8 @@
   },
   "navigateToMiniProgramAppIdList": [
     "wxe5f52902cf4de896",
-    "wxeea809f23b5a5d9d"
+    "wxeea809f23b5a5d9d",
+    "wxd947200f82267e58"
   ],
   "sitemapLocation": "sitemap.json",
   "tabBar": {

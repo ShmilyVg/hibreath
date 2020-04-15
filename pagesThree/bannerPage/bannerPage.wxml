@@ -1,0 +1,3 @@
+<!--pagesThree/bannerPage/bannerPage.wxml-->
+<webview src="{{url}}"></webview>
+

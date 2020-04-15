@@ -194,10 +194,39 @@ Page({
             this.setData({
                 dataList:result.dataList
             })
+            console.log('dataList',this.data.dataList,this.data.dataList[0].imageUrl)
         }else{
             wx.setNavigationBarColor({frontColor: '#ffffff', backgroundColor: '#7bcb77'});
         }
-
+    },
+    toPage(e){
+        console.log('e',e)
+        //wx.navigateTo({url: e.currentTarget.dataset.h5});
+        if(e.currentTarget.dataset.type == 'h5'){
+            HiNavigator.navigateToBannerPage({url:e.currentTarget.dataset.url})
+        }
+        if(e.currentTarget.dataset.type == 'wechat'){
+            wx.navigateTo({url:e.currentTarget.dataset.url})
+        }
+        if(e.currentTarget.dataset.type == 'mp'){
+            console.log('e.currentTarget.dataset.appId',e.currentTarget.dataset.appid,e.currentTarget.dataset.url)
+            wx.navigateToMiniProgram({
+                appId:e.currentTarget.dataset.appid,
+                path:e.currentTarget.dataset.url,
+                extraData: {
+                    // foo: 'bar'
+                },
+                envVersion: 'develop',
+                success: (res) => {
+                    // 打开成功
+                    console.log('打开小程序成功', res);
+                },
+                fail: (res) => {
+                    // 打开成功
+                    console.log('打开小程序fail', res);
+                }
+            })
+        }
     },
     async forceUpdateAll() {
         if(this.data.noUpdateAll){
