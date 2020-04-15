@@ -166,7 +166,8 @@ Page({
     })
   },
   handlerGobackClick() {
-    HiNavigator.switchToSetInfo();
+    // HiNavigator.switchToSetInfo();
+    HiNavigator.navigateBack({ delta: 1 });
   },
   //展开分享
   async showModal() {
