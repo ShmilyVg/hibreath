@@ -29,6 +29,7 @@ Page({
       bodyFatRate: null,
       
     },
+    checkKeys: ['height', 'weight','sex'],
     illness: [{
         text: '三高（高血压、高血糖、高血脂）',
         value: 'sangao',
@@ -71,7 +72,6 @@ Page({
 
 
   async onLoad(options) {
-    console.log('onLoad')
     const {
       result: {
         nickname,
@@ -80,8 +80,6 @@ Page({
         height,
         weight,
         birthday,
-        // bodyFatRate,
-        // illnessType
       }
     } = await Protocol.getUserDetailInfo();
     const now = new Date();
@@ -98,27 +96,11 @@ Page({
         height,
         weight,
         birthday: birthdayStr,
-        // bodyFatRate,
-        // illnessType,
       }
-    }, () => {
-      // getApp().globalData.tempValue.foodHabitArray = illnessType;
-      // this.setData({
-      //   illnessType
-      // })
-      // this.setData({
-      //   'editUserInfo.illnessType': illnessType,
-      // });
-      // this.showMealType(illnessType);
     });
   },
 
   onShow() {
-    // const illnessType = getApp().globalData.tempValue.foodHabitArray || this.data.illnessType;
-    // this.showMealType(illnessType);
-    // this.setData({
-    //   'editUserInfo.illnessType': illnessType,
-    // });
   },
 
   showMealType(illnessType) {
@@ -144,24 +126,52 @@ Page({
     }
   }) {
     const obj = {};
+    let editUserInfo = this.data.editUserInfo;
+    let originUserInfo = this.data.originUserInfo;
+    let checkKeys = this.data.checkKeys;
+    let info_change = false;
     for (const [key, value] of entries(values)) {
       if (value !== undefined && value !== "" && value !== null) {
         obj[key] = value;
       }
     }
-    const finalEditUserInfoObj = { ...this.data.editUserInfo,
+    const finalEditUserInfoObj = { ...editUserInfo,
         ...obj
       },
-      finalUserInfoObj = { ...this.data.originUserInfo,
+      finalUserInfoObj = { ...originUserInfo,
         ...finalEditUserInfoObj
       };
-    // console.log('finalEditUserInfoObj', finalEditUserInfoObj, 'finalUserInfoObj', finalUserInfoObj);
+    
+    for (let item of checkKeys){
+      if (originUserInfo[item] != finalEditUserInfoObj[item]){
+        info_change = true;
+      }
+    }
     if (this.checkFill(finalUserInfoObj)) {
       await whenDismissGroup(Protocol.postMembersPutInfo(finalEditUserInfoObj));
       Toast.success('保存成功');
-      HiNavigator.navigateBack({
-        delta: 1
-      });
+      if (info_change){
+        WXDialog.showDialog({
+          content: "您的资料已发生变化，需要更新减脂计划",
+          showCancel: true,
+          confirmText: "立即前往",
+          cancelText: "取消",
+          confirmEvent: () => {
+            //
+            HiNavigator.navigateToWeightTarget(2);
+          },
+          cancelEvent: () => { 
+            HiNavigator.navigateBack({
+              delta: 1
+            });
+          }
+        });
+      }else{
+        HiNavigator.navigateBack({
+          delta: 1
+        });
+      }
+      
     } else {
       let showToastTxt = this.data.showToastTxt;
       wx.showToast({

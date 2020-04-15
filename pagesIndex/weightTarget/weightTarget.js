@@ -16,10 +16,11 @@ Page({
     showModalStatus:false
   },
   onLoad: function (options) {
-    
+    let fromPage = options.fromPage;
+    let can_change = (fromPage == 2) ? true : !app.globalData.isDoingPlan;
     this.setData({
-      fromPage: options.fromPage,
-      can_change: !app.globalData.isDoingPlan
+      fromPage,
+      can_change
     })
     this.initMyLossfatCourse();
   },
