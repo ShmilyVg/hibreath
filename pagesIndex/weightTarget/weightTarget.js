@@ -1,6 +1,7 @@
 // pagesIndex/weightTarget/weightTarget.js
 import HiNavigator from "../../navigator/hi-navigator";
 import Protocol from "../../modules/network/protocol";
+import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
 const app = getApp();
 Page({
 
@@ -38,7 +39,9 @@ Page({
     let weightGoalt = this.data.weightGoalt
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
     let { result } = await Protocol.initMyLossfatCourse(data);
+    let tip = (result.weight <= result.weightGoalt);
     this.setData({
+      tip,
       result
     })
   },
@@ -91,10 +94,11 @@ Page({
   },
   weightGoalChange(e) {
     let targetDate = this.data.result
-    let nowW = targetDate.weightLoss + targetDate.weightGoalt;
+    let nowW = targetDate.weight;
     let weightGoalt = e.detail.value;
-    if (nowW <= weightGoalt) {
+    if (nowW < weightGoalt) {
       toast.warn('目标体重过大')
+      weightGoalt = nowW;
     }
     let str = (weightGoalt + '').split('.')[1];
 
