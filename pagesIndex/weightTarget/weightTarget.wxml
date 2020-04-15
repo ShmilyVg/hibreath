@@ -10,10 +10,12 @@
       </view>
     </view>
     <image src="../../images/lowFatReport/newBg.png" class="bgrz"></image>
-    <view class="top-text">*根据《公共营养师》及《中国营养科学全书》推荐公式 计算，适合您的体重是{{result.weightGoalt}}kg
+    <view class="top-text">*根据《公共营养师》及《中国营养科学全书》推荐公式 计算，适合您的体重是{{result.weightGoalt}}kg；
+    <view wx:if="{{tip}}">您当前体重虽然标准，但不代表脂肪含量不超标，低碳饮食能消耗过多摄入的脂肪且有助于保持身材</view>
     </view>
+    
   </view>
-  <view class="weight-contain">
+  <view class="weight-contain" style="top:{{tip?'460rpx':'400rpx'}}">
     <view class="contain-text1">达到这个体重,</view>
     <view class="contain-text2">结合
       <text>Slimple低碳饮食方案*</text>,</view>
