@@ -51,7 +51,7 @@
 
   </view>
   <view class="contain">
-    <swiper indicator-dots="true" indicator-color="rgba(212,233,211,1)" indicator-active-color="rgba(123,200,119,1)" autoplay="true">
+    <swiper indicator-dots="{{banner.length > 1}}" indicator-color="rgba(212,233,211,1)" indicator-active-color="rgba(123,200,119,1)" autoplay="true">
       <swiper-item class="puzzled" wx:for="{{banner}}" wx:key="index">
         <image src="{{item.image}}" data-item="{{item}}" bindtap="goToTask"></image>
       </swiper-item>
