@@ -1,6 +1,6 @@
 <view wx:if="{{haveGroupId}}" class="relative fill-width flex-column box-sizing-border-box community-layout">
-    <view wx:if="{{dataList.lenght>0}}" style="width: 100%;height: 391rpx">
-        <image style="width: 100%;height: 100%" src="{{dataList[0].imageUrl}}"></image>
+    <view wx:if="{{dataList.length>0}}" style="width: 100%;height: 391rpx">
+        <image bindtap="toPage" data-appId="{{dataList[0].mpAppId}}"data-type="{{dataList[0].bannerType}}" data-url="{{dataList[0].navUrl}}" style="width: 100%;height: 100%" src="{{dataList[0].imageUrl}}"></image>
     </view>
     <view class="fill-width flex-row align-items-center box-sizing-border-box community-rank-layout">
         <view class="" bindtap="toReductionList" style="height: 100%;width: 33%;display: flex;align-items: center;justify-content: flex-start">
