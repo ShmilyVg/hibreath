@@ -62,7 +62,7 @@ Page({
       let weightGoalt = this.data.weightGoalt;
       let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
       let { result } = await Protocol.postMembersJoinSchema(data)
-      if (this.data.fromPage != 1) {
+      if (!this.data.fromPage) {
         HiNavigator.navigateToManifesto({ sharedId: result.sharedId })
       } else {
         this.setData({

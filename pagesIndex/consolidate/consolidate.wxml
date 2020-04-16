@@ -48,7 +48,7 @@
         </view>
         <view class="eatNum-item">
           <image src="../images/icon/you.png"></image>
-          <view class="eatNum-item-name">多种蔬菜</view>
+          <view class="eatNum-item-name">烹调油</view>
           <view class="eatNum-item-num">25
             <text>克以下·约2.5勺瓷汤匙</text> </view>
         </view>
