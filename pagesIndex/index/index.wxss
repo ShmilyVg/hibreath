@@ -125,8 +125,8 @@ page{
     font-family:DINCondensed;
     font-weight:bold;
     position: absolute;
-    top: 60rpx;
-    left: 335rpx;
+    top: 90rpx;
+    left: 330rpx;
 
 }
 @keyframes myfirst
