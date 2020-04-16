@@ -105,17 +105,15 @@ Page({
     this.handleListData()
   },
   getlosefatspeed(speed) {
-    let rotate = 130, piceRotate = 58;
+    let rotate = 130;
     if (speed <= 2) {
-      rotate = rotate + (58 * speed / 2)
-    } else if (speed <= 9 && speed >= 3) {
-      rotate = rotate + 58 + (58 * (speed - 2) / 7)
-    } else if (speed <= 19 && speed >= 10) {
-      rotate = rotate + 58 * 2 + (58 * (speed - 9) / 10)
-    } else if (speed <= 39 && speed >= 20) {
-      rotate = rotate + 58 * 3 + (58 * (speed - 19) / 20)
-    } else if (speed <= 99 && speed >= 40) {
-      rotate = rotate + 58 * 4 + (58 * (speed - 39) / 60)
+      rotate = rotate + speed * 6;
+    } else if (speed <= 39 && speed >= 3) {
+      rotate = 142 + (speed - 1) *7
+    }else if(speed < 99 && speed >= 40) {
+      rotate = 401 + (0.2 * (speed - 39))
+    } else if (speed == 99){
+      rotate = 420
     }
     let newrotate = Math.round(rotate);
     this.setData({

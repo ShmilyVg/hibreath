@@ -1,6 +1,5 @@
 page{
     height: 100%;
-    background-color: #7BC877;
 }
 
 .community-logo{
@@ -124,7 +123,7 @@ page{
     text-align: center;
     width: 750rpx;
     height: 852rpx;
-    background-image: url("http://img.hipee.cn/group.png");
+    /* background-image: url("http://img.hipee.cn/group.png"); */
     background-size: 100% 100%;
 }
 .community-btn{
@@ -213,4 +212,43 @@ page{
   position: absolute;
   left:90rpx;
 
+}
+
+
+.coupon_noData{
+    width: 370rpx;
+    height: 308rpx;
+    margin: 179rpx auto 0rpx auto;
+}
+.coupon_noData image{
+    width: 100%;
+    height: 100%;
+}
+.coupon_noData_view{
+    text-align: center;
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    margin-top: 96rpx;
+    color:rgba(102,102,102,1);
+}
+
+.btn_group {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom:70rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.btn_group .whiteBtn{
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #4FBB49;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 32rpx;
 }

@@ -147,7 +147,8 @@ page{
     width: 386rpx;
     height: 331rpx;
     margin-top: 168rpx;
-    animation:mySecond 5s  steps(5);
+    animation:mySecond 5s steps(5) 1;
+    animation-fill-mode: forwards;
     margin-left: 180rpx;
     margin-bottom: 140rpx;
     background-size:auto 100%;

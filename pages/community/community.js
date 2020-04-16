@@ -167,14 +167,7 @@ Page({
 
     },
     async onGetUserInfoEvent(e) {
-      const { result } = await Protocol.postMemberInfo();
-      if(!getApp().globalData.isLogin || !result.finishedPhone){
-        HiNavigator.navigateToGuidance({})
-      }else{
-        getApp().globalData.isGroupjoin = true //是圈子进入 加入 燃脂页面的标志位
-        HiNavigator.reLaunchToGroupNumber()
-      }
-      //HiNavigator.navigateToCreateCommunity()
+      HiNavigator.switchToSetInfo()
     },
     async toReductionList(){
         HiNavigator.navigateToReductionList({groupId:(await judgeGroupEmpty()).groupId})
