@@ -15,9 +15,11 @@ view{
     margin-bottom: 43rpx;
 }
 .topView-view2{
+  
     width:198rpx;
-    height:60rpx;
-    line-height: 60rpx;
+    /* height:60rpx;
+    line-height: 60rpx; */
+    padding: 12rpx 0 14rpx;
     text-align: center;
     border:1rpx solid rgba(255,255,255,1);
     border-radius:30rpx;

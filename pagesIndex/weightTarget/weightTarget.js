@@ -16,6 +16,7 @@ Page({
     showModalStatus:false
   },
   onLoad: function (options) {
+    wx.hideShareMenu();
     let fromPage = options.fromPage;
     let can_change = (fromPage == 2) ? true : !app.globalData.isDoingPlan;
     this.setData({

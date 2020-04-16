@@ -40,9 +40,9 @@ Page({
   },
 
   onLoad: function (options) {
-
+    console.log(options);
     let sharedId = options.sharedId == 'undefined' ? null : options.sharedId;
-    let reportId = options.reportId == 'undefined' ? null : options.reportId;
+    let reportId = (options.reportId == 'undefined' || options.reportId == 'null') ? null : options.reportId;
     let navBarBack = sharedId ? false:true;
     this.setData({
       sharedId,

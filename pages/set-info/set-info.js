@@ -113,8 +113,15 @@ Page({
   },
   onShow() {
     //判断初心遮罩是否显示
+    
     if (wx.getStorageSync('original_tip') == 'first') {
+      let showGiftwindowsTip = false, showGiftwindows = false;
+      if (this.data.showGiftwindowsTip) {
+        showGiftwindows = true;
+      }
       this.setData({
+        showGiftwindows,
+        showGiftwindowsTip,
         original_show: true
       })
       wx.setStorageSync('original_tip', 'ready')
@@ -371,10 +378,16 @@ Page({
               wx.hideTabBar();
             }
             //初心遮罩在前  开箱礼在后
-            this.setData({
-              showGiftwindowsTip:!this.data.original_show,
-              showGiftwindows:true
-            })
+            for (let item of result.modalList){
+              if (item.modalType == 'lowCarbon'){
+                this.setData({
+                  showGiftwindowsTip: !this.data.original_show,
+                  showGiftwindows: true
+                })
+                break;
+              }
+            }
+            
           },300)
         }
       });

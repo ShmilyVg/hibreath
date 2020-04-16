@@ -17,7 +17,7 @@
       <image src="../../images/lowFatReport/medal.png" class="medal"></image>
     </view>
   </view>
-  <view class="burnFat lowFat-item" wx:if="{{report.breathData.dataValue}}">
+  <view class="burnFat lowFat-item" wx:if="{{report.breathData.desZh}}">
     <view class="item-title">我的燃脂状况
       <view class="item-title-text" bindtap="goToResult" wx:if="{{!sharedId || sharedId == 'undefined'}}">查看历史记录
         <image src="../../images/arr-right.png"></image>
