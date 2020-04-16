@@ -193,6 +193,9 @@ export default class HiNavigator extends CommonNavigator {
     static switchToCommunity() {
         this.switchTab({url: '/pages/community/community'});
     }
+    static navigateToReductionList({groupId}) {
+      this.navigateTo({url: '/pagesIndex/reductionList/reductionList?groupId=' + groupId});
+    }
     //圈子banner页面
     static navigateToBannerPage({url}) {
         this.navigateTo({url: '/pagesThree/bannerPage/bannerPage?url=' + url});

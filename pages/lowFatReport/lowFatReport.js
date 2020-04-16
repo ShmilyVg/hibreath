@@ -81,9 +81,10 @@ Page({
 
     let losefatGrams = result.breathData.losefatGrams;
     let progress = 0;
-    if (losefatGrams) {
+    if (losefatGrams && losefatGrams.grams && losefatGrams.predictGrams) {
       progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
     };
+    console.log(losefatGrams, progress)
     result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:ss');
     let isToday = false;
     if (Tools.dateFormat(result.time) == Tools.dateFormat(new Date())){

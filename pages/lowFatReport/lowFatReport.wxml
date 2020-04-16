@@ -63,7 +63,7 @@
     <view class="burn-progress" wx:if="{{report.member.finishedInfo}}">
       <view class="burn-progress-left">
         <view class="burn-progress-contain">
-          <view class="burn-value" style="width:{{progress}}rpx">今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
+          <view class="burn-value" style="width:{{progress}}rpx" ><view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view> </view>
         </view>
         <view class="burn-progress-tip">
           <view class="burn-progress-text">预计今日总消耗脂肪</view>
@@ -114,7 +114,7 @@
       <canvas  canvas-id="lineCanvas" style="display:{{scrollIng?'none':'block'}}" class="canvas"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
-  <block wx:if="{{report.breathData.dataValue && report.weigthData.weightToday}}">
+  <block wx:if="{{report.breathData.desZh && report.weigthData.weightToday}}">
     <view class="suggest">
       <view class="suggest-tip">综合建议</view>
       <image src="../../images/lowFatReport/person.png" class="personImg"></image>
@@ -130,7 +130,7 @@
   </block>
   <!-- 分享页面不显示该模块 -->
   <block wx:if="{{!sharedId && request && report.member.finishedInfo}}">
-    <view class="synthesize" wx:if="{{!report.breathData.dataValue || !report.weigthData.weightToday}}">
+    <view class="synthesize" wx:if="{{!report.breathData.desZh || !report.weigthData.weightToday}}">
       <view class="item-title synthesize-title">综合分析</view>
       <view class="synthesize-contain">
         <image src="../../images/lowFatReport/lock.png"></image>
@@ -138,7 +138,7 @@
           <view>完成全部打卡检测，获取今日综合分析</view>
           <button bindtap="weightFinish" class="{{isToday?'':'disabledClass'}}">去体重打卡</button>
         </block>
-        <block wx:elif="{{!report.breathData.dataValue}}">
+        <block wx:elif="{{!report.breathData.desZh}}">
           <view>你减少的体重里有多少是脂肪呢？ </view>
           <view>来测测燃脂状况吧，获取今日综合分析</view>
           <button bindtap="fatTaskToFinish" class="{{isToday?'':'disabledClass'}}">去燃脂打卡</button>
