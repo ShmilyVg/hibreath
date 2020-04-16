@@ -1,5 +1,5 @@
 <!--pagesIndex/manifesto/manifesto.wxml-->
-<navBar title='Slimple轻松派' class='navBar_class' color="#fff" iconTheme="white" background='#3d3a3d' back="{{true}}" bindback="handlerGobackClick">
+<navBar title='减脂初心' class='navBar_class' color="#fff" iconTheme="white" background='#3d3a3d' back="{{true}}" bindback="handlerGobackClick">
 
 </navBar>
 <view style="height:139rpx;"> </view>

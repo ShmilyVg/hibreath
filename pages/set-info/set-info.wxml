@@ -1,6 +1,6 @@
 <navBar
         wx:if="{{!showGiftwindows}}"
-        title='Slimple轻松派'
+        title='Slimple轻松燃脂'
         color="#fff"
         iconTheme="{{navBarIconTheme}}"
         background='#7BC877'
@@ -11,20 +11,20 @@
 <view class="guidance" wx:if="{{!showPage}}">
   <view class="firstPage">
     <image src="../../images/guidance/rztb.png" class="guidanceBg"></image>
-    <view class="header_h2 text_left">Slimple低碳燃脂</view>
+    <view class="header_h2 text_left">Slimple轻松燃脂</view>
     <view class="header_text1">好身材·很简单</view>
     <view class="lineBold"></view>
     <view class="header_text text_left">成为低碳club会员，领取免费好礼</view>
   </view>
   <view class="btn_group">
-    <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">开始低碳燃脂</button>
+    <button class="bottom-btn whiteBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" hover-class="press-style" hover-stay-time="50">开启燃脂之旅</button>
   </view>
 </view>
 <view class="set-info" wx:if="{{showPage}}">
   <view class="set-top-view">
     <view class="set-top">
-      <view class="set-title" wx:if="{{taskInfo.dayNum}}">你已坚持低碳燃脂{{taskInfo.dayNum}}天</view>
-      <view class="set-title" wx:if="{{!taskInfo.dayNum}}">开启你的低碳燃脂之旅</view>
+      <view class="set-title" wx:if="{{taskInfo.dayNum}}">你已坚持燃脂{{taskInfo.dayNum}}天</view>
+      <view class="set-title" wx:if="{{!taskInfo.dayNum}}">开启你的燃脂之旅</view>
     </view>
     <view class="weightAbout">
       <view class="weight_item weigth">

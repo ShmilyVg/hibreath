@@ -1,7 +1,7 @@
 <import src="./view/indexCommon.wxml"></import>
 　<view class="page" style="background-color:{{bgColor}}">
     <navBar
-            title='Slimple轻松派'
+            title='绑定设备'
             color="{{navBarColor}}"
             iconTheme="{{navBarIconTheme}}"
             background='{{navBarBackground}}'
