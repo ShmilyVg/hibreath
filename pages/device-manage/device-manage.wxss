@@ -1,6 +1,6 @@
 /* pages/device-manage/device-manage.wxss */
 page{
-    background: #7BC877;
+
 }
 .image{
     width: 260rpx;
