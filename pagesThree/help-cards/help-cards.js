@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
@@ -21,25 +21,29 @@ Page({
       ...result,
       sharedId:options.sharedId
     })
-    console.log(' getApp().globalData.isLogin', getApp().globalData.isLogin)
-    if(!this.data.isComplete && !getApp().globalData.isLogin){
-      this.setData({
-        btnText:'进入Slimple，帮ta补卡',
-        todo:"toRegisterHelp"
-      })
-    }
-    if(this.data.isComplete && !getApp().globalData.isLogin){
-      this.setData({
-        btnText:'补卡已结束,进入我的Slimple',
-        todo:"toRegister"
-      })
-    }
-    if(this.data.isComplete && getApp().globalData.isLogin){
-      this.setData({
-        btnText:'进入我的Slimple',
-        todo:"toSetInfo"
-      })
-    }
+    
+    setTimeout(()=>{
+      console.log(' getApp().globalData.isLogin', getApp().globalData.isLogin,this)
+      if (!this.data.isComplete && !getApp().globalData.isLogin) {
+        this.setData({
+          btnText: '进入Slimple，帮ta补卡',
+          todo: "toRegisterHelp"
+        })
+      }
+      if (this.data.isComplete && !getApp().globalData.isLogin) {
+        this.setData({
+          btnText: '补卡已结束,进入我的Slimple',
+          todo: "toRegister"
+        })
+      }
+      if (getApp().globalData.isLogin) {
+        this.setData({
+          btnText: '进入我的Slimple',
+          todo: "toSetInfo"
+        })
+      }
+    },300)
+    
   },
   //单纯注册
   async toRegister(e){
