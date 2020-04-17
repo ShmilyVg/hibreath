@@ -47,9 +47,6 @@ Page({
     showGiftwindows:false,
     showGiftwindowsTip:false
   },
-
-
-
   onHide() {
     //离开时 告知蓝牙标志位 0x3D   0X02
     if (app.getLatestBLEState().connectState === "connected") {
@@ -124,6 +121,7 @@ Page({
         showGiftwindowsTip,
         original_show: true
       })
+      this.hideTabBarFun();
       wx.setStorageSync('original_tip', 'ready')
     }else{
       this.setData({
@@ -200,13 +198,7 @@ Page({
     this.setData({
       isOpened: false
     });
-    wx.showTabBar({
-      fail: function () {
-        setTimeout(function () {
-          wx.showTabBar();
-        }, 500);
-      }
-    });
+    this.showTabBarFun()
     return {
       title: '我正在低碳燃脂，快来一起加入！',
       path: `/pages/sharedGuidance/sharedGuidance?sharedId=${this.data.taskInfo.sharedId}`,
@@ -220,21 +212,9 @@ Page({
       this.setData({
         showPage:true
       })
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
+      this.showTabBarFun()
     }else{
-      wx.hideTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.hideTabBar()
-          }, 200)
-        }
-      });
+      this.hideTabBarFun();
     } 
   },
   //获取个人信息
@@ -257,13 +237,7 @@ Page({
       this.setData({
         showPage: false
       })
-      wx.hideTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.hideTabBar()
-          }, 200)
-        }
-      });
+      this.hideTabBarFun();
 
     } else if (result.finishedGuide) {
       this.setData({
@@ -271,13 +245,8 @@ Page({
         finishedGuide: true,
         showPage: true
       })
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
+      
+      this.showTabBarFun()
     } else if (finishedInfo){
       if (hipeeScene != 'device'){
         this.setData({
@@ -328,11 +297,11 @@ Page({
     });
   },
   closeWindows(){
-    wx.showTabBar();
     this.setData({
       showGiftwindowsTip:false,
       showGiftwindows:false
     })
+    this.showTabBarFun()
   },
   //关闭初心遮罩
   closeOriginal() {
@@ -341,6 +310,29 @@ Page({
       showGiftwindowsTip: this.data.showGiftwindows,
       original_show: false
     })
+    if (!this.data.showGiftwindows) {
+      this.showTabBarFun()
+    }
+  },
+  showTabBarFun(){
+    //如果初心遮罩或者开箱礼遮罩存在是  暂时不显示TabBar
+    if (this.data.showGiftwindowsTip || this.data.original_show) return;
+    wx.showTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.showTabBar();
+        }, 200);
+      }
+    });
+  },
+  hideTabBarFun(){
+    wx.hideTabBar({
+      fail: function () {
+        setTimeout(function () {
+          wx.hideTabBar()
+        }, 200)
+      }
+    });
   },
   //前往 领取低碳饮食页面
   toGetLowFood(){
@@ -364,6 +356,7 @@ Page({
     } else if (result.weightTask && result.weightTask.finished){
       taskFinished = true;
     }
+    let that = this;
     app.globalData.isDoingPlan = result.isDoingPlan;
     if(result.modalList.length>0){
       var loader=new ImageLoader({
@@ -375,12 +368,12 @@ Page({
             var currentPage = pages[pages.length - 1]    //获取当前页面的对象
             console.log('当前页面是', currentPage.route)
             if (currentPage.route === 'pages/set-info/set-info') {
-              wx.hideTabBar();
+              that.hideTabBarFun();
             }
             //初心遮罩在前  开箱礼在后
             for (let item of result.modalList){
               if (item.modalType == 'lowCarbon'){
-                this.setData({
+                that.setData({
                   showGiftwindowsTip: !this.data.original_show,
                   showGiftwindows: true
                 })
@@ -486,7 +479,7 @@ Page({
     }
     await Protocol.setBodyIndex({ weight: this.data.weight });
     this.hideModal();
-    wx.showTabBar()
+    this.showTabBarFun()
     HiNavigator.navigateToLowFatReport();
   },
   //体重弹框
@@ -547,13 +540,7 @@ Page({
       this.setData({
         deny:true
       })
-      wx.showTabBar({
-        fail: function () {
-          setTimeout(function () {
-            wx.showTabBar();
-          }, 200);
-        }
-      });
+      this.showTabBarFun()
     }
   },
   //去燃脂列表页
@@ -706,13 +693,7 @@ Page({
             isBind:true,
             showPage: true
           })
-          wx.showTabBar({
-            fail: function () {
-              setTimeout(function () {
-                wx.showTabBar();
-              }, 200);
-            }
-          });
+          this.showTabBarFun()
         }
         this.isBind = true
         app.getBLEManager().setBindMarkStorage();
@@ -730,13 +711,7 @@ Page({
     this.setData({
       isOpened: false
     });
-    wx.showTabBar({
-      fail: function () {
-        setTimeout(function () {
-          wx.showTabBar();
-        }, 500);
-      }
-    });
+    this.showTabBarFun()
   },
   //减脂大实话
   async getAnswer(txt) {
@@ -790,7 +765,7 @@ Page({
     this.animation = animation
     setTimeout(function () {
       that.fadeIn();//调用显示动画
-      wx.hideTabBar();
+      that.hideTabBarFun();
     }, 200)
   },
 
@@ -807,7 +782,7 @@ Page({
       that.setData({
         hideModal: true
       })
-      wx.showTabBar()
+      this.showTabBarFun()
     }, 720)//先执行下滑动画，再隐藏模块
 
   },
