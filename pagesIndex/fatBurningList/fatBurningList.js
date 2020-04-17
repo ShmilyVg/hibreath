@@ -26,8 +26,9 @@ Page({
       if (this.data.getSharedId) {
         if (newtab == 0) {
           const { result: { sharedId, ranklist, rankNum, inRank, todayValue, dataDesc } } = await whenDismissGroup(Protocol.postBreathDay({ sharedId: this.data.getSharedId }));
+          let ranklistF = this.filterFun(ranklist);
           this.setData({
-            ranklist: ranklist,
+            ranklist: ranklistF,
             sharedId: sharedId,
             inRank: inRank,
             rankNum: rankNum,
@@ -36,8 +37,9 @@ Page({
           })
         } else {
           const { result: { sharedId, ranklist, rankNum, inRank} } = await whenDismissGroup(Protocol.postBreath({ sharedId: this.data.getSharedId }));
+          let ranklistF = this.filterFun(ranklist);
           this.setData({
-            ranklist: ranklist,
+            ranklist: ranklistF,
             sharedId: sharedId,
             rankNum: rankNum,
             inRank: inRank
@@ -47,8 +49,9 @@ Page({
       } else {
         if (newtab == 0) {
           const { result: { sharedId, ranklist, rankNum, inRank, todayValue, dataDesc} } = await whenDismissGroup(Protocol.postBreathDay({ groupId: this.data.groupId }));
+          let ranklistF = this.filterFun(ranklist);
           this.setData({
-            ranklist: ranklist,
+            ranklist: ranklistF,
             sharedId: sharedId,
             rankNum: rankNum,
             inRank: inRank,
@@ -57,8 +60,9 @@ Page({
           })
         } else {
           const { result: { sharedId, ranklist, rankNum, inRank} } = await whenDismissGroup(Protocol.postBreath({ groupId: this.data.groupId }));
+          let ranklistF = this.filterFun(ranklist);
           this.setData({
-            ranklist: ranklist,
+            ranklist: ranklistF,
             sharedId: sharedId,
             rankNum: rankNum,
             inRank: inRank,
@@ -68,10 +72,18 @@ Page({
       }
 
     }
-    console.log(this.data.dataDesc)
+    // console.log(this.data.dataDesc)
   },
 
-
+  filterFun(arr){
+    let nerArr =[];
+    for(let item of arr){
+      if (item.fieldValue < 40){
+        nerArr.push(item)
+      }
+    }
+    return nerArr;
+  },
   // 
   /**
    * 生命周期函数--监听页面加载
@@ -89,6 +101,7 @@ Page({
     });
 
     const { result: { nickname, headUrl, groupName, sharedId, rankNum, todayValue, dataDesc, ranklist, inRank } } = await whenDismissGroup(Protocol.postBreathDay({ groupId, sharedId: getSharedId }));
+    let ranklistF = this.filterFun(ranklist);
     this.setData({
       inRank: inRank,
       groupName: groupName,
@@ -98,7 +111,7 @@ Page({
       headUrl: headUrl,
       todayValue: todayValue,
       dataDesc: dataDesc,
-      ranklist: ranklist
+      ranklist: ranklistF
     });
 
   },

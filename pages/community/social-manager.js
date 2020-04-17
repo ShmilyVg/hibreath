@@ -125,7 +125,7 @@ export async function whenDismissGroup(protocol) {
         return await protocol;
     } catch (e) {
         console.error(e);
-        const {code} = e.data;
+        const {code,msg} = e.data;
         if (code === 40011) {
             WXDialog.showDialog({
                 title: '', content: '抱歉\n您已被移除该圈子', confirmText: '我知道了', confirmEvent: () => {
@@ -189,7 +189,7 @@ export async function whenDismissGroup(protocol) {
         }else if (code === 40018) {
           Toast.hiddenLoading()
           WXDialog.showDialog({
-            title: '', content: '验证码发送失败,请重试', confirmText: '我知道了', confirmEvent: () => {
+            title: '', content: msg, confirmText: '我知道了', confirmEvent: () => {
             }
           });
         }else if (code === 40019) {
