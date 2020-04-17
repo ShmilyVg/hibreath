@@ -78,7 +78,7 @@ Page({
   },
   onShareAppMessage(){
     return{
-      title: '我在Slimple低碳club减脂！拜托 拜托！来帮我补个卡吧~',
+      title: '我在Slimple减脂中！拜托 拜托！来帮我补个卡吧~',
       path: `/pagesThree/help-cards/help-cards?sharedId=${this.data.breathSign.sharedId}`,
       imageUrl: this.data.breathSign.sharedImg
     }

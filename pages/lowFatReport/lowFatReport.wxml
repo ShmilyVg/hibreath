@@ -172,5 +172,5 @@
   </button>
   <view class="cancel" bindtap="hideModal">取消</view>
 </view>
-<button wx:if="{{!isLogin}}" class="bottmFixd" open-type="getUserInfo" bindgetuserinfo="toNextpage" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</button>
-<button wx:if="{{isLogin}}" class="bottmFixd" bindtap="toSetInfo" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple低碳CLUB，一起燃脂吧！</button>
+<button wx:if="{{!isLogin}}" class="bottmFixd" open-type="getUserInfo" bindgetuserinfo="toNextpage" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple,一起燃脂吧！</button>
+<button wx:if="{{isLogin}}" class="bottmFixd" bindtap="toSetInfo" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple,一起燃脂吧！</button>

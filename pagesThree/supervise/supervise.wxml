@@ -10,6 +10,6 @@
 </navBar>
 <view class="supervise">
   <image style="width: 750rpx;height: 1334rpx;" src="{{needImg}}"></image>
-  <button wx:if="{{!isLogin}}"  open-type="getUserInfo" bindgetuserinfo="toNextpage" class="supervise_btn">加入Slimple低碳CLUB，一起燃脂吧！</button>
-  <button wx:if="{{isLogin}}" bindtap="toSetInfo" class="supervise_btn">加入Slimple低碳CLUB，一起燃脂吧！</button>
+  <button wx:if="{{!isLogin}}"  open-type="getUserInfo" bindgetuserinfo="toNextpage" class="supervise_btn">加入Slimple,一起燃脂吧！</button>
+  <button wx:if="{{isLogin}}" bindtap="toSetInfo" class="supervise_btn">加入Slimple,一起燃脂吧！</button>
 </view>

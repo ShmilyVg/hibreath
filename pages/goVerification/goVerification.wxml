@@ -18,7 +18,7 @@
     <button class="goVerification-getCode" bindtap="getCode" hover-class="press-style" disabled="{{captchaDisabled}}"  disabled-class="disabled">{{btntext}}</button>
     <view class="clear"></view>
 </view>
-<view style="font-size:24rpx;font-family:PingFang SC;color:rgba(255,137,73,1);">* 验证手机号，可以领取低碳CLUB会员开箱礼</view>
+<view style="font-size:24rpx;font-family:PingFang SC;color:rgba(255,137,73,1);">* 验证手机号,可以领取低碳燃脂会员开箱礼</view>
 <button class="goVerification-btn" disabled="{{disabledBtn}}" hover-class="press-style" bindtap="submitMsg">下一步</button>
 <my-toast
         wx:if="{{showMytoast}}"

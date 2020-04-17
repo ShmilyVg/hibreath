@@ -6,7 +6,7 @@
 </view>
 <view class="contain">
   <view class="family">
-    <view class="family-title">低碳CLUB·燃脂大家庭</view>
+    <view class="family-title">Slimple燃脂仙女互助协会</view>
     <view class="family-text">点击添加营养师，享受1对1营养服务</view>
     <view class="family-text">加入燃脂大家庭，倾听更多人背后的故事</view>
     <view class="family-btn" bindtap="goToAddLowfat">立即加入</view>
