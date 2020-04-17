@@ -13,7 +13,7 @@
     {{content.description}}
 </view>
 
-<view style="padding-left: 47rpx;padding-right: 70rpx">
+<view style="padding-left: 47rpx;padding-right: 70rpx;margin-bottom: 165rpx">
     <view class="rule-title">领取规则</view>
     <view wx:for="{{content.ruleList}}" style="margin-bottom: 60rpx;max-height: 115rpx">
         <view class="ruleList-index">{{index+1}}</view>
@@ -25,8 +25,8 @@
         </view>
         <view class="clear"></view>
     </view>
-    <view class="dis-goBuy-btn" wx:if="{{content.qualificationStatus == 1}}">暂无资格</view>
-    <button class="goBuy-btn"  bindtap="debounce" data-status="2" wx:if="{{content.qualificationStatus == 2}}">立即领取</button>
-    <button class="goBuy-btn"  bindtap="debounce" data-status="3" wx:if="{{content.qualificationStatus == 3}}">已领取去使用</button>
-    <view class="dis-goBuy-btn" wx:if="{{content.qualificationStatus == 4}}">优惠券已使用</view>
 </view>
+<view class="bottmFixd" wx:if="{{content.qualificationStatus == 1}}">暂无资格</view>
+<button class="bottmFixd"  bindtap="debounce" data-status="2" wx:if="{{content.qualificationStatus == 2}}">立即领取</button>
+<button class="bottmFixd"  bindtap="debounce" data-status="3" wx:if="{{content.qualificationStatus == 3}}">已领取去使用</button>
+<view class="bottmFixd" wx:if="{{content.qualificationStatus == 4}}">优惠券已使用</view>
