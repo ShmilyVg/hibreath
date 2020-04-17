@@ -28,5 +28,5 @@
     <view class="cards-days-Num">{{addUpWeightLoss}}<text>kg</text></view>
     <view class="cards-dec" style="margin-top: 33rpx;margin-bottom: 10rpx">亲爱的小伙伴</view>
     <view class="cards-dec">点击下方按钮，来帮我补个卡啦!</view>
-    <button class="cards-btn" open-type="getUserInfo" bindgetuserinfo="{{todo}}">{{btnText}}</button>
+    <button class="cards-btn" open-type="getUserInfo" bindgetuserinfo="{{todo}}" wx:if="{{btnText}}">{{btnText}}</button>
 </view>
