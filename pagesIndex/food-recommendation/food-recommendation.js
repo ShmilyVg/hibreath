@@ -12,25 +12,26 @@ Page({
     currenttab: 'ingredient',
     foodColor: 'green',
     activeMater: '',
-    ingredientType: [{
-      img: 'red',
-      bgColor: '#FFF4EC',
-      bgColor1: '#FF9D76',
-      text1: '红灯',
-      text2: '不可以吃',
-    }, {
+    ingredientType: [
+      {
+        img: 'green',
+        bgColor: '#ECF8EB',
+        bgColor1: '#93D78E',
+        text1: '绿灯',
+        text2: '放心吃',
+      },{
       img: 'yellow',
       bgColor: '#FFFAE8',
       bgColor1: '#F5CE4B',
       text1: '黄灯',
       text2: '可适当选择',
-    }, {
-      img: 'green',
-      bgColor: '#ECF8EB',
-      bgColor1: '#93D78E',
-      text1: '绿灯',
-      text2: '放心吃',
-    }],
+    },{
+        img: 'red',
+        bgColor: '#FFF4EC',
+        bgColor1: '#FF9D76',
+        text1: '红灯',
+        text2: '不可以吃',
+      }],
     colorList: [{
       type: 'green',
       title: '绿灯',
