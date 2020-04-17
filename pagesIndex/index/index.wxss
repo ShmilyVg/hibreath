@@ -310,6 +310,13 @@ button::after{ border: none; }
     from {opacity:0;}
     to {opacity:1;}
 }
+.findBle{
+    width: 39rpx;
+    height: 77rpx;
+    margin-top: 290rpx;
+    margin-left: 190rpx;
+    animation:myBle 1s linear infinite alternate;
+}
 .againText{
     font-family: PingFang-SC;
     margin: 0 auto;
