@@ -68,7 +68,7 @@
               <view class="food-title">{{item.title}}</view>
               <view class="food-kcal">{{item.calorie}}kcal</view>
             </view>
-            <view class="food-quantityDesc">x{{item.carbohydrate}}</view>
+            <view class="food-quantityDesc">x{{item.carbohydrate}}{{item.carbohydrateUnit}}</view>
             <view class="clear"></view>
           </view>
         </view>
