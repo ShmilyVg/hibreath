@@ -1,14 +1,25 @@
 <!--pagesIndex/noticeList/noticeList.wxml-->
-<view wx:if="{{!noticeList.length==0}}" class="page-body">
-  <view class="flex-row noticeList-header space-between">
-    <view>新消息 {{unreadNum}}</view>
-    <view class="header-btn flex-row space-between" bindtap="deleteNotice">
-      <image src="../../images/noticeList/delete.png"></image>
-      清空全部
+
+<view class="result_tab_top">
+  <view wx:for="{{typeList}}" wx:key="index">
+    <view class="{{currenttab===item.type?'tab_item_active':'tab_item'}}" data-tabid="{{item.type}}" bindtap='selectTab'>
+      <view style="margin-bottom: 20rpx">{{item.title}}</view>
+      <view class="active_line" wx:if="{{currenttab === item.type}}"></view>
     </view>
   </view>
-  <view>
-      <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}"  data-isDelete="{{item.baseData.isDelete}}" data-noticeIsDelete="{{item.noticeIsDelete}}"  data-time="{{item.timeDiff}}" style="background:{{item.unread?read:''}};">
+</view>
+<block wx:if="{{currenttab == 'my_msg'}}">
+  <view wx:if="{{!noticeList.length==0}}" class="page-body">
+    <view class="flex-row noticeList-header space-between">
+      <view> </view>
+      <view class="header-btn flex-row space-between" bindtap="deleteNotice">
+        <image src="../../images/noticeList/delete.png"></image>
+        清空全部
+      </view>
+    </view>
+    <view>
+      <view wx:for="{{noticeList}}" class="noticeList flex-row space-between" bindtap="toMessageDetail" wx:key="{{index}}" data-index="{{item.baseData.id}}" data-isDelete="{{item.baseData.isDelete}}" data-noticeIsDelete="{{item.noticeIsDelete}}" data-time="{{item.timeDiff}}"
+        style="background:{{item.unread?read:''}};">
         <view class="flex-row space-between notice-left">
           <image src="{{item.fromImg}}" mode="aspectFill" class="notice-head-img"></image>
           <view class="notice-center">
@@ -19,16 +30,32 @@
             </view>
             <view wx:if="{{item.content&&!item.noticeIsDelete}}" class="notice-comment">{{item.content}}</view>
             <view wx:if="{{item.noticeIsDelete}}" class="notice-delete">该条评论已被删除</view>
-            <view class="notice-time" >{{item.timeDiff}}</view>
+            <view class="notice-time">{{item.timeDiff}}</view>
           </view>
         </view>
         <image mode="aspectFill" wx:if="{{item.baseData.imgUrl}}" src="{{item.baseData.imgUrl}}" class="notice-img"></image>
         <view wx:else class="notice-img">{{item.baseData.content}}</view>
       </view>
+    </view>
   </view>
-</view>
-<view  wx:else>
-  <image  class="phone-img" src="../../images/noticeList/empty.png"></image>
-  <view class="empty-text">暂无记录</view>
-</view>
-
+  <view wx:else>
+    <image class="phone-img" src="../../images/noticeList/empty.png"></image>
+    <view class="empty-text">暂无记录</view>
+  </view>
+</block>
+<block wx:if="{{currenttab == 'dynamic'}}">
+  <view class="page" style="background: {{backColor}}">
+      <myMessagelist
+              wx:if="{{isShowlist}}"
+              class="fill-width" style="padding-bottom: 30rpx;"
+              bind:onMessageDeleteEvent="onDynamicItemDeleteEvent"
+              wx:for="{{list}}"
+              wx:key="index"
+              message="{{item}}">
+      </myMessagelist>
+      <view wx:if="{{!isShowlist}}">
+          <image  class="phone-img" src="../../images/noticeList/empty.png"></image>
+          <view class="empty-text">暂无动态</view>
+      </view>
+  </view>
+</block>

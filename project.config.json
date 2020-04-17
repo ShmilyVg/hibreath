@@ -527,6 +527,13 @@
 					"pathName": "pagesIndex/dayReportConclude/dayReportConclude",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesIndex/noticeList/noticeList",
+					"pathName": "pagesIndex/noticeList/noticeList",
+					"query": "sharedId=1C9AC0159C94D8D0CBEDC973445AF2DAA42C3ABB89D4D2FEEC1EF1176F0B7B24",
+					"scene": null
 				}
 			]
 		}

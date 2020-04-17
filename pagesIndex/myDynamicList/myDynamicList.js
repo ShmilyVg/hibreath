@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      pageIndex:1,
+      dynamic_pageIndex:1,
       isShowlist:false,
       backColor:''
   },
@@ -21,7 +21,7 @@ Page({
       console.log('result',this.data.list)
   },
    async getDynamicList(){
-       const { result: { list: list } } = await Protocol.postMydynamicList({ page: this.data.pageIndex });
+       const { result: { list: list } } = await Protocol.postMydynamicList({ page: this.data.dynamic_pageIndex });
        if(list.length>0){
            this.setData({
                list:list,
@@ -88,8 +88,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   async onReachBottom() {
-      this.data.pageIndex++;
-      const {result} = await Protocol.postMydynamicList({ page: this.data.pageIndex });
+      this.data.dynamic_pageIndex++;
+      const {result} = await Protocol.postMydynamicList({ page: this.data.dynamic_pageIndex });
       const dataList = result.list;
       console.log('dataList',dataList)
       if (this.data.list.length) {

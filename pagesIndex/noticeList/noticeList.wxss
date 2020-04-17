@@ -2,6 +2,49 @@
 /* .page-body{
 
 } */
+page{
+  height: 100%;
+}
+.tab_item {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(170, 170, 170, 1);
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.tab_item_active {
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(69, 69, 69, 1);
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.active_line {
+  margin: 0rpx auto 0 auto;
+  width: 70rpx;
+  height: 6rpx;
+  background: rgba(123, 200, 119, 1);
+  border-radius: 2rpx;
+}
+
+.result_tab_top {
+  flex-wrap: wrap;
+  align-content: flex-center;
+  align-items: center;
+  width: 100%;
+  padding: 0rpx 3rpx;
+  box-sizing: border-box;
+  justify-content: space-around;
+  height: 90rpx;
+}
+
+
 .noticeList-header{
   height:60rpx;
   line-height:60rpx;
@@ -121,4 +164,36 @@ text-align:center;
   line-height:40rpx;
   margin-top:18rpx;
   text-align:center;
+}
+
+
+
+
+/* 动态消息 */
+.page{
+    display: block;
+    min-height: calc(100% - 100rpx);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100rpx;
+    z-index: 1;
+}
+.phone-img{
+    width:345rpx;
+    height:280rpx;
+    position: relative;
+    left:50%;
+    top:50%;
+    margin-top:300rpx;
+    margin-left:-160rpx;
+}
+.empty-text{
+    font-size:30rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(187,187,187,1);
+    line-height:42rpx;
+    text-align:center;
+    margin-top: 40rpx;
 }
