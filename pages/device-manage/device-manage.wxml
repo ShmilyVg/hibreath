@@ -1,13 +1,26 @@
 <!--pages/device-manage/device-manage.wxml-->
-<view wx:if="{{isBind}}" class="flex-column">
+<view wx:if="{{isBind}}" class="flex-column" style="background: #7BC877">
     <text class="device-name">燃脂检测仪</text>
     <view class="againImg"></view>
     <view class="bindSj"></view>
     <view class="home-orangebtn" hover-class="press-style" hover-stay-time="50" bindtap="unbindDevice">解绑设备</view>
 </view>
-<view class="flex-column" wx:else>
-    <text class="device-name">燃脂检测仪</text>
+<view class="flex-column" wx:else style="background: #fff">
+  <!--  <text class="device-name">燃脂检测仪</text>
     <view class="againImg"></view>
-   <!-- <view class="bindSj"></view>-->
-    <view class="home-orangebtn" hover-class="press-style" bindtap="toBind" >绑定设备</view>
+   &lt;!&ndash; <view class="bindSj"></view>&ndash;&gt;
+    <view class="home-orangebtn" hover-class="press-style" bindtap="toBind" >绑定设备</view>-->
+
+    <view class="bindText" style="padding-top: 60rpx;margin-bottom: 25rpx">绑定你的燃脂精灵</view>
+    <view class="bindSub">监测数据实时上传，及时记录，并可结合身体多</view>
+    <view class="bindSub" style="margin-bottom: 55rpx">维度指标分析减脂状态。</view>
+    <view class="bindImg"><image class="ble" src="../../images/index/ble.png"></image></view>
+    <view style="position: relative;top: -270rpx;text-align: center">
+        <view class="bindSub-green">PS:确保手机蓝牙和GPS处于开启状态。</view>
+        <view class="bindSub-green" style="margin-bottom: 25rpx">确保硬件处于开机界面，且蓝牙标志为闪动状态</view>
+        <view class="bindSj-green"></view>
+        <button class="hint-btn"   bindtap="toBind" >点击绑定燃脂精灵</button>
+    </view>
+
+
 </view>

@@ -26,9 +26,15 @@
     </view>
     <!--正在寻找设备-->
     <view wx:if="{{finding}}">
-        <view class="findImd"></view>
+        <view class="findImd">
+            <image class="findBle" src="../../images/index/ble.png"></image>
+        </view>
         <view class="contentTextB">{{contentStateB}}</view>
         <view class="contentTextS">{{contentStateS}}</view>
+        <view style="text-align: center;margin-top: 50rpx">
+            <view class="bindSub-green">PS:确保手机蓝牙和GPS处于开启状态。</view>
+            <view class="bindSub-green" style="margin-bottom: 25rpx">确保硬件处于开机界面，且蓝牙标志为闪动状态</view>
+        </view>
     </view>
     <!--找到设备并按键绑定-->
     <view wx:if="{{finded}}">

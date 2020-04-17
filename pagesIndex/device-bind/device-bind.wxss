@@ -188,3 +188,20 @@ page{
     font-family: PingFang-SC;
     line-height: 100rpx;
 }
+.findBle{
+    width: 39rpx;
+    height: 77rpx;
+    margin-top: 290rpx;
+    margin-left: 190rpx;
+    animation:myBle 1s linear infinite alternate;
+}
+@keyframes myBle{
+    from {opacity:0;}
+    to {opacity:1;}
+}
+.bindSub-green{
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular,PingFang-SC;
+    font-weight:400;
+    color:rgba(123,200,119,1);
+}

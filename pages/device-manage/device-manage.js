@@ -14,6 +14,10 @@ Page({
     },
     onShow(){
       Toast.showLoading();
+      this.getBindInfo();
+      Toast.hiddenLoading();
+    },
+    getBindInfo(){
       Protocol.getDeviceBindInfo().then(data => {
         this.setData({
           ...data.result
@@ -22,14 +26,21 @@ Page({
           this.setData({
             isBind:false
           })
+          wx.setNavigationBarColor({
+            backgroundColor: '#ffffff',
+            frontColor:'#000000'
+          });
         }else{
           this.setData({
             deviceId: this.data.deviceId,
             isBind:true
           })
+          wx.setNavigationBarColor({
+            backgroundColor: '#7BC877', // 窗口的背景色为白色
+            frontColor:'#ffffff'
+          });
         }
-
-      }).finally(() => Toast.hiddenLoading());
+      })
     },
     unbindDevice() {
         Toast.showLoading();
