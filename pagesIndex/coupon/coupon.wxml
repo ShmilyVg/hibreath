@@ -12,7 +12,7 @@
 <block wx:for="{{resultIndex}}" wx:key="index" wx:if="{{currenttab=== 'noUsed' && resultIndex.length>0}}">
     <view class="coupon_list">
         <view class="coupon_list_left" style="background-color: {{item.type == 1?'#8ED787' : (item.type==2?'#84D7C8':'#FFAF83')}}">
-            {{item.typeName}}券
+            {{item.typeName}}
         </view>
         <view class="coupon_list_right">
             <view class="coupon_list_right_title">{{item.title}}</view>

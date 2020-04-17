@@ -84,7 +84,7 @@ Page({
   },
   toGift(e){
     let item = e.currentTarget.dataset.item
-    if (item.platform == ' youzan'){
+    if (item.platform == 'youzan'){
       wx.showToast({
         title: '即将跳转有赞小程序',
         icon: 'none',
