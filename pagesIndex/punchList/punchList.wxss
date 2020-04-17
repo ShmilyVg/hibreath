@@ -268,7 +268,7 @@ page{
     color:rgba(84,84,84,1);
 }
 .cell-title{
-     width:320rpx;
+     width:280rpx;
      font-size:28rpx;
      font-family:PingFang-SC-Regular,PingFang-SC;
      font-weight:400;

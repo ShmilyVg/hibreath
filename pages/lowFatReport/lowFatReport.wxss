@@ -376,7 +376,7 @@ view {
   width: 600rpx;
   margin-top: 60rpx;
   position: relative;
-  height: 360rpx;
+  min-height: 360rpx;
 }
 
 .suggest-tip {

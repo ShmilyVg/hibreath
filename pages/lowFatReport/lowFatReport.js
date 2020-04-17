@@ -111,9 +111,9 @@ Page({
     } else if (speed <= 39 && speed >= 3) {
       rotate = 142 + (speed - 1) *7
     }else if(speed < 99 && speed >= 40) {
-      rotate = 401 + (0.2 * (speed - 39))
+      rotate = 401 + (0.1 * (speed - 39))
     } else if (speed == 99){
-      rotate = 420
+      rotate = 415
     }
     let newrotate = Math.round(rotate);
     this.setData({
