@@ -3,7 +3,7 @@
 <view>
   <view style="background: url('{{mealInfo.images}}');width: 750rpx;height: 585rpx;margin-bottom: 46rpx;background-size: 100% 100%;border-radius:0px 0px 0px 80rpx;">
     <navBar
-            title='Slimple轻松派'
+            title='Slimple轻松燃脂'
             color="white"
             iconTheme="white"
             background='{{navBarBackground}}'

@@ -6,7 +6,7 @@ const app = getApp();
 Page({
 
   data: {
-    navBarShow:'Slimple轻松派',
+    navBarShow:'Slimple轻松燃脂',
     breathSign: {},//签到数据
   },
   onLoad: function (options) {
@@ -30,7 +30,7 @@ Page({
   onPageScroll(ev){
     if (!ev.scrollTop){
       this.setData({
-        navBarShow:'Slimple轻松派'
+        navBarShow:'Slimple轻松燃脂'
       })
     }else{
       this.setData({

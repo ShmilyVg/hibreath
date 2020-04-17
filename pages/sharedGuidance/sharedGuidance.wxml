@@ -1,6 +1,6 @@
 <!--pages/sharedGuidance/sharedGuidance.wxml-->
 <navBar title='' color="#ffffff" iconTheme="white" background='#333333' back="{{false }}" bindback="handlerGobackClick">
-  <view slot='left' class="tabBar-left">Sliple轻松派</view>
+  <view slot='left' class="tabBar-left">Sliple轻松燃脂</view>
 </navBar>
 <view class="sharedGuidance">
   <view class="swiper-con">

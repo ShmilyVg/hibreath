@@ -1,5 +1,5 @@
 <!--pages/lowFatReport/lowFatReport.wxml-->
-<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#34cb8c' back="{{navBarBack}}" bindback="handlerGobackClick">
+<navBar title='Slimple轻松燃脂' color="#fff" iconTheme="white" background='#34cb8c' back="{{navBarBack}}" bindback="handlerGobackClick">
 
 </navBar>
 <image src="../../images/lowFatReport/lowFatReportBg.png" class="lowFatReportBg"></image>

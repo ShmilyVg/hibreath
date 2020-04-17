@@ -1,5 +1,5 @@
 <!--pagesIndex/weightTarget/weightTarget.wxml-->
-<navBar title='Slimple轻松派' color="#fff" iconTheme="white" background='#7BC877' back="{{true}}" bindback="handlerGobackClick"></navBar>
+<navBar title='Slimple轻松燃脂' color="#fff" iconTheme="white" background='#7BC877' back="{{true}}" bindback="handlerGobackClick"></navBar>
 <view class="weightTarget">
   <view class="weightTarget-header">
     <view bindtap="showModal_w">
