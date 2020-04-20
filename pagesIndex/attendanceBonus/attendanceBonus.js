@@ -84,12 +84,7 @@ Page({
           icon: "none",
           duration: 3000
         });
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 3000)
-
+        this.getBreathSignInInfo();
       }
     }
   },
