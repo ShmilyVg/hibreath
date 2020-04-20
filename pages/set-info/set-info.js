@@ -42,7 +42,7 @@ Page({
     answerData: {},
     answerBtnReady: false,
     needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"],
-    gitImgList:['fatWindows/getGift.png'],
+    gitImgList:['fatWindows/getGift_2.png'],
     isBind:false,//是否绑定设备
     showGiftwindows:false,
     showGiftwindowsTip:false
@@ -268,7 +268,7 @@ Page({
     var that = this;
     for(var i=0;i<that.data.taskInfo.modalList.length;i++){
       if(that.data.taskInfo.modalList[i].modalType == 'lowCarbon'){
-        that.data.needImgList.push('fatWindows/getGift.png')
+        that.data.needImgList.push('fatWindows/getGift_2.png')
       }
       if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
         let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
