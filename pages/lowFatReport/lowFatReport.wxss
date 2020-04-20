@@ -294,6 +294,12 @@ view {
   position: absolute;
   padding-left: 17rpx;
 }
+.burn-value-z{
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  padding-left: 10rpx;
+}
 .burn-progress-tip {
   margin-top: 24rpx;
   display: flex;

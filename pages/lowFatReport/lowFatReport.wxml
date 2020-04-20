@@ -48,11 +48,11 @@
         <image style="width: 30rpx;height: 30rpx" src="../../images/lowFatReport/vs.png" class="vspng"></image>
         与上次相比
       </view>
-      <view class="item-g-text" > {{report.breathData.comparison.title}}</view>
+      <view class="item-g-text"> {{report.breathData.comparison.title}}</view>
       <view class="item-n-text">{{report.breathData.comparison.content}}</view>
     </block>
-    
-    
+
+
     <view class="item-h4">
       <image style="width: 24rpx;height: 30rpx" src="../../images/lowFatReport/fire.png" class="fire"></image>
       今日消耗脂肪状态
@@ -61,22 +61,30 @@
       </view>
     </view>
     <view class="burn-progress" wx:if="{{report.member.finishedInfo}}">
-      <view class="burn-progress-left">
-        <view class="burn-progress-contain">
-          <view class="burn-value" style="width:{{progress}}rpx" ><view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view> </view>
+      <block wx:if="{{report.breathData.losefatGrams.grams}}">
+        <view class="burn-progress-left">
+          <view class="burn-progress-contain">
+            <view class="burn-value" style="width:{{progress}}rpx">
+              <view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
+            </view>
+          </view>
+          <view class="burn-progress-tip">
+            <view class="burn-progress-text">预计今日总消耗脂肪</view>
+            <view class="burn-progress-val">{{report.breathData.losefatGrams.predictGrams}}g</view>
+          </view>
         </view>
-        <view class="burn-progress-tip">
-          <view class="burn-progress-text">预计今日总消耗脂肪</view>
-          <view class="burn-progress-val">{{report.breathData.losefatGrams.predictGrams}}g</view>
+        <view class="burn-progress-right">
+          <view class="img-con">
+            <image src="{{report.breathData.losefatGrams.foodIconUrl}}"></image>
+            <view class="foodQuantity">X{{report.breathData.losefatGrams.foodQuantity}}</view>
+          </view>
+          <text>{{report.breathData.losefatGrams.foodDescription}}</text>
         </view>
-      </view>
-      <view class="burn-progress-right">
-        <view class="img-con">
-          <image src="{{report.breathData.losefatGrams.foodIconUrl}}"></image>
-          <view class="foodQuantity">X{{report.breathData.losefatGrams.foodQuantity}}</view>
-        </view>
-        <text>{{report.breathData.losefatGrams.foodDescription}}</text>
-      </view>
+      </block>
+      <block wx:else>
+        <view class="burn-value-z">今日已消耗脂肪克数较少，体内脂肪基本没有被消耗</view>
+      </block>
+
     </view>
     <view class="synthesize" wx:if="{{!report.member.finishedInfo}}">
       <view class="synthesize-contain">
@@ -110,8 +118,8 @@
       近一周体重趋势
     </view>
     <view class="weight-chart">
-      <image  bindtouchstart="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
-      <canvas  canvas-id="lineCanvas" style="display:{{scrollIng?'none':'block'}}" class="canvas"  bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+      <image bindtouchstart="showCanvas" wx:if="{{scrollIng}}" src="{{canvasImg}}" style=" width: 100%;height: 380rpx;"></image>
+      <canvas canvas-id="lineCanvas" style="display:{{scrollIng?'none':'block'}}" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
     </view>
   </view>
   <block wx:if="{{report.breathData.desZh && report.weigthData.weightToday}}">
