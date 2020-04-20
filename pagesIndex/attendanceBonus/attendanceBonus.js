@@ -17,12 +17,13 @@ Page({
   onShow: function () {
 
   },
-  async getGiftInfo(result){
+  async getGiftInfo(data){
    
-    let couponCode = result.couponCode;
+    let couponCode = data.couponCode;
     if (couponCode){
       const { result } = await Protocol.getGift({ couponCode: couponCode })
       this.setData({
+        couponCode,
         gift: result
       })
     }
@@ -40,6 +41,7 @@ Page({
   },
   async takeGift(){
     let couponCode = this.data.couponCode;
+    console.log(couponCode);
     if (couponCode){
       let res = await Protocol.takeGift({ couponCode });
       if (res.code == 1){

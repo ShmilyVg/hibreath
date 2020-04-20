@@ -89,7 +89,7 @@ Page({
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide();
-    this.getBanner();
+    
     this.getPresonMsg();
     setTimeout(() => {
       //每天第一次登录积分奖励
@@ -128,6 +128,7 @@ Page({
         original_show: false
       })
     }
+    this.getBanner();
     this.getPresonMsg();
     this.getFinishedGuide()
     this.handleBle();
