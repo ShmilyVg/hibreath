@@ -12,6 +12,7 @@ Page({
     currenttab: 'ingredient',
     foodColor: 'green',
     activeMater: '',
+    foodList_hei:100,
     ingredientType: [
       {
         img: 'green',
@@ -60,7 +61,7 @@ Page({
     this.getFoodMaterialsList()
   },
   onShow: function() {
-
+    
   },
   async getMenuRecommend() {
     const {
@@ -115,9 +116,12 @@ Page({
     const {
       result
     } = await Protocol.getFoodMaterialsList();
-    let foodType = result.foodType[0].k;
-    let foodColor = result.foodType[0].k;
+    let foodTypeArr = result.foodType;
+    let foodType = foodTypeArr[0].k;
+    let foodColor = foodTypeArr[0].k;
+    let foodList_hei = (foodTypeArr.length - 1) * 110 - 50
     this.setData({
+      foodList_hei,
       foodType,
       foodColor:'green',
       materialsList: result

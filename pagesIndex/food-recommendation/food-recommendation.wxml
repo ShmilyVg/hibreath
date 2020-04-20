@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class="ingredient-contain">
-      <view class="contain_tab-left">
+      <view class="contain_tab-left" id="contain_tab-left">
         <view wx:for="{{materialsList.foodType}}" class="{{item.k == foodType?'active':''}}" wx:key="id" data-item="{{item.k}}" bindtap="getFoodType">{{item.val}}</view>
       </view>
       <view class="contain_tab-right">
@@ -34,7 +34,7 @@
           </view>
         </view>
         <view style='clear:both;'></view>
-        <view class="foodList">
+        <view class="foodList" style="height:{{foodList_hei}}rpx">
           <!-- <view class="food-item" wx:for="{{foodList}}" wx:key='id' data-foodId="{{item.id}}" bindtap="toDetails"> -->
           <view wx:if="{{foodList.list.length>0}}" class="food-item" wx:for="{{foodList.list}}" wx:key='id' data-foodId="{{item.id}}">
             <image src="{{item.imgUrl}}"></image>

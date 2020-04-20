@@ -143,6 +143,8 @@ view {
 }
 .foodList{
   margin-top: 68rpx;
+  overflow-y: auto;
+  padding-bottom: 40rpx;
 }
 .food-item{
   padding-left: 50rpx;
