@@ -30,17 +30,14 @@ Page({
   },
 onShareAppMessage(res) {
   this.hideModal()
-  //  if (this.data.fromPage == 0 || !this.data.fromPage){
-  //    HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
-  //  }
+   if (this.data.fromPage == 0 || !this.data.fromPage){
+     HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
+   }
 
   return {
     title: this.data.shareTitle,
     path: `/pagesThree/supervise/supervise?sharedId=${this.data.sharedId}`,
-    imageUrl: this.data.shareImg,
-    success: function (res) {
-      console.log('resresresresresres',res)
-    }
+    imageUrl: this.data.shareImg
   };
 },
 async initMyLossfatCourse(){
