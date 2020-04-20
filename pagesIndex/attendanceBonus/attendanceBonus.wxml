@@ -16,7 +16,7 @@
 
   <!-- <view class="top-tip replenishClass"> -->
   <view class="top-tip replenishClass" wx:if="{{breathSign.isCoupon && breathSign.isFinished}}">
-    <button wx:if="{{breathSign.replenish}}" bindtap="takeGift">
+    <button wx:if="{{!breathSign.replenish}}" bindtap="takeGift">
       <image src="../../images/set-info/gift.png" class="gift"></image> 领取奖励
       <image src="../../images/set-info/goRight.png" class="goNext"></image>
     </button>

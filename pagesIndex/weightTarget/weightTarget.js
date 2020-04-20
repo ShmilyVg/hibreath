@@ -28,9 +28,12 @@ Page({
   onShow: function () {
 
   },
-   onShareAppMessage() {
+  onShareAppMessage(res) {
     this.hideModal()
-     console.log('this.data.sharedId',this.data.sharedId)
+     if (this.data.fromPage == 0 || this.data.fromPage == '0'){
+       HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
+     }
+    
     return {
       title: this.data.shareTitle,
       path: `/pagesThree/supervise/supervise?sharedId=${this.data.sharedId}`,
