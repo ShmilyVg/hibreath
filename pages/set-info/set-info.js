@@ -736,18 +736,28 @@ Page({
     this.setData({
       answerBtnReady: true
     })
-    const { result: bodyIndexResult } = await Protocol.answerFinish(data);
-    if (bodyIndexResult.isCorrect == 1) {
-      this.setData({
-        ...bodyIndexResult,
-        showMytoast: false,
-      })
+    try{
+      const { result: bodyIndexResult } = await Protocol.answerFinish(data);
+      if (bodyIndexResult.isCorrect == 1) {
+        this.setData({
+          ...bodyIndexResult,
+          showMytoast: false,
+        })
+        setTimeout(() => {
+          this.setData({
+            showMytoast: false,
+            answerBtnReady: false
+          })
+        }, 3000)
+      }
+    }catch(err){
       setTimeout(() => {
         this.setData({
-          showMytoast: false,
+          answerBtnReady: false
         })
       }, 3000)
     }
+    
     this.getAnswer()
   },
 
