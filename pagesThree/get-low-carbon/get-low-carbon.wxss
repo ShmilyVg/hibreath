@@ -89,3 +89,7 @@ button::after{
     text-align: center;
     color: #fff;
 }
+.no_qua{
+  background:#dfdfdf;
+  color: #666;
+}

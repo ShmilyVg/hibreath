@@ -1,6 +1,6 @@
 /* pages/device-manage/device-manage.wxss */
 page{
-
+height: 100%;
 }
 .image{
     width: 260rpx;

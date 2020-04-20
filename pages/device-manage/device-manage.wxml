@@ -1,5 +1,5 @@
 <!--pages/device-manage/device-manage.wxml-->
-<view wx:if="{{isBind}}" class="flex-column" style="background: #7BC877">
+<view wx:if="{{isBind}}" class="flex-column" style="background: #7BC877;min-height:100%;">
     <text class="device-name">燃脂检测仪</text>
     <view class="againImg"></view>
     <view class="bindSj"></view>
