@@ -13,7 +13,7 @@
     {{content.description}}
 </view>
 
-<view style="padding-left: 47rpx;padding-right: 70rpx;margin-bottom: 165rpx">
+<view style="padding-left: 47rpx;padding-right: 70rpx;padding-bottom: 105rpx">
     <view class="rule-title">领取规则</view>
     <view wx:for="{{content.ruleList}}" style="margin-bottom: 60rpx;max-height: 115rpx">
         <view class="ruleList-index">{{index+1}}</view>
