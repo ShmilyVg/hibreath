@@ -316,6 +316,7 @@ Page({
   },
   showTabBarFun(){
     //如果初心遮罩或者开箱礼遮罩存在是  暂时不显示TabBar
+    console.log(this.data.showGiftwindowsTip , this.data.original_show)
     if (this.data.showGiftwindowsTip || this.data.original_show) return;
     wx.showTabBar({
       fail: function () {
@@ -792,7 +793,7 @@ Page({
       that.setData({
         hideModal: true
       })
-      this.showTabBarFun()
+      that.showTabBarFun()
     }, 720)//先执行下滑动画，再隐藏模块
 
   },
