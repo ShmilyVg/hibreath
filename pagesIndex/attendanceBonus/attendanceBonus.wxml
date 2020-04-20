@@ -15,12 +15,17 @@
 <view class="attendanceBonus">
 
   <!-- <view class="top-tip replenishClass"> -->
-  <view class="top-tip replenishClass" wx:if="{{breathSign.isCoupon && breathSign.isFinished}}">
+  <view class="top-tip replenishClass" wx:if="{{breathSign.isCoupon && breathSign.isFinished && !breathSign.isTakeCoupon}}">
     <button wx:if="{{!breathSign.replenish}}" bindtap="takeGift">
       <image src="../../images/set-info/gift.png" class="gift"></image> 领取奖励
       <image src="../../images/set-info/goRight.png" class="goNext"></image>
     </button>
     <view class="newTip">※新人礼会自动收入我的优惠券中</view>
+  </view>
+  <view class="top-tip" wx:elif="{{breathSign.isTakeCoupon}}">
+    <button bindtap="debounce">已领取，去使用
+      <image src="../../images/set-info/goRight.png" class="goNext"></image>
+    </button>
   </view>
   <view class="top-tip {{breathSign.replenish?'replenishClass':''}}" wx:else>
     <button wx:if="{{breathSign.replenish}}" open-type='share'>立即补签
