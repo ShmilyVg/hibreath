@@ -246,7 +246,7 @@ savePhoto(){
         filePath: res.tempFilePath,
         success(res) {
           wx.showToast({
-            title: '图片已保存至相册，请到朋友圈选择图片发布！',
+            title: '保存成功',
             icon: 'success',
             duration: 2000
           })
