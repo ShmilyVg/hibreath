@@ -66,7 +66,7 @@ Page({
   async onLoad(e) {
     console.log('eeeeeee', e)
     this.cellDataHandle({});
-    this.init();
+    
     /*存在id 即为在线检测进入结果页面*/
     if (e.id) {
       const {
@@ -323,6 +323,7 @@ Page({
   },
 
   async onShow() {
+    this.init();
     const trendTime = getApp().globalData.trendTime;
     console.log('trendTime:', trendTime);
     if (trendTime) {

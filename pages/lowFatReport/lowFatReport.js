@@ -49,7 +49,7 @@ Page({
     this.setData({
       sharedId,
       reportId,
-      navBarBack
+      navBarBack,
     })
 
     Trend.init(this);

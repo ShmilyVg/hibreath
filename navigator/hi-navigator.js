@@ -108,6 +108,10 @@ export default class HiNavigator extends CommonNavigator {
     static navigateToLowFatReport(reportId) {
       this.navigateTo({url: `/pages/lowFatReport/lowFatReport?reportId=${reportId}`});
     }
+    //进入减脂报告
+    static redirectToLowFatReport(reportId) {
+      this.redirectTo({url: `/pages/lowFatReport/lowFatReport?reportId=${reportId}`});
+    }
     //参考文献
     static navigateToLiterature() {
       this.navigateTo({url: `/pagesIndex/literature/literature`});

@@ -771,7 +771,7 @@ Page({
       hideModal: false
     })
     var animation = wx.createAnimation({
-      duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
@@ -785,7 +785,7 @@ Page({
   hideModal: function () {
     var that = this;
     var animation = wx.createAnimation({
-      duration: 800,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      duration: 400,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
       timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
@@ -795,7 +795,7 @@ Page({
         hideModal: true
       })
       that.showTabBarFun()
-    }, 720)//先执行下滑动画，再隐藏模块
+    }, 200)//先执行下滑动画，再隐藏模块
 
   },
 
@@ -807,7 +807,7 @@ Page({
     })
   },
   fadeDown: function () {
-    this.animation.translateY(300).step()
+    this.animation.translateY(500).step()
     this.setData({
       animationData: this.animation.export(),
     })

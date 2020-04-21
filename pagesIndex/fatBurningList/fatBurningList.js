@@ -166,12 +166,12 @@ Page({
     if (this.data.currenttab == '0') {
       if (this.data.inRank) {
         return {
-          title: '我在' + '[' + this.data.groupName + ']' + '今日减脂榜总排名第' + this.data.rankNum + '!快来围观!',
+          title: '我在' + this.data.groupName + '今日减脂榜总排名第' + this.data.rankNum + '!快来围观!',
           path: '/pagesIndex/fatBurningList/fatBurningList?sharedId=' + this.data.sharedId
         }
       } else {
         return {
-          title: '今日我在' + '[' + this.data.groupName + ']' + '减脂榜未能上榜！再接再厉！',
+          title: '今日我在' + this.data.groupName + '减脂榜未能上榜！再接再厉！',
           path: '/pagesIndex/fatBurningList/fatBurningList?sharedId=' + this.data.sharedId
         }
       }
@@ -179,12 +179,12 @@ Page({
     } else {
       if (this.data.inRank) {
         return {
-          title: '我在' + '[' + this.data.groupName + ']' + '累计减脂榜总排名第' + this.data.rankNum + '！快来围观！',
+          title: '我在' + this.data.groupName + '累计减脂榜总排名第' + this.data.rankNum + '！快来围观！',
           path: '/pagesIndex/fatBurningList/fatBurningList?sharedId=' + this.data.sharedId
         }
       } else {
         return {
-          title: '我在' + '[' + this.data.groupName + ']' + '累积减脂榜未能上榜！再接再厉！',
+          title: '我在' + this.data.groupName + '累积减脂榜未能上榜！再接再厉！',
           path: '/pagesIndex/fatBurningList/fatBurningList?sharedId=' + this.data.sharedId
         }
       }
