@@ -26,14 +26,18 @@ Page({
     this.initMyLossfatCourse();
   },
   onShow: function () {
-    
+    if (this.data.goToManifesto && this.data.fromPage == 0){
+      HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
+    }
   },
 onShareAppMessage(res) {
   this.hideModal()
+  //从新手引导页面进入时 分享跳转
    if (this.data.fromPage == 0 || !this.data.fromPage){
-     HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
+     this.setData({
+       goToManifesto:true
+     })
    }
-
   return {
     title: this.data.shareTitle,
     path: `/pagesThree/supervise/supervise?sharedId=${this.data.sharedId}`,
