@@ -80,7 +80,18 @@ Page({
     this.data.sharedId ? data.sharedId = this.data.sharedId:'';
     this.data.reportId ? data.reportId = this.data.reportId : '';
     let { result } = await Protocol.getTodayLosefatReport(data);
-
+    if (!result){
+      wx.showToast({
+        title: '报告已删除',
+        icon: 'none',//
+        duration: 3000
+      })
+      setTimeout(()=>{
+        HiNavigator.switchToSetInfo()
+      },3000)
+      
+      return;
+    }
     let losefatGrams = result.breathData.losefatGrams;
     let progress = 0;
     if (losefatGrams && losefatGrams.grams && losefatGrams.predictGrams) {

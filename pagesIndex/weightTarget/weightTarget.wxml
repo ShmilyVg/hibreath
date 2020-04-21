@@ -6,7 +6,7 @@
       <view class="top-title">我的目标体重是</view>
       <view class="top-num">{{result.weightGoalt}}
         <text>KG</text>
-        <image src="../../images/edit_2.png" wx:if="{{can_change}}"></image>
+        <image src="../../images/edit_3.png" wx:if="{{can_change}}"></image>
       </view>
     </view>
     <image src="../../images/lowFatReport/newBg.png" class="bgrz"></image>

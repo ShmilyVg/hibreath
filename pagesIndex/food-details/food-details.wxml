@@ -45,17 +45,17 @@
       <view class="food-text">千卡</view>
     </view>
     <view>
-      <view class="food-num">{{carbohydrate}}</view>
+      <view class="food-num">{{carbohydrate}}g</view>
       <view class="food-text">碳水</view>
     </view>
   </view>
   <view class="contain">
     <view>
-      <view class="food-num">{{fat}}</view>
+      <view class="food-num">{{fat}}g</view>
       <view class="food-text">脂肪</view>
     </view>
     <view>
-      <view class="food-num">{{protein}}</view>
+      <view class="food-num">{{protein}}g</view>
       <view class="food-text">蛋白质</view>
     </view>
   </view>

@@ -55,10 +55,13 @@ async initMyLossfatCourse(){
   })
 },
 async startPlan(){
+  console.log(this.data.can_change)
   if (!this.data.can_change) {
+    
     this.setData({
       can_change: true
     })
+    this.showModal_w();
     return;
   }
   wx.showLoading({

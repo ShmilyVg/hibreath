@@ -8,7 +8,7 @@
       <view class="user-info-item-common-title">头像</view>
 
       <view bindtap="uploadHeadEvent" class="flex-row align-items-center">
-        <image src="{{editUserInfo.portraitUrl||originUserInfo.portraitUrl||'http://img.hipee.cn/hibreath/default_avar.png'}}" class="user-info-head"></image>
+        <image mode="aspectFill" src="{{editUserInfo.portraitUrl||originUserInfo.portraitUrl||'http://img.hipee.cn/hibreath/default_avar.png'}}" class="user-info-head"></image>
         <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
       </view>
     </view>
@@ -56,7 +56,7 @@
 
       <view class="flex-row align-items-center">
         <input name="height" value="{{editUserInfo.height||originUserInfo.height}}" type="number" maxlength="3" placeholder="请输入" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder" />
-        <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
+        <text class="unit">cm</text><image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
       </view>
     </view>
 
@@ -66,7 +66,7 @@
 
       <view class="flex-row align-items-center">
         <input name="weight" value="{{editUserInfo.weight||originUserInfo.weight}}" placeholder="请输入" type="digit" maxlength="5" class="user-info-item-common-input" placeholder-class="user-info-item-common-input user-info-item-common-input-placeholder" />
-        <image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
+        <text class="unit">kg</text><image src="../../images/gray.png" class="user-info-item-common-arrow"></image>
       </view>
     </view>
 

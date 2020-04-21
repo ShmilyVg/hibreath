@@ -110,7 +110,7 @@ Page({
   },
   handlerGobackClick() {
     //添加已经进入本页标志
-    
+
     //没有进入宣言页时 直接进入宣言页
     if (!wx.getStorageSync('flag')) {
       HiNavigator.navigateToManifesto({})
@@ -137,10 +137,10 @@ Page({
       HiNavigator.switchToSetInfo()
       return
     }
- /*   if(this.data.noBind){
-      HiNavigator.switchToSetInfo()
-      return;
-    }*/
+    /*   if(this.data.noBind){
+         HiNavigator.switchToSetInfo()
+         return;
+       }*/
     HiNavigator.navigateBack({ delta: 1 });
   },
   preheatImg() {

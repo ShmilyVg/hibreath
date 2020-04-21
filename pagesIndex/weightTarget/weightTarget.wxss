@@ -56,8 +56,8 @@ view {
 }
 
 .top-num image {
-  width: 28rpx;
-  height: 26rpx;
+  width: 94rpx;
+  height: 87rpx;
   position: absolute;
   top: 0;
   margin-left: 22rpx;

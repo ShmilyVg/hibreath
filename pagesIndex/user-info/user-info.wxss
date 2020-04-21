@@ -38,7 +38,12 @@
     height: 36rpx;
     margin-left: 24rpx;
 }
-
+.unit{
+  font-size:28rpx;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:600;
+  color:rgba(84,84,84,1);
+}
 .user-info-item-common-divide-line {
     border-bottom: 1rpx solid #F2F2F2;
 }
