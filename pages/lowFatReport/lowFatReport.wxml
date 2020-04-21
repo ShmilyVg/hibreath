@@ -30,13 +30,19 @@
     <view class="speed-contain">
       <view class="speed-num">
         <text>{{report.breathData.dataValue}}</text>
-        <view>PPM</view>
+        <view>PPM <image src="../../images/lowFatReport/ask.png"></image></view>
+        <view class="introducePPM" bindtap="ppmshow"></view>
       </view>
       <image src="../../images/lowFatReport/speedBg.png" class="speedBg"></image>
       <view class="elf-contain" style="transform: rotate({{rotate}}deg);">
         <image src="../../images/lowFatReport/elf-tip.png" class="elf-tip" style="transform: rotate({{-rotate}}deg);"></image>
       </view>
 
+    </view>
+    <view class="speed-tip-list">
+      <view class="speed-tip-item" wx:for="{{speed_tip}}" wx:key="index"> 
+        <view><image src="../../images/lowFatReport/burn{{index+1}}.png"></image></view> <text>{{item}}</text>
+      </view>
     </view>
     <view class="item-h4">
       <image src="../../images/lowFatReport/elf.png"></image>
@@ -166,7 +172,8 @@
   </view>
   <image src="../../images/lowFatReport/bottomBg.png" class="bottomBg"></image>
 </view>
-<view class="commodity_screen" wx:if="{{showModalStatus}}" bindtap="hideModal">
+<!-- 分享页面 -->
+<view class="commodity_screen" wx:if="{{showModalStatus }}" bindtap="hideModal">
 </view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <view class="box_title">分享给好友</view>
@@ -182,3 +189,18 @@
 </view>
 <button wx:if="{{!isLogin}}" class="bottmFixd" open-type="getUserInfo" bindgetuserinfo="toNextpage" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple,一起燃脂吧！</button>
 <button wx:if="{{isLogin}}" class="bottmFixd" bindtap="toSetInfo" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple,一起燃脂吧！</button>
+
+<!-- ppm解释 -->
+<view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide">
+</view>
+<view animation="{{animation_ppm}}" class="commodity_attr_box" wx:if="{{ppmModalStatus}}">
+  <view class="ppm_title first_s"><view class="line_green"></view> 什么是 PPM ?</view>
+  <view class="ppm_text">PPM 是浓度单位，表示人体呼出气体中丙酮一项所占的比例（丙酮是身体内部脂肪被消耗分解后的产物）</view>
+  <view class="ppm_title"><view class="line_green"></view> 如何理解 PPM 的高低？</view>
+  <view class="ppm_text">PPM 越高，表示人体呼出气体中丙酮所占比例越大，代表脂肪消耗的程度越高，燃脂效率越高，反之则越低。</view>
+  <view class="ppm_text">当然也并非数值越高越好，超过40则代表身体脂肪消耗过多，过度燃脂对身体有健康风险。</view>
+  <view class="ppm_title"><view class="line_green"></view>PPM 的值与燃烧脂肪克数的关系？</view>
+  <view class="ppm_text">经过大数据分析研究，可总结出1ppm 对应大约20g脂肪。（数值对应非线性关系，仅供参考）</view>
+  
+  <button bindtap="ppmhide" class="ppm_btn">我知道了</button>
+</view>

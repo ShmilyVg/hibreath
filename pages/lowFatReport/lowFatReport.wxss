@@ -164,14 +164,24 @@ view {
   top: 124rpx;
   padding-right: 20rpx;
 }
-
+.speed-num .introducePPM{
+  position: absolute;
+  left: calc(50% - 75rpx);
+  top: 50rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
 .speed-num view {
   font-size: 30rpx;
   font-family: DINCondensed;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
+  padding-left: 20rpx;
 }
-
+.speed-num image{
+  width:22rpx;
+  height:22rpx;
+}
 .speedBg {
   width: 526rpx;
   height: 342rpx;
@@ -194,6 +204,36 @@ view {
   right: -45rpx;
   bottom: -44rpx;
 }
+
+.speed-tip-list{
+  width:610rpx;
+  height:126rpx;
+  padding: 18rpx 0;
+  margin: 50rpx auto 66rpx;
+  background:rgba(245,246,249,1);
+  opacity:0.8;
+  border-radius:63rpx;
+  display: flex;
+  flex-wrap:wrap;
+}
+.speed-tip-item{
+  box-sizing: border-box;
+  width: 33%;
+  line-height: 45rpx;
+  height: 45rpx;
+  display: flex;
+  justify-content: center;
+  font-size:22rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
+.speed-tip-item image{
+  width: 19rpx;
+  height: 23rpx;
+  margin-right: 10rpx;
+}
+
 
 .item-h4 .vspng {
   width: 30rpx;
@@ -624,4 +664,47 @@ view {
   z-index: 100;
   text-align: center;
   color: #fff;
+}
+
+
+
+.ppm_title{
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  text-align: left;
+  padding: 0 60rpx 0 40rpx;
+}
+.first_s{
+  margin-top: 65rpx;
+}
+.line_green{
+  width:10rpx;
+  height:34rpx;
+  background:linear-gradient(0deg,rgba(38,204,144,1),rgba(114,213,133,1));
+  border-radius:5rpx;
+  display: inline-block;
+  margin-bottom: -5rpx;
+}
+.ppm_text{
+  margin: 37rpx 0 70rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  text-align: left;
+  padding: 0 40rpx 0 30rpx;
+}
+.commodity_attr_box .ppm_btn{
+  width:500rpx;
+  height:100rpx;
+  line-height: 100rpx;
+  background:rgba(123,200,119,1);
+  border-radius:50rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  margin-bottom: 40rpx;
 }

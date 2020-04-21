@@ -31,7 +31,9 @@ Page({
         }
       ]
     },
+    speed_tip: ['正常水平', '加速燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
     animationData: false,
+    animation_ppm:{},
     showModalStatus: false,
     shareTip: false,
     report: {},
@@ -41,7 +43,7 @@ Page({
 
   onLoad: function (options) {
     console.log(options);
-    let sharedId = options.sharedId == 'undefined' ? null : options.sharedId;
+    let sharedId = (options.sharedId == 'undefined' || options.sharedId == 'null') ? null : options.sharedId;
     let reportId = (options.reportId == 'undefined' || options.reportId == 'null') ? null : options.reportId;
     let navBarBack = sharedId ? false:true;
     this.setData({
@@ -381,5 +383,36 @@ Page({
         }, 500);
       }
     }
+  },
+  // 显示PPM介绍
+  ppmshow(){
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "ease-in-out",
+      delay: 0
+    });
+    this.animation_ppm = animation;
+    animation.translateY(500).step();
+    this.setData({
+      animation_ppm: animation.export(),
+      ppmModalStatus: true,
+      scrollIng: true
+    });
+    setTimeout(
+      function () {
+        animation.translateY(0).step();
+        this.setData({
+          animation_ppm: animation.export()
+        });
+      }.bind(this),
+      200
+    );
+  },
+  ppmhide: function () {
+    this.setData({
+      ppmModalStatus: false,
+      scrollIng: false
+    });
   },
 })
