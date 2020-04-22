@@ -590,10 +590,10 @@ Page({
   
   goToTask(e){
     // console.log(e.currentTarget.dataset.url)
-    let { type, url} = e.currentTarget.dataset.item;
+    let { type, url, bannerId} = e.currentTarget.dataset.item;
     if (type == 'wechat'){
       wx.navigateTo({
-        url: url
+        url: url + '?bannerId=' + bannerId
       })
     }
     // HiNavigator.navigateToAttendanceBonus()

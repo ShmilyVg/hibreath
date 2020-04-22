@@ -14,10 +14,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    this.setData({
+      bannerId: options.bannerId
+    })
     this.debounce = this.debounce();// 防抖函数，在此处初始化
   },
   async getLowCarbonSnacks(){
-    let { result } = await Protocol.getLowCarbonSnacks();
+    let bannerId = this.data.bannerId;
+    let data = {
+      bannerId
+    }
+    let { result } = await Protocol.getLowCarbonSnacks(data);
     this.setData({
       content:result
     })

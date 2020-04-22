@@ -10,6 +10,9 @@ Page({
     breathSign: {},//签到数据
   },
   onLoad: function (options) {
+    this.setData({
+      bannerId: options.bannerId
+    })
     this.getBreathSignInInfo();
 
   },
@@ -94,7 +97,11 @@ Page({
     });
   },
   async getBreathSignInInfo() {
-    const { result } = await Protocol.getBreathSignInInfo();
+    let bannerId = this.data.bannerId;
+    let data = {
+      bannerId
+    }
+    const { result } = await Protocol.getBreathSignInInfo(data);
     let data = result.data;
     for (let item of data) {
       if (item.executeOrder < result.days && !item.isFinished) {

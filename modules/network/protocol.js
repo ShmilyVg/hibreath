@@ -126,8 +126,8 @@ export default class Protocol {
       return Network.request({url: 'index/getTaskInfoBySharedId',data: {sharedType,sharedId}})
     }
     //首页-天天燃脂签到
-    static getBreathSignInInfo() {
-        return Network.request({url: 'members/getBreathSignInInfo'})
+    static getBreathSignInInfo(data) {
+        return Network.request({url: 'members/getBreathSignInInfo',data})
     }
 
     //首页-天天燃脂签到-补签
@@ -328,8 +328,8 @@ export default class Protocol {
         return Network.request({url: 'coupon/getCouponInfoById', data:{id}})
     }
   //领取低碳饮食
-  static getLowCarbonSnacks(){
-    return Network.request({url: 'lowCarbonMeal/getLowCarbonSnacks'})
+  static getLowCarbonSnacks(data){
+    return Network.request({url: 'lowCarbonMeal/getLowCarbonSnacks',data})
   }
   //领取优惠券takeGift
   static takeGift({couponCode}) {
