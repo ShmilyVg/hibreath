@@ -652,7 +652,7 @@ export default class Protocol {
       return Network.request({url: 'lowCarbonMeal/getIndulgeMealHowToEat',data});
     }
     // 获取我的优惠券
-    static getCouponListPage({page, limit = 8,isUsed,isExpired}) {
+    static getCouponListPage({page, limit = 8,isUsed,isExpired=0}) {
     return Network.request({url: 'coupon/getCouponListPage', data: {page,limit,isUsed,isExpired}});
   }
 }

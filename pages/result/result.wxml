@@ -18,9 +18,10 @@
       </view>-->
       <!--    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>-->
     </view>
-    <view class='content' style="margin-left: {{canvasMargin}}rpx">
-      <canvas canvas-id="bg" class='canvasII'></canvas>
-      <canvas canvas-id='dashboard' id='canvas-one' class='canvasI'></canvas>
+    <view class='content' style="margin-left: {{canvasMargin}}rpx" wx:if="{{!ppmModalStatus}}">
+      <!-- <view class="img_con"> <image src="../../images/ask_green.png"></image></view> -->
+      <canvas canvas-id="bg" class='canvasII' bindtap="ppmshow"></canvas>
+      <canvas canvas-id='dashboard' id='canvas-one' class='canvasI' bindtap="ppmshow"></canvas>
       <!--   <view class="result-line"></view>-->
       <!-- <image class="fatType1" src="{{fatType}}"></image> -->
       <view class="fatText">{{fatText}}</view>
@@ -70,4 +71,18 @@
   <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
   </exciting-window>
 
+</view>
+<!-- ppm解释 -->
+<view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide">
+</view>
+<view animation="{{animation_ppm}}" class="commodity_attr_box" wx:if="{{ppmModalStatus}}">
+  <view class="ppm_title first_s"><view class="line_green"></view> 什么是 PPM ?</view>
+  <view class="ppm_text">PPM 是浓度单位，表示人体呼出气体中丙酮一项所占的比例（丙酮是身体内部脂肪被消耗分解后的产物）</view>
+  <view class="ppm_title"><view class="line_green"></view> 如何理解 PPM 的高低？</view>
+  <view class="ppm_text">PPM 越高，表示人体呼出气体中丙酮所占比例越大，代表脂肪消耗的程度越高，燃脂效率越高，反之则越低。</view>
+  <view class="ppm_text">当然也并非数值越高越好，超过40则代表身体脂肪消耗过多，过度燃脂对身体有健康风险。</view>
+  <view class="ppm_title"><view class="line_green"></view>PPM 的值与燃烧脂肪克数的关系？</view>
+  <view class="ppm_text">经过大数据分析研究，可总结出1ppm 对应大约20g脂肪。（数值对应非线性关系，仅供参考）</view>
+  
+  <button bindtap="ppmhide" class="ppm_btn">我知道了</button>
 </view>

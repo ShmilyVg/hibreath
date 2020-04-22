@@ -46,7 +46,7 @@
   <view style="height:1rpx;clear:both;"></view>
   <!--盒子怎么吃  -->
   <view wx:if="{{currenttab==='howEatBox'}}">
-    <swiper bindchange="swiperChange" current="0" indicator-dots="true" indicator-color="#D4E9D3" indicator-active-color="#7BC877" class="" style="height: 720rpx">
+    <swiper bindchange="swiperChange" current="0" indicator-dots="true" indicator-color="#D4E9D3" indicator-active-color="#7BC877" class="" style="height: 580rpx">
       <block wx:for="{{boxHowToEat.images}}" wx:key="index">
         <swiper-item>
           <view class="swiper-tag">

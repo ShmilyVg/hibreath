@@ -32,9 +32,9 @@
           <view class="punchList_rank_img {{inRank?'greenImg':'greenNumImg'}}">{{inRank?rankNum:''}}</view>
        </view>
         <view class="punchList_NickName">{{nickname}}</view>
-        <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
+        <!-- <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
             <view style="font-size: 24rpx;width: 100%;line-height:70rpx;">邀请伙伴围观</view>
-        </button>
+        </button> -->
       </view >
       <!--头像-->
     <!-- 右 -->
@@ -42,7 +42,7 @@
         <view>
            <text wx:if="{{!!todayDif || todayDif == 0}}" class="punchList_Day-Text1">{{totalDif}}</text>
            <text wx:if="{{!!todayDif || todayDif == 0}}" class="punchList_Day-Text2">kg</text>
-           <view wx:if="{{totalDif == null}}" class="punchList_Day-Text3">未打卡</view>
+           <view wx:if="{{!!totalDif}}" class="punchList_Day-Text3">未打卡</view>
           <view class="punchList_Day-Text4">累计减重</view>
         </view>
         

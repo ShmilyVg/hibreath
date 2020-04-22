@@ -90,9 +90,13 @@ function drewCircular() {
     fillGrid(ctx, pt, gradient, val);
     ctx.setFontSize(75);
     ctx.setFillStyle("#292930");
-    var offset = val > 9 ? 60  : 80 ;
+    var offset = val > 9 ? 55  : 75 ;
     ctx.fillText(val, offset * _xWidth, 115 * _xWidth);
+    ctx.setFontSize(10);
+    ctx.fillText('ppm', 75 * _xWidth + 15, 115 * _xWidth + 20);
+    ctx.drawImage('../../images/ask_green.png', 75 * _xWidth + 40,  115 * _xWidth + 12, 10, 10)
     ctx.draw();
+    
   }
   fillGrid(bg, parts, '#DCDCDC', 100);
   bg.draw();
@@ -135,13 +139,13 @@ function showType() {
   if (_page.data.score <= 2) {
     _page.setData({
       fatType: "../../images/result/type1.png",
-      fatText: "未燃脂",
+      fatText: "正常水平",
       fatTextEn: "CHIN UP",
     })
   } else if (_page.data.score <= 9 && _page.data.score >= 3) {
     _page.setData({
       fatType: "../../images/result/type2.png",
-      fatText: "低速燃脂",
+      fatText: "稳步燃脂",
       fatTextEn: "SLOW",
     })
   } else if (_page.data.score <= 19 && _page.data.score >= 10) {

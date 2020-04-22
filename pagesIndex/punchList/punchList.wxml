@@ -33,9 +33,9 @@
           <view class="punchList_rank_img {{rankNum?'greenImg':'greenNumImg'}}">{{rankNum?rankNum:''}}</view>
        </view>
       <view class="punchList_NickName">{{nickname}}</view>
-      <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
+      <!-- <button class="punchList_share" open-type='share' wx:if="{{isShare}}">
             <view style="font-size: 24rpx;width: 100%;line-height:70rpx;">邀请伙伴围观</view>
-      </button>
+      </button> -->
     </view >
  <!--对 头像 -->
     <!-- 右 -->
