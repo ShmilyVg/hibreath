@@ -2,7 +2,7 @@
 page{
   box-sizing: border-box;
   height: 1800rpx;
-  background-image: url('http://img.hipee.cn/hibreath/banner/bannerBg.png');
+  background-image: url('http://img.hipee.cn/hibreath/banner/bannerBg_1.png');
   background-size: 100% 1800rpx;
   position: relative;
 }

@@ -159,9 +159,6 @@ Page({
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
     
-    this.creatImage()
-  },
-  creatImage(){
     var that = this;
     setTimeout(() => {
       wx.canvasToTempFilePath({
@@ -169,17 +166,13 @@ Page({
         y: 0,
         canvasId: 'lineCanvas',
         success: function (res) {
-          console.log('lineCanvas',res);
+          console.log('lineCanvas', res);
           that.setData({
             canvasImg: res.tempFilePath
           })
         }
       })
-      if (!that.data.canvasImg && that.num < 4){
-        that.num++;
-        that.creatImage()
-      }
-    }, 100)
+    }, 500)
   },
   showCanvas(){
     if(this.data.scrollIng){
@@ -190,6 +183,20 @@ Page({
   },
   onPageScroll(e){
     var that = this;
+    if (!this.data.canvasImg){
+      wx.createSelectorQuery().select('.weight-chart').boundingClientRect(function (rect) {
+        if (rect.top < 67) {
+          that.setData({
+            scrollIng: true
+          })
+        } else {
+          that.setData({
+            scrollIng: false
+          })
+        }
+      }).exec()
+      return;
+    }
     if (!this.data.scrollIng){
       that.setData({
         scrollTop: e.scrollTop,
