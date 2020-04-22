@@ -338,7 +338,8 @@ Page({
   },
   //前往 领取低碳饮食页面
   toGetLowFood(){
-    HiNavigator.navigateTogetLowCarbon();
+    let bannerId = this.data.bannerId;
+    HiNavigator.navigateTogetLowCarbon(bannerId);
     this.closeWindows()
   },
   async getBanner(){
