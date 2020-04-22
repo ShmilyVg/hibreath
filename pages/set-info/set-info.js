@@ -267,7 +267,7 @@ Page({
   imgListArr(){
     var that = this;
     for(var i=0;i<that.data.taskInfo.modalList.length;i++){
-      if(that.data.taskInfo.modalList[i].modalType == 'lowCarbon'){
+      if(that.data.taskInfo.modalList[i].modalType == 'OpenBoxGift'){
         that.data.needImgList.push('fatWindows/getGift_3.png')
       }
       if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
@@ -374,8 +374,9 @@ Page({
             }
             //初心遮罩在前  开箱礼在后
             for (let item of result.modalList){
-              if (item.modalType == 'lowCarbon'){
+              if (item.modalType == 'OpenBoxGift'){
                 that.setData({
+                  bannerId:item.bannerId,
                   showGiftwindowsTip: !this.data.original_show,
                   showGiftwindows: true
                 })

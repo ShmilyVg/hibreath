@@ -84,8 +84,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pagesIndex/getGift/getGift?couponCode=${couponCode}&finishedPhone=${finishedPhone}&id=${id}`});
     }
     //领取低碳饮食
-    static navigateTogetLowCarbon() {
-      this.navigateTo({url: `/pagesThree/get-low-carbon/get-low-carbon`});
+    static navigateTogetLowCarbon(bannerId) {
+      this.navigateTo({url: `/pagesThree/get-low-carbon/get-low-carbon?bannerId=${bannerId}`});
     }
     //我的优惠券
     static navigateTocoupon() {
