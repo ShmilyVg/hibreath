@@ -98,10 +98,10 @@ Page({
   },
   async getBreathSignInInfo() {
     let bannerId = this.data.bannerId;
-    let data = {
+    let post = {
       bannerId
     }
-    const { result } = await Protocol.getBreathSignInInfo(data);
+    const { result } = await Protocol.getBreathSignInInfo(post);
     let data = result.data;
     for (let item of data) {
       if (item.executeOrder < result.days && !item.isFinished) {
