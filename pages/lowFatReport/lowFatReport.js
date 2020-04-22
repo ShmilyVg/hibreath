@@ -31,7 +31,7 @@ Page({
         }
       ]
     },
-    speed_tip: ['正常水平', '加速燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
+    speed_tip: ['正常水平', '稳步燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
     animationData: false,
     animation_ppm:{},
     showModalStatus: false,
@@ -158,19 +158,28 @@ Page({
     }
     dataListY1Name = this.data.weight.text;
     Trend.setData({ dataListX, dataListY, dataListY1Name, dataListY2, dataListY2Name, yAxisSplit: 5, color: '#9fe79c', legend: false }, 650);
+    
+    this.creatImage()
+  },
+  creatImage(){
     var that = this;
-    setTimeout(()=>{
+    setTimeout(() => {
       wx.canvasToTempFilePath({
         x: 0,
         y: 0,
         canvasId: 'lineCanvas',
         success: function (res) {
+          console.log(res);
           that.setData({
             canvasImg: res.tempFilePath
           })
         }
       })
-    },500)
+      if (!that.data.canvasImg && that.num < 4){
+        that.num++;
+        that.creatImage()
+      }
+    }, 100)
   },
   showCanvas(){
     if(this.data.scrollIng){
@@ -181,10 +190,13 @@ Page({
   },
   onPageScroll(e){
     var that = this;
-    that.setData({
-      scrollTop:e.scrollTop,
-      scrollIng:true
-    })
+    if (!this.data.scrollIng){
+      that.setData({
+        scrollTop: e.scrollTop,
+        scrollIng: true
+      })
+    }   
+    
     /* let timer= setTimeout(()=>{
        if(that.data.scrollTop===e.scrollTop){
          that.setData({
