@@ -30,6 +30,7 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             //由设备发出的显示结果请求 在线检测结果处理
             '0x36': ({dataArray}) => {
+                console.log('0x360x360x360x360x360x360x360x36',dataArray)
                 console.log(dataArray,"77777")
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));

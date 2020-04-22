@@ -33,14 +33,16 @@ Page({
   },
   //函数节流 防止重复点击
   debounce: function () {
-    var timeOut = null;
     let that = this;
-    return (() => {
-      clearTimeout(timeOut);
-      timeOut = setTimeout(() => {
-        that.yzfn()
-      }, 300);
-    })();
+    let gift = that.data.gift;
+    console.log(gift)
+    if (gift.platform == 'youzan') {
+      that.yzfn()
+    } else if (gift.platform == 'taobao') {
+      let couponCode = gift.couponCode;
+      let finishedPhone = true;
+      HiNavigator.navigateToGetGift({ couponCode, finishedPhone })
+    }
   },
 
   //跳转有赞

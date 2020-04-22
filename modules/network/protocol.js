@@ -333,7 +333,7 @@ export default class Protocol {
   }
   //领取优惠券takeGift
   static takeGift({couponCode}) {
-    return Network.request({url: 'coupon/takeCouponOnYouZan', data:{couponCode}})
+    return Network.request({url: 'coupon/takeCoupon', data:{couponCode}})
   }
 
   static getShoppingJumpCodes(){
