@@ -446,7 +446,7 @@ button::after {
   background:linear-gradient(0deg,rgba(38,204,144,1),rgba(114,213,133,1));
   border-radius:5rpx;
   display: inline-block;
-  margin-bottom: -5rpx;
+  margin-bottom: -2rpx;
 }
 .ppm_text{
   margin: 37rpx 0 70rpx;

@@ -169,7 +169,7 @@ Page({
         y: 0,
         canvasId: 'lineCanvas',
         success: function (res) {
-          console.log(res);
+          console.log('lineCanvas',res);
           that.setData({
             canvasImg: res.tempFilePath
           })
