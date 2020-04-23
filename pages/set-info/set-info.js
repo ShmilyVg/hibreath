@@ -345,7 +345,7 @@ Page({
     const { result: { dataList} } = await Protocol.getBannerList();
     this.setData({
       banner: dataList,
-      banner1: dataList[1],
+      // banner1: dataList[1],
     })
   },
   //获取任务信息

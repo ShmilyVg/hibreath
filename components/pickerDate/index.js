@@ -4,7 +4,7 @@ const years = []
 const months = []
 const days = []
 
-for (let i = 1890; i <= date.getFullYear(); i++) {
+for (let i = 1890; i <= date.getFullYear() - 17; i++) {
   years.push(i)
 }
 
@@ -81,14 +81,14 @@ Component({
    */
   data: {
     years: years,
-    year: 1980,
+    year: 1990,
     months: months,
     month: 1,
     days: days,
     day: 1,
-    value: [90, 0, 0],
+    value: [100, 0, 0],
     scrollTip: true,
-    serial_y:90,
+    serial_y:100,
     serial_m: 0,
     serial_d:0,
   },

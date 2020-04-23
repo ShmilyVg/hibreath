@@ -19,7 +19,7 @@ Page({
       info: {
         height: 175,
         weight: 80,
-        birthday: '1980-01-01',
+        birthday: '1990-01-01',
         sex: 0,
         illnessType: ['none']
       },

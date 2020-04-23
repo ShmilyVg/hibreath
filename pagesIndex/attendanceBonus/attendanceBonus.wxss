@@ -38,6 +38,10 @@ view{
   width: 36rpx;
   height: 44rpx;
 }
+.task .readyClass{
+  width: 46rpx;
+  height: 40rpx;
+}
 .replenish-tip{
   font-size:18rpx;
   font-family:PingFang SC;
