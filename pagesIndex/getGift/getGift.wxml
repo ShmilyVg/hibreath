@@ -1,20 +1,20 @@
 <!--pagesIndex/getGift/getGift.wxml-->
 <view class="bg"></view>
 <view class="getGift-top">
-    <view class="getGift-text">加速礼包</view>
-    <view class="getGift-top-title">Slimple专用福利</view>
+    <view class="getGift-text">{{title}}</view>
+    <view class="getGift-top-title">{{subTitle}}</view>
     <image src="{{imgUrl}}" style="width: 310rpx;height: 310rpx;margin-top: 28rpx"></image>
-    <view class="getGift-title">{{title}}</view>
+    <view class="getGift-title">{{description}}</view>
     <!--1:满减、2:抵用、3折扣-->
     <view class="getGift-yuan">
-        <view class="getGift-mj">{{typeName}}</view>
+        <view class="getGift-mj" wx:if="{{type == 1 || type == 2 || type == 3}}">{{typeName}}</view>
         <view wx:if="{{type == 1}}">满{{fullAmount}}元减{{usedAmount}}元</view>
         <view wx:if="{{type == 2}}">满{{fullAmount}}元抵{{usedAmount}}元</view>
         <view wx:if="{{type == 3}}">满{{fullAmount}}元{{usedAmount}}折</view>
     </view>
-    <view class="getGift-time">有效期：{{validStartTime}}-{{validEndTime}}</view>
+    <view class="getGift-time">{{validTimeTips}}</view>
     <view class="getGift-fetchCode">{{fetchCode}}</view>
-    <view class="getGift-subTitle">{{subTitle}}</view>
+    <view class="getGift-subTitle">{{remark}}</view>
     <view class="getGift-btn" bindtap="copyBtn">点击复制</view>
     <view bindtap="goToClub" class='readyBuy' wx:if="{{finishedPhone == 'false'}}">跳过</view>
 </view>

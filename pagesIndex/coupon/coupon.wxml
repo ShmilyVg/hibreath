@@ -23,7 +23,7 @@
             </view>
             <view class="clear"></view>
             <view class="coupon_list_right_time">
-                {{item.validStartTime}}-{{item.validEndTime}}
+                {{item.validTimeTips}}
             </view>
             <view class="coupon_list_right_fullAmount">满{{item.fullAmount}}可用</view>
             <view class="clear"></view>
@@ -57,7 +57,7 @@
             </view>
             <view class="clear"></view>
             <view class="coupon_list_right_time">
-                {{item.validStartTime}}-{{item.validEndTime}}
+                {{item.validTimeTips}}
             </view>
             <view class="coupon_list_right_fullAmount">满{{item.fullAmount}}可用</view>
             <view class="clear"></view>
