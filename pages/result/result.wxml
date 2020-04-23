@@ -10,47 +10,48 @@
         <image class="result-img1" src="../../images/result/circle.png"></image>
         <text class="result-text1">最近一次</text>
       </view>
-    <!--  <view class="result-status">
+      <!-- <view class="result-status">
         <view>燃脂不佳·点击加速
           <view class="triangle"></view>
         </view>
         <image src="../../images/result/speed.png"></image>
-      </view>-->
-      <!--    <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image>-->
+      </view> -->
+      <!-- <image class="result-img2" bindtap="toBind" src="../../images/result/bindInfo.png"></image> -->
     </view>
     <view class='content' style="margin-left: {{canvasMargin}}rpx" wx:if="{{!ppmModalStatus}}">
       <!-- <view class="img_con"> <image src="../../images/ask_green.png"></image></view> -->
       <canvas canvas-id="bg" class='canvasII' bindtap="ppmshow"></canvas>
       <canvas canvas-id='dashboard' id='canvas-one' class='canvasI' bindtap="ppmshow"></canvas>
-      <!--   <view class="result-line"></view>-->
+      <!-- <view class="result-line"></view> -->
       <!-- <image class="fatType1" src="{{fatType}}"></image> -->
       <view class="fatText">{{fatText}}</view>
       <view class="fatTextEn">{{fatTextEn}}</view>
-
     </view>
     <view class="fatDes" style="line-height: 45rpx;">{{fatDes}}</view>
     <button class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">吹一吹</button>
-  <!--  <button wx:if="{{!taskInfo.fatTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">吹一吹</button>
+    <!-- <button wx:if="{{!taskInfo.fatTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toIndex">吹一吹</button>
     <button wx:if="{{taskInfo.fatTask.finished && !taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="">完善健康报告</button>
-    <button wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toReport">查看健康报告</button>-->
+    <button wx:if="{{taskInfo.fatTask.finished && taskInfo.weightTask.finished}}" class="{{fatDes !==''?'result-btn':'result-btn2'}}" bindtap="toReport">查看健康报告</button> -->
   </view>
-
   <view class="burn-list">
     <view class="burn-list-top">
       <view>燃脂记录</view>
-    <!--  <view class="detail" bindtap="toBurnDay">查看详细记录</view>-->
+      <!-- <view class="detail" bindtap="toBurnDay">查看详细记录</view> -->
     </view>
     <view class="burn-list-contain">
       <view wx:for="{{trendData}}" wx:key="index" class="flex-column cell {{index?'':''}}" bindtap="deleteDataValue" data-index="{{item.id}}" data-time="{{item.createdTimestamp}}">
-        <!--<image src="../../images/result/best.png" class="bestImg" wx:if="{{!index}}"></image>
-        <image src="../../images/result/heigh.png" class="bestTopimg" wx:if="{{!index}}"></image>-->
+        <!-- <image src="../../images/result/best.png" class="bestImg" wx:if="{{!index}}"></image>
+        <image src="../../images/result/heigh.png" class="bestTopimg" wx:if="{{!index}}"></image> -->
         <view class="flex-row" style="width:100%;justify-content: space-between">
           <view class="flex-column" style="align-items: start;height: 160rpx;padding-left:60rpx;position: relative;">
             <view class="status-tip">
               <view wx:for="{{status[item.desZh]}}" wx:key='item' style="background: {{item}}"></view>
             </view>
-            <view class="cell-title">{{item.desZh}}
-              <view class="excessive" wx:if="{{item.desZh == '过度燃脂，急需注意' || item.desZh == '过度燃脂，危险状态' }}">!</view>
+            <view class="cell-title">
+              {{item.desZh}}
+              <view class="excessive" wx:if="{{item.desZh == '过度燃脂，急需注意' || item.desZh == '过度燃脂，危险状态' }}">
+                !
+              </view>
             </view>
             <view class="cell-date">{{item.date}}</view>
           </view>
@@ -63,26 +64,31 @@
       </view>
     </view>
   </view>
-
-  <!--非首次打卡完成激励弹窗-->
-  <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" inTaskProgress="{{inTaskProgress}}" integral="{{integral}}" integralTaskTitle="{{integralTaskTitle}}">
-  </my-toast>
-  <!--首次打卡完成激励弹窗-->
-  <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}">
-  </exciting-window>
-
+  <!-- 非首次打卡完成激励弹窗 -->
+  <my-toast wx:if="{{showMytoast}}" toastType="{{toastType}}" inTaskProgress="{{inTaskProgress}}" integral="{{integral}}" integralTaskTitle="{{integralTaskTitle}}"></my-toast>
+  <!-- 首次打卡完成激励弹窗 -->
+  <exciting-window wx:if="{{showExcitation}}" bind:getShowExcitation="getShowExcitation" toastType="{{toastType}}" toastResult="{{toastResult}}"></exciting-window>
 </view>
 <!-- ppm解释 -->
-<view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide">
-</view>
+<!-- <view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide"></view>
 <view animation="{{animation_ppm}}" class="commodity_attr_box" wx:if="{{ppmModalStatus}}">
-  <view class="ppm_title first_s"><view class="line_green"></view> 什么是 PPM ?</view>
+  <view class="ppm_title first_s">
+    <view class="line_green"></view>
+    什么是 PPM ?
+  </view>
   <view class="ppm_text">PPM 是浓度单位，表示人体呼出气体中丙酮一项所占的比例（丙酮是身体内部脂肪被消耗分解后的产物）</view>
-  <view class="ppm_title"><view class="line_green"></view> 如何理解 PPM 的高低？</view>
+  <view class="ppm_title">
+    <view class="line_green"></view>
+    如何理解 PPM 的高低？
+  </view>
   <view class="ppm_text">PPM 越高，表示人体呼出气体中丙酮所占比例越大，代表脂肪消耗的程度越高，燃脂效率越高，反之则越低。</view>
   <view class="ppm_text">当然也并非数值越高越好，超过40则代表身体脂肪消耗过多，过度燃脂对身体有健康风险。</view>
-  <view class="ppm_title"><view class="line_green"></view> PPM 的值与燃烧脂肪克数的关系？</view>
-  <view class="ppm_text">经过大量文献与数据分析研究，可总结出单位时间内1ppm 对应大约燃烧18~23g脂肪，简单来讲，可用1ppm=20g脂肪来计算今日消耗脂肪克数。（数值对应非线性关系，仅供参考）</view>
-  
+  <view class="ppm_title">
+    <view class="line_green"></view>
+    PPM 的值与燃烧脂肪克数的关系？
+  </view>
+  <view class="ppm_text">
+    经过大量文献与数据分析研究，可总结出单位时间内1ppm 对应大约燃烧18~23g脂肪，简单来讲，可用1ppm=20g脂肪来计算今日消耗脂肪克数。（数值对应非线性关系，仅供参考）
+  </view>
   <button bindtap="ppmhide" class="ppm_btn">我知道了</button>
-</view>
+</view> -->

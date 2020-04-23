@@ -31,7 +31,7 @@ Page({
         }
       ]
     },
-    speed_tip: ['正常水平', '稳步燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
+    speed_tip: ['未燃脂', '稳步燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
     animationData: false,
     animation_ppm:{},
     showModalStatus: false,
@@ -418,6 +418,10 @@ Page({
   },
   // 显示PPM介绍
   ppmshow(){
+    HiNavigator.navigateToPPM();
+    return;
+
+    
     // 显示遮罩层
     var animation = wx.createAnimation({
       duration: 200,

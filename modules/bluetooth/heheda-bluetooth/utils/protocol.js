@@ -12,17 +12,17 @@ export class ProtocolBody {
 
     receive({action, receiveBuffer}) {
 
-        console.log('receiveBuffer_1:',receiveBuffer)
+        // console.log('receiveBuffer_1:',receiveBuffer)
         const receiveArray = [...new Uint8Array(receiveBuffer)];
-        console.log('receiveArray_2:',receiveArray)
+        // console.log('receiveArray_2:',receiveArray)
         let command = receiveArray[this.commandIndex];
         let commandHex = `0x${HexTools.numToHex(command)}`;
         console.log('命令字', commandHex);
         let dataLength = receiveArray[1] - 1;
-        console.log('rdataLength_2:',dataLength)
+        // console.log('rdataLength_2:',dataLength)
         let dataArray;
         if (dataLength > 0) {
-            const endIndex = this.dataStartIndex + dataLength;
+            const endIndex = this.dataStartIndex + dataLength+2;
             dataArray = receiveArray.slice(this.dataStartIndex, endIndex);
         }
         const doAction = action[commandHex];

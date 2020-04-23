@@ -62,9 +62,9 @@ export default class HiBlueToothProtocol {
                 const battery = HexTools.hexArrayToNum(dataArray.slice(0, 1));
                 const version = HexTools.hexArrayToNum(dataArray.slice(1, 3));
                 wx.setStorageSync('indexVersion',  version);
-                const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 11));
+                const deviceId = HexTools.hexArrayToNum(dataArray.slice(3, 12));
                 wx.setStorageSync('indexDeviceId', deviceId);
-                const _syncCount = HexTools.hexArrayToNum(dataArray.slice(11, 13)) || 0;
+                const _syncCount = HexTools.hexArrayToNum(dataArray.slice(12, 14)) || 0;
                 console.log("总数", _syncCount)
                 const now = Math.round(new Date() / 1000);
                 console.log('小程序下发时间戳',now)

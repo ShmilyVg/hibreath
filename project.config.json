@@ -541,6 +541,12 @@
 					"pathName": "pages/device-manage/device-manage",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesThree/ppm_explain/ppm_explain",
+					"pathName": "pagesThree/ppm_explain/ppm_explain",
+					"scene": null
 				}
 			]
 		}

@@ -190,7 +190,7 @@
 <button wx:if="{{isLogin}}" class="bottmFixd" bindtap="toSetInfo" wx:if="{{sharedId && sharedId != 'undefined'}}">加入Slimple,一起燃脂吧！</button>
 
 <!-- ppm解释 -->
-<view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide">
+<!-- <view class="commodity_screen" wx:if="{{ppmModalStatus}}" bindtap="ppmhide">
 </view>
 <view animation="{{animation_ppm}}" class="commodity_attr_box" wx:if="{{ppmModalStatus}}">
   <view class="ppm_title first_s"><view class="line_green"></view> 什么是 PPM ?</view>
@@ -202,4 +202,4 @@
   <view class="ppm_text">经过大量文献与数据分析研究，可总结出单位时间内1ppm 对应大约燃烧18~23g脂肪，简单来讲，可用1ppm=20g脂肪来计算今日消耗脂肪克数。（数值对应非线性关系，仅供参考）</view>
   
   <button bindtap="ppmhide" class="ppm_btn">我知道了</button>
-</view>
+</view> -->
