@@ -113,11 +113,19 @@
       <text class="num"><text>{{report.weigthData.downAccumulateKGramsTxt}}</text> {{report.weigthData.downAccumulateKGrams}}</text>
       <text class="unit">kg</text>
     </view>
-    <view class="item-n-text" wx:if="{{report.weigthData.weightGoalt}}">距离目标体重
+    <view class="item-n-text" wx:if="{{report.weigthData.weightGoalt}}">
+      初始体重
+      <text class="num">{{report.weigthData.weightInitial}}</text>
+      <text class="unit">kg</text>，
+      <view>
+      距离目标体重
       <text class="num">{{report.weigthData.weightGoalt}}</text>
-      <text class="unit">kg</text>，还差
+      <text class="unit">kg</text>，
+      还差
       <text class="num">{{report.weigthData.subKGrams}}</text>
       <text class="unit">kg</text> </view>
+      </view>
+      
     <view class="item-h4">
       <image style="width: 26rpx;height: 26rpx;top:7rpx;" src="../../images/lowFatReport/chart.png"></image>
       近一周体重趋势
