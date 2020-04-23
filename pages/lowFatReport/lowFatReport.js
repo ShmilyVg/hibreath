@@ -183,8 +183,10 @@ Page({
   },
   onPageScroll(e){
     var that = this;
+    
     if (!this.data.canvasImg){
       wx.createSelectorQuery().select('.weight-chart').boundingClientRect(function (rect) {
+        if (!rect)return;
         if (rect.top < 67) {
           that.setData({
             scrollIng: true
