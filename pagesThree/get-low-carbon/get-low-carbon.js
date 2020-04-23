@@ -62,6 +62,7 @@ Page({
        if (couponCode) {
          let res = await Protocol.takeGift({ couponCode });
          if (res.code == 1) {
+           const {mpAppId, mpPath} = res.result;
            wx.showToast({
              title: '领取成功,即将跳转有赞小程序',
              icon: 'none',
@@ -70,7 +71,8 @@ Page({
            setTimeout(() => {
              //跳转有赞小程序
              wx.navigateToMiniProgram({
-               appId:'wxeea809f23b5a5d9d',
+               appId:mpAppId,
+               path:mpPath,
                extraData: {
                  // foo: 'bar'
                },
@@ -78,6 +80,9 @@ Page({
                success: (res) => {
                  // 打开成功
                  console.log('打开有赞小程序成功', res);
+               },
+               fail(res){
+                 console.log('打开有赞小程序失败', res);
                }
              })
            }, 1300)
