@@ -88,7 +88,7 @@ Page({
       birthdayStr = birthday.split('-').map(item => item.padStart(2, '0')).join('-')
     }
     this.setData({
-      endYear: [now.getFullYear() -17, now.getMonth() + 1, now.getDate()].map(item => item.toString().padStart(2, '0')).join('-'),
+      endYear: [now.getFullYear() -17, 12, 31].map(item => item.toString().padStart(2, '0')).join('-'),
       originUserInfo: {
         nickname,
         portraitUrl,
