@@ -30,7 +30,6 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
             },
             //由设备发出的显示结果请求 在线检测结果处理
             '0x36': ({dataArray}) => {
-                console.log('0x360x360x360x360x360x360x360x36',dataArray)
                 console.log(dataArray,"77777")
                 super.sendData({command: '0x37'});
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
@@ -39,7 +38,8 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 const finalDou = '0' + Math.floor(dou >= 100 ? dou / 10 : dou);
                 const result = HexTools.hexArrayToNum(dataArray.slice(4, 5)) + '.' + finalDou.slice(-2);
                 console.log('在线检测结果打印log',dou,finalDou,result)
-                return {state: ProtocolState.BREATH_RESULT, dataAfterProtocol: {result, timestamp}};
+                const status = HexTools.hexArrayToNum(dataArray.slice(6, 7));
+                return {state: ProtocolState.BREATH_RESULT, dataAfterProtocol: {result,status, timestamp}};
             },
             '0x38': () => {
                 super.sendData({command: '0x39'});
@@ -69,14 +69,16 @@ export default class HiBreathBlueToothProtocol extends HiBlueToothProtocol {
                 log.warn("离线数据处理之后的结果",result)
                 const timestamp = HexTools.hexArrayToNum(dataArray.slice(0, 4));
                 console.log('离线数据 timestamp',timestamp);
-                const currentLength = HexTools.hexArrayToNum(dataArray.slice(6, 7));
+                const status = HexTools.hexArrayToNum(dataArray.slice(6, 7));
+                console.log('离线数据 status',status);//标记位
+                const currentLength = HexTools.hexArrayToNum(dataArray.slice(7, 8));
                 console.log('离线数据 currentLength',currentLength);
-                const currentIndex = HexTools.hexArrayToNum(dataArray.slice(7, 9));
+                const currentIndex = HexTools.hexArrayToNum(dataArray.slice(8, 10));
                 console.log('离线数据 currentIndex',currentIndex);
 
                 return {
                     state: ProtocolState.QUERY_DATA_ING,
-                    dataAfterProtocol: {timestamp, result, currentLength, currentIndex}
+                    dataAfterProtocol: {timestamp, result,status, currentLength, currentIndex}
                 };
             },
             '0x41': () => {

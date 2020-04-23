@@ -110,7 +110,6 @@ Page({
   },
   onShow() {
     //判断初心遮罩是否显示
-    
     if (wx.getStorageSync('original_tip') == 'first') {
       let showGiftwindowsTip = false, showGiftwindows = false;
       if (this.data.showGiftwindowsTip) {

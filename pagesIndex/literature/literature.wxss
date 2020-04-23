@@ -3,7 +3,12 @@
 .literature {
   padding: 51rpx 71rpx;
 }
-
+.wenxian{
+  font-size: 26rpx;
+  color: #726c6c;
+  font-family:PingFang SC;
+  text-align: left;
+}
 .literatureItem {
   padding: 20rpx 0;
   font-size: 26rpx;

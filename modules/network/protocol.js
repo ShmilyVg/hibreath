@@ -14,8 +14,8 @@ export default class Protocol {
         return Network.request({url: 'account/info'});
     }
 
-    static getBreathDataAdd({dataValue}) {
-        return Network.request({url: 'breathData/add', data: {dataValue}});
+    static getBreathDataAdd({dataValue,status}) {
+        return Network.request({url: 'breathData/add', data: {dataValue,status}});
     }
 
     static getBreathDataList({page, pageSize = 15, timeBegin, timeEnd}) {
@@ -42,6 +42,7 @@ export default class Protocol {
 
     //上传身体评估信息
     static postBreathPlanAnalysis(data) {
+        console.log('离线上传数据kkkkkkkkkkkkkkkkkkkk',data)
         return Network.request({url: 'breathPlan/analysis', data: data})
     }
 

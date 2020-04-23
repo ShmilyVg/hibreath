@@ -55,9 +55,8 @@
         与上次相比
       </view>
       <view class="item-g-text"> {{report.breathData.comparison.title}}</view>
-      <view class="item-n-text">{{report.breathData.comparison.content}}</view>
     </block>
-
+    <view class="item-n-text">{{report.breathData.comparison.content}}</view>
 
     <view class="item-h4">
       <image style="width: 24rpx;height: 30rpx" src="../../images/lowFatReport/fire.png" class="fire"></image>
@@ -200,7 +199,7 @@
   <view class="ppm_text">PPM 越高，表示人体呼出气体中丙酮所占比例越大，代表脂肪消耗的程度越高，燃脂效率越高，反之则越低。</view>
   <view class="ppm_text">当然也并非数值越高越好，超过40则代表身体脂肪消耗过多，过度燃脂对身体有健康风险。</view>
   <view class="ppm_title"><view class="line_green"></view> PPM 的值与燃烧脂肪克数的关系？</view>
-  <view class="ppm_text">经过大数据分析研究，可总结出1ppm 对应大约20g脂肪。（数值对应非线性关系，仅供参考）</view>
+  <view class="ppm_text">经过大量文献与数据分析研究，可总结出单位时间内1ppm 对应大约燃烧18~23g脂肪，简单来讲，可用1ppm=20g脂肪来计算今日消耗脂肪克数。（数值对应非线性关系，仅供参考）</view>
   
   <button bindtap="ppmhide" class="ppm_btn">我知道了</button>
 </view>

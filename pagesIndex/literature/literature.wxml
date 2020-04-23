@@ -1,5 +1,6 @@
 <!--pagesIndex/literature/literature.wxml-->
 <view class="literature" >
+  <view class="wenxian">* 经过大量文献与数据分析研究，可总结出单位时间内1ppm 对应大约燃烧18~23g脂肪，简单来讲，可用1ppm=20g脂肪来计算今日消耗脂肪克数。（数值对应非线性关系，仅供参考）</view>
   <view class="literatureItem" wx:for="{{showList}}" wx:if="{{index < 5 || allTip}}" >
     <text class="serial"><text></text>{{index+1}}.</text>
     <text selectable='true' class="title">{{item}} 

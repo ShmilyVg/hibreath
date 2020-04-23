@@ -44,7 +44,7 @@ App({
                 if (ProtocolState.QUERY_DATA_ING === state.protocolState) {
                     console.log('接收到的', finalResult);
                     log.warn('接收到的', finalResult)
-                    const {timestamp, result, currentLength: length} = finalResult;
+                    const {timestamp, result, status, currentLength: length} = finalResult;
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/
                     if (this.outlistAll === true) {
@@ -55,7 +55,7 @@ App({
                     }
                     /*离线数据相关*/
                     if (records.length < length) {
-                        records.push({dataValue: result, timestamp: timestamp});
+                        records.push({dataValue: result, status,timestamp: timestamp});
                         count++;
                         console.log(records, "records");
                         console.log(length, "length");

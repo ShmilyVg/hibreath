@@ -28,7 +28,13 @@ Page({
   onShow: function () {
     if (this.data.goToManifesto && this.data.fromPage == 0){
       HiNavigator.navigateToManifesto({ sharedId: this.data.sharedId })
+    } else if (this.data.goToManifestoNot){
+      HiNavigator.switchToSetInfo()
     }
+    this.setData({
+      goToManifesto:false,
+      goToManifestoNot: false
+    })
   },
 onShareAppMessage(res) {
   this.hideModal()
@@ -36,6 +42,10 @@ onShareAppMessage(res) {
    if (this.data.fromPage == 0 || !this.data.fromPage){
      this.setData({
        goToManifesto:true
+     })
+   }else{
+     this.setData({
+       goToManifestoNot: true
      })
    }
   return {
@@ -71,16 +81,15 @@ async startPlan(){
   try {
     let weightGoalt = this.data.weightGoalt;
     let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
-    let { result } = await Protocol.postMembersJoinSchema(data)
+    let { result } = await Protocol.postMembersJoinSchema(data);
+    wx.hideLoading();
     if (this.data.fromPage == 0 || this.data.fromPage == '0') {
       HiNavigator.navigateToManifesto({ sharedId: result.sharedId })
     } else {
-      this.setData({
-        can_change: false
-      })
+      HiNavigator.switchToSetInfo()
     }
   } catch (err) { }
-  wx.hideLoading();
+  
 
 
 },
@@ -91,7 +100,6 @@ async startShare(){
   let { result } = await Protocol.postMembersJoinSchema(data)
   this.showModal()
   this.setData({
-    can_change: false,
     sharedId: result.sharedId,
     shareTitle: result.toFriend.title,
     shareImg: result.toFriend.url,
@@ -260,6 +268,11 @@ savePhoto(){
       })
     }, complete() {
       that.hideModal()
+      if (that.data.can_change && !that.data.fromPage == 0) {
+        HiNavigator.switchToSetInfo()
+      } else if (that.data.fromPage == 0){
+        HiNavigator.navigateToManifesto({})
+      }
     }
   })
 },
@@ -267,5 +280,6 @@ hideModal: function () {
   this.setData({
     showModalStatus: false
   });
+  
 },
 })

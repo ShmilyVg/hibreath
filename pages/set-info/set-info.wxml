@@ -191,7 +191,7 @@
   <view class="tip-full"></view>
   <view class="tip-view flex-column">
     <view class="tip-view-title">正在上传检测记录</view>
-    <view class="tip-view-content">{{sync.num}}/{{sync.countNum}}</view>
+    <view class="tip-view-content"><text>{{sync.num}}</text>/{{sync.countNum}}</view>
   </view>
 </view>
 

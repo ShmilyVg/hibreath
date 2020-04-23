@@ -318,11 +318,13 @@ Page({
           //上传PPM并跳转结果页
           /*  const toolfinalResult = tools.resultRe(tools.subStringNum(finalResult.result))*/
           const toolfinalResult = parseInt(finalResult.result)
+          console.log('在线检测数值lllllllllllllll', finalResult)
           console.log('在线检测数值处理前', finalResult.result)
           console.log('在线检测数值处理后', toolfinalResult)
           log.warn('在线检测数值处理前', finalResult.result)
           log.warn('在线检测数值处理后', toolfinalResult)
           Protocol.getBreathDataAdd({
+            status:finalResult.status,
             dataValue: toolfinalResult,
           }).then(data => {
             HiNavigator.redirectToLowFatReport()
