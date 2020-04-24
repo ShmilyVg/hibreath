@@ -17,22 +17,22 @@ var mta = require('../../utils//mta_analysis.js')
 Page({
   data: {
     finishedPhone: false,//新手引导是否完成编制
-    showPage:false,
-    deny:false,
+    showPage: false,
+    deny: false,
     showMytoast: false, //非首次打卡toast弹窗
     showExcitation: false,//首次打卡激励弹窗
     animationData: '',
     breathSign: {},//签到数据
-    taskFinished:false,
-    original_show:false,
-    sync:{
+    taskFinished: false,
+    original_show: false,
+    sync: {
       num: 0,
       countNum: 0, //需要同步的总数
       timer: ""
     },
     hideModal: true,
     topTaskTip: false,//头部显隐标志
-    showBigTip:false,//离线上传数据弹框
+    showBigTip: false,//离线上传数据弹框
     weight: '',
     answerBtns: [
       { text: 'Yes', imgSrc: '../../images/set-info/yes.png' },
@@ -40,12 +40,13 @@ Page({
     ],
     answer: true,
     answerData: {},
+    current: 0,
     answerBtnReady: false,
-    needImgList:["fatWindows/flash1.png", "fatWindows/flash2.png"],
+    needImgList: ["fatWindows/flash1.png", "fatWindows/flash2.png"],
     gitImgList: ['fatWindows/getGift_3.png'],
-    isBind:false,//是否绑定设备
-    showGiftwindows:false,
-    showGiftwindowsTip:false
+    isBind: false,//是否绑定设备
+    showGiftwindows: false,
+    showGiftwindowsTip: false
   },
   onHide() {
     //离开时 告知蓝牙标志位 0x3D   0X02
@@ -68,9 +69,9 @@ Page({
     let sharedId = app.globalData.firendSharedId;
     let hipeeScene = options.hipeeScene;
     let hisHipeeScene;
-    if (hipeeScene){
+    if (hipeeScene) {
       wx.setStorageSync('hipeeScene', hipeeScene)
-    }else{
+    } else {
       hisHipeeScene = wx.getStorageSync('hipeeScene');
     }
     hipeeScene = (hipeeScene == 'undefined') ? '' : hipeeScene;
@@ -80,16 +81,16 @@ Page({
       sharedId
     })
     //扫硬件二维码时清除已进入绑定页面标志
-    if (hipeeScene == 'device'){
-      try{
+    if (hipeeScene == 'device') {
+      try {
         wx.removeStorageSync('bindPage');
-      }catch(error){}
-      
+      } catch (error) { }
+
     }
     wx.hideShareMenu();
     this.connectionPage = new ConnectionManager(this);
     this.getFinishedGuide();
-    
+
     this.getPresonMsg();
     setTimeout(() => {
       //每天第一次登录积分奖励
@@ -122,7 +123,7 @@ Page({
       })
       this.hideTabBarFun();
       wx.setStorageSync('original_tip', 'ready')
-    }else{
+    } else {
       this.setData({
         original_show: false
       })
@@ -172,17 +173,17 @@ Page({
       }
     };
     that.getTaskInfo();
-  /*  //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
-    if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
-      getApp().globalData.issueRefresh = false;
-      that.getTaskInfo();
-    }*/
+    /*  //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
+      if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
+        getApp().globalData.issueRefresh = false;
+        that.getTaskInfo();
+      }*/
     if (wx.getStorageSync('showWeight')) {
       this.showModal();
       wx.setStorageSync('showWeight', false)
     }
   },
-  onUnload(){
+  onUnload() {
 
   },
   /**
@@ -206,16 +207,16 @@ Page({
     };
   },
   //是否完成新手引导
-  getFinishedGuide(){
+  getFinishedGuide() {
     if (wx.getStorageSync('finishedGuide')) {
       //获取是否完成手机号验证、新手引导是否完成
       this.setData({
-        showPage:true
+        showPage: true
       })
       this.showTabBarFun()
-    }else{
+    } else {
       this.hideTabBarFun();
-    } 
+    }
   },
   //获取个人信息
   async getPresonMsg() {
@@ -224,7 +225,7 @@ Page({
     let hisH = wx.getStorageSync('hipeeScene')
     let finishedInfo = false;
     let detail = result.detail;
-    if (detail.birthday && detail.sex && detail.weight && detail.height){
+    if (detail.birthday && detail.sex && detail.weight && detail.height) {
       finishedInfo = true;
     }
     wx.setStorageSync('finishedGuide', result.finishedGuide)
@@ -245,17 +246,17 @@ Page({
         finishedGuide: true,
         showPage: true
       })
-      
+
       this.showTabBarFun()
-    } else if (finishedInfo){
-      if (hipeeScene != 'device'){
+    } else if (finishedInfo) {
+      if (hipeeScene != 'device') {
         this.setData({
           finishedPhone: result.finishedPhone,
           showPage: true
         })
       }
 
-    }else{
+    } else {
       if (wx.getStorageSync('guidance_tip') != 'ready') {
         HiNavigator.navigateToGuidance({ reset: 2 })
       }
@@ -263,43 +264,43 @@ Page({
     }
   },
   //图片预加载列表
-  imgListArr(){
+  imgListArr() {
     var that = this;
-    for(var i=0;i<that.data.taskInfo.modalList.length;i++){
-      if(that.data.taskInfo.modalList[i].modalType == 'OpenBoxGift'){
+    for (var i = 0; i < that.data.taskInfo.modalList.length; i++) {
+      if (that.data.taskInfo.modalList[i].modalType == 'OpenBoxGift') {
         that.data.needImgList.push('fatWindows/getGift_3.png')
       }
-      if(that.data.taskInfo.modalList[i].modalType == 'goalFinish'){
-        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
-        let imageListfinUrl = "fatWindows/fin-type"+Num+'.png'
+      if (that.data.taskInfo.modalList[i].modalType == 'goalFinish') {
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel) + 1
+        let imageListfinUrl = "fatWindows/fin-type" + Num + '.png'
         that.data.needImgList.push(imageListfinUrl)
       }
-      if(that.data.taskInfo.modalList[i].modalType == 'fatForward' || that.data.taskInfo.modalList[i].modalType == 'fatBackward'){
-        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel)+1
-        let imageListfinUrl = "fatWindows/fat-type"+Num+'.png'
+      if (that.data.taskInfo.modalList[i].modalType == 'fatForward' || that.data.taskInfo.modalList[i].modalType == 'fatBackward') {
+        let Num = Number(that.data.taskInfo.modalList[i].ext.fatLevel) + 1
+        let imageListfinUrl = "fatWindows/fat-type" + Num + '.png'
         that.data.needImgList.push(imageListfinUrl)
       }
-      if(that.data.taskInfo.modalList[i].modalType == 'fatHard'){
+      if (that.data.taskInfo.modalList[i].modalType == 'fatHard') {
         that.data.needImgList.push('fatWindows/fat-type1no.png')
       }
     }
-    that.data.needImgList =[...new Set([... that.data.needImgList])]
-    var loader=new ImageLoader({
-      base: ImageSource.BASE ,
+    that.data.needImgList = [...new Set([...that.data.needImgList])]
+    var loader = new ImageLoader({
+      base: ImageSource.BASE,
       source: this.data.needImgList,
       loaded: res => {
-        setTimeout(()=>{
+        setTimeout(() => {
           this.setData({
-            showWindows:true
+            showWindows: true
           })
-        },300)
+        }, 300)
       }
     });
   },
-  closeWindows(){
+  closeWindows() {
     this.setData({
-      showGiftwindowsTip:false,
-      showGiftwindows:false
+      showGiftwindowsTip: false,
+      showGiftwindows: false
     })
     this.showTabBarFun()
   },
@@ -314,9 +315,9 @@ Page({
       this.showTabBarFun()
     }
   },
-  showTabBarFun(){
+  showTabBarFun() {
     //如果初心遮罩或者开箱礼遮罩存在是  暂时不显示TabBar
-    console.log(this.data.showGiftwindowsTip , this.data.original_show)
+    console.log(this.data.showGiftwindowsTip, this.data.original_show)
     if (this.data.showGiftwindowsTip || this.data.original_show) return;
     wx.showTabBar({
       fail: function () {
@@ -326,7 +327,7 @@ Page({
       }
     });
   },
-  hideTabBarFun(){
+  hideTabBarFun() {
     wx.hideTabBar({
       fail: function () {
         setTimeout(function () {
@@ -336,36 +337,37 @@ Page({
     });
   },
   //前往 领取低碳饮食页面
-  toGetLowFood(){
+  toGetLowFood() {
     let bannerId = this.data.bannerId;
     HiNavigator.navigateTogetLowCarbon(bannerId);
     this.closeWindows()
   },
-  async getBanner(){
-    const { result: { dataList} } = await Protocol.getBannerList();
+  async getBanner() {
+    const { result: { dataList } } = await Protocol.getBannerList();
     this.setData({
       banner: dataList,
+      current :0
       // banner1: dataList[1],
     })
   },
   //获取任务信息
   async getTaskInfo() {
     const { result } = await Protocol.getTaskInfo();
-    
+
     let taskFinished = false;
-    if (result.fatTask && result.fatTask.finished){
+    if (result.fatTask && result.fatTask.finished) {
       taskFinished = true;
-    } else if (result.weightTask && result.weightTask.finished){
+    } else if (result.weightTask && result.weightTask.finished) {
       taskFinished = true;
     }
     let that = this;
     app.globalData.isDoingPlan = result.isDoingPlan;
-    if(result.modalList.length>0){
-      var loader=new ImageLoader({
-        base: ImageSource.BASE ,
+    if (result.modalList.length > 0) {
+      var loader = new ImageLoader({
+        base: ImageSource.BASE,
         source: this.data.gitImgList,
         loaded: res => {
-          setTimeout(()=>{
+          setTimeout(() => {
             var pages = getCurrentPages(); //获取加载的页面
             var currentPage = pages[pages.length - 1]    //获取当前页面的对象
             console.log('当前页面是', currentPage.route)
@@ -373,18 +375,18 @@ Page({
               that.hideTabBarFun();
             }
             //初心遮罩在前  开箱礼在后
-            for (let item of result.modalList){
-              if (item.modalType == 'OpenBoxGift'){
+            for (let item of result.modalList) {
+              if (item.modalType == 'OpenBoxGift') {
                 that.setData({
-                  bannerId:item.bannerId,
+                  bannerId: item.bannerId,
                   showGiftwindowsTip: !this.data.original_show,
                   showGiftwindows: true
                 })
                 break;
               }
             }
-            
-          },300)
+
+          }, 300)
         }
       });
 
@@ -394,24 +396,24 @@ Page({
       taskInfo: result
     })
     if (!result.flag && !wx.getStorageSync('flag')) {
-      if (this.data.hipeeScene =='device' && this.data.isBind){
+      if (this.data.hipeeScene == 'device' && this.data.isBind) {
         this.goToManifesto()
-      } else if (this.data.finishedGuide){
+      } else if (this.data.finishedGuide) {
         this.goToManifesto()
       }
-      
+
     }
-    
+
   },
 
-  weightGoal(){
+  weightGoal() {
     this.showModal()
   },
   //燃脂
   async fatTaskToFinish() {
-    if(!this.isBind){
-      HiNavigator.navigateIntroduce({couponCode:this.data.couponCode});
-    }else{
+    if (!this.isBind) {
+      HiNavigator.navigateIntroduce({ couponCode: this.data.couponCode });
+    } else {
       wx.getSystemInfo({
         success(res) {
           if (res.locationEnabled && res.bluetoothEnabled && res.locationAuthorized) {
@@ -509,11 +511,11 @@ Page({
         return;
       }
 
-      
+
       //没有验证过手机号
-      if (this.data.hipeeScene){
+      if (this.data.hipeeScene) {
         HiNavigator.navigateToGoVerification()
-      }else{
+      } else {
         //补签
         // if (sharedId) {
         //   let postData = {
@@ -527,32 +529,32 @@ Page({
         //     });
         //   }
         // }
-        
+
         await this.getShoppingJumpCodes();
         setTimeout(() => {
           let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
           let couponCode = couponItem.couponCode
-          HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone:'false'})
+          HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone: 'false' })
         }, 500);
         return;
       }
-      
-      
 
-    }else{
+
+
+    } else {
       this.setData({
-        deny:true
+        deny: true
       })
       this.showTabBarFun()
     }
   },
   //去燃脂列表页
-  async goToFatResultPage(){
+  async goToFatResultPage() {
     if (this.data.taskInfo.fatTask.finished) {
       HiNavigator.navigateToResultNOnum();
       return;
     }
-    let { result :{ dateTime}} = await Protocol.postBreathDatalist();
+    let { result: { dateTime } } = await Protocol.postBreathDatalist();
     if (dateTime.length > 0) {
       HiNavigator.navigateToResultNOnum();
       return;
@@ -588,20 +590,20 @@ Page({
       }
     })
   },
-  
-  goToTask(e){
+
+  goToTask(e) {
     // console.log(e.currentTarget.dataset.url)
-    let { type, url, bannerId} = e.currentTarget.dataset.item;
-    if (type == 'wechat'){
+    let { type, url, bannerId } = e.currentTarget.dataset.item;
+    if (type == 'wechat') {
       wx.navigateTo({
         url: url + '?bannerId=' + bannerId
       })
     }
     // HiNavigator.navigateToAttendanceBonus()
   },
-  goToManifesto(){
+  goToManifesto() {
     let { sharedId, flag } = this.data.taskInfo
-    HiNavigator.navigateToManifesto({ sharedId, flag})
+    HiNavigator.navigateToManifesto({ sharedId, flag })
   },
   //减脂效果页
   goToLowFatReport() {
@@ -616,12 +618,12 @@ Page({
     });
 
   },
-  goToGetGift(){
+  goToGetGift() {
     HiNavigator.navigateToGetGift()
   },
   //体重列表
-  async bindTapToFood(){
-    if (this.data.taskInfo.weightTask.finished){
+  async bindTapToFood() {
+    if (this.data.taskInfo.weightTask.finished) {
       HiNavigator.navigateTofood();
       return;
     }
@@ -636,11 +638,11 @@ Page({
       return;
     }
     this.showModal();
-    
+
   },
   //蓝牙
   handleBle() {
-    if (!this.data.showPage){
+    if (!this.data.showPage) {
       wx.showLoading({
         title: '加载中',
         mask: true,
@@ -666,7 +668,7 @@ Page({
         console.log("setPage-receiveDataListener", finalResult, state);
       }
     });
-    
+
     Protocol.getDeviceBindInfo().then(data => {
       this.setData({
         ...data.result
@@ -677,23 +679,23 @@ Page({
         app.getBLEManager().clearConnectedBLE();
         this.connectionPage.unbind();
         //扫硬件码。没有绑定时跳转绑定接口
-        
-        setTimeout(()=>{
+
+        setTimeout(() => {
           if (this.data.hipeeScene == 'device' && this.data.finishedInfo) {
-            if (wx.getStorageSync('bindPage') != 'ready'){
+            if (wx.getStorageSync('bindPage') != 'ready') {
               HiNavigator.navigateIndex();
             }
-          }else{
+          } else {
             wx.hideLoading();
           }
-        },300)
-        
+        }, 300)
+
       } else {
         wx.hideLoading();
         //扫硬件码。绑定时显示首页
         if (this.data.hipeeScene == 'device') {
           this.setData({
-            isBind:true,
+            isBind: true,
             showPage: true
           })
           this.showTabBarFun()
@@ -739,7 +741,7 @@ Page({
     this.setData({
       answerBtnReady: true
     })
-    try{
+    try {
       const { result: bodyIndexResult } = await Protocol.answerFinish(data);
       if (bodyIndexResult.isCorrect == 1) {
         this.setData({
@@ -753,14 +755,14 @@ Page({
           })
         }, 3000)
       }
-    }catch(err){
+    } catch (err) {
       setTimeout(() => {
         this.setData({
           answerBtnReady: false
         })
       }, 3000)
     }
-    
+
     this.getAnswer()
   },
 
@@ -813,10 +815,10 @@ Page({
       animationData: this.animation.export(),
     })
   },
-  async getShoppingJumpCodes(){
+  async getShoppingJumpCodes() {
     let { result } = await Protocol.getShoppingJumpCodes();
     app.globalData.shoppingJumpCodes = result;
     this.shoppingJumpCodes = result;
-    return ;
+    return;
   }
 });

@@ -324,23 +324,23 @@ view {
 
 .burn-progress-contain {
   width: 450rpx;
-  height: 56rpx;
+  height: 38rpx;
   display: flex;
   justify-content: start;
-  /* background: rgba(231, 231, 231, 1); */
-  /* box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06); */
-  /* border-radius: 28rpx; */
+  background: rgba(231, 231, 231, 1);
+  box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06);
+  border-radius: 28rpx;
 }
 .predict{
-  height: 56rpx;
+  height: 38rpx;
   background: #e4e4e4;
   border-radius: 28rpx;
   box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06) inset;
 }
 .burn-value {
   /* width: 230rpx; */
-  height: 56rpx;
-  line-height: 56rpx;
+  height: 38rpx;
+  line-height: 38rpx;
   background: linear-gradient(90deg, rgba(38, 204, 144, 1), rgba(114, 213, 133, 1));
   border-radius: 28rpx;
   font-size: 24rpx;

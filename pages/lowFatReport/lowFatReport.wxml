@@ -74,7 +74,7 @@
             <view class="burn-value" style="width:{{progress}}rpx">
               <!-- <view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view> -->
             </view>
-            <view class="predict" style="width:{{ 450 - progress}}rpx"></view>
+            <!-- <view class="predict" style="width:{{ 450 - progress}}rpx"></view> -->
           </view>
           <view class="burn-progress-tip">
             <view class="burn-progress-text">预计还可消耗 <text>{{report.breathData.losefatGrams.predictGrams}}g</text></view>
