@@ -256,6 +256,9 @@ Page({
           page: this.data.my_msg_pageIndex,
           groupId: this.data.groupId
         })
+        if (list.length) {
+          this.data.my_msg_pageIndex++;
+        }
         const dataList = list.map(item => {
           return {
             ...item,
@@ -276,6 +279,9 @@ Page({
         } = await Protocol.postDynamicNoticeMembers({
           page: this.data.my_msg_pageIndex
         });
+        if (list.length) {
+          this.data.my_msg_pageIndex++;
+        }
         const dataList = list.map(item => {
           return {
             ...item,

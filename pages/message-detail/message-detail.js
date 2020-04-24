@@ -178,7 +178,6 @@ Page({
             return
         }
 
-
         if(this.data.isReply){
             this.finCReply()
         }else{
@@ -186,10 +185,11 @@ Page({
         }
         this.setData({
             placeholderText:"评论",
-            commentContent:"",
+            commentContent:null,
             textareaValue:null,
             isReply:false
         })
+      console.log('3333333333333333', this.data.commentContent, this.data.textareaValue)
         setTimeout(()=>{
             wx.pageScrollTo({
                 scrollTop: 18000,

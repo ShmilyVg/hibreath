@@ -7,7 +7,7 @@
     </view>
 
     <text class="update-titleZh">{{isUpdate?'设备正在升级':'升级成功'}}</text>
-    <text class="update-titleEn">{{isUpdate?'DEVICE UPGRADE':'SUCCESSFUL'}}</text>
+    <text class="update-titleEn">{{isUpdate?'UPGRADING':'SUCCESSFUL'}}</text>
     <!--<text style="font-size: 28rpx;color: #979797;text-align: center;margin-bottom: 62rpx;margin-top: 12rpx;">{{isUpdate?'预计需要1分钟左右，升级过程中\n药盒会持续亮绿灯':'药盒正在重启，请看到药盒亮下绿灯\n并发出一次滴声后点击立即使用'}}</text>-->
         <view wx:if="{{isUpdate}}" class="">
             <view class="update-view">

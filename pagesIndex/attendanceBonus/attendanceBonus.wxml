@@ -41,7 +41,7 @@
     <view class="discounts-top">
       <view class="discounts-title">{{gift.title}}</view>
       <!-- <view class="discounts-time">{{gift.validStartTime}}-{{gift.validEndTime}}</view> -->
-      <view class="discounts-time">有效期：领取后{{gift.rules}}内有效</view>
+      <view class="discounts-time">{{gift.rules}}</view>
     </view>
     <view class="discounts-right">
       <view class="discounts-value">

@@ -74,11 +74,14 @@ function drewCircular() {
 
   var deal = val => {
     var result = [];
+    let k = val <= 2 ? 1:val <= 9?2:val <= 19?3:val <=39?4:5;
+    let s = -224
     result.push(
       {
         r: [0, val],
-        s: -225,
-        e: val * 54 / 20 - 225
+        s: s,
+        // e: val * 54 / 20 - 225
+        e:54 * k+s
       }
     )
     return result;
@@ -140,31 +143,31 @@ function showType() {
     _page.setData({
       fatType: "../../images/result/type1.png",
       fatText: "未燃脂",
-      fatTextEn: "CHIN UP",
+      fatTextEn: "UNBURNED",
     })
   } else if (_page.data.score <= 9 && _page.data.score >= 3) {
     _page.setData({
       fatType: "../../images/result/type2.png",
       fatText: "稳步燃脂",
-      fatTextEn: "SLOW",
+      fatTextEn: "GOOD",
     })
   } else if (_page.data.score <= 19 && _page.data.score >= 10) {
     _page.setData({
       fatType: "../../images/result/type3.png",
       fatText: "状态极佳",
-      fatTextEn: "PROPER",
+      fatTextEn: "PERFECT",
     })
   } else if (_page.data.score <= 39 && _page.data.score >= 20) {
     _page.setData({
       fatType: "../../images/result/type4.png",
       fatText: "快速燃脂",
-      fatTextEn: "FAST",
+      fatTextEn: "EXCESSIVE",
     })
   } else if (_page.data.score <= 99 && _page.data.score >= 40) {
     _page.setData({
       fatType: "../../images/result/type5.png",
       fatText: "过度燃脂",
-      fatTextEn: "UNDUE",
+      fatTextEn: "RISKY",
     })
   }
 }

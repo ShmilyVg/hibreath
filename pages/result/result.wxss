@@ -43,8 +43,8 @@ page {
 }
 
 .fatType1 {
-  width: 99rpx;
-  height: 136rpx;
+  width: 400rpx;
+  height: 400rpx;
   position: relative;
   top: 100rpx;
   margin: 0 auto;
