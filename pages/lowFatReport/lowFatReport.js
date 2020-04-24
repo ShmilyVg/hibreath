@@ -31,7 +31,7 @@ Page({
         }
       ]
     },
-    speed_tip: ['未燃脂', '稳步燃脂', '状态极佳', '快速燃脂', '急需注意', '危险状态'],
+    speed_tip: ['未燃脂  ', '稳步燃脂', '状态极佳', '快速燃脂', '过度燃脂'],
     animationData: false,
     animation_ppm:{},
     showModalStatus: false,
@@ -95,8 +95,9 @@ Page({
     let losefatGrams = result.breathData.losefatGrams;
     let progress = 0;
     if (losefatGrams && losefatGrams.grams && losefatGrams.predictGrams) {
-      progress = (losefatGrams.grams * 450) / losefatGrams.predictGrams
+      progress = (losefatGrams.grams * 450) / (Number(losefatGrams.predictGrams) + losefatGrams.grams)
     };
+    console.log(losefatGrams)
     result.showTime = Tools.dateFormat(result.time,'YYYY.MM.DD HH:mm');
     let isToday = false;
     if (Tools.dateFormat(result.time) == Tools.dateFormat(new Date())){

@@ -1,11 +1,27 @@
 // pagesThree/ppm_explain/ppm_explain.js
+import HiNavigator from "../../navigator/hi-navigator";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    speed_tip: [{
+      text: '未燃脂',
+      range: '0-2'
+    }, {
+      text: '稳步燃脂',
+      range: '3-9'
+    }, {
+      text: '状态极佳',
+      range: '10-19'
+    }, {
+      text: '快速燃脂',
+      range: '19-39'
+    }, {
+      text: '过度燃脂',
+      range: '39-99'
+    }]
   },
 
   /**
@@ -14,7 +30,9 @@ Page({
   onLoad: function (options) {
 
   },
-
+  goback() {
+    HiNavigator.navigateBack({ delta: 1 });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -58,7 +58,7 @@ async initMyLossfatCourse(){
   let weightGoalt = this.data.weightGoalt
   let data = weightGoalt ? { weightGoalt: Number(weightGoalt) } : {};
   let { result } = await Protocol.initMyLossfatCourse(data);
-  let tip = (result.weight <= result.weightGoalt);
+  let tip = (result.weight <= result.weightRecommend);
   this.setData({
     tip,
     result

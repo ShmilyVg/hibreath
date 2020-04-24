@@ -32,6 +32,7 @@
         <text>{{report.breathData.dataValue}}</text>
         <view>PPM <image src="../../images/lowFatReport/ask.png"></image></view>
         <view class="introducePPM" bindtap="ppmshow"></view>
+        <view class="burn_desZh">{{report.breathData.desZh}}</view>
       </view>
       <image src="../../images/lowFatReport/speedBg.png" class="speedBg"></image>
       <view class="elf-contain" style="transform: rotate({{rotate}}deg);">
@@ -41,14 +42,14 @@
     </view>
     <view class="speed-tip-list">
       <view class="speed-tip-item" wx:for="{{speed_tip}}" wx:key="index"> 
-        <view><image src="../../images/lowFatReport/burn{{index+1}}.png"></image></view> <text>{{item}}</text>
+        <view><image src="../../images/lowFatReport/burn{{index+1}}.png"></image></view> <text space="ensp">{{item}}</text>
       </view>
     </view>
-    <view class="item-h4">
+    <!-- <view class="item-h4">
       <image src="../../images/lowFatReport/elf.png"></image>
       当前燃脂状态
     </view>
-    <view class="item-g-text">{{report.breathData.desZh}}</view>
+    <view class="item-g-text">{{report.breathData.desZh}}</view> -->
     <block wx:if="{{report.breathData.comparison.title}}">
       <view class="item-h4">
         <image style="width: 30rpx;height: 30rpx" src="../../images/lowFatReport/vs.png" class="vspng"></image>
@@ -68,14 +69,16 @@
     <view class="burn-progress" wx:if="{{report.member.finishedInfo}}">
       <block wx:if="{{report.breathData.losefatGrams.grams}}">
         <view class="burn-progress-left">
+          <view class="readyBurn">今日已燃烧 {{report.breathData.losefatGrams.grams}}g</view>
           <view class="burn-progress-contain">
             <view class="burn-value" style="width:{{progress}}rpx">
-              <view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view>
+              <!-- <view>今日已燃烧{{report.breathData.losefatGrams.grams}}g</view> -->
             </view>
+            <view class="predict" style="width:{{ 450 - progress}}rpx"></view>
           </view>
           <view class="burn-progress-tip">
-            <view class="burn-progress-text">预计今日总消耗脂肪</view>
-            <view class="burn-progress-val">{{report.breathData.losefatGrams.predictGrams}}g</view>
+            <view class="burn-progress-text">预计还可消耗 <text>{{report.breathData.losefatGrams.predictGrams}}g</text></view>
+            <!-- <view class="burn-progress-val">{{report.breathData.losefatGrams.predictGrams}}g</view> -->
           </view>
         </view>
         <view class="burn-progress-right">

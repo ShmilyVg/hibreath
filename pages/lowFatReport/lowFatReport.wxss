@@ -170,6 +170,7 @@ view {
   top: 50rpx;
   width: 150rpx;
   height: 150rpx;
+  z-index: 11;
 }
 .speed-num view {
   font-size: 30rpx;
@@ -204,11 +205,20 @@ view {
   right: -45rpx;
   bottom: -44rpx;
 }
-
+.burn_desZh{
+  font-size:34rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(102,102,102,1);
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding-right: 50rpx;
+}
 .speed-tip-list{
   width:610rpx;
   height:126rpx;
-  padding: 18rpx 0;
+  padding: 26rpx 0;
   margin: 50rpx auto 66rpx;
   background:rgba(245,246,249,1);
   opacity:0.8;
@@ -227,6 +237,7 @@ view {
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(102,102,102,1);
+  text-align: left;
 }
 .speed-tip-item image{
   width: 19rpx;
@@ -314,13 +325,20 @@ view {
 .burn-progress-contain {
   width: 450rpx;
   height: 56rpx;
-  background: rgba(231, 231, 231, 1);
-  box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06);
-  border-radius: 28rpx;
+  display: flex;
+  justify-content: start;
+  /* background: rgba(231, 231, 231, 1); */
+  /* box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06); */
+  /* border-radius: 28rpx; */
 }
-
+.predict{
+  height: 56rpx;
+  background: #e4e4e4;
+  border-radius: 28rpx;
+  box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(0, 0, 0, 0.06) inset;
+}
 .burn-value {
-  width: 230rpx;
+  /* width: 230rpx; */
   height: 56rpx;
   line-height: 56rpx;
   background: linear-gradient(90deg, rgba(38, 204, 144, 1), rgba(114, 213, 133, 1));
@@ -340,19 +358,28 @@ view {
   color: rgba(102, 102, 102, 1);
   padding-left: 10rpx;
 }
+.readyBurn{
+  font-size: 24rpx;
+  margin-bottom: 14rpx;
+  color: #7BC779;
+}
 .burn-progress-tip {
   margin-top: 24rpx;
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
-  padding: 0 20rpx;
+  padding: 0 20rpx; */
+  text-align: right;
 }
 
 .burn-progress-text {
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-weight: 500;
   color: rgba(102, 102, 102, 1);
 }
-
+.burn-progress-text text{
+  color: #333333;
+  font-weight: bold;
+}
 .burn-progress-val {
   font-size: 28rpx;
   font-weight: bold;
