@@ -29,7 +29,7 @@ Page({
       bodyFatRate: null,
       
     },
-    checkKeys: ['height', 'weight','sex'],
+    checkKeys: ['height', 'weight', 'sex','birthday'],
     illness: [{
         text: '三高（高血压、高血糖、高血脂）',
         value: 'sangao',

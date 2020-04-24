@@ -189,7 +189,6 @@ Page({
             textareaValue:null,
             isReply:false
         })
-      console.log('3333333333333333', this.data.commentContent, this.data.textareaValue)
         setTimeout(()=>{
             wx.pageScrollTo({
                 scrollTop: 18000,

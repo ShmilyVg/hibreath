@@ -104,38 +104,39 @@ function drewCircular() {
   fillGrid(bg, parts, '#DCDCDC', 100);
   bg.draw();
 
-  var percent = 0;
-  var lastFrameTime = 0;
-  // 模拟 requestAnimationFrame
-  var doAnimationFrame = function (callback) {
-    var currTime = new Date().getTime();
-    var timeToCall = Math.max(0, 16 - (currTime - lastFrameTime));
-    var id = setTimeout(function () {
-      callback(currTime + timeToCall);
-    }, timeToCall);
-    lastFrameTime = currTime + timeToCall;
-    return id;
-  };
-  // 模拟 cancelAnimationFrame
-  var abortAnimationFrame = function (id) {
-    clearTimeout(id)
-  }
-  var animation = v => {
-    var transform = val => {
-      percent += percent > v ? -1 : 10;
-      let ani = doAnimationFrame(() => {
-        transform(v);
-      })
-      setPercent2(percent / 10);
-      if (percent === v) {
-        abortAnimationFrame(ani);
-        return;
-      }
-    }
-    transform(v)
-    console.log('vvvvvvv', percent)
-  }
-  animation(_page.data.score * 10);
+  // var percent = 0;
+  // var lastFrameTime = 0;
+  // // 模拟 requestAnimationFrame
+  // var doAnimationFrame = function (callback) {
+  //   var currTime = new Date().getTime();
+  //   var timeToCall = Math.max(0, 16 - (currTime - lastFrameTime));
+  //   var id = setTimeout(function () {
+  //     callback(currTime + timeToCall);
+  //   }, timeToCall);
+  //   lastFrameTime = currTime + timeToCall;
+  //   return id;
+  // };
+  // // 模拟 cancelAnimationFrame
+  // var abortAnimationFrame = function (id) {
+  //   clearTimeout(id)
+  // }
+  // var animation = v => {
+  //   var transform = val => {
+  //     percent += percent > v ? -1 : 10;
+  //     let ani = doAnimationFrame(() => {
+  //       transform(v);
+  //     })
+  //     setPercent2(percent / 10);
+  //     if (percent === v) {
+  //       abortAnimationFrame(ani);
+  //       return;
+  //     }
+  //   }
+  //   transform(v)
+  //   console.log('vvvvvvv', percent)
+  // }
+  setPercent2(_page.data.score);
+  // animation(_page.data.score * 10);
 }
 
 function showType() {

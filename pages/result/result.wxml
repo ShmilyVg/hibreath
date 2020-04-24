@@ -49,7 +49,7 @@
             </view>
             <view class="cell-title">
               {{item.desZh}}
-              <view class="excessive" wx:if="{{item.desZh == '过度燃脂，急需注意' || item.desZh == '过度燃脂，危险状态' }}">
+              <view class="excessive" wx:if="{{item.desZh == '过度燃脂' || item.desZh == '过度燃脂' }}">
                 !
               </view>
             </view>
