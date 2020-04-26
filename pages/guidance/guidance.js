@@ -211,11 +211,11 @@ Page({
   //身高
   bindInputHeight(e) {
     const height = e.detail.value;
-    let weightGoal = (height / 100) * (height / 100) * 21;
-    weightGoal = weightGoal.toFixed(1);
+    // let weightGoal = (height / 100) * (height / 100) * 21;
+    // weightGoal = weightGoal.toFixed(1);
     this.setData({
       "guidance.info.height": Number(height),
-      "guidance.info.weightGoal": weightGoal
+      // "guidance.info.weightGoal": weightGoal
     });
   },
   //体重
