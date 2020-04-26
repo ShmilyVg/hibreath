@@ -84,16 +84,20 @@ Page({
   },
   toGift(e){
     let item = e.currentTarget.dataset.item
+    
     if (item.platform == 'youzan'){
       wx.showToast({
         title: '即将跳转有赞小程序',
         icon: 'none',
         duration: 3000
       });
+      let mpAppId = item.mpAppId;
+      let mpPath = item.mpPath;
       setTimeout(() => {
         //跳转有赞小程序
         wx.navigateToMiniProgram({
-          appId: 'wxeea809f23b5a5d9d',
+          appId: mpAppId,
+          path: mpPath,
           extraData: {
             // foo: 'bar'
           },
