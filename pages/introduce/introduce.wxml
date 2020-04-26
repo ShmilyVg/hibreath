@@ -21,6 +21,6 @@
 <view class="introduce-btn" bindtap="toIndex">
     立即检测
 </view>
-<view class="introduce-buy" bindtap="toBuy">
+<!-- <view class="introduce-buy" bindtap="toBuy">
     没有设备，马上购买
-</view>
+</view> -->
