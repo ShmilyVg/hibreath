@@ -533,6 +533,10 @@ Page({
         await this.getShoppingJumpCodes();
         setTimeout(() => {
           let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
+          if (couponItem.status == 0) {
+            HiNavigator.navigateToGoVerification()
+            return;
+          }
           let couponCode = couponItem.couponCode
           HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone: 'false' })
         }, 500);

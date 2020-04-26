@@ -113,14 +113,23 @@ Page({
     }
   },
   goToGift(){
-    let couponCode;
+    let couponCodeItem;
     let list = app.globalData.shoppingJumpCodes;
     for (let item of list){
       if (item.code == 'box'){
-        couponCode = item.couponCode
+        couponCodeItem = item
         break;
       }
     }
-    HiNavigator.navigateToGetGift({ couponCode});
+    if (couponCodeItem.status >0){
+      HiNavigator.navigateToGetGift({ couponCode: couponCodeItem.couponCode });
+    }else{
+      wx.showToast({
+        title: '该功能正在维护',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+    
   }
 })

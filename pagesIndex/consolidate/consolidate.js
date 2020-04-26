@@ -76,6 +76,14 @@ Page({
     for (let item of list) {
       if (item.code == 'milkshake') {
         couponCode = item.couponCode
+        if (item.status == 0){
+          wx.showToast({
+            title: '该功能正在维护',
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }
         break;
       }
     }
