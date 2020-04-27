@@ -33,7 +33,7 @@
           <text>kg</text>
         </view>
       </view>
-      <view class="weight_item" wx:if="{{taskInfo.isDoingPlan}}">
+      <view class="weight_item" wx:if="{{taskInfo.isDoingPlan}}" bindtap="toRecomTarNew">
         <view class="weight_w">目标体重</view>
         <view class="weight_num">{{taskInfo.weightGoal}}
           <text>kg</text>

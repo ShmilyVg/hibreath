@@ -65,7 +65,7 @@ Page({
       height: '请填写身高',
       weight: '体重必填且不小于40KG',
       birthday: '请填写生日信息',
-      // illnessType: '请填写身体状况信息'
+      weightLong: '只能保存一位小数'
     },
     replenish:''
   },
@@ -173,9 +173,9 @@ Page({
       }
       
     } else {
-      let showToastTxt = this.data.showToastTxt;
+      
       wx.showToast({
-        title: showToastTxt[this.data.replenish] ,
+        title: this.data.replenish ,
         icon: 'none',
         duration: 2000
       });
@@ -183,8 +183,9 @@ Page({
     }
   },
   setReplenish(key){
+    let str = this.data.showToastTxt[key];
     this.setData({
-      replenish:key
+      replenish: str
     })
   },
   checkFill(finalUserInfoObj) {
@@ -197,9 +198,18 @@ Page({
           this.setReplenish(key)
           return false;
         } 
-      } else if (key == 'weight' && value < 40) {
-        this.setReplenish(key)
-        return false;
+      } else if (key == 'weight') {
+        let numStr = value.toString();
+        
+        if (value < 40){
+          this.setReplenish(key);
+          return false;
+        } else if (numStr.split('.')[1].length>1){
+          this.setReplenish('weightLong');
+          return false;
+        }
+        
+        
       }else{
         if (Array.isArray(value) && !value.length) {
           this.setReplenish(key)

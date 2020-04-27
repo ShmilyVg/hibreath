@@ -625,6 +625,11 @@ Page({
   goToGetGift() {
     HiNavigator.navigateToGetGift()
   },
+  toRecomTarNew() {
+    //参数  为1的时候从减脂方案页进入
+    let fromPage = 1;
+    HiNavigator.navigateToWeightTarget(fromPage);
+  },
   //体重列表
   async bindTapToFood() {
     if (this.data.taskInfo.weightTask.finished) {
