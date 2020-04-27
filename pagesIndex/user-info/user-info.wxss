@@ -53,11 +53,15 @@
     font-family:PingFang-SC-Semibold,PingFang-SC;
     font-weight:600;
     color:rgba(84,84,84,1);
-    line-height:40rpx;
+    line-height:80rpx;
+    height: 80rpx;
     text-align: right;
 }
 
 
 .user-info-item-common-input-placeholder {
     color:rgba(163,163,163,1);
+}
+.picker-view{
+  padding-left: 200rpx;
 }
