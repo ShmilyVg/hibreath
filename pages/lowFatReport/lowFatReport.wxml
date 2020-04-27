@@ -123,7 +123,7 @@
       <text class="num"><text>{{report.weigthData.downAccumulateKGramsTxt}}</text> {{report.weigthData.downAccumulateKGrams}}</text>
       <text class="unit">kg</text>
     </view>
-    <view class="item-n-text" wx:if="{{report.weigthData.weightGoalt}}" wx:if="{{!sharedId}}">
+    <view class="item-n-text" wx:if="{{report.weigthData.weightGoalt && !sharedId}}">
       初始体重
       <text class="num">{{report.weigthData.weightInitial}}</text>
       <text class="unit">kg</text>，
