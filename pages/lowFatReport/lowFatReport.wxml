@@ -61,7 +61,7 @@
 
     <view class="item-h4">
       <image style="width: 24rpx;height: 30rpx" src="../../images/lowFatReport/fire.png" class="fire"></image>
-      今日消耗脂肪状态
+      今日燃烧脂肪状态
       <view class="item-title-text" bindtap="goToLiterature">参考文献
         <image src="../../images/arr-right.png"></image>
       </view>
