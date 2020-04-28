@@ -153,8 +153,8 @@ export default class Protocol {
     static postMembersExit({planId}) {
         return Network.request({url: 'members/plan/exit',data: {planId}})
     }
-  static postMembersJoinSchema({ weightGoal}) {
-    return Network.request({ url: 'members/joinSchema', data: { weightGoal}})
+  static postMembersJoinSchema({ weightGoalt}) {
+    return Network.request({ url: 'members/joinSchema', data: { weightGoalt}})
     }
 
     static postSettingsLosefatSchema() {

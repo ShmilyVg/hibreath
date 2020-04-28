@@ -199,9 +199,7 @@ Page({
           return false;
         } 
       } else if (key == 'weight') {
-        console.log('value', value)
         let numStr = value.toString();
-        console.log('value', numStr)
         if (value < 40){
           this.setReplenish(key);
           return false;

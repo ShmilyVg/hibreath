@@ -53,8 +53,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: `/pagesIndex/manifesto/manifesto?sharedId=${sharedId}&flag=${flag}`});
     }
     //生成方案
-    static navigateToReduceFat() {
-      this.navigateTo({url: `/pagesIndex/reduceFat/reduceFat`});
+    static navigateToReduceFat({weightGoalt}) {
+      this.navigateTo({url: `/pagesIndex/reduceFat/reduceFat?weightGoalt=${weightGoalt}`});
     }
     //低碳饮食
     static switchToLowCarbon() {

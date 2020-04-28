@@ -7,6 +7,10 @@ Page({
     goalt:false
   },
   onLoad: function (options) {
+    let weightGoalt = options.weightGoalt;
+    this.setData({
+      weightGoalt
+    })
     this.getMyLossfatCourse();
   },
 

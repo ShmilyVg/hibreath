@@ -107,7 +107,8 @@ async startShare(){
   })
 },
 goReduceFat(){
-  HiNavigator.navigateToReduceFat();
+  let weightGoalt = this.data.weightGoalt;
+  HiNavigator.navigateToReduceFat({ weightGoalt});
 },
 goReduceFatExp(){
   HiNavigator.navigateToReduceFatExp();
