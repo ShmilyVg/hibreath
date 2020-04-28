@@ -42,7 +42,7 @@
         <view>
            <text wx:if="{{!!todayDif || todayDif == 0}}" class="punchList_Day-Text1">{{totalDif}}</text>
            <text wx:if="{{!!todayDif || todayDif == 0}}" class="punchList_Day-Text2">kg</text>
-           <view wx:if="{{!!totalDif}}" class="punchList_Day-Text3">未打卡</view>
+           <view wx:if="{{todayDif == null}}" class="punchList_Day-Text3">未打卡</view>
           <view class="punchList_Day-Text4">累计减重</view>
         </view>
         
