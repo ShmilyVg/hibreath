@@ -194,10 +194,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    // Toast.showLoading();
-    // await this.getTaskInfo();
-    // Toast.hiddenLoading();
-    this.checkUpBleData()
+    Toast.showLoading();
+    await this.getTaskInfo();
+    Toast.hiddenLoading();
+    // this.checkUpBleData()
     wx.stopPullDownRefresh();
     
   },
