@@ -12,14 +12,17 @@
     <view class="title">{{result.title}}</view>
     <view class="day" wx:for="{{result.images}}" wx:for-item='day' wx:key="index">
       <view class="day-title">
-        <text class="day-n">{{day.tag1}} ·</text><text>{{day.tag2}}</text></view>
+        <text class="day-n">{{day.tag1}} ·</text><text>{{day.tag2}}</text>
+        <view class="day-n-text" wx:if="{{day.tag1 == 'DAY3'}}">*额外赠送鸡胸肉1袋，自由补充蛋白，保护肌肉</view>
+      </view>
       <view class="day-contain">
         <view class="day-item" wx:for="{{day.foodList}}" wx:for-item='food' wx:key="tag">
+        
           <image src="{{food.img}}"></image>
           <view class="food-tag">{{food.tag}}</view>
           <view wx:for="{{food.subList}}" wx:key="title" class="foodName">
             <view class="point"></view>
-            <text>{{item.title}}</text><text style="font-weight: bold">{{item.quantityDesc}}</text>
+            <text>{{item.title}}</text><text class="{{day.tag1 == 'DAY3'&&item.quantityDesc =='X2' ?'colorX2':''}}" style="font-weight: bold;">{{item.quantityDesc}}</text>
           </view>
         </view>
       </view>

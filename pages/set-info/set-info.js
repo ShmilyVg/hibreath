@@ -14,6 +14,10 @@ const app = getApp();
 const ImageSource = require('../../utils/ImageSource.js');
 const ImageLoader = require('../../utils/ImageLoader.js')
 var mta = require('../../utils//mta_analysis.js')
+// 蓝牙
+import { ProtocolState, ConnectState } from "../../modules/bluetooth/bluetooth-state";
+
+
 Page({
   data: {
     finishedPhone: false,//新手引导是否完成编制
@@ -190,10 +194,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    Toast.showLoading();
-    await this.getTaskInfo();
-    Toast.hiddenLoading();
+    // Toast.showLoading();
+    // await this.getTaskInfo();
+    // Toast.hiddenLoading();
+    this.checkUpBleData()
     wx.stopPullDownRefresh();
+    
   },
   onShareAppMessage() {
     this.setData({
@@ -346,7 +352,7 @@ Page({
     const { result: { dataList } } = await Protocol.getBannerList();
     this.setData({
       banner: dataList,
-      current :0
+      current: 0
       // banner1: dataList[1],
     })
   },
@@ -829,5 +835,9 @@ Page({
     app.globalData.shoppingJumpCodes = result;
     this.shoppingJumpCodes = result;
     return;
+  },
+  checkUpBleData(){
+    
+
   }
 });
