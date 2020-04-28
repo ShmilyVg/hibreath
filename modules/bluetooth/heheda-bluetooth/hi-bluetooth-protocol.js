@@ -155,6 +155,7 @@ export default class HiBlueToothProtocol {
     }
 
     sendQueryDataRequiredProtocol() {
+        console.log('sendQueryDataRequiredProtocol',this.getDeviceIsBind())
         if (this.getDeviceIsBind()) {
             const queryDataTimeoutIndex = setTimeout(() => {
                 this.action['0x0a']();

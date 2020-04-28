@@ -43,6 +43,10 @@ export default class SimpleBlueToothImp {
         return this.bluetoothManager.openAdapterAndConnectLatestBLE({macId});
     }
 
+    sendQueryDataRequiredProtocol(){
+        return this.bluetoothManager.sendQueryDataRequiredProtocol()
+    }
+
     startScanAndConnectDevice() {
         this.bluetoothManager.resetDevices();
         return this.bluetoothManager.openAdapterAndStartBlueToothDeviceDiscovery();

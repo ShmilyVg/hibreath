@@ -3,7 +3,11 @@
  * @Date: 2019-10-09 11:00:00
  * @LastEditors: 张浩玉
  */
-import { Toast as toast, Toast, WXDialog } from "heheda-common-view";
+import {
+  Toast as toast,
+  Toast,
+  WXDialog
+} from "heheda-common-view";
 import * as tools from "../../utils/tools";
 import Protocol from "../../modules/network/protocol";
 import IndexCommonManager from "./view/indexCommon";
@@ -14,19 +18,17 @@ const app = getApp();
 const ImageSource = require('../../utils/ImageSource.js');
 const ImageLoader = require('../../utils/ImageLoader.js')
 var mta = require('../../utils//mta_analysis.js')
+import { ConnectState, ProtocolState } from "../../modules/bluetooth/bluetooth-state";
 // 蓝牙
-import { ProtocolState, ConnectState } from "../../modules/bluetooth/bluetooth-state";
-
-
 Page({
   data: {
-    finishedPhone: false,//新手引导是否完成编制
+    finishedPhone: false, //新手引导是否完成编制
     showPage: false,
     deny: false,
     showMytoast: false, //非首次打卡toast弹窗
-    showExcitation: false,//首次打卡激励弹窗
+    showExcitation: false, //首次打卡激励弹窗
     animationData: '',
-    breathSign: {},//签到数据
+    breathSign: {}, //签到数据
     taskFinished: false,
     original_show: false,
     sync: {
@@ -35,12 +37,17 @@ Page({
       timer: ""
     },
     hideModal: true,
-    topTaskTip: false,//头部显隐标志
-    showBigTip: false,//离线上传数据弹框
+    topTaskTip: false, //头部显隐标志
+    showBigTip: false, //离线上传数据弹框
     weight: '',
-    answerBtns: [
-      { text: 'Yes', imgSrc: '../../images/set-info/yes.png' },
-      { text: 'No', imgSrc: '../../images/set-info/no.png' }
+    answerBtns: [{
+        text: 'Yes',
+        imgSrc: '../../images/set-info/yes.png'
+      },
+      {
+        text: 'No',
+        imgSrc: '../../images/set-info/no.png'
+      }
     ],
     answer: true,
     answerData: {},
@@ -48,7 +55,7 @@ Page({
     answerBtnReady: false,
     needImgList: ["fatWindows/flash1.png", "fatWindows/flash2.png"],
     gitImgList: ['fatWindows/getGift_3.png'],
-    isBind: false,//是否绑定设备
+    isBind: false, //是否绑定设备
     showGiftwindows: false,
     showGiftwindowsTip: false
   },
@@ -58,7 +65,9 @@ Page({
       var pages = getCurrentPages(); //获取加载的页面
       var currentPage = pages[pages.length - 1]; //获取当前页面的对象
       if (currentPage.route === "pages/set-info/set-info") {
-        app.bLEManager.sendISpage({ isSuccess: false });
+        app.bLEManager.sendISpage({
+          isSuccess: false
+        });
         console.log("小程序告知设备 此时未在打卡页面  不可以上传离线数据");
       }
     }
@@ -88,7 +97,7 @@ Page({
     if (hipeeScene == 'device') {
       try {
         wx.removeStorageSync('bindPage');
-      } catch (error) { }
+      } catch (error) {}
 
     }
     wx.hideShareMenu();
@@ -116,7 +125,8 @@ Page({
   onShow() {
     //判断初心遮罩是否显示
     if (wx.getStorageSync('original_tip') == 'first') {
-      let showGiftwindowsTip = false, showGiftwindows = false;
+      let showGiftwindowsTip = false,
+        showGiftwindows = false;
       if (this.data.showGiftwindowsTip) {
         showGiftwindows = true;
       }
@@ -139,7 +149,10 @@ Page({
     this.getAnswer();
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
-    app.onDataSyncListener = ({ num, countNum }) => {
+    app.onDataSyncListener = ({
+      num,
+      countNum
+    }) => {
       console.log("同步离线数据：", num, countNum);
       if (num > 0 && countNum > 0) {
         that.data.sync.num = num;
@@ -165,7 +178,7 @@ Page({
                 confirmEvent: () => {
                   HiNavigator.navigateToResultNOnum();
                 },
-                cancelEvent: () => { }
+                cancelEvent: () => {}
               });
             }
           }, 2000);
@@ -197,9 +210,9 @@ Page({
     Toast.showLoading();
     await this.getTaskInfo();
     Toast.hiddenLoading();
-    // this.checkUpBleData()
+    this.checkUpBleData()
     wx.stopPullDownRefresh();
-    
+
   },
   onShareAppMessage() {
     this.setData({
@@ -226,7 +239,9 @@ Page({
   },
   //获取个人信息
   async getPresonMsg() {
-    const { result } = await Protocol.getAccountInfo();
+    const {
+      result
+    } = await Protocol.getAccountInfo();
     let hipeeScene = this.data.hipeeScene;
     let hisH = wx.getStorageSync('hipeeScene')
     let finishedInfo = false;
@@ -264,7 +279,9 @@ Page({
 
     } else {
       if (wx.getStorageSync('guidance_tip') != 'ready') {
-        HiNavigator.navigateToGuidance({ reset: 2 })
+        HiNavigator.navigateToGuidance({
+          reset: 2
+        })
       }
       wx.setStorageSync('guidance_tip', '')
     }
@@ -349,7 +366,11 @@ Page({
     this.closeWindows()
   },
   async getBanner() {
-    const { result: { dataList } } = await Protocol.getBannerList();
+    const {
+      result: {
+        dataList
+      }
+    } = await Protocol.getBannerList();
     this.setData({
       banner: dataList,
       current: 0
@@ -358,7 +379,9 @@ Page({
   },
   //获取任务信息
   async getTaskInfo() {
-    const { result } = await Protocol.getTaskInfo();
+    const {
+      result
+    } = await Protocol.getTaskInfo();
 
     let taskFinished = false;
     if (result.fatTask && result.fatTask.finished) {
@@ -375,7 +398,7 @@ Page({
         loaded: res => {
           setTimeout(() => {
             var pages = getCurrentPages(); //获取加载的页面
-            var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+            var currentPage = pages[pages.length - 1] //获取当前页面的对象
             console.log('当前页面是', currentPage.route)
             if (currentPage.route === 'pages/set-info/set-info') {
               that.hideTabBarFun();
@@ -418,7 +441,9 @@ Page({
   //燃脂
   async fatTaskToFinish() {
     if (!this.isBind) {
-      HiNavigator.navigateIntroduce({ couponCode: this.data.couponCode });
+      HiNavigator.navigateIntroduce({
+        couponCode: this.data.couponCode
+      });
     } else {
       wx.getSystemInfo({
         success(res) {
@@ -427,12 +452,20 @@ Page({
             return
           } else if (!res.bluetoothEnabled) {
             setTimeout(() => {
-              WXDialog.showDialog({ title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了' });
+              WXDialog.showDialog({
+                title: '小贴士',
+                content: '您的手机蓝牙未开启\n请开启后重试',
+                confirmText: '我知道了'
+              });
             }, 200);
             return
           } else if (!res.locationEnabled) {
             setTimeout(() => {
-              WXDialog.showDialog({ title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了' });
+              WXDialog.showDialog({
+                title: '小贴士',
+                content: '请开启手机GPS/位置',
+                confirmText: '我知道了'
+              });
             }, 200);
             return
           } else if (!res.locationAuthorized) {
@@ -471,7 +504,11 @@ Page({
     return typeof obj === "undefined" || obj === "" || obj === null;
   },
   showDialog(content) {
-    WXDialog.showDialog({ title: "小贴士", content, confirmText: "我知道了" });
+    WXDialog.showDialog({
+      title: "小贴士",
+      content,
+      confirmText: "我知道了"
+    });
   },
   //保存体重
   async saveWeight() {
@@ -488,7 +525,9 @@ Page({
       this.showDialog("体重至多支持3位整数+1位小数");
       return;
     }
-    await Protocol.setBodyIndex({ weight: this.data.weight });
+    await Protocol.setBodyIndex({
+      weight: this.data.weight
+    });
     this.hideModal();
     this.showTabBarFun()
     HiNavigator.navigateToLowFatReport();
@@ -501,9 +540,19 @@ Page({
   },
   //引导页授权
   async onGetUserInfoEvent(e) {
-    const { detail: { userInfo, encryptedData, iv } } = e;
+    const {
+      detail: {
+        userInfo,
+        encryptedData,
+        iv
+      }
+    } = e;
     if (!!userInfo) {
-      await Login.doRegister({ userInfo, encryptedData, iv });
+      await Login.doRegister({
+        userInfo,
+        encryptedData,
+        iv
+      });
       let sharedId = this.data.sharedId
       //此处需要处理不授权的情况
       this.setData({
@@ -512,7 +561,9 @@ Page({
       //已经验证过手机号
       if (this.data.finishedPhone) {
         if (wx.getStorageSync('guidance_tip') != 'ready') {
-          HiNavigator.navigateToGuidance({ reset: 2 })
+          HiNavigator.navigateToGuidance({
+            reset: 2
+          })
         }
         return;
       }
@@ -538,13 +589,18 @@ Page({
 
         await this.getShoppingJumpCodes();
         setTimeout(() => {
-          let couponItem = this.shoppingJumpCodes.find(item => { return item.code == 'milkshake' })
+          let couponItem = this.shoppingJumpCodes.find(item => {
+            return item.code == 'milkshake'
+          })
           if (couponItem.status == 0) {
             HiNavigator.navigateToGoVerification()
             return;
           }
           let couponCode = couponItem.couponCode
-          HiNavigator.navigateToGetGift({ couponCode: couponCode, finishedPhone: 'false' })
+          HiNavigator.navigateToGetGift({
+            couponCode: couponCode,
+            finishedPhone: 'false'
+          })
         }, 500);
         return;
       }
@@ -564,7 +620,11 @@ Page({
       HiNavigator.navigateToResultNOnum();
       return;
     }
-    let { result: { dateTime } } = await Protocol.postBreathDatalist();
+    let {
+      result: {
+        dateTime
+      }
+    } = await Protocol.postBreathDatalist();
     if (dateTime.length > 0) {
       HiNavigator.navigateToResultNOnum();
       return;
@@ -576,12 +636,20 @@ Page({
           return
         } else if (!res.bluetoothEnabled) {
           setTimeout(() => {
-            WXDialog.showDialog({ title: '小贴士', content: '您的手机蓝牙未开启\n请开启后重试', confirmText: '我知道了' });
+            WXDialog.showDialog({
+              title: '小贴士',
+              content: '您的手机蓝牙未开启\n请开启后重试',
+              confirmText: '我知道了'
+            });
           }, 200);
           return
         } else if (!res.locationEnabled) {
           setTimeout(() => {
-            WXDialog.showDialog({ title: '小贴士', content: '请开启手机GPS/位置', confirmText: '我知道了' });
+            WXDialog.showDialog({
+              title: '小贴士',
+              content: '请开启手机GPS/位置',
+              confirmText: '我知道了'
+            });
           }, 200);
           return
         } else if (!res.locationAuthorized) {
@@ -603,7 +671,11 @@ Page({
 
   goToTask(e) {
     // console.log(e.currentTarget.dataset.url)
-    let { type, url, bannerId } = e.currentTarget.dataset.item;
+    let {
+      type,
+      url,
+      bannerId
+    } = e.currentTarget.dataset.item;
     if (type == 'wechat') {
       wx.navigateTo({
         url: url + '?bannerId=' + bannerId
@@ -612,8 +684,14 @@ Page({
     // HiNavigator.navigateToAttendanceBonus()
   },
   goToManifesto() {
-    let { sharedId, flag } = this.data.taskInfo
-    HiNavigator.navigateToManifesto({ sharedId, flag })
+    let {
+      sharedId,
+      flag
+    } = this.data.taskInfo
+    HiNavigator.navigateToManifesto({
+      sharedId,
+      flag
+    })
   },
   //减脂效果页
   goToLowFatReport() {
@@ -623,8 +701,10 @@ Page({
       return;
     }
     WXDialog.showDialog({
-      title: '', content: '你还未完成今日所有任务哦', confirmText: '我知道了', confirmEvent: () => {
-      }
+      title: '',
+      content: '你还未完成今日所有任务哦',
+      confirmText: '我知道了',
+      confirmEvent: () => {}
     });
 
   },
@@ -643,7 +723,9 @@ Page({
       return;
     }
     let {
-      result: { list: weightList }
+      result: {
+        list: weightList
+      }
     } = await Protocol.postWeightDataListAll({
       timeBegin: 1510468206000,
       timeEnd: Date.now()
@@ -674,12 +756,17 @@ Page({
           var pages = getCurrentPages(); //获取加载的页面
           var currentPage = pages[pages.length - 1]; //获取当前页面的对象
           if (currentPage.route === "pages/set-info/set-info") {
-            app.bLEManager.sendISpage({ isSuccess: true });
+            app.bLEManager.sendISpage({
+              isSuccess: true
+            });
             console.log("小程序告知设备 此时在打卡页面 可以上传离线数据");
           }
         }
       },
-      receiveDataListener: ({ finalResult, state }) => {
+      receiveDataListener: ({
+        finalResult,
+        state
+      }) => {
         console.log("setPage-receiveDataListener", finalResult, state);
       }
     });
@@ -722,7 +809,9 @@ Page({
           app.getLatestBLEState().connectState
         );
         if (app.getLatestBLEState().connectState !== "connected") {
-          app.getBLEManager().connect({ macId: this.data.mac });
+          app.getBLEManager().connect({
+            macId: this.data.mac
+          });
         }
       }
     });
@@ -757,7 +846,9 @@ Page({
       answerBtnReady: true
     })
     try {
-      const { result: bodyIndexResult } = await Protocol.answerFinish(data);
+      const {
+        result: bodyIndexResult
+      } = await Protocol.answerFinish(data);
       if (bodyIndexResult.isCorrect == 1) {
         this.setData({
           ...bodyIndexResult,
@@ -789,12 +880,12 @@ Page({
       hideModal: false
     })
     var animation = wx.createAnimation({
-      duration: 500,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
-      timingFunction: 'ease',//动画的效果 默认值是linear
+      duration: 500, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease', //动画的效果 默认值是linear
     })
     this.animation = animation
     setTimeout(function () {
-      that.fadeIn();//调用显示动画
+      that.fadeIn(); //调用显示动画
       that.hideTabBarFun();
     }, 200)
   },
@@ -803,17 +894,17 @@ Page({
   hideModal: function () {
     var that = this;
     var animation = wx.createAnimation({
-      duration: 400,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
-      timingFunction: 'ease',//动画的效果 默认值是linear
+      duration: 400, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease', //动画的效果 默认值是linear
     })
     this.animation = animation
-    that.fadeDown();//调用隐藏动画
+    that.fadeDown(); //调用隐藏动画
     setTimeout(function () {
       that.setData({
         hideModal: true
       })
       that.showTabBarFun()
-    }, 200)//先执行下滑动画，再隐藏模块
+    }, 200) //先执行下滑动画，再隐藏模块
 
   },
 
@@ -831,13 +922,30 @@ Page({
     })
   },
   async getShoppingJumpCodes() {
-    let { result } = await Protocol.getShoppingJumpCodes();
+    let {
+      result
+    } = await Protocol.getShoppingJumpCodes();
     app.globalData.shoppingJumpCodes = result;
     this.shoppingJumpCodes = result;
     return;
   },
-  checkUpBleData(){
-    
+  checkUpBleData() {
+    if (app.getLatestBLEState().connectState === "connected"){
+      app.bLEManager.sendQueryDataRequiredProtocol()
+    }else{
+      app.setBLEListener({
+        bleStateListener: ({ state }) => {
+          if (state.protocolState === ProtocolState.CONNECTED_AND_BIND) {
+            //绑定后 跳转绑定成功页面  点击按钮再进入index页面
+            app.bLEManager.sendQueryDataRequiredProtocol()
+          } 
+        },
+        receiveDataListener: ({ finalResult, state }) => {
+
+        }
+      });
+      app.getBLEManager().connect();
+    }
 
   }
 });
