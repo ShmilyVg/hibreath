@@ -54,9 +54,16 @@
     <image src="../../images/wx.png" style="width: 90rpx;height: 90rpx"></image>
     <view>微信好友</view>
   </button>
-  <button class="wx_pyq" bindtap="downShareImg">
+  <!-- downShareImg -->
+  <button class="wx_pyq" bindtap="show_img_Modal">
     <image src="../../images/pyq.png" style="width: 90rpx;height: 90rpx"></image>
     <view>朋友圈</view>
   </button>
   <view class="cancel" bindtap="hideModal">取消</view>
+</view>
+<view class="commodity_screen" wx:if="{{img_Modal}}" bindtap="hide_img_Modal">
+</view>
+<view class="commodity_attr_img" wx:if="{{img_Modal}}">
+  <image src="{{groupImg}}" class="group_img" bindtap="hide_img_Modal"></image>
+  <button class="btn_down" bindtap="downShareImg">保存到相册</button>
 </view>
