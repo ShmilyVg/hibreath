@@ -33,8 +33,8 @@ App({
         let currentIndex = 0;
         this.otaVersion = -1;
         this.needCheckOTAUpdate = true;
-        let synchronizationData = 0;//已经同步的条数
-        this.outlistAll = true;//总条数标志位
+        this.globalData.synchronizationData = 0;//已经同步的条数
+        this.globalData.outlistAll = true;//总条数标志位
         // initAnalysisOnApp();
         this.setCommonBLEListener({
             // commonAppSignPowerListener: (hiDevices) => {
@@ -47,10 +47,10 @@ App({
                     const {timestamp, result, status, currentLength: length} = finalResult;
 
                     /*离线数据相关 currentIndex为需要同步的总条数*/
-                    if (this.outlistAll === true) {
+                    if (this.globalData.outlistAll === true) {
                         const {currentIndex} = finalResult;//需要同步的总条数
                         this.globalData.currentIndex = currentIndex;
-                        this.outlistAll = false;
+                        this.globalData.outlistAll = false;
                         console.log(currentIndex,"第一个currentIndex")
                     }
                     /*离线数据相关*/
@@ -62,11 +62,11 @@ App({
                         console.log(this.globalData.currentIndex,"第二个currentIndex")
                         if (records.length === length) {
                             Protocol.postBreathDataSync({items: records}).then(data => {
-                                synchronizationData = synchronizationData + records.length;
+                                this.globalData.synchronizationData = this.globalData.synchronizationData + records.length;
                                 this.bLEManager.sendQueryDataSuccessProtocol({isSuccess: true});
                                 console.log(this.globalData.currentIndex,"第三个currentIndex")
                                 this.onDataSyncListener && this.onDataSyncListener({
-                                    num: synchronizationData,
+                                    num: this.globalData.synchronizationData,
                                     countNum: this.globalData.currentIndex
                                 });
                             }).catch(res => {

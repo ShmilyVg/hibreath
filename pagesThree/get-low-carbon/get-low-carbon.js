@@ -28,6 +28,12 @@ Page({
     this.setData({
       content:result
     })
+    let couponCode = result.couponCode;
+    let youzan_info = Protocol.takeGift({ couponCode });
+
+    this.setData({
+      youzan_info: youzan_info
+    })
   },
   async getShoppingJumpCodes(){
     let { result } = await Protocol.getShoppingJumpCodes();
@@ -57,12 +63,12 @@ Page({
 
   //跳转有赞
    async yzfn(){
+     let youzan_info = this.data.youzan_info;
      if (this.data.content.qualificationStatus == 2){
        let couponCode = this.data.content.couponCode;
        if (couponCode) {
-         let res = await Protocol.takeGift({ couponCode });
-         if (res.code == 1) {
-           const {mpAppId, mpPath} = res.result;
+         if (youzan_info.code == 1) {
+           const { mpAppId, mpPath } = youzan_info.result;
            wx.showToast({
              title: '领取成功,即将跳转有赞小程序',
              icon: 'none',

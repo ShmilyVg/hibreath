@@ -147,6 +147,22 @@ Page({
     this.getFinishedGuide()
     this.handleBle();
     this.getAnswer();
+    this.onDataSyncListener()
+    this.getTaskInfo();
+    /*  //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
+      if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
+        getApp().globalData.issueRefresh = false;
+        that.getTaskInfo();
+      }*/
+    if (wx.getStorageSync('showWeight')) {
+      this.showModal();
+      wx.setStorageSync('showWeight', false)
+    }
+  },
+  onUnload() {
+
+  },
+  onDataSyncListener(){
     let that = this;
     //进入页面 告知蓝牙标志位 0x3D   0X01 可以同步离线数据
     app.onDataSyncListener = ({
@@ -189,27 +205,14 @@ Page({
         });
       }
     };
-    that.getTaskInfo();
-    /*  //首页更新需要 上个页面 onUnload getApp().globalData.issueRefresh = true
-      if (this.data.isfinishedGuide || this.data.isFood || getApp().globalData.issueRefresh) {
-        getApp().globalData.issueRefresh = false;
-        that.getTaskInfo();
-      }*/
-    if (wx.getStorageSync('showWeight')) {
-      this.showModal();
-      wx.setStorageSync('showWeight', false)
-    }
-  },
-  onUnload() {
-
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    Toast.showLoading();
-    await this.getTaskInfo();
-    Toast.hiddenLoading();
+    // Toast.showLoading();
+    // await this.getTaskInfo();
+    // Toast.hiddenLoading();
     this.checkUpBleData()
     wx.stopPullDownRefresh();
 
@@ -930,7 +933,11 @@ Page({
     return;
   },
   checkUpBleData() {
+    app.globalData.synchronizationData = 0;
+    app.globalData.currentIndex = 0;
+    app.globalData.outlistAll = true;
     if (app.getLatestBLEState().connectState === "connected"){
+      this.onDataSyncListener()
       app.bLEManager.sendQueryDataRequiredProtocol()
     }else{
       app.setBLEListener({
@@ -944,8 +951,9 @@ Page({
 
         }
       });
+      this.onDataSyncListener()
       app.getBLEManager().connect();
     }
-
+    
   }
 });
