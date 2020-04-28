@@ -199,12 +199,13 @@ Page({
           return false;
         } 
       } else if (key == 'weight') {
+        console.log('value', value)
         let numStr = value.toString();
-        
+        console.log('value', numStr)
         if (value < 40){
           this.setReplenish(key);
           return false;
-        } else if (numStr.split('.')[1].length>1){
+        } else if (numStr && numStr.split('.')[1] && numStr.split('.')[1].length>1){
           this.setReplenish('weightLong');
           return false;
         }
