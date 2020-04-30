@@ -13,7 +13,7 @@
   </view>
   <view class="adaptive card" bindtap="goToAdaptive">
     <image src="../../images/orange.png"></image>
-    <view class="card-title">低碳适应期<text wx:if="{{result.adaptPeriod.duration}}">·{{result.adaptPeriod.duration}}{{result.adaptPeriod.unit}}</text></view>
+    <view class="card-title">低碳适应期<text wx:if="{{result.adaptPeriod.duration}}">·{{result.adaptPeriod.duration}}{{result.adaptPeriod.unit}}</text><image class="jt" src="../../images/jt/right_1.png">></image></view>
     <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
       <view class="stepTip">阶段目标</view>
@@ -23,7 +23,7 @@
   </view>
   <view class="reduce card" bindtap="goToReduce">
     <image src="../../images/cauliflower.png" style="width: 173rpx;height: 183rpx;top: 34rpx;"></image>
-    <view class="card-title">低碳减脂期 <text wx:if="{{result.reduceFatPeriod.duration}}">·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</text>  </view>
+    <view class="card-title">低碳减脂期 <text wx:if="{{result.reduceFatPeriod.duration}}">·{{result.reduceFatPeriod.duration}}{{result.reduceFatPeriod.unit}}</text> <image class="jt" src="../../images/jt/right_1.png">></image> </view>
     <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
@@ -33,7 +33,7 @@
   </view>
   <view class="consolidate card" bindtap="goToConsolidate" style="margin-bottom: 72rpx;">
     <image src="../../images/coconut.png" style="width: 182rpx;height: 146rpx;top: 44rpx;"></image>
-    <view class="card-title">低碳巩固期<text wx:if="{{result.consolidatePeriod.duration}}">·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</text></view>
+    <view class="card-title">低碳巩固期<text wx:if="{{result.consolidatePeriod.duration}}">·{{result.consolidatePeriod.duration}}{{result.consolidatePeriod.unit}}</text><image class="jt" src="../../images/jt/right_1.png">></image></view>
     <view class="card-more"><image src="../../images/more.png"></image></view>
     <view class="card-contain">
     <view class="stepTip">阶段目标</view>
@@ -58,7 +58,7 @@
           <view class="toDo-view3">连续完成任务，可得惊喜奖励</view>
         </view>
       </view>
-      <view class="toDo-btn" bindtap="toSetInfo">
+      <view class="toDo-btn" open-type="getUserInfo" bindgetuserinfo="toSetInfo" >
         <text>立即前往打卡首页</text>
         <image src="../../images/set-info/right-3.png" style="width: 26rpx;height: 19rpx"></image>
       </view>

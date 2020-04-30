@@ -219,3 +219,42 @@ page{
   background-color: #7BC877;
   color: #ffffff;
 }
+
+.phton{
+  text-align: center;
+  font-size:40rpx;
+  font-family:Source Han Sans SC;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+}
+.phton view{
+  margin-bottom: 10rpx;
+}
+.phton text{
+  color: #35C050;
+}
+.phton_img{
+  margin-top: 50rpx;
+  text-align: center;
+}
+.phton_img image{
+  width:750rpx;
+  height:626rpx;
+}
+.phton_btn{
+  margin: 20rpx auto 0;
+}
+.whiteBtn{
+  background-color: #fff;
+  color: #7BC877;
+  border: 1rpx solid #7BC877;
+  position: relative;
+  padding-left: 60rpx;
+}
+.whiteBtn image{
+  width:42rpx;
+  height:42rpx;
+  position: absolute;
+  bottom: 25rpx;
+  left: 120rpx;
+}

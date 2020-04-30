@@ -28,8 +28,8 @@ export default class HiNavigator extends CommonNavigator {
       this.navigateTo({url: '/pagesIndex/burnDay/burnDay'});
     }
     //验证手机号页面
-    static navigateToGoVerification() {
-        this.navigateTo({url: '/pages/goVerification/goVerification'});
+    static navigateToGoVerification({phoneNumber}) {
+        this.navigateTo({url: `/pages/goVerification/goVerification?phoneNumber=${phoneNumber}`});
     }
     //验证群号
     static reLaunchToGroupNumber() {

@@ -116,10 +116,18 @@ view{
   right: 36rpx;
   top: 50rpx;
   z-index: 1000;
+  display: none;
 }
 .card-more image{
   width:92rpx;
   height:36rpx;
+}
+.card .jt{
+  margin-left: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 0;
 }
 .card-contain{
   background:rgba(255,255,255,1);

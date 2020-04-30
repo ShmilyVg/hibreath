@@ -46,8 +46,12 @@ Page({
     HiNavigator.navigateToRecomTar({ personalCenter: true })
   },
   onDeviceManagement() {
+    let finishedGuide = wx.getStorageSync('finishedGuide');
     if (!getApp().globalData.isLogin || !this.data.finishedPhone) {
       HiNavigator.navigateToGuidance({});
+      return;
+    } else if (this.data.finishedPhone && !finishedGuide){
+      HiNavigator.navigateToGuidance({ reset: 2 });
       return;
     }
     HiNavigator.navigateToDeviceUnbind()
@@ -62,8 +66,6 @@ Page({
     HiNavigator.navigateToMyNoticeList();
     Toast.hiddenLoading();
   },
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -115,10 +117,26 @@ Page({
   /**
    * @desc  是不是符合未登录或者未验证手机号
    */
-  goVerify() {
-    if (!getApp().globalData.isLogin || !this.data.finishedPhone) {
-      HiNavigator.navigateToGuidance({});
-      return;
+  async goVerify(e) {
+    const {
+      detail: {
+        userInfo,
+        encryptedData,
+        iv
+      }
+    } = e;
+    if (!!userInfo) {
+      await Login.doRegister({
+        userInfo,
+        encryptedData,
+        iv
+      });
+      if (this.data.finishedPhone){
+        HiNavigator.navigateToGuidance({ reset: 2});
+      }else{
+        HiNavigator.navigateToGuidance({});
+      }
+      
     }
   },
   async getUserInfo() {

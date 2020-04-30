@@ -55,7 +55,7 @@
     <image  src="https://img.hipee.cn/hibreath/nodata.png"></image>
     <view class="coupon_noData_view">您还未加入任何圈子</view>
     <view class="btn_group">
-      <button class="whiteBtn" bindtap="onGetUserInfoEvent">立即加入</button>
+      <button class="whiteBtn"  open-type="getUserInfo" bindgetuserinfo="onGetUserInfoEvent" >立即加入</button>
     </view>
     
 </view>

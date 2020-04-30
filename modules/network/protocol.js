@@ -413,7 +413,7 @@ export default class Protocol {
             this.wxLogin().then(res => {
                 const {code} = res;
                 return BaseNetworkImp.request({
-                    url: 'account/getphoneNum',
+                    url: 'account/getPhoneNum',
                     data: {code, encrypted_data: encryptedData, iv},
                     requestWithoutLogin: true
                 })
@@ -425,7 +425,7 @@ export default class Protocol {
             })
         )
     }
-
+    
     //保存电话号码
     static putPhoneNum({encryptedData, iv}) {
         return new Promise((resolve, reject) =>
@@ -444,7 +444,6 @@ export default class Protocol {
             })
         )
     }
-
     static wxReLogin(resolve, reject) {
         wx.login({
             success: resolve, fail: res => {

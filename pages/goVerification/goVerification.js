@@ -19,7 +19,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let phoneNumbers = (!options.phoneNumber =='null' || options.phoneNumber == 'undefined') ? null : options.phoneNumber;
+    this.setData({
+      phoneNumbers
+    })
+    console.log(phoneNumbers)
   },
   /**
    * @desc 输入验证码

@@ -14,7 +14,7 @@ Page({
   data: {
     totNum:4,
     guidance: {
-      page: 2,
+      page: 1,
       portraitUrl: '',
       info: {
         height: 175,
@@ -67,6 +67,49 @@ Page({
     }
 
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log(options)
+    //从验证手机号页面返回
+    if (options.reset == 'false') {
+      this.setData({
+        'guidance.page': 2
+      })
+    }
+    this.setData({
+      reset: options.reset
+    })
+    //从首页进入
+    if (options.reset == 2) {
+      this.setData({
+        totNum: 3,
+        'guidance.page': 2
+      })
+    }
+    wx.setStorageSync('guidance_tip', 'ready')
+    this.getUserInfo()
+  },
+  onShow() {
+    let guidance;
+    if (this.data.reset != 'false'){
+      guidance = this.getParams('guidance');
+    }
+    console.log(guidance)
+    if (guidance) {
+      if (this.data.reset == 2) {
+        guidance.page = 2
+      } else if (this.data.reset !='false' && this.data.sharedId == 'undefined') {
+        guidance.page = 1
+      }
+      this.setData({
+        guidance: guidance
+      });
+      wx.removeStorage({ key: 'guidance' })
+    }
+
+  },
   objIsEmpty(obj) {
     return typeof obj === "undefined" || obj === "" || obj === null;
   },
@@ -97,8 +140,9 @@ Page({
     const { detail: { encryptedData, iv, errMsg } } = e;
     if (errMsg === 'getPhoneNumber:ok') {
       try {
-        await Protocol.putPhoneNum({ encryptedData, iv });
-        this.goNextPage();
+        console.log(encryptedData, iv)
+        let phoneNumber = await Protocol.getPhoneNum({ encryptedData, iv });
+        HiNavigator.navigateToGoVerification({phoneNumber})
       } catch (e) {
         console.error(e);
         wx.showToast({
@@ -116,7 +160,7 @@ Page({
     let page = this.data.guidance.page;
     switch (page) {
       case 1:
-        HiNavigator.navigateToGoVerification()
+        HiNavigator.navigateToGoVerification({})
         return;
       case 2:
         if (this.objIsEmpty(info.sex)) {
@@ -173,21 +217,7 @@ Page({
       'guidance.page': --this.data.guidance.page
     });
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    this.setData({
-      reset: options.reset
-    })
-    if (options.reset == 2){
-      this.setData({
-        totNum:3
-      })
-    }
-    wx.setStorageSync('guidance_tip', 'ready')
-    this.getUserInfo()
-  },
+  
   async getUserInfo() {
     const {
       result
@@ -295,21 +325,7 @@ Page({
   getParams: function(a) {
     return wx.getStorageSync(a)
   },
-  onShow() {
-    let guidance = this.getParams('guidance');
-    if (guidance) {
-      if (this.data.reset == 2){
-        guidance.page = 2
-      } else if (this.data.reset && this.data.sharedId == 'undefined'){
-        guidance.page =1
-      } 
-      this.setData({
-        guidance: guidance
-      });
-      wx.removeStorage({ key: 'guidance' })
-    }
-    
-  },
+  
   handlerGobackClick(){
     
     HiNavigator.switchToSetInfo();

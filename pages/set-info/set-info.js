@@ -135,7 +135,10 @@ Page({
         showGiftwindowsTip,
         original_show: true
       })
-      this.hideTabBarFun();
+      if (!this.data.deny){
+        this.hideTabBarFun();
+      }
+      
       wx.setStorageSync('original_tip', 'ready')
     } else {
       this.setData({
@@ -210,9 +213,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   async onPullDownRefresh() {
-    // Toast.showLoading();
-    // await this.getTaskInfo();
-    // Toast.hiddenLoading();
+    Toast.showLoading();
+    await this.getTaskInfo();
+    Toast.hiddenLoading();
     this.checkUpBleData()
     wx.stopPullDownRefresh();
 
@@ -237,7 +240,10 @@ Page({
       })
       this.showTabBarFun()
     } else {
-      this.hideTabBarFun();
+      if (!this.data.deny){
+        this.hideTabBarFun();
+      }
+      
     }
   },
   //获取个人信息
@@ -253,6 +259,7 @@ Page({
       finishedInfo = true;
     }
     wx.setStorageSync('finishedGuide', result.finishedGuide)
+    wx.setStorageSync('finishedPhone', result.finishedPhone)
     this.setData({
       finishedInfo,
       finishedPhone: result.finishedPhone,
@@ -262,7 +269,9 @@ Page({
       this.setData({
         showPage: false
       })
-      this.hideTabBarFun();
+      if(!this.data.deny){
+        this.hideTabBarFun();
+      }
 
     } else if (result.finishedGuide) {
       this.setData({
@@ -574,7 +583,7 @@ Page({
 
       //没有验证过手机号
       if (this.data.hipeeScene) {
-        HiNavigator.navigateToGoVerification()
+        HiNavigator.navigateToGuidance({})
       } else {
         //补签
         // if (sharedId) {
@@ -596,7 +605,7 @@ Page({
             return item.code == 'milkshake'
           })
           if (couponItem.status == 0) {
-            HiNavigator.navigateToGoVerification()
+            HiNavigator.navigateToGuidance({})
             return;
           }
           let couponCode = couponItem.couponCode

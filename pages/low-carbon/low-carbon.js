@@ -56,7 +56,27 @@ Page({
   goToReduce() {
     HiNavigator.navigateToReduceFatPeriod();
   },
-  toSetInfo(){
-    HiNavigator.switchToSetInfo()
+  async toSetInfo(e){
+    const {
+      detail: {
+        userInfo,
+        encryptedData,
+        iv
+      }
+    } = e;
+    if (!!userInfo) {
+      await Login.doRegister({
+        userInfo,
+        encryptedData,
+        iv
+      });
+      let finishedPhone = wx.getStorageSync('finishedPhone')
+      if (finishedPhone) {
+        HiNavigator.navigateToGuidance({ reset: 2 });
+      } else {
+        HiNavigator.navigateToGuidance({});
+      }
+
+    }
   }
 })

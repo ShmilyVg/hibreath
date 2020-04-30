@@ -5,14 +5,22 @@
 <view class="guidance">
   <block wx:if="{{reset != 2}}">
     <view class="otherPage" wx:if="{{guidance.page==1 }}">
-      <view class="header_h3 text_center">验证您的手机号</view>
-      <view class="text_center">
+      <!-- <view class="header_h3 text_center">验证您的手机号</view> -->
+      <!-- <view class="text_center">
         <text class="curPage">{{guidance.page}}/{{totNum}}</text>
-      </view>
-      <view class="psdBg">
+      </view> -->
+      <!-- <view class="psdBg">
         <image src="../../images/guidance/psdBg.png"></image>
         <view class="psdTit">定制减脂服务需您确保</view>
         <view class="psdTxt">验证的手机号为首次下单购买的收货手机号</view>
+      </view> -->
+      <view class="phton">
+        <view>登录手机号</view>
+        <view>验证<text>「低碳燃脂会员」</text>身份</view>
+        <view>领取会员开箱礼~</view>
+      </view>
+      <view class="phton_img">
+        <image src="http://img.hipee.cn/hibreath/banner/beauty.png"></image>
       </view>
     </view>
     <view class="otherPage" wx:if="{{guidance.page==2}}">
@@ -93,7 +101,7 @@
     </view>
   </block>
   <view class="btn_group">
-    <button class="bottom-btn greenBtn" wx:if="{{guidance.page == 1}}" hover-class="press-style" hover-stay-time="50" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键授权验证
+    <button class="bottom-btn whiteBtn" wx:if="{{guidance.page == 1}}" hover-class="press-style" hover-stay-time="50" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><image src="../../images/wx_2.png"></image> 微信一键登录
     </button>
     <button class="bottom-btn greenBtn" wx:if="{{guidance.page > 1}}" hover-class="press-style" hover-stay-time="50" bindtap="continueFun">{{guidance.page
       <4? '下一步': '完成'}} </button>
@@ -101,6 +109,6 @@
         <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" wx:if="{{sharedId && guidance.page == 2}}">
           <text decode="{{true}}"> &emsp;</text>
         </view>
-        <view class="bottom-btn-back" hover-class="press-style" hover-stay-time="50" bindtap="continueFun" wx:if="{{guidance.page == 1}}">短信验证码验证</view>
+        <view class="bottom-btn greenBtn phton_btn" hover-class="press-style" hover-stay-time="50" bindtap="continueFun" wx:if="{{guidance.page == 1}}">手机号验证码登录</view>
   </view>
 </view>
