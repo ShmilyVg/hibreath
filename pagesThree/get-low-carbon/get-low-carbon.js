@@ -28,12 +28,7 @@ Page({
     this.setData({
       content:result
     })
-    let couponCode = result.couponCode;
-    let youzan_info = Protocol.takeGift({ couponCode });
-
-    this.setData({
-      youzan_info: youzan_info
-    })
+    
   },
   async getShoppingJumpCodes(){
     let { result } = await Protocol.getShoppingJumpCodes();
@@ -63,12 +58,12 @@ Page({
 
   //跳转有赞
    async yzfn(){
-     let youzan_info = this.data.youzan_info;
+     const { mpAppId, mpPath } = this.data.content;
      if (this.data.content.qualificationStatus == 2){
        let couponCode = this.data.content.couponCode;
+       let youzan_info = await Protocol.takeGift({ couponCode });
        if (couponCode) {
          if (youzan_info.code == 1) {
-           const { mpAppId, mpPath } = youzan_info.result;
            wx.showToast({
              title: '领取成功,即将跳转有赞小程序',
              icon: 'none',
@@ -104,7 +99,8 @@ Page({
        setTimeout(() => {
          //跳转有赞小程序
          wx.navigateToMiniProgram({
-           appId:'wxeea809f23b5a5d9d',
+           appId: mpAppId,
+           path: mpPath,
            extraData: {
              // foo: 'bar'
            },
