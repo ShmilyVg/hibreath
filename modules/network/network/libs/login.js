@@ -95,6 +95,7 @@ function login({resolve, reject}) {
         }
     ).then(data => {
         getApp().globalData.isLogin = true
+        getApp().globalData.userStatus = data.result.step;
         getApp().globalData.dayFirstLoginObj.inTaskProgress = data.result.inTaskProgress
         getApp().globalData.dayFirstLoginObj.integral = data.result.integral
         getApp().globalData.dayFirstLoginObj.integralTaskTitle = data.result.integralTaskTitle
